@@ -1,0 +1,1242 @@
+{
+ "summary": {
+  "english": {
+   "hit@5": 1.0,
+   "recall@5": 0.9815,
+   "mrr@10": 0.9753,
+   "n": 27
+  },
+  "all": {
+   "hit@5": 0.902,
+   "recall@5": 0.8824,
+   "mrr@10": 0.8574,
+   "n": 51
+  },
+  "urdu": {
+   "hit@5": 0.8333,
+   "recall@5": 0.8333,
+   "mrr@10": 0.8333,
+   "n": 12
+  },
+  "roman_urdu": {
+   "hit@5": 0.75,
+   "recall@5": 0.7083,
+   "mrr@10": 0.6161,
+   "n": 12
+  }
+ },
+ "rows": [
+  {
+   "id": "en-003",
+   "group": "english",
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "top": [
+    "ITO2001-s4AB",
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-s4B",
+    "ITO2001-s147"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9867679855553831,
+   "missing_refs": []
+  },
+  {
+   "id": "en-004",
+   "group": "english",
+   "gold": [
+    "ITO2001-s4C"
+   ],
+   "top": [
+    "ITO2001-s4C",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-sch4",
+    "ITO2001-s4B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9967346030013764,
+   "missing_refs": []
+  },
+  {
+   "id": "en-007",
+   "group": "english",
+   "gold": [
+    "ITO2001-s5"
+   ],
+   "top": [
+    "ITO2001-s5",
+    "ITO2001-sch1-pI-divIII",
+    "ITO2001-s94",
+    "ITO2001-s5A",
+    "ITO2001-sch2-pII-cl18C"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9982544964484242,
+   "missing_refs": []
+  },
+  {
+   "id": "en-009",
+   "group": "english",
+   "gold": [
+    "ITO2001-s9"
+   ],
+   "top": [
+    "ITO2001-s9",
+    "ITO2001-s2",
+    "ITO2001-s88",
+    "ITO2001-s4",
+    "ITO2001-s4C"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9932863660060898,
+   "missing_refs": []
+  },
+  {
+   "id": "en-012",
+   "group": "english",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITR2002-r3",
+    "ITR2002-r4",
+    "ITO2001-s13",
+    "ITO2001-sch2-pI-cl40"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9722679164441783,
+   "missing_refs": []
+  },
+  {
+   "id": "en-018",
+   "group": "english",
+   "gold": [
+    "ITO2001-s51"
+   ],
+   "top": [
+    "ITO2001-s51",
+    "ITO2001-s50",
+    "ITO2001-s103",
+    "ITO2001-s44",
+    "ITO2001-s101A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9950165529115735,
+   "missing_refs": []
+  },
+  {
+   "id": "en-021",
+   "group": "english",
+   "gold": [
+    "ITO2001-s59"
+   ],
+   "top": [
+    "ITO2001-s59",
+    "ITO2001-s56",
+    "ITO2001-s59A",
+    "ITO2001-s59B",
+    "ITR2002-r13D"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9713676551479138,
+   "missing_refs": []
+  },
+  {
+   "id": "en-038",
+   "group": "english",
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITO2001-sch11",
+    "ITR2002-r80",
+    "ITO2001-s182",
+    "ITO2001-s114"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.13333761359037086,
+   "missing_refs": []
+  },
+  {
+   "id": "en-040",
+   "group": "english",
+   "gold": [
+    "ITO2001-s116A"
+   ],
+   "top": [
+    "ITO2001-s116A",
+    "ITO2001-s116",
+    "ITR2002-r36A",
+    "ITO2001-s118",
+    "ITO2001-s114"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.994356100881427,
+   "missing_refs": []
+  },
+  {
+   "id": "en-043",
+   "group": "english",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITR2002-r81B",
+    "ITR2002-r44",
+    "ITO2001-s165AB",
+    "ITO2001-s64B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9769269178179415,
+   "missing_refs": []
+  },
+  {
+   "id": "en-044",
+   "group": "english",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITR2002-r30",
+    "ITO2001-s182",
+    "ITO2001-s182",
+    "ITO2001-s114"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.719654107671091,
+   "missing_refs": []
+  },
+  {
+   "id": "en-046",
+   "group": "english",
+   "gold": [
+    "ITO2001-s120"
+   ],
+   "top": [
+    "ITO2001-s120",
+    "ITO2001-s122",
+    "ITO2001-s121",
+    "ITO2001-sch10",
+    "ITO2001-s124"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.8883729074015856,
+   "missing_refs": []
+  },
+  {
+   "id": "en-049",
+   "group": "english",
+   "gold": [
+    "ITO2001-s127"
+   ],
+   "top": [
+    "ITO2001-s127",
+    "ITO2001-s131",
+    "ITR2002-r76",
+    "ITO2001-s129",
+    "ITO2001-s140"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9997181057202904,
+   "missing_refs": []
+  },
+  {
+   "id": "en-051",
+   "group": "english",
+   "gold": [
+    "ITO2001-s137"
+   ],
+   "top": [
+    "ITO2001-s137",
+    "ITO2001-s138",
+    "ITO2001-s145",
+    "ITO2001-s122",
+    "ITO2001-sch10"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.42299232925669206,
+   "missing_refs": []
+  },
+  {
+   "id": "en-053",
+   "group": "english",
+   "gold": [
+    "ITO2001-s149"
+   ],
+   "top": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-s12",
+    "ITO2001-s13",
+    "ITO2001-sch1-pIII-divII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.4680436213987225,
+   "missing_refs": []
+  },
+  {
+   "id": "en-055",
+   "group": "english",
+   "gold": [
+    "ITO2001-s150"
+   ],
+   "top": [
+    "ITO2001-s150",
+    "ITO2001-sch1-pIII-divI",
+    "WHT2027-s150",
+    "ITO2001-s5",
+    "ITO2001-sch2-pII-cl18C"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.5386199964864127,
+   "missing_refs": []
+  },
+  {
+   "id": "en-056",
+   "group": "english",
+   "gold": [
+    "ITO2001-s150",
+    "ITO2001-sch1-pIII-divI"
+   ],
+   "top": [
+    "WHT2027-s150",
+    "ITO2001-sch1-pIII-divI",
+    "ITO2001-sch1-pI-divIII",
+    "ITO2001-sch1-pI-divVII",
+    "ITO2001-sch1-pI-divVII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.5,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9167649846147162,
+   "missing_refs": []
+  },
+  {
+   "id": "en-059",
+   "group": "english",
+   "gold": [
+    "ITO2001-s153"
+   ],
+   "top": [
+    "ITO2001-s153",
+    "WHT2027-s153",
+    "ITO2001-s165",
+    "ITO2001-s153",
+    "ITO2001-sch2-pIV-cl56"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.15563261256923097,
+   "missing_refs": []
+  },
+  {
+   "id": "en-064",
+   "group": "english",
+   "gold": [
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "top": [
+    "WHT2027-s155",
+    "ITO2001-sch1-pIII-divV",
+    "ITO2001-s155",
+    "WHT2027-s151",
+    "WHT2027-s153"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.8486062670081461,
+   "missing_refs": []
+  },
+  {
+   "id": "en-069",
+   "group": "english",
+   "gold": [
+    "ITO2001-s165"
+   ],
+   "top": [
+    "ITO2001-sch10",
+    "ITO2001-s165C",
+    "ITO2001-sch10",
+    "ITO2001-s165",
+    "ITR2002-r13ZF"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.3333333333333333,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.6585215584065552,
+   "missing_refs": []
+  },
+  {
+   "id": "en-073",
+   "group": "english",
+   "gold": [
+    "ITO2001-s171"
+   ],
+   "top": [
+    "ITO2001-s171",
+    "ITO2001-s182A",
+    "ITO2001-s39",
+    "ITO2001-s170",
+    "ITO2001-s171A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9577302268006216,
+   "missing_refs": []
+  },
+  {
+   "id": "en-078",
+   "group": "english",
+   "gold": [
+    "ITO2001-s181AA"
+   ],
+   "top": [
+    "ITO2001-s181AA",
+    "ITR2002-r83",
+    "ITR2002-r83C",
+    "ITR2002-r81A",
+    "ITR2002-r80B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.2293962278844437,
+   "missing_refs": []
+  },
+  {
+   "id": "en-079",
+   "group": "english",
+   "gold": [
+    "ITO2001-s205"
+   ],
+   "top": [
+    "ITO2001-s205",
+    "ITO2001-s205",
+    "ITO2001-s114",
+    "ITO2001-s137",
+    "ITO2001-s182"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9604592197692214,
+   "missing_refs": []
+  },
+  {
+   "id": "en-081",
+   "group": "english",
+   "gold": [
+    "ITO2001-s231AB"
+   ],
+   "top": [
+    "ITO2001-s231AB",
+    "WHT2027-s231AB",
+    "WHT2027-s236CB",
+    "WHT2027-s231C",
+    "ITO2001-s100BA"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.999283477480421,
+   "missing_refs": []
+  },
+  {
+   "id": "en-082",
+   "group": "english",
+   "gold": [
+    "ITO2001-s235"
+   ],
+   "top": [
+    "ITO2001-s235",
+    "WHT2027-s235",
+    "ITO2001-s99A",
+    "ITO2001-s100BA",
+    "WHT2027-s231C"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9983744154640505,
+   "missing_refs": []
+  },
+  {
+   "id": "en-084",
+   "group": "english",
+   "gold": [
+    "ITO2001-s236C",
+    "ITO2001-sch1-pIV-divX"
+   ],
+   "top": [
+    "ITO2001-s236C",
+    "ITO2001-s236K",
+    "ITO2001-sch1-pIV-divX",
+    "ITO2001-sch1-pIV-divXVIII",
+    "ITO2001-sch1-pIV-divVIII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9785217585964132,
+   "missing_refs": []
+  },
+  {
+   "id": "en-090",
+   "group": "english",
+   "gold": [
+    "ITO2001-sch1-pI-divI"
+   ],
+   "top": [
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch1-pI-divI",
+    "WHT2027-s155",
+    "ITR2002-r80",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.279018127086083,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-001",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "top": [
+    "ITO2001-s4AB",
+    "ITO2001-s149",
+    "ITO2001-s4B",
+    "ITO2001-sch5-pI",
+    "ITO2001-sch4"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.8606888607241296,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-002",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITR2002-r227",
+    "ITO2001-sch2-pI-cl40",
+    "ITO2001-s110",
+    "ITR2002-r5"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.10015040786551564,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-003",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s51"
+   ],
+   "top": [
+    "ITO2001-s51",
+    "ITO2001-s50",
+    "ITR2002-r223",
+    "ITO2001-s82",
+    "ITO2001-s103"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9266369303445269,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-004",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s59"
+   ],
+   "top": [
+    "ITO2001-s59",
+    "ITR2002-r13F",
+    "ITO2001-s38",
+    "ITR2002-r13L",
+    "ITO2001-s59B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.19465161098450565,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-005",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-sch1-pIV-divIV",
+    "WHT2027-s235",
+    "ITO2001-s63A",
+    "ITO2001-sch1-pIII-divV",
+    "WHT2027-s155"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.024981411636904,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-006",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s116A"
+   ],
+   "top": [
+    "ITO2001-s116A",
+    "ITR2002-r36A",
+    "ITO2001-sch2-pI-cl75",
+    "ITO2001-s101A",
+    "ITO2001-s111"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.09819968918407784,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-007",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-sch1-pIV-divVII",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-sch1-pI-divI",
+    "WHT2027-s149"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.13609147214986075,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-008",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s149"
+   ],
+   "top": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-s13",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-s32"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.0029686124868290643,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-009",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "top": [
+    "WHT2027-s155",
+    "ITO2001-sch1-pIII-divV",
+    "ITO2001-sch2-pII-cl24CB",
+    "ITO2001-sch1-pIII-divV",
+    "ITO2001-sch1-pI-divIII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.4086279716724863,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-010",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s181AA"
+   ],
+   "top": [
+    "ITO2001-s181AA",
+    "ITR2002-r80B",
+    "ITR2002-r81A",
+    "ITR2002-r78O",
+    "ITO2001-s99A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.08808703133126246,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-011",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s231AB"
+   ],
+   "top": [
+    "ITO2001-s231AB",
+    "WHT2027-s231AB",
+    "WHT2027-s236CB",
+    "WHT2027-s231C",
+    "ITO2001-sch10"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.9939098428214016,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-012",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s236C",
+    "ITO2001-sch1-pIV-divX"
+   ],
+   "top": [
+    "ITO2001-sch1-pIV-divX",
+    "ITO2001-sch1-pIV-divVIII",
+    "ITO2001-sch1-pIV-divXVIII",
+    "ITO2001-s236C",
+    "ITO2001-s236A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.608787516472758,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-001",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "top": [
+    "ITO2001-s4AB",
+    "ITO2001-s149",
+    "ITO2001-s205",
+    "ITO2001-sch5-pI",
+    "ITO2001-s183"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.20501762177553465,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-002",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITO2001-sch2-pI-cl40",
+    "ITO2001-s21",
+    "ITR2002-r227",
+    "ITO2001-s2"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.014839189372647756,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-003",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s51"
+   ],
+   "top": [
+    "ITO2001-s51",
+    "ITO2001-s44",
+    "ITO2001-s50",
+    "ITO2001-s103",
+    "ITO2001-s43"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.033264148961324916,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-004",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s59"
+   ],
+   "top": [
+    "ITO2001-s59B",
+    "ITO2001-s56",
+    "ITR2002-r13P",
+    "ITO2001-s149",
+    "ITO2001-sch4"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.0021631328269485638,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-005",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-s114B",
+    "ITO2001-s182",
+    "ITO2001-s118",
+    "ITR2002-r80",
+    "ITR2002-r81A"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.14285714285714285,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.010103378669351432,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-006",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s116A"
+   ],
+   "top": [
+    "ITO2001-s116A",
+    "ITR2002-r36A",
+    "ITO2001-s118",
+    "ITO2001-s114",
+    "ITO2001-s111"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.061082430738359214,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-007",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITO2001-s182",
+    "ITO2001-s182A",
+    "ITO2001-s114",
+    "ITO2001-s114B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.036386428151869474,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-008",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s149"
+   ],
+   "top": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-s12",
+    "ITO2001-s13",
+    "ITO2001-s13"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.008800820480326916,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-009",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "top": [
+    "ITO2001-s94",
+    "ITO2001-s80",
+    "ITO2001-sch1-pI-divII",
+    "ITO2001-sch1-pI-divII",
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.25,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.0016059987790204054,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-010",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s181AA"
+   ],
+   "top": [
+    "ITR2002-r81A",
+    "ITR2002-r78O",
+    "ITR2002-r83C",
+    "ITR2002-r83C",
+    "ITR2002-r13O"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.002300732970727551,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-011",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s231AB"
+   ],
+   "top": [
+    "ITR2002-r78O",
+    "ITO2001-s231AB",
+    "ITO2001-s5A",
+    "ITO2001-s182",
+    "ITO2001-sch1-pI-divII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.0011408014399511826,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-012",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s236C",
+    "ITO2001-sch1-pIV-divX"
+   ],
+   "top": [
+    "ITO2001-s7D",
+    "ITO2001-s236C",
+    "ITR2002-r13S",
+    "ITO2001-s236H",
+    "ITO2001-s236"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.5,
+   "mrr@10": 0.5,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.034143438813330505,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-003",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-sch2-pIV-cl56",
+    "ITO2001-sch2-pIV-cl56",
+    "ITO2001-sch2-pIV-cl12M",
+    "ITO2001-sch2-pIV-cl12H",
+    "ITO2001-sch2-pIV-cl92"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.35986712474555704,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-006",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-s4C",
+    "ITO2001-sch1-pI-divII",
+    "ITO2001-sch2-pIII-cl3A",
+    "ITO2001-sch2-pIV-cl111",
+    "ITO2001-sch12"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.006689428150213839,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-007",
+   "group": "out_of_scope",
+   "top": [
+    "WHT2027-s150",
+    "ITR2002-r13P",
+    "ITO2001-sch2-pI-cl57",
+    "ITR2002-r102",
+    "WHT2027-s151"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.007031853620287669,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-009",
+   "group": "out_of_scope",
+   "top": [
+    "ITR2002-r2",
+    "ITR2002-r83B",
+    "ITO2001-s2",
+    "ITR2002-r220B",
+    "ITR2002-r90"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.2474213176321519,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-013",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-s236C",
+    "ITO2001-s236K",
+    "ITO2001-sch1-pIV-divVII",
+    "ITO2001-sch1-pI-divVIIIA",
+    "ITO2001-sch1-pI-divVIIIB"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.005692523645357717,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-022",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-s99D",
+    "ITO2001-s53",
+    "ITO2001-s237",
+    "ITO2001-s7D",
+    "ITO2001-s238"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.008550654740138719,
+   "missing_refs": [
+    "section 777"
+   ]
+  },
+  {
+   "id": "oos-024",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-sch13",
+    "ITO2001-s2",
+    "ITR2002-r33G",
+    "ITO2001-sch13",
+    "ITO2001-sch12"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.0005606009556511982,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-027",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-sch1-pII",
+    "ITO2001-sch2-pIV-cl56",
+    "ITO2001-sch2-pIV-cl56",
+    "ITO2001-sch2-pIV-cl92",
+    "ITO2001-sch2-pIV-cl12H"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.03213115901614955,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-029",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-s181",
+    "ITR2002-r30",
+    "ITR2002-r19H",
+    "ITO2001-sch1-pIV-divVII",
+    "ITO2001-sch1-pIII-divIII"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": 0.0016414758005828423,
+   "missing_refs": []
+  }
+ ]
+}

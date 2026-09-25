@@ -1,0 +1,1242 @@
+{
+ "summary": {
+  "english": {
+   "hit@5": 0.9259,
+   "recall@5": 0.9074,
+   "mrr@10": 0.8467,
+   "n": 27
+  },
+  "all": {
+   "hit@5": 0.8431,
+   "recall@5": 0.8039,
+   "mrr@10": 0.7234,
+   "n": 51
+  },
+  "urdu": {
+   "hit@5": 0.8333,
+   "recall@5": 0.7083,
+   "mrr@10": 0.6486,
+   "n": 12
+  },
+  "roman_urdu": {
+   "hit@5": 0.6667,
+   "recall@5": 0.6667,
+   "mrr@10": 0.5208,
+   "n": 12
+  }
+ },
+ "rows": [
+  {
+   "id": "en-003",
+   "group": "english",
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "top": [
+    "ITO2001-s4AB",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-s205",
+    "ITO2001-s4C"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-004",
+   "group": "english",
+   "gold": [
+    "ITO2001-s4C"
+   ],
+   "top": [
+    "ITO2001-s4C",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-s4B",
+    "ITO2001-s100B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-007",
+   "group": "english",
+   "gold": [
+    "ITO2001-s5"
+   ],
+   "top": [
+    "ITO2001-s5",
+    "ITO2001-sch1-pI-divIII",
+    "ITO2001-sch2-pII-cl18C",
+    "ITO2001-s5A",
+    "ITO2001-sch1-pIII-divI"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-009",
+   "group": "english",
+   "gold": [
+    "ITO2001-s9"
+   ],
+   "top": [
+    "ITO2001-s4",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-s2",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-s9"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.25,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-012",
+   "group": "english",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITO2001-s110",
+    "ITR2002-r5",
+    "ITR2002-r4",
+    "ITO2001-s12"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-018",
+   "group": "english",
+   "gold": [
+    "ITO2001-s51"
+   ],
+   "top": [
+    "ITO2001-s51",
+    "ITO2001-s50",
+    "ITO2001-s44",
+    "ITO2001-s101",
+    "ITO2001-s101"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-021",
+   "group": "english",
+   "gold": [
+    "ITO2001-s59"
+   ],
+   "top": [
+    "ITO2001-s56",
+    "ITO2001-s59",
+    "ITO2001-s59A",
+    "ITO2001-s57A",
+    "ITO2001-s57"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-038",
+   "group": "english",
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITO2001-sch11",
+    "ITO2001-s114",
+    "ITO2001-s118",
+    "ITO2001-s7D"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-040",
+   "group": "english",
+   "gold": [
+    "ITO2001-s116A"
+   ],
+   "top": [
+    "ITO2001-s116A",
+    "ITR2002-r36A",
+    "ITO2001-s116",
+    "ITO2001-s114",
+    "ITO2001-s118"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-043",
+   "group": "english",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITR2002-r34A",
+    "ITO2001-s74",
+    "ITO2001-s114",
+    "ITR2002-r81B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-044",
+   "group": "english",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITO2001-s114",
+    "ITO2001-s114",
+    "ITO2001-s114",
+    "ITO2001-s182A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-046",
+   "group": "english",
+   "gold": [
+    "ITO2001-s120"
+   ],
+   "top": [
+    "ITO2001-s120",
+    "ITO2001-s122",
+    "ITO2001-s124",
+    "ITO2001-s126",
+    "ITO2001-s121"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-049",
+   "group": "english",
+   "gold": [
+    "ITO2001-s127"
+   ],
+   "top": [
+    "ITO2001-s127",
+    "ITO2001-s129",
+    "ITR2002-r76",
+    "ITO2001-s131",
+    "ITO2001-s128"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-051",
+   "group": "english",
+   "gold": [
+    "ITO2001-s137"
+   ],
+   "top": [
+    "ITO2001-s127",
+    "ITO2001-s124",
+    "ITO2001-s122",
+    "ITO2001-s122D",
+    "ITO2001-s122"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-053",
+   "group": "english",
+   "gold": [
+    "ITO2001-s149"
+   ],
+   "top": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-s12",
+    "ITO2001-sch1-pIII-divII",
+    "ITO2001-s13"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-055",
+   "group": "english",
+   "gold": [
+    "ITO2001-s150"
+   ],
+   "top": [
+    "ITO2001-sch1-pIII-divI",
+    "ITO2001-s150",
+    "ITO2001-sch2-pIV-cl59",
+    "ITO2001-s5",
+    "ITO2001-sch1-pI-divIII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-056",
+   "group": "english",
+   "gold": [
+    "ITO2001-s150",
+    "ITO2001-sch1-pIII-divI"
+   ],
+   "top": [
+    "ITO2001-sch1-pIII-divI",
+    "ITO2001-sch1-pI-divIII",
+    "WHT2027-s150",
+    "ITO2001-sch1-pI-divVII",
+    "ITO2001-s150"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-059",
+   "group": "english",
+   "gold": [
+    "ITO2001-s153"
+   ],
+   "top": [
+    "ITO2001-sch2-pIV-cl70",
+    "ITO2001-sch2-pII-cl9AD",
+    "ITO2001-sch2-pIV-cl45A",
+    "ITO2001-sch2-pIII-cl18",
+    "ITO2001-s165C"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.1111111111111111,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-064",
+   "group": "english",
+   "gold": [
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "top": [
+    "WHT2027-s155",
+    "ITO2001-sch1-pIII-divV",
+    "ITO2001-sch2-pIII-cl18",
+    "ITO2001-sch2-pIV-cl45A",
+    "ITO2001-s155"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-069",
+   "group": "english",
+   "gold": [
+    "ITO2001-s165"
+   ],
+   "top": [
+    "ITO2001-s165",
+    "ITO2001-sch10",
+    "ITO2001-s165",
+    "ITO2001-s165C",
+    "ITR2002-r73"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-073",
+   "group": "english",
+   "gold": [
+    "ITO2001-s171"
+   ],
+   "top": [
+    "ITO2001-s171",
+    "ITO2001-s170",
+    "ITO2001-s182A",
+    "ITR2002-r210IC",
+    "ITO2001-s171A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-078",
+   "group": "english",
+   "gold": [
+    "ITO2001-s181AA"
+   ],
+   "top": [
+    "ITO2001-s181AA",
+    "ITO2001-s99A",
+    "ITR2002-r78O",
+    "ITO2001-sch1-pIV-divIV",
+    "ITO2001-s235"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-079",
+   "group": "english",
+   "gold": [
+    "ITO2001-s205"
+   ],
+   "top": [
+    "ITO2001-s205",
+    "ITO2001-s205",
+    "ITO2001-s205A",
+    "ITO2001-s114",
+    "ITO2001-s183"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-081",
+   "group": "english",
+   "gold": [
+    "ITO2001-s231AB"
+   ],
+   "top": [
+    "ITO2001-s231AB",
+    "ITO2001-s100BA",
+    "ITO2001-s147",
+    "ITO2001-s236Y",
+    "ITO2001-s236O"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-082",
+   "group": "english",
+   "gold": [
+    "ITO2001-s235"
+   ],
+   "top": [
+    "ITO2001-s235",
+    "ITO2001-s236",
+    "ITR2002-r81B",
+    "ITR2002-r81B",
+    "ITO2001-s147"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-084",
+   "group": "english",
+   "gold": [
+    "ITO2001-s236C",
+    "ITO2001-sch1-pIV-divX"
+   ],
+   "top": [
+    "ITO2001-s236K",
+    "ITO2001-s236C",
+    "ITO2001-s236C",
+    "ITO2001-s236A",
+    "ITO2001-s147A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.5,
+   "mrr@10": 0.5,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "en-090",
+   "group": "english",
+   "gold": [
+    "ITO2001-sch1-pI-divI"
+   ],
+   "top": [
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-s7",
+    "ITO2001-sch2-pIV-cl111AC",
+    "ITO2001-s113",
+    "ITO2001-sch2-pI-cl145A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-001",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "top": [
+    "ITO2001-s4AB",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-s4C",
+    "ITO2001-s149",
+    "ITO2001-sch1-pI-divIIB"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-002",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITR2002-r4",
+    "ITO2001-sch2-pI-cl40",
+    "ITR2002-r227",
+    "ITO2001-sch2-pI-cl39A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-003",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s51"
+   ],
+   "top": [
+    "ITO2001-s51",
+    "ITO2001-s50",
+    "ITO2001-s43",
+    "ITO2001-s44",
+    "ITO2001-s82"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-004",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s59"
+   ],
+   "top": [
+    "ITO2001-s56",
+    "ITO2001-s2",
+    "ITO2001-s38",
+    "ITO2001-sch1-pI-divIX",
+    "ITO2001-s59"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.2,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-005",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-sch1-pIIB",
+    "ITR2002-r231I",
+    "ITO2001-s15",
+    "ITR2002-r13P",
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-006",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s116A"
+   ],
+   "top": [
+    "ITO2001-s116A",
+    "ITR2002-r36A",
+    "ITO2001-sch2-pI-cl149",
+    "ITO2001-sch2-pIV-cl5",
+    "ITO2001-s111"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-007",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch1-pIV-divIII",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch1-pIIB",
+    "ITO2001-sch6-pI"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-008",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s149"
+   ],
+   "top": [
+    "ITO2001-s149",
+    "ITO2001-s231AB",
+    "ITO2001-s147",
+    "ITO2001-s88",
+    "ITO2001-s12"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-009",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "top": [
+    "ITO2001-sch1-pI-divIII",
+    "ITO2001-s13",
+    "WHT2027-s155",
+    "ITO2001-s28",
+    "ITO2001-sch2-pIII-cl18"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.3333333333333333,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-010",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s181AA"
+   ],
+   "top": [
+    "ITO2001-s181AA",
+    "ITO2001-s99A",
+    "WHT2027-s235",
+    "ITR2002-r80B",
+    "ITR2002-r33G"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-011",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s231AB"
+   ],
+   "top": [
+    "ITO2001-s231AB",
+    "WHT2027-s231AB",
+    "ITO2001-sch10",
+    "ITO2001-s100BA",
+    "ITO2001-sch10"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-012",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s236C",
+    "ITO2001-sch1-pIV-divX"
+   ],
+   "top": [
+    "ITO2001-s236A",
+    "ITO2001-sch1-pIV-divVIII",
+    "ITO2001-sch1-pIV-divXVIII",
+    "ITO2001-s236C",
+    "ITO2001-s63A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.5,
+   "mrr@10": 0.25,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-001",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "top": [
+    "ITO2001-s4AB",
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-s205",
+    "ITO2001-s12"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-002",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITR2002-r5",
+    "ITO2001-s12",
+    "ITR2002-r227",
+    "ITO2001-sch2-pI-cl40",
+    "ITO2001-s23"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-003",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s51"
+   ],
+   "top": [
+    "ITO2001-s51",
+    "ITO2001-s44",
+    "ITO2001-s109A",
+    "ITO2001-s50",
+    "ITR2002-r15"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-004",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s59"
+   ],
+   "top": [
+    "ITO2001-s59B",
+    "ITR2002-r13F",
+    "ITR2002-r13P",
+    "ITR2002-r13P",
+    "ITO2001-sch4"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-005",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITO2001-s118",
+    "ITO2001-s182",
+    "ITO2001-s114",
+    "ITO2001-s182A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-006",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s116A"
+   ],
+   "top": [
+    "ITO2001-s116A",
+    "ITR2002-r36A",
+    "ITO2001-s111",
+    "ITO2001-sch2-pIV-cl5",
+    "ITO2001-s111"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-007",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s182",
+    "ITR2002-r38",
+    "ITO2001-s182A",
+    "ITO2001-s182",
+    "ITO2001-s118"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.25,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-008",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s149"
+   ],
+   "top": [
+    "ITO2001-s13",
+    "ITO2001-s12",
+    "ITO2001-s12",
+    "ITO2001-s149",
+    "ITO2001-sch6-pI"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.3333333333333333,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-009",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "top": [
+    "ITO2001-s31",
+    "ITO2001-s231AB",
+    "ITO2001-sch1-pI-divII",
+    "ITO2001-s152",
+    "ITO2001-s153"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-010",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s181AA"
+   ],
+   "top": [
+    "ITO2001-s2",
+    "WHT2027-s235",
+    "ITO2001-sch12",
+    "ITO2001-sch5-pII",
+    "ITO2001-sch5-pI"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-011",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s231AB"
+   ],
+   "top": [
+    "ITO2001-s231AB",
+    "ITO2001-s30",
+    "ITO2001-s152",
+    "ITO2001-s165A",
+    "ITO2001-s165B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-012",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s236C",
+    "ITO2001-sch1-pIV-divX"
+   ],
+   "top": [
+    "ITO2001-s147",
+    "ITO2001-s7D",
+    "ITO2001-s236O",
+    "ITO2001-s236A",
+    "ITO2001-s147A"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.16666666666666666,
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-003",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-sch2-pIV-cl12B",
+    "ITO2001-sch2-pIV-cl77",
+    "ITO2001-sch2-pIV-cl12M",
+    "ITO2001-sch2-pIV-cl12H",
+    "ITO2001-sch2-pIV-cl56"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-006",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-sch12",
+    "ITO2001-sch2-pII-cl28D",
+    "ITO2001-sch2-pII-cl9AD",
+    "ITO2001-s12",
+    "ITO2001-sch2-pII-cl27"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-007",
+   "group": "out_of_scope",
+   "top": [
+    "ITR2002-r102",
+    "ITO2001-sch1-pI-divVII",
+    "ITR2002-r78B",
+    "ITO2001-s114",
+    "WHT2027-s150"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-009",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-s239A",
+    "ITR2002-r2",
+    "ITR2002-r90",
+    "ITO2001-s229",
+    "ITR2002-r78O"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-013",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-s7A",
+    "ITO2001-s236K",
+    "ITO2001-sch2-pII-cl5A",
+    "ITO2001-s236C",
+    "ITO2001-sch2-pI-cl57"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-022",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-s182",
+    "ITO2001-s175B",
+    "ITO2001-s7C",
+    "ITO2001-s99D",
+    "ITO2001-sch1-pI-divII"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": [
+    "section 777"
+   ]
+  },
+  {
+   "id": "oos-024",
+   "group": "out_of_scope",
+   "top": [
+    "WHT2027-s234",
+    "ITO2001-sch13",
+    "ITO2001-s2",
+    "ITO2001-sch2-pIV-cl12N",
+    "ITO2001-sch12"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-027",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-sch2-pIV-cl12B",
+    "ITO2001-sch2-pIV-cl12M",
+    "ITO2001-sch2-pIV-cl56",
+    "ITO2001-sch1-pII",
+    "ITO2001-sch2-pIV-cl12H"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-029",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-s181",
+    "ITR2002-r33B",
+    "ITR2002-r30",
+    "ITR2002-r19H",
+    "ITO2001-sch1-pIII-divIII"
+   ],
+   "queries": [],
+   "scope": "income_tax",
+   "top_score": null,
+   "missing_refs": []
+  }
+ ]
+}
