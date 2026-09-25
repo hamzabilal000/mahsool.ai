@@ -28,7 +28,7 @@ SETUPS = [
     ("pipeline-rewrite-test", "+ rewrite\n(no reranker)"),
     ("pipeline-rewrite-rerank-test", "+ rewrite\n+ reranker"),
     ("pipeline-full-test", "+ glossary\n= full pipeline"),
-    ("pipeline-full-max-test", "full, rerank\nmax score*"),
+    ("pipeline-full-max-test", "full, rerank max*\n= /ask default"),
 ]
 GROUPS = [("english", "English"), ("urdu", "Urdu script"), ("roman_urdu", "Roman Urdu")]
 COLORS = ["#2a78d6", "#eb6834", "#1baf7a"]  # validated categorical slots 1-3
@@ -52,7 +52,7 @@ def main() -> None:
         xs = [i + (g - 1) * (width + 0.02) for i in range(len(rows))]
         ys = [100 * s[key]["hit@5"] for _, s in rows]
         ax.bar(xs, ys, width, color=color, label=name, zorder=2)
-        # Label only the default full pipeline and the experiment next to it.
+        # Label only the two full-pipeline variants.
         for i in (-2, -1):
             ax.text(xs[i], ys[i] + 1.5, f"{ys[i]:.0f}", ha="center", color=INK, fontsize=8)
     ax.axhline(80, color=MUTED, lw=1, ls=(0, (4, 3)), zorder=1)
@@ -78,8 +78,8 @@ def main() -> None:
     fig.text(
         0.01,
         0.01,
-        "* also scores the English rewrite; a dev-split experiment, "
-        "not the /ask default (DECISIONS D33)",
+        "* the reranker also scores the English rewrite and keeps the higher score; "
+        "chosen on the dev split (DECISIONS D40)",
         color=MUTED,
         fontsize=7,
     )

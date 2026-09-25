@@ -12,9 +12,9 @@ Pipeline presets (each adds one step to hybrid search, for the ablation table):
     lookup          + direct section lookup ("section 149", "dafa 236K")
     rewrite         + English query rewrite (GPT OSS 20B), no glossary
     rewrite-rerank  + bge-reranker-v2-m3 on the top 30
-    full            + Urdu glossary in the rewrite prompt
+    full            + Urdu glossary in the rewrite prompt (reranks with the question only)
     lookup-rerank   lookup + reranker without any LLM (runs without a Groq key)
-    full-max        full, reranking with max(question, first rewrite) score (dev experiment)
+    full-max        full, reranking with max(question, first rewrite) score (/ask default, D40)
 
 LLM outputs are cached in eval/cache/groq.jsonl, so re-running replays them without Groq.
 """

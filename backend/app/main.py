@@ -26,7 +26,8 @@ def build_service():
 
     s = get_settings()
     llm = groq_client(s)
-    pipeline = build_pipeline(PipelineConfig(candidates=s.rerank_candidates), settings=s, llm=llm)
+    config = PipelineConfig(candidates=s.rerank_candidates, rerank_query=s.rerank_query)
+    pipeline = build_pipeline(config, settings=s, llm=llm)
     return AskService(
         pipeline,
         AnswerGenerator(llm, s.answer_model),

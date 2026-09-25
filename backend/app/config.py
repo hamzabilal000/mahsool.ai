@@ -2,6 +2,7 @@
 
 from functools import lru_cache
 from pathlib import Path
+from typing import Literal
 
 from pydantic import AliasChoices, Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -41,6 +42,9 @@ class Settings(BaseSettings):
     rrf_k: int = 60
     candidates_per_retriever: int = 30  # top-N from each of dense and sparse before fusion
     rerank_candidates: int = 30  # fused chunks passed to the reranker
+    # "max": the reranker also scores each chunk against the first English rewrite and keeps the
+    # higher score; chosen on the dev split (DECISIONS D40). Doubles the reranker time.
+    rerank_query: Literal["original", "max"] = "max"
     answer_top_k: int = 6  # reranked chunks shown to the answer model
     # Refuse without calling the answer model when the best reranker score is below this.
     # Kept very low: on the dev split Urdu / Roman Urdu questions that *are* answerable often

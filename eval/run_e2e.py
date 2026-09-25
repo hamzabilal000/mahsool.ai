@@ -40,7 +40,7 @@ def build_service():
     s = get_settings()
     llm = groq_client(s, cache_path=LLM_CACHE)
     pipeline = build_pipeline(
-        PipelineConfig(candidates=s.rerank_candidates),
+        PipelineConfig(candidates=s.rerank_candidates, rerank_query=s.rerank_query),
         settings=s,
         llm=llm,
         rerank_cache=RERANK_CACHE,

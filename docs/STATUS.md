@@ -69,6 +69,10 @@ Last updated: 2026-09-25 (Milestone 3, part 2: LLM ablation and end-to-end eval)
    reranker latency (~29 s per question on CPU, D26), answer-correctness judging (D35), and the Groq daily limit
    for the demo (D36).
 
+## Open for Milestone 5
+- Latency: the live `/ask` answer took 27 s (26 s of it CPU reranking); the target is under 4 s. The new default
+  (`full-max`, D40) doubles the reranker work, so this needs a faster reranker (ONNX / fewer candidates / GPU / API).
+
 ## Open items for Hamza
 - Verify eval questions by hand with `eval/REVIEW.md` (about 20 a day), and tell Claude Code which are wrong.
 - Review `data/glossary_ur.csv` as a native speaker (D25).

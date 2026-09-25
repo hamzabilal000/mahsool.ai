@@ -287,6 +287,7 @@ Newest first within each milestone. Each entry says what the plan said, what we 
   replayed.
 
 ### D33. Retrieval ablation with the LLM rewrite: the reranker undoes the rewrite on Urdu and Roman Urdu
+- *Update: `full-max` became the `/ask` default, decided on the dev split (D40).*
 - **Test split, Hit@5** (all rows include section lookup from the hybrid baseline on):
 
   | Setup | English | Urdu | Roman Urdu | All | Recall@5 (all gold) | MRR@10 |
@@ -342,3 +343,68 @@ Newest first within each milestone. Each entry says what the plan said, what we 
   from the cache on the next run.
 - For the demo in Milestone 5 this is a real constraint: a paid Groq tier, a smaller answer model, or fewer / shorter
   sources.
+
+### D37. Chunk titles: bracketed headings, and units the PDF prints without a heading
+- **Found:** titles like "Subject to this Ordinance, a surcharge shall be payable by" (ITO 4AB), ". Application for
+  initiation of Mutual Agreement Procedure" (Rules 19D–19G) and body text as the title of Rules 22, 27B–27Q, 30, 31,
+  49, 199.
+- **Fix** (`ingestion/chunk.py`): brackets and dots before a title ("[19D].") are stripped; more title separators are
+  recognised (":-", "─", "−", "word- (1)", ". (1)", ": The …"); when the PDF prints no heading, the title is left
+  empty (labels then read just "Rule 27B") instead of repeating the first words of the text.
+- **ITO 4AB:** the FBR PDF prints "[[4AB] Subject to this Ordinance, a surcharge …" with no heading, and its table of
+  contents copies those words. Its title is set by hand to **"Surcharge"** (`title_overrides` in
+  `ingestion/laws/ito2001.py`), approved by Hamza. It is a label only; the law text is unchanged.
+- 52 chunks changed title; the text of the chunks changed only in "(continued)" header lines. Those 53 chunks were
+  re-embedded into the index (upsert by id); a full `python -m ingestion.index` gives the same result.
+
+### D38. Test-set verification without a tax expert: two LLM judges plus a number check in code
+- **Plan:** Hamza verifies every question by hand. He has no tax background, so this is replaced by
+  `eval/verify_testset.py`:
+  1. Two independent judges on Groq read **only the gold section text** and answer in JSON: does the section answer
+     the question, does the reference answer match the section, and a short reason.
+  2. Code checks that every number, percentage and amount in the reference answer appears in the gold text (words
+     and digits: "ten million" = "Rs. 10 million"; legal references like "section 22" are not quantities; inputs
+     given in the question and arithmetic written out in the answer, "5% x 200,000 = Rs. 10,000", are accepted).
+  3. Both judges "yes" on both checks and every number found → `"verified": "machine"`; anything else goes to
+     `eval/FLAGGED.md` with the reasons, and is fixed or removed.
+- **Judges:** `openai/gpt-oss-120b` and **`qwen/qwen3.8-27b`**. The plan named `llama-3.3-70b-versatile`, which
+  Groq no longer serves to this account; Qwen is a different model family from GPT OSS, so the two judges stay
+  independent. Approved by Hamza. Qwen answers without "thinking" (its free tier allows 1,000 output tokens a
+  minute and counts thinking tokens).
+- Translations (Urdu, Roman Urdu) share gold sections and reference answer with their English source; the source is
+  judged once and a translation inherits the result only if its wording is approved (`language_ok`, D41).
+- Out-of-scope questions have no gold text: the judges read the question and the list of covered laws and say
+  whether it must be refused.
+- Long gold sections are cut to the most related chunks (≤ 1,500 tokens per judge call, for Groq free-tier limits);
+  the number check always uses the whole section.
+- A random, stratified sample of 30 test questions goes to a human expert (`eval/expert_sample.json`).
+
+### D39. FBR-sourced questions
+- 39 test questions (`fbr-001` … `fbr-039`, `"source": "fbr"`, `source_url` on each) were **collected manually from
+  public FBR pages**: the help.fbr.gov.pk knowledge base, fbr.gov.pk "Income Tax Basics", the Taxpayer's Facilitation
+  Guides IR-IT-01 (Basic Concepts) and IR-IT-02 (Obligation to File), and the FBR–GIZ FAQ on tax treaties.
+- Most of these pages date from 2012–2023. Every answer was checked against the current Ordinance (30.06.2026) and
+  the reference answer written from the current text. **Dropped because the law changed** since FBR published them:
+  the residence test (120 + 365 days, removed from section 82), active taxpayers' list rules (Rule 81B now: daily
+  updates, late filers only after surcharge), "total income" (now includes exempt income), taxable income
+  (ambiguous against FBR's wording), the teacher/researcher reduction (now 25%, ceased after tax year 2025), the
+  senior-citizen reduction (no longer in the Ordinance), the salary cash-payment limit (Rs. 32,000 now, not 15,000),
+  the AOP definition (now includes LLPs), the loan/gift rule of section 39(3) (digital means added), revised returns
+  (now need the Commissioner's approval), the refund time limit (three years, not two), and "section 107 empowers
+  FBR" (the law says the Federal Government).
+- They are English questions on the test split and are reported as their own group ("fbr") next to the written
+  English questions.
+
+### D40. `/ask` now reranks with max(question, rewrite) score ("full-max")
+- Decided on the **dev split** (D33): Hit@5 **96.1% vs 94.1%** for the previous default, Roman Urdu **83.3% vs
+  75.0%**, English and Urdu unchanged at 100%. MRR is slightly lower on dev (0.887 vs 0.908).
+- Cost: twice the reranker work per question; latency is already the open Milestone 5 problem (D26).
+- `rerank_query = "max"` in `backend/app/config.py`, used by `/ask` and `eval/run_e2e.py`. The ablation presets keep
+  both variants (`full` = question only, `full-max`).
+
+### D41. Language check of the Urdu and Roman Urdu questions
+- 67 translations were read by Hamza as a native speaker and marked `"language_ok": true`; two of them were reworded
+  (ur-001, ur-002). ur-001 was given in Roman Urdu and is kept in Urdu script (same words), because it belongs to the
+  Urdu-script group.
+- The remaining 13 (ur-004, ru-001 … ru-012, all dev split) were **approved as they are, without a line-by-line
+  native-speaker read**, and are also marked `"language_ok": true`.

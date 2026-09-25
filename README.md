@@ -111,15 +111,14 @@ Urdu and Roman Urdu questions are natural rewrites of English ones and share the
 | + reranker (bge-reranker-v2-m3, top 30), no rewrite | 96.8% | 92.9% | 64.3% |
 | + English query rewrite (GPT OSS 20B), no reranker | **98.4%** | **100%** | **89.3%** |
 | + rewrite + reranker | 96.8% | 89.3% | 71.4% |
-| + glossary in rewrite = **full pipeline** (`/ask` default) | 96.8% | 92.9% | 75.0% |
-| full pipeline, reranking with max(question, rewrite) score (dev experiment, not the default) | 96.8% | 92.9% | 92.9% |
+| + glossary in rewrite = full pipeline, reranking with the question only | 96.8% | 92.9% | 75.0% |
+| full pipeline, reranking with max(question, rewrite) score = **`/ask` default** (D40) | 96.8% | 92.9% | **92.9%** |
 
 The rewrite is the big win (Roman Urdu 67.9% → 89.3%). The reranker then undoes part of it for Urdu and Roman Urdu:
-it scores chunks against the original question, which it reads poorly in Roman Urdu. On the dev split the full
-pipeline was the best setup overall, so it stays the default. Letting the reranker also score the English rewrite
-(`full-max`, last row and the bar marked * in the chart) was tried on dev first: +1 Roman Urdu question there, at
-twice the reranker time, so it wasn't adopted. On test it brings Roman Urdu to 92.9%. Whether to adopt it is decided
-in Milestone 5 with the reranker latency work ([D33](docs/DECISIONS.md)).
+it scores chunks against the original question, which it reads poorly in Roman Urdu. Letting the reranker also score
+the English rewrite and keep the higher score (`full-max`, last row) fixes most of that. It was chosen on the dev
+split (Hit@5 96.1% vs 94.1%, Roman Urdu 83.3% vs 75.0%) and is now the `/ask` default
+([D40](docs/DECISIONS.md)); it doubles the reranker time, which is the open latency problem for Milestone 5.
 
 **Hybrid baseline, test split (119 in-scope questions):**
 
