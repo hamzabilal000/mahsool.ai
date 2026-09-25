@@ -12,11 +12,13 @@ written to eval/FLAGGED.md with the reasons.
   reference answer. The judges check the English source once; a translation inherits the result
   only if a native speaker confirmed its wording ("language_ok": true).
 - Long gold sections are cut to the chunks most related to the question (at most ~1,500 tokens
-  per judge call, to stay inside Groq's free-tier limits); the number check always uses the
-  whole section.
+  per judge call, to stay inside the free-tier limits); the number check always uses the whole
+  section.
 
-Judge outputs are cached in eval/cache/verify.jsonl, so a re-run only calls Groq for new or
-changed questions; a run stopped by Groq's daily limit resumes where it stopped.
+The judges are set per role in backend/app/config.py (judge1: Gemini Flash on Google's API,
+judge2: Qwen on Groq; DECISIONS D42). Judge outputs are cached in eval/cache/verify.jsonl, so a
+re-run only calls the APIs for new or changed questions; a run stopped by a daily limit resumes
+where it stopped.
 
 Usage:
     python -m eval.verify_testset              # verify, write eval/FLAGGED.md and the testset
@@ -28,12 +30,15 @@ import ast
 import json
 import re
 from collections import defaultdict
+from dataclasses import dataclass
 from datetime import date
+from itertools import pairwise
 from pathlib import Path
 
 from backend.app.config import get_settings
-from backend.app.llm import GroqClient, LLMError
+from backend.app.llm import LLMClient, LLMError
 from backend.app.rag.corpus import load_chunks
+from backend.app.rag.factory import LLMClients
 from backend.app.rag.generator import source_label
 from eval.run_eval import REPORTS
 from eval.schema import TestItem
@@ -43,12 +48,11 @@ from ingestion.models import Chunk
 ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / "eval" / "cache" / "verify.jsonl"
 FLAGGED = ROOT / "eval" / "FLAGGED.md"
-# The plan named llama-3.3-70b-versatile as the second judge; Groq no longer serves it, so the
-# second judge is Qwen, a different model family from GPT OSS (DECISIONS D38).
-JUDGES = ("openai/gpt-oss-120b", "qwen/qwen3.8-27b")
-# Qwen's free tier allows 1,000 output tokens a minute and counts its thinking, so it answers
-# the yes/no check without thinking.
-REASONING = {"openai/gpt-oss-120b": "low", "qwen/qwen3.8-27b": "none"}
+# The judges come from settings (judge1, judge2). Qwen's cached verdicts were made with 700
+# output tokens and no thinking; Gemini Flash thinks a little ("low"), which counts against its
+# output tokens, so it gets more room.
+JUDGE_ROLES = ("judge1", "judge2")
+MAX_TOKENS = {"gemini": 2048, "groq": 700}
 MAX_EXCERPT_TOKENS = 1500
 
 # --------------------------------------------------------------------------- number check
@@ -176,7 +180,9 @@ def missing_numbers(
     ref = YEAR_RE.sub(lambda m: "" if int(m.group(1)) == tax_year else m.group(0), reference)
     have = numbers_in(gold_text) | numbers_in(question)
     for m in EQUATION_RE.finditer(ref):
-        result = _eval_arithmetic(m.group(0).rsplit("=", 1)[0])
+        # The match can start in the previous sentence ("… Rs. 300,000. 500,000 − 300,000 =").
+        lhs = re.split(r"\.\s", m.group(0).rsplit("=", 1)[0])[-1]
+        result = _eval_arithmetic(lhs)
         rhs = float(m.group(2).replace(",", ""))
         if result is not None and abs(result - rhs) <= 0.5:
             have.add(rhs)
@@ -191,13 +197,22 @@ def _words(text: str) -> set[str]:
     return {w for w in re.findall(r"[a-z]{4,}", text.lower())}
 
 
+def _pairs(text: str) -> set[tuple[str, str]]:
+    """Adjacent word pairs ("private company"), to tell apart chunks that share single words."""
+    w = re.findall(r"[a-z]+", text.lower())
+    return {(a, b) for a, b in pairwise(w) if len(a) >= 4 or len(b) >= 4}
+
+
 def gold_excerpt(item: TestItem, by_section: dict[str, list[Chunk]]) -> str:
     """Gold section text for the judges: whole sections if short, else the chunks sharing the
     most words with the question and reference answer, in document order."""
     chunks = [c for sid in item.gold_section_ids for c in by_section.get(sid, [])]
     if sum(c.n_tokens for c in chunks) > MAX_EXCERPT_TOKENS:
         target = _words(item.question + " " + item.reference_answer)
-        ranked = sorted(chunks, key=lambda c: -len(target & _words(c.text)))
+        pairs = _pairs(item.question + " " + item.reference_answer)
+        ranked = sorted(
+            chunks, key=lambda c: (-len(pairs & _pairs(c.text)), -len(target & _words(c.text)))
+        )
         keep, used = set(), 0
         for sid in item.gold_section_ids:  # at least the best chunk of every gold section
             best = next(c for c in ranked if c.section_id == sid)
@@ -256,7 +271,31 @@ def yes(v) -> bool:
     return str(v).strip().lower() == "yes"
 
 
-def verify(items: list[TestItem], llm: GroqClient) -> dict[str, dict]:
+@dataclass
+class Judge:
+    llm: LLMClient
+    model: str
+    reasoning: str
+
+    @property
+    def name(self) -> str:
+        return self.llm.resolved_model(self.model)
+
+    def __call__(self, messages: list[dict[str, str]]) -> dict:
+        return self.llm.chat_json(
+            self.model,
+            messages,
+            max_tokens=MAX_TOKENS[self.llm.spec.name],
+            reasoning_effort=self.reasoning,
+        )
+
+
+def make_judges(clients: LLMClients) -> list[Judge]:
+    s = clients.settings
+    return [Judge(*clients.for_role(r), getattr(s, f"{r}_reasoning")) for r in JUDGE_ROLES]
+
+
+def verify(items: list[TestItem], judges_: list[Judge]) -> dict[str, dict]:
     """id → {"ok", "reasons", "judges", "missing_numbers", "inherited_from"}."""
     by_section: dict[str, list[Chunk]] = defaultdict(list)
     for c in load_chunks():
@@ -267,20 +306,18 @@ def verify(items: list[TestItem], llm: GroqClient) -> dict[str, dict]:
         reasons, judges = [], {}
         excerpt = gold_excerpt(item, by_section) if item.group != "out_of_scope" else ""
         messages = judge_messages(item, excerpt)
-        for model in JUDGES:
+        for judge in judges_:
             try:
-                out = llm.chat_json(
-                    model, messages, max_tokens=700, reasoning_effort=REASONING[model]
-                )
+                out = judge(messages)
             except LLMError as e:
-                judges[model] = {"error": str(e)[:200]}
-                reasons.append(f"{model}: not run ({str(e)[:80]})")
+                judges[judge.name] = {"error": str(e)[:200]}
+                reasons.append(f"{judge.name}: not run ({str(e)[:80]})")
                 continue
-            judges[model] = out
+            judges[judge.name] = out
             checks = ("section_answers_question", "reference_matches_section")
             failed = [k for k in checks if not yes(out.get(k))]
             if failed:
-                reasons.append(f"{model}: {', '.join(failed)} = no. {out.get('reason', '')}")
+                reasons.append(f"{judge.name}: {', '.join(failed)} = no. {out.get('reason', '')}")
         missing: list[float] = []
         if item.group != "out_of_scope":
             full = "\n".join(c.text for sid in item.gold_section_ids for c in by_section[sid])
@@ -305,14 +342,14 @@ def verify(items: list[TestItem], llm: GroqClient) -> dict[str, dict]:
     return results
 
 
-def write_flagged(items: list[TestItem], results: dict[str, dict]) -> str:
+def write_flagged(items: list[TestItem], results: dict[str, dict], judge_names: list[str]) -> str:
     flagged = [i for i in items if not results[i.id]["ok"]]
     lines = [
         "# Flagged test-set questions",
         "",
         f"Generated by `python -m eval.verify_testset` on {date.today().isoformat()}. "
         f"{len(items) - len(flagged)} of {len(items)} questions passed "
-        f"(judges: {', '.join(JUDGES)}; number check in code).",
+        f"(judges: {', '.join(judge_names)}; number check in code).",
         "",
     ]
     if not flagged:
@@ -333,16 +370,14 @@ def main() -> None:
     ap.add_argument("--dry-run", action="store_true", help="don't update testset.jsonl")
     args = ap.parse_args()
 
-    settings = get_settings()
-    key = settings.groq_api_key.get_secret_value() if settings.groq_api_key else None
-    llm = GroqClient(key, base_url=settings.groq_base_url, cache_path=CACHE)
+    judges = make_judges(LLMClients(get_settings(), cache_path=CACHE))
     items = load_testset()
-    results = verify(items, llm)
+    results = verify(items, judges)
 
     REPORTS.mkdir(exist_ok=True)
     report = REPORTS / f"{date.today().isoformat()}-verify.json"
     report.write_text(json.dumps(results, indent=1, ensure_ascii=False), encoding="utf-8")
-    print(write_flagged(items, results))
+    print(write_flagged(items, results, [j.name for j in judges]))
     if not args.dry_run:
         rows = [json.loads(line) for line in TESTSET.read_text(encoding="utf-8").splitlines()]
         for row in rows:

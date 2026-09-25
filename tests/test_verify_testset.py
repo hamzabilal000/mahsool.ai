@@ -1,6 +1,10 @@
 """The code half of eval/verify_testset.py: numbers in reference answers vs the law text."""
 
-from eval.verify_testset import missing_numbers, numbers_in
+from collections import defaultdict
+
+from backend.app.rag.corpus import load_chunks
+from eval.validate_testset import load_testset
+from eval.verify_testset import gold_excerpt, missing_numbers, numbers_in
 
 
 def test_numbers_in_digits_words_and_brackets():
@@ -29,5 +33,22 @@ def test_missing_numbers_accepts_words_question_inputs_and_worked_arithmetic():
         "5% of the amount above Rs. 300,000: 500,000 − 300,000 = 200,000; 5% x 200,000 = Rs. 10,000"
     )
     assert missing_numbers(ref, slab, 2027, question="rent of Rs. 500,000") == []
+    # the calculation can follow a sentence that ends with an amount
+    ref = (
+        "5% of the amount exceeding Rs. 300,000. "
+        "500,000 − 300,000 = 200,000; 5% x 200,000 = Rs. 10,000."
+    )
+    assert missing_numbers(ref, slab, 2027, question="rent of Rs. 500,000") == []
     # a wrong result is not accepted
     assert missing_numbers("5% x 200,000 = Rs. 12,000", slab, 2027) == [12_000, 200_000]
+
+
+def test_long_section_excerpt_keeps_the_chunk_with_the_definition():
+    # Section 2 has dozens of chunks sharing "company"; word pairs pick clause (45).
+    by_section = defaultdict(list)
+    for c in load_chunks():
+        by_section[c.section_id].append(c)
+    item = next(i for i in load_testset() if i.id == "fbr-021")
+    assert '"private company" means a company that is not a public company' in gold_excerpt(
+        item, by_section
+    ).replace("“", '"').replace("”", '"')
