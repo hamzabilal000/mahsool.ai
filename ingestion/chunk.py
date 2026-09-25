@@ -38,7 +38,7 @@ SUBSECTION_RE = re.compile(r"^\[*\s*\((?P<num>\d{1,3}[A-Z]{0,4})\)")
 PARA_START_RE = re.compile(
     r"^\[*\s*(?:\((?:\d{1,3}[A-Z]{0,4}|[a-z]{1,2}[a-z]?|[ivxl]{1,6})\)|Provided|Explanation|Illustration)"
 )
-CHAPTER_RE = re.compile(r"^\[*\s*CHAPTER\s+[IVXL]+[A-Z]?\s*\]?$", re.I)
+CHAPTER_RE = re.compile(r"^\[*\s*CHAPTER\s*[-–]?\s*[IVXL]+[A-Z]?\s*\]?$", re.I)
 PART_RE = re.compile(r"^\[*\s*PART\s*[-–]?\s*(?P<num>[IVXL]+[A-Z]?)\s*\]?$", re.I)
 DIVISION_RE = re.compile(
     r"^\[*\s*Division\s+(?P<num>[IVXL]+[A-Z]{0,2})\b\s*\]?\s*(?P<rest>.*)$", re.I
@@ -255,6 +255,7 @@ class Chunker:
                 self.footnotes[(page.page, fn.marker)].append(fn)
         self.body_re = re.compile(cfg.body_header_regex)
         self.schedule_re = re.compile(cfg.schedule_header_regex)
+        self.end_re = re.compile(cfg.body_end_regex) if cfg.body_end_regex else None
         self.chunks: list[Chunk] = []
         self.skipped_headings: list[str] = []
 
@@ -313,7 +314,7 @@ class Chunker:
 
     def _continued_header(self, unit: Unit) -> str:
         if unit.kind == "section":
-            return f"Section {unit.section}. {unit.title} (continued)"
+            return f"{self.cfg.unit_name} {unit.section}. {unit.title} (continued)"
         return f"{unit.title} (continued)"
 
     def flush(self, unit: Unit | None) -> None:
@@ -388,6 +389,7 @@ class Chunker:
         titles: dict[str, list[str]] = {"part": [], "division": []}
         collecting: str | None = None
         pending_heading: list[Line] = []
+        chapter: str | None = None
 
         def structure() -> str | None:
             if not part:
@@ -400,7 +402,12 @@ class Chunker:
             return label
 
         for page in pages:
-            chapter = page.header.strip() or None
+            if self.body_re.match(page.header):
+                if page.header.strip() != chapter:
+                    # A new chapter resets Part / Division tracking.
+                    part, division, collecting = None, None, None
+                    titles = {"part": [], "division": []}
+                chapter = page.header.strip()
             for ln in page.lines:
                 text = ln.text
                 m = SECTION_RE.match(text) if ln.kind == "text" else None
@@ -417,7 +424,7 @@ class Chunker:
                 structural = (
                     ln.kind == "text"
                     and ln.bold_start
-                    and ln.x > 150
+                    and ln.x > self.cfg.centered_min_x
                     and len(text) < 80
                     and not m
                     and not PARA_START_RE.match(text)
@@ -450,7 +457,7 @@ class Chunker:
                     last_key = section_key(num)
                     unit = Unit(
                         kind="section",
-                        section_id=f"{self.cfg.id_prefix}-s{num}",
+                        section_id=f"{self.cfg.id_prefix}-{self.cfg.unit_code}{num}",
                         title="",
                         chapter=chapter,
                         part=structure(),
@@ -547,8 +554,24 @@ class Chunker:
 
     # ----------------------------------------------------------------- run
     def run(self) -> list[Chunk]:
-        body = [p for p in self.pages if self.body_re.match(p.header)]
-        schedules = [p for p in self.pages if self._schedule_of(p.header)]
+        # The body runs from the first chapter header to the first schedule page. Pages in
+        # between whose running header is a continuation title still belong to the body.
+        body: list[ParsedPage] = []
+        schedules: list[ParsedPage] = []
+        state = "front"
+        for p in self.pages:
+            if self._schedule_of(p.header) or (
+                self.end_re is not None and self.end_re.match(p.header)
+            ):
+                state = "back"
+            elif state == "front" and self.body_re.match(p.header):
+                state = "body"
+            if state == "body":
+                body.append(p)
+            elif state == "back" and self._schedule_of(p.header):
+                schedules.append(p)
+        if not self.cfg.include_schedules:
+            schedules = []
         self._run_sections(body)
         self._run_schedules(schedules)
         return self.chunks

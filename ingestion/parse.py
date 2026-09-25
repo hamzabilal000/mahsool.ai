@@ -34,6 +34,7 @@ log = logging.getLogger(__name__)
 MARKER_RE = re.compile(r"^(\d{1,3}|\*)$")
 PRIVATE_USE_RE = re.compile(r"[-]")
 WS_RE = re.compile(r"[ \t ]+")
+PLAIN_FOOTNOTE_RE = re.compile(r"^(\d{1,3})\s+(\S.*)$")
 EMPTY_BODY_RE = re.compile(r"^[\s\[\].;,*]*$")
 INLINE_MARKER_IN_CELL_RE = re.compile(r"(?<![\w.,])\d{1,3}(?=\[)")
 
@@ -137,12 +138,12 @@ def _assemble(raw: _RawLine) -> tuple[str, list[str], bool, bool, float]:
     return _clean("".join(parts)), refs, bold_start, footnote_start, dominant
 
 
-def _separator_y(page: pymupdf.Page) -> float | None:
+def _separator_y(page: pymupdf.Page, separator_x: float) -> float | None:
     ys = [
         d["rect"].y0
         for d in page.get_drawings()
         if d["rect"].height < 2
-        and abs(d["rect"].x0 - 72) < 4
+        and abs(d["rect"].x0 - separator_x) < 4
         and SEPARATOR_WIDTH[0] < d["rect"].width < SEPARATOR_WIDTH[1]
     ]
     return max(ys) if ys else None
@@ -220,7 +221,8 @@ def parse_page(page: pymupdf.Page, cfg: LawConfig) -> ParsedPage:
         max_size = max(s["size"] for s in real)
         text = _clean("".join(s["text"] for s in real))
         if raw.top < cfg.header_max_y and max_size >= cfg.running_text_min_size:
-            header_parts.append(text.replace("_", "").strip())
+            spaced = _clean(" ".join(s["text"] for s in real))
+            header_parts.append(spaced.replace("_", "").strip())
             continue
         if raw.y > cfg.footer_min_y and max_size >= cfg.running_text_min_size:
             if text.strip().isdigit():
@@ -238,7 +240,7 @@ def parse_page(page: pymupdf.Page, cfg: LawConfig) -> ParsedPage:
         )
         body.append((raw, line, fn_start))
 
-    sep = _separator_y(page)
+    sep = _separator_y(page, cfg.separator_x)
     tables = []
     if _has_ruling(page):
         tables = [t for t in page.find_tables().tables if t.row_count >= 2 and t.col_count >= 2]
@@ -253,7 +255,11 @@ def parse_page(page: pymupdf.Page, cfg: LawConfig) -> ParsedPage:
         if zone_start is None or line.y < zone_start - 1:
             lines.append(line)
             continue
-        if fn_start and line.fn_refs:
+        # Some documents print the footnote number full-size instead of as a superscript.
+        plain = PLAIN_FOOTNOTE_RE.match(line.text) if not fn_start else None
+        if plain and abs(line.x - cfg.separator_x) < 6:
+            footnotes.append(Footnote(page=page_no, marker=plain.group(1), text=plain.group(2)))
+        elif fn_start and line.fn_refs:
             footnotes.append(Footnote(page=page_no, marker=line.fn_refs[0], text=line.text))
         elif footnotes:
             footnotes[-1].text = _clean(footnotes[-1].text + " " + line.text)
@@ -318,6 +324,7 @@ def parse_pdf(pdf_path: Path, cfg: LawConfig) -> list[ParsedPage]:
 
 TOC_NUM_RE = re.compile(r"^(\d{1,3}[A-Z]{0,4})\s*\.?$")
 TOC_PAGE_RE = re.compile(r"^\d{1,3}$")
+TOC_STRUCTURE_RE = re.compile(r"^(?:CHAPTER|PART|Division)\b", re.I)
 TOC_SCHEDULE_RE = re.compile(r"^(?:THE\s+)?[A-Z]+\s+SCHEDULE\b", re.I)
 
 
@@ -329,33 +336,31 @@ def extract_toc(doc: pymupdf.Document, cfg: LawConfig) -> list[tuple[str, str]]:
     """
     body_re = re.compile(cfg.body_header_regex)
     toc: list[tuple[str, str]] = []
+
+    def is_number(line: str) -> bool:
+        return bool(TOC_NUM_RE.match(line) or TOC_PAGE_RE.match(line))
+
     for page in doc:
         if body_re.match(parse_page_header(page, cfg)):
             break
         lines = [ln.strip() for ln in page.get_text().split("\n") if ln.strip()]
-        i = 0
-        while i < len(lines):
-            m = TOC_NUM_RE.match(lines[i])
-            if not m:
-                i += 1
+        for i, line in enumerate(lines[:-1]):
+            m = TOC_NUM_RE.match(line)
+            # An entry is a number followed by a text title (then, usually, a page number).
+            if not m or is_number(lines[i + 1]) or TOC_STRUCTURE_RE.match(lines[i + 1]):
                 continue
             title: list[str] = []
-            j = i + 1
-            while (
-                j < len(lines)
-                and not TOC_PAGE_RE.match(lines[j])
-                and not TOC_NUM_RE.match(lines[j])
-            ):
-                title.append(lines[j])
-                j += 1
+            for nxt in lines[i + 1 :]:
+                if is_number(nxt) or TOC_STRUCTURE_RE.match(nxt):
+                    break
+                title.append(nxt)
             text = _clean(" ".join(title))
             if TOC_SCHEDULE_RE.match(text):
                 return toc
-            num = int(re.match(r"\d+", m.group(1)).group())
+            num = m.group(1).lstrip("0") or "0"
             last = int(re.match(r"\d+", toc[-1][0]).group()) if toc else 0
-            if num <= last + 50:  # page numbers from the schedules listing jump far ahead
-                toc.append((m.group(1), text))
-            i = j + 1 if j < len(lines) and TOC_PAGE_RE.match(lines[j]) else j
+            if int(re.match(r"\d+", num).group()) <= last + 50:  # skip stray page numbers
+                toc.append((num, text))
     return toc
 
 
@@ -368,7 +373,7 @@ def parse_page_header(page: pymupdf.Page, cfg: LawConfig) -> str:
             and raw.top < cfg.header_max_y
             and max(s["size"] for s in real) >= cfg.running_text_min_size
         ):
-            parts.append(_clean("".join(s["text"] for s in real)).replace("_", "").strip())
+            parts.append(_clean(" ".join(s["text"] for s in real)).replace("_", "").strip())
     return " ".join(parts)
 
 

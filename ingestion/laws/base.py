@@ -18,6 +18,12 @@ class LawConfig(BaseModel):
     # Layout: running headers tell us which chapter / schedule a page belongs to.
     body_header_regex: str = r"^Chapter\s+[IVXL]+"
     schedule_header_regex: str = r"^(?P<ordinal>\w+)\s+Schedule"
+    include_schedules: bool = True
+    body_end_regex: str | None = None  # running header where the body ends (if not a schedule)
+
+    # What the numbered units are called: sections (Ordinance) or rules (Rules).
+    unit_name: str = "Section"
+    unit_code: str = "s"  # chunk ids look like ITO2001-s149 / ITR2002-r3
 
     # Font geometry (PDF points) for this document.
     header_max_y: float = 55.0
@@ -25,6 +31,8 @@ class LawConfig(BaseModel):
     running_text_min_size: float = 11.5  # headers / page numbers are 12pt
     junk_min_size: float = 20.0  # decorative ".." glyphs
     heading_max_x: float = 95.0  # section numbers start at the left margin
+    separator_x: float = 72.0  # left edge of the footnote separator line
+    centered_min_x: float = 150.0  # bold short lines right of this are Part/Division titles
 
     @property
     def snapshot_id(self) -> str:
