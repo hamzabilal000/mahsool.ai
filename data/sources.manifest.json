@@ -1,0 +1,13 @@
+{
+  "ITO2001@2026-06-30": {
+    "law": "Income Tax Ordinance, 2001",
+    "version_date": "2026-06-30",
+    "url": "https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf",
+    "path": "data/raw/ITO2001/2026-06-30.pdf",
+    "sha256": "1b611d31c667107a65d3d47a97e163df2ee8ba403952930f527db11d40b32c8b",
+    "bytes": 7870242,
+    "etag": "\"ad28c937631bdd1:0\"",
+    "last_modified": "Fri, 24 Jul 2026 11:54:44 GMT",
+    "downloaded_at": "2026-09-25T06:25:14.473032Z"
+  }
+}
