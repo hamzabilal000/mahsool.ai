@@ -1,0 +1,16 @@
+{
+  "n_chunks": 878,
+  "by_kind": {
+    "section": 489,
+    "schedule_part": 97,
+    "table": 68,
+    "schedule_clause": 224
+  },
+  "n_sections": 380,
+  "toc_live_sections": 380,
+  "toc_live_missing": [],
+  "sections_not_in_toc": [],
+  "max_tokens_seen": 790,
+  "needs_review": 389,
+  "skipped_heading_candidates": []
+}
