@@ -9,9 +9,14 @@ dependencies = [
     "pydantic-settings>=2.3",
     "pymupdf>=1.24",
     "httpx>=0.27",
+    "qdrant-client>=1.12",
 ]
 
 [project.optional-dependencies]
+# BGE-M3 embeddings and the reranker (pulls in PyTorch; weights download from Hugging Face)
+ml = [
+    "FlagEmbedding>=1.3",
+]
 dev = [
     "pytest>=8.0",
     "ruff>=0.6",
@@ -22,7 +27,7 @@ requires = ["setuptools>=69"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["ingestion*", "eval*"]
+include = ["ingestion*", "eval*", "backend*"]
 
 [tool.ruff]
 line-length = 100
@@ -34,6 +39,9 @@ ignore = ["RUF001", "RUF002", "RUF003"]  # legal text uses en/em dashes and curl
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+filterwarnings = [
+    "ignore:Payload indexes have no effect in the local Qdrant:UserWarning",
+]
 markers = [
     "pdf: needs the downloaded FBR PDF in data/raw (skipped otherwise)",
 ]
