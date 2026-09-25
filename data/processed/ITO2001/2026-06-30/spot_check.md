@@ -71,191 +71,134 @@ Section 223. Appearance by authorised representative (continued)
 (c) a member of any association of accountants recognised for the purposes of this section by the [Board]; and “income tax practitioner” means a person who is registered as such by the [Board], being a person who possesses such qualifications as may be prescribed for the purposes of this section or w …
 ```
 
-## 6. `ITO2001-sch1-pI-divIVA` — First Schedule, Part I, Division IVA
-kind: schedule_part · pages 537–537 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=537)) · 134 tokens · needs_review: True
-amended_by: Finance Act, 2026, Finance Act, 2025
+## 6. `ITO2001-sch1-pI-divIV` — First Schedule, Part I, Division IV
+kind: schedule_part · pages 537–537 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=537)) · 68 tokens · needs_review: True
+amended_by: Finance Act, 2025, Finance Act, 2022
 
 ```text
-First Schedule, Part I, Division IVA
-[Division IVA Rate of Tax on Payments for Digital Transactions in E-commerce Platforms The rate of tax imposed under section 6A on payment for digitally ordered goods or digitally [ordered] services through e-commerce platforms including websites shall be in case of payment through –
-(i) Digital Means or banking channels by payment intermediary at the rate of 1% of gross amount paid or payable; and
-(ii) Cash on Delivery by courier service at the rate of 2% of the gross amount paid or payable.]
+First Schedule, Part I, Division IV
+[DIVISION IV Rate of Tax on Certain Payments The rate of tax imposed under section 6 on payments shall be 15% of the gross amount of royalty or fee for technical services [or fee of offshore digital services] and 10% in any other case.
 ```
 
-## 7. `ITO2001-sch1-pII-divIX-t1` — First Schedule, Part II, Division IX
-kind: table · pages 550–551 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=550)) · 183 tokens · needs_review: True
+## 7. `ITO2001-sch1-pI-divIX-t1` — First Schedule, Part I, Division IX
+kind: table · pages 548–548 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=548)) · 93 tokens · needs_review: True
+amended_by: Finance Act, 2014
+
+```text
+First Schedule, Part I, Division IX
+[Division IX Minimum tax under section 113]
+| [S. No. | Person(s) | Minimum Tax as percentage of the person’s turnover for the year |
+|---|---|---|
+| (1) | (2) | (3) |
+| 1. | . . (a) [ ] Sui Southern Gas Company Limited and Sui Northern Gas Pipelines Limited (for the cases where annual turnover exceeds rupees one billion.) | 0.75% |
+```
+
+## 8. `ITO2001-sch1-pIII` — First Schedule, Part III
+kind: schedule_part · pages 555–555 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=555)) · 26 tokens · needs_review: True
 amended_by: —
 
 ```text
-First Schedule, Part II, Division IX
-(f) Persons engaged in the sale and purchase of used vehicles; and
-(g) Flour mills 4. In all other cases. 1.25%] [PART II RATES OF ADVANCE TAX [See Division II of Part V of Chapter X] The rate of advance tax to be collected by the Collector of Customs under section 148 shall be-
-| S.No | Persons | Rate |
-|---|---|---|
-| (1) | (2) | (3) |
-| 1. | Persons importing goods classified in Part I of the Twelfth Schedule | 1% of the import value as increased by customs-duty, sales tax and federal excise duty |
-| 2. | Persons importing goods classified in Part II of the Twelfth Schedule . . | 2% of the import value as increased by customs-duty, sales tax and federal excise duty [and 3.5% of the |
+First Schedule, Part III
+PART III DEDUCTION OF TAX AT SOURCE (See Division III of Part V of Chapter X)
 ```
 
-## 8. `ITO2001-sch1-pIII-divIA` — First Schedule, Part III, Division IA
-kind: schedule_part · pages 557–557 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=557)) · 132 tokens · needs_review: True
-amended_by: Finance Act, 2025
+## 9. `ITO2001-sch1-pIV-divXIV` — First Schedule, Part IV, Division XIV
+kind: schedule_part · pages 583–583 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=583)) · 138 tokens · needs_review: True
+amended_by: Finance Act, 2021, Tax Laws (Amendment) Ordinance, 2021
 
 ```text
-First Schedule, Part III, Division IA
-[Division IA Profit on Debt The rate of tax to be deducted under section 151 shall be –
-(a) 20% of the yield or profit paid by a banking company or financial institution on an account or deposit maintained with such company or institution;
-(b) 20% of the yield or profit on Government securities under clause (c) of sub-section (1) of section 151 paid to any person other than an individual; and
-(c) 15% of the yield or profit in cases other than those mentioned in clauses
-(a) and (b).]
+First Schedule, Part IV, Division XIV
+[Division XIV Advance tax on sale to distributors, dealers or wholesalers. The rate of collection of tax under section 236G shall be as set out in the following table namely:- TABLE
+[Table 1: see ITO2001-sch1-pIV-divXIV-t1]
+[Provided that the rate of advance tax on sale to distributors, dealers or wholesalers of fertilizer shall be 0.25%, if they are already appearing on both the Active Taxpayers’ Lists issued under the provisions of the Sales Tax Act, 1990 and the Income Tax Ordinance, 2001 (XLIX of 2001).]
 ```
 
-## 9. `ITO2001-sch2-pI-cl9` — Second Schedule, Part I, clause (9): Any pension –
-kind: schedule_clause · pages 592–592 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=592)) · 44 tokens · needs_review: True
-amended_by: Finance Act, 2006
+## 10. `ITO2001-sch2-pI-cl13` — Second Schedule, Part I, clause (13): Any income representing any payment received by way of gratuity or
+kind: schedule_clause · pages 592–593 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=592)) · 358 tokens · needs_review: True
+amended_by: Finance Act, 2016, Finance Act, 2008, Finance Act, 2007
 
 ```text
-[(9) Any pension –
-(ii) granted under the relevant rules to the families and dependents of public servants or members of the Armed Forces of Pakistan who die during service.]
+(13) Any income representing any payment received by way of gratuity or commutation of pension by an employee on his retirement or, in the event of his death, by his heirs as does not exceed –
+(i) in the case of an employee of the Government, a [Local Government], a statutory body or corporation established by any law for the time being in force, the amount receivable in accordance with the rules and conditions of the employee’s services;
+(ii) any amount receivable from any gratuity fund approved by the Commissioner in accordance with the rules in Part III of the Sixth Schedule;
+(iii) in the case of any other employee, the amount not exceeding [three] hundred thousand rupees receivable under any scheme applicable to all employees of the employer and approved by the [Board] for the purposes of this sub-clause; and
+(iv) in the case of any employee to whom sub-clause (i), (ii) and (iii) do not apply, fifty per cent of the amount receivable or seventy-five thousand rupees, whichever is the less:
+Provided that nothing in this sub-clause shall apply –
+(a) to any payment which is not received in Pakistan;
+(b) to any payment received from a company by a director of such company who is not a regular employee of such company;
+(c) to any payment received by an employee who is not a resident individual; and to any gratuity received by an employee who has already received any gratuity from the same or any other employer.
 ```
 
-## 10. `ITO2001-sch2-pI-cl23C` — Second Schedule, Part I, clause (23C): Any withdrawal of accumulated balance from approved pension fund that
-kind: schedule_clause · pages 595–595 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=595)) · 56 tokens · needs_review: True
-amended_by: Finance Act, 2012
-
-```text
-[(23C) Any withdrawal of accumulated balance from approved pension fund that represent the transfer of balance of approved provident fund to the said approved pension fund under the Voluntary Pension System Rules , 2005.]
-```
-
-## 11. `ITO2001-sch2-pI-cl66` — Second Schedule, Part I, clause (66): Subject to the provisions of section 100C, any income, derived by the
-kind: schedule_clause · pages 610–615 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=610)) · 723 tokens · needs_review: True
-amended_by: Finance Act, 2025
-
-```text
-[(66) Subject to the provisions of section 100C, any income, derived by the following institutions, foundations, societies, boards, trust and funds, namely:- TABLE
-| Sr. No. | Name |
-|---|---|
-| (1) | (2) |
-| (i) | Al-Shifa Trust. |
-| (ii) | Fatimid Foundation. |
-| (iii) | Pakistan Engineering Council. |
-| (iv) | The Institution of Engineers. |
-| (v) | Liaquat National Hospital Association. |
-| (vi) | Greenstar Social Marketing Pakistan (Guarantee) Limited. |
-| (vii) | . Gulab Devi Chest Hospital. . |
-| (viii) | National Academy of Performing Arts. |
-| (ix) | Pakistan Bar Council. |
-| (x) | Pakistan Centre for Philanthropy. |
-| (xi) | Aziz Tabba Foundation. |
-| (xii) | The Kidney Centre Post Graduate Training Institute. |
-| (xiii) | Pakistan Disabled Foundation. |
-| (xiv) | Forman Christian College. |
-| (xv) | Habib University Foundation. |
-| (xvi) | Begum AkhtarRukhsana Memorial Trust Hospital. |
-| (xvii) | Al-Khidmat Foundation. |
-| (xviii) | Sardar Trust Eye Hospital, Lahore. |
-| (xix) | Akhuwat. |
-| (xx) | Al-Shifa Trust Eye Hospital. |
-| (xxi) | . Sarmaya-E-Pakistan Limited. |
-| (xxii) | . Lahore University of Management Sciences, Lahore. |
-| (xxiii) | Ghulam Ishaq Khan Institute of Engineering Sciences and Technology. |
-| (xxiv) | Society for the Promotion of Engineering Sciences and Technology in Pakistan (SOPREST). |
-| (xxv) | Businessmen Hospital Trust. |
-| (xxvi) | Baitussalam Welfare Trust. |
-| (xxvii) | Alamgir Welfare Trust International. |
-| (xxviii) | Foundatio …
-```
-
-## 12. `ITO2001-sch2-pI-cl132C` — Second Schedule, Part I, clause (132C): Profits and gains derived by a taxpayer from a bagasse/biomass based
-kind: schedule_clause · pages 639–639 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=639)) · 58 tokens · needs_review: True
-amended_by: Finance Act, 2021
-
-```text
-[(132C) Profits and gains derived by a taxpayer from a bagasse/biomass based cogeneration power project having one or more boilers of not less than 60 bar (kg/CM3) pressure each, commissioned after the first day of January 2013.]
-```
-
-## 13. `ITO2001-sch2-pII-cl24C` — Second Schedule, Part II, clause (24C): The rate of tax under clause (a) of sub-section (1) of section
-kind: schedule_clause · pages 655–656 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=655)) · 200 tokens · needs_review: True
-amended_by: Finance Act, 2022
-
-```text
-[(24C) The rate of tax under clause (a) of sub-section (1) of section 153 in the case of distributors, dealers, sub-dealers, wholesalers and retailers of fast moving consumer goods, fertilizer, electronics excluding mobile phones, sugar, cement [, steel], and edible oil as recipient of payment shall be 0.25% of gross amount of payments subject to the condition that beneficiaries of reduced rate are appearing on the Active Taxpayers’ Lists issued under the provisions of the Sales Tax Act, 1990 and the Income Tax Ordinance, 2001 (XLIX of 2001):
-Provided that the benefit under this clause shall only be available to those Tier-1 retailers as defined under Sales Tax Act, 1990 who are integrated and configured with Board or its computerized system for real time reporting of sales or receipts.]
-```
-
-## 14. `ITO2001-sch2-pIV-cl11A-3` — Second Schedule, Part IV, clause (11A): The provisions of section 113, regarding minimum tax, shall not apply to,-
-kind: schedule_clause · pages 674–675 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=674)) · 215 tokens · needs_review: True
-amended_by: Finance Act, 2024, Finance Act, 2023, Finance Act, 2022, SRO 1590(I)/2022
-
-```text
-Second Schedule, Part IV, clause (11A): The provisions of section 113, regarding minimum tax, shall not apply to,- (continued)
-(xli) National Power Parks Management Company (Private) Limited or demerged entities of National Power Parks Management Company (Private) Limited commencing from the commercial operation dates and continuing after the date of change of ownership as a result of privatization by the Privatization Commission of Pakistan.”;
-(xliii) Persons qualifying for exemption under clause [(126E) and (126EA)] of Part I of this Schedule;
-(xliv) Persons mentioned in Table I of clause (66) of Part I of Second Schedule.]
-[(xlv) Mobile phone manufacturers engaged in the local manufacturing of mobile phone devices.]
-[(xlvi) The Prime Minister's Relief Fund for Flood, Earthquake and Other Calamities with effect on and from the 5th August, 2022.]
-```
-
-## 15. `ITO2001-sch2-pIV-cl91` — Second Schedule, Part IV, clause (91): The provisions of section 148 shall not apply to-
-kind: schedule_clause · pages 721–724 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=721)) · 599 tokens · needs_review: True
-amended_by: Finance Act, 2021, Finance Act, 2017, Finance Act, 2015
-
-```text
-[(91) The provisions of section 148 shall not apply to-
-(i) Tillage and seed bed preparation equipment as specified below Equipment PCT Code
-(i) Rotavator 8432.8010
-(ii) Cultivator 8432.2910
-(iii) Ridger 8432.8090
-(iv) Sub soiler [8432.3900]
-(v) Rotary slasher 8432.8090
-(vi) Chisel plow 8432.1010
-(vii) Ditcher 8432.1090
-(viii) Border disc 8432.2990
-(ix) Disc harrow 8432.2100
-(x) Bar harrow 8432.2990
-(xi) Mould board plow 8432.1090
-(xii) Tractor rear or front blade 8430.6900 Land leveller or land planer 8430.6900
-(xiv) Rotary tiller 8432.8090
-(xv) Disc plow 8432.1090
-(xvi) Soil-scrapper 8432.8090
-(xvii) K.R.Karundi 8432.8090
-(xviii) Tractor mounted trancher [8701.9200]
-(xix) Land leveler 8430.6900
-(ii) Seeding or planting equipment Equipment PCT Code
-(i) Seed-cum-fertilizer [8432.3100] drill (wheat, rice barley, etc.)
-(ii) Cotton or maize [8432.3900] planter withfertilizer attachment
-(iii) Potato planter [8432.3900]
-(iv) Fertilizer or [8432.4100] manure spreader or broadcaster
-(v) Rice transplanter [8432.3900]
-(vi) Canola or [8432.3100] sunflower drill
-(vii) Sugarcane planter [8432.3900]
-(iii) Irrigation, drainage and agro-chemical application equipment Equipment PCT Code
-(i) Tubewells filters or 8421.2100, Strainers 8421.9990
-(ii) Knapsack sprayers 8424.2010
-(iii) Granular applicator 8424.2010
-(iv) Boom or field sprayers 8424.2010
-(v) Self propelled sprayers 8424.2010
-(vi) Orchard sprayer 8424.2010
-(iv) Harvesting, threshing and storage equipment Equipment PCT Code
-(i) Wheat  …
-```
-
-## 16. `ITO2001-sch2-pIV-cl111` — Second Schedule, Part IV, clause (111): The provisions of section 48 shall not apply to so much of
-kind: schedule_clause · pages 730–730 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=730)) · 61 tokens · needs_review: True
-amended_by: Finance Supplementary (Second Amendment) Act, 2019
-
-```text
-[(111) The provisions of section 48 shall not apply to so much of the income of banking company as defined in the said section subject to reduced rate of tax at 20% under rules 7D, 7E and 7F of the Seventh Schedule for tax years 2020 to 2023.]
-```
-
-## 17. `ITO2001-sch3-pI` — Third Schedule, Part I
-kind: schedule_part · pages 735–736 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=735)) · 47 tokens · needs_review: True
+## 11. `ITO2001-sch2-pI-cl56` — Second Schedule, Part I, clause (56): The following perquisites, benefits and allowances received by a Judge of
+kind: schedule_clause · pages 599–600 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=599)) · 254 tokens · needs_review: True
 amended_by: Finance Act, 2005
 
 ```text
-Third Schedule, Part I
-THE THIRD SCHEDULE [PART-I DEPRECIATION (See Section 22) Depreciation rates specified for the purposes of section 22 shall be, —
-[Table 1: see ITO2001-sch3-pI-t1]
+(56) The following perquisites, benefits and allowances received by a Judge of Supreme Court of Pakistan and Judge of High Court, shall be exempt from tax.
+(1) (a) Perquisites and benefits derived [from] use of official car maintained at Government expenses.
+(b) Superior judicial allowance payable to a Judge of supreme Court of Pakistan and Judge of a High Court.
+(c) Transfer allowance payable to a Judge of High Court.
+(2) The following perquisites of the Judge of Supreme Court of Pakistan and Judge of High Court shall also be exempt from tax during service, and on or after retirement.
+(a) The services of a driver and an orderly.
+(b) 1000 (one thousand) free local telephone calls per month.
+(c) 1000 units of electricity as well as (25 hm3 of gas) per month and free supply of water; and
+(d) 200 litres of petrol per month.
+(3) If during service, a judge dies, exemption from tax in respect of benefits and perquisites provided to widow as mentioned in sub-clause (2) shall also be available to the widow.
+```
+
+## 12. `ITO2001-sch2-pI-cl126B` — Second Schedule, Part I, clause (126B): Profits and gains derived by a refinery—
+kind: schedule_clause · pages 631–631 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=631)) · 214 tokens · needs_review: True
+amended_by: Finance Act, 2021, Tax Laws (Second Amendment) Ordinance, 2021
+
+```text
+[(126B) Profits and gains derived by a refinery—
+(a) from new deep conversion refinery of at least 100,000 barrels per day for which approval is given by the Federal Government before the 31st day of December, 2021; or
+(b) for the purpose of upgradation, modernization or expansion project of any existing refinery which makes undertaking to the Federal Government in writing before the 31st day of December, 2021 in this regard:
+Provided that this exemption shall be available for a period of twenty years beginning from the date of commencement of commercial production in the case of new refinery and ten years from the date of completion of up gradation, modernization or expansion project of existing refinery.
+Provided further that the exemption under this clause shall only be available to those refineries whose products fulfill Euro 5 standards.]
+```
+
+## 13. `ITO2001-sch2-pII-cl5AB` — Second Schedule, Part II, clause (5AB): The rate of tax to be deducted under section 151 shall be
+kind: schedule_clause · pages 647–647 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=647)) · 155 tokens · needs_review: True
+amended_by: —
+
+```text
+[(5AB) The rate of tax to be deducted under section 151 shall be ten percent from the profit on debt from a debt instrument, whether conventional or Shariah compliant, issued by the Federal Government under the Public Debt Act, 1944 (XVIII of 1944) or its wholly owned special purpose company, purchased by a resident citizen of Pakistan who has already declared foreign assets to the Board through a Foreign Currency Value Account (FCVA) maintained with authorized banks in Pakistan under the foreign exchange regulation issued by the State Bank of Pakistan:
+Provided that the tax so deducted shall be the final tax.
+```
+
+## 14. `ITO2001-sch2-pIV-cl1A` — Second Schedule, Part IV, clause (1A): the provision of clause (d) of section 46 shall not apply to
+kind: schedule_clause · pages 666–666 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=666)) · 51 tokens · needs_review: True
+amended_by: Finance Act, 2018, SRO 1029(I)/2014
+
+```text
+[(1A) the provision of clause (d) of section 46 shall not apply to Sukuk issued by “The Second Pakistan International Sukuk Company Limited” [and the Third Pakistan International Sukuk Company Limited].]
+```
+
+## 15. `ITO2001-sch2-pIV-cl72AA` — Second Schedule, Part IV, clause (72AA): The provisions of section 152 shall not apply in case of a
+kind: schedule_clause · pages 715–715 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=715)) · 30 tokens · needs_review: True
+amended_by: Finance Act, 2020
+
+```text
+[(72AA) The provisions of section 152 shall not apply in case of a Hajj Group Operator in respect of Hajj operations.]
+```
+
+## 16. `ITO2001-sch2-pIV-cl119` — Second Schedule, Part IV, clause (119): The provisions of section 153(1)(a) shall with effect from the first day
+kind: schedule_clause · pages 732–732 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=732)) · 56 tokens · needs_review: True
+amended_by: —
+
+```text
+(119) The provisions of section 153(1)(a) shall with effect from the first day of July, 2020 not apply to distributors, dealers, wholesalers and retailers of locally manufactured mobile phone devices as withholding agent.]
+```
+
+## 17. `ITO2001-sch4-1` — Fourth Schedule
+kind: schedule_part · pages 738–739 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=738)) · 699 tokens · needs_review: True
+amended_by: Finance Act, 2004, Finance Act, 2003
+
+```text
+Fourth Schedule
+THE FOURTH SCHEDULE (See Section 99) RULES FOR THE COMPUTATION OF THE PROFITS AND GAINS OF INSURANCE BUSINESS Profits on Life Insurance to be Computed Separately 1. The profits and gains of a taxpayer carrying on life insurance business chargeable under the head “Income from Business” shall be computed separately from the taxpayer’s income from other business. [Income from other business shall be profit or loss before tax as per profit and loss account prepared under the Insurance Ordinance, 2000 (XXXIX of 2000), excluding any surplus appropriation made during the year.] Computation of Profits and Gains of Life Insurance Business [2. The profits and gains of a life insurance business shall be the current year’s surplus appropriated to profit and loss account prepared under the Insurance Ordinance, 2000 (XXXIX of 2000), as per advice of the Appointed Actuary, net of adjustments under sections 22(8), 23(8) and 23(11) of the Insurance Ordinance, 2000 (XXXIX of 2000) so as to exclude from it any expenditure other than expenditure which is, under the provisions of Part IV of Chapter III, allowed as a deduction in computing profits and gains of a business to the extent of the proportion of surplus not distributed to policy holders.] Computing the Surplus under Rule 2 3. (1) The following [provisions] shall apply in computing the surplus for the purposes of rule 2, namely:–
+(a) the amounts paid to, or reserved for, or expended on behalf of policy-holders shall be all …
 ```
 
 ## 18. `ITO2001-sch5-pI-5` — Fifth Schedule, Part I
@@ -274,40 +217,44 @@ Fifth Schedule, Part I (continued)
 (8) “well-head value” shall have the meaning assigned to it in the agreement between the Federal Government and the taxpayer, and in the absence of any such definition in the agreement, the meaning assigned to it in the Pakistan Petroleum (Production) Rules, 194 …
 ```
 
-## 19. `ITO2001-sch6-pI-5` — Sixth Schedule, Part I
-kind: schedule_part · pages 756–757 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=756)) · 529 tokens · needs_review: True
-amended_by: Finance Act, 2007
-
-```text
-Sixth Schedule, Part I (continued)
-(4) Subject to such rules as the [Board] may make in this behalf, the Commissioner shall make a calculation of the aggregate of all sums comprised in a transferred balance which would have been liable to income-tax if this Part had been in force from the date of the institution of the fund, without regard to any tax which may have been paid on any sum, and such aggregate, if any, shall be deemed to be income received by the employee in the income year in which the recognition of the fund takes effect and shall be included in the employee's total income for that year, and, for the purposes of assessment, the remainder of the transferred balance shall be disregarded, but no other exemption or relief, by way of refund or otherwise, shall be granted in respect of any sum comprised in such transferred balance:
-Provided that, in cases of serious accounting difficulty, the Commissioner may, subject to the said rules, make a summary calculation of such aggregate.
-(5) Nothing in this rule shall affect the rights of the persons administering an unrecognised provident fund or dealing with it, or with the balance to the credit of any individual employees, before recognition is accorded, in any manner which may be lawful. 8. Accounts of recognised provident funds. — (1) The accounts of a recognised provident fund shall be maintained by the trustees of the fund and shall be in such form and for such periods, and shall contain such particulars, as may be p …
-```
-
-## 20. `ITO2001-sch12-t5-5` — Twelfth Schedule
-kind: table · pages 823–832 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=823)) · 776 tokens · needs_review: True
+## 19. `ITO2001-sch12-t4-5` — Twelfth Schedule
+kind: table · pages 815–822 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=815)) · 789 tokens · needs_review: True
 amended_by: —
 
 ```text
 Twelfth Schedule
-graphite or other carbon in the form of pastes, blocks, plates or other semi- manufactures.
-| 3803.0000 | Tall oil, whether or not refined. |
+Part II
+| [ ] |  |
 |---|---|
-| 1 [5403.3100 | Viscose Rayon, Untwisted Or With A Twist Not Exceeding 120 Turns Per Metre |
-| 5403.3910 | Cuprammonium Rayon] |
-| 55.01 | Synthetic filament tow. |
-| 55.02 | Artificial filament tow. |
-| 55.03 | Synthetic staple fibres, not carded, combed or otherwise processed for spinning. |
-| 1 [5403.2010 | Synthetic staple fibres, not carded, combed or otherwise] |
-| 55.04 | Artificial staple fibres, not carded, combed or otherwise processed for spinning. |
-| 55.05 | Waste (including noils, yarn waste and garnetted stock) of man- made fibres. |
-| 55.06 | Synthetic staple fibres, carded, combed or otherwise processed for spinning. |
-| 5507.0000 | Artificial staple fibres, carded, combed or otherwise processed for spinning. |
-| 55.08 | Sewing thread of man- made staple fibres, whether or not put up for retail sale. |
-| 55.09 | Yarn (other than sewing thread) of synthetic staple fibres, not put up for retail sale. |
-| 55.10 | Yarn (other than sewing thread) of artificial staple fibres, not put up for retail sale. |
-| 55.11 | Yarn (other than sewing thread) of man- made staple fibres, put up for retail sale. |
-| 55.12 | Woven fabrics of synthetic staple fibres, containing 85 % or more by weight of synthetic staple fibres. |
-| 55.13 | . Woven fabrics of synthetic staple fibres, containing less than 85 % by wei …
+| 29.17 | Polycarboxylic acids, their anhydrides, halides, peroxides and peroxyacids; their halogenated, sulphonated, nitrated or nitrosated derivatives. |
+| 29.18 | Carboxylic acids with additional oxygen function and their anhydrides, halides, peroxides and peroxyacids; their halogenated, sulphonated, nitrated or nitrosated derivatives. |
+| 29.19 | Phosphoric esters and their salts, including lactophosphates; their halogenated, sulphonated, nitrated or nitrosated derivatives. |
+| 29.20 | Esters of other inorganic acids of non- metals (excluding esters of hydrogen halides) and their salts; their halogenated, sulphonated, nitrated or nitrosated . . derivatives. |
+| 29.21 | Amine- function compounds. |
+| 29.22 | Oxygen- function amino- compounds. |
+| 29.23 | Quaternary ammonium salts and hydroxides; lecithins and other phosphoaminolipids, whether or not chemicallydefined. |
+| 29.24 | Carboxyamide- function compounds; amide- function compounds of carbonic acid. |
+| 29.25 | Carboxyimide- function compounds (including saccharin and its salts) and imine- function compounds. |
+| 29.26 | Nitrile- function compounds. |
+| 29.27 | Diazo- , azo- or azoxy- compounds. |
+| 29.28 | Organic derivatives of hydrazine or of hydroxylamine. |
+| 29.29 | Compounds with other nitrogen function. |
+| 29.30 | Organo- sulphur compounds. |
+| 29.31 | Other organo- inorganic compounds. |
+| 29.32 | Heterocyclic compounds with oxygen hetero- atom(s) only. |
+| 29. …
+```
+
+## 20. `ITO2001-sch14-t1` — Fourteenth Schedule
+kind: table · pages 836–836 ([open PDF](https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf#page=836)) · 251 tokens · needs_review: True
+amended_by: Finance Act, 2021
+
+```text
+Fourteenth Schedule
+[FOURTEENTH SCHEDULE (See section 100E) RULES FOR COMPUTATION OF PROFIT AND GAINS FOR SMALL AND MEDIUM ENTERPRISES 1. Application.- These rules shall apply to small and medium enterprises as defined in Clause (59A) of Section 2 of the Ordinance. 2. Registration.- Small and medium enterprise shall be required to register with FBR on its Iris web portal or Small and Medium Enterprises Development Authority on its SME registration portal (SMERP). 3. Categories and tax rates.- There shall be following two categories of small and medium enterprises and tax on their taxable income shall be computed at the tax rates given in the table below, namely:-
+| Sr. No. | Category | Turnover | Rates |
+|---|---|---|---|
+| (1) | (2) | (3) | (4) |
+| 1. | Category-1 | Where annual business turnover does not exceed Rupees 100 million | 7.5% of taxable income |
+| 2. | Category-2 | Where annual turnover exceeds Rupees 100 Million but does not exceed Rupees 250 Million | 15% of taxable income |
 ```
