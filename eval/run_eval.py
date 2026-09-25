@@ -6,6 +6,16 @@ refusal accuracy is measured end-to-end in Milestone 3). Public numbers use --sp
 Usage:
     python -m eval.run_eval --retriever bm25 --split test
     python -m eval.run_eval --retriever hybrid --split dev --name hybrid-dev
+    python -m eval.run_eval --pipeline full --split test      # Milestone 3 pipeline presets
+
+Pipeline presets (each adds one step to hybrid search, for the ablation table):
+    lookup          + direct section lookup ("section 149", "dafa 236K")
+    rewrite         + English query rewrite (GPT OSS 20B), no glossary
+    rewrite-rerank  + bge-reranker-v2-m3 on the top 30
+    full            + Urdu glossary in the rewrite prompt
+    lookup-rerank   lookup + reranker without any LLM (runs without a Groq key)
+
+LLM outputs are cached in eval/cache/groq.jsonl, so re-running replays them without Groq.
 """
 
 import argparse
@@ -23,7 +33,41 @@ from eval.schema import TestItem
 from eval.validate_testset import load_testset
 
 REPORTS = Path(__file__).resolve().parent / "reports"
+LLM_CACHE = Path(__file__).resolve().parent / "cache" / "groq.jsonl"
+RERANK_CACHE = Path(__file__).resolve().parent / "cache" / "rerank.tsv"  # gitignored
 GROUPS = ["english", "urdu", "roman_urdu"]
+
+PRESETS: dict[str, dict] = {
+    "lookup": {"lookup": True, "rewrite": "none", "rerank": False},
+    "lookup-rerank": {"lookup": True, "rewrite": "none", "rerank": True},
+    "rewrite": {"lookup": True, "rewrite": "plain", "rerank": False},
+    "rewrite-rerank": {"lookup": True, "rewrite": "plain", "rerank": True},
+    "full": {"lookup": True, "rewrite": "glossary", "rerank": True},
+}
+
+
+class PipelineAdapter:
+    """Gives a RAGPipeline the Retriever interface used by `evaluate`, and keeps the plan."""
+
+    def __init__(self, pipeline) -> None:
+        self.pipeline = pipeline
+        self.last = None
+
+    def retrieve(self, question: str, k: int = 20):
+        self.last = self.pipeline.search(question)
+        return self.last.candidates[:k]
+
+
+def build_pipeline_retriever(preset: str) -> PipelineAdapter:
+    from backend.app.rag.factory import build_pipeline, groq_client
+    from backend.app.rag.pipeline import PipelineConfig
+
+    settings = get_settings()
+    config = PipelineConfig(**PRESETS[preset], candidates=settings.rerank_candidates)
+    llm = groq_client(settings, cache_path=LLM_CACHE) if config.rewrite != "none" else None
+    return PipelineAdapter(
+        build_pipeline(config, settings=settings, llm=llm, rerank_cache=RERANK_CACHE)
+    )
 
 
 def build_retriever(mode: Mode) -> Retriever:
@@ -52,6 +96,18 @@ def evaluate(items: list[TestItem], retriever: Retriever, k: int = 5) -> dict:
     for item in items:
         hits = retriever.retrieve(item.question, k=20)
         sections = [h.section_id for h in hits]
+        extra = {}
+        last = getattr(retriever, "last", None)
+        if last is not None:
+            extra = {
+                "queries": last.plan.queries,
+                "scope": last.plan.scope,
+                "top_score": last.top_score,
+                "missing_refs": last.missing_refs,
+            }
+        if item.group == "out_of_scope":
+            rows.append({"id": item.id, "group": item.group, "top": sections[:k], **extra})
+            continue
         relevant = set(item.gold_section_ids) | set(item.acceptable_section_ids)
         scores = {
             f"hit@{k}": hit_at_k(sections, relevant, k),
@@ -68,6 +124,7 @@ def evaluate(items: list[TestItem], retriever: Retriever, k: int = 5) -> dict:
                 "gold": item.gold_section_ids,
                 "top": sections[:k],
                 **scores,
+                **extra,
             }
         )
     summary = {
@@ -91,7 +148,7 @@ def to_markdown(name: str, split: str, k: int, result: dict) -> str:
                 f"| {g} | {s['n']} | {s[f'hit@{k}']:.1%} | {s[f'recall@{k}']:.1%} "
                 f"| {s['mrr@10']:.3f} |"
             )
-    misses = [r for r in result["rows"] if not r[f"hit@{k}"]]
+    misses = [r for r in result["rows"] if r["group"] != "out_of_scope" and not r[f"hit@{k}"]]
     lines += [
         "",
         f"## Misses ({len(misses)})",
@@ -106,6 +163,7 @@ def to_markdown(name: str, split: str, k: int, result: dict) -> str:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--retriever", default="bm25", choices=["bm25", "dense", "sparse", "hybrid"])
+    ap.add_argument("--pipeline", choices=list(PRESETS), help="Milestone 3 pipeline preset")
     ap.add_argument("--split", default="test", choices=["dev", "test", "all"])
     ap.add_argument("--k", type=int, default=5)
     ap.add_argument("--name", default=None)
@@ -114,16 +172,26 @@ def main() -> None:
     items = [
         i
         for i in load_testset()
-        if i.group in GROUPS and (args.split == "all" or i.split == args.split)
+        # Pipeline runs also score out-of-scope questions (top reranker score, detected scope)
+        # for refusal tuning; they never count in the retrieval metrics.
+        if (i.group in GROUPS or args.pipeline) and (args.split == "all" or i.split == args.split)
     ]
-    result = evaluate(items, build_retriever(args.retriever), k=args.k)
-    name = args.name or f"{args.retriever}-{args.split}"
+    if args.pipeline:
+        retriever = build_pipeline_retriever(args.pipeline)
+        name = args.name or f"pipeline-{args.pipeline}-{args.split}"
+    else:
+        retriever = build_retriever(args.retriever)
+        name = args.name or f"{args.retriever}-{args.split}"
+    result = evaluate(items, retriever, k=args.k)
     REPORTS.mkdir(exist_ok=True)
     stem = REPORTS / f"{date.today().isoformat()}-{name}"
     stem.with_suffix(".json").write_text(json.dumps(result, indent=1, ensure_ascii=False))
     md = to_markdown(name, args.split, args.k, result)
     stem.with_suffix(".md").write_text(md, encoding="utf-8")
     print(md.split("## Misses")[0])
+    store = getattr(getattr(retriever, "pipeline", retriever), "retriever", retriever).store
+    if store is not None:
+        store.client.close()  # embedded Qdrant: release the lock cleanly
 
 
 if __name__ == "__main__":
