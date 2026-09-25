@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Last updated: 2026-09-25 (Milestone 3, part 3: test-set verification, paused for the Groq daily quota)
+Last updated: 2026-09-25 evening (Milestone 3, part 3: Gemini added; verification and end-to-end eval paused on daily quotas)
 
 ## Working rules (from Hamza)
 - Hamza is the only author. No "Co-Authored-By", "Generated with …" or other AI attribution in commits, PRs, code or docs.
@@ -59,39 +59,39 @@ Last updated: 2026-09-25 (Milestone 3, part 3: test-set verification, paused for
     `OUT_OF_SCOPE`; tax year 2028 → `TAX_YEAR_NOT_COVERED`; 2-character question → 422 `VALIDATION_ERROR`.
   - 115 tests pass without models or network; `ruff` clean.
 
-- **M3 (part 3, in progress; commits 8d78781, 987b5d8):**
+- **M3 (part 3, in progress):**
   - Chunk title fix (D37), "Surcharge" title for ITO 4AB; 53 chunks re-embedded.
   - Language check applied: all 80 translations `language_ok: true` (67 read by Hamza, 13 approved as is; D41).
   - 39 FBR-sourced test questions `fbr-001`…`fbr-039` (D39); test set now 239 questions (179 on test).
-  - `eval/verify_testset.py` written (D38); first run stopped on GPT OSS 120B's daily limit (199,606 / 200,000
-    tokens on 2026-09-25 ~17:30 UTC). Nothing is marked `"verified": "machine"` yet.
-  - `/ask` default is now `full-max` (D40). 120 tests pass.
+  - `/ask` default is now `full-max` (D40).
+  - **Gemini as a second LLM provider (D42):** provider + model per role in `backend/app/config.py` (answer = GPT OSS
+    120B on Groq, rewrite = GPT OSS 20B on Groq, judge 1 = Gemini 3 Flash, judge 2 = Qwen on Groq), rate limiter,
+    404 model fallback, shared cache. Gemini 3 Flash is served as `gemini-3-flash-preview`; `gemini-2.5-flash` is
+    closed to new users. **Free tier on this key: 20 Gemini requests a day per model** (not 1,500).
+  - **Verification (D43):** en-009, en-063, en-089 fixed; excerpt and number-check fixes (fbr-021). Qwen + number
+    check pass all 159 directly judged questions; Gemini has judged 14 (all passed). 26 of 239 are
+    `"verified": "machine"`, nothing removed. `eval/expert_sample.json` written (30, stratified, seed 2027).
+  - **Ablation re-run on all 158 in-scope test questions (D44):** `/ask` default Hit@5 93.0% all, 87.2% FBR,
+    96.8% English, 92.9% Urdu, 92.9% Roman Urdu. Chart now has an FBR series.
+  - **End to end (D44):** 68 / 179 test questions before GPT OSS 120B's daily limit; 111 left. Correct citation
+    53 / 55 in-scope run (98.2% of answered); 13 / 13 out-of-scope refused.
+  - 125 tests pass; `ruff` clean.
 
-## Resume here (M3 part 3, step 8)
-State: working tree clean, everything pushed, caches committed: `eval/cache/groq.jsonl` (rewrites + answers),
-`eval/cache/rerank.tsv` (reranker scores), `eval/cache/verify.jsonl` (judge verdicts for the 159 directly judged
-questions: GPT OSS 120B has 27, Qwen has 148). Re-runs only call Groq for what is not cached.
+## Resume here (M3 part 3)
+State: everything committed and pushed on `claude/mahsool-gemini-eval-cla2bx`, caches committed
+(`eval/cache/groq.jsonl`, `rerank.tsv`, `verify.jsonl`). Every run resumes from them.
 
 0. New container: `sh scripts/setup-hooks.sh`, git identity, `pip install -e ".[dev,ml]"`, then
-   `python -m ingestion.index` (~25 min; the index is not committed). Check GPT OSS 120B has quota with one small
-   call (the free tier's 200k tokens/day is a rolling window; 2026-09-25's use frees up from ~13:30 UTC on 09-26).
-1. `python -m eval.verify_testset` (~180k GPT OSS 120B tokens for the 132 questions it has not judged; if it stops on the
-   daily limit, re-run the next day). Then fix or remove every item in `eval/FLAGGED.md`, including en-009
-   (reference cites the wrong Chapter) and en-063 / en-089 (worked examples: show every step, e.g.
-   "500,000 − 300,000 = 200,000", and drop "300,001"). Re-run until nothing is flagged; drop `--dry-run` so
-   `"verified": "machine"` is written.
-2. Write `eval/expert_sample.json`: 30 random test ids with a fixed seed, stratified across english, fbr, urdu,
-   roman_urdu and out_of_scope. No PDF.
-3. Re-run the full test ablation (retrievers bm25, sparse, dense, hybrid; presets lookup, lookup-rerank, rewrite,
-   rewrite-rerank, full, full-max), then `python -m eval.plot_ablation`. Needs GPT OSS 20B for the 39 new rewrites
-   and the CPU reranker (~1 s per new pair). Run one job at a time; the embedded Qdrant allows one process.
-4. `python -m eval.run_e2e --split test` with the `full-max` default: ~3k GPT OSS 120B tokens per answer, so ~65
-   answers per day; it lists "not run" questions and resumes from the cache. Commit after each day's run.
-5. Update README (ablation table, targets table), DECISIONS (D35 results) and this file with scores on all
-   questions and on the FBR subset; commit, push, stop.
+   `python -m ingestion.index` (~30 min; the index is not committed). `GROQ_API_KEY` and `GEMINI_API_KEY` set.
+1. `python -m eval.run_e2e --split test`: 111 questions left, ~65 a day on GPT OSS 120B's free tier (rolling 24-hour window:
+   2026-09-25's use frees up gradually from ~13:30 UTC on 09-26). Commit after each day's run.
+2. `python -m eval.verify_testset`: 145 questions still need Gemini (20 a day, resets at midnight Pacific; ~8 days),
+   or enable billing on the Google project and finish in one run. Fix anything it flags.
+3. When both are done: update README (targets table), DECISIONS D44 and this file; append to `docs/LEARNING.md`;
+   close Milestone 3 and merge to `main`.
 
-Rules learned the hard way: never `pkill -f` (it matches the calling shell); wait on process ids. Keep
-GPT OSS 120B for the judge and the answers only.
+Rules learned the hard way: never `pkill -f` or `pgrep -f | kill` (it matches the calling shell); kill by exact
+process id. Only one process may open the embedded Qdrant at a time. Keep GPT OSS 120B for the answers only.
 
 ## After that
 1. **Milestone 4** (per PROJECT_PLAN): React chat UI, citation cards, feedback, Postgres logs on Neon, Langfuse.
@@ -103,6 +103,9 @@ GPT OSS 120B for the judge and the answers only.
   (`full-max`, D40) doubles the reranker work, so this needs a faster reranker (ONNX / fewer candidates / GPU / API).
 
 ## Open items for Hamza
+- Gemini free tier is 20 requests a day per model on this key: enable billing on the Google project to finish the
+  judge in one run, or accept ~8 more days (D42).
+- Send `eval/expert_sample.json` to a tax expert (30 questions; fill `expert_ok` / `expert_notes`).
 - Verify eval questions by hand with `eval/REVIEW.md` (about 20 a day), and tell Claude Code which are wrong.
 - Review `data/glossary_ur.csv` as a native speaker (D25).
 - Consider a paid Groq tier (or another answer model) before the Milestone 5 demo (D36).

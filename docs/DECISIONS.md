@@ -408,3 +408,55 @@ Newest first within each milestone. Each entry says what the plan said, what we 
   Urdu-script group.
 - The remaining 13 (ur-004, ru-001 … ru-012, all dev split) were **approved as they are, without a line-by-line
   native-speaker read**, and are also marked `"language_ok": true`.
+
+### D42. Judge 1 is Gemini Flash (Google), not GPT OSS 120B; LLM provider and model are set per role
+- **Why:** Groq's free tier (200k tokens a day on GPT OSS 120B, D36) cannot cover the test-set judge, the end-to-end
+  answers and the reruns. **Judge 1 changed from GPT OSS 120B to Gemini Flash** on Google's Gemini API
+  (OpenAI-compatible endpoint). The judges are now from **two different model families (Gemini, Qwen), and neither
+  wrote the questions**. Judge 2 stays Qwen (`qwen/qwen3.8-27b`) on Groq (D38). Answers stay on GPT OSS 120B and
+  rewrites on GPT OSS 20B, both on Groq.
+- **Config:** `backend/app/config.py` has a provider and a model per role (`answer`, `rewrite`, `judge1`, `judge2`),
+  plus per-provider rate limits and model fallbacks. `backend/app/llm.py` is one OpenAI-compatible client with a
+  client-side rate limiter (requests per minute and per day), fail-fast on daily quotas, fallback to the next model
+  on 404, and the JSONL cache (a run resumes from it, and a cached answer from a fallback model counts).
+- **Model id:** the plan was `gemini-3-flash`, falling back to `gemini-2.5-flash`. Google serves Gemini 3 Flash
+  only as **`gemini-3-flash-preview`** (the 404 fallback resolves to it; the quota is counted against
+  "gemini-3-flash"), and `gemini-2.5-flash` answers 404 "no longer available to new users".
+- **The free tier is far smaller than expected: 20 requests a day per Flash model on this key**, not 1,500 (quota
+  `GenerateRequestsPerDayPerProjectPerModel-FreeTier`, value 20, seen 2026-09-25 on `gemini-3-flash` and
+  `gemini-3.8-flash`). Calls that fail with 503 "high demand" (frequent on the preview model) seem to count too, so
+  the client retries Gemini at most 4 times, 30 s apart. Switching to another Flash model does not help (same
+  20-a-day quota each) and would mix judge models, so judge 1 stays Gemini 3 Flash for every question. At 20 a day
+  the 145 questions it has not judged yet take about 8 days; enabling billing on the Google project would finish
+  them in one run (`python -m eval.verify_testset` resumes from the cache).
+
+### D43. Test-set verification: results so far
+- Fixed before judging: **en-009** (reference now follows section 9 word for word: total income under clause (a)
+  of section 10, deductible allowances under Part IX of the same Chapter; its "Chapter III" was right, since
+  section 9 and Part IX are both in Chapter III, but the judge only sees "this Chapter"), **en-063** and **en-089**
+  (every step of the calculation shown, "300,001" dropped). Translations of these questions share the reference.
+- Two code fixes in `eval/verify_testset.py`: excerpts of long sections now rank chunks by shared word pairs first
+  (fbr-021's judge saw section 2 without clause (45), the definition asked about), and the number check accepts a
+  calculation that follows a sentence ending with an amount.
+- **Qwen and the number check pass all 159 directly judged questions** (English, FBR, out-of-scope; nothing is
+  flagged by either). Gemini has judged 14 of them so far, all passed. So **26 of 239 questions are
+  `"verified": "machine"`** (14 judged + 12 translations of them); the rest stay `false` until Gemini has judged
+  them (`eval/FLAGGED.md` lists them as "not run"). No question had to be removed.
+- `eval/expert_sample.json`: 30 test questions for a human expert, seed 2027, stratified by group in proportion to
+  the test split (english 11, fbr 6, urdu 5, roman_urdu 5, out_of_scope 3), with empty `expert_ok` fields.
+
+### D44. Ablation and end-to-end results on the full test split (179 questions, 158 in scope)
+- **Ablation re-run** on all 158 in-scope test questions (written English 63, FBR 39, Urdu 28, Roman Urdu 28), after
+  the chunk-title fix (D37). Hit@5, all / FBR: hybrid baseline 85.4% / 87.2%; + lookup 86.1% / 87.2%; + reranker
+  87.3% / 87.2%; + rewrite 93.7% / 84.6%; + rewrite + reranker 89.9% / 89.7%; full 90.5% / 89.7%; **full-max (`/ask`
+  default) 93.0% / 87.2%** (Recall@5 all gold 91.8%, MRR@10 0.863; Urdu and Roman Urdu both 92.9%, above the 80%
+  target). Written English, Urdu and Roman Urdu match the earlier runs except lookup-rerank Urdu (92.9% → 89.3%) and
+  rewrite-rerank Roman Urdu (71.4% → 75.0%): the reranker reads chunk titles, which D37 changed.
+- FBR questions are the hardest English group (87.2% with the default vs 96.8% for the written English), as expected:
+  they were not written from the section text (D20). The max-score reranking costs one FBR question (89.7% → 87.2%)
+  while it gains five Roman Urdu ones; the default stays full-max (it was chosen on dev, D40).
+- **End to end** (`eval/run_e2e.py`, full-max): 68 of 179 test questions before GPT OSS 120B's 200k tokens a day ran
+  out (D36); 111 are left (~2 days). Of the 55 in-scope questions run, 54 were answered and 53 cite a gold section
+  (96.4%; 98.2% of answered); en-070 cited the Tenth Schedule and section 4 instead of section 168, en-076 was
+  refused (NOT_IN_SOURCES). 13 of 13 out-of-scope questions run were refused. Fewer questions ran than on the first
+  day (85) because full-max changes the retrieved chunks, so earlier cached answers no longer match their prompts.

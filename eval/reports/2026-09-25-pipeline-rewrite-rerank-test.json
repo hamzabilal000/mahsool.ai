@@ -7,10 +7,10 @@
    "n": 63
   },
   "all": {
-   "hit@5": 0.8908,
-   "recall@5": 0.8571,
-   "mrr@10": 0.8266,
-   "n": 119
+   "hit@5": 0.8987,
+   "recall@5": 0.8734,
+   "mrr@10": 0.8155,
+   "n": 158
   },
   "urdu": {
    "hit@5": 0.8929,
@@ -19,10 +19,16 @@
    "n": 28
   },
   "roman_urdu": {
-   "hit@5": 0.7143,
-   "recall@5": 0.6429,
-   "mrr@10": 0.5706,
+   "hit@5": 0.75,
+   "recall@5": 0.6786,
+   "mrr@10": 0.5726,
    "n": 28
+  },
+  "fbr": {
+   "hit@5": 0.8974,
+   "recall@5": 0.8974,
+   "mrr@10": 0.7801,
+   "n": 39
   }
  },
  "rows": [
@@ -35,8 +41,8 @@
    "top": [
     "ITO2001-s4",
     "ITO2001-s4C",
-    "ITO2001-s4B",
     "ITO2001-s4AB",
+    "ITO2001-s4B",
     "ITO2001-sch4"
    ],
    "hit@5": 1.0,
@@ -73,7 +79,7 @@
     "Section 4AB surcharge threshold and applicable rate"
    ],
    "scope": "income_tax",
-   "top_score": 0.9937383365077471,
+   "top_score": 0.9964116506901313,
    "missing_refs": []
   },
   {
@@ -1218,7 +1224,7 @@
     "ITR2002-r40FA",
     "ITO2001-s159",
     "ITO2001-s165",
-    "ITO2001-s53"
+    "ITR2002-r49"
    ],
    "hit@5": 1.0,
    "recall@5": 1.0,
@@ -1631,7 +1637,7 @@
     "surcharge applicable on taxable income above section 4AB"
    ],
    "scope": "income_tax",
-   "top_score": 0.9864775931791747,
+   "top_score": 0.9891564728501526,
    "missing_refs": []
   },
   {
@@ -1846,7 +1852,7 @@
     "ITR2002-r14",
     "ITR2002-r19A",
     "ITR2002-r27B",
-    "ITR2002-r27C"
+    "ITO2001-s51"
    ],
    "hit@5": 1.0,
    "recall@5": 1.0,
@@ -1983,7 +1989,7 @@
     "when is the due date for filing income tax return for salaried individual"
    ],
    "scope": "income_tax",
-   "top_score": 0.05840520784287167,
+   "top_score": 0.08031862712700363,
    "missing_refs": []
   },
   {
@@ -2299,10 +2305,10 @@
    ],
    "top": [
     "WHT2027-s149",
+    "WHT2027-s151",
     "WHT2027-s233",
     "WHT2027-s155",
-    "WHT2027-s153",
-    "ITO2001-sch1-pI-divII"
+    "WHT2027-s153"
    ],
    "hit@5": 1.0,
    "recall@5": 0.0,
@@ -2338,7 +2344,7 @@
     "4AB surcharge conditions and applicable income levels"
    ],
    "scope": "income_tax",
-   "top_score": 0.6941439175605765,
+   "top_score": 0.7991012168459861,
    "missing_refs": []
   },
   {
@@ -2551,20 +2557,20 @@
    "top": [
     "ITR2002-r27E",
     "ITR2002-r19A",
-    "ITO2001-s101",
     "ITR2002-r14",
-    "ITR2002-r19A"
+    "ITR2002-r19A",
+    "ITR2002-r18"
    ],
-   "hit@5": 0.0,
-   "recall@5": 0.0,
-   "mrr@10": 0.14285714285714285,
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.2,
    "queries": [
     "resident status days of stay in Pakistan for tax residency",
     "days of stay required for resident status under Income Tax Ordinance 2001",
     "criteria for resident taxpayer in Pakistan under Income Tax Rules 2002"
    ],
    "scope": "income_tax",
-   "top_score": 0.0009800955814128782,
+   "top_score": 0.0009303626212992342,
    "missing_refs": []
   },
   {
@@ -2578,7 +2584,7 @@
     "ITR2002-r19A",
     "ITO2001-s82",
     "ITR2002-r19A",
-    "ITR2002-r27E"
+    "ITO2001-s109A"
    ],
    "hit@5": 1.0,
    "recall@5": 1.0,
@@ -3086,15 +3092,15 @@
    "id": "oos-005",
    "group": "out_of_scope",
    "top": [
-    "ITO2001-s119",
-    "ITR2002-r27B",
     "ITR2002-r27C",
+    "ITR2002-r27B",
+    "ITO2001-s119",
     "ITO2001-s114",
     "ITO2001-s114B"
    ],
    "queries": [],
    "scope": "not_tax",
-   "top_score": 0.03780178719842024,
+   "top_score": 0.041925476334732655,
    "missing_refs": []
   },
   {
@@ -3143,8 +3149,8 @@
    "top": [
     "ITO2001-s65F",
     "ITO2001-sch1-pII",
-    "ITR2002-r33B",
     "ITR2002-r33G",
+    "ITR2002-r33B",
     "WHT2027-s153"
    ],
    "queries": [
@@ -3256,8 +3262,8 @@
     "ITO2001-s4B",
     "ITO2001-s4C",
     "ITO2001-sch2-pI-cl56",
-    "ITO2001-sch2-pIV-cl108",
-    "ITO2001-sch2-pIV-cl107"
+    "ITO2001-sch2-pIV-cl107",
+    "ITO2001-sch2-pI-cl55"
    ],
    "queries": [],
    "scope": "not_tax",
@@ -3314,7 +3320,7 @@
     "PRA sales tax calculation for restaurant bill"
    ],
    "scope": "provincial_tax",
-   "top_score": 0.0005883928353984217,
+   "top_score": 0.0006234417910831083,
    "missing_refs": []
   },
   {
@@ -3402,6 +3408,981 @@
    ],
    "scope": "income_tax",
    "top_score": 0.0410055896071213,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-001",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITR2002-r31",
+    "ITR2002-r117"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "deduction of expenses incurred in earning salary for salaried employee",
+    "deduction of tax at source from salary",
+    "expenses incurred in earning salary deduction under Income Tax Ordinance 2001"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.5283259183334758,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-002",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITO2001-s12",
+    "ITO2001-sch2-pI-cl13",
+    "ITO2001-s153",
+    "ITO2001-s149"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "How can an employee who receives a termination payment such as a golden handshake choose to have it taxed?",
+    "What is the withholding tax rate applicable to termination payments under the Income Tax Ordinance 2001?",
+    "What procedure must an employee follow to elect the tax treatment of a golden handshake payment?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.5044461136359388,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-003",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s39",
+    "ITO2001-s149",
+    "ITO2001-s13",
+    "ITO2001-s12",
+    "ITO2001-s110"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.25,
+   "queries": [
+    "If salary is paid in arrears and pushes the employee into a higher tax rate, what can the employee do?",
+    "How to adjust withholding tax at source when salary paid in arrears causes higher tax bracket?",
+    "Can employee claim tax credit or advance tax adjustment for arrears salary affecting tax rate?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.07908774669793447,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-004",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITR2002-r3",
+    "ITR2002-r4",
+    "ITO2001-sch2-pI-cl139",
+    "ITO2001-sch2-pI-cl39A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Are allowances paid by the employer, such as rent or travel allowance, part of salary?",
+    "Does the Income Tax Ordinance 2001 treat employer allowances as taxable salary components?",
+    "What is the tax treatment of rent and travel allowances under the Income Tax Rules 2002?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9804446493245369,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-005",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s37"
+   ],
+   "top": [
+    "ITO2001-s37",
+    "ITO2001-s2",
+    "ITO2001-s38",
+    "ITO2001-s37",
+    "ITO2001-s22"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "What does \"capital asset\" mean under the Income Tax Ordinance?",
+    "definition of capital asset in Income Tax Ordinance 2001",
+    "capital asset classification under Income Tax Rules 2002"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9876342580012196,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-006",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-s46",
+    "ITO2001-s151",
+    "ITO2001-s7B",
+    "ITO2001-s28",
+    "ITO2001-s28"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0,
+   "queries": [
+    "How does the Income Tax Ordinance define profit on a debt?",
+    "profit on a debt under Income Tax Ordinance 2001 definition",
+    "profit on a debt income tax ordinance 2001 conditions"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9817753984166602,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-007",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s101"
+   ],
+   "top": [
+    "ITO2001-s101",
+    "ITO2001-sch2-pIV-cl114A",
+    "ITO2001-s101A",
+    "ITO2001-s46",
+    "ITO2001-s18"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "When is profit on a debt treated as Pakistan-source income?",
+    "Conditions for profit on debt to be considered Pakistan-source income under Income Tax Ordinance 2001",
+    "Rate or deduction applicable to profit on debt classified as Pakistan-source income"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9924894792622789,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-008",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITR2002-r18",
+    "ITO2001-s89",
+    "ITO2001-s39",
+    "ITO2001-sch5-pI",
+    "ITO2001-s6"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0,
+   "queries": [
+    "What counts as a royalty for income tax purposes?",
+    "Royalty definition under Income Tax Ordinance 2001",
+    "Conditions for royalty income under Income Tax Rules 2002"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.4418937134053875,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-009",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-s6",
+    "ITR2002-r19",
+    "ITO2001-s2",
+    "ITO2001-sch1-pI-divIV",
+    "ITO2001-s152"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.3333333333333333,
+   "queries": [
+    "What is a fee for technical services and what is excluded from it?",
+    "What services are excluded from the fee for technical services under the Income Tax Ordinance 2001?",
+    "How does the Income Tax Ordinance 2001 define the fee for technical services and its exclusions?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.8731366623969116,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-010",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-sch6-pIII",
+    "ITO2001-s2",
+    "ITO2001-sch2-pI-cl57",
+    "ITO2001-sch2-pIV-cl47B",
+    "ITR2002-r117"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5,
+   "queries": [
+    "What is an approved gratuity fund?",
+    "Approved gratuity fund definition under Pakistani tax law",
+    "Conditions for a fund to be approved as a gratuity fund"
+   ],
+   "scope": "not_tax",
+   "top_score": 0.9751754594700284,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-011",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-s2",
+    "ITO2001-s80",
+    "ITO2001-s18",
+    "ITO2001-s2",
+    "ITO2001-s2"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "What does \"business\" include under the Income Tax Ordinance?",
+    "Definition of business under Income Tax Ordinance 2001",
+    "Activities considered business for income tax purposes"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9668336270130319,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-012",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-s2",
+    "ITO2001-s80",
+    "ITO2001-sch1-pI-divII",
+    "ITO2001-sch14",
+    "ITO2001-sch2-pIV-cl11A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Which companies qualify as a small company?",
+    "small company definition under Income Tax Ordinance 2001",
+    "criteria for small company status in Income Tax Rules 2002"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.7507203551215396,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-013",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-s4C",
+    "ITO2001-sch9-pIII",
+    "ITO2001-sch9-pIII",
+    "ITO2001-s109A",
+    "ITO2001-s9"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.2,
+   "queries": [
+    "What is imputable income in Pakistani income tax?",
+    "Imputable income definition and examples under Income Tax Ordinance 2001",
+    "How imputable income is treated for withholding tax purposes in Pakistan"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.8353322275231448,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-014",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s35"
+   ],
+   "top": [
+    "ITO2001-s35",
+    "ITO2001-s35",
+    "ITO2001-s20",
+    "ITO2001-s37",
+    "ITO2001-s109A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "What is stock-in-trade for income tax purposes?",
+    "Definition of stock-in-trade under Income Tax Ordinance 2001 for taxable income calculation",
+    "How is stock-in-trade treated in advance tax and return of income?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9814012073308527,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-015",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s83"
+   ],
+   "top": [
+    "ITO2001-s83",
+    "ITO2001-s81",
+    "ITO2001-s106",
+    "ITO2001-s109A",
+    "ITO2001-s113"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "When is a company a resident company for a tax year?",
+    "resident company definition under Income Tax Ordinance 2001",
+    "criteria for resident company in Income Tax Rules 2002"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9970665841750891,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-016",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s84"
+   ],
+   "top": [
+    "ITO2001-s84",
+    "ITR2002-r27A",
+    "ITO2001-sch2-pI-cl145A",
+    "ITO2001-s82",
+    "ITO2001-sch2-pIV-cl110"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "When is an association of persons resident in Pakistan for a tax year?",
+    "Criteria for residency of an association of persons under the Income Tax Ordinance 2001",
+    "Definition of resident association of persons in Pakistani tax law"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9959854134110454,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-017",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-s200",
+    "ITO2001-s172",
+    "ITO2001-s2",
+    "ITO2001-s182",
+    "ITO2001-s2"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.3333333333333333,
+   "queries": [
+    "Who is a principal officer of a company or association of persons?",
+    "Definition of principal officer under Income Tax Ordinance 2001",
+    "Conditions for a person to be considered a principal officer in Income Tax Rules 2002"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.898667102307803,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-018",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s227B"
+   ],
+   "top": [
+    "ITO2001-s227B",
+    "ITO2001-s2",
+    "ITO2001-s216",
+    "ITO2001-s203B",
+    "ITO2001-s239B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Who is a whistleblower under the Income Tax Ordinance?",
+    "Definition of whistleblower in the Income Tax Ordinance",
+    "Rights and benefits of a whistleblower under the Income Tax Ordinance"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9809450097817737,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-019",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s22"
+   ],
+   "top": [
+    "ITO2001-s22",
+    "ITO2001-s23",
+    "ITO2001-s22",
+    "ITO2001-s22",
+    "ITR2002-r12"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Which assets are depreciable assets?",
+    "Criteria for depreciable assets under Income Tax Ordinance 2001",
+    "Depreciation rates for assets in Income Tax Rules 2002"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9808805468478029,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-020",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s19"
+   ],
+   "top": [
+    "ITO2001-s19",
+    "ITO2001-s58",
+    "ITO2001-s2",
+    "ITR2002-r13",
+    "ITO2001-s57A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "What is a speculation business and how is it taxed relative to a person's other business?",
+    "Speculation business income tax treatment under Income Tax Ordinance 2001",
+    "Taxation of speculation business versus regular business under Income Tax Rules 2002"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9834859860078362,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-021",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-s110",
+    "ITO2001-s139",
+    "ITO2001-s80",
+    "ITO2001-s2",
+    "ITO2001-s2"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.25,
+   "queries": [
+    "What is a private company for income tax purposes?",
+    "Definition of a private company under the Income Tax Ordinance 2001",
+    "Criteria for a private company in the Income Tax Rules 2002"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.5486163174093652,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-022",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s11"
+   ],
+   "top": [
+    "ITO2001-s11",
+    "ITO2001-s32",
+    "ITR2002-r13",
+    "ITO2001-s18",
+    "ITR2002-r3"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Under which heads is income classified for income tax?",
+    "What are the heads of income classification under the Income Tax Ordinance 2001?",
+    "How does the Income Tax Ordinance 2001 define the heads of income for tax purposes?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9966054128717659,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-023",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s74"
+   ],
+   "top": [
+    "ITO2001-s74",
+    "ITO2001-s2",
+    "ITR2002-r27A",
+    "ITO2001-s113",
+    "ITO2001-s10"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "What is a tax year and how is it denoted in the Income Tax Ordinance 2001?",
+    "How does the Income Tax Ordinance 2001 define the tax year period?",
+    "What is the formal term for the tax year in Pakistani income tax law?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9274101107519158,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-024",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s80"
+   ],
+   "top": [
+    "ITO2001-s80",
+    "ITO2001-s69",
+    "ITO2001-s11",
+    "ITO2001-s218",
+    "ITO2001-s113"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Who is treated as a person under the Income Tax Ordinance?",
+    "Definition of 'person' in the Income Tax Ordinance 2001",
+    "Conditions for a person to be taxable under the Income Tax Ordinance"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.983987938397552,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-025",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s41"
+   ],
+   "top": [
+    "ITO2001-s41",
+    "ITO2001-s111",
+    "ITO2001-sch2-pI-cl105B",
+    "ITO2001-s237",
+    "ITR2002-r11"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Is agricultural income taxed under the Income Tax Ordinance?",
+    "Does the Income Tax Ordinance provide for tax on agricultural income?",
+    "What is the treatment of agricultural income under the Income Tax Ordinance?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9968768472904949,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-026",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s70"
+   ],
+   "top": [
+    "ITO2001-s30",
+    "ITO2001-s167",
+    "ITO2001-s162",
+    "ITO2001-s169",
+    "ITO2001-s161"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.1,
+   "queries": [
+    "If a business later recovers an expense it already deducted, how is the recovered amount treated?",
+    "recovered expense treated under Income Tax Ordinance 2001",
+    "procedure for recovering deducted expense in income tax returns"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.14288452645886346,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-027",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s67"
+   ],
+   "top": [
+    "ITO2001-s67",
+    "ITO2001-s104",
+    "ITO2001-s40",
+    "ITR2002-r13",
+    "ITO2001-s11"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "How is an expense that relates to more than one head of income treated?",
+    "deduction of expenses for multiple heads of income",
+    "provision for expenses relating to more than one head of income"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9475218863759423,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-028",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s21"
+   ],
+   "top": [
+    "ITO2001-s182",
+    "ITO2001-s182",
+    "ITO2001-s182",
+    "ITO2001-s182",
+    "ITO2001-s191"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.3333333333333333,
+   "queries": [
+    "Can a business deduct a fine or penalty it paid for breaking a law?",
+    "Is a fine or penalty paid for breaking a law deductible under the Income Tax Ordinance 2001?",
+    "What conditions must be met for a fine or penalty to be deductible in income tax?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.04692236849512764,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-029",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s21"
+   ],
+   "top": [
+    "ITO2001-sch5-pI",
+    "ITO2001-s104",
+    "ITO2001-s20",
+    "ITO2001-s105",
+    "ITR2002-r13"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.125,
+   "queries": [
+    "Are personal expenses deductible against business income?",
+    "What is the rule for deduction of personal expenses from business income under the Income Tax Ordinance 2001?",
+    "Conditions for claiming personal expense deductions in business income returns"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.5517869960931896,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-030",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s101"
+   ],
+   "top": [
+    "ITO2001-s101",
+    "ITO2001-s101",
+    "ITO2001-s101",
+    "ITR2002-r13",
+    "ITO2001-s11"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "When is salary considered Pakistan-source income?",
+    "What conditions determine Pakistan-source income for salary under Income Tax Ordinance 2001?",
+    "How does the source of salary affect withholding tax rates in Pakistan?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9799733397390359,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-031",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s101"
+   ],
+   "top": [
+    "ITO2001-s101",
+    "ITO2001-sch2-pIV-cl114A",
+    "ITO2001-s101",
+    "ITO2001-s101A",
+    "ITO2001-s101"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "When is a dividend considered Pakistan-source income?",
+    "Pakistan-source dividend income definition under Income Tax Ordinance 2001",
+    "Conditions for dividend to be taxed as Pakistan-source income"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9769037547418213,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-032",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITR2002-r81B",
+    "ITO2001-s119",
+    "ITO2001-s137",
+    "ITO2001-s182A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "What is the due date for a company's income tax return",
+    "Due date for filing corporate income tax return under Income Tax Ordinance 2001",
+    "Procedure for filing company income tax return and deadline"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9224900152232809,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-033",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITR2002-r80",
+    "ITO2001-s114",
+    "ITR2002-r73",
+    "ITO2001-s182"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Does a person with salary income of Rs. 500,000 or more have to file the return electronically?",
+    "Return of income for salaried persons with income Rs. 500,000 or more",
+    "Electronic filing requirement for salaried taxpayers with income Rs. 500,000 or more"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.8531660278214898,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-034",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITR2002-r80",
+    "ITO2001-s237",
+    "ITO2001-sch2-pI-cl145A",
+    "ITO2001-s182"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Does a company or a non-profit organization have to file an income tax return even without taxable income?",
+    "filing requirement for companies with no taxable income under Income Tax Ordinance 2001",
+    "return of income for non-profit organization with no taxable income"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9098331390435479,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-035",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITR2002-r80",
+    "ITO2001-sch10",
+    "ITO2001-s115",
+    "ITO2001-sch2-pIV-cl56F"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Can a person be required to file a return even if their income is below the taxable limit?",
+    "persons not appearing in the active taxpayers' list",
+    "return of income"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.7730681237860614,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-036",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s115"
+   ],
+   "top": [
+    "ITO2001-s115",
+    "ITR2002-r40FA",
+    "ITO2001-s79",
+    "ITO2001-s116",
+    "ITR2002-r73"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Does a widow or a non-resident have to file a return just because they own property?",
+    "property ownership and filing of income tax return for non-resident or widow",
+    "filing requirement for income tax return under Income Tax Ordinance 2001 for property owners"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9357723333310541,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-037",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s119"
+   ],
+   "top": [
+    "ITO2001-s119",
+    "ITO2001-s182A",
+    "ITO2001-sch10",
+    "ITO2001-s171",
+    "ITR2002-r81B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "How can a taxpayer who cannot file the return by the due date get more time?",
+    "extension of filing deadline for income tax return under the Income Tax Ordinance 2001",
+    "procedure for requesting additional time to file income tax return in Pakistan"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.7455703001626921,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-038",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s103"
+   ],
+   "top": [
+    "ITO2001-s103",
+    "ITO2001-s102",
+    "ITO2001-s101A",
+    "ITO2001-s109A",
+    "ITR2002-r16"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "How much credit does a resident get for income tax paid abroad on foreign-source income?",
+    "credit for foreign tax paid under Income Tax Ordinance 2001 for residents",
+    "procedure for claiming foreign tax credit in Pakistan"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9812963265385898,
+   "missing_refs": []
+  },
+  {
+   "id": "fbr-039",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s25"
+   ],
+   "top": [
+    "ITO2001-s25",
+    "ITO2001-s20",
+    "ITO2001-sch5-pI",
+    "ITO2001-sch3-pII",
+    "ITO2001-sch5-pI"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "What is pre-commencement expenditure and how is it deducted?",
+    "pre-commencement expenditure deduction conditions under Income Tax Ordinance 2001",
+    "pre-commencement expenditure deduction rate for 2025"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9960477663430256,
    "missing_refs": []
   }
  ]

@@ -30,8 +30,14 @@ SETUPS = [
     ("pipeline-full-test", "+ glossary\n= full pipeline"),
     ("pipeline-full-max-test", "full, rerank max*\n= /ask default"),
 ]
-GROUPS = [("english", "English"), ("urdu", "Urdu script"), ("roman_urdu", "Roman Urdu")]
-COLORS = ["#2a78d6", "#eb6834", "#1baf7a"]  # validated categorical slots 1-3
+GROUPS = [
+    ("english", "English (written)"),
+    ("urdu", "Urdu script"),
+    ("roman_urdu", "Roman Urdu"),
+    ("fbr", "English (from FBR pages)"),
+]
+# Validated categorical slots 1-4 (FBR last: yellow next to orange fails the normal-vision check).
+COLORS = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100"]
 SURFACE, INK, MUTED, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e4e3df"
 
 
@@ -44,17 +50,17 @@ def latest(name: str) -> dict:
 
 def main() -> None:
     rows = [(label, latest(name)) for name, label in SETUPS]
-    fig, ax = plt.subplots(figsize=(11, 4.6), dpi=150)
+    fig, ax = plt.subplots(figsize=(12, 4.6), dpi=150)
     fig.patch.set_facecolor(SURFACE)
     ax.set_facecolor(SURFACE)
-    width = 0.26
+    width = 0.2
     for g, ((key, name), color) in enumerate(zip(GROUPS, COLORS, strict=True)):
-        xs = [i + (g - 1) * (width + 0.02) for i in range(len(rows))]
+        xs = [i + (g - 1.5) * (width + 0.02) for i in range(len(rows))]
         ys = [100 * s[key]["hit@5"] for _, s in rows]
         ax.bar(xs, ys, width, color=color, label=name, zorder=2)
         # Label only the two full-pipeline variants.
         for i in (-2, -1):
-            ax.text(xs[i], ys[i] + 1.5, f"{ys[i]:.0f}", ha="center", color=INK, fontsize=8)
+            ax.text(xs[i], ys[i] + 1.5, f"{ys[i]:.0f}", ha="center", color=INK, fontsize=7)
     ax.axhline(80, color=MUTED, lw=1, ls=(0, (4, 3)), zorder=1)
     ax.text(len(rows) - 0.5, 80, " target 80%", color=MUTED, fontsize=8, va="center")
     ax.set_xlim(-0.6, len(rows) - 0.5)
@@ -74,7 +80,7 @@ def main() -> None:
         color=INK,
         pad=24,
     )
-    ax.legend(frameon=False, fontsize=8, ncols=3, loc="lower left", bbox_to_anchor=(0, 1.0))
+    ax.legend(frameon=False, fontsize=8, ncols=4, loc="lower left", bbox_to_anchor=(0, 1.0))
     fig.text(
         0.01,
         0.01,

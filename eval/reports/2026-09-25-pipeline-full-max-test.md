@@ -3,11 +3,12 @@
 | Group | n | Hit@5 | Recall@5 (all gold) | MRR@10 |
 |---|---|---|---|---|
 | english | 63 | 96.8% | 96.0% | 0.927 |
+| fbr | 39 | 87.2% | 87.2% | 0.780 |
 | urdu | 28 | 92.9% | 89.3% | 0.875 |
 | roman_urdu | 28 | 92.9% | 91.1% | 0.824 |
-| all | 119 | 95.0% | 93.3% | 0.891 |
+| all | 158 | 93.0% | 91.8% | 0.863 |
 
-## Misses (6)
+## Misses (11)
 
 | id | gold | top-5 retrieved |
 |---|---|---|
@@ -17,3 +18,8 @@
 | ur-034 | ITO2001-s168 | ITO2001-s146D, ITO2001-s8, ITO2001-s153, ITO2001-s4, ITO2001-s147 |
 | ru-024 | ITO2001-s102 | ITO2001-s51, ITR2002-r43, ITO2001-s43, ITO2001-s101, ITO2001-s44 |
 | ru-034 | ITO2001-s168 | ITO2001-sch4, ITO2001-s8, ITO2001-sch10, ITO2001-s153, ITO2001-s4 |
+| fbr-006 | ITO2001-s2 | ITO2001-s46, ITO2001-s151, ITO2001-s7B, ITO2001-s28, ITO2001-s28 |
+| fbr-008 | ITO2001-s2 | ITR2002-r18, ITO2001-s101, ITO2001-s89, ITO2001-s39, ITO2001-sch5-pI |
+| fbr-013 | ITO2001-s2 | ITO2001-s4C, ITO2001-sch9-pIII, ITO2001-sch9-pIII, ITO2001-s101, ITO2001-s11 |
+| fbr-026 | ITO2001-s70 | ITO2001-s30, ITO2001-s167, ITO2001-s162, ITO2001-s169, ITO2001-s21 |
+| fbr-029 | ITO2001-s21 | ITO2001-sch5-pI, ITO2001-s104, ITO2001-s20, ITO2001-s105, ITR2002-r13 |
