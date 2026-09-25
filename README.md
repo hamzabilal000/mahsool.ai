@@ -17,7 +17,7 @@ from. When the law doesn't cover the question, Mahsool says so.
 | --- | --- | --- |
 | 1 | Repo, ingestion of the Income Tax Ordinance 2001, 90 English eval questions | ✅ done |
 | 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ✅ done |
-| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | 🚧 retrieval, reranker, `/ask` built · ⏳ LLM ablation rows need the Groq key |
+| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · ⏳ end-to-end eval 85/140 test questions (Groq daily limit, D36) |
 | 4 | React chat UI, citation cards, feedback, Postgres logs, Langfuse | |
 | 5 | Fix top failures, Docker, deploy, demo | |
 
@@ -99,17 +99,27 @@ Urdu and Roman Urdu questions are natural rewrites of English ones and share the
 
 **Retrieval ablation: Hit@5 on the held-out test split** (Urdu / Roman Urdu is the target group)
 
+![Retrieval ablation, Hit@5 on the test split](eval/reports/ablation-test.png)
+
 | Setup | English | Urdu | Roman Urdu |
 | --- | --- | --- | --- |
 | BM25 keywords (no model) | 87.3% | 3.6% | 50.0% |
 | BGE-M3 sparse only | 92.1% | 7.1% | 60.7% |
 | Dense only (BGE-M3), original query | 98.4% | 78.6% | 57.1% |
 | + sparse (hybrid, RRF) — **baseline** | 95.2% | 78.6% | 67.9% |
-| + direct section lookup | 96.8% | 78.6% | 67.9% |
-| + reranker (bge-reranker-v2-m3, top 30), no rewrite | 96.8% | **92.9%** | 64.3% |
-| + English query rewrite | _pending key_ | _pending key_ | _pending key_ |
-| + rewrite + reranker | _pending key_ | _pending key_ | _pending key_ |
-| + glossary in rewrite (full pipeline) | _pending key_ | _pending key_ | _pending key_ |
+| + direct section lookup (in every row below) | 96.8% | 78.6% | 67.9% |
+| + reranker (bge-reranker-v2-m3, top 30), no rewrite | 96.8% | 92.9% | 64.3% |
+| + English query rewrite (GPT OSS 20B), no reranker | **98.4%** | **100%** | **89.3%** |
+| + rewrite + reranker | 96.8% | 89.3% | 71.4% |
+| + glossary in rewrite = **full pipeline** (`/ask` default) | 96.8% | 92.9% | 75.0% |
+| full pipeline, reranking with max(question, rewrite) score (dev experiment, not the default) | 96.8% | 92.9% | 92.9% |
+
+The rewrite is the big win (Roman Urdu 67.9% → 89.3%). The reranker then undoes part of it for Urdu and Roman Urdu:
+it scores chunks against the original question, which it reads poorly in Roman Urdu. On the dev split the full
+pipeline was the best setup overall, so it stays the default. Letting the reranker also score the English rewrite
+(`full-max`, last row and the bar marked * in the chart) was tried on dev first: +1 Roman Urdu question there, at
+twice the reranker time, so it wasn't adopted. On test it brings Roman Urdu to 92.9%. Whether to adopt it is decided
+in Milestone 5 with the reranker latency work ([D33](docs/DECISIONS.md)).
 
 **Hybrid baseline, test split (119 in-scope questions):**
 
@@ -128,10 +138,16 @@ were written from the section text (D20), and no question is hand-verified yet. 
 
 | Metric | Target | Result |
 | --- | --- | --- |
-| Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | lookup + reranker: 92.9% / 64.3%; Roman Urdu needs the query rewrite |
-| Answer correctness | ≥ 85% | _Milestone 3_ |
-| Answers with a correct citation | ≥ 90% | _Milestone 3_ |
-| Correct refusal on out-of-scope questions | ≥ 90% | _Milestone 3_ |
+| Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | full pipeline: Urdu 92.9% ✅ / Roman Urdu 75.0% ❌ (rewrite without reranker: 100% / 89.3%, D33) |
+| Answer correctness | ≥ 85% | not scored yet: needs a judge and verified reference answers (D35) |
+| Answers with a correct citation | ≥ 90% | 98.6% of answered in-scope questions (68 of 69; 94.4% of the 72 run) — partial* |
+| Correct refusal on out-of-scope questions | ≥ 90% | 13 / 13 run — partial*, and the 8 not run are the harder ones |
+
+\* End-to-end on the test split ([`eval/run_e2e.py`](eval/run_e2e.py)) covered 85 of 140 questions before Groq's
+free-tier limit of 200k tokens a day on GPT OSS 120B stopped it (D36): all 63 English questions, 7 Urdu, 2 Roman
+Urdu (both wrongly refused by the reranker-score check) and 13 out-of-scope. Re-running
+`python -m eval.run_e2e --split test` resumes from the cache. Report:
+[`eval/reports/2026-09-25-e2e-test.md`](eval/reports/2026-09-25-e2e-test.md).
 | Median latency | < 4 s | _Milestone 4_ |
 
 ## Run locally (no Docker)
@@ -180,7 +196,8 @@ Interactive docs at http://localhost:8000/docs. Every response is
 On a laptop CPU the reranker makes each answer slow (tens of seconds); see DECISIONS D26.
 
 **Ablation presets:** `python -m eval.run_eval --pipeline {lookup, lookup-rerank, rewrite, rewrite-rerank, full}
---split test`. LLM and reranker outputs are cached in `eval/cache/`, so re-runs are fast and reproducible.
+--split test`, then `python -m eval.plot_ablation` for the chart. End to end: `python -m eval.run_e2e --split test`.
+LLM and reranker outputs are cached in `eval/cache/`, so re-runs are fast and reproducible without a key.
 
 **Postgres** (conversation logs and feedback, needed from Milestone 4): create a free project on
 [Neon](https://neon.tech) and paste its connection string into `DATABASE_URL` in `.env`.
@@ -207,7 +224,8 @@ backend/app/         main.py (FastAPI), api/ask.py, service.py (guardrails), con
 backend/app/rag/     embedder, Qdrant store, BM25, RRF, retriever, lookup, query_rewrite, reranker,
                      pipeline, generator, citations
 data/glossary_ur.csv Urdu / Roman Urdu → legal English glossary used by the query rewrite
-eval/                testset.jsonl (200 Qs), validator, run_eval.py, REVIEW.md checklist, reports/, cache/
+eval/                testset.jsonl (200 Qs), validator, run_eval.py (retrieval), run_e2e.py (/ask end to end),
+                     plot_ablation.py, REVIEW.md checklist, reports/, cache/
 data/processed/      committed chunks, coverage report and spot-check sample per law snapshot
 data/sources.manifest.json   URL, version date and SHA-256 of every source PDF
 tests/               unit tests + regression tests on the real outputs

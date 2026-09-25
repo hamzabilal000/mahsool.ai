@@ -102,6 +102,9 @@ class GroqClient:
                         return json.loads(content)
                     except json.JSONDecodeError:
                         err = f"model returned invalid JSON: {content[:200]!r}"
+                elif r.status_code == 429 and "per day" in r.text:
+                    # Daily quota (free tier): it frees up over hours, so retrying is pointless.
+                    raise LLMError(f"daily limit reached: {r.text[:200]}")
                 elif r.status_code in (429, 500, 502, 503, 504) or (
                     r.status_code == 400 and "json_validate_failed" in r.text
                 ):

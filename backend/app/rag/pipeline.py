@@ -29,6 +29,9 @@ class PipelineConfig:
     rerank: bool = True
     candidates: int = 30  # chunks passed to the reranker
     max_pieces_per_lookup: int = 3  # pieces of a named section pinned on top
+    # "max": score each chunk against the question and the first English rewrite, keep the
+    # higher score (DECISIONS D33). Doubles the reranker cost.
+    rerank_query: Literal["original", "max"] = "original"
 
 
 @dataclass
@@ -109,7 +112,11 @@ class RAGPipeline:
 
         if cfg.rerank and self.reranker is not None:
             pool = pinned + found
-            scores = self.reranker.score(question, [embedding_text(c.chunk) for c in pool])
+            texts = [embedding_text(c.chunk) for c in pool]
+            scores = self.reranker.score(question, texts)
+            if cfg.rerank_query == "max" and plan.queries:
+                alt = self.reranker.score(plan.queries[0], texts)
+                scores = [max(a, b) for a, b in zip(scores, alt, strict=True)]
             for c, s in zip(pool, scores, strict=True):
                 c.rerank_score = s
             pinned.sort(key=lambda c: -(c.rerank_score or 0.0))

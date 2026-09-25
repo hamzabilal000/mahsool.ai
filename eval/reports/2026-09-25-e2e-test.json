@@ -1,0 +1,2263 @@
+{
+ "summary": {
+  "english": {
+   "n": 63,
+   "answered": 0.9841,
+   "correct_citation": 0.9683,
+   "correct_citation_answered": 0.9839
+  },
+  "in_scope": {
+   "n": 72,
+   "answered": 0.9583,
+   "correct_citation": 0.9444,
+   "correct_citation_answered": 0.9855
+  },
+  "urdu": {
+   "n": 7,
+   "answered": 1.0,
+   "correct_citation": 1,
+   "correct_citation_answered": 1
+  },
+  "roman_urdu": {
+   "n": 2,
+   "answered": 0.0,
+   "correct_citation": 0,
+   "correct_citation_answered": null
+  },
+  "out_of_scope": {
+   "n": 13,
+   "refused": 1
+  },
+  "not_run": [
+   "ur-019",
+   "ur-020",
+   "ur-021",
+   "ur-023",
+   "ur-024",
+   "ur-025",
+   "ur-026",
+   "ur-027",
+   "ur-028",
+   "ur-029",
+   "ur-030",
+   "ur-031",
+   "ur-032",
+   "ur-033",
+   "ur-034",
+   "ur-035",
+   "ur-036",
+   "ur-037",
+   "ur-038",
+   "ur-039",
+   "ur-040",
+   "ru-013",
+   "ru-014",
+   "ru-015",
+   "ru-016",
+   "ru-017",
+   "ru-018",
+   "ru-019",
+   "ru-020",
+   "ru-021",
+   "ru-022",
+   "ru-024",
+   "ru-025",
+   "ru-026",
+   "ru-027",
+   "ru-028",
+   "ru-029",
+   "ru-030",
+   "ru-031",
+   "ru-032",
+   "ru-033",
+   "ru-034",
+   "ru-035",
+   "ru-037",
+   "ru-038",
+   "ru-039",
+   "ru-040",
+   "oos-004",
+   "oos-008",
+   "oos-011",
+   "oos-017",
+   "oos-018",
+   "oos-025",
+   "oos-026",
+   "oos-030"
+  ]
+ },
+ "rows": [
+  {
+   "id": "en-001",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s4"
+   ],
+   "cited": [
+    "ITO2001-s4"
+   ],
+   "citation_correct": true,
+   "answer": "Section 4 imposes income tax on the taxable income of every person who has taxable income for the tax year, and the tax is levied at the rate or rates specified in Division I or Division II of Part I of the First Schedule, as applicable (tax year 2027).",
+   "search_queries": [
+    "What does section 4 of the Income Tax Ordinance impose tax on and at which rates?",
+    "Section 4 of the Income Tax Ordinance tax rates for income categories",
+    "Taxable items under section 4 of the Income Tax Ordinance"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 911,
+    "answer": 0,
+    "total": 911
+   }
+  },
+  {
+   "id": "en-002",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "cited": [
+    "ITO2001-s4AB"
+   ],
+   "citation_correct": true,
+   "answer": "The surcharge under section 4AB is levied at a rate of ten percent of the income tax payable[1]. It applies to individuals and associations of persons whose taxable income exceeds Rs 10 million, except that no surcharge is payable on income chargeable under the head “Salary”[1].",
+   "search_queries": [
+    "What is the rate of surcharge under section 4AB and at what taxable income level is it applied?",
+    "Surcharge rate under section 4AB for taxable income above specified threshold",
+    "Section 4AB surcharge threshold and applicable rate in income tax ordinance"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 867,
+    "answer": 0,
+    "total": 868
+   }
+  },
+  {
+   "id": "en-005",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s4C",
+    "ITO2001-sch1-pI-divIIB"
+   ],
+   "cited": [
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-s4C"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, a banking company whose income exceeds Rs. 150 million is subject to a super tax of 10 % of that income.",
+   "search_queries": [
+    "What is the super tax rate for a banking company whose income exceeds Rs. 150 million?",
+    "super tax on high earning persons rate for companies with income above Rs. 150 million",
+    "super tax rate for banking company exceeding Rs. 150 million income"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 922,
+    "answer": 0,
+    "total": 922
+   }
+  },
+  {
+   "id": "en-006",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-sch1-pI-divIIB"
+   ],
+   "cited": [
+    "ITO2001-sch1-pI-divIIB"
+   ],
+   "citation_correct": true,
+   "answer": "The super tax rate is 8% of the income for a person (who is not a banking company, a fertilizer seller, or a Fifth‑Schedule person) whose income exceeds Rs. 500 million (Division IIB, Table, tax year 2027 onwards).",
+   "search_queries": [
+    "What super tax rate applies to a person other than a bank, a fertilizer seller or a Fifth Schedule person whose income exceeds Rs. 500 million?",
+    "Super tax rate for high earning persons under section 4C of the Income Tax Ordinance 2001",
+    "Conditions for applicability of super tax on persons with income above Rs. 500 million under the Income Tax Rules 2002"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 998,
+    "answer": 0,
+    "total": 998
+   }
+  },
+  {
+   "id": "en-008",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s7B"
+   ],
+   "cited": [
+    "ITO2001-s7B"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, section 7B does not apply when the profit on debt exceeds Rs 5 million, as the provision expressly excludes such amounts. Consequently, no separate tax under section 7B is levied on profit on debt that is above the five‑million‑rupee threshold.[1]",
+   "search_queries": [
+    "Does the separate tax on profit on debt under section 7B apply if my profit on debt exceeds Rs. 5 million?",
+    "What is the rate of the separate tax on profit on debt under section 7B?",
+    "What is the threshold for the separate tax on profit on debt under section 7B?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 940,
+    "answer": 0,
+    "total": 940
+   }
+  },
+  {
+   "id": "en-010",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s11"
+   ],
+   "cited": [
+    "ITO2001-s11"
+   ],
+   "citation_correct": true,
+   "answer": "The heads of income are Salary, Income from Property, Income from Business, Capital Gains and Income from Other Sources (tax year 2027 onwards).",
+   "search_queries": [
+    "What are the heads of income under the Income Tax Ordinance?",
+    "Heads of income under Income Tax Ordinance 2001",
+    "Definition of heads of income in Income Tax Ordinance"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 933,
+    "answer": 0,
+    "total": 933
+   }
+  },
+  {
+   "id": "en-011",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "cited": [
+    "ITO2001-s12"
+   ],
+   "citation_correct": true,
+   "answer": "Yes, overtime payments and bonuses are included in salary for income‑tax purposes; Section 12 of the Income Tax Ordinance lists overtime payment and bonus among the amounts that constitute salary and are chargeable under the head “Salary”.",
+   "search_queries": [
+    "Are overtime payments and bonuses part of salary for income tax purposes?",
+    "Does the Income Tax Ordinance 2001 treat overtime payments and bonuses as part of the head salary for tax calculation?",
+    "What is the withholding tax rate applicable to overtime payments and bonuses under the Income Tax Rules 2002?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 997,
+    "answer": 0,
+    "total": 997
+   }
+  },
+  {
+   "id": "en-013",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s13",
+    "ITR2002-r5"
+   ],
+   "cited": [
+    "ITO2001-s13",
+    "ITR2002-r5"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, a motor vehicle provided by an employer for an employee’s private use is treated as a taxable perquisite under the head “Salary” and its value must be included in the employee’s income as prescribed.  The valuation is prescribed in Rule 5 of the Income‑Tax Rules 2002, which sets the taxable amount at 5 % of the employer’s cost (or fair market value if leased) for partial private use and 10 % of the cost (or FMV) for full private use【1】【2】",
+   "search_queries": [
+    "tax on motor vehicle provided by employer for private use",
+    "tax deduction at source for motor vehicle provided by employer for private use",
+    "tax rate for motor vehicle provided by employer for private use"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 937,
+    "answer": 0,
+    "total": 937
+   }
+  },
+  {
+   "id": "en-014",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s15"
+   ],
+   "cited": [
+    "ITO2001-s15",
+    "ITO2001-s2"
+   ],
+   "citation_correct": true,
+   "answer": "Under section 15, “rent” means any amount received or receivable by the owner of land or a building as consideration for the use or occupation of, or the right to use or occupy, that land or building, and it also includes any forfeited deposit paid under a contract for the sale of land or a building [1]. The definition is reiterated in the definitions section of the Ordinance, which states that “rent” means rent as defined in sub‑section (2) of section 15 and includes an amount treated as rent under section 16 [2]. Additionally, any amount included in rent for the provision of amenities, utilities or other services connected with the renting of the building is also chargeable to tax, though under the head “Income from Other Sources” [1].",
+   "search_queries": [
+    "What counts as 'rent' under section 15 of the Income Tax Ordinance?",
+    "Definition of rent for income tax purposes under section 15",
+    "Conditions for rent to be taxable under section 15 of the Income Tax Ordinance"
+   ],
+   "warnings": [
+    "Mentions sections not among the cited sources: 16"
+   ],
+   "timings_ms": {
+    "search": 2775,
+    "answer": 0,
+    "total": 2776
+   }
+  },
+  {
+   "id": "en-015",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s41"
+   ],
+   "cited": [
+    "ITO2001-s41"
+   ],
+   "citation_correct": true,
+   "answer": "Agricultural income is exempt from tax under the federal Income Tax Ordinance for the tax year 2027 onward.",
+   "search_queries": [
+    "Is agricultural income taxable under the federal Income Tax Ordinance?",
+    "Taxable agricultural income under Income Tax Ordinance 2001",
+    "Exemption of agricultural income in Income Tax Ordinance 2001"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 776,
+    "answer": 0,
+    "total": 777
+   }
+  },
+  {
+   "id": "en-016",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s47"
+   ],
+   "cited": [
+    "ITO2001-s47"
+   ],
+   "citation_correct": true,
+   "answer": "No, a scholarship received to meet the cost of your education is exempt from tax for tax year 2027, unless the scholarship is paid directly or indirectly by an associate.",
+   "search_queries": [
+    "Is a scholarship received to pay for my education taxable?",
+    "scholarship under s47 taxability",
+    "scholarship income under s12 salary"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 884,
+    "answer": 0,
+    "total": 884
+   }
+  },
+  {
+   "id": "en-017",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s48"
+   ],
+   "cited": [
+    "ITO2001-s48"
+   ],
+   "citation_correct": true,
+   "answer": "Support money received by a spouse under an agreement to live apart is exempt from tax for tax year 2027.",
+   "search_queries": [
+    "Is support money received by a spouse under an agreement to live apart taxable?",
+    "Tax treatment of spousal support payments under the Income Tax Ordinance 2001",
+    "Conditions for deductibility of spousal support in income tax returns"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 809,
+    "answer": 0,
+    "total": 810
+   }
+  },
+  {
+   "id": "en-019",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s50"
+   ],
+   "cited": [
+    "ITO2001-s50"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, a short‑term resident individual’s foreign‑source income is exempt if the person is resident in Pakistan solely because of employment and has been present in Pakistan for periods not exceeding three years, provided the income is not from a business established in Pakistan and is not brought into or received in Pakistan. [1]",
+   "search_queries": [
+    "When is the foreign-source income of a short-term resident individual exempt?",
+    "foreign-source income exemption for short-term resident individual under Income Tax Ordinance 2001",
+    "short-term resident individual foreign-source income exemption conditions"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 876,
+    "answer": 0,
+    "total": 876
+   }
+  },
+  {
+   "id": "en-020",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s57"
+   ],
+   "cited": [
+    "ITO2001-s57"
+   ],
+   "citation_correct": true,
+   "answer": "For the tax year 2027, an unabsorbed business loss can be carried forward for up to six tax years immediately succeeding the year in which the loss was first computed, unless a specific provision applies (e.g., ten years for certain government‑owned banks, eight years for resident hotel companies, etc.).",
+   "search_queries": [
+    "For how many years can an unabsorbed business loss be carried forward?",
+    "Duration of carry forward of unabsorbed business loss under Income Tax Ordinance 2001",
+    "Conditions for carrying forward unabsorbed business loss in Income Tax Rules 2002"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 858,
+    "answer": 0,
+    "total": 858
+   }
+  },
+  {
+   "id": "en-022",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s60"
+   ],
+   "cited": [
+    "ITO2001-s60",
+    "ITO2001-s40"
+   ],
+   "citation_correct": true,
+   "answer": "You may claim a deduction for Zakat that you have actually paid in the tax year, as provided in Section 60 and also under Section 40 for profit‑on‑debt income. However, any portion of the Zakat allowance that cannot be used as a deduction in that year cannot be refunded, carried forward to a later year, or carried back to an earlier year.[1, 3]",
+   "search_queries": [
+    "Can I claim Zakat paid as a deduction and can unused Zakat be carried forward?",
+    "Rate of deduction for Zakat under Income Tax Ordinance 2001 Section 60",
+    "Procedure for carrying forward unused Zakat under Income Tax Ordinance 2001"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 827,
+    "answer": 0,
+    "total": 828
+   }
+  },
+  {
+   "id": "en-023",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s60D"
+   ],
+   "cited": [
+    "ITO2001-s60D"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, any individual whose taxable income is less than Rs 1.5 million may claim a deductible allowance for tuition fees paid for his/her children; the allowance can be applied against the tax liability of either parent who actually made the payment and provided the NTN or the institution’s name. The amount allowed is the lesser of (a) 5 % of the total tuition fees paid, (b) 25 % of the individual’s taxable income, or (c) Rs 60,000 multiplied by the number of children [1].",
+   "search_queries": [
+    "Who can claim the deductible allowance for children's tuition fee and how much?",
+    "Eligibility for deduction of education expenses for children under section 60D",
+    "Maximum amount of tuition fee deduction for children under section 60D"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 958,
+    "answer": 0,
+    "total": 958
+   }
+  },
+  {
+   "id": "en-024",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s60A"
+   ],
+   "cited": [
+    "ITO2001-s60A"
+   ],
+   "citation_correct": true,
+   "answer": "Yes. Under Section 60A of the Income Tax Ordinance a person is entitled to a deductible allowance for any Workers’ Welfare Fund paid by the person in the tax year, except where the amount is paid to a province by a trans‑provincial establishment.",
+   "search_queries": [
+    "Is Workers' Welfare Fund paid by a business deductible?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 527,
+    "answer": 0,
+    "total": 528
+   }
+  },
+  {
+   "id": "en-025",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s61"
+   ],
+   "cited": [
+    "ITO2001-s61"
+   ],
+   "citation_correct": true,
+   "answer": "Yes, a donation to a public university qualifies for a tax credit under Section 61 of the Income Tax Ordinance, provided the donation is made by crossed cheque and the credit is calculated as the lesser of the total donation (or its FMV) and 30 % of your taxable income (for an individual) or 20 % (for a company) for the tax year 2027.",
+   "search_queries": [
+    "Do I get a tax benefit for donating to a public university?",
+    "deduction of tax at source from salary for donations to public university",
+    "return of income for donations to public university"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 806,
+    "answer": 0,
+    "total": 806
+   }
+  },
+  {
+   "id": "en-026",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s63"
+   ],
+   "cited": [
+    "ITO2001-s63"
+   ],
+   "citation_correct": true,
+   "answer": "An eligible person (as defined in sub‑section 19A of section 2) who derives income chargeable to tax under the head “Salary” or the head “Income from Business” is entitled to a tax credit for any contribution or premium paid in the year to an approved pension fund under the Voluntary Pension System Rules [1].",
+   "search_queries": [
+    "Who is entitled to a tax credit for contributions to an approved pension fund?",
+    "What conditions must be met for a taxpayer to claim the tax credit under section 65 for contributions to an approved pension fund?",
+    "How does a taxpayer apply for the tax credit for approved pension fund contributions in the Income Tax Ordinance 2001?"
+   ],
+   "warnings": [
+    "Mentions sections not among the cited sources: 19A, 2"
+   ],
+   "timings_ms": {
+    "search": 978,
+    "answer": 0,
+    "total": 978
+   }
+  },
+  {
+   "id": "en-027",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s63A"
+   ],
+   "cited": [
+    "ITO2001-s63A"
+   ],
+   "citation_correct": true,
+   "answer": "Yes. Under Section 63A of the Income Tax Ordinance, an individual can claim a tax credit for the profit on debt (interest) paid on a low‑cost housing loan used to construct or acquire a personal house, calculated by the formula (A/B) × C and limited to the lesser of the actual profit paid or 30 % of taxable income; profit deductible under Section 15A is excluded. This applies for tax year 2027 onward.",
+   "search_queries": [
+    "Is there a tax credit for profit paid on a housing loan?",
+    "tax credit for interest paid on housing loan under s65",
+    "deduction of tax at source from salary for housing loan interest"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation",
+    "Mentions sections not among the cited sources: 15A"
+   ],
+   "timings_ms": {
+    "search": 805,
+    "answer": 0,
+    "total": 805
+   }
+  },
+  {
+   "id": "en-028",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s74"
+   ],
+   "cited": [
+    "ITO2001-s74",
+    "ITO2001-s2"
+   ],
+   "citation_correct": true,
+   "answer": "Under the Income Tax Ordinance, a \"tax year\" is a twelve‑month period ending on 30 June and is normally identified by the calendar year in which that date falls (the “normal tax year”) [1]. A person may be permitted to use a different twelve‑month period as a “special tax year” if the Commissioner approves an application, and such special year is also denoted by the calendar year in which its closing date falls [1]. The definition of “tax year” in the Ordinance’s definitions section refers back to this provision in section 74 [3].",
+   "search_queries": [
+    "What is the 'tax year' under the Income Tax Ordinance?",
+    "definition of tax year in Income Tax Ordinance 2001",
+    "tax year period July 1 to June 30 under Income Tax Ordinance"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 752,
+    "answer": 0,
+    "total": 752
+   }
+  },
+  {
+   "id": "en-029",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82",
+    "ITR2002-r14"
+   ],
+   "citation_correct": true,
+   "answer": "An individual must be present in Pakistan for at least one hundred and eighty‑three days in aggregate during the tax year to be deemed a resident individual [1]. For this purpose, any part of a day in which the individual is present (including arrival and departure days) is counted as a full day, except days spent in transit, as per Rule 14 of the Income Tax Rules [2].",
+   "search_queries": [
+    "How many days must an individual be present in Pakistan to be a resident individual?",
+    "What is the residence test days requirement for a resident person under the Income Tax Ordinance 2001?",
+    "What are the conditions for a person to be considered a resident individual for income tax purposes in Pakistan?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 838,
+    "answer": 0,
+    "total": 838
+   }
+  },
+  {
+   "id": "en-030",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82",
+    "ITR2002-r14"
+   ],
+   "citation_correct": true,
+   "answer": "Yes. Under Section 82 an individual is a resident if he is present in Pakistan for a total of 183 days or more in the tax year, or if he is a federal or provincial employee posted abroad, provided he does not stay in any other country for more than 182 days and is not a resident taxpayer elsewhere. Rule 14 explains that any part of a day in Pakistan (including arrival and departure days and public holidays, leave, strike days, etc.) counts as a full day for this purpose. Thus a Pakistani citizen who spends much of the year abroad can still be a resident individual if he meets the 183‑day presence test or qualifies under the government‑posted‑abroad exception.",
+   "search_queries": [
+    "Can a Pakistani citizen who spends much of the year abroad still be a resident individual?",
+    "What are the conditions for a resident individual under s81 and s82 of the Income Tax Ordinance 2001?",
+    "How does spending time abroad affect the status of a resident person for income tax purposes?"
+   ],
+   "warnings": [
+    "3 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 871,
+    "answer": 0,
+    "total": 872
+   }
+  },
+  {
+   "id": "en-031",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s83"
+   ],
+   "cited": [
+    "ITO2001-s83",
+    "ITO2001-s2"
+   ],
+   "citation_correct": true,
+   "answer": "A company is treated as a resident company for a tax year if it satisfies any one of the following conditions: (a) it is incorporated or formed under any law in force in Pakistan; (b) the control and management of its affairs are wholly situated in Pakistan at any time during the year; or (c) it is a Provincial or Local Government in Pakistan. This definition applies for tax year 2027 onward.[1, 3]",
+   "search_queries": [
+    "resident company definition under Income Tax Ordinance 2001",
+    "conditions for a company to be treated as resident under s81 s82",
+    "resident company status for tax purposes"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 827,
+    "answer": 0,
+    "total": 827
+   }
+  },
+  {
+   "id": "en-032",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s102"
+   ],
+   "cited": [
+    "ITO2001-s102"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, a resident individual’s foreign‑source salary is exempt from Pakistani tax provided the individual has paid foreign income tax on that salary, such as tax withheld by the employer and remitted to the foreign revenue authority. Hence, if foreign tax has already been paid, the salary is not taxed in Pakistan.[2]",
+   "search_queries": [
+    "Is foreign salary received by a resident individual taxed in Pakistan if tax was already paid abroad?",
+    "taxation of foreign salary for resident individuals under section 12 and 149 of the Income Tax Ordinance 2001",
+    "resident individual foreign salary tax credit under section 80 of the Income Tax Ordinance 2001"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1038,
+    "answer": 0,
+    "total": 1038
+   }
+  },
+  {
+   "id": "en-033",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s103"
+   ],
+   "cited": [
+    "ITO2001-s103"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027 the foreign tax credit on foreign‑source income is limited to the lesser of (a) the foreign income tax actually paid (including foreign withholding tax) or (b) the Pakistan tax that would be payable on that income, which is calculated by applying the taxpayer’s average Pakistan tax rate for the year to the net foreign‑source income. The credit is applied head‑by‑head and cannot exceed the Pakistan tax liability on that head of income.",
+   "search_queries": [
+    "How much foreign tax credit is allowed on foreign-source income?",
+    "Foreign tax credit calculation under section 103 and 107 of the Income Tax Ordinance 2001",
+    "Conditions for claiming foreign tax credit as per section 65 of the Income Tax Ordinance 2001"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 945,
+    "answer": 0,
+    "total": 945
+   }
+  },
+  {
+   "id": "en-034",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s101"
+   ],
+   "cited": [
+    "ITO2001-s101"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, salary is Pakistan‑source income if it is received from any employment exercised in Pakistan, wherever it is paid, or if it is paid by, or on behalf of, the Federal Government, a Provincial Government or a Local Government in Pakistan, wherever the employment is exercised.[1]",
+   "search_queries": [
+    "When is salary considered Pakistan-source income?",
+    "Salary as Pakistan-source income under s12 of Income Tax Ordinance 2001",
+    "Conditions for salary to be treated as Pakistan-source income"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 825,
+    "answer": 0,
+    "total": 825
+   }
+  },
+  {
+   "id": "en-035",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s111"
+   ],
+   "cited": [
+    "ITO2001-s111",
+    "ITO2001-s111"
+   ],
+   "citation_correct": true,
+   "answer": "If you cannot explain the nature and source of an investment, money, valuable article or the funds used for an expenditure, the amount will be deemed unexplained and must be included in your taxable income. The unexplained amount is added to income from Other Sources, or if it relates to suppressed production, sales or receipts, to income from Business, in the tax year to which it relates if the asset is situated in Pakistan or is Pakistan‑source, or in the preceding tax year if it is foreign‑source and discovered later [1]. The Commissioner may also include any shortfall between the declared cost and a reasonable cost of the investment or expenditure as income from Other Sources [2]. An exception applies where foreign exchange up to Rs 5 million is remitted through normal banking channels and a bank certificate is produced; such amounts are not subject to the provisions of section 111 [2].",
+   "search_queries": [
+    "What happens if I cannot explain the source of an investment or money I own?",
+    "persons not appearing in the active taxpayers' list and source of income disclosure",
+    "return of income and proof of source of funds"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 886,
+    "answer": 0,
+    "total": 887
+   }
+  },
+  {
+   "id": "en-036",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s113"
+   ],
+   "cited": [
+    "ITO2001-s113"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, section 113 applies to a resident company, a permanent establishment of a non‑resident company, an individual whose turnover is Rs 100 million or more in the tax year, and an association of persons whose turnover is Rs 100 million or more in the tax year, where the tax payable is nil or less than the minimum tax percentage of turnover specified in the First Schedule.[1]",
+   "search_queries": [
+    "Which persons are covered by minimum tax under section 113?",
+    "Persons not appearing in the active taxpayers' list for minimum tax under s.113",
+    "Minimum tax rate and conditions for persons under s.113"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 913,
+    "answer": 0,
+    "total": 913
+   }
+  },
+  {
+   "id": "en-037",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "cited": [
+    "ITO2001-s114"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, a return of income must be furnished by (a) every company; (ab) every non‑company person whose taxable income exceeds the maximum amount not chargeable to tax; (ac) any non‑profit organization as defined in the Ordinance; (ae) every person whose income is subject to final taxation; (b) any person not covered by the foregoing who (i) has been taxed in either of the two preceding years, (ii) claims a loss carry‑forward, (iii) owns immovable property of at least 500 sq yds or a flat in specified municipal areas, (iv) owns immovable property of at least 500 sq yds in a rating area, (v) owns a flat of at least 2,000 sq ft in a rating area, (vi) owns a motor vehicle with engine capacity above 1,000 cc, (vii) has obtained a National Tax Number, (viii) holds a commercial/industrial electricity connection with annual bill over Rs 500,000, (ix) is a resident registered with a chamber of commerce, professional body or similar, or (x) is a resident individual required to file a foreign income and assets statement; (c) any persons or classes notified by the Board with the Minister’s approval; and (1A) every individual whose business income is between Rs 300,000 and Rs 400,000. [1]",
+   "search_queries": [
+    "Who is required to file a return of income under the Income Tax Ordinance 2001?",
+    "Which persons are required to file a return of income as per the Income Tax Rules 2002?",
+    "What are the filing requirements for a return of income for individuals and companies?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 832,
+    "answer": 0,
+    "total": 833
+   }
+  },
+  {
+   "id": "en-039",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "cited": [
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, a widow is exempt from filing a return of income solely because she owns immovable property such as a 500‑square‑yard house. Section 115 expressly lists a widow among persons not required to furnish a return for reasons covered by sub‑clauses (iii)‑(vi) of clause (b) of section 114, which include ownership of immovable property of 500 sq yds or more.[1][2]",
+   "search_queries": [
+    "Does a widow who owns a 500 square yard house have to file a return only because of that property?",
+    "Is filing a return required for a widow owning immovable property under s.114 of the Income Tax Ordinance 2001?",
+    "Does ownership of a 500 square yard house trigger return filing for a widow under s.236C or s.236K?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 978,
+    "answer": 0,
+    "total": 979
+   }
+  },
+  {
+   "id": "en-041",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s116"
+   ],
+   "cited": [
+    "ITO2001-s116"
+   ],
+   "citation_correct": true,
+   "answer": "The Commissioner, by written notice, may require an individual to submit a wealth statement in the prescribed form and verified manner that includes: (a) the person’s total assets and liabilities, including foreign assets and liabilities; (b) the total assets and liabilities of the person’s spouse (if dependent), minor children and other dependents; (c) any assets transferred by the person to another person during the period specified and the consideration received; (d) the total expenditures incurred by the person, spouse, minor children and other dependents during the period specified and details of those expenditures; and (e) a reconciliation statement of wealth. [1]",
+   "search_queries": [
+    "What can the Commissioner ask for in a wealth statement?",
+    "Information required in a wealth statement under s116 of the Income Tax Ordinance 2001",
+    "Commissioner powers under s233 regarding wealth statement"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 767,
+    "answer": 0,
+    "total": 768
+   }
+  },
+  {
+   "id": "en-042",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "cited": [
+    "ITO2001-s118"
+   ],
+   "citation_correct": true,
+   "answer": "A salaried individual must file the income‑tax return on or before the 30th day of September following the end of the tax year.",
+   "search_queries": [
+    "What is the due date for a salaried individual to file the return of income?",
+    "What are the due dates specified in s118 and s137 for filing the return of income by a salaried individual?",
+    "What conditions affect the due date for filing the return of income for a salaried individual under the Income Tax Ordinance 2001?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 833,
+    "answer": 0,
+    "total": 834
+   }
+  },
+  {
+   "id": "en-045",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s119"
+   ],
+   "cited": [
+    "ITO2001-s119"
+   ],
+   "citation_correct": true,
+   "answer": "You may apply in writing to the Commissioner for an extension before the return’s due date, stating a reasonable cause such as absence from Pakistan, sickness or any other reasonable reason. The Commissioner can grant an extension of up to fifteen days, and longer periods only in exceptional circumstances. The extension does not alter the due date for payment of the tax itself.[1]",
+   "search_queries": [
+    "How can I get more time to file my return of income",
+    "What is the procedure for requesting an extension for filing return of income",
+    "What conditions allow a taxpayer to obtain additional time to file return of income"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 782,
+    "answer": 0,
+    "total": 783
+   }
+  },
+  {
+   "id": "en-047",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s122"
+   ],
+   "cited": [
+    "ITO2001-s122",
+    "ITO2001-s122"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027 the Commissioner may amend an original assessment order only within five years from the end of the financial year in which the original assessment was issued or treated as issued [1]. If the assessment has already been amended, a further amendment is permitted within the later of (a) five years from the end of the financial year of the original assessment, or (b) one year from the end of the financial year in which the amended assessment was issued [1, 4].",
+   "search_queries": [
+    "How long does the Commissioner have to amend an assessment?",
+    "What is the time limit for the Commissioner to amend an assessment under the Income Tax Ordinance 2001?",
+    "What conditions apply to the amendment of an assessment by the Commissioner?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 920,
+    "answer": 0,
+    "total": 920
+   }
+  },
+  {
+   "id": "en-048",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s131"
+   ],
+   "cited": [
+    "ITO2001-s131"
+   ],
+   "citation_correct": true,
+   "answer": "The appeal must be filed within thirty days of receiving the order of the Commissioner (Appeals) [1].",
+   "search_queries": [
+    "deadline to appeal to the Appellate Tribunal against an order of the Commissioner (Appeals)",
+    "due date for filing appeal to the Appellate Tribunal under s.118 and s.137",
+    "procedure for appealing a Commissioner (Appeals) order under s.127 and s.131"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 863,
+    "answer": 0,
+    "total": 863
+   }
+  },
+  {
+   "id": "en-050",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s137"
+   ],
+   "cited": [
+    "ITO2001-s137"
+   ],
+   "citation_correct": true,
+   "answer": "Income tax on your taxable income is payable on the due date for filing your return of income for the tax year (2027) as specified by the Federal Government.[1]",
+   "search_queries": [
+    "When is income tax on my taxable income due for payment?",
+    "What is the due date for payment of income tax on taxable income under the Income Tax Ordinance 2001?",
+    "What conditions affect the due date for payment of income tax on taxable income?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 817,
+    "answer": 0,
+    "total": 818
+   }
+  },
+  {
+   "id": "en-052",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s147"
+   ],
+   "cited": [
+    "ITO2001-s147"
+   ],
+   "citation_correct": true,
+   "answer": "No, income that is subject to salary withholding under section 149 is excluded from the calculation of quarterly advance tax under section 147; such income is listed among the exemptions in sub‑section (1)(b) of section 147. This applies for tax year 2027.",
+   "search_queries": [
+    "Is income subject to salary withholding under section 149 included when computing quarterly advance tax under section 147?",
+    "Does section 147 advance tax calculation include salary income withheld under section 149?",
+    "What is the relationship between salary withholding under section 149 and advance tax under section 147?"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation",
+    "Mentions sections not among the cited sources: 149"
+   ],
+   "timings_ms": {
+    "search": 857,
+    "answer": 0,
+    "total": 857
+   }
+  },
+  {
+   "id": "en-054",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s149"
+   ],
+   "cited": [
+    "ITO2001-s149",
+    "ITO2001-s12"
+   ],
+   "citation_correct": true,
+   "answer": "Yes. Under Section 149(1A) a pension paid to a former employee who is under 70 years and exceeds Rs 10 million is subject to tax deducted on the amount above Rs 10 million at the rate in Division I of Part I of the First Schedule; the same rule is reflected in Section 12(2A)(i) which treats such pension as a final tax at those rates, while a pension received by a person aged 70 years or more is not taxed. (Tax year 2027)",
+   "search_queries": [
+    "Is tax deducted from pension paid to a retired employee?",
+    "Does deduction of tax at source from pension apply to retired employees?",
+    "What is the rate of tax deducted from pension for retired employees?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 822,
+    "answer": 0,
+    "total": 822
+   }
+  },
+  {
+   "id": "en-057",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s151"
+   ],
+   "cited": [
+    "ITO2001-s151"
+   ],
+   "citation_correct": true,
+   "answer": "Under section 151, the entity that makes the payment of profit on debt – i.e., the payer – must deduct the withholding tax. This includes (a) the person paying yield on a National Savings or Post Office Savings account, (b) a banking company or financial institution paying profit on a debt account or deposit, (c) the Federal, Provincial or Local Government paying profit on a security, (d) a banking company, financial institution or finance society paying profit on bonds, certificates, debentures or similar instruments, and (e) any special‑purpose vehicle or company paying a return on investment in sukuk (sub‑section 1A).[1]",
+   "search_queries": [
+    "Who must deduct withholding tax on profit on debt under section 151?",
+    "What is the withholding tax rate on profit on debt under section 151?",
+    "What conditions apply for deduction of tax at source from profit on debt under section 151?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation",
+    "Mentions sections not among the cited sources: 1A"
+   ],
+   "timings_ms": {
+    "search": 946,
+    "answer": 0,
+    "total": 946
+   }
+  },
+  {
+   "id": "en-058",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s152"
+   ],
+   "cited": [
+    "ITO2001-s152",
+    "ITO2001-s6",
+    "ITO2001-sch1-pI-divIV"
+   ],
+   "citation_correct": true,
+   "answer": "When a resident pays a royalty or a fee for technical services to a non‑resident, the payer must deduct tax at source from the gross amount at the rate prescribed in Division IV of Part I of the First Schedule, which is 15 % of the gross royalty or fee for technical services (10 % applies only to other payments) [1, 2, 4]. The tax is withheld at the time of payment and remitted to the tax authorities for the tax year 2027 onward.",
+   "search_queries": [
+    "tax deducted at source from royalty or fees for technical services paid to non-resident",
+    "rate of tax deducted at source on royalty or fees for technical services paid to non-resident",
+    "procedure for withholding tax on royalty or fees for technical services paid to non-resident"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 913,
+    "answer": 0,
+    "total": 913
+   }
+  },
+  {
+   "id": "en-060",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s153"
+   ],
+   "cited": [
+    "ITO2001-s153"
+   ],
+   "citation_correct": true,
+   "answer": "Payments for services are exempt from withholding under section 153 when the total amount paid to the service provider is less than Rs 30,000 in aggregate during a financial year.",
+   "search_queries": [
+    "Below what yearly total do payments for services escape withholding under section 153?",
+    "Section 153 withholding tax threshold for payments for services",
+    "Annual threshold for services payments exempt from withholding under section 153"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 839,
+    "answer": 0,
+    "total": 839
+   }
+  },
+  {
+   "id": "en-061",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s154A",
+    "ITO2001-sch1-pIII-divIVA"
+   ],
+   "cited": [
+    "ITO2001-sch1-pIII-divIVA",
+    "ITO2001-s154A"
+   ],
+   "citation_correct": true,
+   "answer": "For the tax year 2027, the withholding tax on export proceeds of IT services (including computer software and IT‑enabled services) by an exporter registered and certified with the Pakistan Software Export Board is 0.25 % of the proceeds. This rate is specified in Division IVA of Part III of the First Schedule under section 154A.",
+   "search_queries": [
+    "How much tax is deducted on export proceeds of IT services for an exporter registered with PSEB?",
+    "What is the withholding tax rate on export proceeds of IT and IT-enabled services under PSEB?",
+    "What are the conditions for an exporter to be registered with PSEB for withholding tax purposes?"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 908,
+    "answer": 0,
+    "total": 908
+   }
+  },
+  {
+   "id": "en-062",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-sch1-pIII-divIVA"
+   ],
+   "cited": [
+    "ITO2001-sch1-pIII-divIVA"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, if the exporter is not registered with the Pakistan Software Export Board, the withholding tax deducted on export of services proceeds is 1% of the proceeds.",
+   "search_queries": [
+    "What rate is deducted on export of services proceeds if the exporter is not registered with PSEB?",
+    "Rate of withholding tax on export of services for exporters not registered with PSEB",
+    "Conditions for withholding tax on export of services when exporter is not registered with PSEB"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 838,
+    "answer": 0,
+    "total": 838
+   }
+  },
+  {
+   "id": "en-063",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s155",
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "cited": [
+    "ITO2001-s155",
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, the tenant must withhold Rs.10,000 (5% of the amount exceeding Rs.300,000, i.e., 5% × Rs.200,000) from the Rs.500,000 rent paid to the individual landlord.",
+   "search_queries": [
+    "How much tax should the tenant withhold under section 155 for an individual landlord receiving Rs. 500,000 rent a year?",
+    "What is the withholding tax rate applicable under section 155 for rent income of Rs. 500,000?",
+    "What conditions must be met for withholding tax under section 155 for an individual landlord?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 897,
+    "answer": 0,
+    "total": 898
+   }
+  },
+  {
+   "id": "en-065",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s156",
+    "ITO2001-sch1-pIII-divVI"
+   ],
+   "cited": [
+    "ITO2001-s156",
+    "ITO2001-sch1-pIII-divVI"
+   ],
+   "citation_correct": true,
+   "answer": "For prize bond winnings the payer must deduct 15% of the gross amount paid as withholding tax, and this tax is final under section 156(3). This applies for tax year 2027.",
+   "search_queries": [
+    "deduction of tax at source from prize bond winnings and is it final?",
+    "tax on prizes and winnings under s156 of the Income Tax Ordinance 2001",
+    "final tax on prize bond winnings and withholding tax rate"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 882,
+    "answer": 0,
+    "total": 882
+   }
+  },
+  {
+   "id": "en-066",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-sch1-pIII-divVI"
+   ],
+   "cited": [
+    "ITO2001-sch1-pIII-divVI",
+    "ITO2001-s156"
+   ],
+   "citation_correct": true,
+   "answer": "The withholding tax rate on winnings from a lottery, raffle or quiz is 20% of the gross amount paid for tax year 2027.",
+   "search_queries": [
+    "What is the tax rate on lottery, raffle or quiz winnings?",
+    "Tax rate on prizes and winnings under section 156 of the Income Tax Ordinance 2001",
+    "Tax deduction on lottery, raffle or quiz winnings as per schedule 1 part I division I"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 841,
+    "answer": 0,
+    "total": 841
+   }
+  },
+  {
+   "id": "en-067",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s159"
+   ],
+   "cited": [
+    "ITO2001-s159",
+    "ITR2002-r40FA",
+    "ITO2001-s159"
+   ],
+   "citation_correct": true,
+   "answer": "To stop withholding tax on payments that are exempt or subject to a lower rate, you must obtain an exemption or lower‑rate certificate under section 159.  Submit a written application in the prescribed form (or online for non‑residents under rule 40FA) together with the required information, documents and affidavits, and ensure you have filed all returns and are not in default of any tax liability [1, 2].  The Commissioner will issue the certificate within fifteen days for a company (or deem it issued after fifteen days) and, once issued, the payer must follow the certificate and refrain from deducting tax under Division II or III [1, 3].",
+   "search_queries": [
+    "How can I stop tax being withheld from payments that are exempt or taxed at a lower rate?",
+    "Procedure to claim exemption from withholding tax on payments under Income Tax Ordinance 2001"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 741,
+    "answer": 0,
+    "total": 741
+   }
+  },
+  {
+   "id": "en-068",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s161"
+   ],
+   "cited": [
+    "ITO2001-s161",
+    "ITO2001-s162",
+    "ITO2001-s182"
+   ],
+   "citation_correct": true,
+   "answer": "If a withholding agent fails to deduct tax, the agent becomes personally liable to pay the tax to the Commissioner and may be ordered to recover it from the person from whom the tax should have been collected (Section 161 and Section 162) [5, 4]. The agent is also subject to a penalty of Rs 40,000 or an amount equal to the tax involved, whichever is higher, under the offences and penalties provisions (Section 182) [6]. The agent must be given an opportunity of being heard before recovery is made (Section 161(1A)).",
+   "search_queries": [
+    "What happens if a withholding agent fails to deduct tax?",
+    "Penalty for withholding agent not deducting tax under Income Tax Ordinance 2001",
+    "Remedy for taxpayer if withholding agent fails to deduct tax"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 850,
+    "answer": 0,
+    "total": 851
+   }
+  },
+  {
+   "id": "en-070",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s168"
+   ],
+   "cited": [
+    "ITO2001-sch10",
+    "ITO2001-s4"
+   ],
+   "citation_correct": false,
+   "answer": "Yes. Under the Tenth Schedule, tax deducted or collected at source may be adjusted against the tax payable in the return filed for the relevant tax year, provided the return is filed before provisional assessment or under the specified sub‑rule.[2] This adjustment applies for the tax year 2027 onward.[4]",
+   "search_queries": [
+    "Can I adjust tax deducted at source against my final tax liability?",
+    "Is deduction of tax at source from salary adjustable against final tax under s168?",
+    "What is the procedure for crediting tax deducted at source to final tax liability?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 864,
+    "answer": 0,
+    "total": 865
+   }
+  },
+  {
+   "id": "en-071",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s169"
+   ],
+   "cited": [
+    "ITO2001-s169"
+   ],
+   "citation_correct": true,
+   "answer": "Under section 169, a tax that is deducted or collected as a \"final tax\" means the amount is treated as the full tax liability on that income and is not included in the computation of taxable income (the income is not chargeable under any head) [1]. No deductions, allowances, loss set‑offs or tax credits may be applied to reduce the tax, and the tax cannot be refunded unless the amount deducted exceeds the tax due [1].",
+   "search_queries": [
+    "What does it mean when tax deducted is a 'final tax' under section 169?",
+    "Under what conditions is a deduction treated as a final tax according to section 169 of the Income Tax Ordinance 2001?",
+    "How does section 169 of the Income Tax Ordinance 2001 define the discharge of tax liability by a final tax deduction?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 925,
+    "answer": 0,
+    "total": 926
+   }
+  },
+  {
+   "id": "en-072",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s170"
+   ],
+   "cited": [
+    "ITO2001-s170"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, the Commissioner must decide a refund application within sixty days of receiving it and issue a written order of the decision.",
+   "search_queries": [
+    "time limit for Commissioner to decide refund application under s170",
+    "procedure for refund of excess tax under s170",
+    "duration for Commissioner to decide refund of excess tax"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 858,
+    "answer": 0,
+    "total": 858
+   }
+  },
+  {
+   "id": "en-074",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s174"
+   ],
+   "cited": [
+    "ITO2001-s174",
+    "ITR2002-r29",
+    "ITO2001-s177"
+   ],
+   "citation_correct": true,
+   "answer": "A taxpayer must keep accounts and records for six years after the end of the tax year to which they relate.",
+   "search_queries": [
+    "For how many years must a taxpayer keep accounts and records?",
+    "s174 retention period for accounts and records",
+    "taxpayer record keeping duration under Income Tax Ordinance 2001"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 777,
+    "answer": 0,
+    "total": 777
+   }
+  },
+  {
+   "id": "en-075",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s181"
+   ],
+   "cited": [
+    "ITO2001-s181"
+   ],
+   "citation_correct": true,
+   "answer": "No. Under Section 181(1A) of the Income Tax Ordinance, an online marketplace may not allow any vendor to use its platform for e‑commerce transactions unless the vendor is registered under the Ordinance. This makes it mandatory for all vendors to be registered before they can sell on the platform (tax year 2027).",
+   "search_queries": [
+    "Can an online marketplace let unregistered vendors sell on its platform?",
+    "persons not appearing in the active taxpayers' list",
+    "return of income"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 767,
+    "answer": 0,
+    "total": 767
+   }
+  },
+  {
+   "id": "en-076",
+   "group": "english",
+   "refused": true,
+   "refusal_reason": "NOT_IN_SOURCES",
+   "gold": [
+    "ITO2001-s181A"
+   ],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [
+    "Under which provision does FBR maintain the Active Taxpayers' List?",
+    "Section 181A of the Income Tax Ordinance 2001 regarding the Active Taxpayers' List",
+    "Procedure for maintaining the Active Taxpayers' List under the Income Tax Ordinance 2001"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 850,
+    "answer": 0
+   }
+  },
+  {
+   "id": "en-077",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s182A"
+   ],
+   "cited": [
+    "ITR2002-r81B",
+    "ITO2001-s182A"
+   ],
+   "citation_correct": true,
+   "answer": "Yes, an individual who files the return after the due date can be included in the Active Taxpayers' List, but only if he pays the surcharge of Rs 25,000 as prescribed in the proviso to section 182A(1).",
+   "search_queries": [
+    "Does filing a return after the due date include an individual in the Active Taxpayers' List?",
+    "What are the conditions for inclusion in the Active Taxpayers' List after late filing of a return?",
+    "Is a taxpayer who files a return after the due date considered a taxpayer for the purposes of the Active Taxpayers' List?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 922,
+    "answer": 0,
+    "total": 922
+   }
+  },
+  {
+   "id": "en-080",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s206A"
+   ],
+   "cited": [
+    "ITO2001-s206A",
+    "ITR2002-r231A"
+   ],
+   "citation_correct": true,
+   "answer": "A non‑resident taxpayer (or non‑resident person) may apply in writing for an advance ruling under section 206A of the Income Tax Ordinance, 2001. This is the only category expressly permitted to make the application.[1, 2]",
+   "search_queries": [
+    "Who can apply for an advance ruling under the Income Tax Ordinance?",
+    "Which persons are eligible to apply for an advance ruling under the Income Tax Ordinance?",
+    "What is the procedure for applying for an advance ruling under the Income Tax Ordinance?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 815,
+    "answer": 0,
+    "total": 816
+   }
+  },
+  {
+   "id": "en-083",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s236"
+   ],
+   "cited": [
+    "ITO2001-s236",
+    "ITO2001-sch1-pIV-divV"
+   ],
+   "citation_correct": true,
+   "answer": "Yes. Under section 236, advance tax must be collected on the internet bill of a subscriber and on prepaid internet cards (section 236). The rate is 15 % of the amount of the bill or the sale price of the prepaid internet card (Division V, Part IV of the First Schedule) for tax year 2027.",
+   "search_queries": [
+    "Is advance income tax collected on internet bills and prepaid internet cards?",
+    "What is the withholding tax rate on internet bills?",
+    "Procedure for deducting tax at source from internet bills."
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 843,
+    "answer": 0,
+    "total": 844
+   }
+  },
+  {
+   "id": "en-085",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s236K",
+    "ITO2001-sch1-pIV-divXVIII"
+   ],
+   "cited": [
+    "ITO2001-sch1-pIV-divXVIII",
+    "ITO2001-s236K"
+   ],
+   "citation_correct": true,
+   "answer": "The buyer must pay advance tax equal to 1.25 % of the fair market value of the immovable property at the time of registration, recording or attestation of the transfer.",
+   "search_queries": [
+    "How much advance tax does a buyer pay when purchasing immovable property?",
+    "What is the advance tax rate for purchase of immovable property under s147?",
+    "What conditions apply to advance tax on immovable property purchase?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 780,
+    "answer": 0,
+    "total": 781
+   }
+  },
+  {
+   "id": "en-086",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s236Y",
+    "ITO2001-sch1-pIV-divXXVII"
+   ],
+   "cited": [
+    "ITO2001-sch1-pIV-divXXVII",
+    "ITO2001-s236Y"
+   ],
+   "citation_correct": true,
+   "answer": "Yes. When you pay a foreign merchant using a credit, debit or prepaid card, the banking company must deduct advance tax at the rate of 0.5% of the gross amount remitted abroad, as prescribed under section 236Y and Division XXVII of the First Schedule.",
+   "search_queries": [
+    "deduction of tax at source from payment to foreign merchant by debit/credit card",
+    "tax deducted at source on foreign card transactions",
+    "tax credit for foreign card payments"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 798,
+    "answer": 0,
+    "total": 798
+   }
+  },
+  {
+   "id": "en-087",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s37",
+    "ITO2001-sch1-pI-divVIII"
+   ],
+   "cited": [
+    "ITO2001-sch1-pI-divVIII"
+   ],
+   "citation_correct": true,
+   "answer": "For immovable property disposed of within one year of acquisition, the capital gains tax rate is 15% (applicable to all taxpayers, including those on the Active Taxpayers’ List) for tax year 2027.",
+   "search_queries": [
+    "What capital gains tax rate applies to immovable property sold within one year of acquisition?",
+    "capital gains tax rate on sale of immovable property within one year of acquisition",
+    "capital gains tax rate for immovable property sold within 12 months of acquisition"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 839,
+    "answer": 0,
+    "total": 840
+   }
+  },
+  {
+   "id": "en-088",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s37A",
+    "ITO2001-sch1-pI-divVII"
+   ],
+   "cited": [
+    "ITO2001-sch1-pI-divVII"
+   ],
+   "citation_correct": true,
+   "answer": "For listed shares acquired on or after 1 July 2024 and disposed of by a person who is on the Active Taxpayers’ List, the capital gains tax rate is 15 % when the holding period does not exceed one year (the rate is specified for ATL persons in the table for that acquisition period).",
+   "search_queries": [
+    "What capital gains tax applies to listed shares acquired after 1 July 2024 and sold by a person on the Active Taxpayers' List?",
+    "capital gains tax on listed shares acquired after 1 July 2024 under s37A",
+    "capital gains tax for persons on Active Taxpayers' List under s181A"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 938,
+    "answer": 0,
+    "total": 939
+   }
+  },
+  {
+   "id": "en-089",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-sch1-pI-divI"
+   ],
+   "cited": [
+    "ITO2001-sch1-pI-divI"
+   ],
+   "citation_correct": true,
+   "answer": "Rs. 4,000",
+   "search_queries": [
+    "For tax year 2027, how much tax does a salaried individual (salary over 75% of taxable income) pay on taxable income of Rs. 1,000,000?",
+    "tax calculation for salaried individual with taxable income Rs. 1,000,000 under Income Tax Ordinance 2001 for year 2027",
+    "salaried individual tax rates for taxable income Rs. 1,000,000 in tax year 2027"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 1039,
+    "answer": 0,
+    "total": 1039
+   }
+  },
+  {
+   "id": "ur-013",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "cited": [
+    "ITO2001-s4AB"
+   ],
+   "citation_correct": true,
+   "answer": "دفعہ 4AB کے تحت سرچارج کی شرح 10 فیصد ہے اور یہ اس وقت لاگو ہوتا ہے جب قابل ٹیکس آمدن دس ملین روپے سے زیادہ ہو، تاہم تنخواہ کی آمدن والے افراد پر یہ سرچارج نہیں لگتا۔ یہ شرح ٹیکس سال 2027 کے لیے ہے۔",
+   "search_queries": [
+    "What is the surcharge rate under section 4AB and on how much taxable income is it applied?",
+    "Surcharge rate under section 4AB of the Income Tax Ordinance 2001",
+    "Threshold of taxable income for surcharge under section 4AB"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 966,
+    "answer": 0,
+    "total": 966
+   }
+  },
+  {
+   "id": "ur-014",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "cited": [
+    "ITO2001-s12"
+   ],
+   "citation_correct": true,
+   "answer": "ہاں، اوور ٹائم اور بونس دونوں کو اس قانون کے تحت تنخواہ کا حصہ سمجھا جاتا ہے اور ان پر انکم ٹیکس لاگو ہوتا ہے۔ سیکشن 12 کے تحت تنخواہ کی تعریف میں اوور ٹائم ادائیگی اور بونس کو واضح طور پر شامل کیا گیا ہے۔ یہ ٹیکس سال 2027 کے لیے لاگو ہے۔",
+   "search_queries": [
+    "Are overtime and bonus considered part of salary for income tax?",
+    "Does the salary head under Income Tax Ordinance 2001 include overtime and bonus?",
+    "Is tax deducted on overtime and bonus as part of salary?"
+   ],
+   "warnings": [
+    "3 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 820,
+    "answer": 0,
+    "total": 820
+   }
+  },
+  {
+   "id": "ur-015",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s13",
+    "ITR2002-r5"
+   ],
+   "cited": [
+    "ITO2001-s13",
+    "ITR2002-r5"
+   ],
+   "citation_correct": true,
+   "answer": "ٹیکس سال 2027 کے لیے، جب آجر کسی ملازم کو ذاتی استعمال کے لیے موٹر گاڑی فراہم کرتا ہے تو اس پر دی جانے والی سہولت کو پرکیوٹ سمجھا جاتا ہے اور اس کی قدر سیکشن 13 کے تحت شامل کی جاتی ہے[1]۔ اس قدر کی گنتی کے لیے رول 5 کے مطابق ذاتی استعمال کی صورت میں گاڑی کی لاگت یا اس کی منصفانہ مارکیٹ ویلیو کا 10 % لیا جاتا ہے[2]۔ اس 10 % کی رقم کو ملازم کی تنخواہ میں شامل کر کے اس پر عام “Salary” کی شرح سے ٹیکس عائد کیا جاتا ہے[1]۔",
+   "search_queries": [
+    "tax on company provided motor vehicle for personal use by employee",
+    "deduction of tax at source from salary for company car personal use",
+    "tax credit for motor vehicle provided by employer"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 848,
+    "answer": 0,
+    "total": 848
+   }
+  },
+  {
+   "id": "ur-016",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s41"
+   ],
+   "cited": [
+    "ITO2001-s41"
+   ],
+   "citation_correct": true,
+   "answer": "نہیں، وفاقی انکم ٹیکس قانون کے تحت زرعی آمدن ٹیکس سے مستثنیٰ ہے۔ اس کی وضاحت سیکشن 41 میں کی گئی ہے کہ زرعی آمدن کو اس آرڈیننس کے تحت ٹیکس سے آزاد قرار دیا گیا ہے (tax year 2027)۔",
+   "search_queries": [
+    "Does federal income tax law apply to agricultural income?",
+    "Is agricultural income taxable under the Income Tax Ordinance 2001?",
+    "What is the tax treatment of income from agriculture in Pakistan?"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 801,
+    "answer": 0,
+    "total": 802
+   }
+  },
+  {
+   "id": "ur-017",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s47"
+   ],
+   "cited": [
+    "ITO2001-s47"
+   ],
+   "citation_correct": true,
+   "answer": "تعلیم کے لیے دیے جانے والے اسکالرشپ عام طور پر ٹیکس سے مستثنیٰ ہیں کیونکہ سیکشن 47 کے تحت یہ آمدنی ٹیکس کے دائرے میں نہیں آتی[1]۔ تاہم اگر اسکالرشپ کسی ایسوسی ایٹ کے ذریعے براہِ راست یا بالواسطہ ادا کی جائے تو اس پر ٹیکس لگ سکتا ہے[1]۔",
+   "search_queries": [
+    "Does tax apply on scholarships for education?",
+    "Taxability of scholarship under section 47 of Income Tax Ordinance 2001",
+    "Exemption of scholarship income from income tax"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 776,
+    "answer": 0,
+    "total": 776
+   }
+  },
+  {
+   "id": "ur-018",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s57"
+   ],
+   "cited": [
+    "ITO2001-s57"
+   ],
+   "citation_correct": true,
+   "answer": "عام طور پر، سیکشن 57 کے تحت کاروباری نقصان کو زیادہ سے زیادہ چھ (6) مسلسل ٹیکس سالوں تک آگے لے جایا جا سکتا ہے[1]۔ تاہم، مخصوص حالات میں اس مدت میں توسیع ہو سکتی ہے: اگر نقصان کسی وفاقی حکومت کی ملکیت بینکنگ کمپنی کا ہو تو دس (10) سال تک، ہوٹل کاروبار میں مصروف رہنے والی رہائشی کمپنی کے لیے آٹھ (8) سال تک، اور پاکستان انٹرنیشنل ایئرلائنز کے لیے بھی دس (10) سال تک لے جایا جا سکتا ہے[1]۔",
+   "search_queries": [
+    "how many years can a business loss be carried forward?",
+    "carry forward of loss period under Income Tax Ordinance 2001",
+    "carry forward of loss conditions for business under Income Tax Rules 2002"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 765,
+    "answer": 0,
+    "total": 765
+   }
+  },
+  {
+   "id": "ur-022",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82"
+   ],
+   "citation_correct": true,
+   "answer": "ریذیڈنٹ شمار ہونے کے لیے کسی بھی ٹیکس سال (2027) میں کم از کم ۱۸۳ دن پاکستان میں موجود ہونا ضروری ہے۔",
+   "search_queries": [
+    "How many days must a person stay in Pakistan in a tax year to be considered a resident for income tax purposes?",
+    "What is the residency test under Section 82 of the Income Tax Ordinance 2001 regarding days of presence in Pakistan?",
+    "What are the conditions for residency in the Income Tax Ordinance 2001 and how many days are required?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 981,
+    "answer": 676,
+    "total": 1657
+   }
+  },
+  {
+   "id": "ru-023",
+   "group": "roman_urdu",
+   "refused": true,
+   "refusal_reason": "NO_RELEVANT_SOURCES",
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Mujhe yeh baat un tax qawaneen mein nahi mili jo mere paas hain (Income Tax Ordinance 2001, Income Tax Rules 2002 aur FBR withholding tax rate card).",
+   "search_queries": [
+    "resident person status if staying abroad most of the year",
+    "s81 resident person definition for annual presence abroad",
+    "s82 non-resident person criteria for staying abroad"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 825
+   }
+  },
+  {
+   "id": "ru-036",
+   "group": "roman_urdu",
+   "refused": true,
+   "refusal_reason": "NO_RELEVANT_SOURCES",
+   "gold": [
+    "ITO2001-s174"
+   ],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Mujhe yeh baat un tax qawaneen mein nahi mili jo mere paas hain (Income Tax Ordinance 2001, Income Tax Rules 2002 aur FBR withholding tax rate card).",
+   "search_queries": [
+    "How many years must records be kept?",
+    "Record keeping period for accounts under section 174 of Income Tax Ordinance 2001",
+    "Duration of record retention for tax purposes in Pakistan"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 882
+   }
+  },
+  {
+   "id": "oos-001",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [
+    "Punjab Revenue Authority sales tax rate on restaurant services",
+    "Punjab Revenue Authority sales tax rate on services",
+    "Punjab Revenue Authority sales tax rate on restaurant services procedure"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 794
+   }
+  },
+  {
+   "id": "oos-002",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "SECTION_NOT_FOUND",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [
+    "What does section 999Z of the Income Tax Ordinance say about crypto mining?",
+    "Section 999Z crypto mining tax deduction",
+    "Crypto mining income tax treatment under Ordinance 2001"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 812
+   }
+  },
+  {
+   "id": "oos-005",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 381
+   }
+  },
+  {
+   "id": "oos-010",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "SECTION_NOT_FOUND",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [
+    "Does Section 250B of the Income Tax Ordinance 2001 provide a permanent 0% income tax rate for freelancers?",
+    "What conditions apply under Section 250B for freelancers to claim a 0% income tax rate?",
+    "How does Section 250B interact with the tax credit provisions for freelancers?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 892
+   }
+  },
+  {
+   "id": "oos-012",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "SECTION_NOT_FOUND",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [
+    "What does section 888 of the Income Tax Ordinance say about cryptocurrency?",
+    "Cryptocurrency tax provisions under section 888 Income Tax Ordinance",
+    "Income Tax Ordinance 2001 section 888 cryptocurrency tax rate"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 873
+   }
+  },
+  {
+   "id": "oos-014",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 341
+   }
+  },
+  {
+   "id": "oos-015",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [
+    "What is the sales tax rate charged by Khyber Pakhtunkhwa Revenue Authority on telecom services?",
+    "Khyber Pakhtunkhwa sales tax on services under section 153",
+    "Khyber Pakhtunkhwa revenue authority sales tax procedure for telecom services"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 887
+   }
+  },
+  {
+   "id": "oos-016",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [
+    "How to file income tax return in America?",
+    "Procedure for filing income tax return in the United States",
+    "Requirements for filing US income tax return"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 769
+   }
+  },
+  {
+   "id": "oos-019",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 312
+   }
+  },
+  {
+   "id": "oos-020",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [
+    "Punjab provincial tax rate on agricultural income",
+    "Punjab provincial tax rate on agricultural income",
+    "Punjab provincial tax rate on agricultural income"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 853
+   }
+  },
+  {
+   "id": "oos-021",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Mujhe yeh baat un tax qawaneen mein nahi mili jo mere paas hain (Income Tax Ordinance 2001, Income Tax Rules 2002 aur FBR withholding tax rate card).",
+   "search_queries": [
+    "PRA sales tax on restaurant bill",
+    "PRA sales tax rate for food services",
+    "PRA sales tax procedure for restaurants"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 792
+   }
+  },
+  {
+   "id": "oos-023",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Mujhe yeh baat un tax qawaneen mein nahi mili jo mere paas hain (Income Tax Ordinance 2001, Income Tax Rules 2002 aur FBR withholding tax rate card).",
+   "search_queries": [
+    "What is the property tax rate for immovable property in Karachi?",
+    "How is property tax calculated for a house in Karachi?",
+    "What are the conditions for paying property tax on a house in Karachi?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 848
+   }
+  },
+  {
+   "id": "oos-028",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Mujhe yeh baat un tax qawaneen mein nahi mili jo mere paas hain (Income Tax Ordinance 2001, Income Tax Rules 2002 aur FBR withholding tax rate card).",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 390
+   }
+  }
+ ]
+}

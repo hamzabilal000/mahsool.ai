@@ -4,7 +4,7 @@ Refusal happens at the first failed check, cheapest first, so most out-of-scope 
 never reach the answer model:
 
 1. scope (from the rewrite step): provincial tax, customs, non-tax -> refuse
-2. tax year: no law text loaded for that year -> refuse
+2. tax year: no law text loaded for that year, or a future year -> refuse
 3. the question names only sections that don't exist ("section 999Z") -> refuse
 4. best reranker score below the threshold -> refuse
 5. the answer model says the sources don't answer it -> refuse
@@ -35,6 +35,13 @@ TAX_YEAR_REFUSAL = {
     "roman_ur": "Mere paas sirf tax year {first} aur uske baad ka qanoon hai, is liye tax year "
     "{year} ka jawab nahi de sakta.",
 }
+FUTURE_TAX_YEAR_REFUSAL = {
+    "en": "The law for tax year {year} has not been made yet; I have the law up to tax year "
+    "{last}.",
+    "ur": "ٹیکس سال {year} کا قانون ابھی بنا نہیں؛ میرے پاس ٹیکس سال {last} تک کا قانون ہے۔",
+    "roman_ur": "Tax year {year} ka qanoon abhi bana nahi; mere paas tax year {last} tak ka "
+    "qanoon hai.",
+}
 DISCLAIMER = {
     "en": "For information only, not tax advice. Confirm with a tax practitioner or FBR.",
     "ur": "یہ صرف معلومات کے لیے ہے، ٹیکس مشورہ نہیں۔ کسی ٹیکس ماہر یا ایف بی آر سے تصدیق کریں۔",
@@ -51,10 +58,13 @@ class AskService:
         *,
         answer_top_k: int = 6,
         refusal_threshold: float = 0.05,
+        last_tax_year: int | None = None,
     ) -> None:
         self.pipeline, self.generator = pipeline, generator
         self.answer_top_k, self.refusal_threshold = answer_top_k, refusal_threshold
         self.first_tax_year = min(c.tax_year_from for c in pipeline.by_id.values())
+        # Latest tax year whose law is enacted (the current one); later years are refused.
+        self.last_tax_year = last_tax_year
 
     def ask(self, question: str, tax_year: int | None = None) -> AskData:
         t0 = time.perf_counter()
@@ -126,7 +136,9 @@ class AskService:
         plan = result.plan
         if plan.scope != "income_tax":
             return "OUT_OF_SCOPE"
-        if plan.tax_year < self.first_tax_year:
+        if plan.tax_year < self.first_tax_year or (
+            self.last_tax_year is not None and plan.tax_year > self.last_tax_year
+        ):
             return "TAX_YEAR_NOT_COVERED"
         named = any(c.via == "lookup" for c in result.candidates)
         if result.missing_refs and not named:
@@ -141,7 +153,10 @@ class AskService:
     def _refuse(self, result: SearchResult, reason: RefusalReason, timings: dict) -> AskData:
         plan = result.plan
         lang: Language = plan.language
-        if reason == "TAX_YEAR_NOT_COVERED":
+        future = self.last_tax_year is not None and plan.tax_year > self.last_tax_year
+        if reason == "TAX_YEAR_NOT_COVERED" and future:
+            text = FUTURE_TAX_YEAR_REFUSAL[lang].format(year=plan.tax_year, last=self.last_tax_year)
+        elif reason == "TAX_YEAR_NOT_COVERED":
             text = TAX_YEAR_REFUSAL[lang].format(first=self.first_tax_year, year=plan.tax_year)
         else:
             text = REFUSAL[lang]

@@ -14,6 +14,7 @@ Pipeline presets (each adds one step to hybrid search, for the ablation table):
     rewrite-rerank  + bge-reranker-v2-m3 on the top 30
     full            + Urdu glossary in the rewrite prompt
     lookup-rerank   lookup + reranker without any LLM (runs without a Groq key)
+    full-max        full, reranking with max(question, first rewrite) score (dev experiment)
 
 LLM outputs are cached in eval/cache/groq.jsonl, so re-running replays them without Groq.
 """
@@ -43,6 +44,7 @@ PRESETS: dict[str, dict] = {
     "rewrite": {"lookup": True, "rewrite": "plain", "rerank": False},
     "rewrite-rerank": {"lookup": True, "rewrite": "plain", "rerank": True},
     "full": {"lookup": True, "rewrite": "glossary", "rerank": True},
+    "full-max": {"lookup": True, "rewrite": "glossary", "rerank": True, "rerank_query": "max"},
 }
 
 

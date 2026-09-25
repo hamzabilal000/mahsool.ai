@@ -397,7 +397,7 @@ counts as a hit, but the answer should cite the law.
 
 ---
 
-## Milestone 3 — From "find the section" to "answer with a citation" (in progress)
+## Milestone 3 — From "find the section" to "answer with a citation"
 
 ### 1. The full question path
 
@@ -478,6 +478,56 @@ The answer model sees sources numbered `[1]`…`[6]` and must end every sentence
 Why not trust the model? Because LLMs produce confident, well-formatted citations to things they never read. The
 check is ten lines of code and removes a whole class of failure.
 
+### 8. Tuning a prompt: read the outputs, on dev only
+
+The first rewrite prompt looked fine until I read what it produced for the 60 dev questions. In 67 of 240
+queries it added a section number the user never wrote, usually "section 236K", which was the example in the
+prompt itself. Models copy examples. It also called "stamp duty in Punjab" income tax as soon as the glossary said
+"jaidad = immovable property".
+
+The fix was three plain rules in the prompt (never add a section number; convert lakh / crore; decide scope from
+what is asked, with lists of what counts as what). Invented numbers fell from 67 to 7. All of this was done on
+**dev**. The test split was run once, with the final prompt. If you tune on test, your test number stops meaning
+anything.
+
+### 9. What the ablation showed: one step can undo another
+
+Test split, Hit@5 for English / Urdu / Roman Urdu:
+
+- hybrid + lookup: 96.8 / 78.6 / 67.9
+- \+ rewrite: **98.4 / 100 / 89.3**. Searching with the law's own English words fixes most of the language gap.
+- \+ rewrite + reranker: 96.8 / 89.3 / 71.4. **Worse.**
+
+Why: the reranker still scores each chunk against the *original* question. It reads English well, Urdu script
+reasonably, Roman Urdu badly, so for Roman Urdu it demotes the right chunks that the rewrite had found. Each
+component is fine on its own; together, the later step overrides the better signal from the earlier one.
+
+Two lessons:
+1. **Always run the ablation.** "Add a reranker" is standard advice; here it costs 18 points on Roman Urdu.
+2. **Dev and test can disagree.** On dev (51 questions) the full pipeline was best overall, so it's still the
+   default. The test result goes into the decisions log as a problem to solve on dev next time, not a reason to
+   quietly switch defaults. Small splits are noisy: one question is 8 points of Roman Urdu on dev.
+
+The obvious fix is to let the reranker read the English rewrite too, keeping the higher of the two scores. On dev
+it gained one Roman Urdu question and doubled the reranker time, so I didn't adopt it. Run once on test for the
+record, it lifts Roman Urdu from 75.0% to 92.9%. That's the first decision for Milestone 5, with a faster reranker.
+
+### 10. End-to-end numbers, and a free tier's real limits
+
+`eval/run_e2e.py` runs `/ask` itself on every test question: is an in-scope question answered with a citation to a
+gold section, and is an out-of-scope question refused? On the 85 questions that ran, 68 of 69 answers cited a
+correct section, and all 13 out-of-scope questions were refused.
+
+Then Groq said no: the free tier allows **200,000 tokens a day** on the 120B model, and one grounded answer
+(six sources) is ~3,000 tokens, so ~65 answers a day. Two practical changes followed:
+
+- the client **fails fast** on a daily limit (retrying for hours helps nobody; the API returns 503 at once);
+- the eval **records "not run"** instead of crashing, and resumes from the cache the next day.
+
+And a warning about partial results: the questions that didn't run aren't random. Out-of-scope questions refused
+by the cheap checks never call the big model, so they all ran; the 8 that didn't run are exactly the ones that got
+past those checks. "13 / 13 refused" is therefore an optimistic number until the rest run.
+
 ### Interview questions you should be able to answer
 
 **Q: Why rewrite the query instead of translating it?**
@@ -496,3 +546,17 @@ Invalid ones are removed; if none remain, the app refuses.
 **Q: Your reranker takes 27 s on CPU. Would you ship it?**
 A: Not as is. I'd measure how much of the gain survives with fewer candidates (10–15) and a quantised ONNX model,
 or run it on a GPU. Quality numbers come from the eval; the latency budget decides the serving setup.
+
+**Q: Your ablation shows the reranker hurting Roman Urdu. Why not just remove it?**
+A: Because the decision has to come from dev, not test, and on dev the reranker helped English ranking a lot
+(MRR 0.80 → 0.91). The next step is to test on dev whether reranking against the English rewrite (or skipping the
+reranker for Roman Urdu) keeps the English gain without the Roman Urdu loss.
+
+**Q: How did you tune the rewrite prompt without overfitting?**
+A: Only on the dev split, by reading every output, and fixing patterns (invented section numbers, scope mistakes),
+not individual questions. The test split was run once at the end.
+
+**Q: Your end-to-end run stopped halfway. How do you report that?**
+A: With the coverage next to the number (85 of 140), and saying which way the missing part biases it. The eval
+lists what didn't run and resumes from the cache, so the rest runs when the quota resets.
+

@@ -79,6 +79,16 @@ class GlossaryEntry:
     notes: str = ""
 
 
+def _urdu_in(term: str, text: str) -> bool:
+    """Urdu term at the start of a word: "دن" (days) must not match inside "آمدن" (income)."""
+    start = text.find(term)
+    while start != -1:
+        if start == 0 or not URDU_CHAR_RE.match(text[start - 1]):
+            return True
+        start = text.find(term, start + 1)
+    return False
+
+
 def _term_re(term: str) -> str:
     """Roman Urdu words inflect ("khareed" -> "khareedna", "khareedni", "khareedne"), so terms
     of 5+ letters also match up to 3 extra letters. Short terms must match exactly."""
@@ -122,7 +132,7 @@ class Glossary:
             if pattern and (m := pattern.search(low)):
                 term = m.group(0)
             else:
-                term = next((u for u in entry.urdu if u in question), None)
+                term = next((u for u in entry.urdu if _urdu_in(u, question)), None)
             if term:
                 found.append((term, entry))
         # Longer (more specific) matches first: "non filer" before "filer".
@@ -156,11 +166,19 @@ Rules for queries:
 taxpayers' list", "return of income", "tax credit").
 - The first query restates the whole question; the others cover a second angle (the rate, a \
 condition, the related procedure) only if useful. Each under 25 words.
-- Keep section or rule numbers the user mentions (e.g. "section 236K").
+- Never add a section or rule number the user did not write; a wrong number misleads the \
+search. Keep the numbers the user did write.
+- Convert amounts to rupees: 1 lakh = Rs. 100,000, 1 crore = Rs. 10 million.
 tax_year: only if the user states one (tax year 2025, 2024-25 -> 2025); otherwise null.
-scope: "income_tax" for federal income tax and withholding; "other_federal_tax" for sales \
-tax, federal excise or customs; "provincial_tax" for provincial taxes (PRA, SRB, KPRA, BRA, \
-property tax, stamp duty, provincial sales tax on services); "not_tax" for anything else."""
+scope: decide from what the user asks about, not from single words (a glossary hint does not \
+make a question income tax).
+- "income_tax": federal income tax, withholding / advance tax (including tax deducted by banks, \
+utilities or on property), filers and non-filers, the active taxpayers' list, NTN, returns and \
+wealth statements.
+- "other_federal_tax": sales tax on goods, federal excise, customs duty or PCT codes.
+- "provincial_tax": provincial taxes (PRA, SRB, KPRA, BRA, sales tax on services, property tax, \
+stamp duty, registration of property).
+- "not_tax": anything else (investment advice, weather, general chat)."""
 
 
 def rewrite_messages(question: str, hints: list[tuple[str, GlossaryEntry]]) -> list[dict]:

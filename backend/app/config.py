@@ -44,8 +44,8 @@ class Settings(BaseSettings):
     answer_top_k: int = 6  # reranked chunks shown to the answer model
     # Refuse without calling the answer model when the best reranker score is below this.
     # Kept very low: on the dev split Urdu / Roman Urdu questions that *are* answerable often
-    # score below 0.01 (DECISIONS D27).
-    refusal_threshold: float = 0.001
+    # score below 0.01, two of them below 0.001 (DECISIONS D27, D34).
+    refusal_threshold: float = 0.0005
     glossary_path: Path = Path("data/glossary_ur.csv")
     groq_base_url: str = "https://api.groq.com/openai/v1"
     rate_limit_per_minute: int = 20  # /ask requests per client IP

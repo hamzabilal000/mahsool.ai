@@ -265,3 +265,80 @@ Newest first within each milestone. Each entry says what the plan said, what we 
   rows that need the LLM (rewrite, glossary) and the end-to-end check run in the next session.
 - All Groq outputs used in evaluation are cached in `eval/cache/groq.jsonl` (committed), so the published numbers
   can be replayed without a key.
+
+### D32. Rewrite prompt v2, tuned on dev only
+- The first prompt (M3 part 1) was run on the 60 dev questions and its outputs were read by hand. Three problems:
+  1. **Invented section numbers.** 67 of 240 dev rewrite queries named a section the user never wrote, most often
+     "section 236K", which the prompt itself used as an example. A wrong section number in a query pulls the wrong
+     chunk into the dense and sparse searches.
+  2. **Scope labels.** Without the glossary, "NTN for a commercial electricity connection" and "non filer, bank cash
+     withdrawal" were labelled `not_tax` (they'd be refused). With the glossary, "stamp duty in Punjab" and "SRB
+     registration" were labelled `income_tax`, because the hints ("jaidad" = immovable property) made them look
+     like income tax.
+  3. **Glossary noise.** Urdu terms matched inside other words: "دن" (days, section 82) inside "آمدن" (income).
+- **v2** (`backend/app/rag/query_rewrite.py`): never add a section or rule number the user didn't write; convert
+  lakh / crore to rupees; scope is decided from what the question asks, with a list of what counts as income tax
+  (withholding, filers, ATL, NTN, returns) and what is provincial (PRA, SRB, stamp duty, property registration).
+  Urdu glossary terms now have to start a word.
+- Dev result: scope errors 6 → 2 (without the glossary) and 4 → 3 (with it); invented section numbers 67 → 7. The
+  two left in both modes are handled by other checks: "section 777" (doesn't exist → refusal) and "tax year 2028
+  slabs" (D34). SRB registration with the glossary is still labelled income tax.
+- The first prompt's outputs stay in `eval/cache/groq.jsonl` (they're keyed by prompt), so the comparison can be
+  replayed.
+
+### D33. Retrieval ablation with the LLM rewrite: the reranker undoes the rewrite on Urdu and Roman Urdu
+- **Test split, Hit@5** (all rows include section lookup from the hybrid baseline on):
+
+  | Setup | English | Urdu | Roman Urdu | All | Recall@5 (all gold) | MRR@10 |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | Hybrid + lookup | 96.8% | 78.6% | 67.9% | 85.7% | 82.8% | 0.781 |
+  | + reranker, no rewrite | 96.8% | 92.9% | 64.3% | 88.2% | 85.3% | 0.805 |
+  | + rewrite, no reranker | **98.4%** | **100%** | **89.3%** | **96.6%** | **94.1%** | **0.862** |
+  | + rewrite + reranker | 96.8% | 89.3% | 71.4% | 89.1% | 85.7% | 0.827 |
+  | + glossary = full pipeline (`/ask` default) | 96.8% | 92.9% | 75.0% | 90.8% | 88.2% | 0.834 |
+  | full, rerank with max(question, rewrite) score (not adopted, see below) | 96.8% | 92.9% | **92.9%** | 95.0% | 93.3% | 0.891 |
+
+- **The rewrite is the big win**: Roman Urdu 67.9% → 89.3%, Urdu 78.6% → 100%. Searching with the law's English
+  words works, which was the Milestone 2 hypothesis.
+- **The reranker then takes much of it back** for Urdu (100% → 89.3%) and Roman Urdu (89.3% → 71.4%). It scores the
+  chunks against the *original* question, and bge-reranker-v2-m3 reads Roman Urdu poorly (LEARNING M3 §5), so it
+  pushes correct chunks that the rewrite found out of the top 5. The glossary recovers part of it (71.4% → 75.0%).
+- **What dev said, and why the default is still the full pipeline:** on dev the full pipeline was best overall
+  (94.1% vs 92.2% for rewrite without reranker, MRR 0.908 vs 0.797: the reranker helps English ranking a lot on
+  dev), so it stayed the default. On test the order flips. The defaults are not changed on test results; this is
+  a Milestone 5 item, decided on dev: for example reranking with the English rewrite, or skipping the reranker for
+  Roman Urdu.
+- **Dev experiment, reranking with max(question score, first-rewrite score)** (`--pipeline full-max`): dev Hit@5
+  100 / 100 / 83.3 vs 100 / 100 / 75.0 for `full`, but MRR 0.887 vs 0.908 and twice the reranker time (already the
+  latency problem, D26). One Roman Urdu question out of 12 isn't enough evidence for doubling the cost, so it was not
+  adopted. **It was then run once on test for the record** (table above): Roman Urdu 75.0% → 92.9%, best MRR, same
+  English and Urdu. Dev and test point the same way, so this is the first Milestone 5 decision, together with a
+  faster reranker (it doubles the ~29 s CPU reranking). The default was not switched on the strength of a test
+  result.
+- Roman Urdu is still below the ≥ 80% target with the default pipeline (75.0%); Urdu (92.9%) and English meet it.
+
+### D34. Refusal threshold 0.001 → 0.0005, and future tax years are refused
+- Re-tuned on dev with the full pipeline. Two answerable Roman Urdu questions (ru-009 rent, ru-011 cash withdrawal)
+  have a best reranker score just under 0.001 and their gold section in the top 5, so 0.001 would refuse them.
+  0.0005 refuses none and catches the same out-of-scope questions (none, in practice: every out-of-scope dev
+  question with a score that low is already refused by the scope check). The score check stays as a last net.
+- "What will the salaried slabs be for tax year 2028?" passed every check: only years *before* the loaded law were
+  refused. The law for a tax year after the current one (TY2027) hasn't been enacted, so `AskService` now refuses it
+  with `TAX_YEAR_NOT_COVERED` and says so ("The law for tax year 2028 has not been made yet …").
+
+### D35. End-to-end evaluation (`eval/run_e2e.py`): what is measured
+- Runs the same `AskService` as `/ask` on every question of a split. In-scope: answered (not refused) and **correct
+  citation**, meaning at least one cited section is a gold or acceptable section. Out-of-scope: refused.
+- **Answer correctness is not scored yet.** It needs a judge (an LLM or a person) comparing each answer with the
+  reference answer, and the reference answers aren't hand-verified. With Groq's free tier a judge would also double
+  the token cost (D36). Planned for Milestone 5, after Hamza's review of the test set.
+
+### D36. Groq free tier: 200k tokens per day on GPT OSS 120B
+- Limits seen in the response headers and errors: 8,000 tokens per minute, 1,000 requests per day and **200,000
+  tokens per day** per model. An answer call is ~3,000 tokens (6 sources, capped at 2,500 characters each), so
+  about 65 answers a day.
+- The client now **fails fast on the daily limit** instead of retrying (the quota frees up over hours): `/ask` returns
+  `LLM_UNAVAILABLE` (503) right away, and `run_e2e` lists those questions as "not run", scores the rest, and resumes
+  from the cache on the next run.
+- For the demo in Milestone 5 this is a real constraint: a paid Groq tier, a smaller answer model, or fewer / shorter
+  sources.

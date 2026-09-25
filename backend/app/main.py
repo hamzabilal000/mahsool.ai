@@ -32,6 +32,7 @@ def build_service():
         AnswerGenerator(llm, s.answer_model),
         answer_top_k=s.answer_top_k,
         refusal_threshold=s.refusal_threshold,
+        last_tax_year=s.current_tax_year,
     )
 
 

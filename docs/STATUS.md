@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Last updated: 2026-09-25 (Milestone 3, part 1: everything that doesn't need the Groq key)
+Last updated: 2026-09-25 (Milestone 3, part 2: LLM ablation and end-to-end eval)
 
 ## Working rules (from Hamza)
 - Hamza is the only author. No "Co-Authored-By", "Generated with …" or other AI attribution in commits, PRs, code or docs.
@@ -40,20 +40,38 @@ Last updated: 2026-09-25 (Milestone 3, part 1: everything that doesn't need the 
   - `eval/REVIEW.md` checklist for Hamza.
   - Test split Hit@5: + lookup 96.8 / 78.6 / 67.9 (En / Ur / Roman); + reranker 96.8 / 92.9 / 64.3.
 
-## Next (M3 part 2, needs `GROQ_API_KEY` in the environment)
-1. Setup: `sh scripts/setup-hooks.sh`, git identity, `pip install -e ".[dev,ml]"`, `python -m ingestion.index`
-   (~30 min; the index is not committed). `eval/cache/rerank.tsv` already holds 6,000 reranker scores.
-2. Check the key works with one call, then run on **dev** first:
-   `python -m eval.run_eval --pipeline rewrite --split dev`, then `rewrite-rerank`, then `full`.
-   Look at the rewrites in the report JSON; adjust the prompt on dev only. Then the same three on **test**.
-3. On dev: try reranking with max(original, first rewrite) score (D26), and re-tune `refusal_threshold` (D27).
-4. End-to-end on test: answers from GPT OSS 120B, refusal accuracy on the 21 out-of-scope questions, citation
-   accuracy (cited section in gold/acceptable). Mind Groq free-tier limits (cache in `eval/cache/groq.jsonl`).
-5. Fill the README ablation rows, save the bar chart PNG in `eval/reports/`, update docs, commit, push, stop.
+- **M3 (part 2):**
+  - Index rebuilt (1,416 points, 24 min); hybrid baseline reproduced exactly.
+  - Rewrite prompt v2, tuned on dev only (D32): no invented section numbers, clearer scope rules, Urdu glossary
+    terms must start a word.
+  - Test split Hit@5 (En / Ur / Roman): + rewrite 98.4 / 100 / 89.3; + rewrite + reranker 96.8 / 89.3 / 71.4;
+    full pipeline (default) 96.8 / 92.9 / 75.0. The reranker undoes part of the rewrite's gain (D33).
+    Chart: `eval/reports/ablation-test.png`.
+  - Dev experiments: rerank with max(question, rewrite) score (`full-max`: +1 Roman Urdu question on dev at 2x
+    reranker time, not adopted; run once on test for the record: 96.8 / 92.9 / 92.9, D33); refusal threshold
+    0.001 → 0.0005; future tax years refused (D34).
+  - `eval/run_e2e.py`: 85 / 140 test questions before Groq's 200k tokens/day limit (D36). Correct citation on 68 of
+    69 answered in-scope questions; 13 / 13 out-of-scope refused (biased: the 8 not run are the harder ones); both
+    Roman Urdu questions that ran were wrongly refused by the reranker-score check.
+  - Groq client fails fast on the daily limit (503 `LLM_UNAVAILABLE` at once). `/ask` tested live with uvicorn:
+    "non filer hun, bank se cash nikalwaun to kitna tax katega?" → Roman Urdu answer, 0.8% above Rs 50,000 a day,
+    citing section 231AB (checked against the law text), 27 s (26 s of it CPU reranking); PRA question →
+    `OUT_OF_SCOPE`; tax year 2028 → `TAX_YEAR_NOT_COVERED`; 2-character question → 422 `VALIDATION_ERROR`.
+  - 115 tests pass without models or network; `ruff` clean.
+
+## Next
+1. **Finish the end-to-end test run** when the Groq quota allows (~65 answers a day on GPT OSS 120B):
+   `python -m eval.run_e2e --split test` resumes from `eval/cache/groq.jsonl`; 55 questions left (21 Urdu,
+   26 Roman Urdu, 8 out-of-scope). Then update the README targets table and D35.
+2. **Milestone 4** (per PROJECT_PLAN): React chat UI, citation cards, feedback, Postgres logs on Neon, Langfuse.
+3. **Carried to Milestone 5, decide on dev:** fix the reranker step for Urdu / Roman Urdu (`full-max` is the lead
+   candidate: 92.9% Roman Urdu on test; D33), the score-refusal false positives on Roman Urdu,
+   reranker latency (~29 s per question on CPU, D26), answer-correctness judging (D35), and the Groq daily limit
+   for the demo (D36).
 
 ## Open items for Hamza
 - Verify eval questions by hand with `eval/REVIEW.md` (about 20 a day), and tell Claude Code which are wrong.
 - Review `data/glossary_ur.csv` as a native speaker (D25).
-- Add `GROQ_API_KEY` to the cloud environment's variables (D31).
+- Consider a paid Groq tier (or another answer model) before the Milestone 5 demo (D36).
 - Spot-check `data/processed/*/spot_check.md`.
 - Set the GitHub repo description and topics in the UI.

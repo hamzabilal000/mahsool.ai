@@ -6,6 +6,7 @@ Everything runs without models or network: fake embedder, fake reranker and a sc
 import re
 from pathlib import Path
 
+import httpx
 import pytest
 from fastapi.testclient import TestClient
 
@@ -103,6 +104,9 @@ def test_glossary_matches_roman_and_urdu_spellings():
     assert any("rent" in e for e in urdu)
     # Word boundaries: "kat" must not match inside "katrina".
     assert not any(t == "kat" for t, _ in g.match("katrina"))
+    # Urdu terms must start a word: "دن" (days) is not inside "آمدن" (income).
+    assert not any(t == "دن" for t, _ in g.match("غیر ملکی آمدن"))
+    assert any(t == "دن" for t, _ in g.match("183 دن سے زیادہ"))
 
 
 def test_glossary_section_ids_exist():
@@ -223,6 +227,21 @@ def test_pipeline_uses_rewrites(make_pipeline):
     assert "plot" in llm.calls[0][1]["content"]
 
 
+def test_pipeline_rerank_with_max_of_question_and_rewrite(make_pipeline):
+    def llm():
+        return ScriptedLLM(
+            {"queries": ["advance tax on purchase of immovable property"], "scope": "income_tax"}
+        )
+
+    question = "plot khareedne pe kitna tax?"  # no word the keyword reranker can use
+    only_question = make_pipeline(PipelineConfig(rewrite="plain"), llm()).search(question)
+    assert only_question.top_score == 0
+    config = PipelineConfig(rewrite="plain", rerank_query="max")
+    both = make_pipeline(config, llm()).search(question)
+    assert both.candidates[0].section_id == "ITO2001-s236K"
+    assert both.top_score > 0
+
+
 def test_pipeline_ablation_switches(make_pipeline):
     p = make_pipeline(PipelineConfig(lookup=False, rewrite="none", rerank=False))
     res = p.search("section 155 salary")
@@ -269,6 +288,15 @@ def test_service_refusals(make_pipeline, question, outputs, reason):
     data = service(make_pipeline, *outputs).ask(question)
     assert data.refused and data.refusal_reason == reason
     assert data.citations == []
+
+
+def test_service_refuses_future_tax_year(make_pipeline):
+    llm = ScriptedLLM(rewrite())
+    p = make_pipeline(PipelineConfig(rewrite="glossary", rerank=True), llm)
+    s = AskService(p, AnswerGenerator(llm, "big"), last_tax_year=2027)
+    data = s.ask("salary tax slabs for tax year 2028?")
+    assert data.refusal_reason == "TAX_YEAR_NOT_COVERED"
+    assert "2028" in data.answer and "has not been made" in data.answer
 
 
 def test_service_refuses_on_low_reranker_score_without_calling_answer_model(make_pipeline):
@@ -334,3 +362,19 @@ def test_ask_rate_limit(make_pipeline):
 
 def test_health(client):
     assert client.get("/health").json()["success"] is True
+
+
+def test_groq_client_fails_fast_on_daily_limit():
+    from backend.app.llm import GroqClient
+
+    calls = []
+
+    def handler(request):
+        calls.append(request)
+        return httpx.Response(429, text='{"error": {"message": "... tokens per day (TPD) ..."}}')
+
+    client = GroqClient("key")
+    client.http = httpx.Client(transport=httpx.MockTransport(handler))
+    with pytest.raises(LLMError, match="daily limit"):
+        client.chat_json("m", [{"role": "user", "content": "hi"}])
+    assert len(calls) == 1  # no retries
