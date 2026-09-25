@@ -19,18 +19,18 @@ log = logging.getLogger(__name__)
 
 
 def build_service():
-    from backend.app.rag.factory import build_pipeline, groq_client
+    from backend.app.rag.factory import LLMClients, build_pipeline
     from backend.app.rag.generator import AnswerGenerator
     from backend.app.rag.pipeline import PipelineConfig
     from backend.app.service import AskService
 
     s = get_settings()
-    llm = groq_client(s)
+    llm = LLMClients(s)
     config = PipelineConfig(candidates=s.rerank_candidates, rerank_query=s.rerank_query)
     pipeline = build_pipeline(config, settings=s, llm=llm)
     return AskService(
         pipeline,
-        AnswerGenerator(llm, s.answer_model),
+        AnswerGenerator(*llm.for_role("answer")),
         answer_top_k=s.answer_top_k,
         refusal_threshold=s.refusal_threshold,
         last_tax_year=s.current_tax_year,

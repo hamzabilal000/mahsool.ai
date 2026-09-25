@@ -7,8 +7,8 @@ Models are loaded once per process: BGE-M3 and the reranker each take a few seco
 from functools import lru_cache
 from pathlib import Path
 
-from backend.app.config import Settings, get_settings
-from backend.app.llm import GroqClient
+from backend.app.config import Provider, Role, Settings, get_settings, role_model
+from backend.app.llm import PROVIDERS, ChatModel, LLMClient, ProviderSpec, RateLimiter
 from backend.app.rag.corpus import load_chunks
 from backend.app.rag.pipeline import PipelineConfig, RAGPipeline
 from backend.app.rag.query_rewrite import Glossary, QueryRewriter
@@ -43,16 +43,59 @@ def store():
     return VectorStore(make_client(s), s.qdrant_collection, s.embedding_dim)
 
 
-def groq_client(settings: Settings, cache_path: Path | None = None) -> GroqClient:
-    key = settings.groq_api_key.get_secret_value() if settings.groq_api_key else None
-    return GroqClient(key, base_url=settings.groq_base_url, cache_path=cache_path)
+def llm_client(settings: Settings, provider: Provider, cache_path: Path | None = None) -> LLMClient:
+    """A client for one provider, with the key, rate limits and model fallbacks from settings."""
+    s = settings
+    if provider == "gemini":
+        key = s.gemini_api_key
+        spec = ProviderSpec(
+            "gemini",
+            s.gemini_base_url,
+            s.gemini_requests_per_minute,
+            s.gemini_requests_per_day,
+            max_tokens_field=PROVIDERS["gemini"].max_tokens_field,
+            max_retries=PROVIDERS["gemini"].max_retries,
+            first_retry_delay=PROVIDERS["gemini"].first_retry_delay,
+        )
+    else:
+        key = s.groq_api_key
+        spec = ProviderSpec(
+            "groq", s.groq_base_url, s.groq_requests_per_minute,
+            extra_body=PROVIDERS["groq"].extra_body,
+        )  # fmt: skip
+    limiter = RateLimiter(spec.requests_per_minute, spec.requests_per_day)
+    return LLMClient(
+        key.get_secret_value() if key else None,
+        spec,
+        cache_path=cache_path,
+        fallbacks=s.model_fallbacks,
+        limiter=limiter,
+    )
+
+
+class LLMClients:
+    """One client per provider, shared by the roles (answer, rewrite, judges) that use it, so a
+    provider's rate limit is respected across roles."""
+
+    def __init__(self, settings: Settings, cache_path: Path | None = None) -> None:
+        self.settings, self.cache_path = settings, cache_path
+        self._clients: dict[str, LLMClient] = {}
+
+    def provider(self, provider: Provider) -> LLMClient:
+        if provider not in self._clients:
+            self._clients[provider] = llm_client(self.settings, provider, self.cache_path)
+        return self._clients[provider]
+
+    def for_role(self, role: Role) -> tuple[LLMClient, str]:
+        provider, model = role_model(self.settings, role)
+        return self.provider(provider), model
 
 
 def build_pipeline(
     config: PipelineConfig,
     *,
     settings: Settings | None = None,
-    llm: GroqClient | None = None,
+    llm: "LLMClients | ChatModel | None" = None,
     rerank_cache: Path | None = None,
 ) -> RAGPipeline:
     s = settings or get_settings()
@@ -65,9 +108,12 @@ def build_pipeline(
         rrf_k=s.rrf_k,
         tax_year=s.current_tax_year,
     )
+    rewrite_llm, rewrite_model = llm, s.rewrite_model
+    if isinstance(llm, LLMClients):
+        rewrite_llm, rewrite_model = llm.for_role("rewrite")
     rewriter = QueryRewriter(
-        llm if config.rewrite != "none" else None,
-        s.rewrite_model,
+        rewrite_llm if config.rewrite != "none" else None,
+        rewrite_model,
         Glossary.load(s.glossary_path),
         current_tax_year=s.current_tax_year,
     )

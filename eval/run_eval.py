@@ -69,12 +69,12 @@ class PipelineAdapter:
 
 
 def build_pipeline_retriever(preset: str) -> PipelineAdapter:
-    from backend.app.rag.factory import build_pipeline, groq_client
+    from backend.app.rag.factory import LLMClients, build_pipeline
     from backend.app.rag.pipeline import PipelineConfig
 
     settings = get_settings()
     config = PipelineConfig(**PRESETS[preset], candidates=settings.rerank_candidates)
-    llm = groq_client(settings, cache_path=LLM_CACHE) if config.rewrite != "none" else None
+    llm = LLMClients(settings, cache_path=LLM_CACHE) if config.rewrite != "none" else None
     return PipelineAdapter(
         build_pipeline(config, settings=settings, llm=llm, rerank_cache=RERANK_CACHE)
     )

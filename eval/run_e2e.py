@@ -32,13 +32,13 @@ from eval.validate_testset import load_testset
 
 
 def build_service():
-    from backend.app.rag.factory import build_pipeline, groq_client
+    from backend.app.rag.factory import LLMClients, build_pipeline
     from backend.app.rag.generator import AnswerGenerator
     from backend.app.rag.pipeline import PipelineConfig
     from backend.app.service import AskService
 
     s = get_settings()
-    llm = groq_client(s, cache_path=LLM_CACHE)
+    llm = LLMClients(s, cache_path=LLM_CACHE)
     pipeline = build_pipeline(
         PipelineConfig(candidates=s.rerank_candidates, rerank_query=s.rerank_query),
         settings=s,
@@ -47,7 +47,7 @@ def build_service():
     )
     return AskService(
         pipeline,
-        AnswerGenerator(llm, s.answer_model),
+        AnswerGenerator(*llm.for_role("answer")),
         answer_top_k=s.answer_top_k,
         refusal_threshold=s.refusal_threshold,
         last_tax_year=s.current_tax_year,

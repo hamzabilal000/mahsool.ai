@@ -7,16 +7,42 @@ from typing import Literal
 from pydantic import AliasChoices, Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+Provider = Literal["groq", "gemini"]
+
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_prefix="MAHSOOL_", extra="ignore")
 
-    # --- LLMs (Groq) ---
+    # --- LLMs: a provider and a model per role (DECISIONS D42) ---
     groq_api_key: SecretStr | None = Field(
         default=None, validation_alias=AliasChoices("GROQ_API_KEY", "MAHSOOL_GROQ_API_KEY")
     )
+    gemini_api_key: SecretStr | None = Field(
+        default=None, validation_alias=AliasChoices("GEMINI_API_KEY", "MAHSOOL_GEMINI_API_KEY")
+    )
+    answer_provider: Provider = "groq"
     answer_model: str = "openai/gpt-oss-120b"
+    rewrite_provider: Provider = "groq"
     rewrite_model: str = "openai/gpt-oss-20b"
+    # Test-set judges (eval/verify_testset.py): two model families, neither wrote the questions.
+    judge1_provider: Provider = "gemini"
+    judge1_model: str = "gemini-3-flash"
+    judge1_reasoning: str = "low"
+    judge2_provider: Provider = "groq"
+    judge2_model: str = "qwen/qwen3.8-27b"
+    judge2_reasoning: str = "none"  # Qwen's free tier counts thinking tokens (D38)
+    # Tried in order when a provider says it does not serve a model id (404). Google serves Gemini 3
+    # Flash only as "gemini-3-flash-preview"; gemini-2.5-flash is closed to new API users.
+    model_fallbacks: dict[str, list[str]] = {
+        "gemini-3-flash": ["gemini-3-flash-preview", "gemini-2.5-flash"],
+    }
+    # Client-side limits per provider (free tiers; the providers enforce their own as well).
+    groq_requests_per_minute: int = 30
+    gemini_requests_per_minute: int = 10
+    # Google's free tier on this key: 20 requests a day per Flash model, failed calls included
+    # (quota GenerateRequestsPerDayPerProjectPerModel-FreeTier, seen 2026-09-25; DECISIONS D42).
+    gemini_requests_per_day: int = 20
+    gemini_base_url: str = "https://generativelanguage.googleapis.com/v1beta/openai"
 
     # --- Retrieval models ---
     embedding_model: str = "BAAI/bge-m3"
@@ -60,6 +86,14 @@ class Settings(BaseSettings):
         default=None,
         validation_alias=AliasChoices("DATABASE_URL", "MAHSOOL_DATABASE_URL"),
     )
+
+
+Role = Literal["answer", "rewrite", "judge1", "judge2"]
+
+
+def role_model(s: Settings, role: Role) -> tuple[Provider, str]:
+    """(provider, model id) configured for a role."""
+    return getattr(s, f"{role}_provider"), getattr(s, f"{role}_model")
 
 
 @lru_cache
