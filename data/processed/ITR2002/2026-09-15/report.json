@@ -1,0 +1,15 @@
+{
+  "n_chunks": 498,
+  "by_kind": {
+    "section": 498
+  },
+  "n_sections": 381,
+  "toc_live_sections": 381,
+  "toc_live_missing": [],
+  "sections_not_in_toc": [],
+  "max_tokens_seen": 797,
+  "needs_review": 0,
+  "skipped_heading_candidates": [
+    "p382: 223.-"
+  ]
+}

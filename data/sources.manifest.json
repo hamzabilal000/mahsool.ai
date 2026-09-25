@@ -9,5 +9,27 @@
     "etag": "\"ad28c937631bdd1:0\"",
     "last_modified": "Fri, 24 Jul 2026 11:54:44 GMT",
     "downloaded_at": "2026-09-25T06:25:14.473032Z"
+  },
+  "ITR2002@2026-09-15": {
+    "law": "Income Tax Rules, 2002",
+    "version_date": "2026-09-15",
+    "url": "https://download1.fbr.gov.pk/Docs/20269211394336470IncomeTaxRules2002.pdf",
+    "path": "data/raw/ITR2002/2026-09-15.pdf",
+    "sha256": "6748584fa32da7e01160310c835b0404b43fc4d325d4687d156633f2440c5390",
+    "bytes": 79828441,
+    "etag": "\"5f36c0f4a149dd1:0\"",
+    "last_modified": "Mon, 21 Sep 2026 08:19:43 GMT",
+    "downloaded_at": "2026-09-25T07:00:21.373194Z"
+  },
+  "WHT2027@2026-06-30": {
+    "law": "Withholding Tax Rates Card, Tax Year 2027",
+    "version_date": "2026-06-30",
+    "url": "https://download1.fbr.gov.pk/Docs/202681113864992WithholdingTaxRatesCard2027.pdf",
+    "path": "data/raw/WHT2027/2026-06-30.pdf",
+    "sha256": "7f4142e746be5d94a78e84e09552afd901265e277f4f6f755bce31bdf3bbb41a",
+    "bytes": 460845,
+    "etag": "\"44b62f6d6829dd1:0\"",
+    "last_modified": "Tue, 11 Aug 2026 08:07:17 GMT",
+    "downloaded_at": "2026-09-25T07:07:27.386001Z"
   }
 }
