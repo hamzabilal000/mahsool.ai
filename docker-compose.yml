@@ -1,5 +1,7 @@
-# Local services: `docker compose up -d`, then set QDRANT_URL=http://localhost:6333 in .env.
-# The FastAPI backend joins this file in Milestone 3.
+# OPTIONAL. Nothing in the project needs Docker: Qdrant runs embedded (QDRANT_URL empty) and
+# Postgres is a hosted Neon database (DATABASE_URL). Use this file only if you prefer local servers:
+# `docker compose up -d`, then set QDRANT_URL=http://localhost:6333 and
+# DATABASE_URL=postgresql://mahsool:mahsool@localhost:5432/mahsool in .env.
 services:
   qdrant:
     image: qdrant/qdrant:v1.15.4
