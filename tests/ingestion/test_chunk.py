@@ -37,6 +37,31 @@ def test_section_key_orders_lettered_sections() -> None:
     assert sorted(nums, key=section_key) == nums
 
 
+def test_chapter_divisions_are_tracked_per_section(cfg) -> None:
+    pages = [
+        page(
+            1,
+            CH,
+            [
+                line(1, 10, "PART V", x=220, bold=True),
+                line(1, 20, "ADVANCE TAX AND DEDUCTION OF TAX AT SOURCE", x=160, bold=True),
+                line(1, 30, "Division I", x=220, bold=True),
+                line(1, 40, "Advance Tax Paid by the Taxpayer", x=200, bold=True),
+                line(1, 50, "147. Advance tax paid by the taxpayer.—(1) Text.", bold=True),
+                line(1, 60, "Division III", x=220, bold=True),
+                line(1, 70, "Deduction of Tax at Source", x=200, bold=True),
+                line(1, 80, "149. Salary.—(1) Text.", bold=True),
+            ],
+        )
+    ]
+    s147, s149 = run(cfg, pages)
+    assert s147.part == (
+        "Part V: Advance Tax and Deduction of Tax at Source; "
+        "Division I: Advance Tax Paid by the Taxpayer"
+    )
+    assert s149.part.endswith("; Division III: Deduction of Tax at Source")
+
+
 def test_one_chunk_per_section_with_metadata(cfg) -> None:
     pages = [
         page(
@@ -115,7 +140,7 @@ def test_centered_part_headings_are_metadata_not_text(cfg) -> None:
         )
     ]
     (c,) = run(cfg, pages)
-    assert c.part == "Part II: Head Of Income Salary"
+    assert c.part == "Part II: Head of Income Salary"
     assert "HEAD OF INCOME" not in c.text
 
 

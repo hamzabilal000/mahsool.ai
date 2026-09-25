@@ -68,6 +68,19 @@ ORDINALS = {
 }
 
 
+SMALL_WORDS = {"a", "an", "and", "at", "by", "for", "from", "in", "of", "on", "or", "the", "to"}
+
+
+def heading_case(text: str) -> str:
+    """'HEAD OF INCOME' → 'Head of Income', 'TAXPAYER’S' → 'Taxpayer’s' (unlike str.title)."""
+    words = text.split()
+    out = []
+    for i, w in enumerate(words):
+        low = w.lower()
+        out.append(low if i and low in SMALL_WORDS else low[:1].upper() + low[1:])
+    return " ".join(out)
+
+
 def estimate_tokens(text: str) -> int:
     """~4 characters per token for English legal text (BGE-M3 / XLM-R tokenizer ballpark)."""
     return math.ceil(len(text) / 4)
@@ -369,10 +382,22 @@ class Chunker:
     def _run_sections(self, pages: list[ParsedPage]) -> None:
         unit: Unit | None = None
         last_key = (0, "")
+        # Structure state: "Part V: Advance Tax ...; Division III: Deduction Of Tax At Source".
         part: str | None = None
-        part_titles: list[str] = []
-        collecting_part_title = False
+        division: str | None = None
+        titles: dict[str, list[str]] = {"part": [], "division": []}
+        collecting: str | None = None
         pending_heading: list[Line] = []
+
+        def structure() -> str | None:
+            if not part:
+                return None
+            label = part + (f": {' — '.join(titles['part'])}" if titles["part"] else "")
+            if division:
+                label += f"; {division}" + (
+                    f": {' — '.join(titles['division'])}" if titles["division"] else ""
+                )
+            return label
 
         for page in pages:
             chapter = page.header.strip() or None
@@ -400,32 +425,35 @@ class Chunker:
                 if structural or (
                     ln.kind == "text" and (CHAPTER_RE.match(text) or PART_RE.match(text))
                 ):
+                    dm = DIVISION_RE.match(text)
                     if CHAPTER_RE.match(text):
-                        part, part_titles, collecting_part_title = None, [], False
+                        part, division, collecting = None, None, None
+                        titles = {"part": [], "division": []}
                     elif pm := PART_RE.match(text):
-                        part, part_titles, collecting_part_title = (
-                            f"Part {pm.group('num')}",
-                            [],
-                            True,
+                        part, division, collecting = f"Part {pm.group('num')}", None, "part"
+                        titles = {"part": [], "division": []}
+                    elif dm:
+                        division, collecting = f"Division {dm.group('num').upper()}", "division"
+                        titles["division"] = (
+                            [heading_case(dm.group("rest").strip("[] "))]
+                            if dm.group("rest").strip("[] ")
+                            else []
                         )
-                    elif collecting_part_title and len(text) < 80:
-                        part_titles.append(text.strip("[] ").title())
+                    elif collecting:
+                        titles[collecting].append(heading_case(text.strip("[] ")))
                     continue
 
                 if is_heading:
                     self.flush(unit)
-                    collecting_part_title = False
+                    collecting = None
                     num = m.group("num")
                     last_key = section_key(num)
-                    full_part = (
-                        f"{part}: {' — '.join(part_titles)}" if part and part_titles else part
-                    )
                     unit = Unit(
                         kind="section",
                         section_id=f"{self.cfg.id_prefix}-s{num}",
                         title="",
                         chapter=chapter,
-                        part=full_part,
+                        part=structure(),
                         section=num,
                     )
                     pending_heading = []
