@@ -23,6 +23,8 @@ class Settings(BaseSettings):
     embedding_batch_size: int = 8
     embedding_max_length: int = 2048  # longest chunk is ~1,300 BGE-M3 tokens (DECISIONS D21)
     reranker_model: str = "BAAI/bge-reranker-v2-m3"
+    reranker_max_length: int = 512  # 27 s vs 37 s per 30 pairs on 4 CPU cores (DECISIONS D26)
+    reranker_batch_size: int = 8
     hf_cache_dir: Path | None = None
 
     # --- Vector store ---
@@ -38,6 +40,14 @@ class Settings(BaseSettings):
     # --- Retrieval behaviour ---
     rrf_k: int = 60
     candidates_per_retriever: int = 30  # top-N from each of dense and sparse before fusion
+    rerank_candidates: int = 30  # fused chunks passed to the reranker
+    answer_top_k: int = 6  # reranked chunks shown to the answer model
+    # Refuse without calling the answer model when the best reranker score is below this.
+    # Tuned on the dev split (DECISIONS D27).
+    refusal_threshold: float = 0.05
+    glossary_path: Path = Path("data/glossary_ur.csv")
+    groq_base_url: str = "https://api.groq.com/openai/v1"
+    rate_limit_per_minute: int = 20  # /ask requests per client IP
     current_tax_year: int = 2027
 
     # --- Storage (hosted Neon Postgres in development; unused until Milestone 4) ---

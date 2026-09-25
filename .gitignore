@@ -31,7 +31,7 @@ data/interim/
 
 # Model caches and vector store
 .cache/
-models/
+/models/
 hf_cache/
 qdrant_storage/
 data/qdrant/
@@ -41,3 +41,6 @@ pgdata/
 .idea/
 .vscode/
 .DS_Store
+
+# Local reranker score cache (eval speed-up)
+eval/cache/rerank.tsv

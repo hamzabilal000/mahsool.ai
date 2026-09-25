@@ -51,14 +51,19 @@ class Retriever:
     def retrieve(self, query: str, k: int = 10) -> list[Hit]:
         return self.retrieve_many([query], k)
 
-    def retrieve_many(self, queries: list[str], k: int = 10) -> list[Hit]:
-        """Search with one or more phrasings of the question and fuse the rankings with RRF."""
+    def retrieve_many(
+        self, queries: list[str], k: int = 10, *, tax_year: int | None = None
+    ) -> list[Hit]:
+        """Search with one or more phrasings of the question and fuse the rankings with RRF.
+
+        `tax_year` overrides the retriever's default tax-year filter for this call.
+        """
         rankings: list[list[str]] = []
         if self.mode == "bm25":
             rankings = [[cid for cid, _ in self.bm25.search(q, self.candidates)] for q in queries]
         else:
             assert self.store is not None and self.embedder is not None
-            flt = VectorStore.tax_year_filter(self.tax_year)
+            flt = VectorStore.tax_year_filter(tax_year or self.tax_year)
             for enc in self.embedder.encode(queries, is_query=True):
                 if self.mode in ("dense", "hybrid"):
                     rankings.append(
