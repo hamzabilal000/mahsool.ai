@@ -47,7 +47,8 @@ class CachedReranker:
     """Wraps a reranker with an on-disk score cache keyed by (query, passage).
 
     Used by the ablation runs: several presets rerank the same question/chunk pairs, and on a
-    CPU each pair costs ~0.5 s. The cache is a local speed-up only (gitignored).
+    CPU each pair costs ~1 s. The cache (eval/cache/rerank.tsv) is committed so a fresh clone
+    can re-run the ablation without re-scoring; it stays valid while the chunks don't change.
     """
 
     def __init__(self, inner: Reranker, path: Path) -> None:

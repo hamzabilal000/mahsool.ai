@@ -34,7 +34,7 @@ from eval.validate_testset import load_testset
 
 REPORTS = Path(__file__).resolve().parent / "reports"
 LLM_CACHE = Path(__file__).resolve().parent / "cache" / "groq.jsonl"
-RERANK_CACHE = Path(__file__).resolve().parent / "cache" / "rerank.tsv"  # gitignored
+RERANK_CACHE = Path(__file__).resolve().parent / "cache" / "rerank.tsv"
 GROUPS = ["english", "urdu", "roman_urdu"]
 
 PRESETS: dict[str, dict] = {
