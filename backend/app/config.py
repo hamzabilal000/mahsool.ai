@@ -21,7 +21,7 @@ class Settings(BaseSettings):
     embedding_model: str = "BAAI/bge-m3"
     embedding_dim: int = 1024
     embedding_batch_size: int = 8
-    embedding_max_length: int = 1024  # tokens per chunk passed to the encoder
+    embedding_max_length: int = 2048  # longest chunk is ~1,300 BGE-M3 tokens (DECISIONS D21)
     reranker_model: str = "BAAI/bge-reranker-v2-m3"
     hf_cache_dir: Path | None = None
 
@@ -40,9 +40,9 @@ class Settings(BaseSettings):
     candidates_per_retriever: int = 30  # top-N from each of dense and sparse before fusion
     current_tax_year: int = 2027
 
-    # --- Storage ---
-    database_url: str = Field(
-        default="postgresql://mahsool:mahsool@localhost:5432/mahsool",
+    # --- Storage (hosted Neon Postgres in development; unused until Milestone 4) ---
+    database_url: SecretStr | None = Field(
+        default=None,
         validation_alias=AliasChoices("DATABASE_URL", "MAHSOOL_DATABASE_URL"),
     )
 
