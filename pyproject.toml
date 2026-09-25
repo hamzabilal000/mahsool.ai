@@ -1,0 +1,39 @@
+[project]
+name = "mahsool-ai"
+version = "0.1.0"
+description = "Cross-lingual RAG assistant for Pakistani tax law (FBR)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "pymupdf>=1.24",
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["ingestion*", "eval*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003"]  # legal text uses en/em dashes and curly quotes on purpose
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "pdf: needs the downloaded FBR PDF in data/raw (skipped otherwise)",
+]
