@@ -394,3 +394,105 @@ source. The whole question family is either dev or test.
 **Q: The rate card and the Ordinance both give the rent rate. Which one is gold?**
 A: The Ordinance; the card says itself that the statute prevails. The card is listed as an *acceptable* source: it
 counts as a hit, but the answer should cite the law.
+
+---
+
+## Milestone 3 — From "find the section" to "answer with a citation" (in progress)
+
+### 1. The full question path
+
+```
+question ─▶ understand ─▶ search ─▶ pin named sections ─▶ rerank ─▶ guardrails ─▶ answer ─▶ citation check
+            language,       hybrid       "section 149"        top 30      scope,        GPT OSS    drop invented
+            tax year,       (original    → put on top          → best 6    tax year,     120B       sources, refuse
+            English         + rewrites,                                    score                   if none left
+            rewrites        RRF)
+```
+
+Each box is a switch in `PipelineConfig`, which is how the ablation table measures what each step adds.
+
+### 2. Query rewriting (and why the glossary exists)
+
+Embeddings put an Urdu question near the English section with the same *meaning*, but Roman Urdu is hard for them
+(Milestone 2: 57% dense). A small, fast LLM (GPT OSS 20B) rewrites the question into 1–3 **English legal search
+queries**: "non filer hun, cash nikalwaun to kitna tax katega?" → "advance tax on cash withdrawal for persons not
+in the active taxpayers' list". We then search with the original *and* the rewrites and fuse all rankings with RRF,
+so a bad rewrite can't sink a good original.
+
+The **glossary** (`data/glossary_ur.csv`) is the domain knowledge a general model lacks: *katoti* = withholding,
+*filer* = on the Active Taxpayers' List, *gosh wara* = return of income. Only the entries that appear in the
+question are put into the prompt, which keeps it short and focused.
+
+The rewrite also returns the question's **scope** (income tax / other federal tax / provincial / not tax), which is
+the cheapest way to refuse "What's PRA's tax on restaurants?".
+
+### 3. Rules first, LLM second
+
+Language and tax year are detected with plain rules: Urdu-script character counts, a list of Roman Urdu function
+words (*hai, ka, ki, kitna, kya*), and regexes for "tax year 2025", "TY2025", "2024-25". That's free, instant
+and predictable (200/200 correct on the test set's language labels). The LLM's tax year is used only if that
+year is actually written in the question, because models like to "helpfully" fill in a year.
+
+### 4. Direct section lookup
+
+If the user names a section ("dafa 236K", "u/s 149", "دفعہ ۱۴۹"), searching for it is silly: we fetch it by id
+and pin it on top. It's a regex plus a dictionary lookup. If the section doesn't exist ("section 999Z"), that's a
+strong signal to refuse instead of guessing.
+
+### 5. Bi-encoder vs cross-encoder (why reranking works)
+
+- **Bi-encoder** (BGE-M3): question and chunk are embedded *separately*; similarity is a dot product. You can
+  pre-compute all chunk vectors, so it searches millions of chunks in milliseconds, but it never sees question and
+  chunk together.
+- **Cross-encoder** (bge-reranker-v2-m3): question and chunk go through the model *together*, so every question
+  word can attend to every chunk word. Much more accurate, but it needs one full model run per (question, chunk)
+  pair, so you can only afford it on a short list.
+
+Hence "retrieve 30 cheaply, rerank 30 precisely". Result on the test split: **Urdu Hit@5 78.6% → 92.9%**, MRR
+0.781 → 0.805 overall. Roman Urdu slipped 67.9% → 64.3% (one question): the reranker reads Roman Urdu no better
+than the embedder, which is exactly what the English rewrite is for.
+
+**The cost:** on a 4-core CPU the reranker needs ~27 s per question. Quality and latency pull in opposite
+directions; for deployment we'll need a quantised model, fewer candidates or a GPU (DECISIONS D26).
+
+### 6. Guardrails: refuse early, refuse cheaply
+
+The answer is refused at the first failed check, cheapest first: scope → tax year → non-existent section → reranker
+score → the answer model says "not in the sources" → no valid citation. Most out-of-scope questions never reach the
+expensive model.
+
+**A lesson from the data:** a "refuse if the best reranker score is low" rule sounds right, but on the dev split
+answerable Roman Urdu questions score as low as out-of-scope ones. A threshold that catches most out-of-scope
+questions would also refuse 1 in 5 real Roman Urdu questions. So the threshold is almost off, and the scope check
+and the answer model do the work. Always check a guardrail's false-positive rate, not just its catch rate.
+
+### 7. Grounded generation and the citation check
+
+The answer model sees sources numbered `[1]`…`[6]` and must end every sentence with one. It returns JSON
+(`answerable`, `answer`, `citations`, `confidence`). Then **code**, not the model, verifies:
+
+- markers pointing outside 1…6 are deleted (the model invented a source);
+- if no valid citation is left, the user gets a refusal, never an uncited answer;
+- uncited sentences and "section N" mentions that no cited source contains become warnings.
+
+Why not trust the model? Because LLMs produce confident, well-formatted citations to things they never read. The
+check is ten lines of code and removes a whole class of failure.
+
+### Interview questions you should be able to answer
+
+**Q: Why rewrite the query instead of translating it?**
+A: Translation gives everyday English ("how much tax will be cut if I take out cash"). Search needs the *law's*
+words ("advance tax on cash withdrawal, persons not in the active taxpayers' list"). The rewrite targets that
+vocabulary, and the glossary tells the model what colloquial terms mean legally.
+
+**Q: What does a reranker add if you already have hybrid search?**
+A: Precision at the top. Hybrid search is good at getting the right chunk into the top 30; a cross-encoder reads
+question and chunk together and is much better at putting it at rank 1. Urdu Hit@5 went from 79% to 93%.
+
+**Q: How do you stop the model citing things it didn't see?**
+A: Sources are numbered, the model must cite numbers, and code checks every number against what was retrieved.
+Invalid ones are removed; if none remain, the app refuses.
+
+**Q: Your reranker takes 27 s on CPU. Would you ship it?**
+A: Not as is. I'd measure how much of the gain survives with fewer candidates (10–15) and a quantised ONNX model,
+or run it on a GPU. Quality numbers come from the eval; the latency budget decides the serving setup.

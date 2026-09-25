@@ -17,7 +17,7 @@ from. When the law doesn't cover the question, Mahsool says so.
 | --- | --- | --- |
 | 1 | Repo, ingestion of the Income Tax Ordinance 2001, 90 English eval questions | ✅ done |
 | 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ✅ done |
-| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | |
+| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | 🚧 retrieval, reranker, `/ask` built · ⏳ LLM ablation rows need the Groq key |
 | 4 | React chat UI, citation cards, feedback, Postgres logs, Langfuse | |
 | 5 | Fix top failures, Docker, deploy, demo | |
 
@@ -105,9 +105,11 @@ Urdu and Roman Urdu questions are natural rewrites of English ones and share the
 | BGE-M3 sparse only | 92.1% | 7.1% | 60.7% |
 | Dense only (BGE-M3), original query | 98.4% | 78.6% | 57.1% |
 | + sparse (hybrid, RRF) — **baseline** | 95.2% | 78.6% | 67.9% |
-| + English query rewrite | _M3_ | _M3_ | _M3_ |
-| + reranker | _M3_ | _M3_ | _M3_ |
-| + glossary in rewrite | _M3_ | _M3_ | _M3_ |
+| + direct section lookup | 96.8% | 78.6% | 67.9% |
+| + reranker (bge-reranker-v2-m3, top 30), no rewrite | 96.8% | **92.9%** | 64.3% |
+| + English query rewrite | _pending key_ | _pending key_ | _pending key_ |
+| + rewrite + reranker | _pending key_ | _pending key_ | _pending key_ |
+| + glossary in rewrite (full pipeline) | _pending key_ | _pending key_ | _pending key_ |
 
 **Hybrid baseline, test split (119 in-scope questions):**
 
@@ -126,7 +128,7 @@ were written from the section text (D20), and no question is hand-verified yet. 
 
 | Metric | Target | Result |
 | --- | --- | --- |
-| Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | hybrid baseline: 78.6% / 67.9% (Milestone 3 query rewrite should close the gap) |
+| Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | lookup + reranker: 92.9% / 64.3%; Roman Urdu needs the query rewrite |
 | Answer correctness | ≥ 85% | _Milestone 3_ |
 | Answers with a correct citation | ≥ 90% | _Milestone 3_ |
 | Correct refusal on out-of-scope questions | ≥ 90% | _Milestone 3_ |
@@ -164,6 +166,22 @@ The processed chunks are committed, so tests, the validator and the BM25 baselin
 anything. Only one process can open the embedded Qdrant folder at a time, so don't run `ingestion.index` and
 `eval.run_eval` side by side.
 
+**Ask questions through the API** (needs the index, and `GROQ_API_KEY` in `.env` from
+[console.groq.com](https://console.groq.com) → API Keys):
+
+```bash
+uvicorn backend.app.main:app --port 8000        # first start loads BGE-M3 + reranker (~30 s)
+curl -s localhost:8000/ask -H 'content-type: application/json' \
+  -d '{"question": "non filer hun, bank se cash nikalwaun to kitna tax katega?"}'
+```
+
+Interactive docs at http://localhost:8000/docs. Every response is
+`{"success": …, "data": {answer, citations, sources, …}, "error": …, "code": "OK" | "REFUSED" | …}`.
+On a laptop CPU the reranker makes each answer slow (tens of seconds); see DECISIONS D26.
+
+**Ablation presets:** `python -m eval.run_eval --pipeline {lookup, lookup-rerank, rewrite, rewrite-rerank, full}
+--split test`. LLM and reranker outputs are cached in `eval/cache/`, so re-runs are fast and reproducible.
+
 **Postgres** (conversation logs and feedback, needed from Milestone 4): create a free project on
 [Neon](https://neon.tech) and paste its connection string into `DATABASE_URL` in `.env`.
 
@@ -185,8 +203,11 @@ python -m ingestion.spot_check --law ITR2002 --n 20
 
 ```
 ingestion/           download → parse → chunk → index; one config per law in ingestion/laws/; ratecard.py
-backend/app/         config.py (all model ids) and rag/: embedder, Qdrant store, BM25, RRF fusion, retriever
-eval/                testset.jsonl (200 Qs), schema, validator, metrics, run_eval.py, reports/
+backend/app/         main.py (FastAPI), api/ask.py, service.py (guardrails), config.py (all model ids)
+backend/app/rag/     embedder, Qdrant store, BM25, RRF, retriever, lookup, query_rewrite, reranker,
+                     pipeline, generator, citations
+data/glossary_ur.csv Urdu / Roman Urdu → legal English glossary used by the query rewrite
+eval/                testset.jsonl (200 Qs), validator, run_eval.py, REVIEW.md checklist, reports/, cache/
 data/processed/      committed chunks, coverage report and spot-check sample per law snapshot
 data/sources.manifest.json   URL, version date and SHA-256 of every source PDF
 tests/               unit tests + regression tests on the real outputs

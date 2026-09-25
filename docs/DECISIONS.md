@@ -191,3 +191,77 @@ Newest first within each milestone. Each entry says what the plan said, what we 
 - Each new session or clone loses `.git/hooks`. The `commit-msg` hook that strips AI-attribution lines
   (`Co-Authored-By:`, `Claude-Session:`, `Generated with …`) now lives in `scripts/commit-msg`, and
   `sh scripts/setup-hooks.sh` installs it in one command.
+
+## Milestone 3 — Query understanding, reranking, `/ask` (in progress)
+
+### D25. Urdu glossary: 170 concepts, 1,040 spellings, with section pointers
+- **Plan:** a hand-built file of 200–300 terms.
+- **Done:** `data/glossary_ur.csv` has 170 concept rows, each with its Roman Urdu spellings (`katoti|kattoti|katega…`),
+  Urdu-script spellings, the legal English term and, where one section clearly governs it, section ids. That's
+  1,040 matchable spellings in total. A test checks that every section id exists.
+- Matching: Urdu spellings match as substrings. Roman Urdu terms match on word boundaries, and terms of 5+ letters
+  also match up to 3 extra letters, because verbs inflect (`khareed` → `khareedna`, `khareedni`). Only the entries
+  found in the question go into the rewrite prompt (max 15, longest first).
+- **Leak risk, and what we did about it:** while writing the glossary I had already seen seven test-question misses
+  in the Milestone 2 report. General vocabulary (fasal, tuition fee, jama karwana, adjust) stays, because any tax
+  glossary has it. A phrase copied from a test question ("office ki gaari") was removed. The glossary's effect is
+  measured as its own ablation row, and **Hamza should review the glossary** (it needs a native speaker's check
+  anyway).
+
+### D26. Reranker: bge-reranker-v2-m3 on the top 30, 512-token passages; far too slow for CPU serving
+- On the build machine's 4 CPU cores, reranking 30 chunks takes **27 s at 512 tokens** (37 s at 1,024). The time
+  is real compute: a 568M-parameter cross-encoder reading ~9,000 tokens per question.
+- For the eval this is fine: scores are cached per (question, passage) in `eval/cache/rerank.tsv` (committed), so
+  later ablation rows only score new candidates.
+- **For serving it breaks the < 4 s latency target.** Options for Milestone 5: a quantised ONNX reranker, reranking
+  the top 10–15 only, a GPU Space, or a hosted rerank API (the plan's risk table lists these). Decide with latency
+  numbers then.
+- The reranker scores the **original question** (it's multilingual). Scoring with the English rewrite as well is a
+  dev-split experiment once rewrites exist.
+
+### D27. Score-based refusal is almost off (threshold 0.001)
+- Idea: refuse without calling the LLM when the best reranker score is low. On the dev split the scores don't
+  separate well: answerable Roman Urdu questions often score below 0.01, just like out-of-scope ones.
+
+  | threshold | out-of-scope refused (dev, 9) | answerable questions wrongly refused (dev, 51) |
+  | --- | --- | --- |
+  | 0.001 | 1 | 0 |
+  | 0.01 | 6 | 6 |
+  | 0.05 | 7 | 12 |
+
+- Chose **0.001** (no false refusals on dev). Refusal mostly relies on the other checks, cheapest first: the
+  rewrite model's **scope** label (provincial tax, customs, not tax), a **tax year** with no law loaded, a named
+  section that **doesn't exist**, then the answer model saying the sources don't answer, then the **citation check**.
+  To be re-tuned on dev after rewrites exist.
+
+### D28. Direct section lookup pins the named section above search results
+- "section 149", "sec. 236k", "u/s 155", "dafa 4AB", "دفعہ ۱۴۹" → `ITO2001-s…`; "rule 5", "qaida 13P", "قاعدہ" →
+  `ITR2002-r…`. Up to 3 pieces of the named section go on top (pieces the search also found come first). A reference
+  that doesn't exist ("section 999Z") is reported, and if it's the only reference the answer is a refusal.
+- Effect on the test split: English Hit@5 95.2% → 96.8%, other groups unchanged (few Urdu questions name a section).
+
+### D29. Law "filter" is a scope check for now
+- **Plan:** filter by law when detected.
+- All indexed text is federal income tax, so filtering between the Ordinance and the Rules would only hide useful
+  text (questions often need both). Instead the rewrite model labels the question's **scope**
+  (`income_tax` / `other_federal_tax` / `provincial_tax` / `not_tax`) and anything other than income tax is refused.
+  A real law filter arrives with the Sales Tax phase, when there is more than one law family to choose from.
+
+### D30. `/ask` contract
+- Envelope `{success, data, error, code}`. `code` is `OK`, `REFUSED` (still `success: true`, with
+  `data.refusal_reason`), `VALIDATION_ERROR` (422), `RATE_LIMITED` (429, 20/min per IP, in memory), `LLM_UNAVAILABLE`
+  (503) or `INTERNAL_ERROR` (500).
+- `data` has the answer, citations (law, label, full text, FBR PDF link with `#page=`), the top 10 sources with
+  reranker scores ("Show sources"), the English search queries, tax year (and whether it was assumed), confidence,
+  warnings from the citation check, the disclaimer in the user's language, and timings.
+- The answer model gets at most 2,500 characters per source (6 sources ≈ 4k tokens) to stay inside Groq free-tier
+  token limits.
+- **Deferred:** Prompt Guard input screening (Milestone 5, with deployment). The prompt already tells the model to
+  treat sources and question as data, not instructions.
+
+### D31. The Groq key goes in the environment, not the chat
+- The key is read from `GROQ_API_KEY` (environment or local `.env`, never committed). In the cloud build environment it's
+  added as an environment variable in the environment settings, which only a new session picks up. So the ablation
+  rows that need the LLM (rewrite, glossary) and the end-to-end check run in the next session.
+- All Groq outputs used in evaluation are cached in `eval/cache/groq.jsonl` (committed), so the published numbers
+  can be replayed without a key.
