@@ -42,7 +42,8 @@ def validate(items: list[TestItem], section_ids: set[str]) -> list[str]:
         errors.append(f"duplicate ids: {dupes}")
     by_id = {i.id: i for i in items}
     for item in items:
-        missing = [g for g in item.gold_section_ids if g not in section_ids]
+        cited = item.gold_section_ids + item.acceptable_section_ids
+        missing = [g for g in cited if g not in section_ids]
         if missing:
             errors.append(f"{item.id}: unknown gold section ids {missing}")
         if item.group != "out_of_scope" and not item.gold_section_ids:
@@ -54,6 +55,8 @@ def validate(items: list[TestItem], section_ids: set[str]) -> list[str]:
             errors.append(f"{item.id}: source_id {item.source_id} not found")
         if src and src.split != item.split:
             errors.append(f"{item.id}: split {item.split} differs from source {src.id}")
+        if src and src.gold_section_ids != item.gold_section_ids:
+            errors.append(f"{item.id}: gold sections differ from source {src.id}")
     return errors
 
 

@@ -18,6 +18,10 @@ class TestItem(BaseModel):
     gold_section_ids: list[str] = Field(
         description="Citable units that answer the question (Chunk.section_id); empty = refuse"
     )
+    acceptable_section_ids: list[str] = Field(
+        default_factory=list,
+        description="Other sources that also answer it (e.g. the WHT rate card row for a rate)",
+    )
     reference_answer: str = Field(description="Short answer written only from the gold text")
     difficulty: Difficulty
     type: QuestionType
