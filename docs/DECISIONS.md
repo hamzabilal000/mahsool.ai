@@ -85,3 +85,59 @@ Newest first within each milestone. Each entry says what the plan said, what we 
 ### D13. `needs_review` flag on schedule chunks
 - Section chunks are covered by the TOC oracle and tests. Schedule clauses, schedule parts and tables have messier
   layouts, so all 396 carry `needs_review: true` until they are spot-checked.
+
+## Milestone 2 — Rules, rate card, retrieval harness, full test set
+
+### D14. Hugging Face is blocked here, so the BGE-M3 baseline is pending
+- The build environment's network policy denies `huggingface.co`, so the BGE-M3 and bge-reranker weights cannot be
+  downloaded here. Everything around the model is built and tested (embedder wrapper, Qdrant store with dense +
+  sparse vectors, RRF, tax-year filters, eval runner), using a deterministic fake embedder and in-memory Qdrant.
+- The **BM25 keyword baseline** is measured now (no model needed). The dense / hybrid rows of the ablation table will
+  be filled in as soon as the model can be downloaded, either here after the domain is allowed, or on Hamza's machine
+  with `pip install -e ".[ml]" && python -m ingestion.index && python -m eval.run_eval --retriever dense`.
+
+### D15. Embedded Qdrant by default; Docker Compose for the server
+- Docker has no daemon in the build environment. `qdrant-client` has an embedded mode (same API, stored under
+  `data/qdrant/`), used when `QDRANT_URL` is empty. `docker-compose.yml` runs Qdrant + Postgres for local
+  development; the backend service will be added to it in Milestone 3 when it exists.
+- Payload indexes (law_code, section_id, tax_year_from) are created, but only take effect on server Qdrant.
+
+### D16. Income Tax Rules: only the rules body is indexed
+- Latest FBR version is "Amended upto 15.09.2026" (governs tax year 2027). 381/381 rules in its table of contents
+  are chunked; 211 of 498 chunks carry amendment metadata (mostly SROs).
+- Pages 429–1198 (First to Fourth Schedules) are blank **forms**: notices, return and statement templates. They
+  answer no questions and would add noise, so they are skipped. Forms printed *inside* a rule (e.g. the appeal
+  petition in rule 94) stay, because they are part of that rule.
+- One known cosmetic issue: rule 231H's `part` metadata reads "Part III: Applicant" (picked up from a form title
+  in the same chapter). The text and ids are correct.
+
+### D17. The withholding rate card gets its own grid parser
+- The card is a six-column Excel export whose merged cells defeat generic table extraction. `ingestion/ratecard.py`
+  rebuilds the grid: column edges from ruling lines snapped to the header words, rows from description-cell starts
+  (cells are ≥8 pt apart, wrapped lines 2–3 pt) plus rate "anchors", and section labels matched top-aligned.
+  Output: 29 sections, 33 chunks, pinned by regression tests on known rows.
+- The card is a convenience guide, not law: FBR says the Ordinance prevails. Every card chunk states this, has
+  `tax_year_from = tax_year_to = 2027`, and is linked from eval questions only as an *acceptable* source, never gold.
+- Docling is still not needed: the grid approach handles the card.
+
+### D18. Test set: 200 questions, 60 dev / 140 test, translations share gold and split
+- 40 English questions (12 dev, 28 test) were rewritten naturally in Urdu script and in Roman Urdu (the way
+  people type: "non filer hun, bank se cash nikalwaun to kitna tax katega?"). Each carries `source_id`, and the
+  validator enforces identical gold sections and split, so a question never appears in both dev and test.
+- 30 out-of-scope questions (10 per language): provincial taxes (PRA/SRB/KPRA, stamp duty, property tax), sections
+  that don't exist (999Z, 888, 777, 250B), customs tariff, case law, foreign tax, future budgets, non-tax.
+- New field `acceptable_section_ids` lists alternative sources that also answer (e.g. the rate-card row for a
+  rate). They count for Hit@5 / MRR, not for the stricter "all gold" recall.
+- Reference answers stay in English as a content key; the reply language is judged separately in Milestone 3.
+
+### D19. Metric definitions
+- Retrieval is scored on **section ids** (several chunks of one section count once).
+- **Hit@5** = share of questions with at least one gold or acceptable section in the top 5. This is the plan's
+  "Recall@5" (most questions have one gold section). **Recall@5 (all gold)** = share of a question's gold sections
+  found, which is stricter for multi-section questions. **MRR@10** = mean of 1 / rank of the first relevant section.
+- Out-of-scope questions are excluded from retrieval metrics; refusal accuracy is measured end to end in Milestone 3.
+
+### D20. Caveat on the BM25 baseline
+- The English questions were written while reading the section text, so they share wording with the law, and
+  keyword search benefits (87% Hit@5 on English). Real user questions are vaguer. The Urdu script result (≈4%) is the
+  honest signal: keyword search cannot cross languages.

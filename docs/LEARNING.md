@@ -201,3 +201,124 @@ re-chunk without re-labelling the test set.
 A: Docling brings in PyTorch and layout models (several GB) for about 70 tables. PyMuPDF plus targeted clean-up
 handled FBR's quirks, and regression tests pin the important tables. I'll re-evaluate when the rate card (mostly
 tables) arrives.
+
+---
+
+## Milestone 2 — More laws, the retrieval machinery, and the first baseline
+
+### 1. One pipeline, three documents
+
+The same parser and chunker now handle the **Income Tax Rules, 2002** by changing *configuration*, not code
+(`ingestion/laws/itr2002.py`). The Rules use US Letter pages, 9.5 pt text, and a footnote line at x=126 instead of
+x=72, so these became `LawConfig` fields (`separator_x`, `heading_max_x`, `unit_name="Rule"`, …). This is what
+the plan meant by "each new law is mostly a data job".
+
+Two lessons:
+
+- **Define the body as a range, not by matching every page header.** Some Rules pages have a continuation title as
+  their header ("RECOVERY OF TAX FROM PERSONS HOLDING…"). Matching every header against `CHAPTER -` skipped them.
+  The fix: the body starts at the first chapter header and ends where the appendix starts.
+- **Normalise before comparing.** The Rules' table of contents writes `01`, `02`; the body writes `1.`, `2.`.
+  Stripping leading zeros turned a scary "70 rules missing" into 0 missing.
+
+### 2. Parsing a table without trusting the table finder (the rate card)
+
+FBR's withholding rate card is an Excel sheet saved as PDF. Merged cells confuse automatic table extraction, which
+put rates in the wrong columns. Rather than guess, the parser rebuilds the grid from geometry:
+
+1. **Columns:** each cell draws its own border segment, so the x-positions where segments start are the column
+   edges. Snap them to the header words, because some pages have extra segments.
+2. **Rows:** many rows have no border, but cells are top-aligned. Inside a cell, lines are 2–3 pt apart; between
+   cells, 8 pt or more. So a row starts where a description cell starts, or where a new rate starts (a line beginning
+   with `%`, `Rs`, `Nil`… that isn't the wrapped tail of a line ending in "exceeding Rs.").
+3. **Sections:** the label ("236K Purchase of Immovable Property") sits on its first row, so every row belongs to the
+   last label at or above it.
+
+The general lesson: when a tool fails on a specific document, measure the document (spacing, alignment, line
+positions) and write down the rule the layout actually follows.
+
+### 3. Three ways to search
+
+| Method | What it matches | Good at | Bad at |
+| --- | --- | --- | --- |
+| **BM25** (keyword) | exact words, weighted by rarity (IDF) and frequency (TF) | section numbers, legal terms | synonyms, other languages |
+| **Dense** (BGE-M3 vector) | meaning: the question and chunk become 1,024-number vectors; closeness = cosine similarity | paraphrases, Urdu → English | exact numbers, rare terms |
+| **Sparse** (BGE-M3 lexical weights) | learned keyword weights per token, from the same model | exact terms, with better weighting than BM25 | cross-language |
+
+**BM25 in one line:** a chunk scores high if it contains the query's *rare* words, many times, relative to its length.
+`idf = log(1 + (N − df + 0.5)/(df + 0.5))`; the `k1` and `b` parameters stop long chunks from winning just by being
+long.
+
+**BGE-M3** gives *both* a dense vector and sparse weights in one forward pass, which is why the plan picked it. It
+reads 100+ languages, so an Urdu question and the English section about the same thing land close together.
+
+### 4. Hybrid search and Reciprocal Rank Fusion (RRF)
+
+Hybrid search runs dense and sparse search separately and merges the two ranked lists. You can't add their scores:
+cosine similarity (0–1) and sparse dot products (any size) aren't on the same scale. RRF uses **ranks only**:
+
+```
+score(chunk) = Σ over lists  1 / (k + rank)        k = 60
+```
+
+A chunk ranked 1st by dense and 3rd by sparse scores 1/61 + 1/63; a chunk only ranked 1st by one list scores 1/61.
+Agreement wins. `k = 60` (from the original 2009 paper) keeps rank 1 from dominating. The same function also fuses
+the results of *several phrasings* of one question (original + English rewrite), which is how Milestone 3's query
+rewriting will plug in (`Retriever.retrieve_many`).
+
+### 5. Qdrant: one collection, named vectors, filters
+
+- Each chunk is one **point** with two **named vectors** (`dense`, `sparse`) and the whole chunk as its **payload**.
+- Point ids are `uuid5(chunk_id@version_date)`: stable across re-indexing, and different for a new snapshot of
+  the same section, so old and new law can coexist.
+- **Tax-year filter:** `tax_year_from ≤ Y` and (`tax_year_to` is null or `≥ Y`). A test indexes an "old" (TY2020–2026)
+  and a "new" (TY2027+) chunk and checks that each tax year sees only the right one.
+- Embedded mode (`QdrantClient(path=…)`) runs in-process with the same API as the server, which is handy for tests
+  and laptops. Docker Compose runs the real server.
+
+### 6. Measuring retrieval
+
+- **Hit@5**: did any correct section appear in the top 5? (the plan's Recall@5)
+- **Recall@5 (all gold)**: for questions needing two sections (the rule + the rate table), what share was found?
+- **MRR@10**: 1 / rank of the first correct section, averaged. Rank 1 → 1.0, rank 2 → 0.5, not found → 0.
+- Scored on **section ids**, so three pieces of section 2 in the top 5 count as one section.
+- Reported on the **test split only**; the dev split is for tuning.
+
+### 7. The first baseline, and what it teaches
+
+BM25 on the held-out test split:
+
+| Group | Hit@5 |
+| --- | --- |
+| English | 87.3% |
+| Roman Urdu | 50.0% |
+| Urdu script | 3.6% |
+
+- **Urdu script ≈ 4%:** the words share no characters with English legal text, so keyword search has nothing to
+  match. That's the whole case for the cross-lingual design (multilingual embeddings + English query rewriting).
+- **Roman Urdu 50%:** people mix English terms into Roman Urdu ("salary", "return", "ATL", "advance tax"), and those
+  still match. The half that fails uses Urdu words ("kiraya", "makan", "zakat di hai").
+- **English 87% is optimistic:** the questions were written while reading the sections, so they share wording with
+  the law. Real users won't. This is why numbers from hand-written test sets need a caveat.
+
+### Interview questions you should be able to answer
+
+**Q: Why not just add the dense and sparse scores?**
+A: They're on different scales and distributions. RRF only uses ranks, needs no score normalisation, has one
+parameter, and is hard to beat in practice.
+
+**Q: Why does BM25 fail on Urdu when BGE-M3 shouldn't?**
+A: BM25 compares exact tokens, and Urdu and English share none. BGE-M3 is trained on parallel and multilingual data,
+so it maps a sentence and its translation to nearby vectors: similarity is about meaning, not spelling.
+
+**Q: Why keep a keyword method at all if embeddings understand meaning?**
+A: Embeddings are fuzzy about exact strings like "236K", "Division XVIII" or "Rs. 50 million". Sparse or keyword
+signals catch those. Hybrid gets both.
+
+**Q: How do you stop a translated test question leaking into tuning?**
+A: Every translation stores `source_id`, and the validator enforces that it has the same split (and gold) as its
+source. The whole question family is either dev or test.
+
+**Q: The rate card and the Ordinance both give the rent rate. Which one is gold?**
+A: The Ordinance; the card says itself that the statute prevails. The card is listed as an *acceptable* source: it
+counts as a hit, but the answer should cite the law.

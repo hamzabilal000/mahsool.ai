@@ -16,7 +16,7 @@ from. When the law doesn't cover the question, Mahsool says so.
 | Milestone | Scope | State |
 | --- | --- | --- |
 | 1 | Repo, ingestion of the Income Tax Ordinance 2001, 90 English eval questions | ✅ done |
-| 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ⏳ next |
+| 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ✅ BM25 baseline · ⏳ BGE-M3 run pending model download |
 | 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | |
 | 4 | React chat UI, citation cards, feedback, Postgres logs, Langfuse | |
 | 5 | Fix top failures, Docker, deploy, demo | |
@@ -50,15 +50,17 @@ flowchart TD
 
 ## What's in the index today
 
-Source: FBR consolidated **Income Tax Ordinance, 2001 — amended up to 30.06.2026** (includes the Finance Act, 2026;
-governs tax year 2027). The SHA-256 is recorded in [`data/sources.manifest.json`](data/sources.manifest.json).
+All three phase-1 sources are the latest FBR versions; SHA-256 checksums are in
+[`data/sources.manifest.json`](data/sources.manifest.json).
 
-| | |
-| --- | --- |
-| Sections (every live section in the table of contents) | 380 / 380 |
-| Chunks | 885 (489 section pieces, 224 Second Schedule clauses, 104 schedule parts, 68 rate tables) |
-| Average / max chunk size | ~315 / 790 tokens (budget 800) |
-| Chunks with amendment history (`amended_by`) | 675 |
+| Source | FBR version | Units covered | Chunks |
+| --- | --- | --- | --- |
+| Income Tax Ordinance, 2001 | amended up to 30.06.2026 (Finance Act 2026, TY2027) | 380 / 380 sections + all 15 Schedules | 885 |
+| Income Tax Rules, 2002 | amended up to 15.09.2026 | 381 / 381 rules (form appendices skipped) | 498 |
+| Withholding Tax Rates Card | TY2027, updated to 30.06.2026 | 29 sections, ATL and non-ATL rates | 33 |
+
+"Units covered" is checked against each PDF's own table of contents. Chunks are at most 800 tokens; 899 carry
+amendment history (`amended_by`: Finance Acts, SROs).
 
 Each chunk follows the law's own structure: one section, one Second Schedule clause or one rate table. Example:
 
@@ -85,18 +87,35 @@ The test set lives in [`eval/testset.jsonl`](eval/testset.jsonl). Every question
 reference answer written only from the law text, a difficulty tag and a fixed dev/test split. All questions start with
 `"verified": false` and are checked by hand against the PDF before they are used for reporting.
 
-| Group | Planned | Written | Split (dev / test) |
-| --- | --- | --- | --- |
-| English | 90 | 90 | 27 / 63 |
-| Urdu script | 40 | — | Milestone 2 |
-| Roman Urdu | 40 | — | Milestone 2 |
-| Out of scope / trick | 30 | — | Milestone 2 |
+| Group | Questions | Split (dev / test) |
+| --- | --- | --- |
+| English | 90 | 27 / 63 |
+| Urdu script | 40 | 12 / 28 |
+| Roman Urdu | 40 | 12 / 28 |
+| Out of scope / trick | 30 | 9 / 21 |
+| **Total** | **200** | **60 / 140** |
 
-**Results (held-out test split only)**
+Urdu and Roman Urdu questions are natural rewrites of English ones and share their gold sections and split.
+
+**Retrieval ablation: Hit@5 on the held-out test split** (Urdu / Roman Urdu is the target group)
+
+| Setup | English | Urdu | Roman Urdu |
+| --- | --- | --- | --- |
+| BM25 keywords (no model) | 87.3% | 3.6% | 50.0% |
+| Dense only (BGE-M3), original query | _pending_ | _pending_ | _pending_ |
+| + sparse (hybrid, RRF) | _pending_ | _pending_ | _pending_ |
+| + English query rewrite | _M3_ | _M3_ | _M3_ |
+| + reranker | _M3_ | _M3_ | _M3_ |
+| + glossary in rewrite | _M3_ | _M3_ | _M3_ |
+
+The English BM25 number is optimistic because the questions were written from the section text (see
+[DECISIONS D20](docs/DECISIONS.md)). Full reports: [`eval/reports/`](eval/reports/).
+
+**Targets (held-out test split only)**
 
 | Metric | Target | Result |
 | --- | --- | --- |
-| Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | _baseline in Milestone 2_ |
+| Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | BM25: 3.6% / 50.0%; BGE-M3 pending |
 | Answer correctness | ≥ 85% | _Milestone 3_ |
 | Answers with a correct citation | ≥ 90% | _Milestone 3_ |
 | Correct refusal on out-of-scope questions | ≥ 90% | _Milestone 3_ |
@@ -109,33 +128,41 @@ Requires Python 3.11+.
 ```bash
 git clone https://github.com/hamzabilal000/mahsool.ai.git && cd mahsool.ai
 python -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev]"
-cp .env.example .env            # API keys are only needed from Milestone 2 onwards
+pip install -e ".[dev]"            # add ",ml" for BGE-M3 (PyTorch + ~2.3 GB of model weights)
+cp .env.example .env
 
-# Ingestion pipeline (Income Tax Ordinance 2001)
-python -m ingestion.download --law ITO2001 --check-latest   # warns if FBR has a newer consolidated version
+# Ingestion (repeat per law: ITO2001, ITR2002; the rate card uses its own parser)
+python -m ingestion.download --law ITO2001 --check-latest   # exits 2 if FBR has a newer version
 python -m ingestion.download --law ITO2001                  # skips the download if unchanged
-python -m ingestion.parse    --law ITO2001                  # → data/interim/…/pages.jsonl
-python -m ingestion.chunk    --law ITO2001                  # → data/processed/…/chunks.jsonl + report.json
-python -m ingestion.spot_check --law ITO2001 --n 20         # → data/processed/…/spot_check.md
+python -m ingestion.parse    --law ITO2001
+python -m ingestion.chunk    --law ITO2001
+python -m ingestion.download --law WHT2027 && python -m ingestion.ratecard --law WHT2027
+python -m ingestion.spot_check --law ITR2002 --n 20
 
-# Checks
+# Vector index (needs the ml extra). Qdrant: docker compose up -d, or leave QDRANT_URL empty for embedded mode
+python -m ingestion.index
+
+# Evaluation
 python -m eval.validate_testset
+python -m eval.run_eval --retriever bm25   --split test
+python -m eval.run_eval --retriever hybrid --split test     # dense / sparse / hybrid need the index
 ruff check . && pytest
 ```
 
-The processed chunks are committed, so tests and the eval validator run without downloading the PDF.
+The processed chunks are committed, so tests, the validator and the BM25 baseline run without downloading anything.
 
 ## Repository layout
 
 ```
-ingestion/           download → parse → chunk pipeline, one config per law in ingestion/laws/
-eval/                test set, schema and validator (run_eval.py arrives in Milestone 2)
+ingestion/           download → parse → chunk → index; one config per law in ingestion/laws/; ratecard.py
+backend/app/         config.py (all model ids) and rag/: embedder, Qdrant store, BM25, RRF fusion, retriever
+eval/                testset.jsonl (200 Qs), schema, validator, metrics, run_eval.py, reports/
 data/processed/      committed chunks, coverage report and spot-check sample per law snapshot
 data/sources.manifest.json   URL, version date and SHA-256 of every source PDF
-tests/               unit tests + regression tests on the real ITO output
+tests/               unit tests + regression tests on the real outputs
 docs/                LEARNING.md (concepts explained), DECISIONS.md (deviations from the plan)
-backend/, frontend/  FastAPI and React apps (Milestones 3–4)
+docker-compose.yml   Qdrant + Postgres (backend joins in Milestone 3)
+frontend/            React app (Milestone 4)
 ```
 
 ## Docs
