@@ -13,4 +13,7 @@ ITO_2001 = LawConfig(
     source_url="https://download1.fbr.gov.pk/Docs/2026724177725705IncomeTaxOrdinanace2001.pdf",
     index_page_url="https://www.fbr.gov.pk/Categ/Income-Tax-Ordinance/326",
     version_date=date(2026, 6, 30),
+    # The PDF prints "[[4AB] Subject to this Ordinance, a surcharge…" with no heading
+    # (DECISIONS D37).
+    title_overrides={"4AB": "Surcharge"},
 )

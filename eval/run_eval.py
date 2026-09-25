@@ -37,6 +37,14 @@ REPORTS = Path(__file__).resolve().parent / "reports"
 LLM_CACHE = Path(__file__).resolve().parent / "cache" / "groq.jsonl"
 RERANK_CACHE = Path(__file__).resolve().parent / "cache" / "rerank.tsv"
 GROUPS = ["english", "urdu", "roman_urdu"]
+# Reporting groups: FBR-sourced questions (English) are scored as their own group, so "english"
+# stays the written English set and stays comparable across runs; "all" includes both.
+REPORT_GROUPS = ["english", "fbr", "urdu", "roman_urdu"]
+
+
+def report_group(item: TestItem) -> str:
+    return "fbr" if item.source == "fbr" else item.group
+
 
 PRESETS: dict[str, dict] = {
     "lookup": {"lookup": True, "rewrite": "none", "rerank": False},
@@ -117,12 +125,12 @@ def evaluate(items: list[TestItem], retriever: Retriever, k: int = 5) -> dict:
             "mrr@10": reciprocal_rank(sections, relevant, 10),
         }
         for name, value in scores.items():
-            per_group[item.group][name].append(value)
+            per_group[report_group(item)][name].append(value)
             per_group["all"][name].append(value)
         rows.append(
             {
                 "id": item.id,
-                "group": item.group,
+                "group": report_group(item),
                 "gold": item.gold_section_ids,
                 "top": sections[:k],
                 **scores,
@@ -143,7 +151,7 @@ def to_markdown(name: str, split: str, k: int, result: dict) -> str:
         f"| Group | n | Hit@{k} | Recall@{k} (all gold) | MRR@10 |",
         "|---|---|---|---|---|",
     ]
-    for g in [*GROUPS, "all"]:
+    for g in [*REPORT_GROUPS, "all"]:
         s = result["summary"].get(g)
         if s:
             lines.append(

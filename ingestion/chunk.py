@@ -44,7 +44,11 @@ DIVISION_RE = re.compile(
     r"^\[*\s*Division\s+(?P<num>[IVXL]+[A-Z]{0,2})\b\s*\]?\s*(?P<rest>.*)$", re.I
 )
 HEADER_PART_RE = re.compile(r"Part\s*[-–]?\s*(?P<num>[IVXL]+[A-Z]?)\b")
-TITLE_END_RE = re.compile(r"\.?\s*[—―]|\.\s*[-–]|\s[-–]\s")
+TITLE_END_RE = re.compile(r"\.?\s*[—―─−]|[.:]\s*[-–]|\s[-–]\s|(?<=[a-z])-\s+(?=\()")
+# Weaker title ends, only trusted right after a short heading: "Title. (1) …", "Title: The …".
+TITLE_SOFT_END_RE = re.compile(
+    r"[.:]\s+(?=\(\d|(?:The|An?|Any|Every|Where|Notwithstanding|Subject|No|In|On|For)\b)"
+)
 # "[ ]" marks omitted text; "[ ### ]", "[ %% ]" are placeholders for omitted entries.
 EMPTY_BRACKETS_RE = re.compile(r"\[[\s#*%]*\]")
 WS_RE = re.compile(r"[ \t]+")
@@ -140,13 +144,24 @@ def lines_to_paras(lines: list[Line]) -> list[Para]:
 
 
 def extract_title(heading_text: str) -> str:
-    """'149. Salary.—(1) Every employer...' → 'Salary'."""
+    """'149. Salary.—(1) Every employer...' → 'Salary'.
+
+    Some units have no heading in the PDF ("[[4AB] Subject to this Ordinance, a surcharge…",
+    Rules 27B–27Q). Then the title is empty rather than the first words of the text, and labels
+    show just "Section 4AB" / "Rule 27B".
+    """
     m = SECTION_RE.match(heading_text)
     rest = m.group("rest") if m else heading_text
-    rest = rest.lstrip("[ ")
+    rest = rest.lstrip("[]. ")  # "[19D]. Application…": the bracket and dot before the title
+    if rest.startswith("("):
+        return ""  # "27H. (1) The country-by-country reports…": the text starts right away
     end = TITLE_END_RE.search(rest[:300])
-    title = rest[: end.start()] if end else " ".join(rest.split()[:10])
-    title = re.sub(r"[\[\]]", "", title).strip().rstrip(".:;,")
+    soft = TITLE_SOFT_END_RE.search(rest[:200])
+    if soft and (not end or soft.start() < end.start()) and len(rest[: soft.start()].split()) <= 30:
+        end = soft
+    if not end or len(rest[: end.start()].split()) > 30:
+        return ""
+    title = re.sub(r"[\[\]]", "", rest[: end.start()]).strip().rstrip(".:;,")
     return title[:150]
 
 
@@ -314,7 +329,8 @@ class Chunker:
 
     def _continued_header(self, unit: Unit) -> str:
         if unit.kind == "section":
-            return f"{self.cfg.unit_name} {unit.section}. {unit.title} (continued)"
+            title = f". {unit.title}" if unit.title else ""
+            return f"{self.cfg.unit_name} {unit.section}{title} (continued)"
         return f"{unit.title} (continued)"
 
     def flush(self, unit: Unit | None) -> None:
@@ -388,7 +404,7 @@ class Chunker:
         division: str | None = None
         titles: dict[str, list[str]] = {"part": [], "division": []}
         collecting: str | None = None
-        pending_heading: list[Line] = []
+        pending_heading: list[Line] | None = []
         chapter: str | None = None
 
         def structure() -> str | None:
@@ -458,22 +474,24 @@ class Chunker:
                     unit = Unit(
                         kind="section",
                         section_id=f"{self.cfg.id_prefix}-{self.cfg.unit_code}{num}",
-                        title="",
+                        title=self.cfg.title_overrides.get(num, ""),
                         chapter=chapter,
                         part=structure(),
                         section=num,
                     )
-                    pending_heading = []
+                    pending_heading = None if unit.title else []
                 if unit is None:
                     continue  # preamble before section 1
                 unit.lines.append(ln)
-                if not unit.title:
+                if pending_heading is not None:
                     pending_heading.append(ln)
                     joined = " ".join(x.text for x in pending_heading)
                     if TITLE_END_RE.search(joined) or len(pending_heading) >= 3:
                         unit.title = extract_title(joined)
-            if unit and not unit.title and pending_heading:
+                        pending_heading = None  # decided, even if the unit has no title
+            if unit and pending_heading:
                 unit.title = extract_title(" ".join(x.text for x in pending_heading))
+                pending_heading = None
         self.flush(unit)
 
     # ------------------------------------------------------------ schedules

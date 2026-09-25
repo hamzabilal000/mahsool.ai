@@ -27,7 +27,7 @@ from statistics import mean
 
 from backend.app.config import get_settings
 from backend.app.llm import LLMError
-from eval.run_eval import GROUPS, LLM_CACHE, REPORTS, RERANK_CACHE
+from eval.run_eval import LLM_CACHE, REPORT_GROUPS, REPORTS, RERANK_CACHE, report_group
 from eval.validate_testset import load_testset
 
 
@@ -86,7 +86,7 @@ def to_markdown(name: str, split: str, summary: dict, rows: list[dict]) -> str:
         "| Group | n | Answered | Correct citation (all) | Correct citation (answered) |",
         "|---|---|---|---|---|",
     ]
-    for g in [*GROUPS, "in_scope"]:
+    for g in [*REPORT_GROUPS, "in_scope"]:
         s = summary.get(g)
         if s:
             ca = s["correct_citation_answered"]
@@ -145,7 +145,7 @@ def main() -> None:
         rows.append(
             {
                 "id": item.id,
-                "group": item.group,
+                "group": report_group(item),
                 "refused": data.refused,
                 "refusal_reason": data.refusal_reason,
                 "gold": item.gold_section_ids,

@@ -34,6 +34,10 @@ class LawConfig(BaseModel):
     separator_x: float = 72.0  # left edge of the footnote separator line
     centered_min_x: float = 150.0  # bold short lines right of this are Part/Division titles
 
+    # Titles for units the PDF prints without a heading, set by hand; each needs a reason in
+    # DECISIONS (they are labels, never shown as law text).
+    title_overrides: dict[str, str] = Field(default_factory=dict)
+
     @property
     def snapshot_id(self) -> str:
         return f"{self.id_prefix}@{self.version_date.isoformat()}"

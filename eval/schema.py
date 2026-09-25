@@ -30,7 +30,18 @@ class TestItem(BaseModel):
         default=None, description="For translations: id of the question this was translated from"
     )
     tax_year: int = 2027
-    verified: bool = Field(
-        default=False, description="Set to true only after a human checked it against the PDF"
+    verified: Literal[False, "machine", "human"] = Field(
+        default=False,
+        description='"machine": passed eval/verify_testset.py (two LLM judges on the gold text '
+        'and a code check of every number); "human": checked by an expert',
     )
+    language_ok: bool | None = Field(
+        default=None,
+        description="Urdu / Roman Urdu wording checked by a native speaker (None = not checked)",
+    )
+    source: Literal["written", "fbr"] = Field(
+        default="written",
+        description='"fbr": adapted from an FBR-published Q&A (URL in source_url)',
+    )
+    source_url: str | None = None
     notes: str | None = None

@@ -28,5 +28,5 @@ def embedding_text(chunk: Chunk) -> str:
     if chunk.schedule:
         head = f"{chunk.law} — {chunk.title}"
     else:
-        head = f"{chunk.law} — {unit} {where}: {chunk.title}".strip()
+        head = f"{chunk.law} — {unit} {where}" + (f": {chunk.title}" if chunk.title else "")
     return f"{head}\n{chunk.text}"

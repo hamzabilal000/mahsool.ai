@@ -32,6 +32,28 @@ def test_extract_title_variants() -> None:
     )
 
 
+def test_extract_title_bracketed_and_untitled_units() -> None:
+    # "[19D]." leaves no stray dot in the title
+    assert extract_title("[19D]. Form of Irrevocable Bank Guarantee.- An irrevocable") == (
+        "Form of Irrevocable Bank Guarantee"
+    )
+    # No heading in the PDF: empty title, never the first words of the text
+    assert extract_title("[[4AB] Subject to this Ordinance, a surcharge shall be payable by") == ""
+    assert extract_title("27H. (1) The country-by-country reports shall be used.") == ""
+    # Other separators seen in the Rules
+    assert extract_title("214E. Closure of audit.─(1) Notwithstanding") == "Closure of audit"
+    assert extract_title("27A. Application of this chapter:- (1) This") == (
+        "Application of this chapter"
+    )
+    assert extract_title("49. Obligations and Requirements- (1) A notified") == (
+        "Obligations and Requirements"
+    )
+    assert extract_title("76N. Electronic Order: The order passed") == "Electronic Order"
+    assert extract_title("78. Prescribed Form for reference to High Court. An application") == (
+        "Prescribed Form for reference to High Court"
+    )
+
+
 def test_section_key_orders_lettered_sections() -> None:
     nums = ["4", "4A", "4AB", "4B", "5", "100", "100A"]
     assert sorted(nums, key=section_key) == nums

@@ -55,6 +55,8 @@ def validate(items: list[TestItem], section_ids: set[str]) -> list[str]:
             errors.append(f"{item.id}: source_id {item.source_id} not found")
         if src and src.split != item.split:
             errors.append(f"{item.id}: split {item.split} differs from source {src.id}")
+        if item.source == "fbr" and not item.source_url:
+            errors.append(f"{item.id}: FBR-sourced question without source_url")
         if src and src.gold_section_ids != item.gold_section_ids:
             errors.append(f"{item.id}: gold sections differ from source {src.id}")
     return errors
@@ -66,7 +68,9 @@ def main() -> None:
     counts = Counter((i.group, i.split) for i in items)
     for (group, split), n in sorted(counts.items()):
         print(f"{group:13s} {split:5s} {n:4d}")
-    print(f"total {len(items)} · verified {sum(i.verified for i in items)}")
+    status = Counter(str(i.verified) for i in items)
+    fbr = sum(i.source == "fbr" for i in items)
+    print(f"total {len(items)} · verified {dict(status)} · fbr {fbr}")
     if errors:
         print("\n".join(errors))
         sys.exit(1)
