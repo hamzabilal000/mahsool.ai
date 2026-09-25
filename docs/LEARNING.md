@@ -274,7 +274,7 @@ rewriting will plug in (`Retriever.retrieve_many`).
 - **Tax-year filter:** `tax_year_from ≤ Y` and (`tax_year_to` is null or `≥ Y`). A test indexes an "old" (TY2020–2026)
   and a "new" (TY2027+) chunk and checks that each tax year sees only the right one.
 - Embedded mode (`QdrantClient(path=…)`) runs in-process with the same API as the server, which is handy for tests
-  and laptops. Docker Compose runs the real server.
+  and laptops (no Docker needed). A Qdrant server (Docker or Qdrant Cloud) is only needed later, for deployment.
 
 ### 6. Measuring retrieval
 
@@ -284,7 +284,7 @@ rewriting will plug in (`Retriever.retrieve_many`).
 - Scored on **section ids**, so three pieces of section 2 in the top 5 count as one section.
 - Reported on the **test split only**; the dev split is for tuning.
 
-### 7. The first baseline, and what it teaches
+### 7. The first (BM25) baseline, and what it teaches
 
 BM25 on the held-out test split:
 
@@ -301,7 +301,79 @@ BM25 on the held-out test split:
 - **English 87% is optimistic:** the questions were written while reading the sections, so they share wording with
   the law. Real users won't. This is why numbers from hand-written test sets need a caveat.
 
+### 8. Embedding the corpus with BGE-M3
+
+`python -m ingestion.index` loads every chunk, prepends a one-line **context header** ("Income Tax Ordinance, 2001
+— Section 149: Salary"), and passes batches through BGE-M3. One forward pass returns:
+
+- a **dense vector**: 1,024 numbers that capture meaning (the CLS token's final state, normalised);
+- **sparse weights**: for each token in the text, a learned importance score (e.g. "withholding" 0.21, "the" ≈ 0).
+
+Both go into one Qdrant point with the whole chunk as payload. 1,416 chunks took 28 minutes on a 4-core CPU. That's a
+one-time cost, redone only when the chunks change. Answering a question only encodes the *query* (a few words),
+which takes well under a second.
+
+**Measure, don't assume (token counts).** Milestone 1 guessed "4 characters ≈ 1 token". The real tokenizer gave 4.02:
+the guess was right on average, but 19 chunks (mostly tables) were over the encoder's 1,024-token setting, and the
+encoder would have **silently cut off their ends**. Truncation raises no error, so the fix (max length 2,048) only
+came from counting. Lesson: check averages *and* the tail.
+
+### 9. The BGE-M3 baseline, and what each method is good at
+
+Test split, Hit@5:
+
+| Retriever | English | Urdu script | Roman Urdu |
+| --- | --- | --- | --- |
+| BM25 | 87.3% | 3.6% | 50.0% |
+| BGE-M3 sparse | 92.1% | 7.1% | 60.7% |
+| BGE-M3 dense | 98.4% | 78.6% | 57.1% |
+| **Hybrid (dense + sparse, RRF)** | 95.2% | 78.6% | **67.9%** |
+
+All-language hybrid: **Hit@5 84.9%, Recall@5 (all gold) 81.9%, MRR@10 0.764**.
+
+How to read this:
+
+- **Urdu script jumps from 4% to 79% with dense.** This is cross-lingual retrieval working: an Urdu question and
+  the English section land close together in vector space. Sparse stays at 7% because it's still word matching,
+  just with learned weights.
+- **Roman Urdu is the hardest group.** Dense is *worse* than sparse here (57% vs 61%). BGE-M3 was trained on Urdu in
+  Urdu script, and hardly any romanized Urdu, so "gaari", "fasal" or "jama karwana" aren't meaningful to it. The
+  English words people mix in ("salary", "tax", "return") are what sparse catches.
+- **Hybrid wins because the two methods fail on different questions.** RRF rewards chunks both lists agree on, and
+  lets a chunk that only one method finds still reach the top 10. Roman Urdu gains 11 points over dense alone.
+- **Hybrid isn't free:** English drops from 98.4% to 95.2%, because sparse sometimes pushes a lexically similar but
+  wrong section up. On Urdu script sparse has nothing useful to add.
+- **MRR vs Hit@5:** MRR 0.76 means the right section is usually ranked 1st or 2nd, not just somewhere in the top 5.
+  That matters because the LLM pays most attention to the first few passages.
+
+**What the misses look like** (see `eval/reports/*-hybrid-test.md`): "tax deducted at source on salary" in Roman Urdu
+returns the Second Schedule salary *exemptions* instead of section 149 (right topic, wrong rule); "when do I have to
+pay the tax" returns sections about tax on specific incomes instead of section 137 (due date). These are
+vocabulary gaps, which is what Milestone 3's step (rewrite the question into formal English legal terms, then search
+with both phrasings and fuse with RRF) is for.
+
 ### Interview questions you should be able to answer
+
+**Q: Your Urdu recall went from 4% to 79%. What changed?**
+A: I replaced keyword matching with a multilingual embedding model. BM25 needs shared tokens, and Urdu script shares
+none with English law. BGE-M3 maps a sentence and its translation to nearby vectors, so the Urdu question finds
+the English section.
+
+**Q: Why is Roman Urdu worse than Urdu script, if Roman Urdu has English words in it?**
+A: The embedding model barely saw romanized Urdu in training, so the Urdu words in it are close to noise, while
+Urdu script was well covered. Sparse and keyword signals pick up the mixed-in English terms, which is why hybrid
+helps Roman Urdu most. The next step is an LLM rewrite of the question into English.
+
+**Q: Hybrid lowered your English score. Why keep it?**
+A: It's 3 points lower on English, 11 points higher on Roman Urdu, and best overall on every metric. The target users
+write Urdu and Roman Urdu. I chose it on the aggregate and confirmed the same ranking on the dev split, so it
+isn't tuned to the test set.
+
+**Q: How long does indexing take, and does that matter?**
+A: About 28 minutes on a laptop CPU for 1,416 chunks, and it only reruns when the law changes (once or twice a year).
+Query-time cost is encoding one short question.
+
+### More interview questions
 
 **Q: Why not just add the dense and sparse scores?**
 A: They're on different scales and distributions. RRF only uses ranks, needs no score normalisation, has one

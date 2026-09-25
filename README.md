@@ -16,7 +16,7 @@ from. When the law doesn't cover the question, Mahsool says so.
 | Milestone | Scope | State |
 | --- | --- | --- |
 | 1 | Repo, ingestion of the Income Tax Ordinance 2001, 90 English eval questions | ✅ done |
-| 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ✅ BM25 baseline · ⏳ BGE-M3 run pending model download |
+| 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ✅ done |
 | 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | |
 | 4 | React chat UI, citation cards, feedback, Postgres logs, Langfuse | |
 | 5 | Fix top failures, Docker, deploy, demo | |
@@ -102,54 +102,84 @@ Urdu and Roman Urdu questions are natural rewrites of English ones and share the
 | Setup | English | Urdu | Roman Urdu |
 | --- | --- | --- | --- |
 | BM25 keywords (no model) | 87.3% | 3.6% | 50.0% |
-| Dense only (BGE-M3), original query | _pending_ | _pending_ | _pending_ |
-| + sparse (hybrid, RRF) | _pending_ | _pending_ | _pending_ |
+| BGE-M3 sparse only | 92.1% | 7.1% | 60.7% |
+| Dense only (BGE-M3), original query | 98.4% | 78.6% | 57.1% |
+| + sparse (hybrid, RRF) — **baseline** | 95.2% | 78.6% | 67.9% |
 | + English query rewrite | _M3_ | _M3_ | _M3_ |
 | + reranker | _M3_ | _M3_ | _M3_ |
 | + glossary in rewrite | _M3_ | _M3_ | _M3_ |
 
-The English BM25 number is optimistic because the questions were written from the section text (see
-[DECISIONS D20](docs/DECISIONS.md)). Full reports: [`eval/reports/`](eval/reports/).
+**Hybrid baseline, test split (119 in-scope questions):**
+
+| Group | n | Hit@5 ("Recall@5") | Recall@5 (all gold) | MRR@10 |
+| --- | --- | --- | --- | --- |
+| English | 63 | 95.2% | 94.4% | 0.861 |
+| Urdu script | 28 | 78.6% | 71.4% | 0.693 |
+| Roman Urdu | 28 | 67.9% | 64.3% | 0.617 |
+| **All** | 119 | **84.9%** | **81.9%** | **0.764** |
+
+Metric definitions are in [DECISIONS D19](docs/DECISIONS.md). English numbers are optimistic because the questions
+were written from the section text (D20), and no question is hand-verified yet. Full reports, with every miss:
+[`eval/reports/`](eval/reports/).
 
 **Targets (held-out test split only)**
 
 | Metric | Target | Result |
 | --- | --- | --- |
-| Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | BM25: 3.6% / 50.0%; BGE-M3 pending |
+| Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | hybrid baseline: 78.6% / 67.9% (Milestone 3 query rewrite should close the gap) |
 | Answer correctness | ≥ 85% | _Milestone 3_ |
 | Answers with a correct citation | ≥ 90% | _Milestone 3_ |
 | Correct refusal on out-of-scope questions | ≥ 90% | _Milestone 3_ |
 | Median latency | < 4 s | _Milestone 4_ |
 
-## Setup
+## Run locally (no Docker)
 
-Requires Python 3.11+.
+Requires Python 3.11+ and about 5 GB of free disk (PyTorch + 2.3 GB of BGE-M3 weights). Everything runs
+in-process: Qdrant is **embedded** (stored under `data/qdrant/`), so no Docker and no server are needed.
 
 ```bash
 git clone https://github.com/hamzabilal000/mahsool.ai.git && cd mahsool.ai
-python -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev]"            # add ",ml" for BGE-M3 (PyTorch + ~2.3 GB of model weights)
-cp .env.example .env
+python -m venv .venv && source .venv/bin/activate    # Windows: .venv\Scripts\activate
+pip install torch --index-url https://download.pytorch.org/whl/cpu   # optional: CPU-only PyTorch, ~2 GB smaller
+pip install -e ".[dev,ml]"          # drop ",ml" if you only want BM25, tests and the validator
+cp .env.example .env                # keep QDRANT_URL empty = embedded Qdrant
+sh scripts/setup-hooks.sh           # commit-msg hook (contributors only)
 
-# Ingestion (repeat per law: ITO2001, ITR2002; the rate card uses its own parser)
-python -m ingestion.download --law ITO2001 --check-latest   # exits 2 if FBR has a newer version
-python -m ingestion.download --law ITO2001                  # skips the download if unchanged
-python -m ingestion.parse    --law ITO2001
-python -m ingestion.chunk    --law ITO2001
-python -m ingestion.download --law WHT2027 && python -m ingestion.ratecard --law WHT2027
-python -m ingestion.spot_check --law ITR2002 --n 20
-
-# Vector index (needs the ml extra). Qdrant: docker compose up -d, or leave QDRANT_URL empty for embedded mode
+# 1. Build the vector index: downloads BGE-M3 on first run, then embeds all 1,416 chunks
+#    (dense + sparse). ~35 min on a 4-core laptop CPU; re-run only when chunks change.
 python -m ingestion.index
 
-# Evaluation
-python -m eval.validate_testset
+# 2. Evaluate retrieval on the held-out test split (reports go to eval/reports/)
 python -m eval.run_eval --retriever bm25   --split test
-python -m eval.run_eval --retriever hybrid --split test     # dense / sparse / hybrid need the index
+python -m eval.run_eval --retriever dense  --split test
+python -m eval.run_eval --retriever sparse --split test
+python -m eval.run_eval --retriever hybrid --split test
+
+# 3. Checks
+python -m eval.validate_testset
 ruff check . && pytest
 ```
 
-The processed chunks are committed, so tests, the validator and the BM25 baseline run without downloading anything.
+The processed chunks are committed, so tests, the validator and the BM25 baseline run without downloading
+anything. Only one process can open the embedded Qdrant folder at a time, so don't run `ingestion.index` and
+`eval.run_eval` side by side.
+
+**Postgres** (conversation logs and feedback, needed from Milestone 4): create a free project on
+[Neon](https://neon.tech) and paste its connection string into `DATABASE_URL` in `.env`.
+
+**Optional:** [`docker-compose.yml`](docker-compose.yml) starts a local Qdrant server and Postgres if you'd rather
+use Docker. Set `QDRANT_URL=http://localhost:6333` to point at it.
+
+**Re-running ingestion from the FBR PDFs** (only needed when FBR publishes a new version):
+
+```bash
+python -m ingestion.download --law ITO2001 --check-latest   # exits 2 if FBR has a newer version
+python -m ingestion.download --law ITO2001                  # skips the download if unchanged
+python -m ingestion.parse    --law ITO2001
+python -m ingestion.chunk    --law ITO2001                  # repeat for ITR2002
+python -m ingestion.download --law WHT2027 && python -m ingestion.ratecard --law WHT2027
+python -m ingestion.spot_check --law ITR2002 --n 20
+```
 
 ## Repository layout
 
@@ -161,7 +191,8 @@ data/processed/      committed chunks, coverage report and spot-check sample per
 data/sources.manifest.json   URL, version date and SHA-256 of every source PDF
 tests/               unit tests + regression tests on the real outputs
 docs/                LEARNING.md (concepts explained), DECISIONS.md (deviations from the plan)
-docker-compose.yml   Qdrant + Postgres (backend joins in Milestone 3)
+docker-compose.yml   optional local Qdrant server + Postgres (not needed to run)
+scripts/             commit-msg hook and setup-hooks.sh
 frontend/            React app (Milestone 4)
 ```
 

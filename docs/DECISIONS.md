@@ -88,18 +88,24 @@ Newest first within each milestone. Each entry says what the plan said, what we 
 
 ## Milestone 2 — Rules, rate card, retrieval harness, full test set
 
-### D14. Hugging Face is blocked here, so the BGE-M3 baseline is pending
-- The build environment's network policy denies `huggingface.co`, so the BGE-M3 and bge-reranker weights cannot be
-  downloaded here. Everything around the model is built and tested (embedder wrapper, Qdrant store with dense +
+### D14. Hugging Face was blocked, so the BGE-M3 baseline came after the BM25 one *(resolved, see D22)*
+- At first the build environment's network policy denied `huggingface.co`, so the BGE-M3 and bge-reranker weights
+  could not be downloaded. Everything around the model is built and tested (embedder wrapper, Qdrant store with dense +
   sparse vectors, RRF, tax-year filters, eval runner), using a deterministic fake embedder and in-memory Qdrant.
 - The **BM25 keyword baseline** is measured now (no model needed). The dense / hybrid rows of the ablation table will
   be filled in as soon as the model can be downloaded, either here after the domain is allowed, or on Hamza's machine
   with `pip install -e ".[ml]" && python -m ingestion.index && python -m eval.run_eval --retriever dense`.
 
-### D15. Embedded Qdrant by default; Docker Compose for the server
-- Docker has no daemon in the build environment. `qdrant-client` has an embedded mode (same API, stored under
-  `data/qdrant/`), used when `QDRANT_URL` is empty. `docker-compose.yml` runs Qdrant + Postgres for local
-  development; the backend service will be added to it in Milestone 3 when it exists.
+### D15. No Docker: embedded Qdrant and hosted Neon Postgres; Docker Compose is optional
+- Hamza's laptop has no Docker, and neither does the build environment. `qdrant-client` has an embedded mode (same
+  API, stored under `data/qdrant/`), used when `QDRANT_URL` is empty. This is the default in `.env.example`.
+- Postgres (logs and feedback, Milestone 4) will be a free hosted **Neon** database, set through `DATABASE_URL`.
+  `database_url` now defaults to empty instead of a localhost Docker URL.
+- `docker-compose.yml` stays as an **optional** extra for anyone who prefers local servers. The README's
+  "Run locally" steps don't use it.
+- Limits of embedded mode: one process at a time can open `data/qdrant/` (index, then evaluate, not both at once),
+  and search is brute force. That's fine for ~1.4k points; switch to a server (Qdrant Cloud free tier or Docker)
+  when the corpus grows or the API is deployed.
 - Payload indexes (law_code, section_id, tax_year_from) are created, but only take effect on server Qdrant.
 
 ### D16. Income Tax Rules: only the rules body is indexed
@@ -141,3 +147,47 @@ Newest first within each milestone. Each entry says what the plan said, what we 
 - The English questions were written while reading the section text, so they share wording with the law, and
   keyword search benefits (87% Hit@5 on English). Real user questions are vaguer. The Urdu script result (≈4%) is the
   honest signal: keyword search cannot cross languages.
+
+### D21. Real BGE-M3 token counts: the 4-characters estimate holds; encoder max length raised to 2,048
+- Closes the open item in D5. The BGE-M3 tokenizer on the embedded text (context header + chunk) gives **4.02
+  characters per token** on average (ITO 4.03, Rules 4.15, rate card 3.23 because of table markup). Median chunk
+  ≈ 250 tokens, 95th percentile ≈ 755.
+- The estimate constant stays at 4. But 19 of 1,416 chunks are over 1,024 real tokens (longest: Second Schedule
+  Part IV clause 12N pieces, 1,294 tokens), because tables and headers tokenize worse than prose. With
+  `embedding_max_length = 1024` their tail would have been silently cut off before embedding.
+- **Done:** `embedding_max_length` is now 2,048 (BGE-M3 supports 8,192). The chunker's 800 budget is unchanged.
+
+### D22. BGE-M3 baseline: hybrid (dense + sparse, RRF) is the retrieval default for Milestone 3
+- Hugging Face became reachable, so BGE-M3 (2.3 GB) was downloaded and all **1,416 chunks** (885 ITO + 498 Rules
+  + 33 rate card) were embedded, dense (1,024-d) + sparse, into embedded Qdrant: **28 minutes on a 4-core CPU**,
+  fp32, no GPU. The index (≈ 19 MB) is gitignored and rebuilt with `python -m ingestion.index`.
+- Results on the **test split** (Hit@5 is the plan's "Recall@5", D19):
+
+  | Retriever | English | Urdu | Roman Urdu | All Hit@5 | All Recall@5 (all gold) | All MRR@10 |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | BM25 | 87.3% | 3.6% | 50.0% | 58.8% | 55.9% | 0.496 |
+  | BGE-M3 sparse | 92.1% | 7.1% | 60.7% | 64.7% | 62.2% | 0.550 |
+  | BGE-M3 dense | 98.4% | 78.6% | 57.1% | 84.0% | 79.4% | 0.735 |
+  | **Hybrid (RRF)** | 95.2% | 78.6% | **67.9%** | **84.9%** | **81.9%** | **0.764** |
+
+- **Hybrid is the baseline** and the Milestone 3 default: best overall and best on Roman Urdu. Dense alone is
+  slightly better on English (98.4% vs 95.2%) and matches hybrid on Urdu script, where sparse adds nothing (it
+  can't match Urdu script to English text). Language-aware fusion is a possible later tweak, decided on the dev
+  split only.
+- The dev split agrees (hybrid 84.3% Hit@5, MRR 0.723), so this isn't a test-split accident.
+- **Target not met yet:** Urdu 78.6% and Roman Urdu 67.9% vs the ≥ 80% goal. Roman Urdu is the weak spot: BGE-M3
+  saw little romanized Urdu in training ("gaari", "fasal", "jama karwana" mean little to it). The planned English
+  query rewrite in Milestone 3 targets exactly this.
+- Caveats: no question is hand-verified yet (`verified: 0/200`), and the English questions share wording with the law
+  (D20).
+
+### D23. PyTorch came from PyPI, not the CPU-only wheel index
+- `download.pytorch.org` is not reachable from the build environment, so `pip install -e ".[ml]"` pulled the default
+  PyPI wheel (CUDA build, larger download). It runs on CPU unchanged. On a laptop without an NVIDIA GPU,
+  `pip install torch --index-url https://download.pytorch.org/whl/cpu` before `pip install -e ".[dev,ml]"` saves
+  ~2 GB of disk; either way works.
+
+### D24. Git hooks are versioned in `scripts/`
+- Each new session or clone loses `.git/hooks`. The `commit-msg` hook that strips AI-attribution lines
+  (`Co-Authored-By:`, `Claude-Session:`, `Generated with …`) now lives in `scripts/commit-msg`, and
+  `sh scripts/setup-hooks.sh` installs it in one command.
