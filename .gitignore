@@ -34,6 +34,7 @@ data/interim/
 models/
 hf_cache/
 qdrant_storage/
+data/qdrant/
 pgdata/
 
 # Editors / OS
