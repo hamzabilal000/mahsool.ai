@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Last updated: 2026-09-25 (Milestone 3, part 2: LLM ablation and end-to-end eval)
+Last updated: 2026-09-25 (Milestone 3, part 3: test-set verification, paused for the Groq daily quota)
 
 ## Working rules (from Hamza)
 - Hamza is the only author. No "Co-Authored-By", "Generated with …" or other AI attribution in commits, PRs, code or docs.
@@ -59,15 +59,44 @@ Last updated: 2026-09-25 (Milestone 3, part 2: LLM ablation and end-to-end eval)
     `OUT_OF_SCOPE`; tax year 2028 → `TAX_YEAR_NOT_COVERED`; 2-character question → 422 `VALIDATION_ERROR`.
   - 115 tests pass without models or network; `ruff` clean.
 
-## Next
-1. **Finish the end-to-end test run** when the Groq quota allows (~65 answers a day on GPT OSS 120B):
-   `python -m eval.run_e2e --split test` resumes from `eval/cache/groq.jsonl`; 55 questions left (21 Urdu,
-   26 Roman Urdu, 8 out-of-scope). Then update the README targets table and D35.
-2. **Milestone 4** (per PROJECT_PLAN): React chat UI, citation cards, feedback, Postgres logs on Neon, Langfuse.
-3. **Carried to Milestone 5, decide on dev:** fix the reranker step for Urdu / Roman Urdu (`full-max` is the lead
-   candidate: 92.9% Roman Urdu on test; D33), the score-refusal false positives on Roman Urdu,
-   reranker latency (~29 s per question on CPU, D26), answer-correctness judging (D35), and the Groq daily limit
-   for the demo (D36).
+- **M3 (part 3, in progress; commits 8d78781, 987b5d8):**
+  - Chunk title fix (D37), "Surcharge" title for ITO 4AB; 53 chunks re-embedded.
+  - Language check applied: all 80 translations `language_ok: true` (67 read by Hamza, 13 approved as is; D41).
+  - 39 FBR-sourced test questions `fbr-001`…`fbr-039` (D39); test set now 239 questions (179 on test).
+  - `eval/verify_testset.py` written (D38); first run stopped on GPT OSS 120B's daily limit (199,606 / 200,000
+    tokens on 2026-09-25 ~17:30 UTC). Nothing is marked `"verified": "machine"` yet.
+  - `/ask` default is now `full-max` (D40). 120 tests pass.
+
+## Resume here (M3 part 3, step 8)
+State: working tree clean, everything pushed, caches committed: `eval/cache/groq.jsonl` (rewrites + answers),
+`eval/cache/rerank.tsv` (reranker scores), `eval/cache/verify.jsonl` (judge verdicts for the 159 directly judged
+questions: GPT OSS 120B has 27, Qwen has 148). Re-runs only call Groq for what is not cached.
+
+0. New container: `sh scripts/setup-hooks.sh`, git identity, `pip install -e ".[dev,ml]"`, then
+   `python -m ingestion.index` (~25 min; the index is not committed). Check GPT OSS 120B has quota with one small
+   call (the free tier's 200k tokens/day is a rolling window; 2026-09-25's use frees up from ~13:30 UTC on 09-26).
+1. `python -m eval.verify_testset` (~180k GPT OSS 120B tokens for the 132 questions it has not judged; if it stops on the
+   daily limit, re-run the next day). Then fix or remove every item in `eval/FLAGGED.md`, including en-009
+   (reference cites the wrong Chapter) and en-063 / en-089 (worked examples: show every step, e.g.
+   "500,000 − 300,000 = 200,000", and drop "300,001"). Re-run until nothing is flagged; drop `--dry-run` so
+   `"verified": "machine"` is written.
+2. Write `eval/expert_sample.json`: 30 random test ids with a fixed seed, stratified across english, fbr, urdu,
+   roman_urdu and out_of_scope. No PDF.
+3. Re-run the full test ablation (retrievers bm25, sparse, dense, hybrid; presets lookup, lookup-rerank, rewrite,
+   rewrite-rerank, full, full-max), then `python -m eval.plot_ablation`. Needs GPT OSS 20B for the 39 new rewrites
+   and the CPU reranker (~1 s per new pair). Run one job at a time; the embedded Qdrant allows one process.
+4. `python -m eval.run_e2e --split test` with the `full-max` default: ~3k GPT OSS 120B tokens per answer, so ~65
+   answers per day; it lists "not run" questions and resumes from the cache. Commit after each day's run.
+5. Update README (ablation table, targets table), DECISIONS (D35 results) and this file with scores on all
+   questions and on the FBR subset; commit, push, stop.
+
+Rules learned the hard way: never `pkill -f` (it matches the calling shell); wait on process ids. Keep
+GPT OSS 120B for the judge and the answers only.
+
+## After that
+1. **Milestone 4** (per PROJECT_PLAN): React chat UI, citation cards, feedback, Postgres logs on Neon, Langfuse.
+2. **Carried to Milestone 5, decide on dev:** score-refusal false positives on Roman Urdu, answer-correctness
+   judging (D35), the Groq daily limit for the demo (D36).
 
 ## Open for Milestone 5
 - Latency: the live `/ask` answer took 27 s (26 s of it CPU reranking); the target is under 4 s. The new default
