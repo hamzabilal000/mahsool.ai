@@ -40,10 +40,13 @@ PARA_START_RE = re.compile(
 )
 CHAPTER_RE = re.compile(r"^\[*\s*CHAPTER\s+[IVXL]+[A-Z]?\s*\]?$", re.I)
 PART_RE = re.compile(r"^\[*\s*PART\s*[-–]?\s*(?P<num>[IVXL]+[A-Z]?)\s*\]?$", re.I)
-DIVISION_RE = re.compile(r"^\[*\s*Division\s+(?P<num>[IVXL]+[A-Z]{0,2})\b\s*\]?\s*(?P<rest>.*)$")
+DIVISION_RE = re.compile(
+    r"^\[*\s*Division\s+(?P<num>[IVXL]+[A-Z]{0,2})\b\s*\]?\s*(?P<rest>.*)$", re.I
+)
 HEADER_PART_RE = re.compile(r"Part\s*[-–]?\s*(?P<num>[IVXL]+[A-Z]?)\b")
 TITLE_END_RE = re.compile(r"\.?\s*[—―]|\.\s*[-–]|\s[-–]\s")
-EMPTY_BRACKETS_RE = re.compile(r"\[\s*\]")
+# "[ ]" marks omitted text; "[ ### ]", "[ %% ]" are placeholders for omitted entries.
+EMPTY_BRACKETS_RE = re.compile(r"\[[\s#*%]*\]")
 WS_RE = re.compile(r"[ \t]+")
 
 ORDINALS = {
@@ -475,8 +478,7 @@ class Chunker:
                 continue
             if state is None or sched[:2] != state[:2] or (sched[2] and sched[2] != state[2]):
                 self.flush(unit)
-                if state is None or sched[:2] != state[:2]:
-                    division = None
+                division = None  # divisions are numbered afresh in every Part
                 state, last_clause = sched, (0, "")
                 unit = new_block(state[0], state[1], state[2], division)
             name, n, part = state
@@ -484,9 +486,9 @@ class Chunker:
             for ln in page.lines:
                 text = ln.text
                 dm = DIVISION_RE.match(text) if ln.kind == "text" and ln.bold_start else None
-                if dm and ln.x > 110 and f"Division {dm.group('num')}" != division:
+                if dm and ln.x > 110 and f"Division {dm.group('num').upper()}" != division:
                     self.flush(unit)
-                    division = f"Division {dm.group('num')}"
+                    division = f"Division {dm.group('num').upper()}"
                     unit = new_block(name, n, part, division)
                     unit.lines.append(ln)
                     continue
