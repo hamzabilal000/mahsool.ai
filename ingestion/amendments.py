@@ -12,7 +12,11 @@ _LAW_RE = re.compile(
     r"\s*(?P<kind>Act|Ordinance)?,?\s*(?P<year>(?:19|20)\d{2})\b",
     re.I,
 )
-_SRO_RE = re.compile(r"S\.\s*R\.\s*O\.?\s*(?P<no>\d+\s*\(\s*I\s*\)\s*/\s*\d{4})", re.I)
+# "S.R.O. 389(I)/2009", "SRO 516(I)/2006", "S.R.O.428(1)/2002" (FBR sometimes types 1 for I)
+_SRO_RE = re.compile(
+    r"S\.?\s*R\.?\s*O\.?\s*(?:No\.?\s*)?(?P<no>\d+)\s*\(\s*[I1l]\s*\)\s*/\s*(?P<year>\d{4})",
+    re.I,
+)
 _PRESIDENTIAL_RE = re.compile(r"Presidential\s+Order(?:\s+No\.?\s*(?P<no>[\w.()/-]+))?", re.I)
 
 
@@ -39,7 +43,7 @@ def laws_in_footnote(text: str) -> list[str]:
         if law not in found:
             found.append(law)
     for m in _SRO_RE.finditer(head):
-        law = "SRO " + re.sub(r"\s+", "", m.group("no")).upper()
+        law = f"SRO {m.group('no')}(I)/{m.group('year')}"
         if law not in found:
             found.append(law)
     for m in _PRESIDENTIAL_RE.finditer(head):
