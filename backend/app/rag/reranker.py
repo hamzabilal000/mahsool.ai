@@ -50,6 +50,67 @@ class BGEReranker:
         return [float(s) for s in (scores if isinstance(scores, list) else [scores])]
 
 
+class CrossEncoderReranker:
+    """Any Hugging Face sequence-classification cross-encoder with one relevance logit (e.g.
+    Alibaba-NLP/gte-multilingual-reranker-base, cross-encoder/mmarco-mMiniLMv2-L12-H384-v1).
+    Scores are sigmoid(logit), 0..1, like BGEReranker (D59)."""
+
+    def __init__(self, settings: Settings) -> None:
+        import torch
+        from transformers import AutoConfig, AutoModelForSequenceClassification, AutoTokenizer
+
+        cache = str(settings.hf_cache_dir) if settings.hf_cache_dir else None
+        name = settings.reranker_model
+        self.torch, self.max_length = torch, settings.reranker_max_length
+        self.batch_size = settings.reranker_batch_size
+        self.tokenizer = AutoTokenizer.from_pretrained(name, cache_dir=cache)
+        config = AutoConfig.from_pretrained(name, cache_dir=cache, trust_remote_code=True)
+        if getattr(config, "auto_map", None):
+            # Custom model code (gte): transformers 5 loads weights on the meta device and leaves
+            # the code's non-persistent buffers (position ids, rotary tables) uninitialised, so
+            # build the model normally and load the weights into it.
+            from huggingface_hub import snapshot_download
+            from safetensors.torch import load_file
+
+            model = AutoModelForSequenceClassification.from_config(config, trust_remote_code=True)
+            path = Path(snapshot_download(name, cache_dir=cache)) / "model.safetensors"
+            model.load_state_dict(load_file(str(path)), strict=False)
+            for m in model.modules():  # removed in transformers 5; the gte code still calls it
+                if not hasattr(m, "get_extended_attention_mask") and hasattr(m, "embeddings"):
+                    type(m).get_extended_attention_mask = _extended_attention_mask
+        else:
+            model = AutoModelForSequenceClassification.from_pretrained(name, cache_dir=cache)
+        self.model = model.float().eval()
+
+    def score(self, query: str, passages: list[str]) -> list[float]:
+        out: list[float] = []
+        for i in range(0, len(passages), self.batch_size):
+            batch = passages[i : i + self.batch_size]
+            enc = self.tokenizer(
+                [query] * len(batch), batch, padding=True, truncation="only_second",
+                max_length=self.max_length, return_tensors="pt",
+            )  # fmt: skip
+            with self.torch.inference_mode():
+                logits = self.model(**enc).logits.view(-1).float()
+            out += self.torch.sigmoid(logits).tolist()
+        return out
+
+
+def _extended_attention_mask(self, attention_mask, input_shape, device=None, dtype=None):
+    """transformers 4's encoder mask: 0 where attended, the dtype's minimum where padded."""
+    import torch
+
+    dtype = dtype or next(self.parameters()).dtype
+    mask = attention_mask[:, None, None, :].to(dtype)
+    return (1.0 - mask) * torch.finfo(dtype).min
+
+
+def make_reranker(settings: Settings) -> Reranker:
+    if "bge-reranker" in settings.reranker_model:
+        return BGEReranker(settings)
+    return CrossEncoderReranker(settings)
+
+
 class CachedReranker:
     """Wraps a reranker with an on-disk score cache keyed by (query, passage).
 

@@ -30,9 +30,9 @@ def embedder():
 
 @lru_cache
 def reranker():
-    from backend.app.rag.reranker import BGEReranker
+    from backend.app.rag.reranker import make_reranker
 
-    return BGEReranker(get_settings())
+    return make_reranker(get_settings())
 
 
 @lru_cache

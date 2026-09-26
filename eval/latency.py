@@ -11,6 +11,8 @@ Usage (tune on dev only, D52):
     python -m eval.latency --split dev --name c15 --candidates 15
     python -m eval.latency --split dev --name int8 --quantize
     python -m eval.latency --split dev --name maxnonen --rerank-query max_non_en
+    python -m eval.latency --split dev --name gte --candidates 15 --rerank-query max_non_en \
+        --reranker-model Alibaba-NLP/gte-multilingual-reranker-base --threads 2
 """
 
 import argparse
@@ -37,21 +39,27 @@ def pct(values: list[float], q: float) -> float:
     return s[min(len(s) - 1, round(q * (len(s) - 1)))]
 
 
-def build(candidates: int, rerank_query: str, quantize: bool) -> tuple[RAGPipeline, float]:
+def build(
+    candidates: int, rerank_query: str, quantize: bool, model: str | None = None,
+    max_length: int | None = None,
+) -> tuple[RAGPipeline, float]:  # fmt: skip
     from backend.app.rag import factory
     from backend.app.rag.query_rewrite import Glossary, QueryRewriter
-    from backend.app.rag.reranker import BGEReranker
+    from backend.app.rag.reranker import make_reranker
     from backend.app.rag.retriever import Retriever
 
-    s = get_settings().model_copy(
-        update={"groq_api_key": None, "gemini_api_key": None, "reranker_quantize": quantize}
-    )
+    update = {"groq_api_key": None, "gemini_api_key": None, "reranker_quantize": quantize}
+    if model:
+        update["reranker_model"] = model
+    if max_length:
+        update["reranker_max_length"] = max_length
+    s = get_settings().model_copy(update=update)
     t = time.perf_counter()
     retriever = Retriever(
         factory.chunks(), "hybrid", store=factory.store(), embedder=factory.embedder(),
         candidates=s.candidates_per_retriever, rrf_k=s.rrf_k, tax_year=s.current_tax_year,
     )  # fmt: skip
-    reranker = BGEReranker(s)
+    reranker = make_reranker(s)
     load_s = time.perf_counter() - t
     llm, model = factory.LLMClients(s, cache_path=LLM_CACHE).for_role("rewrite")
     rewriter = QueryRewriter(llm, model, Glossary.load(s.glossary_path),
@@ -80,9 +88,17 @@ def main() -> None:
     ap.add_argument("--rerank-query", default="max", choices=["original", "max", "max_non_en"])
     ap.add_argument("--quantize", action="store_true")
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--reranker-model", help="default: settings.reranker_model")
+    ap.add_argument("--max-length", type=int, help="reranker max tokens per pair")
+    ap.add_argument("--threads", type=int, help="PyTorch CPU threads (the free Space has 2)")
     args = ap.parse_args()
 
-    pipeline, load_s = build(args.candidates, args.rerank_query, args.quantize)
+    if args.threads:
+        import torch
+
+        torch.set_num_threads(args.threads)
+    pipeline, load_s = build(args.candidates, args.rerank_query, args.quantize,
+                             args.reranker_model, args.max_length)  # fmt: skip
     items = [i for i in load_testset() if i.split == args.split and i.group != "out_of_scope"]
     if args.limit:
         items = items[: args.limit]
@@ -121,7 +137,10 @@ def main() -> None:
     summary["n"], summary["skipped"] = len(rows), skipped
     summary["answer_llm_from_e2e"] = e2e_answer_times()
     summary["config"] = {"candidates": args.candidates, "rerank_query": args.rerank_query,
-                         "quantize": args.quantize, "split": args.split}  # fmt: skip
+                         "quantize": args.quantize, "split": args.split,
+                         "reranker_model": args.reranker_model or get_settings().reranker_model,
+                         "max_length": args.max_length or get_settings().reranker_max_length,
+                         "threads": args.threads}  # fmt: skip
 
     REPORTS.mkdir(exist_ok=True)
     out = REPORTS / f"{date.today().isoformat()}-latency-{args.name}-{args.split}.json"
