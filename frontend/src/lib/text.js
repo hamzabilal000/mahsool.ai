@@ -29,3 +29,36 @@ export const STAGE_LABELS = {
     search: "Searching the Ordinance, Rules and rate card…",
     answer: "Writing a cited answer…",
 }
+
+// Law text with markdown rate tables → blocks: {type: "text", text} or {type: "table", rows}.
+// Chunk text marks tables with "[TABLE" and pipe rows ("| S. No. | Rate |"); separator rows
+// ("|---|") and "[Table 1: see …]" placeholders are dropped.
+export function splitTables(text) {
+    let blocks = []
+    let lines = []
+    let rows = []
+    function flushText() {
+        let t = lines.join("\n").trim()
+        if (t) blocks.push({ type: "text", text: t })
+        lines = []
+    }
+    function flushTable() {
+        if (rows.length) blocks.push({ type: "table", rows })
+        rows = []
+    }
+    for (let raw of (text || "").split("\n")) {
+        let line = raw.replace(/\[TABLE\b/g, "").replace(/\[Table \d+: see [^\]]*\]/g, "")
+        let t = line.trim()
+        if (t.startsWith("|") && t.endsWith("|") && t.length > 1) {
+            if (/^\|[\s|:-]+\|$/.test(t)) continue // separator row
+            flushText()
+            rows.push(t.slice(1, -1).split("|").map((cell) => cell.trim()))
+        } else {
+            flushTable()
+            if (t) lines.push(line)
+        }
+    }
+    flushTable()
+    flushText()
+    return blocks
+}

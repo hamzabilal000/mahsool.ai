@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { splitTables } from "../lib/text"
 
 const LAW_NAMES = {
     ITO: "Income Tax Ordinance, 2001",
@@ -29,7 +30,28 @@ export function CitationCard({ citation, highlighted }) {
                     <h4 className="text-sm font-semibold">{title}</h4>
                 </div>
             </header>
-            <p className={`mt-2 whitespace-pre-line text-sm text-muted ${open || !long ? "" : "line-clamp-5"}`}>{citation.text}</p>
+            <div className={`relative mt-2 space-y-2 text-sm text-muted ${open || !long ? "" : "max-h-32 overflow-hidden"}`}>
+                {splitTables(citation.text).map((block, i) =>
+                    block.type === "table" ? (
+                        <div key={i} className="overflow-x-auto">
+                            <table className="w-full border-collapse text-left text-xs">
+                                <tbody>
+                                    {block.rows.map((row, r) => (
+                                        <tr key={r} className={r === 0 ? "bg-sunken font-medium text-ink" : "border-t border-line"}>
+                                            {row.map((cell, c) => (
+                                                <td key={c} className="px-2 py-1 align-top">{cell}</td>
+                                            ))}
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    ) : (
+                        <p key={i} className="whitespace-pre-line">{block.text}</p>
+                    ),
+                )}
+                {long && !open && <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-panel" />}
+            </div>
             <footer className="mt-2 flex flex-wrap items-center gap-3 text-xs">
                 {long && (
                     <button type="button" onClick={() => setOpen(!open)} className="font-medium text-accent">
