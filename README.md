@@ -260,6 +260,46 @@ python -m ingestion.download --law WHT2027 && python -m ingestion.ratecard --law
 python -m ingestion.spot_check --law ITR2002 --n 20
 ```
 
+## Deploy (prepared, not live yet)
+
+The plan's free-tier setup (DECISIONS D54): the API on a free **Hugging Face Docker Space** (2 vCPU, 16 GB RAM),
+the chat UI on **Vercel**, question logs, feedback and the answer cache on **Neon** Postgres. Nothing here costs
+money; the answer model stays on Groq's free tier, so the demo has daily limits (below).
+
+**1. Accounts and keys you need** (all free):
+
+| Where | What to create | Where it goes |
+| --- | --- | --- |
+| [huggingface.co](https://huggingface.co) | an account and an access token with **write** access (Settings → Access Tokens) | `HF_TOKEN` in your shell, only for the upload |
+| [neon.tech](https://neon.tech) | a project; copy its connection string | Space secret `DATABASE_URL` |
+| [console.groq.com](https://console.groq.com) | the API key you already use | Space secret `GROQ_API_KEY` |
+| [vercel.com](https://vercel.com) | an account linked to GitHub | imports `frontend/` |
+| [cloud.langfuse.com](https://cloud.langfuse.com) | (step 5, not wired yet) a project; its public and secret keys | Space secrets `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`, `LANGFUSE_HOST` |
+
+**2. Backend (Hugging Face Space).** Build the index once (`python -m ingestion.index`), then:
+
+```bash
+python scripts/deploy_space.py --dry-run                            # see what is uploaded (~23 MB)
+HF_TOKEN=hf_... python scripts/deploy_space.py --space <your-hf-user>/mahsool-api
+```
+
+The script uploads the [`Dockerfile`](Dockerfile), the code, the committed chunks and the prebuilt index; the
+Space builds the image (both models are baked in, ~4.5 GB) and serves on port 7860. In the Space's
+**Settings → Variables and secrets** add `GROQ_API_KEY` and `DATABASE_URL` (secrets) and
+`MAHSOOL_CORS_ORIGINS` = `["https://<your-app>.vercel.app"]` (variable). Check `https://<user>-mahsool-api.hf.space/health`.
+
+**3. Frontend (Vercel).** New Project → import the GitHub repo → **Root Directory `frontend`** (Vite is detected;
+[`frontend/vercel.json`](frontend/vercel.json) sends every route to the app) → environment variable
+`VITE_API_URL` = `https://<user>-mahsool-api.hf.space` → Deploy.
+
+**4. Keep it awake.** Free Spaces sleep after ~48 hours without visitors. Add the repository variable `SPACE_URL`
+(GitHub → Settings → Secrets and variables → Actions → Variables); [`keepalive.yml`](.github/workflows/keepalive.yml)
+then pings `/health` twice a day.
+
+**Free-tier behaviour of the live demo (D53):** repeated questions are answered from the answer cache (no quota,
+no reranking); each visitor can ask 20 new questions a day (`MAHSOOL_DAILY_QUESTIONS_PER_VISITOR`); when Groq's
+daily quota is used up the app says so politely, in the question's language, instead of failing.
+
 ## Repository layout
 
 ```
