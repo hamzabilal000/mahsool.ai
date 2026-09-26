@@ -17,6 +17,7 @@ from backend.app.rag.lookup import SectionLookup
 from backend.app.rag.query_rewrite import QueryPlan, QueryRewriter
 from backend.app.rag.reranker import Reranker
 from backend.app.rag.retriever import Retriever
+from backend.app.timing import stage
 from ingestion.models import Chunk
 
 RewriteMode = Literal["none", "plain", "glossary"]
@@ -81,15 +82,17 @@ class RAGPipeline:
 
     def search(self, question: str, *, tax_year: int | None = None) -> SearchResult:
         cfg = self.config
-        plan = self.rewriter.plan(
-            question, rewrite=cfg.rewrite != "none", use_glossary=cfg.rewrite == "glossary"
-        )
+        with stage("rewrite"):
+            plan = self.rewriter.plan(
+                question, rewrite=cfg.rewrite != "none", use_glossary=cfg.rewrite == "glossary"
+            )
         if tax_year is not None:
             plan.tax_year, plan.tax_year_assumed = tax_year, False
 
-        hits = self.retriever.retrieve_many(
-            [question, *plan.queries], k=cfg.candidates, tax_year=plan.tax_year
-        )
+        with stage("retrieval"):
+            hits = self.retriever.retrieve_many(
+                [question, *plan.queries], k=cfg.candidates, tax_year=plan.tax_year
+            )
         found = [Candidate(self.by_id[h.chunk_id], rank=h.rank, fused_score=h.score) for h in hits]
 
         pinned: list[Candidate] = []
@@ -113,10 +116,11 @@ class RAGPipeline:
         if cfg.rerank and self.reranker is not None:
             pool = pinned + found
             texts = [embedding_text(c.chunk) for c in pool]
-            scores = self.reranker.score(question, texts)
-            if cfg.rerank_query == "max" and plan.queries:
-                alt = self.reranker.score(plan.queries[0], texts)
-                scores = [max(a, b) for a, b in zip(scores, alt, strict=True)]
+            with stage("rerank"):
+                scores = self.reranker.score(question, texts)
+                if cfg.rerank_query == "max" and plan.queries:
+                    alt = self.reranker.score(plan.queries[0], texts)
+                    scores = [max(a, b) for a, b in zip(scores, alt, strict=True)]
             for c, s in zip(pool, scores, strict=True):
                 c.rerank_score = s
             pinned.sort(key=lambda c: -(c.rerank_score or 0.0))

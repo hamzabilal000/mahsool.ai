@@ -19,6 +19,8 @@ from backend.app.rag.citations import check_citations
 from backend.app.rag.generator import AnswerGenerator, source_label
 from backend.app.rag.pipeline import RAGPipeline, SearchResult
 from backend.app.rag.query_rewrite import Language
+from backend.app.timing import request_timer
+from backend.app.timing import stage as timed
 
 COVERAGE = "Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card"
 REFUSAL = {
@@ -73,7 +75,19 @@ class AskService:
         tax_year: int | None = None,
         on_stage: Callable[[str], None] | None = None,
     ) -> AskData:
-        """`on_stage("search")` / `on_stage("answer")` report progress (the streaming API)."""
+        """`on_stage("search")` / `on_stage("answer")` report progress (the streaming API).
+        `timings_ms` gets the per-stage breakdown (backend/app/timing.py, D52)."""
+        with request_timer() as timer:
+            data = self._ask(question, tax_year, on_stage)
+        data.timings_ms.update(timer.result())
+        return data
+
+    def _ask(
+        self,
+        question: str,
+        tax_year: int | None,
+        on_stage: Callable[[str], None] | None,
+    ) -> AskData:
         stage = on_stage or (lambda _: None)
         t0 = time.perf_counter()
         stage("search")
@@ -92,25 +106,27 @@ class AskService:
             for ref in result.missing_refs
         ]
         stage("answer")
-        draft = self.generator.draft(
-            question,
-            [c.chunk for c in top],
-            plan.language,
-            plan.tax_year,
-            plan.tax_year_assumed,
-            notes,
-        )
+        with timed("answer_llm"):
+            draft = self.generator.draft(
+                question,
+                [c.chunk for c in top],
+                plan.language,
+                plan.tax_year,
+                plan.tax_year_assumed,
+                notes,
+            )
         timings["answer"] = int((time.perf_counter() - t_search) * 1000)
         if not draft.answerable:
             return self._refuse(result, "NOT_IN_SOURCES", timings)
 
-        check = check_citations(
-            draft.answer,
-            len(top),
-            draft.citations,
-            # Section numbers of the sources, to spot "section N" mentions nobody cited.
-            [(c.chunk.section or "") if c.chunk.law_code != "ITR" else "" for c in top],
-        )
+        with timed("citation_check"):
+            check = check_citations(
+                draft.answer,
+                len(top),
+                draft.citations,
+                # Section numbers of the sources, to spot "section N" mentions nobody cited.
+                [(c.chunk.section or "") if c.chunk.law_code != "ITR" else "" for c in top],
+            )
         if not check.ok:
             return self._refuse(result, "NO_VALID_CITATIONS", timings)
 

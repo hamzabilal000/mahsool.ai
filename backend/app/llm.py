@@ -22,6 +22,8 @@ from typing import Any, Literal, Protocol
 
 import httpx
 
+from backend.app import timing
+
 log = logging.getLogger(__name__)
 
 Provider = Literal["groq", "gemini"]
@@ -201,10 +203,13 @@ class LLMClient:
     ) -> dict:
         kw = {"temperature": temperature, "max_tokens": max_tokens, "effort": reasoning_effort}
         try:
-            return self.cached(model, messages, temperature=temperature, max_tokens=max_tokens,
-                               reasoning_effort=reasoning_effort)  # fmt: skip
+            out = self.cached(model, messages, temperature=temperature, max_tokens=max_tokens,
+                              reasoning_effort=reasoning_effort)  # fmt: skip
         except KeyError:
             pass
+        else:
+            timing.count("llm_cached")
+            return out
         if not self.api_key:
             raise LLMError(f"no API key for {self.spec.name}")
         for m in self.candidates(model):
@@ -246,7 +251,10 @@ class LLMClient:
         """The parsed JSON reply, or None if the provider does not serve the model."""
         delay = self.spec.first_retry_delay
         for attempt in range(1, self.max_retries + 1):
+            t = time.perf_counter()
             self.limiter.acquire()
+            timing.add_wait(time.perf_counter() - t)
+            t = time.perf_counter()
             try:
                 r = self.http.post(
                     f"{self.base_url}/chat/completions",
@@ -254,8 +262,11 @@ class LLMClient:
                     json=body,
                 )
             except httpx.HTTPError as e:
+                timing.add_api(time.perf_counter() - t)
                 err = f"network error: {e}"
             else:
+                timing.add_api(time.perf_counter() - t)
+                timing.count("llm_calls")
                 if r.status_code == 200:
                     choice = r.json()["choices"][0]
                     content = choice["message"].get("content") or ""
@@ -285,6 +296,7 @@ class LLMClient:
                 "%s call failed (%s), retry %d in %.0fs", self.spec.name, err, attempt, delay
             )
             time.sleep(delay)
+            timing.add_wait(delay)
             delay = min(delay * 2, 60)
         raise LLMError("unreachable")
 

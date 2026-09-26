@@ -385,3 +385,11 @@ def test_answer_prompt_requires_conditions_atl_rates_and_who_it_applies_to():
     assert "Active Taxpayers' List" in system and "give both" in system
     assert "prescribed person" in system and "conditional" in system
     assert "Do not add conditions that are not in the sources" in system
+
+
+def test_service_reports_time_per_stage(make_pipeline):
+    s = service(make_pipeline, rewrite(), answer("The employer deducts tax [1].", [1]))
+    t = s.ask("salary pe tax kaun deduct karta hai?").timings_ms
+    for key in ("rewrite", "retrieval", "rerank", "answer_llm", "citation_check", "total"):
+        assert key in t, key
+    assert t["total"] >= t["rewrite"] + t["retrieval"] + t["rerank"]
