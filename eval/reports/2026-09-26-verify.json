@@ -8,11 +8,17 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states that tax is imposed on every person with taxable income at the rates specified in Division I or II of Part I of the First Schedule, and sub-section (2) confirms that tax credits are subtracted from the resulting amount. The reference answer accurately reflects these provisions without omitting any conditions that would change the answer."
+   },
+   "gemini-3-flash": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the imposition of tax on taxable income and the application of rates from the First Schedule as stated in Section 4(1) and 4(2)."
    }
   },
   "missing_numbers": [],
-  "second_opinion": null,
-  "second_opinion_reason": null
+  "second_opinion": "agree",
+  "second_opinion_reason": "The reference answer accurately reflects the imposition of tax on taxable income and the application of rates from the First Schedule as stated in Section 4(1) and 4(2)."
  },
  "en-002": {
   "ok": true,
@@ -23,6 +29,9 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The reference answer correctly states the 10% rate and the Rs. 10 million threshold as per the section text. It does not omit any condition that changes the answer for the general case, as the salary exemption is a specific carve-out not required to answer the general rate and threshold question."
+   },
+   "gemini-3-flash-preview": {
+    "error": "daily limit reached (20 requests per day): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this er"
    }
   },
   "missing_numbers": [],
@@ -285,13 +294,14 @@
   "second_opinion_reason": null
  },
  "en-020": {
-  "ok": false,
-  "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
-  ],
+  "ok": true,
+  "reasons": [],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the general 6-year limit in sub-section (2) and the specific 8-year and 10-year exceptions in sub-sections (2A), (2B), and (2C), all of which are accurately reflected in the reference answer."
    }
   },
   "missing_numbers": [],
@@ -599,13 +609,14 @@
   "second_opinion_reason": null
  },
  "en-041": {
-  "ok": false,
-  "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
-  ],
+  "ok": true,
+  "reasons": [],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately lists all the specific items (a) through (e) required in the wealth statement as per Section 116(1). It correctly notes that the requirement applies to individuals and includes the reconciliation statement, without omitting any conditions that would change the scope of the items requested."
    }
   },
   "missing_numbers": [],
@@ -688,13 +699,14 @@
   "second_opinion_reason": null
  },
  "en-047": {
-  "ok": false,
-  "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
-  ],
+  "ok": true,
+  "reasons": [],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer correctly cites the time limits in sections 122(2) and 122(4) for initial and further amendments. While section 122(5) lists conditions for when an amendment is permitted, the question specifically asks for the duration ('how long'), which is fully answered by the cited time limits without needing to list the substantive grounds for amendment."
    }
   },
   "missing_numbers": [],
@@ -1077,13 +1089,14 @@
   "second_opinion_reason": null
  },
  "en-073": {
-  "ok": false,
-  "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
-  ],
+  "ok": true,
+  "reasons": [],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the compensation rate (KIBOR + 0.5%) and the specific exception regarding inadmissible claims, both of which are accurately reflected in the reference answer."
    }
   },
   "missing_numbers": [],
@@ -1211,13 +1224,14 @@
   "second_opinion_reason": null
  },
  "en-082": {
-  "ok": false,
-  "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
-  ],
+  "ok": true,
+  "reasons": [],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in the proviso to sub-section (1) that the provisions do not apply to a domestic consumer if their name appears on the Active Taxpayers' List, which directly supports the reference answer."
    }
   },
   "missing_numbers": [],
@@ -2599,10 +2613,8 @@
   "second_opinion_reason": null
  },
  "ur-018": {
-  "ok": false,
-  "reasons": [
-   "source question en-020 is flagged"
-  ],
+  "ok": true,
+  "reasons": [],
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-020",
@@ -2969,10 +2981,8 @@
   "second_opinion_reason": null
  },
  "ru-018": {
-  "ok": false,
-  "reasons": [
-   "source question en-020 is flagged"
-  ],
+  "ok": true,
+  "reasons": [],
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-020",

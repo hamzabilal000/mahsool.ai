@@ -10,10 +10,10 @@
    "out_of_scope": 21,
    "fbr": 39
   },
-  "machine_verified": 178,
+  "machine_verified": 185,
   "review_verified": 23,
   "human_verified": 0,
-  "not_verified_yet": 71,
+  "not_verified_yet": 64,
   "second_opinion_agreed": 1,
   "second_opinion_checked": 1,
   "directly_judged": 169,
@@ -52,215 +52,207 @@
   {
    "setup": "Sparse",
    "description": "BGE-M3 sparse vectors",
-   "date": "2026-09-25",
+   "date": "2026-09-26",
    "hit_at_5": {
-    "english": 92.1,
+    "english": 93.2,
     "fbr": 84.6,
     "urdu": 7.1,
     "roman_urdu": 60.7,
-    "all": 69.6
+    "all": 71.4
    },
-   "recall_at_5_all": 67.7,
-   "mrr_at_10_all": 0.595,
+   "recall_at_5_all": 67.6,
+   "mrr_at_10_all": 0.611,
    "n": {
-    "english": 63,
+    "english": 73,
     "fbr": 39,
     "urdu": 28,
     "roman_urdu": 28,
-    "all": 158
+    "all": 168
    }
   },
   {
    "setup": "Dense",
    "description": "BGE-M3 dense vectors",
-   "date": "2026-09-25",
+   "date": "2026-09-26",
    "hit_at_5": {
-    "english": 98.4,
+    "english": 98.6,
     "fbr": 79.5,
     "urdu": 78.6,
     "roman_urdu": 57.1,
-    "all": 82.9
+    "all": 83.9
    },
-   "recall_at_5_all": 79.4,
-   "mrr_at_10_all": 0.718,
+   "recall_at_5_all": 78.7,
+   "mrr_at_10_all": 0.723,
    "n": {
-    "english": 63,
+    "english": 73,
     "fbr": 39,
     "urdu": 28,
     "roman_urdu": 28,
-    "all": 158
+    "all": 168
    }
   },
   {
    "setup": "Hybrid",
    "description": "dense + sparse, RRF (baseline)",
-   "date": "2026-09-25",
+   "date": "2026-09-26",
    "hit_at_5": {
-    "english": 95.2,
+    "english": 95.9,
     "fbr": 87.2,
     "urdu": 78.6,
     "roman_urdu": 67.9,
-    "all": 85.4
+    "all": 86.3
    },
-   "recall_at_5_all": 83.2,
-   "mrr_at_10_all": 0.765,
+   "recall_at_5_all": 82.5,
+   "mrr_at_10_all": 0.776,
    "n": {
-    "english": 63,
+    "english": 73,
     "fbr": 39,
     "urdu": 28,
     "roman_urdu": 28,
-    "all": 158
+    "all": 168
    }
   },
   {
    "setup": "+ section lookup",
    "description": "'section 149' goes straight to the section",
-   "date": "2026-09-25",
+   "date": "2026-09-26",
    "hit_at_5": {
-    "english": 96.8,
+    "english": 97.3,
     "fbr": 87.2,
     "urdu": 78.6,
     "roman_urdu": 67.9,
-    "all": 86.1
+    "all": 86.9
    },
-   "recall_at_5_all": 83.9,
-   "mrr_at_10_all": 0.778,
+   "recall_at_5_all": 83.1,
+   "mrr_at_10_all": 0.791,
    "n": {
-    "english": 63,
+    "english": 73,
     "fbr": 39,
     "urdu": 28,
     "roman_urdu": 28,
-    "all": 158
+    "all": 168
    }
   },
   {
    "setup": "+ reranker",
    "description": "bge-reranker-v2-m3 on the top 30, no rewrite",
-   "date": "2026-09-25",
+   "date": "2026-09-26",
    "hit_at_5": {
-    "english": 96.8,
+    "english": 97.3,
     "fbr": 87.2,
     "urdu": 89.3,
     "roman_urdu": 64.3,
-    "all": 87.3
+    "all": 88.1
    },
-   "recall_at_5_all": 85.1,
-   "mrr_at_10_all": 0.798,
+   "recall_at_5_all": 84.1,
+   "mrr_at_10_all": 0.807,
    "n": {
-    "english": 63,
+    "english": 73,
     "fbr": 39,
     "urdu": 28,
     "roman_urdu": 28,
-    "all": 158
+    "all": 168
    }
   },
   {
    "setup": "+ rewrite",
    "description": "English query rewrite by an LLM, no reranker",
-   "date": "2026-09-25",
+   "date": "2026-09-26",
    "hit_at_5": {
-    "english": 98.4,
+    "english": 98.6,
     "fbr": 84.6,
     "urdu": 100.0,
     "roman_urdu": 89.3,
-    "all": 93.7
+    "all": 94.0
    },
-   "recall_at_5_all": 91.8,
-   "mrr_at_10_all": 0.816,
+   "recall_at_5_all": 89.8,
+   "mrr_at_10_all": 0.823,
    "n": {
-    "english": 63,
+    "english": 73,
     "fbr": 39,
     "urdu": 28,
     "roman_urdu": 28,
-    "all": 158
+    "all": 168
    }
   },
   {
    "setup": "+ rewrite + reranker",
    "description": "both",
-   "date": "2026-09-25",
+   "date": "2026-09-26",
    "hit_at_5": {
-    "english": 96.8,
+    "english": 97.3,
     "fbr": 89.7,
     "urdu": 89.3,
     "roman_urdu": 75.0,
-    "all": 89.9
+    "all": 90.5
    },
-   "recall_at_5_all": 87.3,
-   "mrr_at_10_all": 0.816,
+   "recall_at_5_all": 86.1,
+   "mrr_at_10_all": 0.824,
    "n": {
-    "english": 63,
+    "english": 73,
     "fbr": 39,
     "urdu": 28,
     "roman_urdu": 28,
-    "all": 158
+    "all": 168
    }
   },
   {
    "setup": "+ glossary",
    "description": "Urdu glossary in the rewrite = full pipeline",
-   "date": "2026-09-25",
+   "date": "2026-09-26",
    "hit_at_5": {
-    "english": 96.8,
+    "english": 97.3,
     "fbr": 89.7,
     "urdu": 92.9,
     "roman_urdu": 75.0,
-    "all": 90.5
+    "all": 91.1
    },
-   "recall_at_5_all": 88.6,
-   "mrr_at_10_all": 0.82,
+   "recall_at_5_all": 87.3,
+   "mrr_at_10_all": 0.831,
    "n": {
-    "english": 63,
+    "english": 73,
     "fbr": 39,
     "urdu": 28,
     "roman_urdu": 28,
-    "all": 158
+    "all": 168
    }
   },
   {
    "setup": "Full, max score",
    "description": "reranker also scores the rewrite (/ask default)",
-   "date": "2026-09-25",
+   "date": "2026-09-26",
    "hit_at_5": {
-    "english": 96.8,
+    "english": 97.3,
     "fbr": 87.2,
     "urdu": 92.9,
     "roman_urdu": 92.9,
-    "all": 93.0
+    "all": 93.5
    },
-   "recall_at_5_all": 91.8,
-   "mrr_at_10_all": 0.863,
+   "recall_at_5_all": 90.3,
+   "mrr_at_10_all": 0.871,
    "n": {
-    "english": 63,
+    "english": 73,
     "fbr": 39,
     "urdu": 28,
     "roman_urdu": 28,
-    "all": 158
+    "all": 168
    }
   }
  ],
  "end_to_end": {
   "date": "2026-09-26",
   "questions": 189,
-  "run": 95,
-  "not_run": 94,
-  "in_scope_run": 72,
-  "answered": 98.6,
-  "correct_citation": 97.2,
-  "correct_citation_answered": 98.6,
+  "run": 17,
+  "not_run": 172,
+  "in_scope_run": 4,
+  "answered": 100.0,
+  "correct_citation": 100,
+  "correct_citation_answered": 100,
   "out_of_scope_run": 13,
   "out_of_scope_refused": 100,
   "by_group": {
    "english": {
-    "n": 63,
-    "correct_citation": 96.8
-   },
-   "fbr": {
-    "n": 1,
-    "correct_citation": 100
-   },
-   "urdu": {
-    "n": 8,
+    "n": 4,
     "correct_citation": 100
    }
   }
