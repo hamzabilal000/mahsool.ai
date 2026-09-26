@@ -62,11 +62,19 @@ export function EvalPage() {
                     <section className="rounded-xl border border-line bg-panel p-4 text-sm">
                         <h2 className="mb-1 font-semibold">Test set</h2>
                         <p className="text-muted">
-                            {ts.questions} questions ({ts.test_split} on the test split). Machine-verified by an independent
-                            LLM judge (Qwen) plus an automatic number check; a second judge (Gemini) agreed on{" "}
-                            {ts.second_opinion_agreed} of {ts.second_opinion_checked} it checked; {ts.expert_sample} questions
-                            reviewed by a tax professional ({ts.expert_reviewed ? `${ts.expert_reviewed} done` : "pending"}).
+                            {ts.questions} questions ({ts.test_split} on the test split). {ts.machine_verified} are
+                            machine-verified by an independent LLM judge (Qwen) plus an automatic number check
+                            {ts.not_verified_yet ? `; ${ts.not_verified_yet} wait for the judge's re-check with its new completeness question` : ""}.
+                            A second judge (Gemini) agreed on {ts.second_opinion_agreed} of {ts.second_opinion_checked} it checked.
                         </p>
+                        {ts.review_by && ts.review_result && (
+                            <p className="mt-2 text-muted">
+                                Legal review of a {ts.review_sample}-question sample by {ts.review_by}:{" "}
+                                {ts.review_result.correct} correct, {ts.review_result.partly_correct} partly correct,{" "}
+                                {ts.review_result.wrong} wrong; all fixed and a completeness sweep applied to the full set.
+                                This is an AI tool, not a human review. Review by a tax professional: {ts.tax_professional_review}.
+                            </p>
+                        )}
                     </section>
                 )}
 

@@ -1,43 +1,52 @@
 {
  "generated": "2026-09-26",
  "testset": {
-  "questions": 239,
-  "test_split": 179,
+  "questions": 249,
+  "test_split": 189,
   "test_by_group": {
-   "english": 63,
+   "english": 73,
    "urdu": 28,
    "roman_urdu": 28,
    "out_of_scope": 21,
    "fbr": 39
   },
-  "machine_verified": 239,
+  "machine_verified": 178,
+  "review_verified": 23,
   "human_verified": 0,
-  "second_opinion_agreed": 15,
-  "second_opinion_checked": 15,
-  "directly_judged": 159,
-  "expert_sample": 30,
-  "expert_reviewed": 0
+  "not_verified_yet": 71,
+  "second_opinion_agreed": 1,
+  "second_opinion_checked": 1,
+  "directly_judged": 169,
+  "review_sample": 30,
+  "review_by": "ChatGPT (OpenAI), an AI legal-review tool with web access, 26 Sep 2026",
+  "review_kind": "AI tool (not a human or professional review)",
+  "review_result": {
+   "correct": 19,
+   "partly_correct": 10,
+   "wrong": 1
+  },
+  "tax_professional_review": "pending"
  },
  "retrieval_ablation": [
   {
    "setup": "BM25",
    "description": "keyword search, no model",
-   "date": "2026-09-25",
+   "date": "2026-09-26",
    "hit_at_5": {
-    "english": 87.3,
+    "english": 87.7,
     "fbr": 71.8,
     "urdu": 3.6,
     "roman_urdu": 50.0,
-    "all": 62.0
+    "all": 63.7
    },
-   "recall_at_5_all": 59.8,
-   "mrr_at_10_all": 0.513,
+   "recall_at_5_all": 60.1,
+   "mrr_at_10_all": 0.529,
    "n": {
-    "english": 63,
+    "english": 73,
     "fbr": 39,
     "urdu": 28,
     "roman_urdu": 28,
-    "all": 158
+    "all": 168
    }
   },
   {
@@ -232,8 +241,8 @@
  ],
  "end_to_end": {
   "date": "2026-09-26",
-  "questions": 179,
-  "run": 85,
+  "questions": 189,
+  "run": 95,
   "not_run": 94,
   "in_scope_run": 72,
   "answered": 98.6,

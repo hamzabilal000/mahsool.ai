@@ -1,0 +1,2800 @@
+{
+ "summary": {
+  "english": {
+   "hit@5": 0.9315,
+   "recall@5": 0.8699,
+   "mrr@10": 0.7928,
+   "n": 73
+  },
+  "all": {
+   "hit@5": 0.7143,
+   "recall@5": 0.6756,
+   "mrr@10": 0.6112,
+   "n": 168
+  },
+  "urdu": {
+   "hit@5": 0.0714,
+   "recall@5": 0.0357,
+   "mrr@10": 0.0476,
+   "n": 28
+  },
+  "roman_urdu": {
+   "hit@5": 0.6071,
+   "recall@5": 0.5714,
+   "mrr@10": 0.5361,
+   "n": 28
+  },
+  "fbr": {
+   "hit@5": 0.8462,
+   "recall@5": 0.8462,
+   "mrr@10": 0.7297,
+   "n": 39
+  }
+ },
+ "rows": [
+  {
+   "id": "en-001",
+   "group": "english",
+   "gold": [
+    "ITO2001-s4"
+   ],
+   "top": [
+    "ITO2001-s4C",
+    "ITO2001-s4B",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-s7C",
+    "ITO2001-s7D"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "en-002",
+   "group": "english",
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "top": [
+    "ITO2001-s4AB",
+    "ITO2001-s205",
+    "ITO2001-s205",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-sch1-pI-divVII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-005",
+   "group": "english",
+   "gold": [
+    "ITO2001-s4C",
+    "ITO2001-sch1-pI-divIIB"
+   ],
+   "top": [
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-sch1-pI-divII",
+    "ITO2001-sch1-pI-divII",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-s4C"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-006",
+   "group": "english",
+   "gold": [
+    "ITO2001-sch1-pI-divIIB"
+   ],
+   "top": [
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-sch1-pI-divII",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-sch1-pI-divII",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-008",
+   "group": "english",
+   "gold": [
+    "ITO2001-s7B"
+   ],
+   "top": [
+    "ITO2001-s7B",
+    "ITO2001-sch1-pI-divIIIA",
+    "ITO2001-sch2-pIV-cl36B",
+    "ITO2001-sch2-pIV-cl59",
+    "ITO2001-s106A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-010",
+   "group": "english",
+   "gold": [
+    "ITO2001-s11"
+   ],
+   "top": [
+    "ITO2001-s11",
+    "ITO2001-s32",
+    "ITO2001-s13",
+    "ITO2001-s114",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-011",
+   "group": "english",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITO2001-s149",
+    "ITO2001-sch2-pII-cl27",
+    "ITO2001-sch2-pIII-cl3A",
+    "ITO2001-s101"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-013",
+   "group": "english",
+   "gold": [
+    "ITO2001-s13",
+    "ITR2002-r5"
+   ],
+   "top": [
+    "ITO2001-s13",
+    "ITO2001-s12",
+    "ITO2001-s13",
+    "ITR2002-r5",
+    "ITR2002-r3"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-014",
+   "group": "english",
+   "gold": [
+    "ITO2001-s15"
+   ],
+   "top": [
+    "ITO2001-s15",
+    "ITO2001-s2",
+    "ITO2001-s15A",
+    "ITO2001-sch2-pIV-cl12B",
+    "ITO2001-s1"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-015",
+   "group": "english",
+   "gold": [
+    "ITO2001-s41"
+   ],
+   "top": [
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-s41",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch2-pI-cl145A",
+    "ITO2001-s4"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "en-016",
+   "group": "english",
+   "gold": [
+    "ITO2001-s47"
+   ],
+   "top": [
+    "ITO2001-s47",
+    "ITO2001-s12",
+    "ITO2001-sch2-pIII-cl3A",
+    "ITO2001-sch2-pIII-cl9B",
+    "ITO2001-s182"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-017",
+   "group": "english",
+   "gold": [
+    "ITO2001-s48"
+   ],
+   "top": [
+    "ITO2001-s48",
+    "ITO2001-s12",
+    "ITO2001-sch2-pIV-cl73",
+    "ITO2001-s44",
+    "ITO2001-s79"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-019",
+   "group": "english",
+   "gold": [
+    "ITO2001-s50"
+   ],
+   "top": [
+    "ITO2001-s50",
+    "ITO2001-s102",
+    "ITO2001-s51",
+    "ITO2001-s44",
+    "ITO2001-s101"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-020",
+   "group": "english",
+   "gold": [
+    "ITO2001-s57"
+   ],
+   "top": [
+    "ITO2001-s57",
+    "ITO2001-s58",
+    "ITO2001-sch5-pI",
+    "ITO2001-s57A",
+    "ITO2001-s59A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-022",
+   "group": "english",
+   "gold": [
+    "ITO2001-s60"
+   ],
+   "top": [
+    "ITO2001-s60",
+    "ITO2001-s40",
+    "ITO2001-s57",
+    "ITR2002-r13N",
+    "ITO2001-sch5-pI"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-023",
+   "group": "english",
+   "gold": [
+    "ITO2001-s60D"
+   ],
+   "top": [
+    "ITO2001-s60D",
+    "ITO2001-s60",
+    "ITO2001-s60B",
+    "ITO2001-s23",
+    "ITR2002-r12"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-024",
+   "group": "english",
+   "gold": [
+    "ITO2001-s60A"
+   ],
+   "top": [
+    "ITO2001-s60A",
+    "ITO2001-s60B",
+    "ITO2001-s21",
+    "ITO2001-sch5-pI",
+    "ITO2001-s24"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-025",
+   "group": "english",
+   "gold": [
+    "ITO2001-s61"
+   ],
+   "top": [
+    "ITR2002-r86",
+    "ITR2002-r15",
+    "ITO2001-sch2-pII-cl24C",
+    "ITO2001-s39",
+    "ITO2001-s108"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "en-026",
+   "group": "english",
+   "gold": [
+    "ITO2001-s63"
+   ],
+   "top": [
+    "ITO2001-s63",
+    "ITO2001-s61",
+    "ITO2001-sch6-pI",
+    "ITO2001-sch6-pI",
+    "ITO2001-s63A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-027",
+   "group": "english",
+   "gold": [
+    "ITO2001-s63A"
+   ],
+   "top": [
+    "ITO2001-s63A",
+    "ITO2001-s7F",
+    "ITO2001-s46",
+    "ITO2001-sch2-pIII-cl9",
+    "ITO2001-sch1-pI-divIIIA"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-028",
+   "group": "english",
+   "gold": [
+    "ITO2001-s74"
+   ],
+   "top": [
+    "ITO2001-s2",
+    "ITO2001-s182",
+    "ITO2001-sch7",
+    "ITO2001-s209B",
+    "ITO2001-s74"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.2
+  },
+  {
+   "id": "en-029",
+   "group": "english",
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "top": [
+    "ITO2001-s82",
+    "ITR2002-r14",
+    "ITO2001-s50",
+    "ITO2001-s83",
+    "ITO2001-s84"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-030",
+   "group": "english",
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "top": [
+    "ITO2001-s82",
+    "ITO2001-s51",
+    "ITO2001-s83",
+    "ITR2002-r14",
+    "ITR2002-r19D"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-031",
+   "group": "english",
+   "gold": [
+    "ITO2001-s83"
+   ],
+   "top": [
+    "ITO2001-s83",
+    "ITO2001-s106",
+    "ITO2001-s81",
+    "ITO2001-s109A",
+    "ITO2001-s82"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-032",
+   "group": "english",
+   "gold": [
+    "ITO2001-s102"
+   ],
+   "top": [
+    "ITO2001-s82",
+    "ITO2001-s44",
+    "ITO2001-s51",
+    "ITO2001-s102",
+    "ITO2001-s101"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.25
+  },
+  {
+   "id": "en-033",
+   "group": "english",
+   "gold": [
+    "ITO2001-s103"
+   ],
+   "top": [
+    "ITO2001-s103",
+    "ITO2001-s109A",
+    "ITO2001-s4",
+    "ITO2001-s111",
+    "ITO2001-s50"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-034",
+   "group": "english",
+   "gold": [
+    "ITO2001-s101"
+   ],
+   "top": [
+    "ITO2001-s101",
+    "ITO2001-s44",
+    "ITO2001-s101",
+    "ITO2001-s101",
+    "ITO2001-s50"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-035",
+   "group": "english",
+   "gold": [
+    "ITO2001-s111"
+   ],
+   "top": [
+    "ITO2001-s111",
+    "ITO2001-s111",
+    "ITO2001-sch8",
+    "ITO2001-s72",
+    "ITO2001-sch8"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-036",
+   "group": "english",
+   "gold": [
+    "ITO2001-s113"
+   ],
+   "top": [
+    "ITO2001-sch2-pII-cl24D",
+    "ITO2001-sch2-pIV-cl11A",
+    "ITO2001-sch2-pII-cl28D",
+    "ITO2001-sch2-pII-cl28E",
+    "ITO2001-sch2-pIV-cl11A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.2
+  },
+  {
+   "id": "en-037",
+   "group": "english",
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITO2001-s182",
+    "ITO2001-s114",
+    "ITR2002-r80",
+    "ITO2001-s118"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-039",
+   "group": "english",
+   "gold": [
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITO2001-s114",
+    "ITO2001-s182A",
+    "ITO2001-s114",
+    "ITO2001-s115"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-041",
+   "group": "english",
+   "gold": [
+    "ITO2001-s116"
+   ],
+   "top": [
+    "ITO2001-s116",
+    "ITO2001-s119",
+    "ITR2002-r36",
+    "ITO2001-s165",
+    "ITO2001-s165"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-042",
+   "group": "english",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITO2001-s182",
+    "ITO2001-s182A",
+    "ITO2001-s114",
+    "ITO2001-s119"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-045",
+   "group": "english",
+   "gold": [
+    "ITO2001-s119"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITO2001-s119",
+    "ITO2001-s118",
+    "ITO2001-s114",
+    "ITO2001-s114B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "en-047",
+   "group": "english",
+   "gold": [
+    "ITO2001-s122"
+   ],
+   "top": [
+    "ITO2001-s122",
+    "ITO2001-s122D",
+    "ITO2001-s122",
+    "ITO2001-s221",
+    "ITO2001-s129"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-048",
+   "group": "english",
+   "gold": [
+    "ITO2001-s131"
+   ],
+   "top": [
+    "ITO2001-s127",
+    "ITO2001-s131",
+    "ITO2001-s124",
+    "ITO2001-s128",
+    "ITO2001-s129"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "en-050",
+   "group": "english",
+   "gold": [
+    "ITO2001-s137"
+   ],
+   "top": [
+    "ITO2001-s137",
+    "ITO2001-s34",
+    "ITO2001-s4",
+    "ITO2001-s182",
+    "ITO2001-s119"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-052",
+   "group": "english",
+   "gold": [
+    "ITO2001-s147"
+   ],
+   "top": [
+    "ITO2001-s147",
+    "ITO2001-s147",
+    "ITO2001-s147",
+    "ITO2001-s147",
+    "ITO2001-s149"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-054",
+   "group": "english",
+   "gold": [
+    "ITO2001-s149"
+   ],
+   "top": [
+    "ITO2001-s149",
+    "ITO2001-sch2-pI-cl23A",
+    "ITO2001-s12",
+    "ITO2001-s160",
+    "ITR2002-r43"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-057",
+   "group": "english",
+   "gold": [
+    "ITO2001-s151"
+   ],
+   "top": [
+    "ITO2001-sch2-pIV-cl59",
+    "ITO2001-sch2-pII-cl5AB",
+    "ITO2001-s151",
+    "ITO2001-sch2-pII-cl5AC",
+    "ITO2001-sch1-pIII-divIA"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.3333333333333333
+  },
+  {
+   "id": "en-058",
+   "group": "english",
+   "gold": [
+    "ITO2001-s152"
+   ],
+   "top": [
+    "ITO2001-s152",
+    "ITO2001-s6",
+    "ITO2001-s101",
+    "ITO2001-sch1-pI-divIV",
+    "ITR2002-r19"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-060",
+   "group": "english",
+   "gold": [
+    "ITO2001-s153"
+   ],
+   "top": [
+    "ITO2001-s165C",
+    "ITO2001-s153",
+    "ITO2001-s153",
+    "WHT2027-s153",
+    "ITO2001-sch2-pIV-cl46AA"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "en-061",
+   "group": "english",
+   "gold": [
+    "ITO2001-s154A",
+    "ITO2001-sch1-pIII-divIVA"
+   ],
+   "top": [
+    "ITO2001-s154A",
+    "ITO2001-s154",
+    "ITO2001-sch1-pIII-divIVA",
+    "ITO2001-sch1-pIII-divIII",
+    "ITO2001-sch1-pIII-divIV"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-062",
+   "group": "english",
+   "gold": [
+    "ITO2001-sch1-pIII-divIVA"
+   ],
+   "top": [
+    "ITO2001-s154A",
+    "ITO2001-s154",
+    "ITO2001-sch1-pIII-divIVA",
+    "ITO2001-sch1-pIII-divIV",
+    "ITO2001-sch1-pIII-divIII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.3333333333333333
+  },
+  {
+   "id": "en-063",
+   "group": "english",
+   "gold": [
+    "ITO2001-s155",
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "top": [
+    "ITO2001-sch1-pIII-divV",
+    "ITO2001-sch1-pIII-divV",
+    "ITO2001-s155",
+    "ITO2001-s16",
+    "WHT2027-s155"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-065",
+   "group": "english",
+   "gold": [
+    "ITO2001-s156",
+    "ITO2001-sch1-pIII-divVI",
+    "WHT2027-s156"
+   ],
+   "top": [
+    "ITO2001-s156",
+    "ITO2001-sch1-pIII-divVI",
+    "ITO2001-s169",
+    "ITO2001-sch2-pII-cl5AB",
+    "ITO2001-s152"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.6666666666666666,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-066",
+   "group": "english",
+   "gold": [
+    "ITO2001-s156",
+    "ITO2001-sch1-pIII-divVI",
+    "WHT2027-s156"
+   ],
+   "top": [
+    "ITO2001-s156",
+    "ITO2001-sch1-pIII-divVI",
+    "ITO2001-s39",
+    "ITO2001-sch1-pI-divVIII",
+    "ITO2001-sch1-pIV-divVII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.6666666666666666,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-067",
+   "group": "english",
+   "gold": [
+    "ITO2001-s159"
+   ],
+   "top": [
+    "ITO2001-s159",
+    "ITO2001-s6",
+    "ITO2001-s149",
+    "ITR2002-r40FA",
+    "ITO2001-sch2-pII-cl9AD"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-068",
+   "group": "english",
+   "gold": [
+    "ITO2001-s161"
+   ],
+   "top": [
+    "ITO2001-sch10",
+    "ITO2001-s164A",
+    "ITO2001-s165",
+    "ITO2001-s165C",
+    "ITO2001-sch2-pIV-cl120"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.14285714285714285
+  },
+  {
+   "id": "en-070",
+   "group": "english",
+   "gold": [
+    "ITO2001-s168"
+   ],
+   "top": [
+    "ITO2001-s169",
+    "ITO2001-s147",
+    "ITO2001-s8",
+    "ITO2001-s231AB",
+    "ITR2002-r13N"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "en-071",
+   "group": "english",
+   "gold": [
+    "ITO2001-s169"
+   ],
+   "top": [
+    "ITO2001-s169",
+    "ITO2001-sch1-pIII-divIII",
+    "ITO2001-sch2-pII-cl5AB",
+    "ITO2001-s154",
+    "ITR2002-r43"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-072",
+   "group": "english",
+   "gold": [
+    "ITO2001-s170"
+   ],
+   "top": [
+    "ITO2001-s170",
+    "ITO2001-s133",
+    "ITO2001-s171",
+    "ITR2002-r210IC",
+    "ITR2002-r210B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-074",
+   "group": "english",
+   "gold": [
+    "ITO2001-s174"
+   ],
+   "top": [
+    "ITR2002-r29",
+    "ITR2002-r33",
+    "ITO2001-s174",
+    "ITR2002-r32",
+    "ITR2002-r30"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.3333333333333333
+  },
+  {
+   "id": "en-075",
+   "group": "english",
+   "gold": [
+    "ITO2001-s181"
+   ],
+   "top": [
+    "ITO2001-s165C",
+    "ITO2001-s181",
+    "ITO2001-sch2-pII-cl28C",
+    "ITO2001-s6A",
+    "ITR2002-r13ZB"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "en-076",
+   "group": "english",
+   "gold": [
+    "ITO2001-s181A"
+   ],
+   "top": [
+    "ITR2002-r81B",
+    "ITR2002-r33D",
+    "ITR2002-r81B",
+    "WHT2027-s231AB",
+    "WHT2027-s156"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "en-077",
+   "group": "english",
+   "gold": [
+    "ITO2001-s182A"
+   ],
+   "top": [
+    "ITR2002-r81B",
+    "ITO2001-s182A",
+    "ITR2002-r81B",
+    "ITO2001-s118",
+    "ITO2001-s137"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "en-080",
+   "group": "english",
+   "gold": [
+    "ITO2001-s206A"
+   ],
+   "top": [
+    "ITO2001-s206A",
+    "ITR2002-r231A",
+    "ITR2002-r231B",
+    "ITO2001-s236C",
+    "ITO2001-s170"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-083",
+   "group": "english",
+   "gold": [
+    "ITO2001-s236"
+   ],
+   "top": [
+    "ITO2001-s236",
+    "ITO2001-s236Y",
+    "ITO2001-s235",
+    "ITO2001-s236CB",
+    "ITO2001-s148"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-085",
+   "group": "english",
+   "gold": [
+    "ITO2001-s236K",
+    "ITO2001-sch1-pIV-divXVIII",
+    "WHT2027-s236K"
+   ],
+   "top": [
+    "ITO2001-s236K",
+    "ITO2001-s236C",
+    "ITO2001-s147",
+    "ITO2001-s147",
+    "ITO2001-s147A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.3333333333333333,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-086",
+   "group": "english",
+   "gold": [
+    "ITO2001-s236Y",
+    "ITO2001-sch1-pIV-divXXVII",
+    "WHT2027-s236Y"
+   ],
+   "top": [
+    "ITO2001-s154",
+    "ITO2001-s161",
+    "ITO2001-s236Y",
+    "ITO2001-s4",
+    "ITO2001-s154A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.3333333333333333,
+   "mrr@10": 0.3333333333333333
+  },
+  {
+   "id": "en-087",
+   "group": "english",
+   "gold": [
+    "ITO2001-s37",
+    "ITO2001-sch1-pI-divVIII"
+   ],
+   "top": [
+    "ITO2001-s37",
+    "ITR2002-r13N",
+    "ITO2001-sch2-pIII-cl9A",
+    "ITR2002-r13P",
+    "ITR2002-r13P"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.5,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-088",
+   "group": "english",
+   "gold": [
+    "ITO2001-s37A",
+    "ITO2001-sch1-pI-divVII"
+   ],
+   "top": [
+    "ITO2001-sch1-pI-divVIII",
+    "ITO2001-sch1-pI-divVII",
+    "ITR2002-r13P",
+    "ITO2001-s37A",
+    "ITO2001-sch1-pI-divVII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "en-089",
+   "group": "english",
+   "gold": [
+    "ITO2001-sch1-pI-divI"
+   ],
+   "top": [
+    "WHT2027-s149",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-s182",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "ur-013",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "top": [
+    "ITO2001-s4AB",
+    "ITO2001-s165AB",
+    "ITO2001-sch2-pII-cl9AB",
+    "ITO2001-s231AB",
+    "ITO2001-sch2-pI-cl126AB"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "ur-014",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-015",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s13",
+    "ITR2002-r5"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-016",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s41"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-017",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s47"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-018",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s57"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-019",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s60"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-020",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s60D"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-021",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s61"
+   ],
+   "top": [
+    "ITO2001-sch1-pIIB",
+    "ITO2001-sch1-pI-divVIIIB",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch1-pI-divVIIIA",
+    "ITR2002-r70"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-022",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-023",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-024",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s102"
+   ],
+   "top": [
+    "ITO2001-sch1-pIIB",
+    "ITO2001-sch1-pI-divVIIIB",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch1-pI-divVIIIA",
+    "ITR2002-r70"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-025",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-026",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITR2002-r231I",
+    "ITR2002-r13P",
+    "WHT2027-s235",
+    "ITO2001-sch1-pI-divII",
+    "ITO2001-sch1-pIV-divIV"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-027",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-028",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s119"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-029",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s137"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-030",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s149"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-031",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s154A",
+    "ITO2001-sch1-pIII-divIVA"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-032",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s155",
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-033",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s156",
+    "ITO2001-sch1-pIII-divVI",
+    "WHT2027-s156"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-034",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s168"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-035",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s170"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-036",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s174"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-037",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s182A"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-038",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s236K",
+    "ITO2001-sch1-pIV-divXVIII",
+    "WHT2027-s236K"
+   ],
+   "top": [],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-039",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s236Y",
+    "ITO2001-sch1-pIV-divXXVII",
+    "WHT2027-s236Y"
+   ],
+   "top": [
+    "ITO2001-sch1-pIIB",
+    "ITO2001-sch1-pI-divVIIIB",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch1-pI-divVIIIA",
+    "ITR2002-r70"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ur-040",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-sch1-pI-divI"
+   ],
+   "top": [
+    "WHT2027-s234",
+    "WHT2027-s148",
+    "WHT2027-s149",
+    "WHT2027-s156",
+    "WHT2027-s236K"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.3333333333333333
+  },
+  {
+   "id": "ru-013",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "top": [
+    "ITO2001-s4AB",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-s205",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-s205"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "ru-014",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITO2001-sch2-pIII-cl3A",
+    "ITO2001-s236Z",
+    "ITO2001-s149",
+    "ITO2001-s102"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "ru-015",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s13",
+    "ITR2002-r5"
+   ],
+   "top": [
+    "ITO2001-s2",
+    "ITO2001-sch11",
+    "ITR2002-r30A",
+    "ITR2002-r13L",
+    "ITO2001-sch11"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ru-016",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s41"
+   ],
+   "top": [
+    "ITR2002-r86",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch2-pI-cl145A",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ru-017",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s47"
+   ],
+   "top": [
+    "ITO2001-s47",
+    "ITR2002-r86",
+    "ITO2001-sch2-pII-cl24D",
+    "ITO2001-s99D",
+    "ITR2002-r87"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "ru-018",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s57"
+   ],
+   "top": [
+    "ITO2001-s57",
+    "ITO2001-s59A",
+    "ITO2001-sch5-pI",
+    "ITO2001-s58",
+    "ITO2001-s104"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "ru-019",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s60"
+   ],
+   "top": [
+    "ITO2001-s60",
+    "ITO2001-s182",
+    "ITO2001-s227A",
+    "ITO2001-sch1-pI-divVIII",
+    "ITO2001-sch1-pI-divVIII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "ru-020",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s60D"
+   ],
+   "top": [
+    "ITO2001-s152",
+    "ITR2002-r86",
+    "ITO2001-s237",
+    "ITR2002-r231CB",
+    "ITO2001-sch1-pII"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ru-021",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s61"
+   ],
+   "top": [
+    "ITO2001-s61",
+    "ITR2002-r86",
+    "ITR2002-r86",
+    "ITO2001-sch1-pI-divVIIIA",
+    "ITO2001-sch1-pI-divVIII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "ru-022",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "top": [
+    "ITO2001-s82",
+    "ITO2001-s83",
+    "ITO2001-s81",
+    "ITO2001-s106",
+    "ITR2002-r19A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "ru-023",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "top": [
+    "ITO2001-s82",
+    "ITO2001-s83",
+    "ITO2001-s81",
+    "ITO2001-s106",
+    "ITR2002-r19D"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "ru-024",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s102"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-s102",
+    "ITO2001-s43"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.3333333333333333
+  },
+  {
+   "id": "ru-025",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITO2001-s114",
+    "ITO2001-s114",
+    "ITR2002-r73",
+    "ITO2001-s182A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "ru-026",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-s120",
+    "ITO2001-s118",
+    "ITR2002-r73",
+    "ITR2002-r12",
+    "ITR2002-r38"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.1
+  },
+  {
+   "id": "ru-027",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITO2001-s182",
+    "ITO2001-s119",
+    "ITO2001-s114",
+    "ITO2001-s182A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "ru-028",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s119"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITO2001-s119",
+    "ITO2001-s114",
+    "ITO2001-s182A",
+    "ITO2001-s118"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "ru-029",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s137"
+   ],
+   "top": [
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch2-pI-cl145A",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch7",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ru-030",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s149"
+   ],
+   "top": [
+    "ITO2001-sch2-pI-cl23A",
+    "ITO2001-s2",
+    "ITR2002-r78B",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-s12"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.14285714285714285
+  },
+  {
+   "id": "ru-031",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s154A",
+    "ITO2001-sch1-pIII-divIVA"
+   ],
+   "top": [
+    "ITO2001-sch1-pIV-divIII",
+    "ITO2001-s2",
+    "ITO2001-s182",
+    "ITR2002-r85",
+    "ITO2001-sch1-pIV-divIII"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ru-032",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s155",
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "top": [
+    "ITO2001-s236CB",
+    "ITO2001-sch1-pI-divIII",
+    "ITO2001-s5",
+    "ITO2001-sch2-pI-cl126D",
+    "ITO2001-sch1-pIV-divIII"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ru-033",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s156",
+    "ITO2001-sch1-pIII-divVI",
+    "WHT2027-s156"
+   ],
+   "top": [
+    "ITO2001-s156",
+    "ITO2001-sch1-pIII-divVI",
+    "ITO2001-s237B",
+    "ITO2001-s169",
+    "ITO2001-s171A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.6666666666666666,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "ru-034",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s168"
+   ],
+   "top": [
+    "ITR2002-r13N",
+    "ITO2001-s147",
+    "ITO2001-s147A",
+    "ITO2001-sch8",
+    "ITO2001-s147"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ru-035",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s170"
+   ],
+   "top": [
+    "ITO2001-s170",
+    "ITR2002-r71",
+    "ITO2001-s171",
+    "ITO2001-s133",
+    "ITR2002-r73"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "ru-036",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s174"
+   ],
+   "top": [
+    "ITO2001-s2",
+    "ITR2002-r33D",
+    "ITO2001-s237A",
+    "ITO2001-s203C",
+    "ITO2001-s122B"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.1
+  },
+  {
+   "id": "ru-037",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s182A"
+   ],
+   "top": [
+    "ITR2002-r81B",
+    "ITO2001-s114",
+    "ITO2001-s182A",
+    "ITO2001-s114",
+    "ITO2001-s118"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.3333333333333333
+  },
+  {
+   "id": "ru-038",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s236K",
+    "ITO2001-sch1-pIV-divXVIII",
+    "WHT2027-s236K"
+   ],
+   "top": [
+    "ITO2001-s236K",
+    "ITO2001-s147",
+    "ITR2002-r13S",
+    "ITO2001-s236O",
+    "ITO2001-s236Y"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.3333333333333333,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "ru-039",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s236Y",
+    "ITO2001-sch1-pIV-divXXVII",
+    "WHT2027-s236Y"
+   ],
+   "top": [
+    "ITR2002-r13ZC",
+    "ITO2001-s21",
+    "ITR2002-r13V",
+    "ITR2002-r13ZA",
+    "ITO2001-s6A"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "ru-040",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-sch1-pI-divI"
+   ],
+   "top": [
+    "WHT2027-s149",
+    "ITO2001-sch1-pI-divII",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-s9",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-001",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-s60D",
+    "ITR2002-r110",
+    "ITO2001-s12"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "fbr-002",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITO2001-s149",
+    "ITO2001-sch1-pIII-divIII",
+    "ITO2001-sch5-pI",
+    "ITO2001-s6"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-003",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-s12",
+    "ITO2001-s110",
+    "ITO2001-sch1-pI-divVIII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "fbr-004",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITO2001-s12",
+    "ITO2001-s102",
+    "ITR2002-r3",
+    "ITR2002-r227"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-005",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s37"
+   ],
+   "top": [
+    "ITO2001-s37",
+    "ITO2001-s2",
+    "ITO2001-s76",
+    "ITO2001-s97A",
+    "ITO2001-s97A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-006",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-s7B",
+    "ITO2001-s46",
+    "ITO2001-s151",
+    "ITO2001-sch1-pI-divIIIA",
+    "ITO2001-s106A"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "fbr-007",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s101"
+   ],
+   "top": [
+    "ITO2001-s101",
+    "ITO2001-sch2-pIV-cl114A",
+    "ITO2001-s30",
+    "ITO2001-sch4",
+    "ITO2001-s46"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-008",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-s6",
+    "ITR2002-r18",
+    "ITO2001-sch5-pI",
+    "ITO2001-sch1-pI-divIV",
+    "ITO2001-s105"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "fbr-009",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITR2002-r19",
+    "ITO2001-s101",
+    "ITO2001-s152",
+    "ITO2001-sch1-pI-divIV",
+    "ITO2001-s6"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.16666666666666666
+  },
+  {
+   "id": "fbr-010",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITR2002-r116",
+    "ITR2002-r118",
+    "ITO2001-sch6-pIII",
+    "ITR2002-r117",
+    "ITR2002-r115"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.125
+  },
+  {
+   "id": "fbr-011",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-s2",
+    "ITO2001-s75",
+    "ITO2001-s1",
+    "ITO2001-s80",
+    "ITO2001-s207"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-012",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-s2",
+    "ITO2001-s200",
+    "ITO2001-s80",
+    "ITO2001-s94",
+    "ITO2001-s97"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-013",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-sch9-pIII",
+    "ITO2001-s4C",
+    "ITO2001-s4B",
+    "ITO2001-s90",
+    "ITO2001-sch9-pIII"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "fbr-014",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s35"
+   ],
+   "top": [
+    "ITO2001-s35",
+    "ITO2001-s35",
+    "ITO2001-s4C",
+    "ITO2001-s2",
+    "ITO2001-s4B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-015",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s83"
+   ],
+   "top": [
+    "ITO2001-s83",
+    "ITO2001-s81",
+    "ITO2001-s82",
+    "ITO2001-s106",
+    "ITO2001-s109A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-016",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s84"
+   ],
+   "top": [
+    "ITO2001-s84",
+    "ITO2001-s82",
+    "ITO2001-s83",
+    "ITO2001-s81",
+    "ITR2002-r27B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-017",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-s200",
+    "ITO2001-s2",
+    "ITO2001-s172",
+    "ITO2001-s182",
+    "ITR2002-r39C"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "fbr-018",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s227B"
+   ],
+   "top": [
+    "ITO2001-s227B",
+    "ITO2001-s2",
+    "ITO2001-s1",
+    "ITO2001-s207",
+    "ITO2001-s80"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-019",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s22"
+   ],
+   "top": [
+    "ITO2001-s22",
+    "ITO2001-s22",
+    "ITO2001-s22",
+    "ITR2002-r224",
+    "ITO2001-s23"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-020",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s19"
+   ],
+   "top": [
+    "ITO2001-s19",
+    "ITO2001-s58",
+    "ITO2001-s2",
+    "ITO2001-s98C",
+    "ITO2001-s57A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-021",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "top": [
+    "ITO2001-s2",
+    "ITO2001-sch1-pI-divII",
+    "ITO2001-s139",
+    "ITO2001-s109A",
+    "ITO2001-s110"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-022",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s11"
+   ],
+   "top": [
+    "ITO2001-s11",
+    "ITO2001-s32",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-s13",
+    "ITO2001-s39"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-023",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s74"
+   ],
+   "top": [
+    "ITO2001-s74",
+    "ITO2001-s82",
+    "ITO2001-s37",
+    "ITO2001-sch5-pI",
+    "ITO2001-s81"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-024",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s80"
+   ],
+   "top": [
+    "ITO2001-s80",
+    "ITO2001-sch5-pI",
+    "ITO2001-sch5-pI",
+    "ITO2001-s1",
+    "ITO2001-s203C"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-025",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s41"
+   ],
+   "top": [
+    "ITO2001-s41",
+    "ITO2001-s207",
+    "ITO2001-sch1-pI-divII",
+    "ITO2001-s44",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-026",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s70"
+   ],
+   "top": [
+    "ITO2001-s162",
+    "ITO2001-s22",
+    "ITO2001-s167",
+    "ITO2001-s161",
+    "ITO2001-s169"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.0
+  },
+  {
+   "id": "fbr-027",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s67"
+   ],
+   "top": [
+    "ITO2001-s11",
+    "ITO2001-s67",
+    "ITR2002-r30",
+    "ITO2001-s13",
+    "ITO2001-s105"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "fbr-028",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s21"
+   ],
+   "top": [
+    "ITO2001-s182",
+    "ITO2001-s182",
+    "ITO2001-s182",
+    "ITO2001-s21",
+    "ITO2001-s182"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "fbr-029",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s21"
+   ],
+   "top": [
+    "ITO2001-s104",
+    "ITO2001-s60D",
+    "ITO2001-s21",
+    "ITO2001-s24",
+    "ITO2001-s22"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.3333333333333333
+  },
+  {
+   "id": "fbr-030",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s101"
+   ],
+   "top": [
+    "ITO2001-s101",
+    "ITO2001-s44",
+    "ITO2001-s101",
+    "ITO2001-s101",
+    "ITO2001-s50"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-031",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s101"
+   ],
+   "top": [
+    "ITO2001-s101",
+    "ITO2001-s101",
+    "ITO2001-s101",
+    "ITO2001-sch2-pIV-cl114A",
+    "ITO2001-s50"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-032",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITO2001-s182A",
+    "ITO2001-s114",
+    "ITO2001-s137",
+    "ITO2001-s182"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-033",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITO2001-s114",
+    "ITO2001-s114",
+    "ITR2002-r73",
+    "ITO2001-s182"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-034",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITO2001-s2",
+    "ITO2001-s118",
+    "ITO2001-s182",
+    "ITR2002-r80"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-035",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-s182",
+    "ITO2001-s114",
+    "ITO2001-s114",
+    "ITO2001-s114",
+    "ITO2001-s119"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "fbr-036",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s115"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITO2001-s114",
+    "ITO2001-s182A",
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.3333333333333333
+  },
+  {
+   "id": "fbr-037",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s119"
+   ],
+   "top": [
+    "ITO2001-s119",
+    "ITO2001-s114",
+    "ITO2001-s182A",
+    "ITO2001-s137",
+    "ITO2001-s118"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "fbr-038",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s103"
+   ],
+   "top": [
+    "ITO2001-s51",
+    "ITO2001-s103",
+    "ITO2001-s102",
+    "ITO2001-s109A",
+    "ITO2001-s50"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "fbr-039",
+   "group": "fbr",
+   "gold": [
+    "ITO2001-s25"
+   ],
+   "top": [
+    "ITO2001-s25",
+    "ITO2001-sch5-pI",
+    "ITO2001-s182",
+    "ITO2001-s182",
+    "ITO2001-s104"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-091",
+   "group": "english",
+   "gold": [
+    "ITO2001-s155"
+   ],
+   "top": [
+    "ITO2001-sch1-pIII-divV",
+    "ITO2001-sch1-pIII-divV",
+    "ITO2001-s155",
+    "ITO2001-sch2-pIV-cl16",
+    "ITO2001-s15"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "en-092",
+   "group": "english",
+   "gold": [
+    "ITO2001-s155",
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "top": [
+    "ITO2001-sch1-pIII-divV",
+    "ITO2001-sch1-pIII-divV",
+    "ITO2001-s155",
+    "ITO2001-s2",
+    "ITO2001-sch2-pIV-cl16"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-093",
+   "group": "english",
+   "gold": [
+    "ITO2001-sch1-pIII-divVI",
+    "WHT2027-s156"
+   ],
+   "top": [
+    "WHT2027-s156",
+    "ITO2001-s156",
+    "ITO2001-sch1-pI-divVIII",
+    "ITR2002-r81B",
+    "WHT2027-s234"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.5,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-094",
+   "group": "english",
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "top": [
+    "ITO2001-s82",
+    "ITO2001-s81",
+    "ITO2001-s83",
+    "ITO2001-s51",
+    "ITO2001-s172"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-095",
+   "group": "english",
+   "gold": [
+    "ITO2001-s156",
+    "ITO2001-s168"
+   ],
+   "top": [
+    "ITO2001-s156",
+    "ITO2001-sch1-pIII-divVI",
+    "ITO2001-s153",
+    "ITO2001-s39",
+    "ITO2001-s149"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.5,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-096",
+   "group": "english",
+   "gold": [
+    "ITO2001-s182A"
+   ],
+   "top": [
+    "ITO2001-s182A",
+    "ITR2002-r81B",
+    "ITO2001-s114",
+    "ITR2002-r81B",
+    "ITO2001-s119"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-097",
+   "group": "english",
+   "gold": [
+    "ITO2001-s236K",
+    "WHT2027-s236K"
+   ],
+   "top": [
+    "ITO2001-s235",
+    "ITO2001-s236A",
+    "ITO2001-s147",
+    "ITO2001-s147",
+    "ITO2001-s236K"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.5,
+   "mrr@10": 0.25
+  },
+  {
+   "id": "en-098",
+   "group": "english",
+   "gold": [
+    "ITO2001-s154A"
+   ],
+   "top": [
+    "ITO2001-s154A",
+    "ITO2001-s154",
+    "ITO2001-sch1-pIII-divIV",
+    "ITO2001-s169",
+    "ITO2001-sch1-pIII-divIVA"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0
+  },
+  {
+   "id": "en-099",
+   "group": "english",
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-s182",
+    "ITO2001-s114",
+    "ITO2001-s114",
+    "ITO2001-s118",
+    "ITO2001-s114"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5
+  },
+  {
+   "id": "en-100",
+   "group": "english",
+   "gold": [
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITO2001-s143",
+    "ITO2001-s114",
+    "ITO2001-s144",
+    "ITR2002-r27B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.5,
+   "mrr@10": 1.0
+  }
+ ]
+}

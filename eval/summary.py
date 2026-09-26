@@ -54,7 +54,7 @@ def build() -> dict:
     direct = [i for i in items if not i.source_id]
     opinions = Counter(i.second_opinion for i in direct if i.second_opinion)
     sample = json.loads(EXPERT_SAMPLE.read_text(encoding="utf-8")) if EXPERT_SAMPLE.exists() else {}
-    reviewed = [q for q in sample.get("questions", []) if q.get("expert_ok") is not None]
+    review = sample.get("review", {})
 
     ablation = []
     for name, label, what in SETUPS:
@@ -109,13 +109,20 @@ def build() -> dict:
             "questions": len(items),
             "test_split": len(test),
             "test_by_group": dict(Counter(report_group(i) for i in test)),
-            "machine_verified": sum(i.verified == "machine" for i in items),
+            # "reviewed" questions passed the machine checks too (D50), so they count in both.
+            "machine_verified": sum(i.verified in ("machine", "reviewed") for i in items),
+            "review_verified": sum(i.verified == "reviewed" for i in items),
             "human_verified": sum(i.verified == "human" for i in items),
+            "not_verified_yet": sum(i.verified is False for i in items),
             "second_opinion_agreed": opinions["agree"],
             "second_opinion_checked": sum(opinions.values()),
             "directly_judged": len(direct),
-            "expert_sample": len(sample.get("questions", [])),
-            "expert_reviewed": len(reviewed),
+            "review_sample": len(sample.get("questions", [])),
+            # The sample review so far is by an AI tool; never label it a human or expert review.
+            "review_by": review.get("reviewer"),
+            "review_kind": review.get("kind"),
+            "review_result": review.get("result"),
+            "tax_professional_review": review.get("tax_professional_review", "pending"),
         },
         "retrieval_ablation": ablation,
         "end_to_end": e2e,

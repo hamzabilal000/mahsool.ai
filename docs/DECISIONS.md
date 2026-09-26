@@ -522,3 +522,51 @@ Newest first within each milestone. Each entry says what the plan said, what we 
 - The plan lists Langfuse for Milestone 4. No Langfuse keys are configured, and the per-step timings are already in
   every response (`timings_ms`) and in the `asks` table. Tracing moves to Milestone 5 with the latency work, where
   per-step traces are needed.
+
+### D50. Legal review of the 30-question sample by an AI tool, and a completeness sweep of the whole set
+- **Legal review of a 30-question sample by ChatGPT (OpenAI), an AI legal-review tool with web access, 26 Sep 2026:
+  19 correct, 10 partly correct, 1 wrong; all fixed and a completeness sweep applied to the full set.** This is an
+  AI tool's review, not a human or professional one; the review by a tax professional is still pending. Verdicts and
+  notes are stored per question in `eval/expert_sample.json` (`verdict`, `expert_ok`, `expert_notes`), with the
+  reviewer recorded exactly as above.
+- **Every correction was checked against our corpus before it was applied** (ITO 2001, Rules 2002, WHT rate card
+  TY2027); all 11 were supported: Tenth Schedule rule 1 and the rate card for the non-ATL rates (236Y 1%, prize
+  bonds 30%), section 114(1)(b)(i)-(x), (c), (1A), section 2(59AB)(iv), the proviso to section 119(4), section 82(a),
+  (c), (d), section 168(3), and section 155(3). One detail differs from the review: "prescribed person" for rent is
+  defined in **section 155(3)**, not section 2, and the list also includes diplomatic missions and private
+  educational institutions, boutiques, beauty parlours, hospitals, clinics and maternity homes. **No reviewer claim
+  had to be left out as "not in corpus".**
+- Fixes were made at the English source and copied to every translation that shares it
+  (`eval/review/changes.json`, applied by `python -m eval.apply_changes`). This also exposed a mistake from D43:
+  the en-063 and en-089 fixes had not reached their four translations (ur/ru-032, ur/ru-040); the script now syncs
+  translations on every run and a test enforces it.
+- **The machine judges had passed all 11 flawed items**: both checked only that the reference was *supported* by
+  the text, not that it was *complete*. So a completeness sweep read every other in-scope question against the law
+  text for the same patterns (ATL vs non-ATL rates, who must withhold, residency tests, final-tax treatment, other
+  statutory conditions) and fixed 11 more: en-038 (s115(3) exemptions), en-045 (s119 grounds and Chief
+  Commissioner), en-056 (dividends 30% non-ATL), en-058 (s152(1) "chargeable under section 6"), en-061 (s154A final
+  only on conditions), en-064 (prescribed person, 30% non-ATL), en-066 (lottery 40% non-ATL, final), en-077
+  (s182A(3) undertaking), en-084 (236C 11.5% non-ATL and exceptions), en-085 (236K non-ATL bands, expatriate
+  schemes), en-087 (CGT for persons not on the ATL). The judge's new completeness question (D51) found 4 more:
+  en-020, en-041, en-047, en-073. Every change, with before and after, is listed in `eval/FLAGGED.md`.
+- New status **`"verified": "reviewed"`**: a sample question the AI review judged correct, or one corrected per its
+  notes, that also passes the machine checks (Qwen + number check) after the fix. It never means a human review.
+
+### D51. Completeness is now checked: answer prompt, judge prompt, 10 new questions
+- **Answer prompt** (rule 7): when a rule has conditions, state them with citations: both ATL and non-ATL rates when
+  the sources give both; who the rule applies to (e.g. only a prescribed person withholds), making the answer
+  conditional when the question's facts may not meet it; other routes, exemptions, exceptions and final-tax
+  treatment in the sources. It must not add conditions that are not in the sources.
+- **Judge prompt**: a third question, "does the reference answer omit a condition or exception stated in the section
+  that changes the answer?" (`omits_condition`); "yes" fails the question.
+- **10 new test questions** (en-091 … en-100, English, test split, type "conditions"): rent paid by a shopkeeper
+  below Rs. 1.5 million, rent paid by a company, prize bonds for non-ATL persons, a government officer posted
+  abroad, final tax and credit, the late-filing undertaking, 236K for a non-ATL buyer, s154A final-tax conditions,
+  s114(1A) business income, and a non-resident plot owner. The test set is now 249 questions (189 on test).
+- **Re-judging is incomplete**: the new judge prompt invalidates the cached verdicts. Qwen re-judged 112 of the 169
+  directly judged questions before Groq's 200k tokens-a-day limit (2026-09-26); 108 passed and 4 were flagged and
+  fixed (above). The other 61 (57 not reached + the 4 fixed) are `"verified": false` until Qwen has judged them;
+  with their translations that is 71 questions, so the test set now reports 178 of 249 machine-verified (23 of them
+  "reviewed"). Re-run `python -m eval.verify_testset` at the start of
+  the next sessions. Gemini's second opinion with the new prompt: 1 of 1 agreed so far (15 of 15 with the old
+  two-question prompt).
