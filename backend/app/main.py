@@ -10,10 +10,14 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from backend.app.api.ask import RateLimiter, router
+from backend.app.api.ask import RateLimiter
+from backend.app.api.ask import router as ask_router
+from backend.app.api.eval import router as eval_router
 from backend.app.config import get_settings
+from backend.app.db import FeedbackStore, database_url
 
 log = logging.getLogger(__name__)
 
@@ -37,19 +41,40 @@ def build_service():
     )
 
 
-def create_app(service=None) -> FastAPI:
-    """`service` can be injected (tests use a fake); otherwise it is built at startup."""
+def build_store() -> FeedbackStore:
+    s = get_settings()
+    url = s.database_url.get_secret_value() if s.database_url else None
+    store = FeedbackStore(database_url(url, s.sqlite_path))
+    log.info("question log and feedback in %s", store.kind)
+    return store
+
+
+def create_app(service=None, store=None) -> FastAPI:
+    """`service` and `store` can be injected (tests use fakes); otherwise they are built at
+    startup."""
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
+        if getattr(app.state, "store", None) is None:
+            app.state.store = build_store()
         if getattr(app.state, "service", None) is None:
             app.state.service = build_service()
         yield
 
-    app = FastAPI(title="Mahsool AI", version="0.3.0", lifespan=lifespan)
+    s = get_settings()
+    app = FastAPI(title="Mahsool AI", version="0.4.0", lifespan=lifespan)
     app.state.service = service
-    app.state.limiter = RateLimiter(get_settings().rate_limit_per_minute)
-    app.include_router(router)
+    app.state.store = store
+    app.state.limiter = RateLimiter(s.rate_limit_per_minute)
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=s.cors_origins,
+        allow_credentials=True,
+        allow_methods=["GET", "POST"],
+        allow_headers=["Content-Type"],
+    )
+    app.include_router(ask_router)
+    app.include_router(eval_router)
 
     @app.exception_handler(RequestValidationError)
     async def validation_error(_: Request, exc: RequestValidationError) -> JSONResponse:

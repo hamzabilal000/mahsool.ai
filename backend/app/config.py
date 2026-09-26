@@ -79,9 +79,13 @@ class Settings(BaseSettings):
     glossary_path: Path = Path("data/glossary_ur.csv")
     groq_base_url: str = "https://api.groq.com/openai/v1"
     rate_limit_per_minute: int = 20  # /ask requests per client IP
+    # The React dev server (Vite); the browser sends cookies (axios withCredentials).
+    cors_origins: list[str] = ["http://localhost:5173"]
     current_tax_year: int = 2027
 
-    # --- Storage (hosted Neon Postgres in development; unused until Milestone 4) ---
+    # --- Storage: question log + feedback ---
+    # Question log + feedback: Postgres when DATABASE_URL is set, else this SQLite file (D47).
+    sqlite_path: Path = Path("data/mahsool.db")
     database_url: SecretStr | None = Field(
         default=None,
         validation_alias=AliasChoices("DATABASE_URL", "MAHSOOL_DATABASE_URL"),

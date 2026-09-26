@@ -12,6 +12,7 @@ never reach the answer model:
 """
 
 import time
+from collections.abc import Callable
 
 from backend.app.models.schemas import AskData, Citation, RefusalReason, Source
 from backend.app.rag.citations import check_citations
@@ -66,8 +67,16 @@ class AskService:
         # Latest tax year whose law is enacted (the current one); later years are refused.
         self.last_tax_year = last_tax_year
 
-    def ask(self, question: str, tax_year: int | None = None) -> AskData:
+    def ask(
+        self,
+        question: str,
+        tax_year: int | None = None,
+        on_stage: Callable[[str], None] | None = None,
+    ) -> AskData:
+        """`on_stage("search")` / `on_stage("answer")` report progress (the streaming API)."""
+        stage = on_stage or (lambda _: None)
         t0 = time.perf_counter()
+        stage("search")
         result = self.pipeline.search(question, tax_year=tax_year)
         t_search = time.perf_counter()
         plan = result.plan
@@ -82,6 +91,7 @@ class AskService:
             f"The user mentions {ref}, which does not exist in the law I have."
             for ref in result.missing_refs
         ]
+        stage("answer")
         draft = self.generator.draft(
             question,
             [c.chunk for c in top],

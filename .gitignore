@@ -42,3 +42,6 @@ pgdata/
 .vscode/
 .DS_Store
 
+
+# Local feedback database (development)
+data/mahsool.db

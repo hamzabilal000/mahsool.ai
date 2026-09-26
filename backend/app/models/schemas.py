@@ -55,6 +55,7 @@ class Source(BaseModel):
 
 
 class AskData(BaseModel):
+    id: str | None = Field(default=None, description="Logged question id, for POST /feedback")
     answer: str
     refused: bool
     refusal_reason: RefusalReason | None = None
@@ -68,3 +69,9 @@ class AskData(BaseModel):
     warnings: list[str] = []
     disclaimer: str
     timings_ms: dict[str, int] = {}
+
+
+class FeedbackRequest(BaseModel):
+    ask_id: str = Field(min_length=1, max_length=36)
+    rating: Literal["up", "down"]
+    comment: str | None = Field(default=None, max_length=1000)

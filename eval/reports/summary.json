@@ -1,0 +1,277 @@
+{
+ "generated": "2026-09-26",
+ "testset": {
+  "questions": 239,
+  "test_split": 179,
+  "test_by_group": {
+   "english": 63,
+   "urdu": 28,
+   "roman_urdu": 28,
+   "out_of_scope": 21,
+   "fbr": 39
+  },
+  "machine_verified": 239,
+  "human_verified": 0,
+  "second_opinion_agreed": 15,
+  "second_opinion_checked": 15,
+  "directly_judged": 159,
+  "expert_sample": 30,
+  "expert_reviewed": 0
+ },
+ "retrieval_ablation": [
+  {
+   "setup": "BM25",
+   "description": "keyword search, no model",
+   "date": "2026-09-25",
+   "hit_at_5": {
+    "english": 87.3,
+    "fbr": 71.8,
+    "urdu": 3.6,
+    "roman_urdu": 50.0,
+    "all": 62.0
+   },
+   "recall_at_5_all": 59.8,
+   "mrr_at_10_all": 0.513,
+   "n": {
+    "english": 63,
+    "fbr": 39,
+    "urdu": 28,
+    "roman_urdu": 28,
+    "all": 158
+   }
+  },
+  {
+   "setup": "Sparse",
+   "description": "BGE-M3 sparse vectors",
+   "date": "2026-09-25",
+   "hit_at_5": {
+    "english": 92.1,
+    "fbr": 84.6,
+    "urdu": 7.1,
+    "roman_urdu": 60.7,
+    "all": 69.6
+   },
+   "recall_at_5_all": 67.7,
+   "mrr_at_10_all": 0.595,
+   "n": {
+    "english": 63,
+    "fbr": 39,
+    "urdu": 28,
+    "roman_urdu": 28,
+    "all": 158
+   }
+  },
+  {
+   "setup": "Dense",
+   "description": "BGE-M3 dense vectors",
+   "date": "2026-09-25",
+   "hit_at_5": {
+    "english": 98.4,
+    "fbr": 79.5,
+    "urdu": 78.6,
+    "roman_urdu": 57.1,
+    "all": 82.9
+   },
+   "recall_at_5_all": 79.4,
+   "mrr_at_10_all": 0.718,
+   "n": {
+    "english": 63,
+    "fbr": 39,
+    "urdu": 28,
+    "roman_urdu": 28,
+    "all": 158
+   }
+  },
+  {
+   "setup": "Hybrid",
+   "description": "dense + sparse, RRF (baseline)",
+   "date": "2026-09-25",
+   "hit_at_5": {
+    "english": 95.2,
+    "fbr": 87.2,
+    "urdu": 78.6,
+    "roman_urdu": 67.9,
+    "all": 85.4
+   },
+   "recall_at_5_all": 83.2,
+   "mrr_at_10_all": 0.765,
+   "n": {
+    "english": 63,
+    "fbr": 39,
+    "urdu": 28,
+    "roman_urdu": 28,
+    "all": 158
+   }
+  },
+  {
+   "setup": "+ section lookup",
+   "description": "'section 149' goes straight to the section",
+   "date": "2026-09-25",
+   "hit_at_5": {
+    "english": 96.8,
+    "fbr": 87.2,
+    "urdu": 78.6,
+    "roman_urdu": 67.9,
+    "all": 86.1
+   },
+   "recall_at_5_all": 83.9,
+   "mrr_at_10_all": 0.778,
+   "n": {
+    "english": 63,
+    "fbr": 39,
+    "urdu": 28,
+    "roman_urdu": 28,
+    "all": 158
+   }
+  },
+  {
+   "setup": "+ reranker",
+   "description": "bge-reranker-v2-m3 on the top 30, no rewrite",
+   "date": "2026-09-25",
+   "hit_at_5": {
+    "english": 96.8,
+    "fbr": 87.2,
+    "urdu": 89.3,
+    "roman_urdu": 64.3,
+    "all": 87.3
+   },
+   "recall_at_5_all": 85.1,
+   "mrr_at_10_all": 0.798,
+   "n": {
+    "english": 63,
+    "fbr": 39,
+    "urdu": 28,
+    "roman_urdu": 28,
+    "all": 158
+   }
+  },
+  {
+   "setup": "+ rewrite",
+   "description": "English query rewrite by an LLM, no reranker",
+   "date": "2026-09-25",
+   "hit_at_5": {
+    "english": 98.4,
+    "fbr": 84.6,
+    "urdu": 100.0,
+    "roman_urdu": 89.3,
+    "all": 93.7
+   },
+   "recall_at_5_all": 91.8,
+   "mrr_at_10_all": 0.816,
+   "n": {
+    "english": 63,
+    "fbr": 39,
+    "urdu": 28,
+    "roman_urdu": 28,
+    "all": 158
+   }
+  },
+  {
+   "setup": "+ rewrite + reranker",
+   "description": "both",
+   "date": "2026-09-25",
+   "hit_at_5": {
+    "english": 96.8,
+    "fbr": 89.7,
+    "urdu": 89.3,
+    "roman_urdu": 75.0,
+    "all": 89.9
+   },
+   "recall_at_5_all": 87.3,
+   "mrr_at_10_all": 0.816,
+   "n": {
+    "english": 63,
+    "fbr": 39,
+    "urdu": 28,
+    "roman_urdu": 28,
+    "all": 158
+   }
+  },
+  {
+   "setup": "+ glossary",
+   "description": "Urdu glossary in the rewrite = full pipeline",
+   "date": "2026-09-25",
+   "hit_at_5": {
+    "english": 96.8,
+    "fbr": 89.7,
+    "urdu": 92.9,
+    "roman_urdu": 75.0,
+    "all": 90.5
+   },
+   "recall_at_5_all": 88.6,
+   "mrr_at_10_all": 0.82,
+   "n": {
+    "english": 63,
+    "fbr": 39,
+    "urdu": 28,
+    "roman_urdu": 28,
+    "all": 158
+   }
+  },
+  {
+   "setup": "Full, max score",
+   "description": "reranker also scores the rewrite (/ask default)",
+   "date": "2026-09-25",
+   "hit_at_5": {
+    "english": 96.8,
+    "fbr": 87.2,
+    "urdu": 92.9,
+    "roman_urdu": 92.9,
+    "all": 93.0
+   },
+   "recall_at_5_all": 91.8,
+   "mrr_at_10_all": 0.863,
+   "n": {
+    "english": 63,
+    "fbr": 39,
+    "urdu": 28,
+    "roman_urdu": 28,
+    "all": 158
+   }
+  }
+ ],
+ "end_to_end": {
+  "date": "2026-09-25",
+  "questions": 179,
+  "run": 68,
+  "not_run": 111,
+  "in_scope_run": 55,
+  "answered": 98.2,
+  "correct_citation": 96.4,
+  "correct_citation_answered": 98.2,
+  "out_of_scope_run": 13,
+  "out_of_scope_refused": 100,
+  "by_group": {
+   "english": {
+    "n": 53,
+    "correct_citation": 96.2
+   },
+   "fbr": {
+    "n": 1,
+    "correct_citation": 100
+   },
+   "urdu": {
+    "n": 1,
+    "correct_citation": 100
+   }
+  }
+ },
+ "targets": [
+  {
+   "metric": "Retrieval Hit@5, Urdu and Roman Urdu",
+   "target": "≥ 80%"
+  },
+  {
+   "metric": "Answers with a correct citation",
+   "target": "≥ 90%"
+  },
+  {
+   "metric": "Correct refusal on out-of-scope questions",
+   "target": "≥ 90%"
+  },
+  {
+   "metric": "Answer correctness",
+   "target": "≥ 85% (not scored yet)"
+  }
+ ]
+}
