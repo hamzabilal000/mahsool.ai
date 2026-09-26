@@ -1,4 +1,5 @@
 import axios from "axios"
+import { parseEvents } from "../lib/sse"
 
 axios.defaults.withCredentials = true
 
@@ -10,26 +11,6 @@ export const api = axios.create({ baseURL: API_URL, withCredentials: true })
 function envelopeOf(err) {
     if (err.response?.data?.code) return err.response.data
     return { success: false, data: null, error: "Can't reach the Mahsool API. Is it running?", code: "NETWORK_ERROR" }
-}
-
-// Parse server-sent events out of a growing response text. Returns the events found after
-// `offset` and the new offset (the end of the last complete event).
-export function parseEvents(text, offset) {
-    let events = []
-    let end = text.indexOf("\n\n", offset)
-    while (end !== -1) {
-        let block = text.slice(offset, end)
-        let event = "message"
-        let data = ""
-        for (let line of block.split("\n")) {
-            if (line.startsWith("event: ")) event = line.slice(7)
-            else if (line.startsWith("data: ")) data += line.slice(6)
-        }
-        if (data) events.push({ event, data: JSON.parse(data) })
-        offset = end + 2
-        end = text.indexOf("\n\n", offset)
-    }
-    return { events, offset }
 }
 
 // POST /ask/stream. Calls onStage(stage), onDelta(text) while the answer arrives and resolves
