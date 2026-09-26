@@ -29,7 +29,7 @@ def build_service():
     from backend.app.service import AskService
 
     s = get_settings()
-    llm = LLMClients(s)
+    llm = LLMClients(s, cache_path=s.llm_cache_path)
     config = PipelineConfig(candidates=s.rerank_candidates, rerank_query=s.rerank_query)
     pipeline = build_pipeline(config, settings=s, llm=llm)
     return AskService(

@@ -43,6 +43,9 @@ class Settings(BaseSettings):
     # (quota GenerateRequestsPerDayPerProjectPerModel-FreeTier, seen 2026-09-25; DECISIONS D42).
     gemini_requests_per_day: int = 20
     gemini_base_url: str = "https://generativelanguage.googleapis.com/v1beta/openai"
+    # Development only: replay (and extend) an LLM cache in the API, e.g. eval/cache/groq.jsonl,
+    # so test-set questions answer without using the daily quota. Unset in production.
+    llm_cache_path: Path | None = None
 
     # --- Retrieval models ---
     embedding_model: str = "BAAI/bge-m3"
