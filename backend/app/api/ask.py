@@ -11,7 +11,8 @@ text that is later withdrawn.
 
 Free-tier demo safeguards (D53), shared by both endpoints through `answer()`:
 - repeated questions are served from the answer cache (no LLM quota, no reranking);
-- each visitor (client IP) may ask `daily_questions_per_visitor` uncached questions per UTC day;
+- each visitor (client IP) may ask `daily_questions_per_visitor` uncached questions per UTC day,
+  and all visitors together get `daily_answers_global` answers that call the answer model (D59);
 - when the answer model's daily quota is used up, the reply is a friendly "try again tomorrow"
   message in the question's language (code DAILY_LIMIT), not an error.
 """
@@ -59,7 +60,9 @@ class RateLimiter:
 
 
 class VisitorDailyLimit:
-    """At most `limit` uncached questions per client IP per UTC day (in memory, one instance)."""
+    """At most `limit` uncached questions per key per UTC day (in memory, one instance).
+
+    Used per client IP for visitors and with the single key "all" for the global cap."""
 
     def __init__(self, limit: int) -> None:
         self.limit = limit
@@ -116,10 +119,12 @@ DAILY_LIMIT_TEXT = {
 }
 VISITOR_LIMIT_TEXT = {
     "en": "You have reached today's limit of new questions for this free demo. Please come back "
-    "tomorrow.",
-    "ur": "آپ اس مفت ڈیمو میں آج کے نئے سوالوں کی حد تک پہنچ گئے ہیں۔ براہِ کرم کل دوبارہ آئیں۔",
+    "tomorrow. Questions others have already asked still get an answer.",
+    "ur": "آپ اس مفت ڈیمو میں آج کے نئے سوالوں کی حد تک پہنچ گئے ہیں۔ براہِ کرم کل دوبارہ آئیں۔ "
+    "جو سوال پہلے پوچھے جا چکے ہیں ان کا جواب اب بھی ملتا ہے۔",
     "roman_ur": "Aap is free demo mein aaj ke naye sawalon ki had tak pohanch gaye hain. "
-    "Meharbani karke kal dobara aayein.",
+    "Meharbani karke kal dobara aayein. Jo sawal pehle pooche ja chuke hain un ka jawab ab bhi "
+    "milta hai.",
 }
 
 
@@ -132,6 +137,12 @@ class AnswerRefused(Exception):
 
 
 def client_key(request: Request) -> str:
+    hops = getattr(request.app.state, "forwarded_for_hops", 0)
+    forwarded = request.headers.get("x-forwarded-for", "")
+    if hops > 0 and forwarded:
+        entries = [e.strip() for e in forwarded.split(",") if e.strip()]
+        if entries:
+            return entries[-min(hops, len(entries))]
     return request.client.host if request.client else "unknown"
 
 
@@ -156,6 +167,7 @@ def answer(request: Request, question: str, tax_year: int | None, on_stage=None)
     app = request.app
     store: FeedbackStore | None = getattr(app.state, "store", None)
     visitors: VisitorDailyLimit | None = getattr(app.state, "visitors", None)
+    everyone: VisitorDailyLimit | None = getattr(app.state, "global_answers", None)
     version = getattr(app.state, "cache_version", None)
     key = cache_key(version, question, tax_year) if (store and version) else None
     if key:
@@ -171,6 +183,8 @@ def answer(request: Request, question: str, tax_year: int | None, on_stage=None)
     lang = detect_language(question)
     if visitors and not visitors.allow(visitor):
         raise AnswerRefused(429, "VISITOR_DAILY_LIMIT", VISITOR_LIMIT_TEXT[lang])
+    if everyone and not everyone.allow("all"):
+        raise AnswerRefused(503, "DAILY_LIMIT", DAILY_LIMIT_TEXT[lang])
     try:
         data = app.state.service.ask(question, tax_year, on_stage)
     except DailyLimitError as e:
@@ -181,6 +195,8 @@ def answer(request: Request, question: str, tax_year: int | None, on_stage=None)
         raise AnswerRefused(503, LLM_UNAVAILABLE["code"], LLM_UNAVAILABLE["error"]) from e
     if visitors:
         visitors.spend(visitor)
+    if everyone and "answer_llm" in data.timings_ms:  # refused before the answer model: free
+        everyone.spend("all")
     if key:
         try:
             store.cache_answer(key, question, data)

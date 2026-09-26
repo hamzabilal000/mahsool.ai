@@ -85,6 +85,8 @@ def create_app(service=None, store=None) -> FastAPI:
     app.state.store = store
     app.state.limiter = RateLimiter(s.rate_limit_per_minute)
     app.state.visitors = VisitorDailyLimit(s.daily_questions_per_visitor)
+    app.state.global_answers = VisitorDailyLimit(s.daily_answers_global)
+    app.state.forwarded_for_hops = s.forwarded_for_hops
     app.state.cache_version = None
     app.add_middleware(
         CORSMiddleware,

@@ -138,3 +138,55 @@ def test_daily_quota_gives_a_friendly_message_in_the_question_language(api):
     assert "کل دوبارہ" in r.json()["error"]
     events = parse_sse(api.post("/ask/stream", json={"question": "Is salary taxed?"}).text)
     assert events[-1][0] == "error" and events[-1][1]["code"] == "DAILY_LIMIT"
+
+
+class StubService:
+    """Answers every question; `llm` says whether the answer model was called."""
+
+    def __init__(self) -> None:
+        self.llm = True
+
+    def ask(self, question, tax_year=None, on_stage=None):
+        from backend.app.models.schemas import AskData
+
+        timings = {"search": 5, "answer_llm": 900} if self.llm else {"search": 5}
+        return AskData(answer=f"About: {question}", refused=not self.llm, language="en",
+                       tax_year=2027, tax_year_assumed=True, disclaimer="-",
+                       timings_ms=timings)  # fmt: skip
+
+
+def test_global_daily_cap_counts_only_answers_that_called_the_answer_model(api):
+    from backend.app.api.ask import VisitorDailyLimit
+
+    stub = StubService()
+    api.app.state.service, api.app.state.cache_version = stub, "v1"
+    api.app.state.global_answers = VisitorDailyLimit(1)
+    stub.llm = False
+    assert api.post("/ask", json={"question": "What is PRA sales tax?"}).status_code == 200
+    assert api.app.state.global_answers.counts["all"] == 0  # refused before the answer model
+    stub.llm = True
+    assert api.post("/ask", json={"question": "Who deducts tax from salary?"}).status_code == 200
+    # cached: served although the cap is reached
+    assert api.post("/ask", json={"question": "Who deducts tax from salary?"}).status_code == 200
+    r = api.post("/ask", json={"question": "Is agricultural income taxed?"})
+    assert r.status_code == 503 and r.json()["code"] == "DAILY_LIMIT"
+    assert "tomorrow" in r.json()["error"]
+    r = api.post("/ask", json={"question": "zarai aamdani par tax hai?"})
+    assert "kal dobara" in r.json()["error"]
+
+
+def test_visitor_is_the_proxy_appended_forwarded_for_entry(api):
+    from backend.app.api.ask import VisitorDailyLimit
+
+    api.app.state.service = StubService()
+    api.app.state.visitors = VisitorDailyLimit(1)
+    api.app.state.forwarded_for_hops = 1
+    ok = api.post("/ask", json={"question": "Who deducts tax from salary?"},
+                  headers={"X-Forwarded-For": "6.6.6.6, 1.1.1.1"})  # fmt: skip
+    assert ok.status_code == 200
+    forged = api.post("/ask", json={"question": "Is salary taxed?"},
+                      headers={"X-Forwarded-For": "7.7.7.7, 1.1.1.1"})  # fmt: skip
+    assert forged.status_code == 429  # same real client, different forged leftmost entry
+    other = api.post("/ask", json={"question": "Is salary taxed?"},
+                     headers={"X-Forwarded-For": "2.2.2.2"})  # fmt: skip
+    assert other.status_code == 200

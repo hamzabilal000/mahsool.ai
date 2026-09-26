@@ -85,9 +85,16 @@ class Settings(BaseSettings):
     glossary_path: Path = Path("data/glossary_ur.csv")
     groq_base_url: str = "https://api.groq.com/openai/v1"
     rate_limit_per_minute: int = 20  # /ask requests per client IP
-    # Free-tier demo (D53): questions a visitor (client IP) may ask per UTC day that need the
-    # answer LLM; cached answers do not count. 0 = no limit.
-    daily_questions_per_visitor: int = 20
+    # Free-tier demo (D53, D59): new (uncached) questions a visitor (client IP) may ask per UTC
+    # day; cached answers do not count. 0 = no limit.
+    daily_questions_per_visitor: int = 10
+    # All visitors together: answers per UTC day that call the answer model, sized to the free
+    # GPT OSS 120B quota (~200k tokens/day at ~3k tokens per answer). 0 = no limit.
+    daily_answers_global: int = 60
+    # Behind a reverse proxy (the Hugging Face Space), the client IP is the entry this many places
+    # from the right of X-Forwarded-For (proxies append, so the leftmost entries can be forged).
+    # 0 = use the socket peer address.
+    forwarded_for_hops: int = 0
     answer_cache: bool = True  # serve repeated questions from the answer cache (database)
     # The React dev server (Vite); the browser sends cookies (axios withCredentials).
     cors_origins: list[str] = ["http://localhost:5173"]
