@@ -266,7 +266,7 @@ python -m ingestion.download --law WHT2027 && python -m ingestion.ratecard --law
 python -m ingestion.spot_check --law ITR2002 --n 20
 ```
 
-## Deploy (prepared, not live yet)
+## Deploy (prepared, not live yet: blocked on hosting, D61)
 
 The plan's free-tier setup (DECISIONS D54): the API on a free **Hugging Face Docker Space** (2 vCPU, 16 GB RAM),
 the chat UI on **Vercel**, question logs, feedback and the answer cache on **Neon** Postgres. Nothing here costs
@@ -286,7 +286,8 @@ money; the answer model stays on Groq's free tier, so the demo has daily limits 
 
 ```bash
 python scripts/deploy_space.py --dry-run                            # see what is uploaded (~23 MB)
-HF_TOKEN=hf_... python scripts/deploy_space.py --space <your-hf-user>/mahsool-api
+HF_TOKEN=hf_... python scripts/deploy_space.py --space <your-hf-user>/mahsool-ai --private \
+    --secret GROQ_API_KEY --secret DATABASE_URL --wait    # secrets are read from your shell
 ```
 
 The script uploads the [`Dockerfile`](Dockerfile), the code, the committed chunks and the prebuilt index; the
@@ -302,9 +303,16 @@ Space builds the image (both models are baked in, ~4.5 GB) and serves on port 78
 (GitHub → Settings → Secrets and variables → Actions → Variables); [`keepalive.yml`](.github/workflows/keepalive.yml)
 then pings `/health` twice a day.
 
-**Free-tier behaviour of the live demo (D53):** repeated questions are answered from the answer cache (no quota,
-no reranking); each visitor can ask 20 new questions a day (`MAHSOOL_DAILY_QUESTIONS_PER_VISITOR`); when Groq's
-daily quota is used up the app says so politely, in the question's language, instead of failing.
+**Free-tier behaviour of the live demo (D53, D59):** repeated questions are answered from the answer cache (no
+quota, no reranking, never counted); each visitor can ask 10 new questions a day
+(`MAHSOOL_DAILY_QUESTIONS_PER_VISITOR`) and all visitors together get 60 new answers a day
+(`MAHSOOL_DAILY_ANSWERS_GLOBAL`, sized to Groq's free quota); past either limit, or when Groq's daily quota is used
+up, the app says "come back tomorrow" politely, in the question's language. Behind the Space's proxy set
+`MAHSOOL_FORWARDED_FOR_HOPS` so visitors are told apart by `X-Forwarded-For`. Questions are screened by Prompt
+Guard 2 on Groq first (D60).
+
+**Hosting blocker (D61, 2026-09-26):** Hugging Face now requires a PRO subscription for Docker Spaces on the free
+CPU hardware (the Space creation returned 402), so step 2 needs a hosting decision before it can run.
 
 ## Repository layout
 

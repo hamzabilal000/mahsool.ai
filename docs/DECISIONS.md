@@ -686,3 +686,46 @@ Newest first within each milestone. Each entry says what the plan said, what we 
 - **Answer correctness** (Qwen judge, D56) on those 37: 36 match the reference (97.3% strict, 100% lenient).
   en-029 is "partly": the app gave the 183-day test but not the other two residency tests in section 82, although
   the answer prompt asks for other routes (D51). Coverage is almost only written English so far.
+
+### D59. Demo limits: 10 new questions per visitor a day, 60 answers a day for everyone (Hamza, 2026-09-26)
+- **Rule** (`backend/app/api/ask.py`): a visitor (client IP) may ask **10 new questions per UTC day**
+  (`MAHSOOL_DAILY_QUESTIONS_PER_VISITOR`, was 20 in D53); all visitors together get **60 answers per UTC day that
+  call the answer model** (`MAHSOOL_DAILY_ANSWERS_GLOBAL`), sized to GPT OSS 120B's free 200k tokens/day at ~3k
+  tokens an answer. Both reply with the friendly "come back tomorrow" message in the question's language, and both
+  add that questions others already asked still get an answer. **Cached answers never count** against either
+  limit. A question refused before the answer model (scope, tax year, Prompt Guard) counts for the visitor but not
+  against the global 60, because it spends no answer quota.
+- **Visitor key behind a proxy:** on the Space every request comes from the proxy's address, so the visitor is the
+  entry `MAHSOOL_FORWARDED_FOR_HOPS` places from the right of `X-Forwarded-For` (proxies append; the leftmost entries
+  can be forged by the client). Default 0 = the socket address (local runs). The right value for the host must be
+  checked on the first deploy by looking at the header.
+- Both counters live in memory (one instance): a restart resets them. Acceptable for a free demo; the global cap
+  still stops at Groq's own daily limit with the same message (D53).
+
+### D60. Prompt Guard: Llama Prompt Guard 2 (86M) on Groq, first check, fails open
+- **What:** the plan's input screening. Groq serves `meta-llama/llama-prompt-guard-2-86m` on the free tier (no token
+  quota counted in the responses seen); it returns the probability that a text is a prompt attack. `AskService`
+  calls it before any search; at ≥ 0.5 (Meta's default, not tuned) the question is refused with
+  `PROMPT_INJECTION` and a message in the question's language. If Groq fails, the question passes (logged): the
+  other guardrails (scope check, grounded answer, citation check) still apply, and an outage of an add-on should not
+  take the demo down. ~0.2 s per question (first call ~0.5 s), measured from this container.
+- **Measured** (`python -m eval.guard_eval`, report `eval/reports/2026-09-26-prompt-guard.json`):
+  **0 of 249** test-set questions flagged (149 English, 50 Urdu, 50 Roman Urdu; no false positives). On 14
+  hand-written attacks (`eval/guard_attacks.jsonl`): **English 4 of 6, Urdu 1 of 4, Roman Urdu 0 of 4**. It misses
+  role-play and "answer from your own knowledge" phrasings in English and nearly everything in Urdu / Roman Urdu.
+  So it is a thin first filter for English only; the grounded-answer and citation checks remain the real defence.
+- **Not done:** screening the English rewrite as well (would catch translated attacks but runs after the rewrite
+  LLM call); a local classifier (would cost CPU on the 2-vCPU host).
+
+### D61. Hugging Face Docker Spaces on free CPU now need PRO: test deploy blocked
+- On 2026-09-26 `create_repo(..., space_sdk="docker", private=True)` for `HUZZZ/mahsool-ai` returned **402 Payment
+  Required**: "Static Spaces are free for everyone, but hosting Gradio and Docker Spaces on free cpu-basic requires a
+  PRO subscription." The hosting plan of D54 (free 2-vCPU Space) is therefore not free any more for this account.
+  Nothing was created, no secrets were set, nothing was published.
+- `scripts/deploy_space.py` now takes `--private`, `--secret NAME` (value read from the environment, never printed),
+  `--variable NAME=value` and `--wait` (polls the build), so the deploy is one command once hosting is decided.
+- **Options for Hamza** (none tried): (a) Hugging Face PRO (~9 USD/month) keeps D54 unchanged; (b) a host with a
+  free tier big enough for BGE-M3 + a reranker in RAM (≥ 4 GB): Oracle Cloud Always Free Ampere (4 OCPU, 24 GB;
+  needs a card for sign-up) or Google Cloud Run (free monthly vCPU-seconds, needs billing enabled, cold starts load
+  ~3 GB of models); (c) move embedding and reranking to hosted APIs so the backend fits a 512 MB free instance
+  (Render, Koyeb), at the cost of new accounts and each API's free-tier limits.
