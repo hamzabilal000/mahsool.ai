@@ -393,3 +393,31 @@ def test_service_reports_time_per_stage(make_pipeline):
     for key in ("rewrite", "retrieval", "rerank", "answer_llm", "citation_check", "total"):
         assert key in t, key
     assert t["total"] >= t["rewrite"] + t["retrieval"] + t["rerank"]
+
+
+@pytest.mark.parametrize(
+    ("question", "clause"),
+    [
+        ("How does the Income Tax Ordinance define profit on a debt?", "46"),
+        ("What counts as a royalty for income tax purposes?", "54"),  # '[royalty] means'
+        ("What is imputable income?", "28A"),
+        ("what is the definition of a small company", "59AB"),
+        ("What is the tax rate on salary?", None),  # 'tax' is defined, but this is not about it
+        ("What is the due date for filing the return?", None),
+    ],
+)
+def test_definition_lookup_finds_the_defining_clause_only_for_definition_questions(
+    question, clause
+):
+    from backend.app.rag.lookup import DefinitionLookup
+
+    found = DefinitionLookup(load_chunks()).find([question])
+    assert [f[1] for f in found] == ([clause] if clause else [])
+
+
+def test_a_definition_that_points_elsewhere_resolves_to_that_section():
+    from backend.app.rag.lookup import DefinitionLookup
+
+    d = DefinitionLookup(load_chunks())
+    assert d.find(["definition of taxable income"]) == []  # '"taxable income" ... section 9'
+    assert d.targets(["definition of taxable income"]) == ["ITO2001-s9"]

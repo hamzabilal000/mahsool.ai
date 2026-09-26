@@ -1,0 +1,1483 @@
+{
+ "summary": {
+  "english": {
+   "hit@5": 1.0,
+   "recall@5": 0.9753,
+   "mrr@10": 0.9506,
+   "n": 27
+  },
+  "all": {
+   "hit@5": 0.9804,
+   "recall@5": 0.9412,
+   "mrr@10": 0.8977,
+   "n": 51
+  },
+  "urdu": {
+   "hit@5": 1.0,
+   "recall@5": 0.9722,
+   "mrr@10": 0.8542,
+   "n": 12
+  },
+  "roman_urdu": {
+   "hit@5": 0.9167,
+   "recall@5": 0.8333,
+   "mrr@10": 0.8222,
+   "n": 12
+  }
+ },
+ "rows": [
+  {
+   "id": "en-003",
+   "group": "english",
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "top": [
+    "ITO2001-s4AB",
+    "ITO2001-s149",
+    "ITO2001-s4B",
+    "ITO2001-s205",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Does a salaried individual earning more than Rs. 10 million have to pay the section 4AB surcharge?",
+    "What is the surcharge rate under section 4AB for income exceeding Rs. 10 million?",
+    "Under what conditions does section 4AB surcharge apply to salaried individuals?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9897620191424311,
+   "missing_refs": []
+  },
+  {
+   "id": "en-004",
+   "group": "english",
+   "gold": [
+    "ITO2001-s4C"
+   ],
+   "top": [
+    "ITO2001-s4C",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-sch1-pI-divIIB",
+    "ITO2001-sch4",
+    "ITO2001-s4B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "From which tax year is super tax on high earning persons imposed under section 4C?",
+    "Effective year of super tax under section 4C?",
+    "Commencement of super tax on high earning persons section 4C?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9967346030013764,
+   "missing_refs": []
+  },
+  {
+   "id": "en-007",
+   "group": "english",
+   "gold": [
+    "ITO2001-s5"
+   ],
+   "top": [
+    "ITO2001-s5",
+    "ITO2001-sch1-pI-divIII",
+    "ITO2001-s94",
+    "ITO2001-s5A",
+    "ITO2001-sch2-pII-cl18C"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "How is tax on dividends computed under section 5?",
+    "What is the rate of tax deducted at source on dividends under section 5?",
+    "What conditions apply for tax credit on dividends under section 5?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9982544964484242,
+   "missing_refs": []
+  },
+  {
+   "id": "en-009",
+   "group": "english",
+   "gold": [
+    "ITO2001-s9"
+   ],
+   "top": [
+    "ITO2001-s9",
+    "ITO2001-s2",
+    "ITO2001-s4",
+    "ITO2001-s4C",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "What is the definition of taxable income in the Income Tax Ordinance?",
+    "How does Section 9 of the Income Tax Ordinance define taxable income?",
+    "What are the components of taxable income under the Income Tax Ordinance?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9932863660060898,
+   "missing_refs": []
+  },
+  {
+   "id": "en-012",
+   "group": "english",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITR2002-r3",
+    "ITR2002-r4",
+    "ITO2001-s13",
+    "ITO2001-s110"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Is a fixed monthly travel or rent allowance paid by my employer included in my salary?",
+    "Does the allowance qualify as salary under s12 and s149 of the Income Tax Ordinance 2001?",
+    "What is the treatment of rent allowance under s155 and s15 for withholding tax purposes?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9722679164441783,
+   "missing_refs": []
+  },
+  {
+   "id": "en-018",
+   "group": "english",
+   "gold": [
+    "ITO2001-s51"
+   ],
+   "top": [
+    "ITO2001-s51",
+    "ITO2001-s50",
+    "ITO2001-s103",
+    "ITO2001-s44",
+    "ITO2001-s102"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "For how long is the foreign-source income of a returning Pakistani expatriate exempt?",
+    "Duration of exemption for foreign-source income of returning expatriate under s114 of Income Tax Ordinance 2001",
+    "Conditions for exemption of foreign-source income for returning expatriate under s114"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9950165529115735,
+   "missing_refs": []
+  },
+  {
+   "id": "en-021",
+   "group": "english",
+   "gold": [
+    "ITO2001-s59"
+   ],
+   "top": [
+    "ITO2001-s59",
+    "ITO2001-s56",
+    "ITO2001-s59A",
+    "ITO2001-s59B",
+    "ITR2002-r13D"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Can I set off a capital loss against my salary income?",
+    "capital loss deduction from salary income under Income Tax Ordinance 2001",
+    "conditions for set off of capital loss against salary income"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9713676551479138,
+   "missing_refs": []
+  },
+  {
+   "id": "en-038",
+   "group": "english",
+   "gold": [
+    "ITO2001-s114",
+    "ITO2001-s115"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITO2001-s182",
+    "ITO2001-s114",
+    "ITO2001-s115",
+    "ITO2001-sch10"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "return of income for persons with no taxable income",
+    "taxable income threshold for filing return under Income Tax Ordinance 2001",
+    "persons not appearing in the active taxpayers' list"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.13333761359037086,
+   "missing_refs": []
+  },
+  {
+   "id": "en-040",
+   "group": "english",
+   "gold": [
+    "ITO2001-s116A"
+   ],
+   "top": [
+    "ITO2001-s116A",
+    "ITO2001-s116",
+    "ITR2002-r36A",
+    "ITO2001-s118",
+    "ITO2001-s114"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Who has to file a foreign income and assets statement?",
+    "Which persons are required to file a foreign income statement under s.101 and s.102?",
+    "What is the procedure for filing a foreign assets statement under s.116?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.994356100881427,
+   "missing_refs": []
+  },
+  {
+   "id": "en-043",
+   "group": "english",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITR2002-r81B",
+    "ITR2002-r44",
+    "ITO2001-s64B",
+    "ITO2001-s74"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "company return of income filing deadline for tax year ending between 1 January and 30 June",
+    "tax year ending 30 June company return filing deadline",
+    "s114 company return filing deadline"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9769269178179415,
+   "missing_refs": []
+  },
+  {
+   "id": "en-044",
+   "group": "english",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITR2002-r30",
+    "ITO2001-s182",
+    "ITO2001-s114",
+    "ITR2002-r80"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "If my salary income is Rs. 500,000 or more, how must I file my return?",
+    "What are the filing requirements for salary income of Rs. 500,000 or more under s.114?",
+    "Is there a specific return form for salary income exceeding Rs. 500,000?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.719654107671091,
+   "missing_refs": []
+  },
+  {
+   "id": "en-046",
+   "group": "english",
+   "gold": [
+    "ITO2001-s120"
+   ],
+   "top": [
+    "ITO2001-s120",
+    "ITO2001-s122",
+    "ITO2001-s121",
+    "ITO2001-sch10",
+    "ITO2001-s124"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "When is a filed return treated as an assessment order?",
+    "Under what conditions does a filed return become an assessment order as per s120 of the Income Tax Ordinance 2001?",
+    "What is the procedure for filing a return of income under s114 of the Income Tax Ordinance 2001?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.8883729074015856,
+   "missing_refs": []
+  },
+  {
+   "id": "en-049",
+   "group": "english",
+   "gold": [
+    "ITO2001-s127"
+   ],
+   "top": [
+    "ITO2001-s127",
+    "ITO2001-s131",
+    "ITR2002-r76",
+    "ITO2001-s129",
+    "ITO2001-s129A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Can a State-Owned Enterprise appeal to the Commissioner (Appeals) under section 127?",
+    "What are the conditions for a State-Owned Enterprise to file an appeal under section 127 of the Income Tax Ordinance 2001?",
+    "What is the procedure for filing an appeal to the Commissioner (Appeals) under section 127?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9997181057202904,
+   "missing_refs": []
+  },
+  {
+   "id": "en-051",
+   "group": "english",
+   "gold": [
+    "ITO2001-s137"
+   ],
+   "top": [
+    "ITO2001-s137",
+    "ITO2001-s138",
+    "ITO2001-s122",
+    "ITR2002-r210C",
+    "ITO2001-s124"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "time period for payment after demand notice following assessment",
+    "payment deadline after demand notice under Income Tax Ordinance 2001",
+    "duration to pay tax after receiving demand notice"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.42299232925669206,
+   "missing_refs": []
+  },
+  {
+   "id": "en-053",
+   "group": "english",
+   "gold": [
+    "ITO2001-s149"
+   ],
+   "top": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-s12",
+    "ITO2001-s13",
+    "ITO2001-sch1-pIII-divII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "How does an employer calculate the tax to deduct from my monthly salary?",
+    "deduction of tax at source from salary",
+    "withholding tax rate card for salary"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.4680436213987225,
+   "missing_refs": []
+  },
+  {
+   "id": "en-055",
+   "group": "english",
+   "gold": [
+    "ITO2001-s150"
+   ],
+   "top": [
+    "ITO2001-s150",
+    "ITO2001-sch1-pIII-divI",
+    "WHT2027-s150",
+    "ITO2001-s5",
+    "ITO2001-sch2-pII-cl18C"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "How is withholding tax on dividends deducted?",
+    "What is the withholding tax rate on dividends under the Income Tax Ordinance 2001?",
+    "What procedure must be followed to deduct withholding tax on dividends?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.5386199964864127,
+   "missing_refs": []
+  },
+  {
+   "id": "en-056",
+   "group": "english",
+   "gold": [
+    "ITO2001-s150",
+    "ITO2001-sch1-pIII-divI",
+    "WHT2027-s150"
+   ],
+   "top": [
+    "WHT2027-s150",
+    "ITO2001-sch1-pIII-divI",
+    "ITO2001-sch1-pI-divIII",
+    "ITO2001-sch1-pI-divVII",
+    "ITO2001-sch1-pI-divVII"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.6666666666666666,
+   "mrr@10": 1.0,
+   "queries": [
+    "What is the general withholding rate on dividends, for example from a REIT?",
+    "What is the withholding tax rate on dividends under the Income Tax Ordinance 2001?",
+    "What conditions apply to withholding tax on dividends paid by a REIT?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9167649846147162,
+   "missing_refs": []
+  },
+  {
+   "id": "en-059",
+   "group": "english",
+   "gold": [
+    "ITO2001-s153"
+   ],
+   "top": [
+    "WHT2027-s153",
+    "ITO2001-s165",
+    "ITO2001-s153",
+    "ITO2001-sch2-pIV-cl56",
+    "ITO2001-sch2-pIV-cl45A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.3333333333333333,
+   "queries": [
+    "Do I have to withhold tax when paying a supplier for goods worth less than Rs. 75,000 in total for the year?",
+    "Is withholding tax required for payments to suppliers for goods under Rs. 75,000 per year?",
+    "What is the withholding tax rate for payments to suppliers for goods below Rs. 75,000?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.04987716840115008,
+   "missing_refs": []
+  },
+  {
+   "id": "en-064",
+   "group": "english",
+   "gold": [
+    "ITO2001-s155",
+    "ITO2001-sch1-pIII-divV",
+    "WHT2027-s155"
+   ],
+   "top": [
+    "WHT2027-s155",
+    "ITO2001-sch1-pIII-divV",
+    "ITO2001-s155",
+    "WHT2027-s151",
+    "WHT2027-s153"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "What is the withholding rate on rent paid to a company?",
+    "What is the withholding tax rate on rent paid to a company under the Income Tax Ordinance 2001?",
+    "What is the withholding tax rate on rent paid to a company as per the FBR withholding tax rate card?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.8486062670081461,
+   "missing_refs": []
+  },
+  {
+   "id": "en-069",
+   "group": "english",
+   "gold": [
+    "ITO2001-s165"
+   ],
+   "top": [
+    "ITO2001-s165C",
+    "ITO2001-sch10",
+    "ITO2001-s165",
+    "ITR2002-r43B",
+    "ITR2002-r13ZF"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.3333333333333333,
+   "queries": [
+    "How often must a withholding agent file withholding statements?",
+    "Frequency of filing withholding statements by a withholding agent under s165",
+    "Requirements for withholding agent to submit withholding statements"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.4060734640492693,
+   "missing_refs": []
+  },
+  {
+   "id": "en-073",
+   "group": "english",
+   "gold": [
+    "ITO2001-s171"
+   ],
+   "top": [
+    "ITO2001-s171",
+    "ITO2001-s182A",
+    "ITO2001-s39",
+    "ITO2001-s170",
+    "ITO2001-s171A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Do I get compensation if my tax refund is delayed?",
+    "Under s170 of the Income Tax Ordinance 2001, what compensation is available for delayed refunds?",
+    "What procedures must be followed to claim compensation for a delayed tax refund under s170?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9577302268006216,
+   "missing_refs": []
+  },
+  {
+   "id": "en-078",
+   "group": "english",
+   "gold": [
+    "ITO2001-s181AA"
+   ],
+   "top": [
+    "ITO2001-s181AA",
+    "ITR2002-r83C",
+    "ITR2002-r81A",
+    "ITR2002-r80B",
+    "ITR2002-r83C"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Do I need an NTN to get a commercial electricity or gas connection?",
+    "Is the requirement for an NTN mandatory for commercial electricity consumption under s.181 and s.181C?",
+    "What are the conditions for obtaining a commercial electricity connection without an NTN?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.2293962278844437,
+   "missing_refs": []
+  },
+  {
+   "id": "en-079",
+   "group": "english",
+   "gold": [
+    "ITO2001-s205"
+   ],
+   "top": [
+    "ITO2001-s205",
+    "ITO2001-s205",
+    "ITO2001-s114",
+    "ITO2001-s137",
+    "ITO2001-s182"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "What rate of default surcharge applies to tax paid late?",
+    "Default surcharge rate for late payment of income tax under section 205",
+    "Conditions for default surcharge on late tax payment in Income Tax Ordinance"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9604592197692214,
+   "missing_refs": []
+  },
+  {
+   "id": "en-081",
+   "group": "english",
+   "gold": [
+    "ITO2001-s231AB"
+   ],
+   "top": [
+    "ITO2001-s231AB",
+    "WHT2027-s231AB",
+    "WHT2027-s231C",
+    "ITO2001-s100BA",
+    "ITO2001-sch10"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "How much advance tax does a bank deduct on cash withdrawals by a person not on the Active Taxpayers' List?",
+    "Rate of deduction of tax at source from cash withdrawal for non-ATL taxpayer?",
+    "Procedure for deduction of tax at source from cash withdrawal by bank for non-ATL taxpayer?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.999283477480421,
+   "missing_refs": []
+  },
+  {
+   "id": "en-082",
+   "group": "english",
+   "gold": [
+    "ITO2001-s235"
+   ],
+   "top": [
+    "ITO2001-s235",
+    "WHT2027-s235",
+    "ITO2001-s99A",
+    "ITO2001-s100BA",
+    "ITO2001-s236"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Is advance income tax collected on a domestic electricity bill if the consumer is on the Active Taxpayers' List?",
+    "Does section 235 of the Income Tax Ordinance 2001 apply to electricity bills for consumers on the Active Taxpayers' List?",
+    "What is the withholding tax rate for electricity consumption under section 181A for active taxpayers?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9983744154640505,
+   "missing_refs": []
+  },
+  {
+   "id": "en-084",
+   "group": "english",
+   "gold": [
+    "ITO2001-s236C",
+    "ITO2001-sch1-pIV-divX",
+    "WHT2027-s236C"
+   ],
+   "top": [
+    "ITO2001-s236C",
+    "ITO2001-s236K",
+    "ITO2001-sch1-pIV-divX",
+    "ITO2001-sch2-pIII-cl9A",
+    "ITO2001-s236C"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.6666666666666666,
+   "mrr@10": 1.0,
+   "queries": [
+    "How much advance tax does the seller pay when an immovable property is transferred?",
+    "What is the advance tax rate on transfer of immovable property?",
+    "What conditions apply to advance tax on transfer of immovable property?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9785217585964132,
+   "missing_refs": []
+  },
+  {
+   "id": "en-090",
+   "group": "english",
+   "gold": [
+    "ITO2001-sch1-pI-divI"
+   ],
+   "top": [
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-s4AB",
+    "ITO2001-sch1-pI-divIIB"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "What is the top slab of income tax for non-salaried individuals and AOPs?",
+    "What is the highest income slab for non-salaried individuals under the Income Tax Ordinance 2001?",
+    "What is the top income tax rate for AOPs in the Income Tax Ordinance 2001?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.279018127086083,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-001",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "top": [
+    "ITO2001-s4AB",
+    "ITO2001-s149",
+    "ITO2001-s4B",
+    "ITO2001-s205",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Does a salaried individual earning more than Rs. 10,000,000 have to pay surcharge under Section 4AB?",
+    "What is the surcharge rate applicable under Section 4AB for income exceeding Rs. 10,000,000?",
+    "What conditions must be met for a salaried person to be subject to Section 4AB surcharge?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9852158008614298,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-002",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITO2001-sch2-pI-cl40",
+    "ITO2001-s13",
+    "ITO2001-s149",
+    "ITR2002-r5"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Is travel allowance from employer included in salary for tax purposes?",
+    "Travel allowance as part of salary under s12 salary head in Income Tax Ordinance 2001?",
+    "Rent allowance inclusion in salary for income tax under s12 of Ordinance 2001?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9742498203549831,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-003",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s51"
+   ],
+   "top": [
+    "ITO2001-s51",
+    "ITO2001-s50",
+    "ITO2001-s103",
+    "ITO2001-s44",
+    "ITR2002-r223"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "How long is foreign income of a Pakistani returning from abroad exempt from tax?",
+    "Duration of tax exemption for foreign income of Pakistani returning from abroad",
+    "Conditions for exemption of foreign income for Pakistani returning from abroad"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9897474214391184,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-004",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s59"
+   ],
+   "top": [
+    "ITO2001-s59",
+    "ITO2001-s38",
+    "ITR2002-r31",
+    "ITR2002-r13N",
+    "ITO2001-s11"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "capital loss deduction from salary income",
+    "deduction of capital loss from salary under Income Tax Ordinance 2001",
+    "conditions for claiming capital loss against salary income"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.5747665944130113,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-005",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s114",
+    "ITO2001-s115"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITO2001-sch11",
+    "ITO2001-s114B",
+    "ITO2001-s114",
+    "ITO2001-s115"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Do I have to file a return if I own a house on a 500 sq gaz plot but have no taxable income?",
+    "Is filing a return mandatory for owners of immovable property under s114 when taxable income is nil?",
+    "What are the filing requirements for property owners with no taxable income under the Income Tax Ordinance 2001?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.04797084173576235,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-006",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s116A"
+   ],
+   "top": [
+    "ITO2001-s114",
+    "ITO2001-s118",
+    "ITO2001-sch11",
+    "ITO2001-s116A",
+    "ITO2001-s119"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.25,
+   "queries": [
+    "Who must file foreign income and wealth statement in Pakistan?",
+    "Which persons are required to file a wealth statement under Section 116 of the Income Tax Ordinance 2001?",
+    "Which persons must submit a return of income under Section 114 for foreign income?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.4555464538588225,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-007",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITO2001-s182",
+    "ITO2001-s114",
+    "ITO2001-s114",
+    "ITO2001-s182A"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "salary income five lakh or more return filing procedure",
+    "salary income five lakh or more return filing requirement",
+    "salary income five lakh or more return filing deadline"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9079501641483667,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-008",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s149"
+   ],
+   "top": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-s12",
+    "ITR2002-r31",
+    "ITO2001-s102"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "how is tax deducted from monthly salary by employer",
+    "tax deduction at source from salary under s149",
+    "rate of withholding tax on salary"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.5267725210841474,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-009",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s155",
+    "ITO2001-sch1-pIII-divV",
+    "WHT2027-s155"
+   ],
+   "top": [
+    "ITO2001-s155",
+    "ITO2001-sch1-pIII-divV",
+    "ITO2001-s15A",
+    "WHT2027-s155",
+    "ITO2001-sch7"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "deduction of tax at source from rent paid to a company",
+    "rate of withholding tax on rent paid to a company",
+    "conditions for withholding tax on rent paid to a company"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.7701596932048804,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-010",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s181AA"
+   ],
+   "top": [
+    "ITR2002-r83",
+    "ITO2001-s181AA",
+    "ITO2001-s99A",
+    "ITO2001-s175A",
+    "ITO2001-s181"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5,
+   "queries": [
+    "Is National Tax Number required for commercial electricity or gas connection?",
+    "NTN requirement for commercial electricity connection under Income Tax Ordinance 2001",
+    "Advance tax on electricity bills for commercial connections and NTN requirement"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9004129474749563,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-011",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s231AB"
+   ],
+   "top": [
+    "ITO2001-s231AB",
+    "WHT2027-s231AB",
+    "ITO2001-s100BA",
+    "ITO2001-sch10",
+    "WHT2027-s231C"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "What advance tax does a bank deduct on cash withdrawal for a person not appearing in the active taxpayers' list?",
+    "What is the rate of advance tax on cash withdrawal by a bank for a non-active taxpayer?",
+    "Under what conditions does a bank deduct advance tax on cash withdrawal for a person not in the active taxpayers' list?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9995238441781072,
+   "missing_refs": []
+  },
+  {
+   "id": "ur-012",
+   "group": "urdu",
+   "gold": [
+    "ITO2001-s236C",
+    "ITO2001-sch1-pIV-divX",
+    "WHT2027-s236C"
+   ],
+   "top": [
+    "ITO2001-sch1-pIV-divXVIII",
+    "ITO2001-sch1-pIV-divX",
+    "ITO2001-s236C",
+    "ITO2001-sch1-pIV-divVIII",
+    "ITO2001-s236K"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.6666666666666666,
+   "mrr@10": 0.5,
+   "queries": [
+    "how much advance tax must be paid on sale of immovable property",
+    "what is the advance tax rate for sale of property under Income Tax Ordinance 2001",
+    "procedure for paying advance tax on property sale in Pakistan"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9842236891601185,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-001",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "top": [
+    "ITO2001-s4AB",
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-s205",
+    "ITO2001-s4B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Will a person with salary exceeding Rs. 10 million have to pay surcharge under section 4AB?",
+    "What is the surcharge rate applicable under section 4AB for income exceeding Rs. 10 million?",
+    "Under what conditions does section 4AB surcharge apply to salary income?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9979177427366416,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-002",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "top": [
+    "ITO2001-s12",
+    "ITO2001-s21",
+    "ITO2001-s2",
+    "ITO2001-s110",
+    "ITO2001-s101"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "Does a company’s monthly fixed travel allowance count as salary for tax purposes?",
+    "Is travel allowance considered part of the head salary under section 12 and 149 of the Income Tax Ordinance?",
+    "What is the tax deduction at source rate for travel allowance included in salary?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.8056830697857322,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-003",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s51"
+   ],
+   "top": [
+    "ITO2001-s51",
+    "ITO2001-s50",
+    "ITO2001-s103",
+    "ITO2001-s99D",
+    "ITO2001-sch2-pIV-cl5"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "How many years will foreign income be tax free in Pakistan?",
+    "What is the tax exemption period for foreign-source income under the Income Tax Ordinance 2001?",
+    "Under what conditions is foreign income exempt from income tax in Pakistan?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9523398815299858,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-004",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s59"
+   ],
+   "top": [
+    "ITO2001-s56",
+    "ITO2001-s59B",
+    "ITO2001-s14",
+    "ITR2002-r13P",
+    "ITO2001-s59B"
+   ],
+   "hit@5": 0.0,
+   "recall@5": 0.0,
+   "mrr@10": 0.16666666666666666,
+   "queries": [
+    "loss from shares adjust against salary income",
+    "adjustable loss under s168 for shares",
+    "tax credit for loss from shares against salary"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.2463566820500131,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-005",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s114",
+    "ITO2001-s115"
+   ],
+   "top": [
+    "ITR2002-r80",
+    "ITO2001-s114",
+    "ITO2001-s114",
+    "ITO2001-s118",
+    "ITO2001-s114"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.5,
+   "queries": [
+    "Do I need to file return of income if I own a 500 crore house but no income is taxable?",
+    "Return of income filing requirement for persons not appearing in active taxpayers list",
+    "Filing return of income under s114 for property owners with no taxable income"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.14784398458349768,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-006",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s116A"
+   ],
+   "top": [
+    "ITO2001-s116A",
+    "ITO2001-s165",
+    "ITR2002-r36A",
+    "ITO2001-s116",
+    "ITO2001-s182"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "who must file withholding statement for foreign income and assets",
+    "foreign-source income withholding statement requirement",
+    "persons not appearing in active taxpayers' list filing foreign income statement"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9309813463792338,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-007",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s118"
+   ],
+   "top": [
+    "ITO2001-s118",
+    "ITO2001-s182",
+    "ITO2001-s182A",
+    "ITO2001-s114",
+    "ITO2001-s114B"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "salary 5 lakh se upar hai to return kaise file karni hai?",
+    "how to file return of income for salary above Rs. 500,000?",
+    "procedure for filing income tax return for salary exceeding Rs. 500,000"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.036386428151869474,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-008",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s149"
+   ],
+   "top": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-s12",
+    "ITO2001-s13",
+    "ITO2001-s13"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "How does an employer calculate and deduct tax from monthly salary?",
+    "What is the rate of tax deducted at source from salary?",
+    "What is the procedure for deduction of tax at source from salary?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.6221857784510194,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-009",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s155",
+    "ITO2001-sch1-pIII-divV",
+    "WHT2027-s155"
+   ],
+   "top": [
+    "ITO2001-s155",
+    "ITO2001-sch1-pIII-divV",
+    "ITO2001-s15A",
+    "ITO2001-s15A",
+    "ITO2001-sch1-pIII-divV"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.6666666666666666,
+   "mrr@10": 1.0,
+   "queries": [
+    "tax deduction at source on rent paid by company to shop owner",
+    "rate of withholding tax on rent under Income Tax Ordinance 2001",
+    "procedure for deducting tax at source on rent paid by company"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.25265592710644647,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-010",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s181AA"
+   ],
+   "top": [
+    "ITO2001-s181C",
+    "ITO2001-s99A",
+    "ITO2001-s181",
+    "ITO2001-s194",
+    "ITO2001-s181AA"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 0.2,
+   "queries": [
+    "Is National Tax Number required for installing commercial electricity meter?",
+    "Requirement of NTN for commercial electricity consumption under Income Tax Ordinance 2001",
+    "Advance tax on electricity bills for commercial consumers and NTN requirement"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.015368277891787557,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-011",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s231AB"
+   ],
+   "top": [
+    "ITO2001-s231AB",
+    "ITO2001-s165A",
+    "WHT2027-s231AB",
+    "ITO2001-sch15",
+    "ITO2001-s152"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
+   "queries": [
+    "non filer cash withdrawal tax deduction from bank",
+    "bank cash withdrawal withholding tax rate for non-ATL",
+    "tax deduction at source on cash withdrawal by bank for non filer"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.690026730799713,
+   "missing_refs": []
+  },
+  {
+   "id": "ru-012",
+   "group": "roman_urdu",
+   "gold": [
+    "ITO2001-s236C",
+    "ITO2001-sch1-pIV-divX",
+    "WHT2027-s236C"
+   ],
+   "top": [
+    "ITO2001-s236C",
+    "ITO2001-s236K",
+    "ITO2001-s236A",
+    "ITO2001-s147",
+    "ITO2001-s147"
+   ],
+   "hit@5": 1.0,
+   "recall@5": 0.3333333333333333,
+   "mrr@10": 1.0,
+   "queries": [
+    "advance tax payable by seller on sale of immovable property",
+    "rate of advance tax on sale of immovable property",
+    "procedure for payment of advance tax on sale of immovable property"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.9894149390545719,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-003",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-sch2-pIV-cl56",
+    "ITO2001-sch2-pIV-cl56",
+    "ITO2001-sch2-pIV-cl12M",
+    "ITO2001-sch2-pIV-cl12H",
+    "ITO2001-sch2-pIV-cl92"
+   ],
+   "queries": [
+    "PCT code and customs duty for importing solar panels",
+    "customs duty rate for solar panels under PCT code",
+    "procedure for applying PCT code when importing solar panels"
+   ],
+   "scope": "other_federal_tax",
+   "top_score": 0.35986712474555704,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-006",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-s4C",
+    "ITO2001-sch1-pI-divII",
+    "ITO2001-sch2-pIII-cl3A",
+    "ITO2001-sch12",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "queries": [
+    "What will the salaried tax slabs be in the next budget for tax year 2028?",
+    "What are the income slab rates for salaried individuals under the Finance Act for tax year 2028?",
+    "What conditions apply to salaried persons for tax deduction at source in tax year 2028?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.006689428150213839,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-007",
+   "group": "out_of_scope",
+   "top": [
+    "WHT2027-s150",
+    "ITO2001-sch2-pI-cl57",
+    "ITR2002-r102",
+    "WHT2027-s151",
+    "ITR2002-r78B"
+   ],
+   "queries": [],
+   "scope": "not_tax",
+   "top_score": 0.007031853620287669,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-009",
+   "group": "out_of_scope",
+   "top": [
+    "ITR2002-r2",
+    "ITR2002-r83B",
+    "ITO2001-s2",
+    "ITR2002-r220B",
+    "ITR2002-r90"
+   ],
+   "queries": [],
+   "scope": "not_tax",
+   "top_score": 0.2474213176321519,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-013",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-s236C",
+    "ITO2001-s236K",
+    "ITO2001-s236C",
+    "ITR2002-r228",
+    "ITO2001-sch1-pIV-divVIII"
+   ],
+   "queries": [
+    "stamp duty on registration of immovable property in Punjab",
+    "rate of stamp duty for property registration in Punjab",
+    "procedure for paying stamp duty on property registration in Punjab"
+   ],
+   "scope": "provincial_tax",
+   "top_score": 0.3608864072354031,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-022",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-s1",
+    "ITO2001-s8",
+    "ITO2001-s4B",
+    "ITO2001-s207",
+    "ITO2001-s4C"
+   ],
+   "queries": [
+    "What is written in section 777 of the Income Tax Ordinance?",
+    "Section 777 of the Income Tax Ordinance 2001 content",
+    "Income Tax Ordinance 2001 section 777 details"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.03961223676220706,
+   "missing_refs": [
+    "section 777"
+   ]
+  },
+  {
+   "id": "oos-024",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-sch13",
+    "ITO2001-s2",
+    "ITO2001-sch13",
+    "ITO2001-s2",
+    "WHT2027-s234"
+   ],
+   "queries": [],
+   "scope": "not_tax",
+   "top_score": 0.0005606009556511982,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-027",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-sch2-pIV-cl56",
+    "ITO2001-sch1-pII",
+    "ITO2001-sch2-pIV-cl56",
+    "ITO2001-sch2-pIV-cl12H",
+    "ITO2001-sch2-pIV-cl12M"
+   ],
+   "queries": [
+    "customs duty on iPhone import with PCT code",
+    "rate of customs duty for imported iPhone under PCT code",
+    "procedure for paying customs duty on iPhone import with PCT code"
+   ],
+   "scope": "other_federal_tax",
+   "top_score": 0.22579826875848313,
+   "missing_refs": []
+  },
+  {
+   "id": "oos-029",
+   "group": "out_of_scope",
+   "top": [
+    "ITO2001-s153",
+    "ITO2001-sch2-pIV-cl78",
+    "ITR2002-r30",
+    "ITO2001-s181",
+    "ITO2001-s65F"
+   ],
+   "queries": [
+    "How is sales tax registration for services done in Sindh under SRB?",
+    "What is the procedure for registering a taxpayer for services sales tax in Sindh SRB?",
+    "What are the applicable sales tax rates for services in Sindh SRB?"
+   ],
+   "scope": "income_tax",
+   "top_score": 0.02050419236340266,
+   "missing_refs": []
+  }
+ ]
+}

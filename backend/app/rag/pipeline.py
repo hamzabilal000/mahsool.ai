@@ -13,7 +13,7 @@ from dataclasses import dataclass, field
 from typing import Literal
 
 from backend.app.rag.corpus import embedding_text
-from backend.app.rag.lookup import SectionLookup
+from backend.app.rag.lookup import DefinitionLookup, SectionLookup
 from backend.app.rag.query_rewrite import QueryPlan, QueryRewriter
 from backend.app.rag.reranker import Reranker
 from backend.app.rag.retriever import Retriever
@@ -30,6 +30,7 @@ class PipelineConfig:
     rerank: bool = True
     candidates: int = 30  # chunks passed to the reranker
     max_pieces_per_lookup: int = 3  # pieces of a named section pinned on top
+    definitions: bool = True  # pin the section 2 clause for "what is X?" questions (D57)
     # "max": score each chunk against the question and the first English rewrite, keep the
     # higher score (DECISIONS D33). Doubles the reranker cost. "max_non_en": the same, but only
     # for Urdu / Roman Urdu questions, where it helps (D40, D52); English questions are scored once.
@@ -77,6 +78,7 @@ class RAGPipeline:
         self.by_id = {c.chunk_id: c for c in chunks}
         self.retriever, self.rewriter, self.reranker = retriever, rewriter, reranker
         self.lookup = SectionLookup(chunks)
+        self.definitions = DefinitionLookup(chunks)
         self.config = config or PipelineConfig()
         if self.config.rerank and reranker is None:
             raise ValueError("config.rerank needs a reranker")
@@ -111,6 +113,18 @@ class RAGPipeline:
                         chunk.tax_year_to is None or plan.tax_year <= chunk.tax_year_to
                     ):
                         pinned.append(Candidate(chunk, rank=0, via="lookup"))
+            # "What is imputable income?": the section 2 clause that defines the term (D57). The
+            # English rewrites are checked too, so Urdu / Roman Urdu questions benefit.
+            texts = [question, *plan.queries]
+            asked = [f[2] for f in self.definitions.find(texts)] if cfg.definitions else []
+            # A definition that only points elsewhere ("as defined in section 9") pins that section.
+            for sid in self.definitions.targets(texts) if cfg.definitions else []:
+                ids = sorted(self.lookup.chunk_ids(sid), key=lambda cid: order.get(cid, len(order)))
+                asked += ids[: cfg.max_pieces_per_lookup]
+            for cid in asked:
+                chunk = self.by_id[cid]
+                if cid not in {c.chunk_id for c in pinned} and plan.tax_year >= chunk.tax_year_from:
+                    pinned.append(Candidate(chunk, rank=0, via="lookup"))
             pinned_ids = {c.chunk_id for c in pinned}
             found = [c for c in found if c.chunk_id not in pinned_ids]
 

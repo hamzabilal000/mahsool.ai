@@ -62,6 +62,15 @@ PRESETS: dict[str, dict] = {
         "rerank_query": "max_non_en",
         "candidates": 15,
     },
+    # The same without the section 2 definition lookup (D57), for the before/after comparison.
+    "fast-nodef": {
+        "lookup": True,
+        "rewrite": "glossary",
+        "rerank": True,
+        "rerank_query": "max_non_en",
+        "candidates": 15,
+        "definitions": False,
+    },
 }
 
 

@@ -3,13 +3,13 @@
   "english": {
    "hit@5": 0.9863,
    "recall@5": 0.9498,
-   "mrr@10": 0.9395,
+   "mrr@10": 0.9326,
    "n": 73
   },
   "all": {
-   "hit@5": 0.9405,
-   "recall@5": 0.9097,
-   "mrr@10": 0.8785,
+   "hit@5": 0.9583,
+   "recall@5": 0.9276,
+   "mrr@10": 0.9057,
    "n": 168
   },
   "urdu": {
@@ -25,9 +25,9 @@
    "n": 28
   },
   "fbr": {
-   "hit@5": 0.8718,
-   "recall@5": 0.8718,
-   "mrr@10": 0.783,
+   "hit@5": 0.9487,
+   "recall@5": 0.9487,
+   "mrr@10": 0.9133,
    "n": 39
   }
  },
@@ -539,15 +539,15 @@
     "ITO2001-s74"
    ],
    "top": [
+    "ITO2001-s2",
     "ITO2001-s74",
     "ITO2001-sch2-pI-cl65A",
-    "ITO2001-s2",
     "ITO2001-s10",
     "ITO2001-sch1-pI-divII"
    ],
    "hit@5": 1.0,
    "recall@5": 1.0,
-   "mrr@10": 1.0,
+   "mrr@10": 0.5,
    "queries": [
     "What is the 'tax year' under the Income Tax Ordinance?",
     "definition of tax year in Income Tax Ordinance 2001",
@@ -3511,10 +3511,10 @@
    ],
    "top": [
     "ITO2001-s12",
+    "ITO2001-s12",
     "ITR2002-r3",
     "ITR2002-r4",
-    "ITO2001-sch2-pI-cl139",
-    "ITO2001-sch2-pI-cl39A"
+    "ITO2001-sch2-pI-cl139"
    ],
    "hit@5": 1.0,
    "recall@5": 1.0,
@@ -3536,9 +3536,9 @@
    ],
    "top": [
     "ITO2001-s37",
+    "ITO2001-s37",
     "ITO2001-s2",
     "ITO2001-s38",
-    "ITO2001-s37",
     "ITO2001-s114C"
    ],
    "hit@5": 1.0,
@@ -3560,15 +3560,15 @@
     "ITO2001-s2"
    ],
    "top": [
+    "ITO2001-s2",
     "ITO2001-s46",
     "ITO2001-s151",
     "ITO2001-s7B",
-    "ITO2001-s28",
     "ITO2001-s28"
    ],
-   "hit@5": 0.0,
-   "recall@5": 0.0,
-   "mrr@10": 0.0,
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
    "queries": [
     "How does the Income Tax Ordinance define profit on a debt?",
     "Definition of profit on a debt under the Income Tax Ordinance",
@@ -3610,15 +3610,15 @@
     "ITO2001-s2"
    ],
    "top": [
+    "ITO2001-s2",
     "ITR2002-r18",
     "ITO2001-s89",
     "ITO2001-sch5-pI",
-    "ITO2001-s6",
-    "ITO2001-sch1-pI-divIV"
+    "ITO2001-s6"
    ],
-   "hit@5": 0.0,
-   "recall@5": 0.0,
-   "mrr@10": 0.0,
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
    "queries": [
     "What counts as a royalty for income tax purposes?",
     "Definition of royalty under the Income Tax Ordinance 2001 for tax purposes",
@@ -3635,15 +3635,15 @@
     "ITO2001-s2"
    ],
    "top": [
+    "ITO2001-s2",
     "ITO2001-s6",
     "ITR2002-r19",
-    "ITO2001-s2",
     "ITO2001-sch1-pI-divIV",
     "ITO2001-s152"
    ],
    "hit@5": 1.0,
    "recall@5": 1.0,
-   "mrr@10": 0.3333333333333333,
+   "mrr@10": 1.0,
    "queries": [
     "What is a fee for technical services and what is excluded from it?",
     "What are the exclusions from the fee for technical services under the Income Tax Ordinance 2001?",
@@ -3660,15 +3660,15 @@
     "ITO2001-s2"
    ],
    "top": [
+    "ITO2001-s2",
     "ITO2001-sch6-pIII",
     "ITO2001-s2",
     "ITO2001-sch2-pI-cl57",
-    "ITR2002-r117",
-    "ITO2001-sch6-pIII"
+    "ITR2002-r117"
    ],
    "hit@5": 1.0,
    "recall@5": 1.0,
-   "mrr@10": 0.5,
+   "mrr@10": 1.0,
    "queries": [
     "What is an approved gratuity fund?",
     "Definition of approved gratuity fund under Income Tax Ordinance 2001",
@@ -3735,22 +3735,22 @@
     "ITO2001-s2"
    ],
    "top": [
+    "ITO2001-s2",
     "ITO2001-sch9-pIII",
     "ITO2001-s109A",
     "ITO2001-s9",
-    "ITO2001-s11",
-    "ITO2001-s111"
+    "ITO2001-s11"
    ],
-   "hit@5": 0.0,
-   "recall@5": 0.0,
-   "mrr@10": 0.0,
+   "hit@5": 1.0,
+   "recall@5": 1.0,
+   "mrr@10": 1.0,
    "queries": [
     "What is imputable income in Pakistani income tax?",
     "Imputable income definition and examples under Income Tax Ordinance 2001",
     "How imputable income is treated for withholding tax purposes in Pakistan"
    ],
    "scope": "income_tax",
-   "top_score": 0.47534034381183876,
+   "top_score": 0.7710896287862401,
    "missing_refs": []
   },
   {
@@ -3835,15 +3835,15 @@
     "ITO2001-s2"
    ],
    "top": [
+    "ITO2001-s2",
     "ITO2001-s200",
     "ITO2001-s172",
-    "ITO2001-s2",
     "ITO2001-s182",
     "ITO2001-s2"
    ],
    "hit@5": 1.0,
    "recall@5": 1.0,
-   "mrr@10": 0.3333333333333333,
+   "mrr@10": 1.0,
    "queries": [
     "principal officer of a company or association of persons",
     "definition of principal officer under Income Tax Ordinance 2001",
@@ -3935,15 +3935,15 @@
     "ITO2001-s2"
    ],
    "top": [
+    "ITO2001-s2",
     "ITO2001-s110",
     "ITO2001-s139",
     "ITO2001-s80",
-    "ITO2001-s2",
-    "ITO2001-s109A"
+    "ITO2001-s2"
    ],
    "hit@5": 1.0,
    "recall@5": 1.0,
-   "mrr@10": 0.25,
+   "mrr@10": 1.0,
    "queries": [
     "What is a private company for income tax purposes?",
     "Definition of a private company under the Income Tax Ordinance 2001",
@@ -3985,15 +3985,15 @@
     "ITO2001-s74"
    ],
    "top": [
-    "ITO2001-s74",
     "ITO2001-s2",
+    "ITO2001-s74",
     "ITO2001-s10",
     "ITO2001-s9",
     "ITO2001-sch1-pI-divII"
    ],
    "hit@5": 1.0,
    "recall@5": 1.0,
-   "mrr@10": 1.0,
+   "mrr@10": 0.5,
    "queries": [
     "What is a tax year and how is it denoted?",
     "Definition of tax year in Income Tax Ordinance 2001",
