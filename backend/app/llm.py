@@ -150,6 +150,9 @@ class LLMClient:
             self.spec.requests_per_minute, self.spec.requests_per_day
         )
         self.unavailable: set[str] = set()  # model ids the provider said it does not serve
+        # Model ids that hit their daily quota in this process: no further calls until restart,
+        # so a run never re-asks after a daily-limit error (cached answers still replay).
+        self.exhausted: dict[str, str] = {}
         self._cache: dict[str, dict] = {}
         self._lock = threading.Lock()
         if cache_path and cache_path.exists():
@@ -207,6 +210,8 @@ class LLMClient:
         for m in self.candidates(model):
             if m in self.unavailable:
                 continue
+            if m in self.exhausted:
+                raise LLMError(f"daily limit reached earlier in this run: {self.exhausted[m]}")
             body = {
                 "model": m,
                 "messages": messages,
@@ -216,7 +221,12 @@ class LLMClient:
                 "reasoning_effort": reasoning_effort,
                 **self.spec.extra_body,
             }
-            output = self._post(body)
+            try:
+                output = self._post(body)
+            except LLMError as e:
+                if str(e).startswith("daily limit"):
+                    self.exhausted[m] = str(e)[:200]
+                raise
             if output is None:  # model not served: try the next fallback
                 log.warning("%s: model %s is not available, trying the next one", self.spec.name, m)
                 self.unavailable.add(m)

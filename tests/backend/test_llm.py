@@ -96,3 +96,21 @@ def test_roles_map_to_providers_and_share_one_client_per_provider():
     assert answer is rewrite and judge1 is not answer
     assert judge1.spec.name == "gemini" and judge1.limiter.per_minute == 10
     assert judge1.limiter.per_day == 20
+
+
+def test_after_a_daily_limit_the_model_is_not_called_again_but_cache_still_replays(tmp_path):
+    calls = []
+
+    def handler(request):
+        calls.append(request)
+        return httpx.Response(429, text='{"error": {"message": "tokens per day (TPD)"}}')
+
+    cache = tmp_path / "c.jsonl"
+    cached_client = client_with(lambda r: ok({"a": 1}), cache_path=cache)
+    cached_client.chat_json("m", [{"role": "user", "content": "cached"}])
+    client = client_with(handler, cache_path=cache)
+    for q in ("x", "y", "z"):
+        with pytest.raises(LLMError, match="daily limit"):
+            client.chat_json("m", [{"role": "user", "content": q}])
+    assert len(calls) == 1  # one call, then the breaker
+    assert client.chat_json("m", [{"role": "user", "content": "cached"}]) == {"a": 1}
