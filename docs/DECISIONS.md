@@ -575,3 +575,80 @@ Newest first within each milestone. Each entry says what the plan said, what we 
   results (D44) stay as the comparison point until the new run is complete. Re-run `python -m eval.verify_testset` at the start of
   the next sessions. Gemini's second opinion with the new prompt: 1 of 1 agreed so far (15 of 15 with the old
   two-question prompt).
+
+## Milestone 5 — Latency, free-tier demo, deployment (in progress)
+
+### D52. Latency: where the time goes, and 15 rerank candidates with "max" only for Urdu
+- **Measured per stage** (`backend/app/timing.py`, every answer's `timings_ms`; `eval/latency.py` on the dev split
+  with the real reranker and cached rewrites, no quota). Rate-limit **waiting** (client limiter sleeps and retry
+  back-off) is reported apart from real compute (`llm_wait` vs `llm_api`). On this container's 4 CPU cores:
+
+  | Stage | Old default (max, 30 candidates) | New default (max_non_en, 15) | New, int8 reranker |
+  | --- | --- | --- | --- |
+  | rewrite (GPT OSS 20B, live) | 0.6 s | 0.6 s | 0.6 s |
+  | retrieval (BGE-M3 + Qdrant + RRF) | 0.7 s | 0.7 s | 0.7 s |
+  | **rerank** (dev p50 / p95) | **43.5 s / 45.9 s** | **15.1 s / 29.5 s** | 7.9 s / 15.5 s |
+  | answer LLM (GPT OSS 120B, live, no wait) | 1.35 s | 1.35 s | 1.35 s |
+  | citation check | < 1 ms | < 1 ms | < 1 ms |
+  | dev Hit@5 | 96.1% | **98.0%** | 94.1% |
+
+  Rerank p50 is 13.4 s for English questions and 27.7 s for Urdu / Roman Urdu (scored twice). One live answer from
+  the deploy bundle: 27.8 s total = rewrite 0.6 + retrieval 0.8 + rerank 25.0 + answer 1.4 s, `llm_wait` 0.
+- **The 57 s seen in the UI (D48 era) was ~44 s of reranking plus Groq rate-limit waiting.** Earlier end-to-end runs
+  measured the answer step at p50 15.7 s / p95 29.5 s (17 live answers, 2026-09-26), but that number includes the
+  free tier's 8,000 tokens-per-minute waits and retries, which were not recorded separately then; with no wait the
+  answer model takes ~1.4 s.
+- **Chosen on dev** (`eval/rerank_sweep.py`, 12 settings from cached scores): 15 candidates and "max" scoring only
+  for Urdu / Roman Urdu (`rerank_query = "max_non_en"`). 22 pairs per question instead of 60; dev Hit@5 98.0% vs
+  96.1%. **Held-out test: Hit@5 94.0% (was 93.5%), MRR 0.878 (was 0.871)**, every group equal or better. Now the
+  `/ask` default and the `fast` ablation preset.
+- **int8 dynamic quantisation** of the reranker halves its time but drops 2 dev questions (Hit@5 94.1%); it stays an
+  option (`reranker_quantize`), off by default.
+- **Answer cache** (D53): a repeated question is answered in ~30 ms.
+- **Still not met:** compute alone is ~16 s p50 here (8.6 s with int8), above both the plan's 4 s and Hamza's ~6 s
+  threshold for a hosted reranker, and the Space's 2 vCPU will be slower. Options for Hamza (Milestone 5): a hosted
+  reranker API with a free tier (needs an account and key), a smaller multilingual reranker run locally (needs a
+  dev re-check), or accept ~15-30 s for uncached questions with the stage progress shown in the UI.
+
+### D53. The demo stays on free tiers: answer cache, per-visitor limit, polite quota message
+- Decided by Hamza on 2026-09-26: no paid Groq tier. So the live demo must survive a used-up quota.
+- **Never retry after a daily-limit error**: the first one marks the model as exhausted in the LLM client for the
+  rest of the process; later calls fail at once with no request (cached answers still replay). Eval runs therefore
+  spend one request, not one per remaining question, after the quota is gone.
+- **Answer cache** (`answer_cache` table, Neon or SQLite): a repeated question (normalised text + tax year) is
+  answered from the cache with no LLM call and no reranking. The cache key includes a version hash of the answer and
+  rewrite prompts, the model ids, the retrieval settings and the corpus snapshots, so a change never serves a stale
+  answer.
+- **Per-visitor limit**: 20 uncached questions per client IP per UTC day (`daily_questions_per_visitor`), on top of
+  the 20-per-minute rate limit; cached answers are free.
+- **Quota reached** → `DAILY_LIMIT` with "today's free quota is used up, please try again tomorrow; questions others
+  have asked still work", in the question's language (English, Urdu, Roman Urdu). The UI shows it as a notice.
+
+### D54. Deployment setup (prepared, not deployed)
+- Backend: a free Hugging Face **Docker Space** (2 vCPU, 16 GB RAM). The image installs CPU-only PyTorch and bakes
+  in both models (~4.5 GB) so a sleeping Space wakes without downloads; the prebuilt 19 MB vector index is shipped
+  with the code, so nothing is indexed at startup. `scripts/deploy_space.py` stages the ~23 MB of files the image
+  needs and uploads them with `huggingface_hub` (LFS handled for the index file; no git-lfs needed).
+- Frontend: Vercel, root directory `frontend`, `VITE_API_URL` pointing at the Space; logs, feedback and the answer
+  cache on Neon (`DATABASE_URL` as a Space secret). CORS origins come from `MAHSOOL_CORS_ORIGINS`.
+- A GitHub Actions workflow pings `/health` twice a day once the `SPACE_URL` variable is set (free Spaces sleep
+  after ~48 h without traffic).
+- Not verified: the image build (no Docker daemon in the build environment). The staged bundle was checked by
+  starting the API from it (see STATUS). The Space CPU has 2 cores, half of the 4 used for the timings in D52, so
+  reranking there will be slower than measured here.
+- Langfuse comes with the deployment step (Hamza creates a free Langfuse Cloud project; keys listed in the README).
+
+### D55. The 20 out-of-scope Urdu / Roman Urdu questions are approved as written
+- The 20 out-of-scope questions in Urdu script or Roman Urdu (not translations, so D41 did not cover them) were
+  **approved by Hamza without a line-by-line read** and marked `"language_ok": true` (2026-09-26). All 100 non-English
+  questions now have `language_ok: true`.
+
+### D56. Answer correctness: Qwen judge on every answer, plus a 50-answer same-meaning check by Hamza
+- Decided by Hamza on 2026-09-26 (replaces the open point in D35). `eval/judge_answers.py` gives Qwen (judge2) the
+  question, the reference answer and the app's answer, and asks whether they say the same thing: "yes", "partly"
+  (a condition, exception or number missing or different) or "no". Reported per group as **strict** (yes) and
+  **lenient** (yes or partly) correctness; an in-scope question the app refused counts as not correct, an
+  out-of-scope one as correct only when refused. Cached and resumable like the other judges.
+- `eval/make_answer_check.py` writes `eval/answer_check.md`: 50 random answered test questions (seed 2027) with the
+  reference and app answers side by side and a yes/no box, so the check needs no tax knowledge.
+- Neither has run yet: only 6 answers exist with the current prompt (D51, 19 of 189 end-to-end questions run).

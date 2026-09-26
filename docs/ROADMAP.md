@@ -84,6 +84,13 @@ Week 10 (≈ 6 Dec 2026). Do not post before the numbers in the post come from c
 
 ## 11. Decisions needed from Hamza
 
+**Answered by Hamza on 2026-09-26:** 1 free tier only (D53); 2 measure per stage, local fixes first (done, D52;
+compute still ~16 s, so a hosted or smaller reranker is the open follow-up); 3 as recommended (D54); 4 deploy after
+steps 1-2, with answer cache, polite quota message and per-visitor limit (D53); 5 Qwen judge on all answers plus a
+50-answer same-meaning sheet (D56); 6 practitioner later; 7 no Gemini billing; 8 as recommended; 9 Langfuse at
+step 5; 10 approved as written (D55); 11 delete the old branch (refused by the session's git proxy; delete in the
+GitHub UI). The original questions and recommendations follow for the record.
+
 1. **Answer model quota for the public demo.** The free tier gives ~65 answers/day and failed the eval twice. *Recommendation:* enable Groq's pay-as-you-go tier with a monthly spend cap inside the < 2,000 PKR target (check current Groq pricing first), and keep the free tier for development.
 2. **Latency approach.** *Recommendation:* try local fixes first (15 rerank candidates, int8/ONNX reranker, drop full-max if it costs too much time) and measure on dev; switch to a hosted reranker only if local stays above ~6 s.
 3. **Hosting.** *Recommendation:* backend on a free Hugging Face Space (CPU, 16 GB RAM fits BGE-M3 + reranker), frontend on Vercel, logs on Neon, vector index embedded in the Space (1,416 points) instead of Qdrant Cloud until Phase 2 grows it.

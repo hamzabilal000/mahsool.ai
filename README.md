@@ -17,9 +17,9 @@ from. When the law doesn't cover the question, Mahsool says so.
 | --- | --- | --- |
 | 1 | Repo, ingestion of the Income Tax Ordinance 2001, 90 English eval questions | ✅ done |
 | 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ✅ done |
-| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set machine-verified (D45) · ⏳ end-to-end eval restarted with the new answer prompt: 17/189 (Groq daily limit, D36) |
+| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set machine-verified (D45) · ⏳ end-to-end eval with the new answer prompt: 19/189 (Groq daily limit, D36) |
 | 4 | React chat UI, citation cards, feedback, Postgres logs, eval page | ✅ done (Langfuse moved to M5, D49) |
-| 5 | Fix top failures, Docker, deploy, demo | |
+| 5 | Fix top failures, Docker, deploy, demo | 🔄 in progress: latency cut 44 → 16 s (D52), free-tier safeguards (D53), deploy prepared, not live (D54) |
 
 ## Architecture
 
@@ -131,7 +131,8 @@ Urdu and Roman Urdu questions are natural rewrites of English ones and share the
 | + English query rewrite (GPT OSS 20B), no reranker | **98.6%** | 84.6% | **100%** | 89.3% | **94.0%** |
 | + rewrite + reranker | 97.3% | **89.7%** | 89.3% | 75.0% | 90.5% |
 | + glossary in rewrite = full pipeline, reranking with the question only | 97.3% | **89.7%** | 92.9% | 75.0% | 91.1% |
-| full pipeline, reranking with max(question, rewrite) score = **`/ask` default** (D40) | 97.3% | 87.2% | 92.9% | **92.9%** | 93.5% |
+| full pipeline, reranking with max(question, rewrite) score (D40) | 97.3% | 87.2% | 92.9% | **92.9%** | 93.5% |
+| 15 rerank candidates, max score only for Urdu / Roman Urdu = **`/ask` default** (D52) | **98.6%** | 87.2% | 92.9% | **92.9%** | **94.0%** |
 
 All 168 in-scope test questions, re-run on 2026-09-26 after the legal-review fixes and the 10 new condition-focused
 English questions (en-091 … en-100, all 10 found in the top 5 by the default pipeline; D51). Reference-answer fixes
@@ -165,17 +166,19 @@ was checked by an AI legal-review tool, and none by a tax professional yet (D50)
 | Metric | Target | Result |
 | --- | --- | --- |
 | Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | `/ask` default (full-max): Urdu 92.9% ✅ / Roman Urdu 92.9% ✅; all 168: 93.5%, FBR 87.2% |
-| Answer correctness | ≥ 85% | not scored yet: needs a judge and verified reference answers (D35) |
+| Answer correctness | ≥ 85% | not scored yet: the Qwen judge and a 50-answer hand check are ready (D56) and run once the end-to-end answers exist |
 | Answers with a correct citation | ≥ 90% | not re-measured yet with the new answer prompt (4 of 4 answered so far); before it: 98.6% of answered (70 of 71) — partial* |
 | Correct refusal on out-of-scope questions | ≥ 90% | 13 / 13 run — partial*, and the 8 not run are the harder ones |
-| Median latency | < 4 s | ❌ not measured as a median yet; one warm answer through the UI took 57 s on a 4-core CPU (reranker; the first request 145 s with model loading) — Milestone 5 |
+| Median latency | < 4 s | ❌ ~18 s p50 for a new question on 4 CPU cores (rerank 15 s, retrieval 0.7 s, both LLMs ~2 s, D52); ~30 ms for a repeated question (answer cache) |
 
-\* End-to-end on the test split ([`eval/run_e2e.py`](eval/run_e2e.py)) with the `/ask` default (full-max). The answer
+\* End-to-end on the test split ([`eval/run_e2e.py`](eval/run_e2e.py)) with the current `/ask` default. The answer
 prompt changed on 2026-09-26 (it must now state conditions and both ATL and non-ATL rates, D51), so every cached
-answer is stale and the run restarts: **17 of 189 run, 172 left** (4 in-scope answers, all citing a gold section,
+answer was stale and the run restarted: **19 of 189 run, 170 left** (6 in-scope answers, all citing a gold section,
 and 13 out-of-scope refusals) before Groq's free-tier limit of 200k tokens a day on GPT OSS 120B (D36); at ~65 answers
-a day that is about three more days. The previous prompt's run (85 of 179: 70 of 71 answered with a correct citation)
-is kept in D44 for comparison. Re-running `python -m eval.run_e2e --split test` resumes from the cache.
+a day that is about three more days. The retrieval default then changed (D52), which can change the sources of a few
+of the 6 answers, so the next run may re-ask them. The previous prompt's run (85 of 179: 70 of 71 answered with a
+correct citation) is kept in D44 for comparison. Resume: `python -m eval.run_e2e --split test`, then
+`python -m eval.judge_answers --split test` (answer correctness, D56) and `python -m eval.make_answer_check`.
 Report: [`eval/reports/2026-09-26-e2e-test.md`](eval/reports/2026-09-26-e2e-test.md).
 
 ## Run locally (no Docker)
