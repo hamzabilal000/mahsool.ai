@@ -30,7 +30,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly states the 10% rate, the Rs. 10 million threshold, and the exemption for individuals with salary income, all of which are accurately reflected in the reference answer."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -51,7 +51,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly states in the proviso that no surcharge is payable for an individual deriving income under the head 'Salary', which directly supports the reference answer."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -72,7 +72,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly states the super tax applies for tax year 2022 and onwards, which matches the reference answer. The exception for banking companies in 2022 is a specific carve-out for a subset of entities, not a general condition that changes the answer to the question about the start year for the tax regime."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -93,7 +93,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly states in Division IIB, serial 1, that the rate for a banking company with income exceeding Rs. 150 million is 10%. The reference answer correctly identifies this rate and source. Although there is a proviso for tax year 2023 regarding a Rs. 300 million threshold, the question asks generally about the rate for income exceeding Rs. 150 million, which is defined in the main table as 10%, and the reference answer accurately reflects the primary statutory rate for that threshold."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "yes",
@@ -114,7 +114,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly states in serial 4 that for persons other than those in serials 1, 2, and 3, the rate is 8% if income exceeds Rs. 500 million. The reference answer correctly identifies this rate and category without omitting any relevant conditions for this specific scenario."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "yes",
@@ -135,7 +135,7 @@
     "omits_condition": "no",
     "reason": "The reference answer correctly states the computation method (applying the rate to the gross amount) and the exclusion for exempt dividends, both of which are explicitly supported by the section text."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -156,7 +156,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly states in sub-section (3)(b) that the section does not apply to profit on debt exceeding five million Rupees, which directly supports the reference answer."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -177,7 +177,7 @@
     "omits_condition": "no",
     "reason": "The reference answer accurately reflects the definition provided in Section 9, including the specific references to Section 10 clause (a) and Part IX, as well as the condition that the reduction cannot go below zero."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -198,7 +198,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly lists the five heads of income in subsection (1), and the reference answer accurately reflects this list without omitting any conditions or exceptions."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -219,7 +219,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly lists overtime payments and bonuses under clause (a) of sub-section (2) as part of salary. The reference answer accurately reflects this inclusion without omitting any relevant conditions or exceptions."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -240,7 +240,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly includes rent and travel allowances in the definition of salary and clarifies via the Explanation that allowances paid on a fixed basis or not wholly spent on behalf of the employer are not excluded. The reference answer accurately reflects these provisions without omitting any material conditions."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -261,7 +261,7 @@
     "omits_condition": "no",
     "reason": "The section text and rules provide the specific valuation method (5% or 10% of cost or FMV) for vehicles provided for private use, which matches the reference answer. No material conditions or exceptions relevant to the calculation are omitted."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -282,7 +282,7 @@
     "omits_condition": "no",
     "reason": "The reference answer accurately reflects the definition of 'rent' provided in sub-section (2) of the text, including the specific inclusion of forfeited deposits. It does not omit any conditions that change the definition itself, as exclusions in other sub-sections (like plant and machinery) define what is *not* rent or is taxed elsewhere, rather than altering the core definition provided in (2)."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -303,7 +303,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly states that agricultural income is exempt from tax, and the reference answer correctly reflects this exemption without omitting any relevant conditions or exceptions."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -324,7 +324,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly states that scholarships for education costs are exempt unless paid by an associate, which matches the reference answer perfectly."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -345,7 +345,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly states that such income is exempt from tax, and the reference answer correctly reflects this without omitting any conditions."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -366,7 +366,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly states the exemption applies for the year of return and the following year, conditional on non-residency in the preceding four years, which matches the reference answer exactly."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -387,7 +387,7 @@
     "omits_condition": "no",
     "reason": "The reference answer accurately reflects the conditions for exemption (employment-based residency, presence <= 3 years) and the specific exclusions (business in Pakistan, income brought into/received in Pakistan) as stated in the section text."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -408,7 +408,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly states the general 6-year limit in sub-section (2) and the specific 8-year and 10-year exceptions in sub-sections (2A), (2B), and (2C), all of which are accurately reflected in the reference answer."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -429,7 +429,7 @@
     "omits_condition": "no",
     "reason": "The section text explicitly states that a capital loss shall not be set off against income chargeable under any other head, which directly answers the question. The reference answer accurately reflects this restriction and the requirement to carry the loss forward against future capital gains."
    },
-   "gemini-3-flash-preview": {
+   "gemini-3-flash": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
@@ -450,13 +450,16 @@
     "omits_condition": "no",
     "reason": "The section text explicitly confirms the deductibility of Zakat paid under the 1980 Ordinance and states that unused allowances are not refunded, carried forward, or carried back, which matches the reference answer perfectly."
    },
-   "gemini-3-flash-preview": {
-    "error": "daily limit reached (20 requests per day): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this er"
+   "gemini-3-flash": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer correctly identifies that Zakat is deductible under the specified Ordinance and accurately reflects the restrictions on carrying forward or refunding unused amounts."
    }
   },
   "missing_numbers": [],
-  "second_opinion": null,
-  "second_opinion_reason": null
+  "second_opinion": "agree",
+  "second_opinion_reason": "The reference answer correctly identifies that Zakat is deductible under the specified Ordinance and accurately reflects the restrictions on carrying forward or refunding unused amounts."
  },
  "en-023": {
   "ok": true,
@@ -467,6 +470,9 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states the eligibility criteria (taxable income < 1.5 million) and the calculation formula (lesser of the three specified amounts), which matches the reference answer exactly. No material conditions changing the answer are omitted."
+   },
+   "gemini-3-flash-preview": {
+    "error": "daily limit reached (20 requests per day): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this er"
    }
   },
   "missing_numbers": [],
@@ -2803,7 +2809,7 @@
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-022",
-  "second_opinion": null,
+  "second_opinion": "agree",
   "second_opinion_reason": null
  },
  "ur-020": {
@@ -3163,7 +3169,7 @@
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-022",
-  "second_opinion": null,
+  "second_opinion": "agree",
   "second_opinion_reason": null
  },
  "ru-020": {
