@@ -1,0 +1,146 @@
+[
+ {
+  "rerank_query": "original",
+  "candidates": 10,
+  "pairs_per_question": 10.0,
+  "hit@5": {
+   "english": 0.963,
+   "all": 0.9412,
+   "urdu": 1.0,
+   "roman_urdu": 0.8333
+  },
+  "mrr@10_all": 0.9178
+ },
+ {
+  "rerank_query": "original",
+  "candidates": 15,
+  "pairs_per_question": 15.0,
+  "hit@5": {
+   "english": 1.0,
+   "all": 0.9608,
+   "urdu": 1.0,
+   "roman_urdu": 0.8333
+  },
+  "mrr@10_all": 0.9209
+ },
+ {
+  "rerank_query": "original",
+  "candidates": 20,
+  "pairs_per_question": 20.0,
+  "hit@5": {
+   "english": 1.0,
+   "all": 0.9608,
+   "urdu": 1.0,
+   "roman_urdu": 0.8333
+  },
+  "mrr@10_all": 0.919
+ },
+ {
+  "rerank_query": "original",
+  "candidates": 30,
+  "pairs_per_question": 30.0,
+  "hit@5": {
+   "english": 1.0,
+   "all": 0.9412,
+   "urdu": 1.0,
+   "roman_urdu": 0.75
+  },
+  "mrr@10_all": 0.908
+ },
+ {
+  "rerank_query": "max_non_en",
+  "candidates": 10,
+  "pairs_per_question": 14.7,
+  "hit@5": {
+   "english": 0.963,
+   "all": 0.9608,
+   "urdu": 1.0,
+   "roman_urdu": 0.9167
+  },
+  "mrr@10_all": 0.9118
+ },
+ {
+  "rerank_query": "max_non_en",
+  "candidates": 15,
+  "pairs_per_question": 22.1,
+  "hit@5": {
+   "english": 1.0,
+   "all": 0.9804,
+   "urdu": 1.0,
+   "roman_urdu": 0.9167
+  },
+  "mrr@10_all": 0.8977
+ },
+ {
+  "rerank_query": "max_non_en",
+  "candidates": 20,
+  "pairs_per_question": 29.4,
+  "hit@5": {
+   "english": 1.0,
+   "all": 0.9804,
+   "urdu": 1.0,
+   "roman_urdu": 0.9167
+  },
+  "mrr@10_all": 0.8977
+ },
+ {
+  "rerank_query": "max_non_en",
+  "candidates": 30,
+  "pairs_per_question": 44.1,
+  "hit@5": {
+   "english": 1.0,
+   "all": 0.9608,
+   "urdu": 1.0,
+   "roman_urdu": 0.8333
+  },
+  "mrr@10_all": 0.9069
+ },
+ {
+  "rerank_query": "max",
+  "candidates": 10,
+  "pairs_per_question": 20.0,
+  "hit@5": {
+   "english": 0.963,
+   "all": 0.9608,
+   "urdu": 1.0,
+   "roman_urdu": 0.9167
+  },
+  "mrr@10_all": 0.9118
+ },
+ {
+  "rerank_query": "max",
+  "candidates": 15,
+  "pairs_per_question": 30.0,
+  "hit@5": {
+   "english": 1.0,
+   "all": 0.9804,
+   "urdu": 1.0,
+   "roman_urdu": 0.9167
+  },
+  "mrr@10_all": 0.8977
+ },
+ {
+  "rerank_query": "max",
+  "candidates": 20,
+  "pairs_per_question": 40.0,
+  "hit@5": {
+   "english": 1.0,
+   "all": 0.9804,
+   "urdu": 1.0,
+   "roman_urdu": 0.9167
+  },
+  "mrr@10_all": 0.8977
+ },
+ {
+  "rerank_query": "max",
+  "candidates": 30,
+  "pairs_per_question": 60.0,
+  "hit@5": {
+   "english": 1.0,
+   "all": 0.9608,
+   "urdu": 1.0,
+   "roman_urdu": 0.8333
+  },
+  "mrr@10_all": 0.9069
+ }
+]

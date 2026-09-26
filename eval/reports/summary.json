@@ -219,7 +219,7 @@
   },
   {
    "setup": "Full, max score",
-   "description": "reranker also scores the rewrite (/ask default)",
+   "description": "reranker also scores the rewrite (D40)",
    "date": "2026-09-26",
    "hit_at_5": {
     "english": 97.3,
@@ -230,6 +230,27 @@
    },
    "recall_at_5_all": 90.3,
    "mrr_at_10_all": 0.871,
+   "n": {
+    "english": 73,
+    "fbr": 39,
+    "urdu": 28,
+    "roman_urdu": 28,
+    "all": 168
+   }
+  },
+  {
+   "setup": "Fast (default)",
+   "description": "15 candidates, max score for Urdu only (/ask)",
+   "date": "2026-09-26",
+   "hit_at_5": {
+    "english": 98.6,
+    "fbr": 87.2,
+    "urdu": 92.9,
+    "roman_urdu": 92.9,
+    "all": 94.0
+   },
+   "recall_at_5_all": 91.0,
+   "mrr_at_10_all": 0.878,
    "n": {
     "english": 73,
     "fbr": 39,

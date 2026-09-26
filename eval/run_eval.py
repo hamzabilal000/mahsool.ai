@@ -14,7 +14,8 @@ Pipeline presets (each adds one step to hybrid search, for the ablation table):
     rewrite-rerank  + bge-reranker-v2-m3 on the top 30
     full            + Urdu glossary in the rewrite prompt (reranks with the question only)
     lookup-rerank   lookup + reranker without any LLM (runs without a Groq key)
-    full-max        full, reranking with max(question, first rewrite) score (/ask default, D40)
+    full-max        full, reranking with max(question, first rewrite) score (D40)
+    fast            15 candidates, max score for Urdu / Roman Urdu only (/ask default, D52)
 
 LLM outputs are cached in eval/cache/groq.jsonl, so re-running replays them without Groq.
 """
@@ -53,6 +54,14 @@ PRESETS: dict[str, dict] = {
     "rewrite-rerank": {"lookup": True, "rewrite": "plain", "rerank": True},
     "full": {"lookup": True, "rewrite": "glossary", "rerank": True},
     "full-max": {"lookup": True, "rewrite": "glossary", "rerank": True, "rerank_query": "max"},
+    # Latency-tuned on dev (D52): 15 rerank candidates, max score only for Urdu / Roman Urdu.
+    "fast": {
+        "lookup": True,
+        "rewrite": "glossary",
+        "rerank": True,
+        "rerank_query": "max_non_en",
+        "candidates": 15,
+    },
 }
 
 
@@ -73,7 +82,7 @@ def build_pipeline_retriever(preset: str) -> PipelineAdapter:
     from backend.app.rag.pipeline import PipelineConfig
 
     settings = get_settings()
-    config = PipelineConfig(**PRESETS[preset], candidates=settings.rerank_candidates)
+    config = PipelineConfig(**{"candidates": settings.rerank_candidates, **PRESETS[preset]})
     llm = LLMClients(settings, cache_path=LLM_CACHE) if config.rewrite != "none" else None
     return PipelineAdapter(
         build_pipeline(config, settings=settings, llm=llm, rerank_cache=RERANK_CACHE)

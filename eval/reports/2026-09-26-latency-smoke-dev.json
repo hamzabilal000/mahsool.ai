@@ -1,0 +1,102 @@
+{
+ "summary": {
+  "stages_s": {
+   "rewrite": {
+    "p50": 0.0,
+    "p95": 0.0
+   },
+   "retrieval": {
+    "p50": 0.69,
+    "p95": 0.74
+   },
+   "rerank": {
+    "p50": 42.1,
+    "p95": 44.07
+   },
+   "llm_wait": {
+    "p50": 0.0,
+    "p95": 0.0
+   },
+   "llm_api": {
+    "p50": 0.0,
+    "p95": 0.0
+   },
+   "total": {
+    "p50": 42.82,
+    "p95": 44.76
+   }
+  },
+  "load_s": 12.7,
+  "hit@5": {
+   "english": 1.0,
+   "all": 1.0
+  },
+  "n": 4,
+  "skipped": [],
+  "answer_llm_from_e2e": {
+   "n": 60,
+   "p50_s": 0.0,
+   "p95_s": 1.2
+  },
+  "config": {
+   "candidates": 30,
+   "rerank_query": "max",
+   "quantize": false,
+   "split": "dev"
+  }
+ },
+ "rows": [
+  {
+   "id": "en-003",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 744,
+    "rerank": 42385,
+    "llm_cached": 1,
+    "total": 43131
+   }
+  },
+  {
+   "id": "en-004",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 699,
+    "rerank": 41816,
+    "llm_cached": 1,
+    "total": 42515
+   }
+  },
+  {
+   "id": "en-007",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 678,
+    "rerank": 34846,
+    "llm_cached": 1,
+    "total": 35524
+   }
+  },
+  {
+   "id": "en-009",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 686,
+    "rerank": 44073,
+    "llm_cached": 1,
+    "total": 44759
+   }
+  }
+ ]
+}

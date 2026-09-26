@@ -32,8 +32,9 @@ SETUPS = [
     (
         "pipeline-full-max-test",
         "Full, max score",
-        "reranker also scores the rewrite (/ask default)",
+        "reranker also scores the rewrite (D40)",
     ),
+    ("pipeline-fast-test", "Fast (default)", "15 candidates, max score for Urdu only (/ask)"),
 ]
 
 

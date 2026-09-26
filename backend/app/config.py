@@ -72,10 +72,11 @@ class Settings(BaseSettings):
     # --- Retrieval behaviour ---
     rrf_k: int = 60
     candidates_per_retriever: int = 30  # top-N from each of dense and sparse before fusion
-    rerank_candidates: int = 30  # fused chunks passed to the reranker
-    # "max": the reranker also scores each chunk against the first English rewrite and keeps the
-    # higher score; chosen on the dev split (DECISIONS D40). Doubles the reranker time.
-    rerank_query: Literal["original", "max", "max_non_en"] = "max"
+    # Tuned on the dev split for latency (DECISIONS D52): 15 fused chunks go to the reranker, and
+    # only Urdu / Roman Urdu questions are also scored against the English rewrite (keeping the
+    # higher score, D40). Dev Hit@5 98.0% vs 96.1%, ~2.7x fewer reranker pairs.
+    rerank_candidates: int = 15
+    rerank_query: Literal["original", "max", "max_non_en"] = "max_non_en"
     answer_top_k: int = 6  # reranked chunks shown to the answer model
     # Refuse without calling the answer model when the best reranker score is below this.
     # Kept very low: on the dev split Urdu / Roman Urdu questions that *are* answerable often

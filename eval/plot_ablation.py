@@ -28,7 +28,8 @@ SETUPS = [
     ("pipeline-rewrite-test", "+ rewrite\n(no reranker)"),
     ("pipeline-rewrite-rerank-test", "+ rewrite\n+ reranker"),
     ("pipeline-full-test", "+ glossary\n= full pipeline"),
-    ("pipeline-full-max-test", "full, rerank max*\n= /ask default"),
+    ("pipeline-full-max-test", "full, rerank\nmax*"),
+    ("pipeline-fast-test", "15 candidates,\nmax* for Urdu\n= /ask default"),
 ]
 GROUPS = [
     ("english", "English (written)"),
@@ -84,8 +85,9 @@ def main() -> None:
     fig.text(
         0.01,
         0.01,
-        "* the reranker also scores the English rewrite and keeps the higher score; "
-        "chosen on the dev split (DECISIONS D40)",
+        "* the reranker also scores the English rewrite and keeps the higher score (D40); "
+        "the /ask default does this only for Urdu / Roman Urdu and reranks 15 candidates, "
+        "tuned on dev for speed (D52)",
         color=MUTED,
         fontsize=7,
     )
