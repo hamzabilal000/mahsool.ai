@@ -33,12 +33,19 @@ def build_service():
     llm = LLMClients(s, cache_path=s.llm_cache_path)
     config = PipelineConfig(candidates=s.rerank_candidates, rerank_query=s.rerank_query)
     pipeline = build_pipeline(config, settings=s, llm=llm)
+    guard = None
+    if s.prompt_guard and s.groq_api_key:
+        from backend.app.guard import PromptGuard
+
+        guard = PromptGuard(s.groq_api_key.get_secret_value(), s.prompt_guard_model,
+                            s.prompt_guard_threshold, s.groq_base_url)  # fmt: skip
     return AskService(
         pipeline,
         AnswerGenerator(*llm.for_role("answer")),
         answer_top_k=s.answer_top_k,
         refusal_threshold=s.refusal_threshold,
         last_tax_year=s.current_tax_year,
+        guard=guard,
     )
 
 
@@ -53,6 +60,7 @@ def cache_version(service) -> str:
     parts = [
         ANSWER_SYSTEM, REWRITE_SYSTEM, s.answer_model, s.rewrite_model, s.rerank_query,
         str(s.rerank_candidates), str(s.answer_top_k), str(s.refusal_threshold), *snapshots,
+        f"guard={s.prompt_guard}:{s.prompt_guard_model}:{s.prompt_guard_threshold}",
     ]  # fmt: skip
     return hashlib.sha256("\n".join(parts).encode()).hexdigest()[:16]
 

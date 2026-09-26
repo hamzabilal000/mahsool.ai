@@ -16,6 +16,7 @@ RefusalReason = Literal[
     "NO_RELEVANT_SOURCES",  # best reranker score below the threshold
     "NOT_IN_SOURCES",  # the answer model found no answer in the sources
     "NO_VALID_CITATIONS",  # the answer cited nothing that was retrieved
+    "PROMPT_INJECTION",  # Prompt Guard flagged the question as an attack (D60)
 ]
 
 

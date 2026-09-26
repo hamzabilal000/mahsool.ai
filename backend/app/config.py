@@ -84,6 +84,10 @@ class Settings(BaseSettings):
     refusal_threshold: float = 0.0005
     glossary_path: Path = Path("data/glossary_ur.csv")
     groq_base_url: str = "https://api.groq.com/openai/v1"
+    # Prompt Guard on Groq (D60): questions scored at or above the threshold are refused.
+    prompt_guard: bool = True
+    prompt_guard_model: str = "meta-llama/llama-prompt-guard-2-86m"
+    prompt_guard_threshold: float = 0.5
     rate_limit_per_minute: int = 20  # /ask requests per client IP
     # Free-tier demo (D53, D59): new (uncached) questions a visitor (client IP) may ask per UTC
     # day; cached answers do not count. 0 = no limit.

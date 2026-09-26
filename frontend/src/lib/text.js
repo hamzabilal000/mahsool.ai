@@ -23,6 +23,7 @@ export const REFUSAL_LABELS = {
     NO_RELEVANT_SOURCES: "No relevant law text found",
     NOT_IN_SOURCES: "Not answered by the law text found",
     NO_VALID_CITATIONS: "Answer could not be backed by a citation",
+    PROMPT_INJECTION: "Looks like an instruction to the assistant, not a tax question",
 }
 
 export const STAGE_LABELS = {

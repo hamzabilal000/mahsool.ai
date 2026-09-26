@@ -3,6 +3,7 @@
 Refusal happens at the first failed check, cheapest first, so most out-of-scope questions
 never reach the answer model:
 
+0. Prompt Guard (when configured) flags the question as an injection / jailbreak -> refuse
 1. scope (from the rewrite step): provincial tax, customs, non-tax -> refuse
 2. tax year: no law text loaded for that year, or a future year -> refuse
 3. the question names only sections that don't exist ("section 999Z") -> refuse
@@ -18,7 +19,7 @@ from backend.app.models.schemas import AskData, Citation, RefusalReason, Source
 from backend.app.rag.citations import check_citations
 from backend.app.rag.generator import AnswerGenerator, source_label
 from backend.app.rag.pipeline import RAGPipeline, SearchResult
-from backend.app.rag.query_rewrite import Language
+from backend.app.rag.query_rewrite import Language, detect_language
 from backend.app.timing import request_timer
 from backend.app.timing import stage as timed
 
@@ -45,6 +46,14 @@ FUTURE_TAX_YEAR_REFUSAL = {
     "roman_ur": "Tax year {year} ka qanoon abhi bana nahi; mere paas tax year {last} tak ka "
     "qanoon hai.",
 }
+INJECTION_REFUSAL = {
+    "en": "I can only answer questions about Pakistani income tax law, and I can't follow "
+    "instructions that try to change how I work.",
+    "ur": "میں صرف پاکستان کے انکم ٹیکس قانون کے بارے میں سوالوں کے جواب دیتا ہوں، اور ایسی "
+    "ہدایات پر عمل نہیں کر سکتا جو میرے کام کا طریقہ بدلنے کی کوشش کریں۔",
+    "roman_ur": "Main sirf Pakistan ke income tax qanoon ke bare mein sawalon ke jawab deta hoon, "
+    "aur aisi hidayat par amal nahi kar sakta jo mere kaam ka tareeqa badalne ki koshish karein.",
+}
 DISCLAIMER = {
     "en": "For information only, not tax advice. Confirm with a tax practitioner or FBR.",
     "ur": "یہ صرف معلومات کے لیے ہے، ٹیکس مشورہ نہیں۔ کسی ٹیکس ماہر یا ایف بی آر سے تصدیق کریں۔",
@@ -62,8 +71,10 @@ class AskService:
         answer_top_k: int = 6,
         refusal_threshold: float = 0.05,
         last_tax_year: int | None = None,
+        guard=None,
     ) -> None:
         self.pipeline, self.generator = pipeline, generator
+        self.guard = guard  # backend.app.guard.PromptGuard, or None (D60)
         self.answer_top_k, self.refusal_threshold = answer_top_k, refusal_threshold
         self.first_tax_year = min(c.tax_year_from for c in pipeline.by_id.values())
         # Latest tax year whose law is enacted (the current one); later years are refused.
@@ -90,6 +101,11 @@ class AskService:
     ) -> AskData:
         stage = on_stage or (lambda _: None)
         t0 = time.perf_counter()
+        if self.guard is not None:
+            with timed("guard"):
+                flagged = self.guard.flags(question)
+            if flagged:
+                return self._refuse_injection(question, tax_year)
         stage("search")
         result = self.pipeline.search(question, tax_year=tax_year)
         t_search = time.perf_counter()
@@ -197,6 +213,18 @@ class AskService:
             search_queries=plan.queries,
             disclaimer=DISCLAIMER[lang],
             timings_ms=timings,
+        )
+
+    def _refuse_injection(self, question: str, tax_year: int | None) -> AskData:
+        lang: Language = detect_language(question)
+        return AskData(
+            answer=INJECTION_REFUSAL[lang],
+            refused=True,
+            refusal_reason="PROMPT_INJECTION",
+            language=lang,
+            tax_year=tax_year or self.last_tax_year or self.first_tax_year,
+            tax_year_assumed=tax_year is None,
+            disclaimer=DISCLAIMER[lang],
         )
 
     @staticmethod
