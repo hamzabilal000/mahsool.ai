@@ -231,27 +231,27 @@
   }
  ],
  "end_to_end": {
-  "date": "2026-09-25",
+  "date": "2026-09-26",
   "questions": 179,
-  "run": 68,
-  "not_run": 111,
-  "in_scope_run": 55,
-  "answered": 98.2,
-  "correct_citation": 96.4,
-  "correct_citation_answered": 98.2,
+  "run": 85,
+  "not_run": 94,
+  "in_scope_run": 72,
+  "answered": 98.6,
+  "correct_citation": 97.2,
+  "correct_citation_answered": 98.6,
   "out_of_scope_run": 13,
   "out_of_scope_refused": 100,
   "by_group": {
    "english": {
-    "n": 53,
-    "correct_citation": 96.2
+    "n": 63,
+    "correct_citation": 96.8
    },
    "fbr": {
     "n": 1,
     "correct_citation": 100
    },
    "urdu": {
-    "n": 1,
+    "n": 8,
     "correct_citation": 100
    }
   }
