@@ -59,6 +59,7 @@ def cache_version(service) -> str:
     snapshots = sorted({c.snapshot_id for c in service.pipeline.by_id.values()})
     parts = [
         ANSWER_SYSTEM, REWRITE_SYSTEM, s.answer_model, s.rewrite_model, s.rerank_query,
+        s.reranker_model, str(s.reranker_max_length),
         str(s.rerank_candidates), str(s.answer_top_k), str(s.refusal_threshold), *snapshots,
         f"guard={s.prompt_guard}:{s.prompt_guard_model}:{s.prompt_guard_threshold}",
     ]  # fmt: skip

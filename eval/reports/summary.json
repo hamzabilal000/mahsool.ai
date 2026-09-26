@@ -14,8 +14,8 @@
   "review_verified": 30,
   "human_verified": 0,
   "not_verified_yet": 1,
-  "second_opinion_agreed": 19,
-  "second_opinion_checked": 21,
+  "second_opinion_agreed": 20,
+  "second_opinion_checked": 22,
   "directly_judged": 169,
   "review_sample": 30,
   "review_by": "ChatGPT (OpenAI), an AI legal-review tool with web access, 26 Sep 2026",
@@ -239,8 +239,8 @@
    }
   },
   {
-   "setup": "Fast (default)",
-   "description": "15 candidates, max score for Urdu only (/ask)",
+   "setup": "Fast, bge",
+   "description": "15 candidates, max score for Urdu only (D52)",
    "date": "2026-09-26",
    "hit_at_5": {
     "english": 98.6,
@@ -258,14 +258,35 @@
     "roman_urdu": 28,
     "all": 168
    }
+  },
+  {
+   "setup": "Fast, gte (default)",
+   "description": "the same with the smaller gte reranker, 256 tokens (/ask, D62)",
+   "date": "2026-09-26",
+   "hit_at_5": {
+    "english": 97.3,
+    "fbr": 97.4,
+    "urdu": 96.4,
+    "roman_urdu": 89.3,
+    "all": 95.8
+   },
+   "recall_at_5_all": 93.2,
+   "mrr_at_10_all": 0.848,
+   "n": {
+    "english": 73,
+    "fbr": 39,
+    "urdu": 28,
+    "roman_urdu": 28,
+    "all": 168
+   }
   }
  ],
  "end_to_end": {
   "date": "2026-09-26",
   "questions": 189,
-  "run": 50,
-  "not_run": 139,
-  "in_scope_run": 37,
+  "run": 52,
+  "not_run": 137,
+  "in_scope_run": 39,
   "answered": 100.0,
   "correct_citation": 100,
   "correct_citation_answered": 100,
@@ -273,7 +294,7 @@
   "out_of_scope_refused": 100,
   "by_group": {
    "english": {
-    "n": 36,
+    "n": 38,
     "correct_citation": 100
    },
    "fbr": {
@@ -284,10 +305,10 @@
  },
  "answer_correctness": {
   "date": "2026-09-26",
-  "judged": 37,
-  "correct_strict": 97.3,
+  "judged": 39,
+  "correct_strict": 97.4,
   "correct_lenient": 100.0,
-  "not_run_end_to_end": 139
+  "not_run_end_to_end": 137
  },
  "targets": [
   {

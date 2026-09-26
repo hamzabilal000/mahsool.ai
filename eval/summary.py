@@ -34,7 +34,12 @@ SETUPS = [
         "Full, max score",
         "reranker also scores the rewrite (D40)",
     ),
-    ("pipeline-fast-test", "Fast (default)", "15 candidates, max score for Urdu only (/ask)"),
+    ("pipeline-fast-test", "Fast, bge", "15 candidates, max score for Urdu only (D52)"),
+    (
+        "pipeline-fast-gte-test",
+        "Fast, gte (default)",
+        "the same with the smaller gte reranker, 256 tokens (/ask, D62)",
+    ),
 ]
 
 

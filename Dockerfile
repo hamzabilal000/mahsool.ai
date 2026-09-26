@@ -24,9 +24,11 @@ COPY --chown=user eval eval
 RUN pip install ".[ml]"
 
 USER user
-# Bake both models into the image (~4.5 GB) so a sleeping Space wakes without downloading them.
-RUN python -c "from huggingface_hub import snapshot_download as d; \
-d('BAAI/bge-m3'); d('BAAI/bge-reranker-v2-m3')"
+# Bake both models into the image (~3.5 GB) so a sleeping Space wakes without downloading them.
+# Loading the reranker once also caches gte's pinned remote model code (D62).
+RUN python -c "from huggingface_hub import snapshot_download as d; d('BAAI/bge-m3'); \
+from backend.app.config import get_settings; from backend.app.rag.reranker import make_reranker; \
+make_reranker(get_settings())"
 
 COPY --chown=user data data
 

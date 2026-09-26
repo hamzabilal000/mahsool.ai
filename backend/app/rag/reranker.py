@@ -63,8 +63,12 @@ class CrossEncoderReranker:
         name = settings.reranker_model
         self.torch, self.max_length = torch, settings.reranker_max_length
         self.batch_size = settings.reranker_batch_size
-        self.tokenizer = AutoTokenizer.from_pretrained(name, cache_dir=cache)
-        config = AutoConfig.from_pretrained(name, cache_dir=cache, trust_remote_code=True)
+        rev, code_rev = settings.reranker_revision, settings.reranker_code_revision
+        self.tokenizer = AutoTokenizer.from_pretrained(name, cache_dir=cache, revision=rev)
+        # Remote model code runs in this process: pin both the weights and the code (D62).
+        config = AutoConfig.from_pretrained(
+            name, cache_dir=cache, revision=rev, trust_remote_code=True, code_revision=code_rev
+        )
         if getattr(config, "auto_map", None):
             # Custom model code (gte): transformers 5 loads weights on the meta device and leaves
             # the code's non-persistent buffers (position ids, rotary tables) uninitialised, so
@@ -72,14 +76,19 @@ class CrossEncoderReranker:
             from huggingface_hub import snapshot_download
             from safetensors.torch import load_file
 
-            model = AutoModelForSequenceClassification.from_config(config, trust_remote_code=True)
-            path = Path(snapshot_download(name, cache_dir=cache)) / "model.safetensors"
+            model = AutoModelForSequenceClassification.from_config(
+                config, trust_remote_code=True, code_revision=code_rev
+            )
+            folder = Path(snapshot_download(name, cache_dir=cache, revision=rev))
+            path = folder / "model.safetensors"
             model.load_state_dict(load_file(str(path)), strict=False)
             for m in model.modules():  # removed in transformers 5; the gte code still calls it
                 if not hasattr(m, "get_extended_attention_mask") and hasattr(m, "embeddings"):
                     type(m).get_extended_attention_mask = _extended_attention_mask
         else:
-            model = AutoModelForSequenceClassification.from_pretrained(name, cache_dir=cache)
+            model = AutoModelForSequenceClassification.from_pretrained(
+                name, cache_dir=cache, revision=rev
+            )
         self.model = model.float().eval()
 
     def score(self, query: str, passages: list[str]) -> list[float]:

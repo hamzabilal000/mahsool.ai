@@ -52,8 +52,14 @@ class Settings(BaseSettings):
     embedding_dim: int = 1024
     embedding_batch_size: int = 8
     embedding_max_length: int = 2048  # longest chunk is ~1,300 BGE-M3 tokens (DECISIONS D21)
-    reranker_model: str = "BAAI/bge-reranker-v2-m3"
-    reranker_max_length: int = 512  # 27 s vs 37 s per 30 pairs on 4 CPU cores (DECISIONS D26)
+    # gte-multilingual-reranker-base (306M, Apache-2.0) at 256 tokens per pair replaced
+    # bge-reranker-v2-m3 (568M, 512 tokens) for latency: same Hit@5 on dev (98.0%) and test
+    # (95.8%), rerank p50 4.7 s instead of ~30 s on 2 CPU cores (DECISIONS D62).
+    reranker_model: str = "Alibaba-NLP/gte-multilingual-reranker-base"
+    # Pinned Hugging Face revisions (weights, and the remote model code gte runs); None = latest.
+    reranker_revision: str | None = "8215cf04918ba6f7b6a62bb44238ce2953d8831c"
+    reranker_code_revision: str | None = "40ced75c3017eb27626c9d4ea981bde21a2662f4"
+    reranker_max_length: int = 256
     reranker_batch_size: int = 8
     # int8 dynamic quantisation of the reranker's linear layers (CPU speed-up, D52).
     reranker_quantize: bool = False

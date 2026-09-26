@@ -43,6 +43,15 @@ def store():
     return VectorStore(make_client(s), s.qdrant_collection, s.embedding_dim)
 
 
+def rerank_cache_path(base: Path, s: Settings) -> Path:
+    """Scores depend on the model and its input length: bge-reranker-v2-m3 at 512 tokens keeps
+    the original cache file (eval/cache/rerank.tsv); any other setting gets its own file."""
+    if s.reranker_model == "BAAI/bge-reranker-v2-m3" and s.reranker_max_length == 512:
+        return base
+    slug = s.reranker_model.split("/")[-1]
+    return base.with_name(f"{base.stem}-{slug}-{s.reranker_max_length}{base.suffix}")
+
+
 def llm_client(settings: Settings, provider: Provider, cache_path: Path | None = None) -> LLMClient:
     """A client for one provider, with the key, rate limits and model fallbacks from settings."""
     s = settings
@@ -121,5 +130,7 @@ def build_pipeline(
     if config.rerank:
         from backend.app.rag.reranker import CachedReranker
 
-        rr = CachedReranker(reranker(), rerank_cache) if rerank_cache else reranker()
+        rr = reranker()
+        if rerank_cache:
+            rr = CachedReranker(rr, rerank_cache_path(rerank_cache, s))
     return RAGPipeline(chunks(), retriever, rewriter, rr, config)
