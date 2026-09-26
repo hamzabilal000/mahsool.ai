@@ -17,8 +17,8 @@ from. When the law doesn't cover the question, Mahsool says so.
 | --- | --- | --- |
 | 1 | Repo, ingestion of the Income Tax Ordinance 2001, 90 English eval questions | ✅ done |
 | 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ✅ done |
-| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set machine-verified (D45) · ⏳ end-to-end eval 68/179 test questions (Groq daily limit, D36) |
-| 4 | React chat UI, citation cards, feedback, Postgres logs, Langfuse | |
+| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set machine-verified (D45) · ⏳ end-to-end eval 85/179 test questions (Groq daily limit, D36) |
+| 4 | React chat UI, citation cards, feedback, Postgres logs, eval page | ✅ done (Langfuse moved to M5, D49) |
 | 5 | Fix top failures, Docker, deploy, demo | |
 
 ## Architecture
@@ -158,15 +158,15 @@ a tax professional yet (D45). Full reports, with every miss:
 | --- | --- | --- |
 | Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | `/ask` default (full-max): Urdu 92.9% ✅ / Roman Urdu 92.9% ✅; all 158: 93.0%, FBR 87.2% |
 | Answer correctness | ≥ 85% | not scored yet: needs a judge and verified reference answers (D35) |
-| Answers with a correct citation | ≥ 90% | 98.2% of answered in-scope questions (54 of 55; 96.4% of the 55 run; FBR 1 of 1) — partial* |
+| Answers with a correct citation | ≥ 90% | 98.6% of answered in-scope questions (70 of 71; 97.2% of the 72 run; FBR 1 of 1) — partial* |
 | Correct refusal on out-of-scope questions | ≥ 90% | 13 / 13 run — partial*, and the 8 not run are the harder ones |
+| Median latency | < 4 s | ❌ not measured as a median yet; one warm answer through the UI took 57 s on a 4-core CPU (reranker; the first request 145 s with model loading) — Milestone 5 |
 
 \* End-to-end on the test split ([`eval/run_e2e.py`](eval/run_e2e.py)) with the `/ask` default (full-max) covered
-**68 of 179** questions before Groq's free-tier limit of 200k tokens a day on GPT OSS 120B stopped it (D36): 53 of
-63 written English, 1 of 39 FBR, 1 of 28 Urdu, 0 of 28 Roman Urdu, 13 of 21 out-of-scope. 111 are left; at ~65
-answers a day that is two more days. Re-running `python -m eval.run_e2e --split test` resumes from the cache.
-Report: [`eval/reports/2026-09-25-e2e-test.md`](eval/reports/2026-09-25-e2e-test.md).
-| Median latency | < 4 s | _Milestone 4_ |
+**85 of 179** questions over two days of Groq's free-tier limit (200k tokens a day on GPT OSS 120B, D36): all 63
+written English, 1 of 39 FBR, 8 of 28 Urdu, 0 of 28 Roman Urdu, 13 of 21 out-of-scope. 94 are left.
+Re-running `python -m eval.run_e2e --split test` resumes from the cache.
+Report: [`eval/reports/2026-09-26-e2e-test.md`](eval/reports/2026-09-26-e2e-test.md).
 
 ## Run locally (no Docker)
 
@@ -219,8 +219,22 @@ On a laptop CPU the reranker makes each answer slow (tens of seconds); see DECIS
 --split test`, then `python -m eval.plot_ablation` for the chart. End to end: `python -m eval.run_e2e --split test`.
 LLM and reranker outputs are cached in `eval/cache/`, so re-runs are fast and reproducible without a key.
 
-**Postgres** (conversation logs and feedback, needed from Milestone 4): create a free project on
-[Neon](https://neon.tech) and paste its connection string into `DATABASE_URL` in `.env`.
+**Chat UI** (Milestone 4; needs Node 20+ and the API above running on port 8000):
+
+```bash
+cd frontend
+npm install
+npm run dev                 # http://localhost:5173 — chat at /, evaluation page at /eval
+npm test && npm run lint    # parser/format unit tests and oxlint
+```
+
+The UI calls the API at `VITE_API_URL` (default `http://localhost:8000`; see `frontend/.env.example`). Answers
+stream in over `POST /ask/stream`; thumbs up/down go to `POST /feedback`. After new eval runs,
+`python -m eval.summary` refreshes the numbers on the eval page.
+
+**Question log and feedback:** stored in Postgres when `DATABASE_URL` is set (a free [Neon](https://neon.tech)
+project's connection string works as is), otherwise in a local SQLite file, `data/mahsool.db`, so nothing else is
+needed for development. Tables are created on startup; no IP address or user id is stored (D47).
 
 **Optional:** [`docker-compose.yml`](docker-compose.yml) starts a local Qdrant server and Postgres if you'd rather
 use Docker. Set `QDRANT_URL=http://localhost:6333` to point at it.
@@ -240,19 +254,20 @@ python -m ingestion.spot_check --law ITR2002 --n 20
 
 ```
 ingestion/           download → parse → chunk → index; one config per law in ingestion/laws/; ratecard.py
-backend/app/         main.py (FastAPI), api/ask.py, service.py (guardrails), config.py (all model ids)
+backend/app/         main.py (FastAPI), api/ask.py (/ask, /ask/stream, /feedback), api/eval.py (eval page data),
+                     service.py (guardrails), config.py (all model ids), db/ (question log + feedback)
 backend/app/rag/     embedder, Qdrant store, BM25, RRF, retriever, lookup, query_rewrite, reranker,
                      pipeline, generator, citations
 data/glossary_ur.csv Urdu / Roman Urdu → legal English glossary used by the query rewrite
-eval/                testset.jsonl (200 Qs), validator, run_eval.py (retrieval), run_e2e.py (/ask end to end),
-                     plot_ablation.py, REVIEW.md checklist, reports/, cache/
+eval/                testset.jsonl (239 Qs), validator, verify_testset.py, run_eval.py (retrieval), run_e2e.py
+                     (/ask end to end), plot_ablation.py, summary.py (eval page), reports/, cache/
 data/processed/      committed chunks, coverage report and spot-check sample per law snapshot
 data/sources.manifest.json   URL, version date and SHA-256 of every source PDF
 tests/               unit tests + regression tests on the real outputs
 docs/                LEARNING.md (concepts explained), DECISIONS.md (deviations from the plan)
 docker-compose.yml   optional local Qdrant server + Postgres (not needed to run)
 scripts/             commit-msg hook and setup-hooks.sh
-frontend/            React app (Milestone 4)
+frontend/            React + Vite + Tailwind chat UI and eval page (src/Pages, src/components, src/api)
 ```
 
 ## Docs

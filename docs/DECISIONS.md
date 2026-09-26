@@ -460,6 +460,9 @@ Newest first within each milestone. Each entry says what the plan said, what we 
   (96.4%; 98.2% of answered); en-070 cited the Tenth Schedule and section 4 instead of section 168, en-076 was
   refused (NOT_IN_SOURCES). 13 of 13 out-of-scope questions run were refused. Fewer questions ran than on the first
   day (85) because full-max changes the retrieved chunks, so earlier cached answers no longer match their prompts.
+- **Day 2 (2026-09-26):** 85 of 179 run, 94 left. In scope 72 run: 71 answered, 70 cite a gold section (97.2%; 98.6%
+  of answered); out-of-scope 13 of 13 refused. Only 17 new answers fit, because the 200k-token window is rolling
+  and still counted the previous day's use.
 
 ### D45. "machine" verified = Qwen judge + number check; Gemini is a non-blocking second opinion
 - Decided by Hamza on 2026-09-26. Gemini's free tier (20 requests a day, D42) would hold the test set for another
@@ -477,3 +480,45 @@ Newest first within each milestone. Each entry says what the plan said, what we 
   professional (pending).*
 - This is weaker than two required judges (D38): one model family decides. The number check, the gold-text-only
   prompt, the Gemini sample and the expert sample are what stand behind it.
+
+## Milestone 4 — Chat UI, feedback, question log, eval page
+
+### D46. "Streamed answers" stream progress and the checked answer, not raw model tokens
+- `POST /ask/stream` (server-sent events) sends the pipeline stages as they happen ("search", "answer"), then the
+  answer text a few words at a time, then the same envelope as `POST /ask`.
+- The answer model returns JSON (answer + citation numbers + confidence) and the citation check (D30) can withdraw
+  or trim the answer afterwards. Streaming raw tokens would show text that may then be refused or have citations
+  removed, so the text is streamed **only after the check has passed**. The wait is dominated by CPU reranking
+  (D26), and the stage events cover it.
+- Token-level streaming would need a plain-text answer format with citations parsed as they arrive; not worth it
+  while the reranker takes most of the time. Revisit with the Milestone 5 latency work.
+- The browser reads the stream with axios (XHR `onDownloadProgress`), keeping one HTTP client
+  (`withCredentials: true`) for every call.
+
+### D47. Question log and feedback: Postgres on Neon when configured, SQLite file otherwise
+- Two tables (`backend/app/db/store.py`, SQLAlchemy Core, created on startup): `asks` (question, language, tax year,
+  answer, cited section ids, refusal reason, confidence, timings) and `feedback` (thumbs up/down and an optional
+  comment per answer; a new vote replaces the old one).
+- `DATABASE_URL` set → Postgres through psycopg 3 (a Neon `postgresql://…?sslmode=require` URL works as is);
+  unset → `data/mahsool.db` (gitignored), so the full flow runs locally with no database server.
+- **Privacy:** no IP address, user id or cookie is stored. IPs are only used in memory by the rate limiter.
+- A failure to write the log never loses the answer (it is logged and the answer is returned without an id, so
+  the page hides the feedback buttons).
+
+### D48. Frontend conventions and layout
+- `frontend/`: React 19 + Vite + Tailwind 4, following Hamza's conventions: named exports, `App.jsx` holds routes
+  only, pages in `src/Pages/`, axios with `withCredentials`, `useRef` for form inputs.
+- The browser calls the API directly (`VITE_API_URL`, default `http://localhost:8000`); the API allows CORS from
+  `http://localhost:5173` with credentials (`cors_origins` setting). No dev proxy, so the same build works when the
+  API is hosted elsewhere.
+- Urdu script is shown right-to-left in Noto Nastaliq Urdu (`dir="auto"` everywhere a user or model writes text).
+- **Tax-year selector:** every loaded chunk is TY2027 law, so the selector offers TY2027 (default) and "from my
+  question"; TY2026 and TY2025 are listed but disabled ("not loaded yet") instead of offering years that are always
+  refused.
+- The eval page reads `eval/reports/summary.json` (`python -m eval.summary`) and the ablation PNG through the API,
+  so it shows exactly the committed reports, including the "partial" state of the end-to-end run.
+
+### D49. Langfuse tracing is deferred to Milestone 5
+- The plan lists Langfuse for Milestone 4. No Langfuse keys are configured, and the per-step timings are already in
+  every response (`timings_ms`) and in the `asks` table. Tracing moves to Milestone 5 with the latency work, where
+  per-step traces are needed.

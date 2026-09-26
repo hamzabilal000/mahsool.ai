@@ -560,3 +560,55 @@ not individual questions. The test split was run once at the end.
 A: With the coverage next to the number (85 of 140), and saying which way the missing part biases it. The eval
 lists what didn't run and resumes from the cache, so the rest runs when the quota resets.
 
+
+## Milestone 4 — A page people can use: streaming, citations, feedback, the eval page
+
+### Streaming without showing unchecked text
+The answer model returns JSON (the answer, the numbers of the sources it cites, a confidence), and the citation
+check can then trim or refuse the answer. If the page printed the model's tokens as they arrived, a reader could
+see a sentence that is withdrawn a second later. So `/ask/stream` streams two things instead:
+1. **progress**: "searching" and "writing a cited answer", as the pipeline reaches each step;
+2. **the checked answer**, a few words at a time, only after the citation check has passed.
+
+The transport is **server-sent events** (SSE): one long HTTP response where the server writes blocks like
+`event: delta` / `data: {"text": "..."}` separated by a blank line. The browser reads the response while it is
+still arriving (axios's `onDownloadProgress` gives the text so far) and parses only the complete blocks, keeping
+an offset so nothing is read twice (`frontend/src/lib/sse.js`).
+
+A small concurrency bug showed up in the tests: the pipeline runs in a worker thread and reports its stages to the
+event loop through a queue. If the worker finished very quickly, the loop saw "done" before it had read the last
+stage from the queue, and that stage was lost. The fix is to drain the queue after the worker finishes. Lesson:
+when two threads talk through a queue, "the producer is done" does not mean "the consumer has read everything".
+
+### One table for questions, one for feedback, two databases
+SQLAlchemy Core describes the tables once and speaks both Postgres and SQLite. With `DATABASE_URL` set (a free
+Neon database) the logs go to Postgres; without it, to `data/mahsool.db`, so the whole app runs on a laptop with
+nothing to install. Each answer gets an id; the thumbs up/down buttons send that id, so feedback is tied to the
+exact question, answer and citations. No IP address or user id is stored: feedback does not need to know who you
+are.
+
+### Urdu on a web page
+Urdu is written right to left, and Roman Urdu and English left to right, sometimes in the same conversation.
+`dir="auto"` lets the browser decide per paragraph from the first strong character, and Urdu-script text gets the
+Nastaliq font with a larger size and line height (Nastaliq's letters stack vertically, so the default line height
+cuts them off).
+
+### An eval page that can't drift from the reports
+The page does not contain numbers. `python -m eval.summary` reads the latest committed reports and the test set
+and writes `eval/reports/summary.json`; the API serves that file and the chart. If a number on the page is wrong,
+the report is wrong, and there is one place to fix it. It also shows what is *not* done: the end-to-end run
+covers 85 of 179 questions, and the page says so next to the scores.
+
+### Interview questions you should be able to answer
+
+**Q: Why not stream the LLM's tokens directly?**
+A: Because the answer is only trustworthy after the citation check. Streaming raw tokens would show text that may
+be withdrawn. The long wait is retrieval and reranking anyway, so progress events cover most of it.
+
+**Q: Why SQLite in development and Postgres in production, instead of Postgres everywhere?**
+A: Zero setup for anyone cloning the repo, with the same code: SQLAlchemy Core abstracts the dialect. The schema is
+two simple tables, so nothing Postgres-specific is needed.
+
+**Q: How do you keep a public "scores" page honest?**
+A: Generate it from the committed reports, show the run date, and show coverage (85 of 179 run) next to every
+partial number.
