@@ -78,7 +78,7 @@ def test_eval_summary_and_chart_are_served(api):
     body = api.get("/eval/summary").json()
     assert body["success"] is True
     assert body["data"]["testset"]["questions"] >= 239
-    assert body["data"]["retrieval_ablation"][-1]["setup"] == "Full, max score"
+    assert body["data"]["retrieval_ablation"][-1]["setup"] == "Fast (default)"
     r = api.get("/eval/ablation.png")
     assert r.status_code == 200 and r.headers["content-type"] == "image/png"
 
