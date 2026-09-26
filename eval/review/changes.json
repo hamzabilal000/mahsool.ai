@@ -1,0 +1,317 @@
+[
+ {
+  "id": "en-086",
+  "origin": "legal review",
+  "reason": "Q2: the non-ATL rate (1%) was missing.",
+  "basis": [
+   "ITO2001-s236Y",
+   "ITO2001-sch1-pIV-divXXVII",
+   "WHT2027-s236Y",
+   "ITO2001-sch10"
+  ],
+  "reference_answer": "Yes. The bank collects advance tax when the amount is transferred abroad, at 0.5% of the gross amount remitted (Division XXVII, Part IV, First Schedule) for a person on the Active Taxpayers' List. For a person not on the list the rate is doubled under rule 1 of the Tenth Schedule, i.e. 1% (FBR rate card TY2027: 0.50% ATL, 1.00% non-ATL). The tax is adjustable (section 236Y(2)).",
+  "gold_section_ids": [
+   "ITO2001-s236Y",
+   "ITO2001-sch1-pIV-divXXVII",
+   "WHT2027-s236Y"
+  ],
+  "acceptable_section_ids": [
+   "ITO2001-sch10"
+  ],
+  "review_items": [
+   "Q2"
+  ],
+  "before": "Yes. The bank collects adjustable advance tax at 0.5% of the gross amount remitted abroad."
+ },
+ {
+  "id": "en-037",
+  "origin": "legal review",
+  "reason": "Q3: the answer implied a short list; section 114(1)(b), (c) and (1A) add property, vehicle, NTN, electricity, professional-body and foreign-asset triggers.",
+  "basis": [
+   "ITO2001-s114"
+  ],
+  "reference_answer": "Section 114(1) lists several groups, so this is a summary of the main ones: (a) every company; (ab) every other person whose taxable income exceeds the maximum amount not chargeable to tax; (ac) non-profit organizations; (ae) every person whose income is subject to final taxation; (b) any other person who, among other things, was charged to tax in either of the two preceding tax years, claims a loss carried forward, owns immovable property of 500 square yards or more (or a flat in the specified urban areas, or a flat of 2,000 square feet or more in a rating area), owns a motor vehicle above 1000 CC, has obtained a National Tax Number, holds a commercial or industrial electricity connection with an annual bill above Rs. 500,000, is a resident registered with a chamber of commerce, trade or business association, market committee or professional body, or is a resident individual required to file a foreign income and assets statement under section 116A; and (c) persons notified by the Board. Under section 114(1A), an individual whose income from business exceeds Rs. 300,000 but not Rs. 400,000 must also file.",
+  "review_items": [
+   "Q3"
+  ],
+  "before": "Among others: every company; every other person whose taxable income exceeds the non-taxable limit; non-profit organizations; persons whose income is subject to final taxation; and persons meeting the conditions in section 114(1)(b)."
+ },
+ {
+  "id": "fbr-012",
+  "origin": "legal review",
+  "reason": "Q12: condition (iv) of clause (59AB), not an SME, was missing.",
+  "basis": [
+   "ITO2001-s2"
+  ],
+  "reference_answer": "A company registered on or after 1 July 2005 under the Companies Act, 2017 which has paid-up capital plus undistributed reserves not exceeding fifty million rupees, not more than two hundred and fifty employees at any time in the year, annual turnover not exceeding two hundred and fifty million rupees, is not formed by splitting up or reconstituting an existing company, and is not a small and medium enterprise as defined in clause (59A) of section 2 (clause (59AB) of section 2).",
+  "review_items": [
+   "Q12"
+  ],
+  "before": "A company registered on or after 1 July 2005 under the Companies Act, 2017 with paid-up capital plus undistributed reserves not exceeding fifty million rupees, not more than two hundred and fifty employees at any time in the year, annual turnover not exceeding two hundred and fifty million rupees, and not formed by splitting up or reconstituting an existing company."
+ },
+ {
+  "id": "fbr-037",
+  "origin": "legal review",
+  "reason": "Q16: the Chief Commissioner route in the proviso to section 119(4) was missing.",
+  "basis": [
+   "ITO2001-s119"
+  ],
+  "reference_answer": "By applying in writing to the Commissioner by the due date. If the Commissioner is satisfied that the delay is due to absence from Pakistan, sickness or other misadventure, or any other reasonable cause, an extension may be granted, normally not exceeding fifteen days unless there are exceptional circumstances. Where the Commissioner has not granted an extension, the Chief Commissioner may, on the taxpayer's application, grant an extension or further extension, again not exceeding fifteen days unless there are exceptional circumstances (proviso to section 119(4)). An extension does not change the due date for paying the tax for the purpose of default surcharge (section 119(6)).",
+  "review_items": [
+   "Q16"
+  ],
+  "before": "By applying in writing to the Commissioner by the due date. If the Commissioner is satisfied that the delay is due to absence from Pakistan, sickness or other misadventure, or any other reasonable cause, an extension may be granted, normally not exceeding fifteen days unless there are exceptional circumstances."
+ },
+ {
+  "id": "en-029",
+  "origin": "legal review",
+  "reason": "Q18, Q25 (translations ur-022, ru-022): 183 days is one of three residency tests in section 82.",
+  "basis": [
+   "ITO2001-s82"
+  ],
+  "reference_answer": "183 days or more in the tax year, in one or more periods (section 82(a)). Presence is only one of the tests: an individual is also a resident individual if he or she is an employee or official of the Federal Government or a Provincial Government posted abroad in the tax year (section 82(c)), or is a citizen of Pakistan who is not present in any other country for more than 182 days in the tax year or is not a resident taxpayer of any other country (section 82(d)).",
+  "review_items": [
+   "Q18",
+   "Q25"
+  ],
+  "before": "183 days or more in the tax year (in one or more periods)."
+ },
+ {
+  "id": "en-030",
+  "origin": "legal review",
+  "reason": "Q24 (translation ru-023): the other residency tests in section 82 were missing.",
+  "basis": [
+   "ITO2001-s82"
+  ],
+  "reference_answer": "Yes. A citizen of Pakistan is a resident individual if he or she is not present in any other country for more than 182 days in the tax year, or is not a resident taxpayer of any other country (section 82(d)). The other tests also apply: presence in Pakistan for 183 days or more in the tax year (section 82(a)), or being an employee or official of the Federal Government or a Provincial Government posted abroad in the tax year (section 82(c)).",
+  "review_items": [
+   "Q24"
+  ],
+  "before": "Yes, if the citizen is not present in any other country for more than 182 days in the tax year, or is not a resident taxpayer of any other country."
+ },
+ {
+  "id": "en-070",
+  "origin": "legal review",
+  "reason": "Q19, Q23 (translations ur-034, ru-034): section 168(3) denies credit for final taxes; not stated.",
+  "basis": [
+   "ITO2001-s168"
+  ],
+  "reference_answer": "Yes, in general: tax collected or deducted at source is treated as tax paid by the person, and a tax credit is allowed against the tax due for the tax year in which it was collected or deducted (sections 168(1) and 168(2)). The exception: no tax credit is allowed for tax collected or deducted that is a final tax under the provisions listed in section 168(3), for example tax on prizes and winnings under section 156(3). A credit that cannot be used in the year is refunded under section 170 (section 168(5)).",
+  "review_items": [
+   "Q19",
+   "Q23"
+  ],
+  "before": "Yes, subject to exceptions: tax collected or deducted is treated as tax paid, and a tax credit is allowed for the tax year in which it was collected or deducted."
+ },
+ {
+  "id": "en-063",
+  "origin": "legal review",
+  "reason": "Q20 (WRONG; translations ur-032, ru-032): the answer assumed every tenant withholds; only a prescribed person under section 155(3) does.",
+  "basis": [
+   "ITO2001-s155",
+   "ITO2001-sch1-pIII-divV"
+  ],
+  "reference_answer": "It depends on who the tenant is. Only a prescribed person must deduct tax from rent under section 155(1): the Federal Government, a Provincial Government, a Local Government, a company, a non-profit organization or charitable institution, a diplomatic mission of a foreign state, a private educational institution, boutique, beauty parlour, hospital, clinic or maternity home, an individual or association of persons paying gross rent of Rs. 1.5 million or more in a year, or any other person notified by the Board (section 155(3)). An ordinary individual tenant paying Rs. 500,000 a year is not a prescribed person and does not deduct tax. If the tenant is a prescribed person, serial 2 of Division V, Part III, First Schedule applies (rent above Rs. 300,000 and up to Rs. 600,000): 5% of the gross amount exceeding Rs. 300,000. 500,000 − 300,000 = 200,000; 5% x 200,000 = Rs. 10,000.",
+  "review_items": [
+   "Q20"
+  ],
+  "before": "Rent of Rs. 500,000 exceeds Rs. 300,000 but does not exceed Rs. 600,000, so serial 2 of Division V, Part III, First Schedule applies: 5% of the gross amount exceeding Rs. 300,000. 500,000 − 300,000 = 200,000; 5% x 200,000 = Rs. 10,000."
+ },
+ {
+  "id": "en-065",
+  "origin": "legal review",
+  "reason": "Q22 (translation ur-033): the non-ATL rate (30%) was missing.",
+  "basis": [
+   "ITO2001-s156",
+   "ITO2001-sch1-pIII-divVI",
+   "WHT2027-s156",
+   "ITO2001-sch10"
+  ],
+  "reference_answer": "15% of the gross amount paid for a winner on the Active Taxpayers' List (Division VI, Part III, First Schedule); for a winner not on the list the rate is doubled under rule 1 of the Tenth Schedule, i.e. 30% (FBR rate card TY2027: 15% ATL, 30% non-ATL). Under section 156(3) the tax is a final tax on the prize.",
+  "gold_section_ids": [
+   "ITO2001-s156",
+   "ITO2001-sch1-pIII-divVI",
+   "WHT2027-s156"
+  ],
+  "acceptable_section_ids": [
+   "ITO2001-sch10"
+  ],
+  "review_items": [
+   "Q22"
+  ],
+  "before": "15% of the gross amount paid (Division VI, Part III), and under section 156(3) the tax is a final tax."
+ },
+ {
+  "id": "en-038",
+  "origin": "completeness sweep",
+  "reason": "Exception in section 115(3) changes the answer for some owners.",
+  "basis": [
+   "ITO2001-s114",
+   "ITO2001-s115"
+  ],
+  "reference_answer": "Yes, as a rule. Section 114(1)(b) requires a return from a person who owns immovable property with a land area of 500 square yards or more in the specified areas, even without taxable income. Exception: under section 115(3) a widow, an orphan below twenty-five years, a disabled person, and (for owning immovable property) a non-resident person need not file solely because of that property.",
+  "gold_section_ids": [
+   "ITO2001-s114",
+   "ITO2001-s115"
+  ],
+  "before": "Yes. Section 114(1)(b) requires a return from a person who owns immovable property with land area of 500 square yards or more in the specified areas."
+ },
+ {
+  "id": "en-045",
+  "origin": "completeness sweep",
+  "reason": "Same gap as fbr-037 (legal review Q16): grounds, fifteen-day limit and the Chief Commissioner route.",
+  "basis": [
+   "ITO2001-s119"
+  ],
+  "reference_answer": "Apply in writing to the Commissioner for an extension, by the due date for filing the return. The Commissioner may grant it if satisfied that the delay is due to absence from Pakistan, sickness or other misadventure, or any other reasonable cause, normally for not more than fifteen days unless there are exceptional circumstances. If the Commissioner has not granted an extension, the Chief Commissioner may, on the taxpayer's application, grant an extension or further extension (proviso to section 119(4)).",
+  "before": "Apply in writing to the Commissioner for an extension, by the due date for filing the return."
+ },
+ {
+  "id": "en-056",
+  "origin": "completeness sweep",
+  "reason": "Non-ATL rate missing.",
+  "basis": [
+   "ITO2001-s150",
+   "ITO2001-sch1-pIII-divI",
+   "WHT2027-s150",
+   "ITO2001-sch10"
+  ],
+  "reference_answer": "15% for Real Estate Investment Trusts and cases other than those specifically listed (Division I, Part III, First Schedule, clause (b)), for a recipient on the Active Taxpayers' List; for a recipient not on the list the rate is doubled under rule 1 of the Tenth Schedule, i.e. 30% (FBR rate card TY2027: 15% ATL, 30% non-ATL).",
+  "gold_section_ids": [
+   "ITO2001-s150",
+   "ITO2001-sch1-pIII-divI",
+   "WHT2027-s150"
+  ],
+  "acceptable_section_ids": [
+   "ITO2001-sch10"
+  ],
+  "before": "15%, for Real Estate Investment Trusts and cases other than those specifically listed (Division I, Part III, First Schedule, clause (b))."
+ },
+ {
+  "id": "en-058",
+  "origin": "completeness sweep",
+  "reason": "Condition 'chargeable to tax under section 6' missing.",
+  "basis": [
+   "ITO2001-s152"
+  ],
+  "reference_answer": "Where the royalty or fee for technical services is chargeable to tax under section 6, the payer deducts tax from the gross amount at the rate in Division IV of Part I of the First Schedule (section 152(1)).",
+  "before": "The payer deducts tax from the gross amount at the rate in Division IV of Part I of the First Schedule."
+ },
+ {
+  "id": "en-061",
+  "origin": "completeness sweep",
+  "reason": "Final-tax conditions of section 154A(2)-(3) missing.",
+  "basis": [
+   "ITO2001-s154A",
+   "ITO2001-sch1-pIII-divIVA",
+   "WHT2027-s154A"
+  ],
+  "reference_answer": "The authorized dealer deducts 0.25% of the proceeds (for tax years 2024 to 2029) when the exporter is registered with and certified by the Pakistan Software Export Board. The tax is a final tax only if the conditions in section 154A(2) are met (return filed and withholding tax statements filed where required; the sales tax return condition does not apply to these exporters), and the exporter can opt out of final taxation each year (section 154A(3)).",
+  "before": "The authorized dealer deducts 0.25% of the proceeds (for tax years 2024 to 2029) when the exporter is registered with the Pakistan Software Export Board."
+ },
+ {
+  "id": "en-064",
+  "origin": "completeness sweep",
+  "reason": "Who must withhold (prescribed person, section 155(3)) and the non-ATL rate missing.",
+  "basis": [
+   "ITO2001-s155",
+   "ITO2001-sch1-pIII-divV",
+   "WHT2027-s155",
+   "ITO2001-sch10"
+  ],
+  "reference_answer": "Tax is deducted only if the tenant is a prescribed person under section 155(3) (for example a government, a company, a non-profit organization, or an individual or association of persons paying gross rent of Rs. 1.5 million or more a year). Where it applies, the rate on rent paid to a company is 15% of the gross amount of rent (Division V, Part III, clause (b)) for a company on the Active Taxpayers' List, and 30% for one not on the list (FBR rate card TY2027: 15% ATL, 30% non-ATL, read with rule 1 of the Tenth Schedule).",
+  "gold_section_ids": [
+   "ITO2001-s155",
+   "ITO2001-sch1-pIII-divV",
+   "WHT2027-s155"
+  ],
+  "acceptable_section_ids": [
+   "ITO2001-sch10"
+  ],
+  "before": "15% of the gross amount of rent (Division V, Part III, clause (b))."
+ },
+ {
+  "id": "en-066",
+  "origin": "completeness sweep",
+  "reason": "Non-ATL rate and final-tax status missing.",
+  "basis": [
+   "ITO2001-s156",
+   "ITO2001-sch1-pIII-divVI",
+   "WHT2027-s156",
+   "ITO2001-sch10"
+  ],
+  "reference_answer": "20% of the gross amount paid (Division VI, Part III, First Schedule) for a winner on the Active Taxpayers' List; for a winner not on the list the rate is doubled under rule 1 of the Tenth Schedule, i.e. 40% (FBR rate card TY2027: 20% ATL, 40% non-ATL). Under section 156(3) the tax is a final tax on the winnings.",
+  "gold_section_ids": [
+   "ITO2001-s156",
+   "ITO2001-sch1-pIII-divVI",
+   "WHT2027-s156"
+  ],
+  "acceptable_section_ids": [
+   "ITO2001-sch10"
+  ],
+  "before": "20% of the gross amount paid."
+ },
+ {
+  "id": "en-077",
+  "origin": "completeness sweep",
+  "reason": "The undertaking route in section 182A(3) and the other consequences were missing.",
+  "basis": [
+   "ITO2001-s182A"
+  ],
+  "reference_answer": "Not for that year, unless they pay a surcharge on late filing: Rs. 25,000 for an individual (Rs. 50,000 for an AOP, Rs. 100,000 for a company). Under section 182A(3) the surcharge condition does not apply to an individual who gives the Commissioner an undertaking not to acquire any property for six months. A late filer also cannot carry forward a loss for that year and gets no refund while off the list.",
+  "before": "Not for that year, unless they pay a surcharge on late filing: Rs. 25,000 for an individual (Rs. 50,000 for an AOP, Rs. 100,000 for a company)."
+ },
+ {
+  "id": "en-084",
+  "origin": "completeness sweep",
+  "reason": "Non-ATL rate and exceptions missing.",
+  "basis": [
+   "ITO2001-s236C",
+   "ITO2001-sch1-pIV-divX",
+   "WHT2027-s236C",
+   "ITO2001-sch10"
+  ],
+  "reference_answer": "The registering authority collects from the seller 2.75% of the gross consideration received (Division X, Part IV, First Schedule) if the seller is on the Active Taxpayers' List, and 11.5% if not (Tenth Schedule; FBR rate card TY2027). The tax is adjustable, but it is minimum tax if the property was acquired and disposed of in the same tax year; dependants of a Shaheed or of a person who died in government or armed forces service are exempt on the first sale of an allotted property (section 236C).",
+  "gold_section_ids": [
+   "ITO2001-s236C",
+   "ITO2001-sch1-pIV-divX",
+   "WHT2027-s236C"
+  ],
+  "acceptable_section_ids": [
+   "ITO2001-sch10"
+  ],
+  "before": "The registering authority collects from the seller 2.75% of the gross consideration received."
+ },
+ {
+  "id": "en-085",
+  "origin": "completeness sweep",
+  "reason": "Non-ATL rates and the expatriate-scheme exclusion missing.",
+  "basis": [
+   "ITO2001-s236K",
+   "ITO2001-sch1-pIV-divXVIII",
+   "WHT2027-s236K",
+   "ITO2001-sch10"
+  ],
+  "reference_answer": "1.25% of the fair market value for a purchaser on the Active Taxpayers' List, collected by the registering authority (Division XVIII, Part IV, First Schedule). A purchaser not on the list pays 10.5% where the fair market value does not exceed Rs. 50 million, 14.5% above Rs. 50 million up to Rs. 100 million, and 18.5% above Rs. 100 million (Tenth Schedule; FBR rate card TY2027). The tax is adjustable, and schemes of the Federal or a Provincial Government or authority for expatriate Pakistanis are excluded (section 236K(4)).",
+  "gold_section_ids": [
+   "ITO2001-s236K",
+   "ITO2001-sch1-pIV-divXVIII",
+   "WHT2027-s236K"
+  ],
+  "acceptable_section_ids": [
+   "ITO2001-sch10"
+  ],
+  "before": "1.25% of the fair market value, collected from the purchaser by the registering authority."
+ },
+ {
+  "id": "en-087",
+  "origin": "completeness sweep",
+  "reason": "The non-ATL route for property acquired from 1 July 2024 was missing.",
+  "basis": [
+   "ITO2001-s37",
+   "ITO2001-sch1-pI-divVIII"
+  ],
+  "reference_answer": "15% where the holding period does not exceed one year (Division VIII, Part I). For property acquired on or after 1 July 2024, the 15% applies to persons on the Active Taxpayers' List on the date of disposal; persons not on the list pay at the Division I rates (individuals and AOPs) or Division II rates (companies), and for individuals and AOPs not on the list the rate is not less than 15% of the gain.",
+  "before": "15% where the holding period does not exceed one year (Division VIII, Part I; for property acquired on or after 1 July 2024 the 15% applies to persons on the Active Taxpayers' List)."
+ }
+]

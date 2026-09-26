@@ -378,3 +378,10 @@ def test_groq_client_fails_fast_on_daily_limit():
     with pytest.raises(LLMError, match="daily limit"):
         client.chat_json("m", [{"role": "user", "content": "hi"}])
     assert len(calls) == 1  # no retries
+
+
+def test_answer_prompt_requires_conditions_atl_rates_and_who_it_applies_to():
+    system = answer_messages("q", [], "en", 2027, False)[0]["content"]
+    assert "Active Taxpayers' List" in system and "give both" in system
+    assert "prescribed person" in system and "conditional" in system
+    assert "Do not add conditions that are not in the sources" in system

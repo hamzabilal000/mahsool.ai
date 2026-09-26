@@ -26,3 +26,12 @@ def test_translations_share_split_and_gold_with_their_source() -> None:
         if i.source_id:
             src = by_id[i.source_id]
             assert (i.split, i.gold_section_ids) == (src.split, src.gold_section_ids)
+
+
+def test_translations_share_their_source_answer_and_sections():
+    items = {i.id: i for i in load_testset()}
+    for item in items.values():
+        if item.source_id:
+            src = items[item.source_id]
+            for key in ("reference_answer", "gold_section_ids", "acceptable_section_ids", "split"):
+                assert getattr(item, key) == getattr(src, key), (item.id, key)

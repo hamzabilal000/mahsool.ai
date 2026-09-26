@@ -56,14 +56,16 @@ def test_long_section_excerpt_keeps_the_chunk_with_the_definition():
 
 
 class FakeJudge:
-    def __init__(self, name, verdict=None, error=None):
+    def __init__(self, name, verdict=None, error=None, omits="no"):
         self.name, self.verdict, self.error, self.calls = name, verdict, error, 0
+        self.omits = omits
 
     def __call__(self, messages):
         self.calls += 1
         if self.error:
             raise LLMError(self.error)
-        return {"section_answers_question": "yes", "reference_matches_section": self.verdict}
+        return {"section_answers_question": "yes", "reference_matches_section": self.verdict,
+                "omits_condition": self.omits}  # fmt: skip
 
     def cached(self, messages):
         raise KeyError
@@ -81,3 +83,10 @@ def test_second_opinion_never_blocks_and_stops_after_its_daily_limit():
     results = verify(items, ok, quota)
     assert quota.calls == 1  # not asked again after the daily limit
     assert all(r["ok"] and r["second_opinion"] is None for r in results.values())
+
+
+def test_omitted_condition_fails_the_required_judge():
+    items = [i for i in load_testset() if i.id == "en-001"]
+    results = verify(items, FakeJudge("qwen", "yes", omits="yes"))
+    assert not results["en-001"]["ok"]
+    assert "omits_condition = yes" in results["en-001"]["reasons"][0]

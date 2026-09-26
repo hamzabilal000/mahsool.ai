@@ -22,21 +22,25 @@
   "roman_urdu": 5,
   "out_of_scope": 3
  },
- "instructions": "For each question, read the gold section(s) and set expert_ok to true if the reference answer is correct and complete enough, false otherwise (explain in expert_notes).",
+ "instructions": "expert_ok / expert_notes hold the AI legal-review tool's verdicts (see 'review'). A review by a tax professional is still pending.",
  "questions": [
   {
+   "q": "Q1",
    "id": "en-011",
    "group": "english",
    "question": "Are overtime payments and bonuses part of salary for income tax purposes?",
    "gold_section_ids": [
     "ITO2001-s12"
    ],
-   "reference_answer": "Yes. Salary includes pay, wages and other remuneration such as leave pay, overtime, bonus, commission, fees, gratuity and work-condition supplements.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Yes. Salary includes pay, wages and other remuneration such as leave pay, overtime, bonus, commission, fees, gratuity and work-condition supplements.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q2",
    "id": "en-086",
    "group": "english",
    "question": "Is tax deducted when I pay a foreign merchant with my debit or credit card?",
@@ -44,216 +48,270 @@
     "ITO2001-s236Y",
     "ITO2001-sch1-pIV-divXXVII"
    ],
-   "reference_answer": "Yes. The bank collects adjustable advance tax at 0.5% of the gross amount remitted abroad.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Yes. The bank collects adjustable advance tax at 0.5% of the gross amount remitted abroad.",
+   "verdict": "partly_correct",
+   "expert_ok": false,
+   "expert_notes": "s236Y rate is 0.5% for ATL and 1% for non-ATL in TY2027, not just 0.5%.",
+   "corpus_check": "Supported: Division XXVII (0.5%), Tenth Schedule rule 1 (non-ATL rate increased by hundred percent), rate card 236Y (0.50% / 1.00%).",
+   "fixed_via": "en-086"
   },
   {
+   "q": "Q3",
    "id": "en-037",
    "group": "english",
    "question": "Who is required to file an income tax return?",
    "gold_section_ids": [
     "ITO2001-s114"
    ],
-   "reference_answer": "Among others: every company; every other person whose taxable income exceeds the non-taxable limit; non-profit organizations; persons whose income is subject to final taxation; and persons meeting the conditions in section 114(1)(b).",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Among others: every company; every other person whose taxable income exceeds the non-taxable limit; non-profit organizations; persons whose income is subject to final taxation; and persons meeting the conditions in section 114(1)(b).",
+   "verdict": "partly_correct",
+   "expert_ok": false,
+   "expert_notes": "s114 has more filing triggers (property, vehicles >1000cc, NTN, electricity connections, professional bodies, foreign income/assets, s114(1A)); answer should say the list isn't complete and name the main ones.",
+   "corpus_check": "Supported: section 114(1)(b)(i)-(x), 114(1)(c), 114(1A).",
+   "fixed_via": "en-037"
   },
   {
+   "q": "Q4",
    "id": "en-010",
    "group": "english",
    "question": "What are the heads of income under the Income Tax Ordinance?",
    "gold_section_ids": [
     "ITO2001-s11"
    ],
-   "reference_answer": "Salary; Income from Property; Income from Business; Capital Gains; and Income from Other Sources.",
-   "verified": "machine",
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Salary; Income from Property; Income from Business; Capital Gains; and Income from Other Sources.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q5",
    "id": "en-001",
    "group": "english",
    "question": "What does section 4 of the Income Tax Ordinance impose tax on, and at which rates?",
    "gold_section_ids": [
     "ITO2001-s4"
    ],
-   "reference_answer": "Income tax is imposed for each tax year on every person who has taxable income for the year, at the rates in Division I or II of Part I of the First Schedule; tax credits are then subtracted from the resulting amount.",
-   "verified": "machine",
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Income tax is imposed for each tax year on every person who has taxable income for the year, at the rates in Division I or II of Part I of the First Schedule; tax credits are then subtracted from the resulting amount.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q6",
    "id": "en-060",
    "group": "english",
    "question": "Below what yearly total do payments for services escape withholding under section 153?",
    "gold_section_ids": [
     "ITO2001-s153"
    ],
-   "reference_answer": "Payments for services below Rs. 30,000 in aggregate during a financial year.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Payments for services below Rs. 30,000 in aggregate during a financial year.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q7",
    "id": "en-028",
    "group": "english",
    "question": "What is the 'tax year' under the Income Tax Ordinance?",
    "gold_section_ids": [
     "ITO2001-s74"
    ],
-   "reference_answer": "A twelve-month period ending on 30 June (the normal tax year), named after the calendar year in which that date falls.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "A twelve-month period ending on 30 June (the normal tax year), named after the calendar year in which that date falls.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q8",
    "id": "en-071",
    "group": "english",
    "question": "What does it mean when tax deducted is a 'final tax' under section 169?",
    "gold_section_ids": [
     "ITO2001-s169"
    ],
-   "reference_answer": "The income is not chargeable under any head in computing taxable income, and no deduction is allowed for expenditure incurred in deriving it.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "The income is not chargeable under any head in computing taxable income, and no deduction is allowed for expenditure incurred in deriving it.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q9",
    "id": "en-033",
    "group": "english",
    "question": "How much foreign tax credit is allowed on foreign-source income?",
    "gold_section_ids": [
     "ITO2001-s103"
    ],
-   "reference_answer": "The lesser of the foreign income tax paid and the Pakistan tax payable on that income.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "The lesser of the foreign income tax paid and the Pakistan tax payable on that income.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q10",
    "id": "en-058",
    "group": "english",
    "question": "How is tax withheld on royalty or fees for technical services paid to a non-resident?",
    "gold_section_ids": [
     "ITO2001-s152"
    ],
-   "reference_answer": "The payer deducts tax from the gross amount at the rate in Division IV of Part I of the First Schedule.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "The payer deducts tax from the gross amount at the rate in Division IV of Part I of the First Schedule.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q11",
    "id": "en-072",
    "group": "english",
    "question": "How long does the Commissioner have to decide my refund application?",
    "gold_section_ids": [
     "ITO2001-s170"
    ],
-   "reference_answer": "Within sixty days of receiving the application, the Commissioner must serve a written order after giving an opportunity of being heard.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Within sixty days of receiving the application, the Commissioner must serve a written order after giving an opportunity of being heard.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q12",
    "id": "fbr-012",
    "group": "fbr",
    "question": "Which companies qualify as a small company?",
    "gold_section_ids": [
     "ITO2001-s2"
    ],
-   "reference_answer": "A company registered on or after 1 July 2005 under the Companies Act, 2017 with paid-up capital plus undistributed reserves not exceeding fifty million rupees, not more than two hundred and fifty employees at any time in the year, annual turnover not exceeding two hundred and fifty million rupees, and not formed by splitting up or reconstituting an existing company.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "A company registered on or after 1 July 2005 under the Companies Act, 2017 with paid-up capital plus undistributed reserves not exceeding fifty million rupees, not more than two hundred and fifty employees at any time in the year, annual turnover not exceeding two hundred and fifty million rupees, and not formed by splitting up or reconstituting an existing company.",
+   "verdict": "partly_correct",
+   "expert_ok": false,
+   "expert_notes": "small company also must NOT be an SME under s2(59A) (condition (iv) of s2(59AB)).",
+   "corpus_check": "Supported: section 2(59AB)(iv) and 2(59A).",
+   "fixed_via": "fbr-012"
   },
   {
+   "q": "Q13",
    "id": "fbr-026",
    "group": "fbr",
    "question": "If a business later recovers an expense it already deducted, how is the recovered amount treated?",
    "gold_section_ids": [
     "ITO2001-s70"
    ],
-   "reference_answer": "The amount received, in cash or in kind, is included in income chargeable under the same head for the tax year in which it is received.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "The amount received, in cash or in kind, is included in income chargeable under the same head for the tax year in which it is received.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q14",
    "id": "fbr-039",
    "group": "fbr",
    "question": "What is pre-commencement expenditure, and how is it deducted?",
    "gold_section_ids": [
     "ITO2001-s25"
    ],
-   "reference_answer": "Expenditure incurred before a business commences, wholly and exclusively to derive taxable income, such as feasibility studies, prototypes and trial production, but not land or depreciated or amortised costs. It is amortised on a straight-line basis at the rate in Part III of the Third Schedule.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Expenditure incurred before a business commences, wholly and exclusively to derive taxable income, such as feasibility studies, prototypes and trial production, but not land or depreciated or amortised costs. It is amortised on a straight-line basis at the rate in Part III of the Third Schedule.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q15",
    "id": "fbr-023",
    "group": "fbr",
    "question": "What is a tax year, and how is it denoted?",
    "gold_section_ids": [
     "ITO2001-s74"
    ],
-   "reference_answer": "The normal tax year is a period of twelve months ending on 30 June, denoted by the calendar year in which that date falls. A special tax year is a different twelve-month period allowed to a person, denoted by the calendar year relevant to the normal tax year in which its closing date falls.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "The normal tax year is a period of twelve months ending on 30 June, denoted by the calendar year in which that date falls. A special tax year is a different twelve-month period allowed to a person, denoted by the calendar year relevant to the normal tax year in which its closing date falls.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q16",
    "id": "fbr-037",
    "group": "fbr",
    "question": "How can a taxpayer who cannot file the return by the due date get more time?",
    "gold_section_ids": [
     "ITO2001-s119"
    ],
-   "reference_answer": "By applying in writing to the Commissioner by the due date. If the Commissioner is satisfied that the delay is due to absence from Pakistan, sickness or other misadventure, or any other reasonable cause, an extension may be granted, normally not exceeding fifteen days unless there are exceptional circumstances.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "By applying in writing to the Commissioner by the due date. If the Commissioner is satisfied that the delay is due to absence from Pakistan, sickness or other misadventure, or any other reasonable cause, an extension may be granted, normally not exceeding fifteen days unless there are exceptional circumstances.",
+   "verdict": "partly_correct",
+   "expert_ok": false,
+   "expert_notes": "s119(4) lets the Chief Commissioner grant a further extension if the Commissioner doesn't.",
+   "corpus_check": "Supported: proviso to section 119(4).",
+   "fixed_via": "fbr-037"
   },
   {
+   "q": "Q17",
    "id": "fbr-018",
    "group": "fbr",
    "question": "Who is a whistleblower under the Income Tax Ordinance?",
    "gold_section_ids": [
     "ITO2001-s227B"
    ],
-   "reference_answer": "A person who reports concealment or evasion of income tax leading to detection or collection of taxes, fraud, corruption or misconduct, to the competent authority having power to take action against the person or against an income tax authority committing fraud, corruption or misconduct or involved in concealment or evasion of taxes.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "A person who reports concealment or evasion of income tax leading to detection or collection of taxes, fraud, corruption or misconduct, to the competent authority having power to take action against the person or against an income tax authority committing fraud, corruption or misconduct or involved in concealment or evasion of taxes.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q18",
    "id": "ur-022",
    "group": "urdu",
    "question": "ریذیڈنٹ شمار ہونے کے لیے ایک ٹیکس سال میں کتنے دن پاکستان میں رہنا ضروری ہے؟",
    "gold_section_ids": [
     "ITO2001-s82"
    ],
-   "reference_answer": "183 days or more in the tax year (in one or more periods).",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "183 days or more in the tax year (in one or more periods).",
+   "verdict": "partly_correct",
+   "expert_ok": false,
+   "expert_notes": "183 days is only one residency test in s82; also government officials posted abroad and the s82(d) citizen test.",
+   "corpus_check": "Supported: section 82(a), (c), (d).",
+   "fixed_via": "en-029"
   },
   {
+   "q": "Q19",
    "id": "ur-034",
    "group": "urdu",
    "question": "کیا منبع پر کٹا ہوا ٹیکس میری کل ٹیکس ذمہ داری میں ایڈجسٹ ہو سکتا ہے؟",
    "gold_section_ids": [
     "ITO2001-s168"
    ],
-   "reference_answer": "Yes, subject to exceptions: tax collected or deducted is treated as tax paid, and a tax credit is allowed for the tax year in which it was collected or deducted.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Yes, subject to exceptions: tax collected or deducted is treated as tax paid, and a tax credit is allowed for the tax year in which it was collected or deducted.",
+   "verdict": "partly_correct",
+   "expert_ok": false,
+   "expert_notes": "s168(3) denies credit for taxes that are final tax; say this explicitly.",
+   "corpus_check": "Supported: section 168(3).",
+   "fixed_via": "en-070"
   },
   {
+   "q": "Q20",
    "id": "ur-032",
    "group": "urdu",
    "question": "ایک مالک مکان کو سال میں پانچ لاکھ روپے کرایہ ملتا ہے۔ کرایہ دار کو کتنا ٹیکس کاٹنا چاہیے؟",
@@ -261,12 +319,15 @@
     "ITO2001-s155",
     "ITO2001-sch1-pIII-divV"
    ],
-   "reference_answer": "5% of the amount exceeding Rs. 300,000: 5% x 200,000 = Rs. 10,000 (Division V, Part III, First Schedule, slab Rs. 300,001 to 600,000).",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "5% of the amount exceeding Rs. 300,000: 5% x 200,000 = Rs. 10,000 (Division V, Part III, First Schedule, slab Rs. 300,001 to 600,000).",
+   "verdict": "wrong",
+   "expert_ok": false,
+   "expert_notes": "s155 withholding applies only when the tenant is a \"prescribed person\" (governments, companies, NPOs, specified institutions, individuals/AOPs paying gross rent of Rs 1.5 million+ a year, others notified). An ordinary individual paying Rs 500,000 a year does not withhold. Make the answer conditional.",
+   "corpus_check": "Supported: 'prescribed person' is defined in section 155(3) (not section 2); the list also includes diplomatic missions and private educational institutions, boutiques, beauty parlours, hospitals, clinics and maternity homes.",
+   "fixed_via": "en-063"
   },
   {
+   "q": "Q21",
    "id": "ur-015",
    "group": "urdu",
    "question": "کمپنی کی طرف سے ذاتی استعمال کے لیے دی گئی گاڑی پر ملازم کو ٹیکس کیسے لگتا ہے؟",
@@ -274,12 +335,15 @@
     "ITO2001-s13",
     "ITR2002-r5"
    ],
-   "reference_answer": "Section 13(3) adds a prescribed amount to salary; under rule 5 it is 5% (partly personal, partly official use) or 10% (personal use only) of the employer's cost of the vehicle, or of its fair market value at the start of the lease if leased.",
-   "verified": "machine",
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Section 13(3) adds a prescribed amount to salary; under rule 5 it is 5% (partly personal, partly official use) or 10% (personal use only) of the employer's cost of the vehicle, or of its fair market value at the start of the lease if leased.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q22",
    "id": "ur-033",
    "group": "urdu",
    "question": "پرائز بانڈ کے انعام پر کتنا ٹیکس کٹتا ہے اور کیا یہ حتمی ٹیکس ہے؟",
@@ -287,48 +351,60 @@
     "ITO2001-s156",
     "ITO2001-sch1-pIII-divVI"
    ],
-   "reference_answer": "15% of the gross amount paid (Division VI, Part III), and under section 156(3) the tax is a final tax.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "15% of the gross amount paid (Division VI, Part III), and under section 156(3) the tax is a final tax.",
+   "verdict": "partly_correct",
+   "expert_ok": false,
+   "expert_notes": "prize bond tax is 15% ATL / 30% non-ATL, final.",
+   "corpus_check": "Supported: Division VI (15%), section 156(3) (final), rate card 156 (15% / 30%), Tenth Schedule rule 1.",
+   "fixed_via": "en-065"
   },
   {
+   "q": "Q23",
    "id": "ru-034",
    "group": "roman_urdu",
    "question": "jo tax source pe kat gaya wo meri total tax liability me adjust hoga?",
    "gold_section_ids": [
     "ITO2001-s168"
    ],
-   "reference_answer": "Yes, subject to exceptions: tax collected or deducted is treated as tax paid, and a tax credit is allowed for the tax year in which it was collected or deducted.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Yes, subject to exceptions: tax collected or deducted is treated as tax paid, and a tax credit is allowed for the tax year in which it was collected or deducted.",
+   "verdict": "partly_correct",
+   "expert_ok": false,
+   "expert_notes": "s168(3) denies credit for taxes that are final tax; say this explicitly.",
+   "corpus_check": "Supported: section 168(3).",
+   "fixed_via": "en-070"
   },
   {
+   "q": "Q24",
    "id": "ru-023",
    "group": "roman_urdu",
    "question": "saal ka zyada time bahar rehta hun, phir bhi resident count hounga kya?",
    "gold_section_ids": [
     "ITO2001-s82"
    ],
-   "reference_answer": "Yes, if the citizen is not present in any other country for more than 182 days in the tax year, or is not a resident taxpayer of any other country.",
-   "verified": "machine",
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Yes, if the citizen is not present in any other country for more than 182 days in the tax year, or is not a resident taxpayer of any other country.",
+   "verdict": "partly_correct",
+   "expert_ok": false,
+   "expert_notes": "183 days is only one residency test in s82; also government officials posted abroad and the s82(d) citizen test.",
+   "corpus_check": "Supported: section 82(a), (c), (d).",
+   "fixed_via": "en-030"
   },
   {
+   "q": "Q25",
    "id": "ru-022",
    "group": "roman_urdu",
    "question": "resident banne k liye pakistan me kitne din rehna zaroori hai?",
    "gold_section_ids": [
     "ITO2001-s82"
    ],
-   "reference_answer": "183 days or more in the tax year (in one or more periods).",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "183 days or more in the tax year (in one or more periods).",
+   "verdict": "partly_correct",
+   "expert_ok": false,
+   "expert_notes": "183 days is only one residency test in s82; also government officials posted abroad and the s82(d) citizen test.",
+   "corpus_check": "Supported: section 82(a), (c), (d).",
+   "fixed_via": "en-029"
   },
   {
+   "q": "Q26",
    "id": "ru-015",
    "group": "roman_urdu",
    "question": "office ki gaari ghar ke kaam k liye bhi use karta hun, is pe tax kaise lagta hai?",
@@ -336,52 +412,77 @@
     "ITO2001-s13",
     "ITR2002-r5"
    ],
-   "reference_answer": "Section 13(3) adds a prescribed amount to salary; under rule 5 it is 5% (partly personal, partly official use) or 10% (personal use only) of the employer's cost of the vehicle, or of its fair market value at the start of the lease if leased.",
-   "verified": "machine",
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Section 13(3) adds a prescribed amount to salary; under rule 5 it is 5% (partly personal, partly official use) or 10% (personal use only) of the employer's cost of the vehicle, or of its fair market value at the start of the lease if leased.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q27",
    "id": "ru-021",
    "group": "roman_urdu",
    "question": "sarkari university ko donation diya, tax me koi faida milega?",
    "gold_section_ids": [
     "ITO2001-s61"
    ],
-   "reference_answer": "Yes. Donations to a board of education or a university established under Federal or Provincial law qualify for a tax credit under section 61, computed by formula.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Yes. Donations to a board of education or a university established under Federal or Provincial law qualify for a tax credit under section 61, computed by formula.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q28",
    "id": "oos-030",
    "group": "out_of_scope",
    "question": "ATIR ka koi faisla batao jisme salary pe tax khatam kar diya gaya ho",
    "gold_section_ids": [],
-   "reference_answer": "Refuse: Case law is out of scope. Say the question is not covered by the tax laws Mahsool covers, in the user's language.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Refuse: Case law is out of scope. Say the question is not covered by the tax laws Mahsool covers, in the user's language.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q29",
    "id": "oos-014",
    "group": "out_of_scope",
    "question": "کل کے پاکستان سپر لیگ کے میچ میں کون جیتے گا؟",
    "gold_section_ids": [],
-   "reference_answer": "Refuse: Not a tax question. Say the question is not covered by the tax laws Mahsool covers, in the user's language.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Refuse: Not a tax question. Say the question is not covered by the tax laws Mahsool covers, in the user's language.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   },
   {
+   "q": "Q30",
    "id": "oos-019",
    "group": "out_of_scope",
    "question": "کیا مجھے بٹ کوائن میں سرمایہ کاری کرنی چاہیے؟",
    "gold_section_ids": [],
-   "reference_answer": "Refuse: Investment advice, not tax law. Say the question is not covered by the tax laws Mahsool covers, in the user's language.",
-   "verified": false,
-   "expert_ok": null,
-   "expert_notes": null
+   "reference_answer_reviewed": "Refuse: Investment advice, not tax law. Say the question is not covered by the tax laws Mahsool covers, in the user's language.",
+   "verdict": "correct",
+   "expert_ok": true,
+   "expert_notes": null,
+   "corpus_check": null,
+   "fixed_via": null
   }
- ]
+ ],
+ "review": {
+  "reviewer": "ChatGPT (OpenAI), an AI legal-review tool with web access, 26 Sep 2026",
+  "kind": "AI tool (not a human or professional review)",
+  "result": {
+   "correct": 19,
+   "partly_correct": 10,
+   "wrong": 1
+  },
+  "corrections": "Each correction was checked against the corpus (ITO 2001, Rules 2002, WHT rate card TY2027) before it was applied; all 11 were supported (DECISIONS D50).",
+  "tax_professional_review": "pending"
+ }
 }

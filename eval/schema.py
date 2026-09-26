@@ -30,10 +30,12 @@ class TestItem(BaseModel):
         default=None, description="For translations: id of the question this was translated from"
     )
     tax_year: int = 2027
-    verified: Literal[False, "machine", "human"] = Field(
+    verified: Literal[False, "machine", "reviewed", "human"] = Field(
         default=False,
         description='"machine": passed eval/verify_testset.py (an independent LLM judge, Qwen, '
-        'on the gold text and a code check of every number; D45); "human": checked by an expert',
+        'on the gold text and a code check of every number; D45); "reviewed": also judged correct, '
+        "or corrected, in the AI legal review of eval/expert_sample.json and re-verified against "
+        'the law text (D50); "human": checked by a tax professional',
     )
     second_opinion: Literal["agree", "disagree"] | None = Field(
         default=None,

@@ -35,7 +35,7 @@ import argparse
 import ast
 import json
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
 from dataclasses import dataclass
 from datetime import date
 from itertools import pairwise
@@ -54,6 +54,8 @@ from ingestion.models import Chunk
 ROOT = Path(__file__).resolve().parents[1]
 CACHE = ROOT / "eval" / "cache" / "verify.jsonl"
 FLAGGED = ROOT / "eval" / "FLAGGED.md"
+EXPERT_SAMPLE = ROOT / "eval" / "expert_sample.json"
+CHANGES = ROOT / "eval" / "review" / "changes.json"
 # The judges come from settings (judge1, judge2). Qwen's cached verdicts were made with 700
 # output tokens and no thinking; Gemini Flash thinks a little ("low"), which counts against its
 # output tokens, so it gets more room.
@@ -240,13 +242,18 @@ JUDGE_SYSTEM = """You check questions in a test set for a Pakistani income tax a
 get a question, a reference answer and the text of the law section(s) that should answer it. \
 Use ONLY the given section text, not your own knowledge of tax law.
 
-Answer two questions:
+Answer three questions:
 1. section_answers_question: does the section text contain the answer to the question?
 2. reference_matches_section: is everything the reference answer states supported by the \
 section text (no wrong numbers, conditions or claims; leaving out minor details is fine)?
+3. omits_condition: does the reference answer omit a condition or exception stated in the \
+section text that changes the answer? For example: a different rate for persons not on the \
+Active Taxpayers' List, who the rule applies to (e.g. only a "prescribed person" must \
+withhold), another test or route that also applies, an exemption, or final-tax treatment. \
+"yes" = it omits such a condition; "no" = nothing that changes the answer is missing.
 
 Return JSON only: {"section_answers_question": "yes" or "no", "reference_matches_section": \
-"yes" or "no", "reason": "one or two short sentences"}"""
+"yes" or "no", "omits_condition": "yes" or "no", "reason": "one or two short sentences"}"""
 
 SCOPE_SYSTEM = """You check out-of-scope questions in a test set for an income tax assistant. \
 The assistant covers ONLY: the Income Tax Ordinance 2001, the Income Tax Rules 2002 and FBR's \
@@ -277,6 +284,14 @@ def judge_messages(item: TestItem, excerpt: str) -> list[dict[str, str]]:
 
 def yes(v) -> bool:
     return str(v).strip().lower() == "yes"
+
+
+def failed_checks(out: dict, item: TestItem) -> list[str]:
+    """Checks a verdict fails: both "yes" checks, and (in scope) no omitted condition (D51)."""
+    failed = [k for k in CHECKS if not yes(out.get(k))]
+    if item.group != "out_of_scope" and str(out.get("omits_condition", "")).strip().lower() != "no":
+        failed.append("omits_condition")
+    return failed
 
 
 @dataclass
@@ -325,9 +340,11 @@ def verify(items: list[TestItem], judge: Judge, second: Judge | None = None) -> 
             reasons.append(f"{judge.name}: not run ({str(e)[:80]})")
         else:
             judges[judge.name] = out
-            failed = [k for k in CHECKS if not yes(out.get(k))]
+            failed = failed_checks(out, item)
             if failed:
-                reasons.append(f"{judge.name}: {', '.join(failed)} = no. {out.get('reason', '')}")
+                shown = ", ".join("omits_condition = yes" if k == "omits_condition" else f"{k} = no"
+                                  for k in failed)  # fmt: skip
+                reasons.append(f"{judge.name}: {shown}. {out.get('reason', '')}")
         opinion, opinion_reason = None, None
         if not second_exhausted:
             try:
@@ -338,7 +355,7 @@ def verify(items: list[TestItem], judge: Judge, second: Judge | None = None) -> 
                 judges[second.name] = {"error": str(e)[:200]}
             else:
                 judges[second.name] = out2
-                opinion = "agree" if all(yes(out2.get(k)) for k in CHECKS) else "disagree"
+                opinion = "disagree" if failed_checks(out2, item) else "agree"
                 opinion_reason = out2.get("reason")
         elif second is not None:
             try:  # cache only: never calls the API after the daily limit
@@ -347,7 +364,7 @@ def verify(items: list[TestItem], judge: Judge, second: Judge | None = None) -> 
                 out2 = None
             if out2 is not None:
                 judges[second.name] = out2
-                opinion = "agree" if all(yes(out2.get(k)) for k in CHECKS) else "disagree"
+                opinion = "disagree" if failed_checks(out2, item) else "agree"
                 opinion_reason = out2.get("reason")
         missing: list[float] = []
         if item.group != "out_of_scope":
@@ -422,8 +439,50 @@ def write_flagged(
         for i in disagree:
             why = str(results[i.id]["second_opinion_reason"] or "").replace("|", "/")
             lines.append(f"| {i.id} | {i.question[:90].replace('|', '/')} | {why} |")
+    lines += change_log(items)
     FLAGGED.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return "\n".join(lines[:4])
+
+
+def change_log(items: list[TestItem]) -> list[str]:
+    """Every reference-answer change from the legal review and the completeness sweep
+    (eval/review/changes.json), with the translations that follow each one (D50)."""
+    changes = json.loads(CHANGES.read_text(encoding="utf-8")) if CHANGES.exists() else []
+    if not changes:
+        return []
+    kids: dict[str, list[str]] = defaultdict(list)
+    for i in items:
+        if i.source_id:
+            kids[i.source_id].append(i.id)
+    by_origin = Counter(c["origin"] for c in changes)
+    lines = ["", f"## Changes to reference answers ({len(changes)}: "
+             + ", ".join(f"{n} from the {o}" for o, n in by_origin.items()) + ")", "",
+             "Each change was checked against the law text in the corpus (sections under "
+             "'basis') before it was applied with `python -m eval.apply_changes`; translations "
+             "take the new answer and sections from their source.", ""]  # fmt: skip
+    for c in changes:
+        follows = ", ".join(kids.get(c["id"], [])) or "none"
+        items_ = ", ".join(c.get("review_items", []))
+        lines += [
+            f"### {c['id']} ({c['origin']}{', ' + items_ if items_ else ''})",
+            f"- Why: {c['reason']}",
+            f"- Basis: {', '.join(c['basis'])}",
+            f"- Translations updated: {follows}",
+            f"- Before: {c.get('before', '')}",
+            f"- After: {c['reference_answer']}",
+            "",
+        ]
+    return lines
+
+
+def reviewed_ids() -> set[str]:
+    """Sample questions the AI legal review judged correct, or that were corrected per its notes
+    (eval/expert_sample.json, D50). They become "reviewed" only if they also pass here."""
+    if not EXPERT_SAMPLE.exists():
+        return set()
+    sample = json.loads(EXPERT_SAMPLE.read_text(encoding="utf-8"))
+    return {q["id"] for q in sample.get("questions", [])
+            if q.get("verdict") == "correct" or q.get("fixed_via")}  # fmt: skip
 
 
 def main() -> None:
@@ -444,9 +503,11 @@ def main() -> None:
     print(write_flagged(items, results, judge.name, second.name if second else None))
     if not args.dry_run:
         rows = [json.loads(line) for line in TESTSET.read_text(encoding="utf-8").splitlines()]
+        reviewed = reviewed_ids()
         for row in rows:
             if row.get("verified") != "human":
-                row["verified"] = "machine" if results[row["id"]]["ok"] else False
+                status = "reviewed" if row["id"] in reviewed else "machine"
+                row["verified"] = status if results[row["id"]]["ok"] else False
             row["second_opinion"] = results[row["id"]]["second_opinion"]
         TESTSET.write_text(
             "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8"
