@@ -1,13 +1,13 @@
 {
  "summary": {
   "english": {
-   "n": 36,
-   "correct_strict": 0.9722,
+   "n": 38,
+   "correct_strict": 0.9737,
    "correct_lenient": 1.0
   },
   "in_scope": {
-   "n": 37,
-   "correct_strict": 0.973,
+   "n": 39,
+   "correct_strict": 0.9744,
    "correct_lenient": 1.0
   },
   "out_of_scope": {
@@ -20,7 +20,7 @@
    "correct_strict": 1.0,
    "correct_lenient": 1.0
   },
-  "not_run_end_to_end": 139,
+  "not_run_end_to_end": 137,
   "not_judged": [],
   "source": "2026-09-26-e2e-test.json"
  },
@@ -149,7 +149,7 @@
    "id": "en-028",
    "group": "english",
    "verdict": "yes",
-   "reason": "The app answer correctly defines the normal tax year as a twelve-month period ending on 30 June, named after the calendar year in which that date falls, matching the reference exactly while adding correct details about special tax years."
+   "reason": "The app answer correctly identifies the tax year as the twelve-month period ending on 30 June, named after the calendar year, which matches the reference; the additional details about special tax years do not contradict the core definition."
   },
   {
    "id": "en-029",
@@ -240,6 +240,18 @@
    "group": "english",
    "verdict": "yes",
    "reason": "Both answers state the deadline is thirty days from receiving the order."
+  },
+  {
+   "id": "en-050",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that tax is due on the date for furnishing the return of income, which matches the reference, and provides additional correct details about assessments and extensions."
+  },
+  {
+   "id": "en-052",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that income subject to section 149 withholding is excluded from the computation of section 147 advance tax."
   },
   {
    "id": "oos-001",

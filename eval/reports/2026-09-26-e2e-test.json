@@ -1,13 +1,13 @@
 {
  "summary": {
   "english": {
-   "n": 36,
+   "n": 38,
    "answered": 1.0,
    "correct_citation": 1,
    "correct_citation_answered": 1
   },
   "in_scope": {
-   "n": 37,
+   "n": 39,
    "answered": 1.0,
    "correct_citation": 1,
    "correct_citation_answered": 1
@@ -23,8 +23,6 @@
    "correct_citation_answered": 1
   },
   "not_run": [
-   "en-050",
-   "en-052",
    "en-054",
    "en-057",
    "en-058",
@@ -187,11 +185,11 @@
     "2 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 139253,
+    "search": 3314,
     "answer": 0,
-    "total": 139254,
+    "total": 3315,
     "rewrite": 1,
-    "retrieval": 139252,
+    "retrieval": 3313,
     "rerank": 0,
     "answer_llm": 0,
     "citation_check": 0,
@@ -220,18 +218,15 @@
     "2 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 10439,
-    "answer": 1773,
-    "total": 12214,
+    "search": 994,
+    "answer": 0,
+    "total": 995,
     "rewrite": 1,
-    "retrieval": 10438,
+    "retrieval": 993,
     "rerank": 0,
-    "llm_wait": 0,
-    "llm_api": 1773,
-    "answer_llm": 1774,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 1
+    "llm_cached": 2
    }
   },
   {
@@ -258,11 +253,11 @@
     "1 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 7884,
+    "search": 926,
     "answer": 0,
-    "total": 7885,
+    "total": 927,
     "rewrite": 1,
-    "retrieval": 7883,
+    "retrieval": 926,
     "rerank": 0,
     "answer_llm": 0,
     "citation_check": 0,
@@ -289,11 +284,11 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 2211,
+    "search": 1086,
     "answer": 0,
-    "total": 2212,
+    "total": 1087,
     "rewrite": 1,
-    "retrieval": 2210,
+    "retrieval": 1085,
     "rerank": 0,
     "answer_llm": 0,
     "citation_check": 0,
@@ -322,18 +317,15 @@
     "1 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 3994,
-    "answer": 1171,
-    "total": 5167,
+    "search": 954,
+    "answer": 0,
+    "total": 955,
     "rewrite": 1,
-    "retrieval": 3994,
+    "retrieval": 954,
     "rerank": 0,
-    "llm_wait": 0,
-    "llm_api": 1171,
-    "answer_llm": 1172,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 1
+    "llm_cached": 2
    }
   },
   {
@@ -356,18 +348,15 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 1530,
-    "answer": 783,
-    "total": 2314,
+    "search": 735,
+    "answer": 0,
+    "total": 735,
     "rewrite": 1,
-    "retrieval": 1530,
+    "retrieval": 734,
     "rerank": 0,
-    "llm_wait": 0,
-    "llm_api": 782,
-    "answer_llm": 783,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 1
+    "llm_cached": 2
    }
   },
   {
@@ -392,18 +381,15 @@
     "3 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 3293,
-    "answer": 21403,
-    "total": 24698,
+    "search": 891,
+    "answer": 0,
+    "total": 892,
     "rewrite": 1,
-    "retrieval": 3293,
+    "retrieval": 891,
     "rerank": 0,
-    "llm_wait": 20000,
-    "llm_api": 1402,
-    "answer_llm": 21404,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -430,18 +416,15 @@
     "1 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 7211,
-    "answer": 16287,
-    "total": 23499,
+    "search": 844,
+    "answer": 0,
+    "total": 845,
     "rewrite": 1,
-    "retrieval": 7210,
+    "retrieval": 843,
     "rerank": 0,
-    "llm_wait": 14000,
-    "llm_api": 2286,
-    "answer_llm": 16287,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -466,18 +449,15 @@
     "2 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 990,
-    "answer": 26889,
-    "total": 27881,
+    "search": 743,
+    "answer": 0,
+    "total": 744,
     "rewrite": 1,
-    "retrieval": 990,
+    "retrieval": 743,
     "rerank": 0,
-    "llm_wait": 25000,
-    "llm_api": 1888,
-    "answer_llm": 26890,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -502,18 +482,15 @@
     "1 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 899,
-    "answer": 21247,
-    "total": 22146,
+    "search": 721,
+    "answer": 0,
+    "total": 722,
     "rewrite": 1,
-    "retrieval": 898,
+    "retrieval": 721,
     "rerank": 0,
-    "llm_wait": 20000,
-    "llm_api": 1246,
-    "answer_llm": 21247,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -536,18 +513,15 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 838,
-    "answer": 22602,
-    "total": 23441,
+    "search": 819,
+    "answer": 0,
+    "total": 820,
     "rewrite": 1,
-    "retrieval": 838,
+    "retrieval": 819,
     "rerank": 0,
-    "llm_wait": 21000,
-    "llm_api": 1601,
-    "answer_llm": 22602,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -570,18 +544,15 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 1950,
-    "answer": 24775,
-    "total": 26726,
+    "search": 813,
+    "answer": 0,
+    "total": 814,
     "rewrite": 1,
-    "retrieval": 1950,
+    "retrieval": 813,
     "rerank": 0,
-    "llm_wait": 23000,
-    "llm_api": 1774,
-    "answer_llm": 24775,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -606,18 +577,15 @@
     "2 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 4541,
-    "answer": 9490,
-    "total": 14032,
+    "search": 896,
+    "answer": 0,
+    "total": 897,
     "rewrite": 1,
-    "retrieval": 4540,
+    "retrieval": 895,
     "rerank": 0,
-    "llm_wait": 8000,
-    "llm_api": 1489,
-    "answer_llm": 9490,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -642,18 +610,15 @@
     "3 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 1941,
-    "answer": 22896,
-    "total": 24838,
+    "search": 850,
+    "answer": 0,
+    "total": 851,
     "rewrite": 1,
-    "retrieval": 1940,
+    "retrieval": 849,
     "rerank": 0,
-    "llm_wait": 21000,
-    "llm_api": 1895,
-    "answer_llm": 22896,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -676,18 +641,15 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 2655,
-    "answer": 19788,
-    "total": 22444,
+    "search": 944,
+    "answer": 0,
+    "total": 944,
     "rewrite": 1,
-    "retrieval": 2654,
+    "retrieval": 943,
     "rerank": 0,
-    "llm_wait": 18000,
-    "llm_api": 1787,
-    "answer_llm": 19789,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -712,18 +674,15 @@
     "3 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 883,
-    "answer": 15776,
-    "total": 16660,
+    "search": 795,
+    "answer": 0,
+    "total": 796,
     "rewrite": 1,
-    "retrieval": 883,
+    "retrieval": 794,
     "rerank": 0,
-    "llm_wait": 14000,
-    "llm_api": 1775,
-    "answer_llm": 15776,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -747,18 +706,15 @@
     "1 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 528,
-    "answer": 19157,
-    "total": 19686,
-    "rewrite": 1,
-    "retrieval": 528,
+    "search": 631,
+    "answer": 0,
+    "total": 632,
+    "rewrite": 0,
+    "retrieval": 631,
     "rerank": 0,
-    "llm_wait": 17000,
-    "llm_api": 2156,
-    "answer_llm": 19157,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -781,18 +737,15 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 1380,
-    "answer": 53489,
-    "total": 54870,
+    "search": 754,
+    "answer": 0,
+    "total": 755,
     "rewrite": 1,
-    "retrieval": 1379,
+    "retrieval": 753,
     "rerank": 0,
-    "llm_wait": 51000,
-    "llm_api": 2488,
-    "answer_llm": 53489,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 3
+    "llm_cached": 2
    }
   },
   {
@@ -818,18 +771,15 @@
     "1 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 2403,
-    "answer": 1274,
-    "total": 3678,
+    "search": 958,
+    "answer": 0,
+    "total": 959,
     "rewrite": 1,
-    "retrieval": 2402,
+    "retrieval": 958,
     "rerank": 0,
-    "llm_wait": 0,
-    "llm_api": 1274,
-    "answer_llm": 1275,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 1
+    "llm_cached": 2
    }
   },
   {
@@ -855,18 +805,15 @@
     "Mentions sections not among the cited sources: 15A"
    ],
    "timings_ms": {
-    "search": 1817,
-    "answer": 12859,
-    "total": 14677,
+    "search": 872,
+    "answer": 0,
+    "total": 873,
     "rewrite": 1,
-    "retrieval": 1817,
+    "retrieval": 871,
     "rerank": 0,
-    "llm_wait": 11000,
-    "llm_api": 1858,
-    "answer_llm": 12859,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -878,30 +825,32 @@
     "ITO2001-s74"
    ],
    "cited": [
-    "ITO2001-s74",
-    "ITO2001-s2"
+    "ITO2001-s2",
+    "ITO2001-s74"
    ],
    "citation_correct": true,
-   "answer": "Under the Income Tax Ordinance a \"tax year\" (normal tax year) is a period of twelve months ending on 30 June and is denoted by the calendar year in which that date falls [1]. A person may be allowed to use a different twelve‑month period as a special tax year, either by a Board notification or by a Commissioner’s order, and that special year is likewise identified by the calendar year of its closing date [1]. The definition is restated in the definitions clause, which includes both normal and special tax years [3].",
+   "answer": "Under the Income Tax Ordinance, a “tax year” is the twelve‑month period ending on 30 June and is normally identified by the calendar year in which that date falls (the “normal tax year”)【1】. A person may, however, be permitted to use a different twelve‑month period as a “special tax year” if authorised by the Board or the Commissioner under Section 74【2】. The definition applies to the tax year 2027 and thereafter.",
    "search_queries": [
     "What is the 'tax year' under the Income Tax Ordinance?",
     "definition of tax year in Income Tax Ordinance 2001",
     "tax year period July 1 to June 30 under Income Tax Ordinance"
    ],
-   "warnings": [],
+   "warnings": [
+    "3 sentence(s) without a citation"
+   ],
    "timings_ms": {
-    "search": 782,
-    "answer": 16752,
-    "total": 17535,
+    "search": 756,
+    "answer": 1247,
+    "total": 2004,
     "rewrite": 1,
-    "retrieval": 782,
+    "retrieval": 755,
     "rerank": 0,
-    "llm_wait": 15000,
-    "llm_api": 1751,
-    "answer_llm": 16752,
+    "llm_wait": 0,
+    "llm_api": 1247,
+    "answer_llm": 1248,
     "citation_check": 0,
     "llm_cached": 1,
-    "llm_calls": 2
+    "llm_calls": 1
    }
   },
   {
@@ -927,18 +876,15 @@
     "1 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 858,
-    "answer": 16572,
-    "total": 17432,
+    "search": 862,
+    "answer": 0,
+    "total": 863,
     "rewrite": 1,
-    "retrieval": 858,
+    "retrieval": 861,
     "rerank": 0,
-    "llm_wait": 14000,
-    "llm_api": 2571,
-    "answer_llm": 16573,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -962,18 +908,15 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 1179,
-    "answer": 38199,
-    "total": 39380,
+    "search": 846,
+    "answer": 0,
+    "total": 847,
     "rewrite": 1,
-    "retrieval": 1179,
+    "retrieval": 846,
     "rerank": 0,
-    "llm_wait": 36000,
-    "llm_api": 2198,
-    "answer_llm": 38200,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 3
+    "llm_cached": 2
    }
   },
   {
@@ -997,18 +940,15 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 805,
-    "answer": 1395,
-    "total": 2201,
+    "search": 759,
+    "answer": 0,
+    "total": 760,
     "rewrite": 1,
-    "retrieval": 805,
+    "retrieval": 758,
     "rerank": 0,
-    "llm_wait": 0,
-    "llm_api": 1394,
-    "answer_llm": 1395,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 1
+    "llm_cached": 2
    }
   },
   {
@@ -1033,18 +973,15 @@
     "2 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 922,
-    "answer": 7592,
-    "total": 8515,
+    "search": 890,
+    "answer": 0,
+    "total": 891,
     "rewrite": 1,
-    "retrieval": 921,
+    "retrieval": 890,
     "rerank": 0,
-    "llm_wait": 6000,
-    "llm_api": 1591,
-    "answer_llm": 7593,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -1067,18 +1004,15 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 890,
-    "answer": 17498,
-    "total": 18390,
+    "search": 833,
+    "answer": 0,
+    "total": 834,
     "rewrite": 1,
-    "retrieval": 890,
+    "retrieval": 833,
     "rerank": 0,
-    "llm_wait": 16000,
-    "llm_api": 1498,
-    "answer_llm": 17499,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -1101,18 +1035,15 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 840,
-    "answer": 26444,
-    "total": 27286,
-    "rewrite": 1,
-    "retrieval": 840,
+    "search": 775,
+    "answer": 0,
+    "total": 776,
+    "rewrite": 0,
+    "retrieval": 775,
     "rerank": 0,
-    "llm_wait": 24000,
-    "llm_api": 2444,
-    "answer_llm": 26445,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -1138,18 +1069,15 @@
     "1 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 2252,
-    "answer": 23976,
-    "total": 26229,
+    "search": 782,
+    "answer": 0,
+    "total": 783,
     "rewrite": 1,
-    "retrieval": 2252,
+    "retrieval": 781,
     "rerank": 0,
-    "llm_wait": 22000,
-    "llm_api": 1975,
-    "answer_llm": 23976,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -1176,18 +1104,15 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 1505,
-    "answer": 22697,
-    "total": 24203,
+    "search": 807,
+    "answer": 0,
+    "total": 808,
     "rewrite": 0,
-    "retrieval": 1504,
+    "retrieval": 807,
     "rerank": 0,
-    "llm_wait": 20000,
-    "llm_api": 2696,
-    "answer_llm": 22697,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -1213,18 +1138,15 @@
     "Mentions sections not among the cited sources: 2, 116A"
    ],
    "timings_ms": {
-    "search": 862,
-    "answer": 21943,
-    "total": 22806,
+    "search": 837,
+    "answer": 0,
+    "total": 838,
     "rewrite": 0,
-    "retrieval": 862,
+    "retrieval": 836,
     "rerank": 0,
-    "llm_wait": 19000,
-    "llm_api": 2942,
-    "answer_llm": 21943,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -1249,18 +1171,15 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 1008,
-    "answer": 30774,
-    "total": 31783,
+    "search": 952,
+    "answer": 0,
+    "total": 953,
     "rewrite": 1,
-    "retrieval": 1007,
+    "retrieval": 951,
     "rerank": 0,
-    "llm_wait": 29000,
-    "llm_api": 1774,
-    "answer_llm": 30775,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -1285,18 +1204,15 @@
     "2 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 2314,
-    "answer": 90276,
-    "total": 92592,
+    "search": 790,
+    "answer": 0,
+    "total": 791,
     "rewrite": 0,
-    "retrieval": 2314,
+    "retrieval": 790,
     "rerank": 0,
-    "llm_wait": 78000,
-    "llm_api": 12272,
-    "answer_llm": 90276,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 3
+    "llm_cached": 2
    }
   },
   {
@@ -1321,18 +1237,15 @@
     "2 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 2134,
-    "answer": 1083,
-    "total": 3219,
+    "search": 827,
+    "answer": 0,
+    "total": 828,
     "rewrite": 1,
-    "retrieval": 2133,
-    "rerank": 1,
-    "llm_wait": 0,
-    "llm_api": 1083,
-    "answer_llm": 1084,
+    "retrieval": 827,
+    "rerank": 0,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 1
+    "llm_cached": 2
    }
   },
   {
@@ -1357,18 +1270,15 @@
     "4 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 7495,
-    "answer": 22095,
-    "total": 29591,
-    "rewrite": 1,
-    "retrieval": 7495,
+    "search": 754,
+    "answer": 0,
+    "total": 755,
+    "rewrite": 0,
+    "retrieval": 754,
     "rerank": 0,
-    "llm_wait": 17000,
-    "llm_api": 5093,
-    "answer_llm": 22095,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 2
+    "llm_cached": 2
    }
   },
   {
@@ -1394,18 +1304,15 @@
     "3 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 2140,
-    "answer": 62492,
-    "total": 64633,
+    "search": 879,
+    "answer": 0,
+    "total": 880,
     "rewrite": 1,
-    "retrieval": 2140,
+    "retrieval": 879,
     "rerank": 0,
-    "llm_wait": 60000,
-    "llm_api": 2491,
-    "answer_llm": 62492,
+    "answer_llm": 0,
     "citation_check": 0,
-    "llm_cached": 1,
-    "llm_calls": 3
+    "llm_cached": 2
    }
   },
   {
@@ -1428,18 +1335,88 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 1972,
-    "answer": 1433,
-    "total": 3406,
+    "search": 934,
+    "answer": 0,
+    "total": 935,
     "rewrite": 1,
-    "retrieval": 1971,
+    "retrieval": 933,
+    "rerank": 0,
+    "answer_llm": 0,
+    "citation_check": 0,
+    "llm_cached": 2
+   }
+  },
+  {
+   "id": "en-050",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s137"
+   ],
+   "cited": [
+    "ITO2001-s137"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, the tax on your taxable income is payable on the due date for filing your return of income for that year.  If tax is payable under an assessment or amended assessment order, a notice is served and the amount must be paid within thirty days of that notice.  The Commissioner may grant an extension or instalment payment, but the original due date remains the basis for any default surcharge.",
+   "search_queries": [
+    "When is income tax on my taxable income due for payment?",
+    "What is the due date for payment of income tax on taxable income under the Income Tax Ordinance 2001?",
+    "What conditions affect the due date for payment of income tax on taxable income?"
+   ],
+   "warnings": [
+    "3 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 879,
+    "answer": 1675,
+    "total": 2555,
+    "rewrite": 1,
+    "retrieval": 879,
     "rerank": 0,
     "llm_wait": 0,
-    "llm_api": 1429,
-    "answer_llm": 1434,
+    "llm_api": 1674,
+    "answer_llm": 1675,
     "citation_check": 0,
     "llm_cached": 1,
     "llm_calls": 1
+   }
+  },
+  {
+   "id": "en-052",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s147"
+   ],
+   "cited": [
+    "ITO2001-s147"
+   ],
+   "citation_correct": true,
+   "answer": "No. Income that is subject to deduction of tax at source under section 149 is expressly excluded from the advance‑tax liability under section 147(1)(c), so it is not taken into account when computing the quarterly advance tax.",
+   "search_queries": [
+    "Is income subject to salary withholding under section 149 included when computing quarterly advance tax under section 147?",
+    "Does section 147 advance tax calculation include salary income withheld under section 149?",
+    "What is the relationship between salary withholding under section 149 and advance tax under section 147?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation",
+    "Mentions sections not among the cited sources: 149"
+   ],
+   "timings_ms": {
+    "search": 904,
+    "answer": 5118,
+    "total": 6025,
+    "rewrite": 1,
+    "retrieval": 903,
+    "rerank": 0,
+    "llm_wait": 4000,
+    "llm_api": 1116,
+    "answer_llm": 5119,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
    }
   },
   {
@@ -1458,12 +1435,12 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 852,
+    "search": 786,
     "rewrite": 1,
-    "retrieval": 851,
+    "retrieval": 785,
     "rerank": 0,
     "llm_cached": 1,
-    "total": 852
+    "total": 787
    }
   },
   {
@@ -1482,12 +1459,12 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 1043,
+    "search": 806,
     "rewrite": 1,
-    "retrieval": 1042,
+    "retrieval": 805,
     "rerank": 0,
     "llm_cached": 1,
-    "total": 1043
+    "total": 806
    }
   },
   {
@@ -1502,12 +1479,12 @@
    "search_queries": [],
    "warnings": [],
    "timings_ms": {
-    "search": 488,
+    "search": 398,
     "rewrite": 1,
-    "retrieval": 487,
+    "retrieval": 398,
     "rerank": 0,
     "llm_cached": 1,
-    "total": 488
+    "total": 399
    }
   },
   {
@@ -1526,12 +1503,12 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 4686,
+    "search": 874,
     "rewrite": 1,
-    "retrieval": 4686,
+    "retrieval": 874,
     "rerank": 0,
     "llm_cached": 1,
-    "total": 4687
+    "total": 875
    }
   },
   {
@@ -1550,12 +1527,12 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 2780,
+    "search": 854,
     "rewrite": 1,
-    "retrieval": 2779,
+    "retrieval": 853,
     "rerank": 0,
     "llm_cached": 1,
-    "total": 2780
+    "total": 855
    }
   },
   {
@@ -1570,12 +1547,12 @@
    "search_queries": [],
    "warnings": [],
    "timings_ms": {
-    "search": 2536,
-    "rewrite": 0,
-    "retrieval": 2536,
+    "search": 334,
+    "rewrite": 1,
+    "retrieval": 333,
     "rerank": 0,
     "llm_cached": 1,
-    "total": 2537
+    "total": 334
    }
   },
   {
@@ -1594,12 +1571,12 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 7974,
+    "search": 1002,
     "rewrite": 1,
-    "retrieval": 7974,
+    "retrieval": 1001,
     "rerank": 0,
     "llm_cached": 1,
-    "total": 7975
+    "total": 1003
    }
   },
   {
@@ -1618,12 +1595,12 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 8373,
+    "search": 770,
     "rewrite": 1,
-    "retrieval": 8373,
+    "retrieval": 769,
     "rerank": 0,
     "llm_cached": 1,
-    "total": 8374
+    "total": 770
    }
   },
   {
@@ -1638,12 +1615,12 @@
    "search_queries": [],
    "warnings": [],
    "timings_ms": {
-    "search": 1727,
+    "search": 316,
     "rewrite": 1,
-    "retrieval": 1726,
+    "retrieval": 316,
     "rerank": 0,
     "llm_cached": 1,
-    "total": 1727
+    "total": 317
    }
   },
   {
@@ -1662,12 +1639,12 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 5108,
+    "search": 779,
     "rewrite": 1,
-    "retrieval": 5108,
+    "retrieval": 778,
     "rerank": 0,
     "llm_cached": 1,
-    "total": 5109
+    "total": 779
    }
   },
   {
@@ -1686,12 +1663,12 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 7847,
-    "rewrite": 0,
-    "retrieval": 7846,
+    "search": 756,
+    "rewrite": 1,
+    "retrieval": 755,
     "rerank": 0,
     "llm_cached": 1,
-    "total": 7847
+    "total": 756
    }
   },
   {
@@ -1710,12 +1687,12 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 8539,
-    "rewrite": 0,
-    "retrieval": 8539,
+    "search": 852,
+    "rewrite": 1,
+    "retrieval": 852,
     "rerank": 0,
     "llm_cached": 1,
-    "total": 8540
+    "total": 853
    }
   },
   {
@@ -1730,12 +1707,12 @@
    "search_queries": [],
    "warnings": [],
    "timings_ms": {
-    "search": 1238,
+    "search": 329,
     "rewrite": 0,
-    "retrieval": 1238,
+    "retrieval": 328,
     "rerank": 0,
     "llm_cached": 1,
-    "total": 1239
+    "total": 329
    }
   },
   {
@@ -1758,13 +1735,13 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 9720,
-    "answer": 4,
-    "total": 9726,
+    "search": 779,
+    "answer": 0,
+    "total": 780,
     "rewrite": 0,
-    "retrieval": 9720,
+    "retrieval": 779,
     "rerank": 0,
-    "answer_llm": 4,
+    "answer_llm": 0,
     "citation_check": 0,
     "llm_cached": 2
    }
