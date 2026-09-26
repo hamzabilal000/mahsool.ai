@@ -1241,11 +1241,14 @@
  "en-083": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: omits_condition = yes. The section text explicitly states in sub-section (4) that advance tax is not collected from Government, foreign diplomats, diplomatic missions, or persons with a Commissioner's certificate of exempt income. The reference answer omits these specific exemptions."
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "yes",
+    "reason": "The section text explicitly states in sub-section (4) that advance tax is not collected from Government, foreign diplomats, diplomatic missions, or persons with a Commissioner's certificate of exempt income. The reference answer omits these specific exemptions."
    }
   },
   "missing_numbers": [],
@@ -1255,11 +1258,14 @@
  "en-084": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: omits_condition = yes. The reference answer omits the exemption for non-resident individuals (POC/NICOP/CNIC) who acquired property through FCVA/NRVA accounts, for whom the tax is a final discharge of liability rather than adjustable."
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "yes",
+    "reason": "The reference answer omits the exemption for non-resident individuals (POC/NICOP/CNIC) who acquired property through FCVA/NRVA accounts, for whom the tax is a final discharge of liability rather than adjustable."
    }
   },
   "missing_numbers": [],
@@ -1269,11 +1275,14 @@
  "en-085": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: omits_condition = yes. The reference answer omits the condition in Section 236K(2) that for non-resident individuals holding POC/NICOP/CNIC who acquire property via FCVA/NRVA, the tax collected is a final discharge of liability, which contradicts the general statement that the tax is adjustable."
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "yes",
+    "reason": "The reference answer omits the condition in Section 236K(2) that for non-resident individuals holding POC/NICOP/CNIC who acquire property via FCVA/NRVA, the tax collected is a final discharge of liability, which contradicts the general statement that the tax is adjustable."
    }
   },
   "missing_numbers": [],
@@ -1297,11 +1306,11 @@
  "en-087": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1311,11 +1320,11 @@
  "en-088": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1325,11 +1334,11 @@
  "en-089": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1339,11 +1348,11 @@
  "en-090": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1773,11 +1782,11 @@
  "fbr-001": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1787,11 +1796,11 @@
  "fbr-002": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1801,11 +1810,11 @@
  "fbr-003": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1815,11 +1824,11 @@
  "fbr-004": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1829,11 +1838,11 @@
  "fbr-005": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1843,11 +1852,11 @@
  "fbr-006": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1857,11 +1866,11 @@
  "fbr-007": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1871,11 +1880,11 @@
  "fbr-008": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1885,11 +1894,11 @@
  "fbr-009": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1899,11 +1908,11 @@
  "fbr-010": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1913,11 +1922,11 @@
  "fbr-011": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1927,11 +1936,11 @@
  "fbr-012": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1941,11 +1950,11 @@
  "fbr-013": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1955,11 +1964,11 @@
  "fbr-014": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1969,11 +1978,11 @@
  "fbr-015": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -1998,11 +2007,11 @@
  "fbr-017": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2012,11 +2021,11 @@
  "fbr-018": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2026,11 +2035,11 @@
  "fbr-019": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2040,11 +2049,11 @@
  "fbr-020": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2054,11 +2063,11 @@
  "fbr-021": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2068,11 +2077,11 @@
  "fbr-022": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2082,11 +2091,11 @@
  "fbr-023": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2096,11 +2105,11 @@
  "fbr-024": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2110,11 +2119,11 @@
  "fbr-025": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2124,11 +2133,11 @@
  "fbr-026": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2138,11 +2147,11 @@
  "fbr-027": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2152,11 +2161,11 @@
  "fbr-028": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2166,11 +2175,11 @@
  "fbr-029": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2180,11 +2189,11 @@
  "fbr-030": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2194,11 +2203,11 @@
  "fbr-031": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2208,11 +2217,11 @@
  "fbr-032": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2222,11 +2231,11 @@
  "fbr-033": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2236,11 +2245,11 @@
  "fbr-034": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2250,11 +2259,11 @@
  "fbr-035": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2264,11 +2273,11 @@
  "fbr-036": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2278,11 +2287,11 @@
  "fbr-037": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2292,11 +2301,11 @@
  "fbr-038": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2306,11 +2315,11 @@
  "fbr-039": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2320,11 +2329,11 @@
  "en-091": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2334,11 +2343,11 @@
  "en-092": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2348,11 +2357,11 @@
  "en-093": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2362,11 +2371,11 @@
  "en-094": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2376,11 +2385,11 @@
  "en-095": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2390,11 +2399,11 @@
  "en-096": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2404,11 +2413,11 @@
  "en-097": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2418,11 +2427,11 @@
  "en-098": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2432,11 +2441,11 @@
  "en-099": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],
@@ -2446,11 +2455,11 @@
  "en-100": {
   "ok": false,
   "reasons": [
-   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+   "qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message)"
   ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+    "error": "daily limit reached earlier in this run: daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_dem"
    }
   },
   "missing_numbers": [],

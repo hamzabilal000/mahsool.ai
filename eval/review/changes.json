@@ -264,14 +264,14 @@
  {
   "id": "en-084",
   "origin": "completeness sweep",
-  "reason": "Non-ATL rate and exceptions missing.",
+  "reason": "Non-ATL rate and exceptions missing. Judge completeness check (2026-09-26): the FCVA/NRVA final-discharge proviso was added too.",
   "basis": [
    "ITO2001-s236C",
    "ITO2001-sch1-pIV-divX",
    "WHT2027-s236C",
    "ITO2001-sch10"
   ],
-  "reference_answer": "The registering authority collects from the seller 2.75% of the gross consideration received (Division X, Part IV, First Schedule) if the seller is on the Active Taxpayers' List, and 11.5% if not (Tenth Schedule; FBR rate card TY2027). The tax is adjustable, but it is minimum tax if the property was acquired and disposed of in the same tax year; dependants of a Shaheed or of a person who died in government or armed forces service are exempt on the first sale of an allotted property (section 236C).",
+  "reference_answer": "The registering authority collects from the seller 2.75% of the gross consideration received (Division X, Part IV, First Schedule) if the seller is on the Active Taxpayers' List, and 11.5% if not (Tenth Schedule; FBR rate card TY2027). The tax is adjustable, but it is minimum tax if the property was acquired and disposed of in the same tax year, and it is a final discharge of tax liability (in lieu of capital gains tax) for a non-resident individual holding a POC, NICOP or CNIC who acquired the property through an FCVA or NRVA account; dependants of a Shaheed or of a person who died in government or armed forces service are exempt on the first sale of an allotted property (section 236C).",
   "gold_section_ids": [
    "ITO2001-s236C",
    "ITO2001-sch1-pIV-divX",
@@ -285,14 +285,14 @@
  {
   "id": "en-085",
   "origin": "completeness sweep",
-  "reason": "Non-ATL rates and the expatriate-scheme exclusion missing.",
+  "reason": "Non-ATL rates and the expatriate-scheme exclusion missing. Judge completeness check (2026-09-26): the FCVA/NRVA final-discharge proviso was added too.",
   "basis": [
    "ITO2001-s236K",
    "ITO2001-sch1-pIV-divXVIII",
    "WHT2027-s236K",
    "ITO2001-sch10"
   ],
-  "reference_answer": "1.25% of the fair market value for a purchaser on the Active Taxpayers' List, collected by the registering authority (Division XVIII, Part IV, First Schedule). A purchaser not on the list pays 10.5% where the fair market value does not exceed Rs. 50 million, 14.5% above Rs. 50 million up to Rs. 100 million, and 18.5% above Rs. 100 million (Tenth Schedule; FBR rate card TY2027). The tax is adjustable, and schemes of the Federal or a Provincial Government or authority for expatriate Pakistanis are excluded (section 236K(4)).",
+  "reference_answer": "1.25% of the fair market value for a purchaser on the Active Taxpayers' List, collected by the registering authority (Division XVIII, Part IV, First Schedule). A purchaser not on the list pays 10.5% where the fair market value does not exceed Rs. 50 million, 14.5% above Rs. 50 million up to Rs. 100 million, and 18.5% above Rs. 100 million (Tenth Schedule; FBR rate card TY2027). The tax is adjustable, except that it is a final discharge of tax liability for a non-resident individual holding a POC, NICOP or CNIC who buys through an FCVA or NRVA account (section 236K(2)); schemes of the Federal or a Provincial Government or authority for expatriate Pakistanis are excluded (section 236K(4)).",
   "gold_section_ids": [
    "ITO2001-s236K",
    "ITO2001-sch1-pIV-divXVIII",
@@ -353,5 +353,15 @@
   ],
   "reference_answer": "Yes. If the refund is not paid within three months of becoming due, compensation is paid at KIBOR plus 0.5% per annum for the delay (section 171(1)). Exception: where there is reason to believe the refund claimed is not admissible, no compensation is paid until the investigation of the claim is completed and the claim is accepted or rejected (proviso to section 171(1)).",
   "before": "Yes. If the refund is not paid within three months of becoming due, compensation is paid at KIBOR plus 0.5% per annum for the delay."
+ },
+ {
+  "id": "en-083",
+  "origin": "judge completeness check",
+  "basis": [
+   "ITO2001-s236"
+  ],
+  "reason": "Qwen: the exemptions in section 236(4) were missing.",
+  "reference_answer": "Yes, section 236 collects advance tax on telephone and internet bills and prepaid telephone and internet cards at Division V, Part IV rates. It is not collected from the Government, a foreign diplomat, a diplomatic mission in Pakistan, or a person who produces a Commissioner's certificate that his income for the tax year is exempt (section 236(4)).",
+  "before": "Yes, section 236 collects advance tax on telephone and internet bills and prepaid cards at Division V, Part IV rates."
  }
 ]

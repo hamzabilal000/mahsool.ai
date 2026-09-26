@@ -242,9 +242,9 @@
  "end_to_end": {
   "date": "2026-09-26",
   "questions": 189,
-  "run": 17,
-  "not_run": 172,
-  "in_scope_run": 4,
+  "run": 19,
+  "not_run": 170,
+  "in_scope_run": 6,
   "answered": 100.0,
   "correct_citation": 100,
   "correct_citation_answered": 100,
@@ -252,7 +252,7 @@
   "out_of_scope_refused": 100,
   "by_group": {
    "english": {
-    "n": 4,
+    "n": 6,
     "correct_citation": 100
    }
   }

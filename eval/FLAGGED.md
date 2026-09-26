@@ -6,14 +6,14 @@ Second opinion (gemini-3-flash-preview, not blocking): agreed on **1 of 1** it c
 
 | id | split | question | reasons |
 |---|---|---|---|
-| en-083 | test | Is advance income tax collected on internet bills and prepaid internet cards? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-084 | dev | How much advance tax does the seller pay when an immovable property is transferred? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-085 | test | How much advance tax does a buyer pay when purchasing immovable property? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
+| en-083 | test | Is advance income tax collected on internet bills and prepaid internet cards? | qwen/qwen3.8-27b: omits_condition = yes. The section text explicitly states in sub-section (4) that advance tax is not collected from Government, foreign diplomats, diplomatic missions, or persons with a Commissioner's certificate of exempt income. The reference answer omits these specific exemptions. |
+| en-084 | dev | How much advance tax does the seller pay when an immovable property is transferred? | qwen/qwen3.8-27b: omits_condition = yes. The reference answer omits the exemption for non-resident individuals (POC/NICOP/CNIC) who acquired property through FCVA/NRVA accounts, for whom the tax is a final discharge of liability rather than adjustable. |
+| en-085 | test | How much advance tax does a buyer pay when purchasing immovable property? | qwen/qwen3.8-27b: omits_condition = yes. The reference answer omits the condition in Section 236K(2) that for non-resident individuals holding POC/NICOP/CNIC who acquire property via FCVA/NRVA, the tax collected is a final discharge of liability, which contradicts the general statement that the tax is adjustable. |
 | en-086 | test | Is tax deducted when I pay a foreign merchant with my debit or credit card? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-087 | test | What capital gains tax rate applies to immovable property sold within one year of acqui… | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-088 | test | What capital gains tax applies to listed shares acquired after 1 July 2024 and sold by … | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-089 | test | For tax year 2027, how much tax does a salaried individual (salary over 75% of taxable … | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-090 | dev | What is the top slab of income tax for non-salaried individuals and AOPs? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
+| en-087 | test | What capital gains tax rate applies to immovable property sold within one year of acqui… | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| en-088 | test | What capital gains tax applies to listed shares acquired after 1 July 2024 and sold by … | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| en-089 | test | For tax year 2027, how much tax does a salaried individual (salary over 75% of taxable … | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| en-090 | dev | What is the top slab of income tax for non-salaried individuals and AOPs? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
 | ur-012 | dev | جائیداد بیچنے پر بیچنے والے کو کتنا ایڈوانس ٹیکس دینا پڑتا ہے؟ | source question en-084 is flagged |
 | ur-038 | test | جائیداد خریدنے پر خریدار کو کتنا ایڈوانس ٹیکس دینا ہوتا ہے؟ | source question en-085 is flagged |
 | ur-039 | test | ڈیبٹ یا کریڈٹ کارڈ سے بیرون ملک ادائیگی پر کیا ٹیکس کٹتا ہے؟ | source question en-086 is flagged |
@@ -22,54 +22,54 @@ Second opinion (gemini-3-flash-preview, not blocking): agreed on **1 of 1** it c
 | ru-038 | test | ghar khareedne pe buyer ko kitna advance tax dena hota hai? | source question en-085 is flagged |
 | ru-039 | test | card se online bahar payment ki, is pe tax kat ta hai kya? | source question en-086 is flagged |
 | ru-040 | test | salaried hun, 10 lakh saalana taxable income pe 2027 me kitna tax banega? | source question en-089 is flagged |
-| fbr-001 | test | Can a salaried employee deduct expenses incurred in earning the salary? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-002 | test | How can an employee who receives a termination payment such as a golden handshake choos… | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-003 | test | If salary is paid in arrears and pushes the employee into a higher tax rate, what can t… | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-004 | test | Are allowances paid by the employer, such as rent or travel allowance, part of salary? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-005 | test | What does "capital asset" mean under the Income Tax Ordinance? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-006 | test | How does the Income Tax Ordinance define profit on a debt? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-007 | test | When is profit on a debt treated as Pakistan-source income? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-008 | test | What counts as a royalty for income tax purposes? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-009 | test | What is a fee for technical services, and what is excluded from it? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-010 | test | What is an approved gratuity fund? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-011 | test | What does "business" include under the Income Tax Ordinance? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-012 | test | Which companies qualify as a small company? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-013 | test | What is imputable income? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-014 | test | What is stock-in-trade for income tax purposes? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-015 | test | When is a company a resident company for a tax year? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-017 | test | Who is a principal officer of a company or association of persons? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-018 | test | Who is a whistleblower under the Income Tax Ordinance? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-019 | test | Which assets are depreciable assets? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-020 | test | What is a speculation business, and how is it taxed relative to a person's other business? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-021 | test | What is a private company for income tax purposes? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-022 | test | Under which heads is income classified for income tax? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-023 | test | What is a tax year, and how is it denoted? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-024 | test | Who is treated as a person under the Income Tax Ordinance? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-025 | test | Is agricultural income taxed under the Income Tax Ordinance? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-026 | test | If a business later recovers an expense it already deducted, how is the recovered amoun… | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-027 | test | How is an expense that relates to more than one head of income treated? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-028 | test | Can a business deduct a fine or penalty it paid for breaking a law? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-029 | test | Are personal expenses deductible against business income? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-030 | test | When is salary Pakistan-source income? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-031 | test | When is a dividend Pakistan-source income? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-032 | test | What is the due date for a company's income tax return? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-033 | test | Does a person with salary income of Rs. 500,000 or more have to file the return electro… | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-034 | test | Does a company or a non-profit organization have to file an income tax return even with… | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-035 | test | Can a person be required to file a return even if their income is below the taxable limit? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-036 | test | Does a widow or a non-resident have to file a return just because they own property? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-037 | test | How can a taxpayer who cannot file the return by the due date get more time? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-038 | test | How much credit does a resident get for income tax paid abroad on foreign-source income? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| fbr-039 | test | What is pre-commencement expenditure, and how is it deducted? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-091 | test | A shopkeeper pays Rs. 900,000 a year in rent to an individual landlord. Must the shopke… | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-092 | test | My company rents an office from an individual for Rs. 800,000 a year. How much tax must… | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-093 | test | What is the withholding tax rate on a prize bond prize for a person who is not on the A… | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-094 | test | Is a Federal Government officer who is posted abroad for the whole tax year a resident … | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-095 | test | Can I adjust the tax deducted on my prize bond winnings against my other income tax? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-096 | test | I filed my return after the due date. Can I get onto the Active Taxpayers' List without… | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-097 | test | How much advance tax does a buyer not on the Active Taxpayers' List pay on a property w… | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-098 | test | Is tax deducted on IT export proceeds of a PSEB-registered exporter always a final tax? | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-099 | test | My only income is from a small business, Rs. 350,000 a year, which is below the taxable… | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
-| en-100 | test | Does a non-resident who owns a 1,000 square yard plot in Pakistan have to file a return… | qwen/qwen3.8-27b: not run (daily limit reached: {"error":{"message":"Rate limit reached for model `qwen/qwe) |
+| fbr-001 | test | Can a salaried employee deduct expenses incurred in earning the salary? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-002 | test | How can an employee who receives a termination payment such as a golden handshake choos… | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-003 | test | If salary is paid in arrears and pushes the employee into a higher tax rate, what can t… | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-004 | test | Are allowances paid by the employer, such as rent or travel allowance, part of salary? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-005 | test | What does "capital asset" mean under the Income Tax Ordinance? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-006 | test | How does the Income Tax Ordinance define profit on a debt? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-007 | test | When is profit on a debt treated as Pakistan-source income? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-008 | test | What counts as a royalty for income tax purposes? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-009 | test | What is a fee for technical services, and what is excluded from it? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-010 | test | What is an approved gratuity fund? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-011 | test | What does "business" include under the Income Tax Ordinance? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-012 | test | Which companies qualify as a small company? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-013 | test | What is imputable income? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-014 | test | What is stock-in-trade for income tax purposes? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-015 | test | When is a company a resident company for a tax year? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-017 | test | Who is a principal officer of a company or association of persons? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-018 | test | Who is a whistleblower under the Income Tax Ordinance? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-019 | test | Which assets are depreciable assets? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-020 | test | What is a speculation business, and how is it taxed relative to a person's other business? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-021 | test | What is a private company for income tax purposes? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-022 | test | Under which heads is income classified for income tax? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-023 | test | What is a tax year, and how is it denoted? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-024 | test | Who is treated as a person under the Income Tax Ordinance? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-025 | test | Is agricultural income taxed under the Income Tax Ordinance? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-026 | test | If a business later recovers an expense it already deducted, how is the recovered amoun… | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-027 | test | How is an expense that relates to more than one head of income treated? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-028 | test | Can a business deduct a fine or penalty it paid for breaking a law? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-029 | test | Are personal expenses deductible against business income? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-030 | test | When is salary Pakistan-source income? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-031 | test | When is a dividend Pakistan-source income? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-032 | test | What is the due date for a company's income tax return? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-033 | test | Does a person with salary income of Rs. 500,000 or more have to file the return electro… | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-034 | test | Does a company or a non-profit organization have to file an income tax return even with… | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-035 | test | Can a person be required to file a return even if their income is below the taxable limit? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-036 | test | Does a widow or a non-resident have to file a return just because they own property? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-037 | test | How can a taxpayer who cannot file the return by the due date get more time? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-038 | test | How much credit does a resident get for income tax paid abroad on foreign-source income? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| fbr-039 | test | What is pre-commencement expenditure, and how is it deducted? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| en-091 | test | A shopkeeper pays Rs. 900,000 a year in rent to an individual landlord. Must the shopke… | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| en-092 | test | My company rents an office from an individual for Rs. 800,000 a year. How much tax must… | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| en-093 | test | What is the withholding tax rate on a prize bond prize for a person who is not on the A… | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| en-094 | test | Is a Federal Government officer who is posted abroad for the whole tax year a resident … | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| en-095 | test | Can I adjust the tax deducted on my prize bond winnings against my other income tax? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| en-096 | test | I filed my return after the due date. Can I get onto the Active Taxpayers' List without… | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| en-097 | test | How much advance tax does a buyer not on the Active Taxpayers' List pay on a property w… | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| en-098 | test | Is tax deducted on IT export proceeds of a PSEB-registered exporter always a final tax? | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| en-099 | test | My only income is from a small business, Rs. 350,000 a year, which is below the taxable… | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
+| en-100 | test | Does a non-resident who owns a 1,000 square yard plot in Pakistan have to file a return… | qwen/qwen3.8-27b: not run (daily limit reached earlier in this run: daily limit reached: {"error":{"message) |
 
 ## Changes to reference answers (24: 9 from the legal review, 11 from the completeness sweep, 4 from the judge completeness check)
 

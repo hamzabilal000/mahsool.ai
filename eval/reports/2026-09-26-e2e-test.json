@@ -1,13 +1,13 @@
 {
  "summary": {
   "english": {
-   "n": 4,
+   "n": 6,
    "answered": 1.0,
    "correct_citation": 1,
    "correct_citation_answered": 1
   },
   "in_scope": {
-   "n": 4,
+   "n": 6,
    "answered": 1.0,
    "correct_citation": 1,
    "correct_citation_answered": 1
@@ -17,8 +17,6 @@
    "refused": 1
   },
   "not_run": [
-   "en-008",
-   "en-010",
    "en-011",
    "en-013",
    "en-014",
@@ -214,9 +212,9 @@
     "2 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 845,
-    "answer": 1320,
-    "total": 2166
+    "search": 3541,
+    "answer": 0,
+    "total": 3541
    }
   },
   {
@@ -239,9 +237,9 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 914,
-    "answer": 1309,
-    "total": 2224
+    "search": 824,
+    "answer": 0,
+    "total": 824
    }
   },
   {
@@ -268,9 +266,9 @@
     "1 sentence(s) without a citation"
    ],
    "timings_ms": {
-    "search": 708,
-    "answer": 11726,
-    "total": 12435
+    "search": 853,
+    "answer": 0,
+    "total": 854
    }
   },
   {
@@ -293,9 +291,63 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 802,
-    "answer": 19463,
-    "total": 20266
+    "search": 870,
+    "answer": 0,
+    "total": 870
+   }
+  },
+  {
+   "id": "en-008",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s7B"
+   ],
+   "cited": [
+    "ITO2001-s7B"
+   ],
+   "citation_correct": true,
+   "answer": "No, the separate tax on profit on debt under section 7B does not apply when the profit on debt exceeds Rs 5 million; the provision expressly excludes such amounts.",
+   "search_queries": [
+    "Does the separate tax on profit on debt under section 7B apply if my profit on debt exceeds Rs. 5 million?",
+    "What is the rate of the separate tax on profit on debt under section 7B?",
+    "What is the threshold for the separate tax on profit on debt under section 7B?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 791,
+    "answer": 877,
+    "total": 1669
+   }
+  },
+  {
+   "id": "en-010",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s11"
+   ],
+   "cited": [
+    "ITO2001-s11"
+   ],
+   "citation_correct": true,
+   "answer": "The heads of income are: (a) Salary; (b) Income from Property; (c) Income from Business; (d) Capital Gains; and (e) Income from Other Sources. This applies for tax year 2027 onward.",
+   "search_queries": [
+    "What are the heads of income under the Income Tax Ordinance?",
+    "Heads of income under Income Tax Ordinance 2001",
+    "Definition of heads of income in Income Tax Ordinance"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1140,
+    "answer": 626,
+    "total": 1766
    }
   },
   {
@@ -314,7 +366,7 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 654
+    "search": 661
    }
   },
   {
@@ -333,7 +385,7 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 696
+    "search": 715
    }
   },
   {
@@ -348,7 +400,7 @@
    "search_queries": [],
    "warnings": [],
    "timings_ms": {
-    "search": 288
+    "search": 316
    }
   },
   {
@@ -367,7 +419,7 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 743
+    "search": 790
    }
   },
   {
@@ -386,7 +438,7 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 704
+    "search": 1034
    }
   },
   {
@@ -401,7 +453,7 @@
    "search_queries": [],
    "warnings": [],
    "timings_ms": {
-    "search": 280
+    "search": 336
    }
   },
   {
@@ -420,7 +472,7 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 712
+    "search": 815
    }
   },
   {
@@ -439,7 +491,7 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 640
+    "search": 682
    }
   },
   {
@@ -454,7 +506,7 @@
    "search_queries": [],
    "warnings": [],
    "timings_ms": {
-    "search": 377
+    "search": 1616
    }
   },
   {
@@ -473,7 +525,7 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 669
+    "search": 2191
    }
   },
   {
@@ -492,7 +544,7 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 682
+    "search": 695
    }
   },
   {
@@ -511,7 +563,7 @@
    ],
    "warnings": [],
    "timings_ms": {
-    "search": 756
+    "search": 696
    }
   },
   {
@@ -526,7 +578,7 @@
    "search_queries": [],
    "warnings": [],
    "timings_ms": {
-    "search": 292
+    "search": 287
    }
   }
  ]
