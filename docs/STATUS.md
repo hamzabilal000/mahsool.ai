@@ -1,6 +1,16 @@
 # Project status and handoff
 
-Last updated: 2026-09-26 (after the AI legal review of the 30-question sample; judges and end-to-end eval wait on daily quotas)
+Last updated: 2026-09-26 (project review; roadmap in [`ROADMAP.md`](ROADMAP.md))
+
+## Overall status (project review, 2026-09-26)
+Mahsool AI is in Phase 1 (MVP) of the 4-phase, 10-week plan. Weeks 1–4 are built, ahead of the plan's calendar
+(which starts 28 Sep): the Income Tax Ordinance, Rules and TY2027 rate card are ingested (1,416 chunks), the
+retrieval pipeline and its ablation are done (the `/ask` default reaches Hit@5 93.5% on 168 in-scope test
+questions, 92.9% for both Urdu and Roman Urdu), and `/ask`, the React chat UI with citation cards, feedback storage
+and the eval page work locally. What is not done for Phase 1: the end-to-end eval with the current answer prompt
+(17 of 189 test questions run; blocked by Groq's free daily quota), answer-correctness scoring, the re-judging of 64
+test questions, latency (57 s per answer vs the 4 s target), Langfuse, Prompt Guard, Docker and deployment. Phases
+2–4 and the v2 features have not started. Roughly 40% of the whole project is done (Phase 1 about 80%).
 
 ## Working rules (from Hamza)
 - Hamza is the only author. No "Co-Authored-By", "Generated with …" or other AI attribution in commits, PRs, code,
