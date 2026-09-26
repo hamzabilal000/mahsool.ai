@@ -125,7 +125,14 @@ export function EvalPage() {
                 {e2e && (
                     <section className="space-y-3">
                         <h2 className="font-semibold">End to end: answers and refusals</h2>
-                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                            {summary.answer_correctness && (
+                                <Stat
+                                    label="Answer matches reference"
+                                    value={fmt(summary.answer_correctness.correct_strict)}
+                                    note={`${summary.answer_correctness.judged} judged by an LLM · target ≥ 85%`}
+                                />
+                            )}
                             <Stat label="Correct citation (answered)" value={fmt(e2e.correct_citation_answered)} note="target ≥ 90%" />
                             <Stat label="Out-of-scope refused" value={fmt(e2e.out_of_scope_refused)} note={`${e2e.out_of_scope_run} run · target ≥ 90%`} />
                             <Stat label="Questions run" value={`${e2e.run} / ${e2e.questions}`} note={e2e.not_run ? `${e2e.not_run} wait for the LLM's daily quota` : "complete"} />
@@ -136,7 +143,10 @@ export function EvalPage() {
                                 {e2e.questions} test questions and will change as the rest run.
                             </p>
                         )}
-                        <p className="text-xs text-muted">Answer correctness against the reference answers is not scored yet.</p>
+                        <p className="text-xs text-muted">
+                            Answer correctness: an LLM judge (Qwen) compares each answer with the reference answer; a
+                            hand check of 50 answers is pending.
+                        </p>
                     </section>
                 )}
             </main>

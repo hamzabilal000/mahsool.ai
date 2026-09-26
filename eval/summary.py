@@ -49,6 +49,20 @@ def pct(x: float | None) -> float | None:
     return None if x is None else round(100 * x, 1)
 
 
+def answer_correctness() -> dict | None:
+    """Latest Qwen answer-correctness report (eval/judge_answers.py, D56)."""
+    found = latest("answer-judge-test")
+    if not found:
+        return None
+    run_date, report = found
+    s = report["summary"].get("in_scope")
+    if not s:
+        return None
+    return {"date": run_date, "judged": s["n"], "correct_strict": pct(s["correct_strict"]),
+            "correct_lenient": pct(s["correct_lenient"]),
+            "not_run_end_to_end": report["summary"].get("not_run_end_to_end")}  # fmt: skip
+
+
 def build() -> dict:
     items = load_testset()
     test = [i for i in items if i.split == "test"]
@@ -127,6 +141,7 @@ def build() -> dict:
         },
         "retrieval_ablation": ablation,
         "end_to_end": e2e,
+        "answer_correctness": answer_correctness(),
         "targets": [
             {"metric": "Retrieval Hit@5, Urdu and Roman Urdu", "target": "≥ 80%"},
             {"metric": "Answers with a correct citation", "target": "≥ 90%"},

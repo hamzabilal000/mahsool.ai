@@ -282,6 +282,13 @@
    }
   }
  },
+ "answer_correctness": {
+  "date": "2026-09-26",
+  "judged": 37,
+  "correct_strict": 97.3,
+  "correct_lenient": 100.0,
+  "not_run_end_to_end": 139
+ },
  "targets": [
   {
    "metric": "Retrieval Hit@5, Urdu and Roman Urdu",

@@ -1,0 +1,329 @@
+{
+ "summary": {
+  "english": {
+   "n": 36,
+   "correct_strict": 0.9722,
+   "correct_lenient": 1.0
+  },
+  "in_scope": {
+   "n": 37,
+   "correct_strict": 0.973,
+   "correct_lenient": 1.0
+  },
+  "out_of_scope": {
+   "n": 13,
+   "correct_strict": 1.0,
+   "correct_lenient": 1.0
+  },
+  "fbr": {
+   "n": 1,
+   "correct_strict": 1.0,
+   "correct_lenient": 1.0
+  },
+  "not_run_end_to_end": 139,
+  "not_judged": [],
+  "source": "2026-09-26-e2e-test.json"
+ },
+ "rows": [
+  {
+   "id": "en-001",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the imposition of tax on taxable income for every person and cites the correct rates from Division I or II of Part I of the First Schedule, matching the reference."
+  },
+  {
+   "id": "en-002",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the 10% rate, the Rs. 10 million threshold, and the exemption for salary income, matching the reference answer."
+  },
+  {
+   "id": "en-005",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers state the super tax rate is 10% of the income for a banking company exceeding Rs. 150 million."
+  },
+  {
+   "id": "en-006",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the 8% super tax rate for the specified category of persons, matching the reference answer."
+  },
+  {
+   "id": "en-008",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that Section 7B does not apply to profit on debt exceeding Rs. 5 million."
+  },
+  {
+   "id": "en-010",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer lists the exact same five heads of income as the reference answer."
+  },
+  {
+   "id": "en-011",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers confirm that overtime and bonuses are part of salary for income tax purposes, with the app answer providing specific legal citations and a timeframe that do not contradict the reference."
+  },
+  {
+   "id": "en-013",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the section, rule, and specific percentages (5% for mixed use, 10% for personal use) based on cost or fair market value, matching the reference exactly."
+  },
+  {
+   "id": "en-014",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly includes the core definition of rent (amounts for use/occupation and forfeited deposits) found in the reference, and the additional exclusions provided are consistent with the broader legal context without contradicting the reference's specific definition."
+  },
+  {
+   "id": "en-015",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that agricultural income is exempt/not taxable under the federal Income Tax Ordinance."
+  },
+  {
+   "id": "en-016",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that the scholarship is exempt unless paid by an associate, matching the reference answer's conditions and conclusion."
+  },
+  {
+   "id": "en-017",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers confirm that the support money is exempt from tax, with the app answer adding a specific tax year which does not contradict the reference."
+  },
+  {
+   "id": "en-019",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the same conditions (employment-based residency, presence of no more than three years) and exceptions (business established in Pakistan, income brought into or received in Pakistan) as the reference answer."
+  },
+  {
+   "id": "en-020",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the general six-year limit and accurately lists the specific exceptions for hotel businesses (8 years), PIA (10 years), and approved government-owned banking companies (10 years), matching the reference."
+  },
+  {
+   "id": "en-022",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that Zakat is deductible and that unused portions cannot be refunded, carried forward, or carried back, matching the reference exactly."
+  },
+  {
+   "id": "en-023",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the eligibility criteria (taxable income below Rs. 1.5 million) and the calculation limits (lesser of 5% of fees, 25% of income, or Rs. 60,000 per child) as stated in the reference, with additional correct details."
+  },
+  {
+   "id": "en-024",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers confirm deductibility and include the specific exception for trans-provincial establishments paying to provinces."
+  },
+  {
+   "id": "en-025",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly confirms the tax benefit under Section 61 for donations to public universities established by Federal or Provincial law, matching the reference's core conclusion and conditions, while adding specific calculation details that do not contradict the reference."
+  },
+  {
+   "id": "en-026",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the eligible person, the specific income heads (salary or business), and the requirement to contribute to an approved pension fund under the Voluntary Pension System Rules, 2005, matching the reference answer."
+  },
+  {
+   "id": "en-027",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer confirms the existence of the tax credit and includes the same core conditions (individual, scheduled bank, personal house) as the reference, while adding specific details and limits that do not contradict the reference."
+  },
+  {
+   "id": "en-028",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly defines the normal tax year as a twelve-month period ending on 30 June, named after the calendar year in which that date falls, matching the reference exactly while adding correct details about special tax years."
+  },
+  {
+   "id": "en-029",
+   "group": "english",
+   "verdict": "partly",
+   "reason": "The app answer correctly states the 183-day rule but omits the other conditions for residency (government officials posted abroad and specific citizen status) mentioned in the reference."
+  },
+  {
+   "id": "en-030",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the same conditions for residency (183 days in Pakistan, not >182 days abroad, or government official posted abroad) as the reference, with additional correct details about day counting."
+  },
+  {
+   "id": "en-031",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer lists the exact same three conditions for residency as the reference answer."
+  },
+  {
+   "id": "en-032",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that foreign salary is exempt if foreign tax was paid, matching the reference answer's condition and conclusion."
+  },
+  {
+   "id": "en-033",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that the credit is the lesser of the foreign tax paid and the Pakistan tax payable, which matches the reference, while adding extra details that do not contradict the core answer."
+  },
+  {
+   "id": "en-034",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the two conditions for salary to be Pakistan-source income (employment exercised in Pakistan or paid by government) and matches the reference, with the addition of 'on behalf of' and a specific tax year which does not contradict the core legal definition provided in the reference."
+  },
+  {
+   "id": "en-035",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that the unexplained amount is included in taxable income, matching the reference, and provides additional correct details about the specific heads of income and exceptions."
+  },
+  {
+   "id": "en-036",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies all the persons covered by minimum tax under section 113 as stated in the reference (resident companies, PEs of non-residents, and individuals/AOPs with turnover >= Rs 100 million), and provides additional correct details about exemptions and rates which do not contradict the reference."
+  },
+  {
+   "id": "en-037",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer accurately lists all the categories and conditions specified in the reference answer, including the specific thresholds and exemptions, without contradiction."
+  },
+  {
+   "id": "en-039",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that a widow is exempt from filing solely due to property ownership under Section 115(3), and the app answer provides accurate additional context regarding the specific sub-clauses and other mandatory conditions."
+  },
+  {
+   "id": "en-041",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer accurately lists all the specific components (assets, liabilities, transfers, expenditures, reconciliation) and conditions (notice, specified dates, dependents) mentioned in the reference answer."
+  },
+  {
+   "id": "en-042",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the due date as on or before 30 September following the end of the tax year, matching the reference."
+  },
+  {
+   "id": "en-045",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the process of applying to the Commissioner and then the Chief Commissioner, the required reasons, and the standard 15-day limit with exceptions, matching the reference."
+  },
+  {
+   "id": "en-047",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the five-year limit for initial amendments and the specific 'later of' rule for subsequent amendments, matching the reference answer's core legal provisions."
+  },
+  {
+   "id": "en-048",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers state the deadline is thirty days from receiving the order."
+  },
+  {
+   "id": "oos-001",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-002",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-005",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-010",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-012",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-014",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-015",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-016",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-019",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-020",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-021",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-023",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-028",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "fbr-030",
+   "group": "fbr",
+   "verdict": "yes",
+   "reason": "The app answer accurately reflects the conditions stated in the reference, with the addition of a specific tax year which does not contradict the general rule provided."
+  }
+ ]
+}
