@@ -17,9 +17,9 @@ from. When the law doesn't cover the question, Mahsool says so.
 | --- | --- | --- |
 | 1 | Repo, ingestion of the Income Tax Ordinance 2001, 90 English eval questions | ✅ done |
 | 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ✅ done |
-| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set machine-verified (D45) · ⏳ end-to-end eval with the new answer prompt: 19/189 (Groq daily limit, D36) |
+| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set verified: 248 of 249 (D45, D51) · ⏳ end-to-end eval 50/189 (Groq daily limit, D36) |
 | 4 | React chat UI, citation cards, feedback, Postgres logs, eval page | ✅ done (Langfuse moved to M5, D49) |
-| 5 | Fix top failures, Docker, deploy, demo | 🔄 in progress: latency cut 44 → 16 s (D52), free-tier safeguards (D53), deploy prepared, not live (D54) |
+| 5 | Fix top failures, Docker, deploy, demo | 🔄 in progress: latency 44 → 16 s (D52), definition lookup (D57), rate tables in citation cards, free-tier safeguards (D53), deploy prepared, not live (D54) |
 
 ## Architecture
 
@@ -88,8 +88,7 @@ reference answer written only from the law text, a difficulty tag and a fixed de
 `"verified": false`.
 
 **How the test set is verified:** machine-verified by an independent LLM judge (Qwen) plus an automatic number check;
-a second judge (Gemini) agreed on 15 of 15 it checked with the earlier two-question prompt (1 of 1 so far with the
-current one). Legal review of a 30-question sample by ChatGPT (OpenAI), an AI legal-review tool with web access,
+a second judge (Gemini) agreed on 19 of 21 it checked with the current three-question prompt (the 2 disagreements concern tax-year-2022 provisos that do not apply to TY2027). Legal review of a 30-question sample by ChatGPT (OpenAI), an AI legal-review tool with web access,
 26 Sep 2026: 19 correct, 10 partly correct, 1 wrong; all fixed and a completeness sweep applied to the full set. This
 is an AI tool's review, not a human one; a review by a tax professional is still pending.
 
@@ -101,9 +100,10 @@ runs the same check as a non-blocking second opinion as far as its free tier all
 the questions. Every correction from the review was checked against the corpus before it was applied, and every
 change to a reference answer is listed with before and after in [`eval/FLAGGED.md`](eval/FLAGGED.md) (D50).
 
-**Current state (2026-09-26):** 185 of 249 questions are machine-verified (23 of them also "reviewed": marked correct
-or corrected per the AI review, then re-verified); the other 64 wait for Qwen to re-judge them with the completeness
-question, which stopped at Groq's daily token limit. Decisions D38, D42, D45, D50, D51.
+**Current state (2026-09-26):** 248 of 249 questions are machine-verified (30 of them also "reviewed": marked correct
+or corrected per the AI review, then re-verified). The one left, en-092 (rent paid by a company to an individual
+landlord), is flagged by Qwen: whether Division V's rates depend on the landlord or the tenant is not stated in the
+corpus, so it waits for the tax-practitioner review instead of a guess. Decisions D38, D42, D45, D50, D51.
 
 | Group | Questions | Split (dev / test) |
 | --- | --- | --- |
@@ -132,14 +132,17 @@ Urdu and Roman Urdu questions are natural rewrites of English ones and share the
 | + rewrite + reranker | 97.3% | **89.7%** | 89.3% | 75.0% | 90.5% |
 | + glossary in rewrite = full pipeline, reranking with the question only | 97.3% | **89.7%** | 92.9% | 75.0% | 91.1% |
 | full pipeline, reranking with max(question, rewrite) score (D40) | 97.3% | 87.2% | 92.9% | **92.9%** | 93.5% |
-| 15 rerank candidates, max score only for Urdu / Roman Urdu = **`/ask` default** (D52) | **98.6%** | 87.2% | 92.9% | **92.9%** | **94.0%** |
+| 15 rerank candidates, max score only for Urdu / Roman Urdu (D52) | **98.6%** | 87.2% | 92.9% | **92.9%** | 94.0% |
+| + section 2 definition lookup = **`/ask` default** (D57) | **98.6%** | **94.9%** | 92.9% | **92.9%** | **95.8%** |
 
 All 168 in-scope test questions, re-run on 2026-09-26 after the legal-review fixes and the 10 new condition-focused
 English questions (en-091 … en-100, all 10 found in the top 5 by the default pipeline; D51). Reference-answer fixes
 do not change retrieval; the written-English column moves only because of the new questions. The `/ask` default has
-Recall@5 (all gold) 90.3% and MRR@10 0.871 on all 168; several fixed answers now need more than one gold section
-(e.g. the rate-card row for the non-ATL rate), which lowers "all gold" recall. The FBR-sourced questions (D39) are
-the hardest English group: 87.2% with the default, 89.7% without the max-score reranking.
+Recall@5 (all gold) 92.8% and MRR@10 0.906 on all 168. The last two rows are Milestone 5 changes: the reranker scores
+15 candidates and uses the English rewrite only for Urdu / Roman Urdu (tuned on dev for speed, D52), and a definition
+lookup pins the section 2 clause for "what is X?" questions (D57), which lifts the FBR-sourced group (D39) from 87.2%
+to 94.9%. That rule was found by reading test misses (the FBR questions exist only on the test split), so part of
+that gain is in-sample; dev was unchanged by it.
 
 The rewrite is the big win (Roman Urdu 67.9% → 89.3%). The reranker then undoes part of it for Urdu and Roman Urdu:
 it scores chunks against the original question, which it reads poorly in Roman Urdu. Letting the reranker also score
@@ -157,7 +160,7 @@ split (Hit@5 96.1% vs 94.1%, Roman Urdu 83.3% vs 75.0%) and is now the `/ask` de
 | **All** | 119 | **84.9%** | **81.9%** | **0.764** |
 
 Metric definitions are in [DECISIONS D19](docs/DECISIONS.md). English numbers are optimistic because the questions
-were written from the section text (D20). 185 of 249 questions are machine-verified so far (D51); a 30-question sample
+were written from the section text (D20). 248 of 249 questions are machine-verified (D51); a 30-question sample
 was checked by an AI legal-review tool, and none by a tax professional yet (D50). Full reports, with every miss:
 [`eval/reports/`](eval/reports/).
 
@@ -165,20 +168,20 @@ was checked by an AI legal-review tool, and none by a tax professional yet (D50)
 
 | Metric | Target | Result |
 | --- | --- | --- |
-| Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | `/ask` default (full-max): Urdu 92.9% ✅ / Roman Urdu 92.9% ✅; all 168: 93.5%, FBR 87.2% |
-| Answer correctness | ≥ 85% | not scored yet: the Qwen judge and a 50-answer hand check are ready (D56) and run once the end-to-end answers exist |
-| Answers with a correct citation | ≥ 90% | not re-measured yet with the new answer prompt (4 of 4 answered so far); before it: 98.6% of answered (70 of 71) — partial* |
+| Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | `/ask` default: Urdu 92.9% ✅ / Roman Urdu 92.9% ✅; all 168: 95.8%, FBR 94.9% |
+| Answer correctness | ≥ 85% | 97.3% of the 37 answers judged so far match the reference (Qwen judge, D56; 36 English + 1 FBR, no Urdu yet) — partial* |
+| Answers with a correct citation | ≥ 90% | 37 of 37 in-scope questions run so far answered with a correct citation — partial* |
 | Correct refusal on out-of-scope questions | ≥ 90% | 13 / 13 run — partial*, and the 8 not run are the harder ones |
 | Median latency | < 4 s | ❌ ~18 s p50 for a new question on 4 CPU cores (rerank 15 s, retrieval 0.7 s, both LLMs ~2 s, D52); ~30 ms for a repeated question (answer cache) |
 
-\* End-to-end on the test split ([`eval/run_e2e.py`](eval/run_e2e.py)) with the current `/ask` default. The answer
-prompt changed on 2026-09-26 (it must now state conditions and both ATL and non-ATL rates, D51), so every cached
-answer was stale and the run restarted: **19 of 189 run, 170 left** (6 in-scope answers, all citing a gold section,
-and 13 out-of-scope refusals) before Groq's free-tier limit of 200k tokens a day on GPT OSS 120B (D36); at ~65 answers
-a day that is about three more days. The retrieval default then changed (D52), which can change the sources of a few
-of the 6 answers, so the next run may re-ask them. The previous prompt's run (85 of 179: 70 of 71 answered with a
-correct citation) is kept in D44 for comparison. Resume: `python -m eval.run_e2e --split test`, then
-`python -m eval.judge_answers --split test` (answer correctness, D56) and `python -m eval.make_answer_check`.
+\* End-to-end on the test split ([`eval/run_e2e.py`](eval/run_e2e.py)) with the `/ask` default. The answer prompt
+changed on 2026-09-26 (it must state conditions and both ATL and non-ATL rates, D51), so the run restarted: **50 of
+189 run, 139 left** after the second daily quota (37 in-scope answers, all citing a gold section; 13 out-of-scope,
+all refused), at ~40-65 answers a day on Groq's free tier (D36). The 50 are the first questions in file order, so
+almost all are written English: no Urdu or Roman Urdu answer has been scored with the current prompt yet. The
+previous prompt's run (85 of 179: 70 of 71 answered with a correct citation) is kept in D44. Resume:
+`python -m eval.run_e2e --split test`, then `python -m eval.judge_answers --split test` and, once 50 in-scope answers
+exist, `python -m eval.make_answer_check`.
 Report: [`eval/reports/2026-09-26-e2e-test.md`](eval/reports/2026-09-26-e2e-test.md).
 
 ## Run locally (no Docker)

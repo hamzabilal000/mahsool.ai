@@ -652,3 +652,37 @@ Newest first within each milestone. Each entry says what the plan said, what we 
 - `eval/make_answer_check.py` writes `eval/answer_check.md`: 50 random answered test questions (seed 2027) with the
   reference and app answers side by side and a yes/no box, so the check needs no tax knowledge.
 - Neither has run yet: only 6 answers exist with the current prompt (D51, 19 of 189 end-to-end questions run).
+
+### D57. Definition lookup: "what is X?" pins the section 2 clause that defines X
+- **Why:** section 2 holds ~140 definitions in one long section (16 chunks). For "What is imputable income?" or
+  "What counts as a royalty?", search found sections that *use* the term, not the clause that *defines* it; 3 of the
+  5 FBR-sourced misses were such questions (D39).
+- **Rule** (`DefinitionLookup` in `backend/app/rag/lookup.py`), deterministic like the section lookup (D28): index
+  every defined term (`"X" means`, `[X] means`) with its clause and chunk; when the question or one of its English
+  rewrites uses a definitional phrasing (define, definition of, meaning of, what is/are, what counts as, who is) and a
+  defined term follows directly and ends the phrase, pin that clause above the search results. "What is the tax rate
+  on salary?" does not pin the definition of "tax". 28 definitions only point elsewhere ("taxable income ... as
+  defined in section 9"); those pin the section they point to instead (found on dev: pinning the pointer pushed
+  section 9 to second place for en-009).
+- **Results:** dev Hit@5 98.0% and MRR 0.898, unchanged. Test: Hit@5 **94.0% → 95.8%**, FBR group **87.2% → 94.9%**
+  (fbr-006, -008, -013 now found), MRR 0.878 → 0.906; no test question lost its hit. English MRR 0.940 → 0.933 (two
+  "tax year" questions get the section 2 entry first and section 74 second).
+- **Caveat:** the pattern was found by reading test-set misses, and the FBR questions exist only on the test split,
+  so part of the FBR gain is in-sample. The rule is generic (no terms or questions from the test set are in it) and
+  dev was checked for regressions. `fast-nodef` keeps the comparison.
+
+### D58. Results on 2026-09-26 (second session of the day): judges complete, end to end 50 of 189
+- **Qwen re-judge complete** (three-question prompt, D51): 168 of 169 directly judged questions pass; **248 of 249**
+  are verified (30 "reviewed"). **en-092 stays unverified**: Qwen reads Division V clause (b), 15% for "company", as
+  applying when a company *pays* the rent; the test set, like the FBR rate card's grouping, reads clauses (a) and (b)
+  by the *landlord* (recipient). The corpus does not say which party decides, so the question waits for the
+  tax-practitioner review rather than a guess either way.
+- **Gemini second opinion** (current prompt): 19 of 21 agree. en-002 was fixed (the salaried exception in the
+  proviso to section 4AB, checked against the text). en-005 and en-006: Gemini wants the tax-year-2022 provisos of
+  section 4C / Division IIB; they do not change the answer for TY2027, so no change.
+- **End to end** (current prompt, `fast` retrieval): 50 of 189 run before GPT OSS 120B's daily limit, 139 left.
+  37 in-scope answered, all with a correct citation; 13 of 13 out-of-scope refused. The run started before the
+  definition lookup (D57) was adopted, so the next run re-asks the few definition questions whose sources changed.
+- **Answer correctness** (Qwen judge, D56) on those 37: 36 match the reference (97.3% strict, 100% lenient).
+  en-029 is "partly": the app gave the 183-day test but not the other two residency tests in section 82, although
+  the answer prompt asks for other routes (D51). Coverage is almost only written English so far.

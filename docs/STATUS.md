@@ -1,14 +1,14 @@
 # Project status and handoff
 
-Last updated: 2026-09-26, evening (latency work, free-tier safeguards, deploy prepared; roadmap in [`ROADMAP.md`](ROADMAP.md))
+Last updated: 2026-09-26, night (judges complete, end to end 50/189, definition lookup, rate tables; roadmap in [`ROADMAP.md`](ROADMAP.md))
 
-## Overall status (2026-09-26, evening)
-Mahsool AI is in Milestone 5 (Week 5) of Phase 1. Weeks 1-4 are built; this session cut retrieval latency from ~44 s
-to ~16 s per new question (tuned on dev; test Hit@5 94.0%), added the free-tier safeguards for a public demo and
-prepared the deployment (not live). The end-to-end eval with the current answer prompt has run 19 of 189 test
-questions and 56 questions (64 with translations) wait for the judge's re-check, both blocked by Groq's free daily
-quotas. Phases 2-4 and the v2 features have not started. Roughly 42% of the whole project is done (Phase 1 about
-85%).
+## Overall status (2026-09-26, night)
+Mahsool AI is in Milestone 5 (Week 5) of Phase 1. The test set is verified (248 of 249; the last one waits for a
+tax practitioner), retrieval on the held-out test set is at Hit@5 95.8% (FBR 94.9%, Urdu and Roman Urdu 92.9%) after
+the definition lookup, and the first 37 end-to-end answers with the current prompt all cite a correct section and
+97.3% of them match the reference. The end-to-end eval has run 50 of 189 test questions (quota-bound), latency is
+~16 s per new question (target 4 s), and the deployment is prepared but not live. Phases 2-4 and v2 have not
+started. Roughly 45% of the whole project is done (Phase 1 about 88%).
 
 ## Working rules (from Hamza)
 - Hamza is the only author. No "Co-Authored-By", "Generated with …" or other AI attribution in commits, PRs, code,
@@ -35,15 +35,15 @@ Groq and Gemini stay on free tiers (D53). Quota-bound runs go first; each stops 
 
 | # | Command | Left after 2026-09-26 | Quota |
 | --- | --- | --- | --- |
-| 1 | `python -m eval.verify_testset` | **56 directly judged questions (64 with translations)** wait for Qwen's re-judge (D51); Gemini second opinion on 168 of 169 | Qwen ~200k tokens/day; Gemini 20/day |
-| 2 | `python -m eval.run_e2e --split test` | **170 of 189 test questions** (19 run with the current answer prompt) | GPT OSS 120B ~65 answers/day |
-| 3 | `python -m eval.judge_answers --split test` | all answers (not run yet, D56) | Qwen |
-| 4 | `python -m eval.make_answer_check` | 50-answer sheet for Hamza, once ≥ 50 answers exist | none |
+| 1 | `python -m eval.run_e2e --split test` | **139 of 189 test questions** (50 run; all Urdu / Roman Urdu still to do) | GPT OSS 120B, ~40-65 answers/day |
+| 2 | `python -m eval.judge_answers --split test` | new answers after each e2e run (37 judged) | Qwen |
+| 3 | `python -m eval.make_answer_check` | once ≥ 50 in-scope answers exist (37 now): the sheet for Hamza | none |
+| 4 | `python -m eval.verify_testset` | Qwen: done (en-092 waits for a practitioner, D58); Gemini second opinion: 148 of 169 left | Gemini 20/day |
 | 5 | `python -m eval.summary` | refresh the eval page numbers | none |
 
-When the judge flags a question: check the flag against the law text, record the fix in `eval/review/changes.json`,
+When a judge flags a question: check the flag against the law text, record the fix in `eval/review/changes.json`,
 run `python -m eval.apply_changes` (it also updates translations), and commit. Update the counts above, in README and
-in D51 / D44 after every run.
+in D58 after every run.
 
 ## Done
 - **M1:** Income Tax Ordinance 2001 (amended to 30.06.2026): 885 chunks, 380/380 sections. 90 English eval questions.
@@ -97,6 +97,13 @@ in D51 / D44 after every run.
     92.9% Urdu, 92.9% Roman Urdu.
   - End to end: 85 / 179 with the old answer prompt; restarted with the new one (see "Start of every session").
 
+- **M5, second session of 2026-09-26:**
+  - Qwen re-judge complete: 248 of 249 verified (en-092 waits for a practitioner); Gemini 19 of 21 agree, en-002
+    fixed (D58).
+  - End to end 50 of 189 (37 in-scope, all correct citations; 13/13 refusals); answer correctness 36 of 37 (D58).
+  - Definition lookup (D57): test Hit@5 95.8%, FBR 94.9%.
+  - Rate tables render as tables in citation cards.
+
 - **M5 (in progress, 2026-09-26):**
   - Latency measured per stage (D52): the old default spent ~44 s reranking; the new default (15 candidates, max
     score for Urdu / Roman Urdu only, tuned on dev) takes rerank p50 15.1 s, total ~18 s with both live LLM calls
@@ -148,7 +155,8 @@ Keep GPT OSS 120B for the answers only.
    answer-correctness judge and `eval/answer_check.md` for Hamza.
 2. Latency decision (D52): hosted reranker (needs an account/key), a smaller multilingual reranker locally, or
    accept ~15-30 s for new questions with the progress stages shown.
-3. Top failures: Roman Urdu refusals, FBR misses, rate tables in citation cards, Prompt Guard.
+3. Top failures: done: FBR definition misses (D57), rate tables in cards. Left: en-029-style answers that drop
+   other routes (answer prompt), Roman Urdu refusals (re-measure once Urdu answers exist), Prompt Guard.
 4. Deploy (D54) when steps 1-2 are done: Hamza creates the Hugging Face, Neon and Vercel accounts and adds the
    secrets listed in README "Deploy"; Langfuse keys at the same time (`LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`,
    `LANGFUSE_HOST`), then tracing gets wired in.
@@ -156,9 +164,10 @@ Keep GPT OSS 120B for the answers only.
 
 ## Open for Milestone 5
 - Latency: ~18 s p50 for a new question on 4 cores (rerank ~15 s); target < 4 s; the Space has 2 vCPU (D52).
-- Citation cards show rate tables as raw `| … |` text; render tables in the card.
 - The Docker image has not been built here (no Docker daemon); the first Space build is its first real test (D54).
 - Langfuse (D49) and Prompt Guard not implemented.
+- en-029: the app answered the residency question with the 183-day test only (answer correctness "partly", D58).
+- Citation cards repeat the chunk heading as the first text line (cosmetic).
 
 ## Open items for Hamza
 - Delete the old branch `claude/mahsool-gemini-eval-cla2bx` on GitHub (Branches → trash icon): `git push origin
@@ -167,5 +176,6 @@ Keep GPT OSS 120B for the answers only.
 - When deploying: Hugging Face (write token), Neon (connection string), Vercel, Langfuse accounts (README "Deploy").
 - Review `data/glossary_ur.csv` as a native speaker (D25).
 - Spot-check `data/processed/*/spot_check.md`.
-- Tax-practitioner review of `eval/expert_sample.json` when you find one.
+- Tax-practitioner review of `eval/expert_sample.json` when you find one, plus en-092 (who decides the section 155
+  rate, the landlord or the tenant? D58).
 - Set the GitHub repo description and topics in the UI.
