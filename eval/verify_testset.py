@@ -1,10 +1,16 @@
-"""Machine verification of the test set: two independent LLM judges plus a number check in code.
+"""Machine verification of the test set: an independent LLM judge plus a number check in code,
+and an optional second judge.
 
-For every question, each judge reads ONLY the text of the gold section(s) and answers in JSON:
-does the section answer the question, and does the reference answer match the section. Code then
+For every question, a judge reads ONLY the text of the gold section(s) and answers in JSON: does
+the section answer the question, and does the reference answer match the section. Code then
 checks that every number, percentage and amount in the reference answer appears in the gold text.
-Both judges "yes" on both checks + all numbers found → "verified": "machine". Anything else is
-written to eval/FLAGGED.md with the reasons.
+The required judge (judge2, Qwen) "yes" on both checks + all numbers found → "verified":
+"machine"; anything else is written to eval/FLAGGED.md with the reasons (DECISIONS D45).
+
+The second judge (judge1, Gemini Flash) is a second opinion only: its free tier allows 20
+requests a day, so it checks what its quota allows (run this at the start of every session) and
+its verdict is stored as "second_opinion": "agree" / "disagree" without blocking. Its agreement
+rate and every disagreement are listed in eval/FLAGGED.md for a human to look at.
 
 - Out-of-scope questions have no gold text: the judges read the question and the list of laws
   Mahsool covers, and say whether it must be refused and whether the reference refusal is right.
@@ -16,7 +22,7 @@ written to eval/FLAGGED.md with the reasons.
   section.
 
 The judges are set per role in backend/app/config.py (judge1: Gemini Flash on Google's API,
-judge2: Qwen on Groq; DECISIONS D42). Judge outputs are cached in eval/cache/verify.jsonl, so a
+judge2: Qwen on Groq; DECISIONS D42, D45). Judge outputs are cached in eval/cache/verify.jsonl, so a
 re-run only calls the APIs for new or changed questions; a run stopped by a daily limit resumes
 where it stopped.
 
@@ -51,7 +57,9 @@ FLAGGED = ROOT / "eval" / "FLAGGED.md"
 # The judges come from settings (judge1, judge2). Qwen's cached verdicts were made with 700
 # output tokens and no thinking; Gemini Flash thinks a little ("low"), which counts against its
 # output tokens, so it gets more room.
-JUDGE_ROLES = ("judge1", "judge2")
+REQUIRED_ROLE = "judge2"  # Qwen: decides "machine"
+SECOND_OPINION_ROLE = "judge1"  # Gemini Flash: agreement rate only
+CHECKS = ("section_answers_question", "reference_matches_section")
 MAX_TOKENS = {"gemini": 2048, "groq": 700}
 MAX_EXCERPT_TOKENS = 1500
 
@@ -282,42 +290,65 @@ class Judge:
         return self.llm.resolved_model(self.model)
 
     def __call__(self, messages: list[dict[str, str]]) -> dict:
-        return self.llm.chat_json(
-            self.model,
-            messages,
-            max_tokens=MAX_TOKENS[self.llm.spec.name],
-            reasoning_effort=self.reasoning,
-        )
+        return self.llm.chat_json(self.model, messages, **self._kw())
+
+    def cached(self, messages: list[dict[str, str]]) -> dict:
+        """The cached verdict, without calling the API (KeyError if there is none)."""
+        return self.llm.cached(self.model, messages, **self._kw())
+
+    def _kw(self) -> dict:
+        return {"max_tokens": MAX_TOKENS[self.llm.spec.name], "reasoning_effort": self.reasoning}
 
 
-def make_judges(clients: LLMClients) -> list[Judge]:
-    s = clients.settings
-    return [Judge(*clients.for_role(r), getattr(s, f"{r}_reasoning")) for r in JUDGE_ROLES]
+def make_judge(clients: LLMClients, role: str) -> Judge:
+    return Judge(*clients.for_role(role), getattr(clients.settings, f"{role}_reasoning"))
 
 
-def verify(items: list[TestItem], judges_: list[Judge]) -> dict[str, dict]:
-    """id → {"ok", "reasons", "judges", "missing_numbers", "inherited_from"}."""
+def verify(items: list[TestItem], judge: Judge, second: Judge | None = None) -> dict[str, dict]:
+    """id → {"ok", "reasons", "judges", "missing_numbers", "second_opinion", "inherited_from"}.
+
+    "second_opinion": "agree" / "disagree" / None (second judge not run, e.g. its daily limit)."""
     by_section: dict[str, list[Chunk]] = defaultdict(list)
     for c in load_chunks():
         by_section[c.section_id].append(c)
     results: dict[str, dict] = {}
     direct = [i for i in items if not i.source_id]
+    second_exhausted = second is None
     for n, item in enumerate(direct, start=1):
         reasons, judges = [], {}
         excerpt = gold_excerpt(item, by_section) if item.group != "out_of_scope" else ""
         messages = judge_messages(item, excerpt)
-        for judge in judges_:
-            try:
-                out = judge(messages)
-            except LLMError as e:
-                judges[judge.name] = {"error": str(e)[:200]}
-                reasons.append(f"{judge.name}: not run ({str(e)[:80]})")
-                continue
+        try:
+            out = judge(messages)
+        except LLMError as e:
+            judges[judge.name] = {"error": str(e)[:200]}
+            reasons.append(f"{judge.name}: not run ({str(e)[:80]})")
+        else:
             judges[judge.name] = out
-            checks = ("section_answers_question", "reference_matches_section")
-            failed = [k for k in checks if not yes(out.get(k))]
+            failed = [k for k in CHECKS if not yes(out.get(k))]
             if failed:
                 reasons.append(f"{judge.name}: {', '.join(failed)} = no. {out.get('reason', '')}")
+        opinion, opinion_reason = None, None
+        if not second_exhausted:
+            try:
+                out2 = second(messages)
+            except LLMError as e:
+                # Stop asking once its daily quota is gone; cached verdicts are still read.
+                second_exhausted = "daily limit" in str(e)
+                judges[second.name] = {"error": str(e)[:200]}
+            else:
+                judges[second.name] = out2
+                opinion = "agree" if all(yes(out2.get(k)) for k in CHECKS) else "disagree"
+                opinion_reason = out2.get("reason")
+        elif second is not None:
+            try:  # cache only: never calls the API after the daily limit
+                out2 = second.cached(messages)
+            except KeyError:
+                out2 = None
+            if out2 is not None:
+                judges[second.name] = out2
+                opinion = "agree" if all(yes(out2.get(k)) for k in CHECKS) else "disagree"
+                opinion_reason = out2.get("reason")
         missing: list[float] = []
         if item.group != "out_of_scope":
             full = "\n".join(c.text for sid in item.gold_section_ids for c in by_section[sid])
@@ -326,8 +357,10 @@ def verify(items: list[TestItem], judges_: list[Judge]) -> dict[str, dict]:
                 shown = ", ".join(f"{v:g}" for v in missing)
                 reasons.append(f"numbers not in the gold text: {shown}")
         results[item.id] = {"ok": not reasons, "reasons": reasons, "judges": judges,
-                            "missing_numbers": missing}  # fmt: skip
-        print(f"{n}/{len(direct)} {item.id} {'ok' if not reasons else 'FLAGGED'}", flush=True)
+                            "missing_numbers": missing, "second_opinion": opinion,
+                            "second_opinion_reason": opinion_reason}  # fmt: skip
+        print(f"{n}/{len(direct)} {item.id} {'ok' if not reasons else 'FLAGGED'} "
+              f"second opinion: {opinion or '-'}", flush=True)  # fmt: skip
     for item in items:
         if not item.source_id:
             continue
@@ -338,20 +371,39 @@ def verify(items: list[TestItem], judges_: list[Judge]) -> dict[str, dict]:
         if not item.language_ok:
             reasons.append("translation wording not checked by a native speaker yet")
         results[item.id] = {"ok": not reasons, "reasons": reasons, "judges": {},
-                            "missing_numbers": [], "inherited_from": item.source_id}  # fmt: skip
+                            "missing_numbers": [], "inherited_from": item.source_id,
+                            "second_opinion": src["second_opinion"] if src else None,
+                            "second_opinion_reason": None}  # fmt: skip
     return results
 
 
-def write_flagged(items: list[TestItem], results: dict[str, dict], judge_names: list[str]) -> str:
+def agreement(results: dict[str, dict]) -> tuple[int, int]:
+    """(agreed, checked) for the second judge, over directly judged questions."""
+    direct = [r for r in results.values() if not r.get("inherited_from")]
+    checked = [r for r in direct if r["second_opinion"]]
+    return sum(r["second_opinion"] == "agree" for r in checked), len(checked)
+
+
+def write_flagged(
+    items: list[TestItem], results: dict[str, dict], judge: str, second: str | None
+) -> str:
     flagged = [i for i in items if not results[i.id]["ok"]]
+    agreed, checked = agreement(results)
+    direct = sum(1 for i in items if not i.source_id)
     lines = [
         "# Flagged test-set questions",
         "",
         f"Generated by `python -m eval.verify_testset` on {date.today().isoformat()}. "
         f"{len(items) - len(flagged)} of {len(items)} questions passed "
-        f"(judges: {', '.join(judge_names)}; number check in code).",
+        f"(judge: {judge}; number check in code).",
         "",
     ]
+    if second:
+        lines += [
+            f"Second opinion ({second}, not blocking): agreed on **{agreed} of {checked}** it "
+            f"checked ({direct - checked} of {direct} directly judged questions not checked yet).",
+            "",
+        ]
     if not flagged:
         lines.append("Nothing is flagged.")
     else:
@@ -361,6 +413,15 @@ def write_flagged(items: list[TestItem], results: dict[str, dict], judge_names: 
             q = q if len(q) <= 90 else q[:87] + "…"
             why = "<br>".join(r.replace("|", "/") for r in results[i.id]["reasons"])
             lines.append(f"| {i.id} | {i.split} | {q} | {why} |")
+    disagree = [
+        i for i in items if not i.source_id and results[i.id]["second_opinion"] == "disagree"
+    ]
+    if disagree:
+        lines += ["", "## Second-opinion disagreements (to look at, not blocking)", "",
+                  "| id | question | reason |", "|---|---|---|"]  # fmt: skip
+        for i in disagree:
+            why = str(results[i.id]["second_opinion_reason"] or "").replace("|", "/")
+            lines.append(f"| {i.id} | {i.question[:90].replace('|', '/')} | {why} |")
     FLAGGED.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return "\n".join(lines[:4])
 
@@ -368,21 +429,25 @@ def write_flagged(items: list[TestItem], results: dict[str, dict], judge_names: 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--dry-run", action="store_true", help="don't update testset.jsonl")
-    args = ap.parse_args()
 
-    judges = make_judges(LLMClients(get_settings(), cache_path=CACHE))
+    ap.add_argument("--no-second-opinion", action="store_true", help="skip the Gemini judge")
+    args = ap.parse_args()
+    clients = LLMClients(get_settings(), cache_path=CACHE)
+    judge = make_judge(clients, REQUIRED_ROLE)
+    second = None if args.no_second_opinion else make_judge(clients, SECOND_OPINION_ROLE)
     items = load_testset()
-    results = verify(items, judges)
+    results = verify(items, judge, second)
 
     REPORTS.mkdir(exist_ok=True)
     report = REPORTS / f"{date.today().isoformat()}-verify.json"
     report.write_text(json.dumps(results, indent=1, ensure_ascii=False), encoding="utf-8")
-    print(write_flagged(items, results, [j.name for j in judges]))
+    print(write_flagged(items, results, judge.name, second.name if second else None))
     if not args.dry_run:
         rows = [json.loads(line) for line in TESTSET.read_text(encoding="utf-8").splitlines()]
         for row in rows:
             if row.get("verified") != "human":
                 row["verified"] = "machine" if results[row["id"]]["ok"] else False
+            row["second_opinion"] = results[row["id"]]["second_opinion"]
         TESTSET.write_text(
             "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8"
         )

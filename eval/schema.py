@@ -32,8 +32,13 @@ class TestItem(BaseModel):
     tax_year: int = 2027
     verified: Literal[False, "machine", "human"] = Field(
         default=False,
-        description='"machine": passed eval/verify_testset.py (two LLM judges on the gold text '
-        'and a code check of every number); "human": checked by an expert',
+        description='"machine": passed eval/verify_testset.py (an independent LLM judge, Qwen, '
+        'on the gold text and a code check of every number; D45); "human": checked by an expert',
+    )
+    second_opinion: Literal["agree", "disagree"] | None = Field(
+        default=None,
+        description="Second LLM judge (Gemini Flash) on the same check; not blocking (D45). "
+        "None = not checked yet",
     )
     language_ok: bool | None = Field(
         default=None,

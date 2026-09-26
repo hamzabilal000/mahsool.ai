@@ -169,6 +169,24 @@ class LLMClient:
         """The model id that serves `model` (after fallbacks seen so far in this process)."""
         return next((m for m in self.candidates(model) if m not in self.unavailable), model)
 
+    def cached(
+        self,
+        model: str,
+        messages: list[dict[str, str]],
+        *,
+        temperature: float = 0.0,
+        max_tokens: int = 1024,
+        reasoning_effort: str = "low",
+    ) -> dict:
+        """The cached answer, without calling the API; KeyError if there is none. A cached
+        answer from any candidate model counts: resuming never re-asks a fallback."""
+        kw = {"temperature": temperature, "max_tokens": max_tokens, "effort": reasoning_effort}
+        for m in self.candidates(model):
+            key = self._key(m, messages, kw)
+            if key in self._cache:
+                return self._cache[key]
+        raise KeyError(model)
+
     def chat_json(
         self,
         model: str,
@@ -179,11 +197,11 @@ class LLMClient:
         reasoning_effort: str = "low",
     ) -> dict:
         kw = {"temperature": temperature, "max_tokens": max_tokens, "effort": reasoning_effort}
-        # A cached answer from any candidate model counts: resuming never re-asks a fallback.
-        for m in self.candidates(model):
-            key = self._key(m, messages, kw)
-            if key in self._cache:
-                return self._cache[key]
+        try:
+            return self.cached(model, messages, temperature=temperature, max_tokens=max_tokens,
+                               reasoning_effort=reasoning_effort)  # fmt: skip
+        except KeyError:
+            pass
         if not self.api_key:
             raise LLMError(f"no API key for {self.spec.name}")
         for m in self.candidates(model):

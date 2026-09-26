@@ -460,3 +460,20 @@ Newest first within each milestone. Each entry says what the plan said, what we 
   (96.4%; 98.2% of answered); en-070 cited the Tenth Schedule and section 4 instead of section 168, en-076 was
   refused (NOT_IN_SOURCES). 13 of 13 out-of-scope questions run were refused. Fewer questions ran than on the first
   day (85) because full-max changes the retrieved chunks, so earlier cached answers no longer match their prompts.
+
+### D45. "machine" verified = Qwen judge + number check; Gemini is a non-blocking second opinion
+- Decided by Hamza on 2026-09-26. Gemini's free tier (20 requests a day, D42) would hold the test set for another
+  week, so it no longer blocks. **`"verified": "machine"` now means: the Qwen judge said yes to both checks (the gold
+  text answers the question; the reference answer matches it) and the number check in code passed.**
+- Gemini 3 Flash runs the same check as a **second opinion**, as far as its daily quota allows, at the start of
+  every session (`python -m eval.verify_testset`; it stops asking after the daily-limit error and reads the rest
+  from the cache). Its verdict is stored per question as `"second_opinion": "agree" | "disagree"` (translations
+  inherit it from their English source) and `eval/FLAGGED.md` gives the agreement rate and lists every disagreement
+  for a human to read. A disagreement does not unverify a question.
+- Result on 2026-09-26: **all 239 questions "machine"**; Gemini agreed on **15 of 15** it has checked (144 of the
+  159 directly judged questions not checked yet).
+- The honest one-line description, used in the README: *machine-verified by an independent LLM judge (Qwen) plus an
+  automatic number check; a second judge (Gemini) agreed on N of N it checked; 30 questions reviewed by a tax
+  professional (pending).*
+- This is weaker than two required judges (D38): one model family decides. The number check, the gold-text-only
+  prompt, the Gemini sample and the expert sample are what stand behind it.

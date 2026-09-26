@@ -17,7 +17,7 @@ from. When the law doesn't cover the question, Mahsool says so.
 | --- | --- | --- |
 | 1 | Repo, ingestion of the Income Tax Ordinance 2001, 90 English eval questions | ✅ done |
 | 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ✅ done |
-| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · ⏳ end-to-end eval 68/179 test questions (Groq daily limit, D36) · ⏳ test-set judge 2 of 2 on 14/159 (Gemini daily limit, D42) |
+| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set machine-verified (D45) · ⏳ end-to-end eval 68/179 test questions (Groq daily limit, D36) |
 | 4 | React chat UI, citation cards, feedback, Postgres logs, Langfuse | |
 | 5 | Fix top failures, Docker, deploy, demo | |
 
@@ -85,11 +85,18 @@ Each chunk follows the law's own structure: one section, one Second Schedule cla
 
 The test set lives in [`eval/testset.jsonl`](eval/testset.jsonl). Every question has gold section IDs, a short
 reference answer written only from the law text, a difficulty tag and a fixed dev/test split. All questions start with
-`"verified": false`. Without a tax expert, [`eval/verify_testset.py`](eval/verify_testset.py) checks each one with two
-LLM judges from different model families (Gemini 3 Flash and Qwen, neither of which wrote the questions) that read
-only the gold law text, plus a code check of every number; a question passing all three is `"verified": "machine"`
-(D38, D42, D43). A stratified sample of 30 test questions is set aside for a human expert
-([`eval/expert_sample.json`](eval/expert_sample.json)).
+`"verified": false`.
+
+**How the test set is verified:** machine-verified by an independent LLM judge (Qwen) plus an automatic number check;
+a second judge (Gemini) agreed on 15 of 15 it checked; 30 questions reviewed by a tax professional (pending).
+
+All 239 questions are `"verified": "machine"`: in [`eval/verify_testset.py`](eval/verify_testset.py) Qwen reads only
+the gold law text and confirms that it answers the question and supports the reference answer, and code checks that
+every number in the reference answer is in the law text. Gemini 3 Flash, a different model family, runs the same
+check as a non-blocking second opinion as far as its free tier allows (20 a day; `"second_opinion"` in the test set,
+agreement rate in [`eval/FLAGGED.md`](eval/FLAGGED.md)). Neither model wrote the questions. None of this replaces an
+expert: a stratified sample of 30 test questions waits for a tax professional
+([`eval/expert_sample.json`](eval/expert_sample.json)). Decisions D38, D42, D43, D45.
 
 | Group | Questions | Split (dev / test) |
 | --- | --- | --- |
@@ -141,8 +148,8 @@ split (Hit@5 96.1% vs 94.1%, Roman Urdu 83.3% vs 75.0%) and is now the `/ask` de
 | **All** | 119 | **84.9%** | **81.9%** | **0.764** |
 
 Metric definitions are in [DECISIONS D19](docs/DECISIONS.md). English numbers are optimistic because the questions
-were written from the section text (D20). No question is hand-verified yet; Qwen and the number check pass all of
-them, and 26 of 239 have passed both judges so far (Gemini's free tier allows 20 checks a day, D42, D43). Full reports, with every miss:
+were written from the section text (D20). All questions are machine-verified (Qwen + number check); none is verified by
+a tax professional yet (D45). Full reports, with every miss:
 [`eval/reports/`](eval/reports/).
 
 **Targets (held-out test split only)**

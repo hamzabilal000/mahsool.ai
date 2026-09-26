@@ -2,9 +2,10 @@
 
 from collections import defaultdict
 
+from backend.app.llm import LLMError
 from backend.app.rag.corpus import load_chunks
 from eval.validate_testset import load_testset
-from eval.verify_testset import gold_excerpt, missing_numbers, numbers_in
+from eval.verify_testset import agreement, gold_excerpt, missing_numbers, numbers_in, verify
 
 
 def test_numbers_in_digits_words_and_brackets():
@@ -52,3 +53,31 @@ def test_long_section_excerpt_keeps_the_chunk_with_the_definition():
     assert '"private company" means a company that is not a public company' in gold_excerpt(
         item, by_section
     ).replace("“", '"').replace("”", '"')
+
+
+class FakeJudge:
+    def __init__(self, name, verdict=None, error=None):
+        self.name, self.verdict, self.error, self.calls = name, verdict, error, 0
+
+    def __call__(self, messages):
+        self.calls += 1
+        if self.error:
+            raise LLMError(self.error)
+        return {"section_answers_question": "yes", "reference_matches_section": self.verdict}
+
+    def cached(self, messages):
+        raise KeyError
+
+
+def test_second_opinion_never_blocks_and_stops_after_its_daily_limit():
+    items = [i for i in load_testset() if i.id in ("en-001", "en-003", "ur-001")]
+    ok = FakeJudge("qwen", "yes")
+    results = verify(items, ok, FakeJudge("gemini", "no"))
+    assert results["en-001"]["ok"] and results["en-001"]["second_opinion"] == "disagree"
+    assert results["ur-001"]["second_opinion"] == "disagree"  # inherited from en-003
+    assert agreement(results) == (0, 2)
+
+    quota = FakeJudge("gemini", error="daily limit reached")
+    results = verify(items, ok, quota)
+    assert quota.calls == 1  # not asked again after the daily limit
+    assert all(r["ok"] and r["second_opinion"] is None for r in results.values())
