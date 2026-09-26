@@ -363,5 +363,15 @@
   "reason": "Qwen: the exemptions in section 236(4) were missing.",
   "reference_answer": "Yes, section 236 collects advance tax on telephone and internet bills and prepaid telephone and internet cards at Division V, Part IV rates. It is not collected from the Government, a foreign diplomat, a diplomatic mission in Pakistan, or a person who produces a Commissioner's certificate that his income for the tax year is exempt (section 236(4)).",
   "before": "Yes, section 236 collects advance tax on telephone and internet bills and prepaid cards at Division V, Part IV rates."
+ },
+ {
+  "id": "en-002",
+  "origin": "second opinion (Gemini), checked against the law text",
+  "basis": [
+   "ITO2001-s4AB"
+  ],
+  "reason": "Gemini: the salaried-individual exception in the proviso to section 4AB was missing.",
+  "reference_answer": "Individuals and associations of persons pay a surcharge of ten percent of the income tax under Division I of Part I of the First Schedule where taxable income exceeds Rs. 10 million. Under the proviso to section 4AB, no surcharge is payable by an individual deriving income chargeable under the head 'Salary'.",
+  "before": "Individuals and associations of persons pay a surcharge of ten percent of the income tax under Division I of Part I of the First Schedule where taxable income exceeds Rs. 10 million."
  }
 ]
