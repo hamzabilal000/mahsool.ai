@@ -33,7 +33,7 @@ export function ChatPage() {
             },
         )
         if (res.data) update(id, { result: res })
-        else update(id, { error: res.error || "Something went wrong." })
+        else update(id, { error: res.error || "Something went wrong.", errorCode: res.code })
         setBusy(false)
     }
 

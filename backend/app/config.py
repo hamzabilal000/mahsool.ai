@@ -55,6 +55,8 @@ class Settings(BaseSettings):
     reranker_model: str = "BAAI/bge-reranker-v2-m3"
     reranker_max_length: int = 512  # 27 s vs 37 s per 30 pairs on 4 CPU cores (DECISIONS D26)
     reranker_batch_size: int = 8
+    # int8 dynamic quantisation of the reranker's linear layers (CPU speed-up, D52).
+    reranker_quantize: bool = False
     hf_cache_dir: Path | None = None
 
     # --- Vector store ---
@@ -73,7 +75,7 @@ class Settings(BaseSettings):
     rerank_candidates: int = 30  # fused chunks passed to the reranker
     # "max": the reranker also scores each chunk against the first English rewrite and keeps the
     # higher score; chosen on the dev split (DECISIONS D40). Doubles the reranker time.
-    rerank_query: Literal["original", "max"] = "max"
+    rerank_query: Literal["original", "max", "max_non_en"] = "max"
     answer_top_k: int = 6  # reranked chunks shown to the answer model
     # Refuse without calling the answer model when the best reranker score is below this.
     # Kept very low: on the dev split Urdu / Roman Urdu questions that *are* answerable often
@@ -82,6 +84,10 @@ class Settings(BaseSettings):
     glossary_path: Path = Path("data/glossary_ur.csv")
     groq_base_url: str = "https://api.groq.com/openai/v1"
     rate_limit_per_minute: int = 20  # /ask requests per client IP
+    # Free-tier demo (D53): questions a visitor (client IP) may ask per UTC day that need the
+    # answer LLM; cached answers do not count. 0 = no limit.
+    daily_questions_per_visitor: int = 20
+    answer_cache: bool = True  # serve repeated questions from the answer cache (database)
     # The React dev server (Vite); the browser sends cookies (axios withCredentials).
     cors_origins: list[str] = ["http://localhost:5173"]
     current_tax_year: int = 2027

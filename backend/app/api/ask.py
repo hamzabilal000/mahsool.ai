@@ -8,9 +8,16 @@ POST /feedback — thumbs up / down on an answer.
     event: error   data: <envelope with an error code>
 The answer text is streamed only after the citation check has passed, so the page never shows
 text that is later withdrawn.
+
+Free-tier demo safeguards (D53), shared by both endpoints through `answer()`:
+- repeated questions are served from the answer cache (no LLM quota, no reranking);
+- each visitor (client IP) may ask `daily_questions_per_visitor` uncached questions per UTC day;
+- when the answer model's daily quota is used up, the reply is a friendly "try again tomorrow"
+  message in the question's language (code DAILY_LIMIT), not an error.
 """
 
 import asyncio
+import hashlib
 import json
 import logging
 import re
@@ -24,8 +31,9 @@ from fastapi.concurrency import run_in_threadpool
 from fastapi.responses import JSONResponse, StreamingResponse
 
 from backend.app.db import FeedbackStore
-from backend.app.llm import LLMError
+from backend.app.llm import DailyLimitError, LLMError
 from backend.app.models.schemas import AskData, AskRequest, Envelope, FeedbackRequest
+from backend.app.rag.query_rewrite import detect_language
 from backend.app.service import AskService
 
 log = logging.getLogger(__name__)
@@ -48,6 +56,28 @@ class RateLimiter:
             return False
         q.append(now)
         return True
+
+
+class VisitorDailyLimit:
+    """At most `limit` uncached questions per client IP per UTC day (in memory, one instance)."""
+
+    def __init__(self, limit: int) -> None:
+        self.limit = limit
+        self.day = ""
+        self.counts: dict[str, int] = defaultdict(int)
+
+    def _roll(self) -> None:
+        today = time.strftime("%Y-%m-%d", time.gmtime())
+        if today != self.day:
+            self.day, self.counts = today, defaultdict(int)
+
+    def allow(self, key: str) -> bool:
+        self._roll()
+        return self.limit <= 0 or self.counts[key] < self.limit
+
+    def spend(self, key: str) -> None:
+        self._roll()
+        self.counts[key] += 1
 
 
 def get_service(request: Request) -> AskService:
@@ -75,6 +105,30 @@ def envelope(status: int, *, code: str, error: str | None = None, data=None) -> 
 
 RATE_LIMITED = {"code": "RATE_LIMITED", "error": "Too many questions; try again in a minute."}
 LLM_UNAVAILABLE = {"code": "LLM_UNAVAILABLE", "error": "The language model is unavailable."}
+DAILY_LIMIT_TEXT = {
+    "en": "Mahsool runs on a free AI quota, and today's quota is used up. Please try again "
+    "tomorrow. Questions others have already asked still get an answer.",
+    "ur": "محصول مفت اے آئی کوٹے پر چلتا ہے اور آج کا کوٹہ ختم ہو گیا ہے۔ براہِ کرم کل دوبارہ "
+    "کوشش کریں۔ جو سوال پہلے پوچھے جا چکے ہیں ان کا جواب اب بھی ملتا ہے۔",
+    "roman_ur": "Mahsool free AI quota par chalta hai aur aaj ka quota khatam ho gaya hai. "
+    "Meharbani karke kal dobara koshish karein. Jo sawal pehle pooche ja chuke hain un ka "
+    "jawab ab bhi milta hai.",
+}
+VISITOR_LIMIT_TEXT = {
+    "en": "You have reached today's limit of new questions for this free demo. Please come back "
+    "tomorrow.",
+    "ur": "آپ اس مفت ڈیمو میں آج کے نئے سوالوں کی حد تک پہنچ گئے ہیں۔ براہِ کرم کل دوبارہ آئیں۔",
+    "roman_ur": "Aap is free demo mein aaj ke naye sawalon ki had tak pohanch gaye hain. "
+    "Meharbani karke kal dobara aayein.",
+}
+
+
+class AnswerRefused(Exception):
+    """A friendly, expected failure (quota, limits) with an HTTP status and envelope code."""
+
+    def __init__(self, status: int, code: str, error: str) -> None:
+        super().__init__(error)
+        self.status, self.code, self.error = status, code, error
 
 
 def client_key(request: Request) -> str:
@@ -92,6 +146,49 @@ def log_ask(store: FeedbackStore | None, question: str, data: AskData) -> AskDat
     return data
 
 
+def cache_key(version: str, question: str, tax_year: int | None) -> str:
+    norm = re.sub(r"\s+", " ", question.strip().lower()).rstrip(" ?.!؟۔")
+    return hashlib.sha256(f"{version}|{tax_year}|{norm}".encode()).hexdigest()
+
+
+def answer(request: Request, question: str, tax_year: int | None, on_stage=None) -> AskData:
+    """Cache → visitor limit → pipeline → cache and log. Runs in a worker thread."""
+    app = request.app
+    store: FeedbackStore | None = getattr(app.state, "store", None)
+    visitors: VisitorDailyLimit | None = getattr(app.state, "visitors", None)
+    version = getattr(app.state, "cache_version", None)
+    key = cache_key(version, question, tax_year) if (store and version) else None
+    if key:
+        try:
+            cached = store.cached_answer(key)
+        except Exception:
+            log.exception("answer cache read failed")
+            cached = None
+        if cached is not None:
+            cached.timings_ms = {"cache": 1}
+            return log_ask(store, question, cached)
+    visitor = client_key(request)
+    lang = detect_language(question)
+    if visitors and not visitors.allow(visitor):
+        raise AnswerRefused(429, "VISITOR_DAILY_LIMIT", VISITOR_LIMIT_TEXT[lang])
+    try:
+        data = app.state.service.ask(question, tax_year, on_stage)
+    except DailyLimitError as e:
+        log.warning("daily LLM quota used up: %s", e)
+        raise AnswerRefused(503, "DAILY_LIMIT", DAILY_LIMIT_TEXT[lang]) from e
+    except LLMError as e:
+        log.warning("LLM unavailable: %s", e)
+        raise AnswerRefused(503, LLM_UNAVAILABLE["code"], LLM_UNAVAILABLE["error"]) from e
+    if visitors:
+        visitors.spend(visitor)
+    if key:
+        try:
+            store.cache_answer(key, question, data)
+        except Exception:
+            log.exception("answer cache write failed")
+    return log_ask(store, question, data)
+
+
 @router.post("/ask", response_model=Envelope[AskData])
 async def ask(
     body: AskRequest,
@@ -102,13 +199,10 @@ async def ask(
 ) -> JSONResponse:
     if not limiter.allow(client_key(request)):
         return envelope(429, **RATE_LIMITED)
-    question = body.question.strip()
     try:
-        data = await run_in_threadpool(service.ask, question, body.tax_year)
-    except LLMError as e:
-        log.warning("LLM unavailable: %s", e)
-        return envelope(503, **LLM_UNAVAILABLE)
-    data = await run_in_threadpool(log_ask, store, question, data)
+        data = await run_in_threadpool(answer, request, body.question.strip(), body.tax_year)
+    except AnswerRefused as e:
+        return envelope(e.status, code=e.code, error=e.error)
     return envelope(200, code="REFUSED" if data.refused else "OK", data=data)
 
 
@@ -144,7 +238,7 @@ async def ask_stream(
             loop.call_soon_threadsafe(stages.put_nowait, name)
 
         task = asyncio.ensure_future(
-            run_in_threadpool(service.ask, question, body.tax_year, on_stage)
+            run_in_threadpool(answer, request, question, body.tax_year, on_stage)
         )
         while not task.done():
             try:
@@ -157,15 +251,13 @@ async def ask_stream(
             yield sse("stage", {"stage": stages.get_nowait()})
         try:
             data = task.result()
-        except LLMError as e:
-            log.warning("LLM unavailable: %s", e)
-            yield sse("error", envelope_body(**LLM_UNAVAILABLE))
+        except AnswerRefused as e:
+            yield sse("error", envelope_body(code=e.code, error=e.error))
             return
         except Exception:
             log.exception("unhandled error in /ask/stream")
             yield sse("error", envelope_body(code="INTERNAL_ERROR", error="Internal error"))
             return
-        data = await run_in_threadpool(log_ask, store, question, data)
         for piece in text_pieces(data.answer):
             yield sse("delta", {"text": piece})
             await asyncio.sleep(0.02)

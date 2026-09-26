@@ -5,6 +5,7 @@ Run locally (no Docker; needs the Qdrant index from `python -m ingestion.index`)
 Then open http://localhost:8000/docs.
 """
 
+import hashlib
 import logging
 from contextlib import asynccontextmanager
 
@@ -13,7 +14,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from backend.app.api.ask import RateLimiter
+from backend.app.api.ask import RateLimiter, VisitorDailyLimit
 from backend.app.api.ask import router as ask_router
 from backend.app.api.eval import router as eval_router
 from backend.app.config import get_settings
@@ -41,6 +42,21 @@ def build_service():
     )
 
 
+def cache_version(service) -> str:
+    """Changes whenever anything that shapes an answer changes: prompts, models, retrieval
+    settings, or the corpus snapshots. Cached answers from another version are never served."""
+    from backend.app.rag.generator import ANSWER_SYSTEM
+    from backend.app.rag.query_rewrite import REWRITE_SYSTEM
+
+    s = get_settings()
+    snapshots = sorted({c.snapshot_id for c in service.pipeline.by_id.values()})
+    parts = [
+        ANSWER_SYSTEM, REWRITE_SYSTEM, s.answer_model, s.rewrite_model, s.rerank_query,
+        str(s.rerank_candidates), str(s.answer_top_k), str(s.refusal_threshold), *snapshots,
+    ]  # fmt: skip
+    return hashlib.sha256("\n".join(parts).encode()).hexdigest()[:16]
+
+
 def build_store() -> FeedbackStore:
     s = get_settings()
     url = s.database_url.get_secret_value() if s.database_url else None
@@ -59,6 +75,8 @@ def create_app(service=None, store=None) -> FastAPI:
             app.state.store = build_store()
         if getattr(app.state, "service", None) is None:
             app.state.service = build_service()
+        if s.answer_cache and getattr(app.state, "cache_version", None) is None:
+            app.state.cache_version = cache_version(app.state.service)
         yield
 
     s = get_settings()
@@ -66,6 +84,8 @@ def create_app(service=None, store=None) -> FastAPI:
     app.state.service = service
     app.state.store = store
     app.state.limiter = RateLimiter(s.rate_limit_per_minute)
+    app.state.visitors = VisitorDailyLimit(s.daily_questions_per_visitor)
+    app.state.cache_version = None
     app.add_middleware(
         CORSMiddleware,
         allow_origins=s.cors_origins,

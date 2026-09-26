@@ -30,6 +30,13 @@ class BGEReranker:
             use_fp16=False,  # CPU
             cache_dir=str(settings.hf_cache_dir) if settings.hf_cache_dir else None,
         )
+        if settings.reranker_quantize:
+            import torch
+
+            # int8 weights for every Linear layer; activations quantised on the fly (CPU only).
+            self.model.model = torch.ao.quantization.quantize_dynamic(
+                self.model.model, {torch.nn.Linear}, dtype=torch.qint8
+            )
 
     def score(self, query: str, passages: list[str]) -> list[float]:
         if not passages:

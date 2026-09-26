@@ -90,3 +90,51 @@ def test_cors_allows_the_vite_dev_server_with_credentials(api):
     )
     assert r.headers["access-control-allow-origin"] == "http://localhost:5173"
     assert r.headers["access-control-allow-credentials"] == "true"
+
+
+def test_repeated_question_comes_from_the_answer_cache_and_skips_the_pipeline(api):
+    api.app.state.cache_version = "v1"
+    q = {"question": "Who deducts tax from salary?"}
+    first = api.post("/ask", json=q).json()["data"]
+    real, calls = api.app.state.service, []
+
+    class Counting:
+        def ask(self, *a, **kw):
+            calls.append(a)
+            return real.ask(*a, **kw)
+
+    api.app.state.service = Counting()
+    again = api.post("/ask", json={"question": "  who deducts tax from salary  "}).json()
+    assert again["success"] is True and again["data"]["answer"] == first["answer"]
+    assert again["data"]["timings_ms"] == {"cache": 1} and again["data"]["id"] != first["id"]
+    assert calls == []
+    api.app.state.cache_version = "v2"  # prompts/models changed: old answers are not served
+    api.post("/ask", json=q)
+    assert len(calls) == 1
+
+
+def test_visitor_daily_limit_counts_only_uncached_questions(api):
+    from backend.app.api.ask import VisitorDailyLimit
+
+    api.app.state.cache_version = "v1"
+    api.app.state.visitors = VisitorDailyLimit(1)
+    assert api.post("/ask", json={"question": "Who deducts tax from salary?"}).status_code == 200
+    assert api.post("/ask", json={"question": "Who deducts tax from salary?"}).status_code == 200
+    r = api.post("/ask", json={"question": "salary pe tax kaun kaatega?"})
+    assert r.status_code == 429 and r.json()["code"] == "VISITOR_DAILY_LIMIT"
+    assert "kal dobara" in r.json()["error"]  # Roman Urdu question, Roman Urdu message
+
+
+def test_daily_quota_gives_a_friendly_message_in_the_question_language(api):
+    from backend.app.llm import DailyLimitError
+
+    class Exhausted:
+        def ask(self, *a, **kw):
+            raise DailyLimitError("daily limit reached: tokens per day")
+
+    api.app.state.service = Exhausted()
+    r = api.post("/ask", json={"question": "کیا زرعی آمدنی پر ٹیکس ہے؟"})
+    assert r.status_code == 503 and r.json()["code"] == "DAILY_LIMIT"
+    assert "کل دوبارہ" in r.json()["error"]
+    events = parse_sse(api.post("/ask/stream", json={"question": "Is salary taxed?"}).text)
+    assert events[-1][0] == "error" and events[-1][1]["code"] == "DAILY_LIMIT"

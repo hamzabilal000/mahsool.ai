@@ -4,6 +4,9 @@
   citations, refusal reason, timings). No IP address or user id is stored.
 - `feedback`: thumbs up / down (and an optional comment) on an ask; one vote per ask, a new vote
   replaces the old one.
+- `answer_cache`: finished answers keyed by (cache version, normalised question, tax year), so a
+  repeated question costs no LLM quota and no reranking (D53). The version changes whenever the
+  prompts, models, retrieval settings or corpus change, so stale answers are never served.
 
 SQLAlchemy Core, so the same code runs on Postgres (Neon, via psycopg 3) and on SQLite.
 """
@@ -28,6 +31,7 @@ from sqlalchemy import (
     func,
     insert,
     select,
+    update,
 )
 from sqlalchemy.engine import Engine
 
@@ -59,6 +63,17 @@ feedback = Table(
     Column("created_at", DateTime(timezone=True), nullable=False),
     Column("rating", String(4), nullable=False),  # "up" | "down"
     Column("comment", Text),
+)
+
+
+answer_cache = Table(
+    "answer_cache",
+    metadata,
+    Column("key", String(64), primary_key=True),
+    Column("created_at", DateTime(timezone=True), nullable=False),
+    Column("question", Text, nullable=False),
+    Column("data", JSON, nullable=False),  # AskData without the per-request id
+    Column("hits", Integer, nullable=False, default=0),
 )
 
 
@@ -114,6 +129,28 @@ class FeedbackStore:
                 )
             )
         return True
+
+    def cached_answer(self, key: str) -> AskData | None:
+        with self.engine.begin() as conn:
+            row = conn.execute(select(answer_cache.c.data).where(answer_cache.c.key == key)).first()
+            if row is None:
+                return None
+            conn.execute(
+                update(answer_cache)
+                .where(answer_cache.c.key == key)
+                .values(hits=answer_cache.c.hits + 1)
+            )
+        return AskData.model_validate(row[0])
+
+    def cache_answer(self, key: str, question: str, data: AskData) -> None:
+        payload = data.model_dump(mode="json", exclude={"id"})
+        with self.engine.begin() as conn:
+            conn.execute(delete(answer_cache).where(answer_cache.c.key == key))
+            conn.execute(
+                insert(answer_cache).values(
+                    key=key, created_at=datetime.now(UTC), question=question, data=payload, hits=0
+                )
+            )
 
     def feedback_counts(self) -> dict[str, int]:
         with self.engine.connect() as conn:

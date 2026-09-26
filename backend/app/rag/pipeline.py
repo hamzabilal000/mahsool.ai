@@ -31,8 +31,9 @@ class PipelineConfig:
     candidates: int = 30  # chunks passed to the reranker
     max_pieces_per_lookup: int = 3  # pieces of a named section pinned on top
     # "max": score each chunk against the question and the first English rewrite, keep the
-    # higher score (DECISIONS D33). Doubles the reranker cost.
-    rerank_query: Literal["original", "max"] = "original"
+    # higher score (DECISIONS D33). Doubles the reranker cost. "max_non_en": the same, but only
+    # for Urdu / Roman Urdu questions, where it helps (D40, D52); English questions are scored once.
+    rerank_query: Literal["original", "max", "max_non_en"] = "original"
 
 
 @dataclass
@@ -118,7 +119,10 @@ class RAGPipeline:
             texts = [embedding_text(c.chunk) for c in pool]
             with stage("rerank"):
                 scores = self.reranker.score(question, texts)
-                if cfg.rerank_query == "max" and plan.queries:
+                use_max = cfg.rerank_query == "max" or (
+                    cfg.rerank_query == "max_non_en" and plan.language != "en"
+                )
+                if use_max and plan.queries:
                     alt = self.reranker.score(plan.queries[0], texts)
                     scores = [max(a, b) for a, b in zip(scores, alt, strict=True)]
             for c, s in zip(pool, scores, strict=True):

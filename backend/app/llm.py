@@ -33,6 +33,10 @@ class LLMError(RuntimeError):
     pass
 
 
+class DailyLimitError(LLMError):
+    """The provider's daily quota for this model is used up (free tier); it frees up over hours."""
+
+
 class ChatModel(Protocol):
     def chat_json(self, model: str, messages: list[dict[str, str]], **kw: Any) -> dict: ...
 
@@ -92,7 +96,7 @@ class RateLimiter:
     def acquire(self) -> None:
         with self._lock:
             if self.per_day is not None and self.today >= self.per_day:
-                raise LLMError(f"daily limit reached: {self.per_day} requests in this run")
+                raise DailyLimitError(f"daily limit reached: {self.per_day} requests in this run")
             if self.per_minute:
                 while True:
                     now = self.clock()
@@ -216,7 +220,9 @@ class LLMClient:
             if m in self.unavailable:
                 continue
             if m in self.exhausted:
-                raise LLMError(f"daily limit reached earlier in this run: {self.exhausted[m]}")
+                raise DailyLimitError(
+                    f"daily limit reached earlier in this run: {self.exhausted[m]}"
+                )
             body = {
                 "model": m,
                 "messages": messages,
@@ -228,9 +234,8 @@ class LLMClient:
             }
             try:
                 output = self._post(body)
-            except LLMError as e:
-                if str(e).startswith("daily limit"):
-                    self.exhausted[m] = str(e)[:200]
+            except DailyLimitError as e:
+                self.exhausted[m] = str(e)[:200]
                 raise
             if output is None:  # model not served: try the next fallback
                 log.warning("%s: model %s is not available, trying the next one", self.spec.name, m)
@@ -278,7 +283,7 @@ class LLMClient:
                     # Daily quota (free tier): it frees up over hours, so retrying is pointless.
                     quota = re.search(r'"quotaValue":\s*"(\d+)"', r.text)
                     per_day = f" ({quota.group(1)} requests per day)" if quota else ""
-                    raise LLMError(f"daily limit reached{per_day}: {r.text[:200]}")
+                    raise DailyLimitError(f"daily limit reached{per_day}: {r.text[:200]}")
                 elif _is_model_unavailable(r.status_code, r.text):
                     return None
                 elif r.status_code in (429, 500, 502, 503, 504) or (

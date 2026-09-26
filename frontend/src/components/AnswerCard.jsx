@@ -26,7 +26,9 @@ function AnswerText({ text, onCite }) {
 export function AnswerCard({ turn }) {
     let [showSources, setShowSources] = useState(false)
     let [highlight, setHighlight] = useState(null)
-    let { question, stage, text, result, error } = turn
+    let { question, stage, text, result, error, errorCode } = turn
+    // Quota limits of the free demo are expected, not failures: show them as a notice.
+    let quota = errorCode === "DAILY_LIMIT" || errorCode === "VISITOR_DAILY_LIMIT"
     let data = result?.data
     let urdu = isUrduScript(question)
 
@@ -44,7 +46,16 @@ export function AnswerCard({ turn }) {
             </div>
 
             <div className="rounded-2xl rounded-bl-sm border border-line bg-panel p-4">
-                {error && <p className="text-sm text-warn">{error}</p>}
+                {error && (
+                    <p
+                        dir="auto"
+                        role={quota ? "status" : "alert"}
+                        className={`text-sm ${quota ? "rounded-md bg-warn-soft px-3 py-2 text-ink" : "text-warn"} ${isUrduScript(error) ? "urdu" : ""}`}
+                    >
+                        {quota ? "⏳ " : ""}
+                        {error}
+                    </p>
+                )}
                 {!error && !text && !data && (
                     <p className="flex items-center gap-2 text-sm text-muted" role="status">
                         <span className="h-2 w-2 animate-pulse rounded-full bg-accent" />
