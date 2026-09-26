@@ -17,9 +17,9 @@ from. When the law doesn't cover the question, Mahsool says so.
 | --- | --- | --- |
 | 1 | Repo, ingestion of the Income Tax Ordinance 2001, 90 English eval questions | ✅ done |
 | 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ✅ done |
-| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set verified: 248 of 249 (D45, D51) · ⏳ end-to-end eval 50/189 (Groq daily limit, D36) |
+| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set verified: 248 of 249 (D45, D51) · ⏳ end-to-end eval 52/189 (Groq daily limit, D36) |
 | 4 | React chat UI, citation cards, feedback, Postgres logs, eval page | ✅ done (Langfuse moved to M5, D49) |
-| 5 | Fix top failures, Docker, deploy, demo | 🔄 in progress: latency 44 → 16 s (D52), definition lookup (D57), rate tables in citation cards, free-tier safeguards (D53), deploy prepared, not live (D54) |
+| 5 | Fix top failures, Docker, deploy, demo | 🔄 in progress: latency ~18 s → ~7.5 s on 4 cores (smaller reranker, D62), definition lookup (D57), rate tables in citation cards, Prompt Guard (D60), demo limits (D59), deploy blocked: free Docker Spaces now need HF PRO (D61) |
 
 ## Architecture
 
@@ -41,7 +41,7 @@ flowchart TD
   U[React chat UI] --> API[FastAPI /ask]
   API --> Q[Query understanding<br/>language, tax year, law]
   Q --> R[Hybrid search<br/>Qdrant dense + sparse, RRF]
-  R --> RR[Reranker<br/>bge-reranker-v2-m3]
+  R --> RR[Reranker<br/>gte-multilingual-reranker-base]
   RR --> G[LLM answer<br/>with citations]
   G --> V[Citation check]
   V --> U
@@ -133,12 +133,14 @@ Urdu and Roman Urdu questions are natural rewrites of English ones and share the
 | + glossary in rewrite = full pipeline, reranking with the question only | 97.3% | **89.7%** | 92.9% | 75.0% | 91.1% |
 | full pipeline, reranking with max(question, rewrite) score (D40) | 97.3% | 87.2% | 92.9% | **92.9%** | 93.5% |
 | 15 rerank candidates, max score only for Urdu / Roman Urdu (D52) | **98.6%** | 87.2% | 92.9% | **92.9%** | 94.0% |
-| + section 2 definition lookup = **`/ask` default** (D57) | **98.6%** | **94.9%** | 92.9% | **92.9%** | **95.8%** |
+| + section 2 definition lookup (D57), bge reranker | **98.6%** | 94.9% | 92.9% | **92.9%** | **95.8%** |
+| gte-multilingual-reranker-base at 256 tokens instead of bge = **`/ask` default** (D62) | 97.3% | **97.4%** | **96.4%** | 89.3% | **95.8%** |
 
 All 168 in-scope test questions, re-run on 2026-09-26 after the legal-review fixes and the 10 new condition-focused
 English questions (en-091 … en-100, all 10 found in the top 5 by the default pipeline; D51). Reference-answer fixes
 do not change retrieval; the written-English column moves only because of the new questions. The `/ask` default has
-Recall@5 (all gold) 92.8% and MRR@10 0.906 on all 168. The last two rows are Milestone 5 changes: the reranker scores
+Recall@5 (all gold) 93.2% and MRR@10 0.848 on all 168 (bge: 92.8% and 0.906; the smaller reranker keeps Hit@5 but
+ranks the right section first less often, D62). The last two rows are Milestone 5 changes: the reranker scores
 15 candidates and uses the English rewrite only for Urdu / Roman Urdu (tuned on dev for speed, D52), and a definition
 lookup pins the section 2 clause for "what is X?" questions (D57), which lifts the FBR-sourced group (D39) from 87.2%
 to 94.9%. That rule was found by reading test misses (the FBR questions exist only on the test split), so part of
@@ -169,16 +171,17 @@ was checked by an AI legal-review tool, and none by a tax professional yet (D50)
 | Metric | Target | Result |
 | --- | --- | --- |
 | Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | `/ask` default: Urdu 92.9% ✅ / Roman Urdu 92.9% ✅; all 168: 95.8%, FBR 94.9% |
-| Answer correctness | ≥ 85% | 97.3% of the 37 answers judged so far match the reference (Qwen judge, D56; 36 English + 1 FBR, no Urdu yet) — partial* |
-| Answers with a correct citation | ≥ 90% | 37 of 37 in-scope questions run so far answered with a correct citation — partial* |
+| Answer correctness | ≥ 85% | 97.4% of the 39 answers judged so far match the reference (Qwen judge, D56; 38 English + 1 FBR, no Urdu yet) — partial* |
+| Answers with a correct citation | ≥ 90% | 39 of 39 in-scope questions run so far answered with a correct citation — partial* |
 | Correct refusal on out-of-scope questions | ≥ 90% | 13 / 13 run — partial*, and the 8 not run are the harder ones |
-| Median latency | < 4 s | ❌ ~18 s p50 for a new question on 4 CPU cores (rerank 15 s, retrieval 0.7 s, both LLMs ~2 s, D52); ~30 ms for a repeated question (answer cache) |
+| Median latency | < 4 s | ❌ ~7.5 s for a new English question on 4 CPU cores (live, rerank ~2.7 s), ~9 s for Roman Urdu; estimated ~8-9 s p50 / ~13 s p95 on 2 vCPU (D62); ~10 ms for a repeated question (answer cache) |
 
 \* End-to-end on the test split ([`eval/run_e2e.py`](eval/run_e2e.py)) with the `/ask` default. The answer prompt
-changed on 2026-09-26 (it must state conditions and both ATL and non-ATL rates, D51), so the run restarted: **50 of
-189 run, 139 left** after the second daily quota (37 in-scope answers, all citing a gold section; 13 out-of-scope,
-all refused), at ~40-65 answers a day on Groq's free tier (D36). The 50 are the first questions in file order, so
-almost all are written English: no Urdu or Roman Urdu answer has been scored with the current prompt yet. The
+changed on 2026-09-26 (it must state conditions and both ATL and non-ATL rates, D51), so the run restarted: **52 of
+189 run, 137 left** after the third daily quota (39 in-scope answers, all citing a gold section; 13 out-of-scope,
+all refused), at ~40-65 answers a day on Groq's free tier (D36). The 52 are the first questions in file order, so
+almost all are written English: no Urdu or Roman Urdu answer has been scored with the current prompt yet. They were
+made with the bge reranker; since the switch to gte (D62) the next run asks them again with gte's sources. The
 previous prompt's run (85 of 179: 70 of 71 answered with a correct citation) is kept in D44. Resume:
 `python -m eval.run_e2e --split test`, then `python -m eval.judge_answers --split test` and, once 50 in-scope answers
 exist, `python -m eval.make_answer_check`.

@@ -729,3 +729,58 @@ Newest first within each milestone. Each entry says what the plan said, what we 
   needs a card for sign-up) or Google Cloud Run (free monthly vCPU-seconds, needs billing enabled, cold starts load
   ~3 GB of models); (c) move embedding and reranking to hosted APIs so the backend fits a 512 MB free instance
   (Render, Koyeb), at the cost of new accounts and each API's free-tier limits.
+
+### D62. Reranker: gte-multilingual-reranker-base at 256 tokens replaces bge-reranker-v2-m3
+- **Why:** reranking was ~15-30 s of every new question (D52), and the host has 2 vCPU. Hamza's rule: only models
+  whose license allows commercial use; tune on dev only; keep dev Hit@5 within 1 point of 98.0% and test Hit@5
+  within 1 point of 94.0%; report p50 / p95 on 4 cores and on 2 cores.
+- **Compared on dev** (51 in-scope questions, `/ask` settings: 15 candidates, max score for Urdu / Roman Urdu; real
+  compute, `python -m eval.latency`; "2 cores" = the process pinned to 2 of this machine's 4 cores with `taskset` and
+  2 PyTorch threads, an estimate for the Space's 2 vCPU):
+
+  | Reranker | License | Size | Tokens/pair | Dev Hit@5 | Rerank p50 / p95, 4 cores | 2 cores |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | BAAI/bge-reranker-v2-m3 (before) | Apache-2.0 | 568M | 512 | 98.0% | 20.3 / 38.8 s (15.1 / 29.5 s in D52) | 30.6 / 33.5 s (20 English questions) |
+  | BAAI/bge-reranker-v2-m3 | Apache-2.0 | 568M | 256 | 98.0% | 10.6 / 18.2 s | not run (too slow at 4 cores) |
+  | Alibaba-NLP/gte-multilingual-reranker-base | Apache-2.0 | 306M | 512 | 96.1% | 6.3 / 11.5 s | 9.6 / 19.4 s |
+  | **Alibaba-NLP/gte-multilingual-reranker-base** | Apache-2.0 | 306M | **256** | **98.0%** | **2.7 / 4.8 s** | **4.7 / 8.8 s** |
+  | cross-encoder/mmarco-mMiniLMv2-L12-H384-v1 | Apache-2.0 | 118M | 512 | 94.1% (Roman Urdu 83%) | 1.9 / 3.3 s | 2.3 / 4.6 s |
+  | jinaai/jina-reranker-v2-base-multilingual | CC-BY-NC-4.0 | 278M | — | not run: no commercial use | | |
+  | mixedbread-ai/mxbai-rerank-base-v2 | Apache-2.0 | 494M | — | not run: a 0.5B decoder, about bge's size, needs its own package | | |
+
+  The same bge run was ~35% slower this session than in D52 (machine variance); all rows of the table were measured
+  in the same session. Licenses are the `license:` tags on each model's Hugging Face page (2026-09-26).
+- **Chosen:** gte at 256 tokens, the only setting that keeps dev Hit@5 at 98.0% (the 1-point margin allows no lost
+  question on 51) and gets rerank p50 under ~6 s on 2 cores. **Test check, run once** (168 questions): Hit@5
+  **95.8%**, the same as bge (95.8%; the bar was ≥ 93.0%); English 97.3% (bge 98.6%), FBR 97.4% (94.9%), Urdu 96.4%
+  (92.9%), Roman Urdu 89.3% (92.9%); Recall@5 93.2% (92.8%). **MRR@10 falls**: test 0.906 → 0.848, dev
+  0.898 → 0.809, i.e. the right section is still in the top 5 but less often first. The answer model reads the top
+  6, so answers should not suffer, but the end-to-end run has to confirm it.
+- **Measured live** (`uvicorn` on 4 cores, Prompt Guard on, answers from Groq): an English question 7.1-7.7 s in
+  total (rerank 2.6-2.8 s, retrieval 1.3-2.2 s, guard 0.5 s, rewrite 0.7-0.8 s, answer 1.5-1.7 s); a Roman Urdu one
+  9.3 s (rerank 6.0 s: Urdu and Roman Urdu are scored twice, D40); repeated questions ~8 ms from the answer cache.
+  **Estimate for 2 vCPU:** search p50 5.9 s / p95 9.9 s (dev) + guard, rewrite and answer ~2.5-3 s ≈ **8-9 s p50,
+  ~13 s p95** for a new question, plus whatever the host's vCPUs lose against these cores. Still above the plan's
+  4 s target; no hosted reranker was needed to get under ~6 s of reranking.
+- **Engineering:** `CrossEncoderReranker` (transformers) next to `BGEReranker`, picked by `reranker_model`. gte runs
+  remote model code (`trust_remote_code`); both the weights and the code are pinned to reviewed revisions in
+  `config.py`. transformers 5 leaves gte's non-persistent buffers uninitialised and dropped a helper the code calls,
+  so the model is built from its config, the weights are loaded into it, and the old helper is restored (checked:
+  all weights load, scores sensible). Reranker score caches are now per model and length
+  (`eval/cache/rerank-gte-multilingual-reranker-base-256.tsv`); the bge cache stays for the old reports. The answer
+  cache version includes the reranker. The Dockerfile bakes gte and its pinned code.
+- **Consequence:** the 52 end-to-end answers so far were made with bge; the next `run_e2e` asks again with gte's
+  sources (new answer prompts, so new quota).
+
+### D63. Live check: a non-ATL rate claimed to be the same as the ATL rate
+- "What is the withholding tax on profit on debt paid by a bank to a filer?" → 20% (correct for a filer, Division IA
+  clause (a)), but the answer added that the rate applies "regardless of ATL status". The law: Tenth Schedule rule 1
+  raises withholding by 100% for persons not on the ATL, and section 151 is not among rule 10's exceptions; the FBR
+  rate card (source [1] of that answer) shows 20% ATL / 40% non-ATL. A Roman Urdu non-filer variant ("bank munafa par
+  kitna tax katta hai agar main non filer hun?") was refused (`NOT_IN_SOURCES`).
+- **Tried and reverted:** a sharper rule 7(a) in the answer prompt. The model then argued that "the Ordinance
+  prevails over the rate card's higher non-ATL rate" (the card carries FBR's note that the Ordinance prevails),
+  because Tenth Schedule rule 1, the Ordinance's own doubling rule, was not among the sources.
+- **Proposed fix (not done, needs a dev eval and answer quota):** when a rate-card chunk whose rows cite "R.1 of
+  Tenth Schedule" is among the answer sources, pin `ITO2001-sch10-1` (rule 1) as an extra source, and add a test
+  question for it. Same pattern as the definition lookup (D57).
