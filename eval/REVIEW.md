@@ -1,6 +1,6 @@
 # Eval review — test split
 
-140 unverified questions. For each one, tick the boxes that are true and note anything wrong. Then tell Claude Code which ids to fix; verified ones get `"verified": true` in `eval/testset.jsonl`.
+140 unverified questions. For each one, tick the boxes that are true and note anything wrong. Then list the ids to fix; checked ones get `"verified": "human"` in `eval/testset.jsonl`.
 
 What to check:
 - **Gold is right:** the gold section really answers the question (open the PDF page if unsure).

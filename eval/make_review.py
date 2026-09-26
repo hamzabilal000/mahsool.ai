@@ -44,8 +44,8 @@ def render(items: list[TestItem], split: str) -> str:
         f"# Eval review — {split} split",
         "",
         f"{len(todo)} unverified questions. For each one, tick the boxes that are true and note "
-        "anything wrong. Then tell Claude Code which ids to fix; verified ones get "
-        '`"verified": true` in `eval/testset.jsonl`.',
+        "anything wrong. Then list the ids to fix; checked ones get "
+        '`"verified": "human"` in `eval/testset.jsonl`.',
         "",
         "What to check:",
         "- **Gold is right:** the gold section really answers the question (open the PDF page if "
