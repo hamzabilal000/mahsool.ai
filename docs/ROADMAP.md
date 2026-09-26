@@ -33,14 +33,14 @@ planned 30-question retrieval regression gate, and not the frontend tests.
 | --- | --- | --- |
 | Chat in English, Urdu and Roman Urdu | Done | RTL + Nastaliq for Urdu script (D48). |
 | Streamed answers | Done | Streams pipeline stages, then the citation-checked answer; not raw model tokens (D46). |
-| Citation cards: law, section, title, original text, FBR PDF page link | Done | Rate tables show as raw `\| … \|` text. |
+| Citation cards: law, section, title, original text, FBR PDF page link | Done | Rate tables render as tables. |
 | Tax-year selector (defaults to TY2027) | Done | Only TY2027 law is loaded; earlier years shown as "not loaded". |
 | "Show sources" panel with scores | Done | Reranker scores and search queries. |
 | Thumbs up/down saved to the database | Done | SQLite locally; Postgres (Neon) supported, not yet used. |
 | Starter questions (salaried, freelancers, businesses) | Done | Six questions, three languages. |
 | Public evaluation page | Partly done | Built (`/eval`), reads committed reports; not public until deployed. |
 | Guardrails: grounding, citation check, refusals, disclaimer, rate limit | Done | |
-| Guardrails: Prompt Guard input screening | Not started | Planned in PROJECT_PLAN; not implemented. |
+| Guardrails: Prompt Guard input screening | Done (D60) | Prompt Guard 2 on Groq; weak on Urdu / Roman Urdu attacks. |
 | Monitoring: Langfuse traces | Not started | Deferred to Milestone 5 (D49); timings are logged per answer. |
 
 **Version 2**
@@ -83,6 +83,10 @@ plan's Week 5 (≈ 1 Nov 2026) or earlier. Post 2 after step 11 (all phases, pra
 Week 10 (≈ 6 Dec 2026). Do not post before the numbers in the post come from complete runs.
 
 ## 11. Decisions needed from Hamza
+
+**Update, 2026-09-26 (third session):** latency route decided by Hamza and done locally (smaller commercial-use
+reranker, D62); demo limits set (D59); the test deploy is blocked because free Docker Spaces now need Hugging Face
+PRO (D61), which is a new decision for Hamza.
 
 **Answered by Hamza on 2026-09-26:** 1 free tier only (D53); 2 measure per stage, local fixes first (done, D52;
 compute still ~16 s, so a hosted or smaller reranker is the open follow-up); 3 as recommended (D54); 4 deploy after

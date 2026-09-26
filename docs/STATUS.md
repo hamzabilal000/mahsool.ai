@@ -1,14 +1,15 @@
 # Project status and handoff
 
-Last updated: 2026-09-26, night (judges complete, end to end 50/189, definition lookup, rate tables; roadmap in [`ROADMAP.md`](ROADMAP.md))
+Last updated: 2026-09-26, late night (smaller reranker, demo limits, Prompt Guard, deploy blocked on hosting; roadmap in [`ROADMAP.md`](ROADMAP.md))
 
-## Overall status (2026-09-26, night)
-Mahsool AI is in Milestone 5 (Week 5) of Phase 1. The test set is verified (248 of 249; the last one waits for a
-tax practitioner), retrieval on the held-out test set is at Hit@5 95.8% (FBR 94.9%, Urdu and Roman Urdu 92.9%) after
-the definition lookup, and the first 37 end-to-end answers with the current prompt all cite a correct section and
-97.3% of them match the reference. The end-to-end eval has run 50 of 189 test questions (quota-bound), latency is
-~16 s per new question (target 4 s), and the deployment is prepared but not live. Phases 2-4 and v2 have not
-started. Roughly 45% of the whole project is done (Phase 1 about 88%).
+## Overall status (2026-09-26, late night)
+Mahsool AI is in Milestone 5 (Week 5) of Phase 1. The test set is verified (248 of 249; en-092 waits for a tax
+practitioner). Retrieval on the held-out test split is Hit@5 95.8% with the new, smaller reranker (gte, D62), which
+cut a new question from ~18 s to ~7.5 s on 4 cores (estimated ~8-9 s p50 on the Space's 2 vCPU). The end-to-end eval
+has run 52 of 189 test questions (39 in scope, all with a correct citation; 38 of 39 match the reference); it must
+re-ask them with the new reranker. Demo limits (10 per visitor, 60 a day in all) and Prompt Guard are in. The test
+deploy is **blocked**: Hugging Face now charges (PRO) for Docker Spaces on free CPU (D61). Phases 2-4 and v2 have not
+started. Roughly 47% of the whole project is done (Phase 1 about 90%).
 
 ## Working rules (from Hamza)
 - Hamza is the only author. No "Co-Authored-By", "Generated with …" or other AI attribution in commits, PRs, code,
@@ -35,10 +36,10 @@ Groq and Gemini stay on free tiers (D53). Quota-bound runs go first; each stops 
 
 | # | Command | Left after 2026-09-26 | Quota |
 | --- | --- | --- | --- |
-| 1 | `python -m eval.run_e2e --split test` | **139 of 189 test questions** (50 run; all Urdu / Roman Urdu still to do) | GPT OSS 120B, ~40-65 answers/day |
-| 2 | `python -m eval.judge_answers --split test` | new answers after each e2e run (37 judged) | Qwen |
-| 3 | `python -m eval.make_answer_check` | once ≥ 50 in-scope answers exist (37 now): the sheet for Hamza | none |
-| 4 | `python -m eval.verify_testset` | Qwen: done (en-092 waits for a practitioner, D58); Gemini second opinion: 148 of 169 left | Gemini 20/day |
+| 1 | `python -m eval.run_e2e --split test` | **all 189 again** with the gte reranker (D62): the 52 bge answers get new sources; then all Urdu / Roman Urdu | GPT OSS 120B, ~40-65 answers/day |
+| 2 | `python -m eval.judge_answers --split test` | new answers after each e2e run (39 judged, bge) | Qwen |
+| 3 | `python -m eval.make_answer_check` | once ≥ 50 in-scope answers exist (39 now): the sheet for Hamza | none |
+| 4 | `python -m eval.verify_testset` | Qwen: done (en-092 waits for a practitioner, D58); Gemini second opinion: 147 of 169 left (20 of 22 agree) | Gemini 20/day |
 | 5 | `python -m eval.summary` | refresh the eval page numbers | none |
 
 When a judge flags a question: check the flag against the law text, record the fix in `eval/review/changes.json`,
@@ -46,6 +47,22 @@ run `python -m eval.apply_changes` (it also updates translations), and commit. U
 in D58 after every run.
 
 ## Done
+- **M5, third session of 2026-09-26:**
+  - Reranker (Hamza's decision 1, D62): gte-multilingual-reranker-base (Apache-2.0) at 256 tokens replaces
+    bge-reranker-v2-m3: dev Hit@5 98.0% and test 95.8% unchanged, MRR lower (test 0.906 → 0.848); rerank p50 4.7 s
+    / p95 8.8 s on 2 cores (was ~30 s). Live `/ask`: ~7.5 s English, ~9 s Roman Urdu on 4 cores. mmarco-MiniLM
+    (fast, loses 2 dev questions) and gte at 512 tokens rejected; jina-v2 excluded (non-commercial license).
+  - Demo limits (decision 2, D59): 10 new questions per visitor per day, 60 answers a day for everyone, cached
+    answers never count, "come back tomorrow" in the question's language; visitor key from `X-Forwarded-For`.
+  - Prompt Guard 2 on Groq (D60): 0 of 249 test questions flagged; catches 4 of 6 English attacks, 1 of 4 Urdu,
+    0 of 4 Roman Urdu.
+  - Test deploy (decision 3) blocked: 402 from Hugging Face, Docker Spaces on free CPU need PRO (D61). Nothing
+    created. Neon could not be reached from this container (only HTTPS goes out), so `DATABASE_URL` is untested.
+  - Old branch `claude/mahsool-gemini-eval-cla2bx` confirmed gone (decision 4): only `main` on origin.
+  - End to end 52 of 189 (quota), answer judge 38 of 39, Gemini second opinion 20 of 22 agree.
+  - Live finding (D63): the answer to a filer question claimed the 20% rate is the same for non-ATL persons (law: 40%,
+    Tenth Schedule rule 1); retrieval fix proposed, not done.
+
 - **M1:** Income Tax Ordinance 2001 (amended to 30.06.2026): 885 chunks, 380/380 sections. 90 English eval questions.
 - **M2 (part 1):**
   - Income Tax Rules 2002 (amended to 15.09.2026): 498 chunks, 381/381 rules.
@@ -148,32 +165,35 @@ Run the app: `uvicorn backend.app.main:app --port 8000` and `cd frontend && npm 
 
 Rules learned the hard way: never `pkill -f` or `pgrep -f | kill` (it matches the calling shell); kill by exact
 process id. Only one process may open the embedded Qdrant at a time (stop uvicorn before `run_e2e` / `run_eval`).
-Keep GPT OSS 120B for the answers only.
+Keep GPT OSS 120B for the answers only. In a cloud session with `DATABASE_URL` set, uvicorn hangs at startup (no
+Postgres egress): start it with `env -u DATABASE_URL`. `until ! pgrep -f X` loops match their own shell; wait on a
+report file or an exact process id instead.
 
 ## Next: rest of Milestone 5 (ROADMAP steps 1-6)
-1. Quota runs each session until the end-to-end eval and the judges are complete (table above), then the
-   answer-correctness judge and `eval/answer_check.md` for Hamza.
-2. Latency decision (D52): hosted reranker (needs an account/key), a smaller multilingual reranker locally, or
-   accept ~15-30 s for new questions with the progress stages shown.
-3. Top failures: done: FBR definition misses (D57), rate tables in cards. Left: en-029-style answers that drop
-   other routes (answer prompt), Roman Urdu refusals (re-measure once Urdu answers exist), Prompt Guard.
-4. Deploy (D54) when steps 1-2 are done: Hamza creates the Hugging Face, Neon and Vercel accounts and adds the
-   secrets listed in README "Deploy"; Langfuse keys at the same time (`LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`,
-   `LANGFUSE_HOST`), then tracing gets wired in.
-5. Demo video, live link in the README, LinkedIn post 1.
+1. Quota runs each session (table above): e2e re-run with gte, judges, then the 50-answer sheet.
+2. Hosting decision (D61), then the deploy: `python scripts/deploy_space.py --space HUZZZ/mahsool-ai --private
+   --secret GROQ_API_KEY --secret DATABASE_URL --wait` if Hamza takes Hugging Face PRO; check `X-Forwarded-For` on
+   the first request and set `MAHSOOL_FORWARDED_FOR_HOPS`; test `/health`, one cached and one new question.
+3. Top failures: Tenth Schedule rule 1 pin for non-ATL rates (D63), en-029-style answers that drop other routes,
+   Roman Urdu refusals (re-measure once Urdu answers exist), Prompt Guard misses in Urdu / Roman Urdu.
+4. Latency: still ~2x the 4 s target; next levers are ONNX / int8 for gte (measure on dev), fewer candidates for
+   Urdu, or caching query embeddings.
+5. Langfuse keys with the deploy; demo video, live link in the README, LinkedIn post 1.
 
 ## Open for Milestone 5
-- Latency: ~18 s p50 for a new question on 4 cores (rerank ~15 s); target < 4 s; the Space has 2 vCPU (D52).
-- The Docker image has not been built here (no Docker daemon); the first Space build is its first real test (D54).
-- Langfuse (D49) and Prompt Guard not implemented.
-- en-029: the app answered the residency question with the 183-day test only (answer correctness "partly", D58).
+- Latency ~7.5 s on 4 cores, estimated ~8-9 s p50 on 2 vCPU (D62); target < 4 s.
+- The Docker image has not been built anywhere yet (no Docker daemon here; the Space was never created).
+- `DATABASE_URL` (Neon) untested: this container cannot open Postgres connections.
+- Langfuse (D49) not implemented.
+- en-029 (residency: only the 183-day test) and D63 (non-ATL rate) answer errors.
 - Citation cards repeat the chunk heading as the first text line (cosmetic).
 
 ## Open items for Hamza
-- Delete the old branch `claude/mahsool-gemini-eval-cla2bx` on GitHub (Branches → trash icon): `git push origin
-  --delete` was refused again by this session's git proxy on 2026-09-26; `main` already contains all of it.
-- Decide the latency route (D52), see "Next" step 2.
-- When deploying: Hugging Face (write token), Neon (connection string), Vercel, Langfuse accounts (README "Deploy").
+- Decide hosting (D61): Hugging Face PRO (~9 USD/month, nothing else changes), a free VM (Oracle Cloud Always
+  Free), or hosted embedding + reranking on a small free host.
+- To test Neon from a cloud session, allow outbound Postgres (port 5432) to `*.neon.tech` in the environment's
+  network settings, or test it from your machine.
+- Langfuse account when deploying (README "Deploy").
 - Review `data/glossary_ur.csv` as a native speaker (D25).
 - Spot-check `data/processed/*/spot_check.md`.
 - Tax-practitioner review of `eval/expert_sample.json` when you find one, plus en-092 (who decides the section 155
