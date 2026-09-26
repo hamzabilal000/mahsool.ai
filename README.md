@@ -17,7 +17,7 @@ from. When the law doesn't cover the question, Mahsool says so.
 | --- | --- | --- |
 | 1 | Repo, ingestion of the Income Tax Ordinance 2001, 90 English eval questions | ✅ done |
 | 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ✅ done |
-| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set machine-verified (D45) · ⏳ end-to-end eval 85/179 test questions (Groq daily limit, D36) |
+| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set machine-verified (D45) · ⏳ end-to-end eval restarted with the new answer prompt: 17/189 (Groq daily limit, D36) |
 | 4 | React chat UI, citation cards, feedback, Postgres logs, eval page | ✅ done (Langfuse moved to M5, D49) |
 | 5 | Fix top failures, Docker, deploy, demo | |
 
@@ -88,24 +88,31 @@ reference answer written only from the law text, a difficulty tag and a fixed de
 `"verified": false`.
 
 **How the test set is verified:** machine-verified by an independent LLM judge (Qwen) plus an automatic number check;
-a second judge (Gemini) agreed on 15 of 15 it checked; 30 questions reviewed by a tax professional (pending).
+a second judge (Gemini) agreed on 15 of 15 it checked with the earlier two-question prompt (1 of 1 so far with the
+current one). Legal review of a 30-question sample by ChatGPT (OpenAI), an AI legal-review tool with web access,
+26 Sep 2026: 19 correct, 10 partly correct, 1 wrong; all fixed and a completeness sweep applied to the full set. This
+is an AI tool's review, not a human one; a review by a tax professional is still pending.
 
-All 239 questions are `"verified": "machine"`: in [`eval/verify_testset.py`](eval/verify_testset.py) Qwen reads only
-the gold law text and confirms that it answers the question and supports the reference answer, and code checks that
-every number in the reference answer is in the law text. Gemini 3 Flash, a different model family, runs the same
-check as a non-blocking second opinion as far as its free tier allows (20 a day; `"second_opinion"` in the test set,
-agreement rate in [`eval/FLAGGED.md`](eval/FLAGGED.md)). Neither model wrote the questions. None of this replaces an
-expert: a stratified sample of 30 test questions waits for a tax professional
-([`eval/expert_sample.json`](eval/expert_sample.json)). Decisions D38, D42, D43, D45.
+In [`eval/verify_testset.py`](eval/verify_testset.py) Qwen reads only the gold law text and answers three questions:
+does it answer the question, does it support the reference answer, and does the reference omit a condition or
+exception that changes the answer (added after the review showed that the judges passed incomplete answers, D51).
+Code checks that every number in the reference answer is in the law text. Gemini 3 Flash, a different model family,
+runs the same check as a non-blocking second opinion as far as its free tier allows (20 a day). Neither model wrote
+the questions. Every correction from the review was checked against the corpus before it was applied, and every
+change to a reference answer is listed with before and after in [`eval/FLAGGED.md`](eval/FLAGGED.md) (D50).
+
+**Current state (2026-09-26):** 185 of 249 questions are machine-verified (23 of them also "reviewed": marked correct
+or corrected per the AI review, then re-verified); the other 64 wait for Qwen to re-judge them with the completeness
+question, which stopped at Groq's daily token limit. Decisions D38, D42, D45, D50, D51.
 
 | Group | Questions | Split (dev / test) |
 | --- | --- | --- |
-| English | 90 | 27 / 63 |
+| English | 100 | 27 / 73 |
 | Urdu script | 40 | 12 / 28 |
 | Roman Urdu | 40 | 12 / 28 |
 | English, from FBR pages (D39) | 39 | 0 / 39 |
 | Out of scope / trick | 30 | 9 / 21 |
-| **Total** | **239** | **60 / 179** |
+| **Total** | **249** | **60 / 189** |
 
 Urdu and Roman Urdu questions are natural rewrites of English ones and share their gold sections and split.
 
@@ -113,24 +120,25 @@ Urdu and Roman Urdu questions are natural rewrites of English ones and share the
 
 ![Retrieval ablation, Hit@5 on the test split](eval/reports/ablation-test.png)
 
-| Setup | English (written, 63) | English (FBR pages, 39) | Urdu (28) | Roman Urdu (28) | **All (158)** |
+| Setup | English (written, 73) | English (FBR pages, 39) | Urdu (28) | Roman Urdu (28) | **All (168)** |
 | --- | --- | --- | --- | --- | --- |
-| BM25 keywords (no model) | 87.3% | 71.8% | 3.6% | 50.0% | 62.0% |
-| BGE-M3 sparse only | 92.1% | 84.6% | 7.1% | 60.7% | 69.6% |
-| Dense only (BGE-M3), original query | 98.4% | 79.5% | 78.6% | 57.1% | 82.9% |
-| + sparse (hybrid, RRF) — **baseline** | 95.2% | 87.2% | 78.6% | 67.9% | 85.4% |
-| + direct section lookup (in every row below) | 96.8% | 87.2% | 78.6% | 67.9% | 86.1% |
-| + reranker (bge-reranker-v2-m3, top 30), no rewrite | 96.8% | 87.2% | 89.3% | 64.3% | 87.3% |
-| + English query rewrite (GPT OSS 20B), no reranker | **98.4%** | 84.6% | **100%** | 89.3% | **93.7%** |
-| + rewrite + reranker | 96.8% | **89.7%** | 89.3% | 75.0% | 89.9% |
-| + glossary in rewrite = full pipeline, reranking with the question only | 96.8% | **89.7%** | 92.9% | 75.0% | 90.5% |
-| full pipeline, reranking with max(question, rewrite) score = **`/ask` default** (D40) | 96.8% | 87.2% | 92.9% | **92.9%** | 93.0% |
+| BM25 keywords (no model) | 87.7% | 71.8% | 3.6% | 50.0% | 63.7% |
+| BGE-M3 sparse only | 93.2% | 84.6% | 7.1% | 60.7% | 71.4% |
+| Dense only (BGE-M3), original query | 98.6% | 79.5% | 78.6% | 57.1% | 83.9% |
+| + sparse (hybrid, RRF) — **baseline** | 95.9% | 87.2% | 78.6% | 67.9% | 86.3% |
+| + direct section lookup (in every row below) | 97.3% | 87.2% | 78.6% | 67.9% | 86.9% |
+| + reranker (bge-reranker-v2-m3, top 30), no rewrite | 97.3% | 87.2% | 89.3% | 64.3% | 88.1% |
+| + English query rewrite (GPT OSS 20B), no reranker | **98.6%** | 84.6% | **100%** | 89.3% | **94.0%** |
+| + rewrite + reranker | 97.3% | **89.7%** | 89.3% | 75.0% | 90.5% |
+| + glossary in rewrite = full pipeline, reranking with the question only | 97.3% | **89.7%** | 92.9% | 75.0% | 91.1% |
+| full pipeline, reranking with max(question, rewrite) score = **`/ask` default** (D40) | 97.3% | 87.2% | 92.9% | **92.9%** | 93.5% |
 
-All 158 in-scope test questions, re-run on 2026-09-25 after the chunk-title fix (D37): the written English, Urdu
-and Roman Urdu numbers match the earlier runs except "+ reranker, no rewrite" (Urdu 92.9% → 89.3%) and
-"+ rewrite + reranker" (Roman Urdu 71.4% → 75.0%). The `/ask` default has Recall@5 (all gold) 91.8% and MRR@10 0.863
-on all 158. The FBR-sourced questions (D39) are the hardest English group: 87.2% with the default, 89.7% without
-the max-score reranking.
+All 168 in-scope test questions, re-run on 2026-09-26 after the legal-review fixes and the 10 new condition-focused
+English questions (en-091 … en-100, all 10 found in the top 5 by the default pipeline; D51). Reference-answer fixes
+do not change retrieval; the written-English column moves only because of the new questions. The `/ask` default has
+Recall@5 (all gold) 90.3% and MRR@10 0.871 on all 168; several fixed answers now need more than one gold section
+(e.g. the rate-card row for the non-ATL rate), which lowers "all gold" recall. The FBR-sourced questions (D39) are
+the hardest English group: 87.2% with the default, 89.7% without the max-score reranking.
 
 The rewrite is the big win (Roman Urdu 67.9% → 89.3%). The reranker then undoes part of it for Urdu and Roman Urdu:
 it scores chunks against the original question, which it reads poorly in Roman Urdu. Letting the reranker also score
@@ -138,7 +146,7 @@ the English rewrite and keep the higher score (`full-max`, last row) fixes most 
 split (Hit@5 96.1% vs 94.1%, Roman Urdu 83.3% vs 75.0%) and is now the `/ask` default
 ([D40](docs/DECISIONS.md)); it doubles the reranker time, which is the open latency problem for Milestone 5.
 
-**Hybrid baseline, test split (the 119 written in-scope questions; with the 39 FBR questions, 158: Hit@5 85.4%):**
+**Hybrid baseline from Milestone 2, test split (the 119 written in-scope questions of that time; on today's 168: Hit@5 86.3%):**
 
 | Group | n | Hit@5 ("Recall@5") | Recall@5 (all gold) | MRR@10 |
 | --- | --- | --- | --- | --- |
@@ -148,24 +156,26 @@ split (Hit@5 96.1% vs 94.1%, Roman Urdu 83.3% vs 75.0%) and is now the `/ask` de
 | **All** | 119 | **84.9%** | **81.9%** | **0.764** |
 
 Metric definitions are in [DECISIONS D19](docs/DECISIONS.md). English numbers are optimistic because the questions
-were written from the section text (D20). All questions are machine-verified (Qwen + number check); none is verified by
-a tax professional yet (D45). Full reports, with every miss:
+were written from the section text (D20). 185 of 249 questions are machine-verified so far (D51); a 30-question sample
+was checked by an AI legal-review tool, and none by a tax professional yet (D50). Full reports, with every miss:
 [`eval/reports/`](eval/reports/).
 
 **Targets (held-out test split only)**
 
 | Metric | Target | Result |
 | --- | --- | --- |
-| Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | `/ask` default (full-max): Urdu 92.9% ✅ / Roman Urdu 92.9% ✅; all 158: 93.0%, FBR 87.2% |
+| Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | `/ask` default (full-max): Urdu 92.9% ✅ / Roman Urdu 92.9% ✅; all 168: 93.5%, FBR 87.2% |
 | Answer correctness | ≥ 85% | not scored yet: needs a judge and verified reference answers (D35) |
-| Answers with a correct citation | ≥ 90% | 98.6% of answered in-scope questions (70 of 71; 97.2% of the 72 run; FBR 1 of 1) — partial* |
+| Answers with a correct citation | ≥ 90% | not re-measured yet with the new answer prompt (4 of 4 answered so far); before it: 98.6% of answered (70 of 71) — partial* |
 | Correct refusal on out-of-scope questions | ≥ 90% | 13 / 13 run — partial*, and the 8 not run are the harder ones |
 | Median latency | < 4 s | ❌ not measured as a median yet; one warm answer through the UI took 57 s on a 4-core CPU (reranker; the first request 145 s with model loading) — Milestone 5 |
 
-\* End-to-end on the test split ([`eval/run_e2e.py`](eval/run_e2e.py)) with the `/ask` default (full-max) covered
-**85 of 179** questions over two days of Groq's free-tier limit (200k tokens a day on GPT OSS 120B, D36): all 63
-written English, 1 of 39 FBR, 8 of 28 Urdu, 0 of 28 Roman Urdu, 13 of 21 out-of-scope. 94 are left.
-Re-running `python -m eval.run_e2e --split test` resumes from the cache.
+\* End-to-end on the test split ([`eval/run_e2e.py`](eval/run_e2e.py)) with the `/ask` default (full-max). The answer
+prompt changed on 2026-09-26 (it must now state conditions and both ATL and non-ATL rates, D51), so every cached
+answer is stale and the run restarts: **17 of 189 run, 172 left** (4 in-scope answers, all citing a gold section,
+and 13 out-of-scope refusals) before Groq's free-tier limit of 200k tokens a day on GPT OSS 120B (D36); at ~65 answers
+a day that is about three more days. The previous prompt's run (85 of 179: 70 of 71 answered with a correct citation)
+is kept in D44 for comparison. Re-running `python -m eval.run_e2e --split test` resumes from the cache.
 Report: [`eval/reports/2026-09-26-e2e-test.md`](eval/reports/2026-09-26-e2e-test.md).
 
 ## Run locally (no Docker)

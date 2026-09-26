@@ -566,7 +566,12 @@ Newest first within each milestone. Each entry says what the plan said, what we 
 - **Re-judging is incomplete**: the new judge prompt invalidates the cached verdicts. Qwen re-judged 112 of the 169
   directly judged questions before Groq's 200k tokens-a-day limit (2026-09-26); 108 passed and 4 were flagged and
   fixed (above). The other 61 (57 not reached + the 4 fixed) are `"verified": false` until Qwen has judged them;
-  with their translations that is 71 questions, so the test set now reports 178 of 249 machine-verified (23 of them
-  "reviewed"). Re-run `python -m eval.verify_testset` at the start of
+  with their translations that is 71 questions, so the test set reported 178 of 249 machine-verified (23 of them
+  "reviewed"). A second pass later the same day judged 5 more before the limit, all passed (including the 4 fixed):
+  **185 of 249 machine-verified, 64 waiting (56 directly judged + their translations)**.
+- **End to end restarts:** the answer prompt is part of every cached answer's key, so all cached answers are stale.
+  First run with the new prompt (2026-09-26): 17 of 189 test questions (4 in-scope answers, all with a correct
+  citation; 13 of 13 out-of-scope refused) before GPT OSS 120B's daily limit; 172 left. The previous prompt's
+  results (D44) stay as the comparison point until the new run is complete. Re-run `python -m eval.verify_testset` at the start of
   the next sessions. Gemini's second opinion with the new prompt: 1 of 1 agreed so far (15 of 15 with the old
   two-question prompt).

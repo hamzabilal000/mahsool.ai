@@ -1,6 +1,6 @@
 # Project status and handoff
 
-Last updated: 2026-09-26 (Milestone 4 done; Milestone 3's end-to-end eval continues each session on the Groq quota)
+Last updated: 2026-09-26 (after the AI legal review of the 30-question sample; judges and end-to-end eval wait on daily quotas)
 
 ## Working rules (from Hamza)
 - Hamza is the only author. No "Co-Authored-By", "Generated with …" or other AI attribution in commits, PRs, code,
@@ -22,13 +22,14 @@ Last updated: 2026-09-26 (Milestone 4 done; Milestone 3's end-to-end eval contin
   Report metrics on the test split only.
 
 ## Start of every session (until each is done)
-1. `python -m eval.verify_testset`: Gemini second opinion on up to 20 more questions (its free quota resets at
-   midnight Pacific); commit `eval/cache/verify.jsonl`, `testset.jsonl`, `FLAGGED.md`, and update the agreement
-   count in README / D45 if it changed. Look at any disagreement it lists.
-2. `python -m eval.run_e2e --split test`: resumes from the cache and stops answering at Groq's daily limit. Record
-   how many are left below, then `python -m eval.summary`, update README / D44, commit.
-   **Left after 2026-09-26: 94 of 179** (85 run: 63/63 English, 1/39 FBR, 8/28 Urdu, 0/28 Roman Urdu, 13/21
-   out-of-scope).
+1. `python -m eval.verify_testset`: Qwen re-judges with the three-question prompt (D51) and Gemini gives its second
+   opinion (20 a day, resets at midnight Pacific). **56 directly judged questions (64 with translations) still wait
+   for Qwen** after 2026-09-26; fix anything it flags through `eval/review/changes.json` + `python -m
+   eval.apply_changes` (check each fix against the law text first), then commit `testset.jsonl`, `FLAGGED.md`,
+   `cache/verify.jsonl` and update the counts in README / D51.
+2. `python -m eval.run_e2e --split test`: the answer prompt changed (D51), so the run restarted: **172 of 189 test
+   questions left** after 2026-09-26 (~65 answers a day on GPT OSS 120B's free tier, ~3 days). It resumes from the cache and stops answering at the
+   daily limit; record how many are left here, then `python -m eval.summary`, update README / D44, commit.
 
 ## Done
 - **M1:** Income Tax Ordinance 2001 (amended to 30.06.2026): 885 chunks, 380/380 sections. 90 English eval questions.
@@ -80,7 +81,16 @@ Last updated: 2026-09-26 (Milestone 4 done; Milestone 3's end-to-end eval contin
     `eval/expert_sample.json` (30 questions) waits for a tax professional.
   - Ablation on all 158 in-scope test questions (D44): `/ask` default Hit@5 93.0% all, 87.2% FBR, 96.8% English,
     92.9% Urdu, 92.9% Roman Urdu.
-  - End to end: 85 / 179 so far (see "Start of every session").
+  - End to end: 85 / 179 with the old answer prompt; restarted with the new one (see "Start of every session").
+
+- **After M4, 2026-09-26: AI legal review and completeness (D50, D51):**
+  - Legal review of a 30-question sample by ChatGPT (OpenAI), an AI legal-review tool with web access, 26 Sep 2026:
+    19 correct, 10 partly correct, 1 wrong; all 11 corrections checked against the corpus and applied at the English
+    source and every translation. Not a human review; the tax-professional review is still pending.
+  - Completeness sweep: 11 more answers fixed by hand, 4 more found by the judge's new completeness question; every
+    change listed in `eval/FLAGGED.md`. 10 new condition-focused test questions (249 total, 189 on test).
+  - Answer prompt states conditions (ATL / non-ATL, who a rule applies to, exceptions); judge asks about omitted
+    conditions; `"verified": "reviewed"` status; `eval/apply_changes.py` keeps translations in sync.
 
 - **M4 (done 2026-09-26):**
   - API: `POST /ask/stream` (server-sent events: stages, then the checked answer, then the envelope; D46),
