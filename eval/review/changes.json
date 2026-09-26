@@ -313,5 +313,45 @@
   ],
   "reference_answer": "15% where the holding period does not exceed one year (Division VIII, Part I). For property acquired on or after 1 July 2024, the 15% applies to persons on the Active Taxpayers' List on the date of disposal; persons not on the list pay at the Division I rates (individuals and AOPs) or Division II rates (companies), and for individuals and AOPs not on the list the rate is not less than 15% of the gain.",
   "before": "15% where the holding period does not exceed one year (Division VIII, Part I; for property acquired on or after 1 July 2024 the 15% applies to persons on the Active Taxpayers' List)."
+ },
+ {
+  "id": "en-020",
+  "origin": "judge completeness check",
+  "reason": "Qwen: the 8- and 10-year periods in section 57(2A)-(2C) were missing.",
+  "basis": [
+   "ITO2001-s57"
+  ],
+  "reference_answer": "A business loss not set off can be carried forward against business income, but not to more than six tax years immediately succeeding the year in which the loss was first computed (section 57(2)). Longer periods apply to specific cases: eight years for a resident company in the hotel business (losses for a tax year commencing on or after 1 July 2020), and ten years for Pakistan International Airlines Corporation Limited (losses from 1 January 2017) and for the approved Federal Government-owned banking company in section 57(2A).",
+  "before": "A business loss not set off can be carried forward against business income, but not to more than six tax years immediately succeeding the year in which the loss was first computed."
+ },
+ {
+  "id": "en-041",
+  "origin": "judge completeness check",
+  "reason": "Qwen: items (c)-(e) of section 116(1) were missing.",
+  "basis": [
+   "ITO2001-s116"
+  ],
+  "reference_answer": "By notice, an individual's total assets and liabilities (including foreign ones) and those of the spouse, minor children and other dependents as of the dates specified; assets transferred to other persons and the consideration; the total expenditures of the person and dependents for the period specified; and the reconciliation statement of wealth (section 116(1)(a)-(e)).",
+  "before": "By notice, an individual's total assets and liabilities (including foreign ones) and those of the spouse, minor children and other dependents, as of the dates specified."
+ },
+ {
+  "id": "en-047",
+  "origin": "judge completeness check",
+  "reason": "Qwen: the section 122(4) limit for further amendments was missing.",
+  "basis": [
+   "ITO2001-s122"
+  ],
+  "reference_answer": "No amendment under section 122(1) after five years from the end of the financial year in which the assessment order was issued or treated as issued (section 122(2)). Once amended, the Commissioner may further amend the original assessment within the later of five years from the end of the financial year of the original assessment order and one year from the end of the financial year of the amended assessment order (section 122(4)).",
+  "before": "No amendment after five years from the end of the financial year in which the assessment order was issued or treated as issued."
+ },
+ {
+  "id": "en-073",
+  "origin": "judge completeness check",
+  "reason": "Qwen: the proviso to section 171(1) was missing.",
+  "basis": [
+   "ITO2001-s171"
+  ],
+  "reference_answer": "Yes. If the refund is not paid within three months of becoming due, compensation is paid at KIBOR plus 0.5% per annum for the delay (section 171(1)). Exception: where there is reason to believe the refund claimed is not admissible, no compensation is paid until the investigation of the claim is completed and the claim is accepted or rejected (proviso to section 171(1)).",
+  "before": "Yes. If the refund is not paid within three months of becoming due, compensation is paid at KIBOR plus 0.5% per annum for the delay."
  }
 ]

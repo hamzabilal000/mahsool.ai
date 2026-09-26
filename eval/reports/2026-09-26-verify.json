@@ -6,17 +6,19 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in sub-section (1) that tax is imposed on every person with taxable income at rates specified in Division I or II of Part I of the First Schedule, and sub-section (2) confirms that tax credits are subtracted from the resulting amount."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that tax is imposed on every person with taxable income at the rates specified in Division I or II of Part I of the First Schedule, and sub-section (2) confirms that tax credits are subtracted from the resulting amount. The reference answer accurately reflects these provisions without omitting any conditions that would change the answer."
    },
-   "gemini-3-flash": {
+   "gemini-3-flash-preview": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that tax is imposed on every person with taxable income at rates specified in Division I or II of Part I of the First Schedule, and that tax credits are subtracted from the resulting amount."
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the imposition of tax on taxable income and the application of rates from the First Schedule as stated in Section 4(1) and 4(2)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly states that tax is imposed on every person with taxable income at rates specified in Division I or II of Part I of the First Schedule, and that tax credits are subtracted from the resulting amount."
+  "second_opinion_reason": "The reference answer accurately reflects the imposition of tax on taxable income and the application of rates from the First Schedule as stated in Section 4(1) and 4(2)."
  },
  "en-002": {
   "ok": true,
@@ -25,17 +27,16 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states the surcharge rate is ten percent and applies when taxable income exceeds rupees ten million, which matches the reference answer exactly."
+    "omits_condition": "no",
+    "reason": "The reference answer correctly states the 10% rate and the Rs. 10 million threshold as per the section text. It does not omit any condition that changes the answer for the general case, as the salary exemption is a specific carve-out not required to answer the general rate and threshold question."
    },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly states a surcharge rate of ten percent for individuals and associations of persons when taxable income exceeds ten million rupees."
+   "gemini-3-flash-preview": {
+    "error": "daily limit reached (20 requests per day): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this er"
    }
   },
   "missing_numbers": [],
-  "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly states a surcharge rate of ten percent for individuals and associations of persons when taxable income exceeds ten million rupees."
+  "second_opinion": null,
+  "second_opinion_reason": null
  },
  "en-003": {
   "ok": true,
@@ -44,17 +45,13 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
+    "omits_condition": "no",
     "reason": "The section text explicitly states in the proviso that no surcharge is payable for an individual deriving income under the head 'Salary', which directly supports the reference answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in the proviso that no surcharge shall be payable by an individual deriving income under the head 'Salary'."
    }
   },
   "missing_numbers": [],
-  "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly states in the proviso that no surcharge shall be payable by an individual deriving income under the head 'Salary'."
+  "second_opinion": null,
+  "second_opinion_reason": null
  },
  "en-004": {
   "ok": true,
@@ -63,17 +60,13 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that the super tax is imposed for tax year 2022 and onwards, which directly answers the question and matches the reference answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 4C(1) explicitly states that super tax is imposed for tax year 2022 and onwards at the rates specified in Division IIB of Part I of the First Schedule."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the super tax applies for tax year 2022 and onwards, which matches the reference answer. The exception for banking companies in 2022 is a specific carve-out for a subset of entities, not a general condition that changes the answer to the question about the start year for the tax regime."
    }
   },
   "missing_numbers": [],
-  "second_opinion": "agree",
-  "second_opinion_reason": "Section 4C(1) explicitly states that super tax is imposed for tax year 2022 and onwards at the rates specified in Division IIB of Part I of the First Schedule."
+  "second_opinion": null,
+  "second_opinion_reason": null
  },
  "en-005": {
   "ok": true,
@@ -82,17 +75,13 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in the table under Division IIB that the rate of tax for a banking company with income exceeding Rs. 150 million is 10% of the income, which matches the reference answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in Division IIB, Part I of the First Schedule (Serial No. 1) that the rate of tax for a banking company with income exceeding Rs. 150 million is 10% of the income."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in Division IIB, serial 1, that the rate for a banking company with income exceeding Rs. 150 million is 10%. The reference answer correctly identifies this rate and source. Although there is a proviso for tax year 2023 regarding a Rs. 300 million threshold, the question asks generally about the rate for income exceeding Rs. 150 million, which is defined in the main table as 10%, and the reference answer accurately reflects the primary statutory rate for that threshold."
    }
   },
   "missing_numbers": [],
-  "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly states in Division IIB, Part I of the First Schedule (Serial No. 1) that the rate of tax for a banking company with income exceeding Rs. 150 million is 10% of the income."
+  "second_opinion": null,
+  "second_opinion_reason": null
  },
  "en-006": {
   "ok": true,
@@ -101,17 +90,13 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in serial number 4 that for a person other than those mentioned in S. No. 1, 2, and 3, the rate of tax is 8% of the income if it exceeds Rs. 500 million, which matches the reference answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in serial number 4 of the table that for persons other than those in S. No. 1, 2, and 3, the rate is 8% of the income if it exceeds Rs. 500 million."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in serial 4 that for persons other than those in serials 1, 2, and 3, the rate is 8% if income exceeds Rs. 500 million. The reference answer correctly identifies this rate and category without omitting any relevant conditions for this specific scenario."
    }
   },
   "missing_numbers": [],
-  "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly states in serial number 4 of the table that for persons other than those in S. No. 1, 2, and 3, the rate is 8% of the income if it exceeds Rs. 500 million."
+  "second_opinion": null,
+  "second_opinion_reason": null
  },
  "en-007": {
   "ok": true,
@@ -120,17 +105,13 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in sub-section (2) that tax is computed by applying the relevant rate to the gross amount of the dividend, and sub-section (3) confirms it does not apply to exempt dividends, matching the reference answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section states that tax is computed by applying the relevant rate to the gross amount of the dividend and explicitly mentions it does not apply to exempt dividends."
+    "omits_condition": "no",
+    "reason": "The reference answer correctly states the computation method (applying the rate to the gross amount) and the exclusion for exempt dividends, both of which are explicitly supported by the section text."
    }
   },
   "missing_numbers": [],
-  "second_opinion": "agree",
-  "second_opinion_reason": "The section states that tax is computed by applying the relevant rate to the gross amount of the dividend and explicitly mentions it does not apply to exempt dividends."
+  "second_opinion": null,
+  "second_opinion_reason": null
  },
  "en-008": {
   "ok": true,
@@ -139,17 +120,13 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 7B(3)(b) explicitly states that the section does not apply to profit on debt that exceeds five million Rupees, which directly supports the reference answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 7B(3)(b) explicitly states that the section shall not apply to profit on debt that exceeds five million Rupees."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (3)(b) that the section does not apply to profit on debt exceeding five million Rupees, which directly supports the reference answer."
    }
   },
   "missing_numbers": [],
-  "second_opinion": "agree",
-  "second_opinion_reason": "Section 7B(3)(b) explicitly states that the section shall not apply to profit on debt that exceeds five million Rupees."
+  "second_opinion": null,
+  "second_opinion_reason": null
  },
  "en-009": {
   "ok": true,
@@ -158,17 +135,13 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines taxable income as total income under clause (a) of section 10 reduced by deductible allowances under Part IX, which matches the reference answer. The reference's parenthetical clarification about 'income under all heads' is a standard interpretation of section 10(a) and does not contradict the provided text."
-   },
-   "gemini-3-flash-preview": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines taxable income as total income reduced by deductible allowances, which matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the definition provided in Section 9, including the specific references to Section 10 clause (a) and Part IX, as well as the condition that the reduction cannot go below zero."
    }
   },
   "missing_numbers": [],
-  "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly defines taxable income as total income reduced by deductible allowances, which matches the reference answer."
+  "second_opinion": null,
+  "second_opinion_reason": null
  },
  "en-010": {
   "ok": true,
@@ -177,17 +150,13 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly lists the five heads of income in subsection (1), and the reference answer accurately reflects this list without any discrepancies."
-   },
-   "gemini-3-flash-preview": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 11(1) explicitly lists the five heads of income, and the reference answer matches these exactly."
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists the five heads of income in subsection (1), and the reference answer accurately reflects this list without omitting any conditions or exceptions."
    }
   },
   "missing_numbers": [],
-  "second_opinion": "agree",
-  "second_opinion_reason": "Section 11(1) explicitly lists the five heads of income, and the reference answer matches these exactly."
+  "second_opinion": null,
+  "second_opinion_reason": null
  },
  "en-011": {
   "ok": true,
@@ -196,10 +165,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 12(2)(a) explicitly lists overtime payment and bonus as components of salary, which directly supports the reference answer."
-   },
-   "gemini-3-flash-preview": {
-    "error": "daily limit reached (20 requests per day): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this er"
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists overtime payments and bonuses under clause (a) of sub-section (2) as part of salary. The reference answer accurately reflects this inclusion without omitting any relevant conditions or exceptions."
    }
   },
   "missing_numbers": [],
@@ -213,17 +180,13 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly lists rent and travel allowances as part of salary and includes an explanation clarifying that allowances paid on a fixed basis or not wholly spent on behalf of the employer are not considered solely expended in the performance of duties."
-   },
-   "gemini-3-flash-preview": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 12(2)(c) and its Explanation explicitly state that rent and travel allowances are included in salary, and that fixed monthly allowances are not considered 'solely expended' in the performance of duties."
+    "omits_condition": "no",
+    "reason": "The section text explicitly includes rent and travel allowances in the definition of salary and clarifies via the Explanation that allowances paid on a fixed basis or not wholly spent on behalf of the employer are not excluded. The reference answer accurately reflects these provisions without omitting any material conditions."
    }
   },
   "missing_numbers": [],
-  "second_opinion": "agree",
-  "second_opinion_reason": "Section 12(2)(c) and its Explanation explicitly state that rent and travel allowances are included in salary, and that fixed monthly allowances are not considered 'solely expended' in the performance of duties."
+  "second_opinion": null,
+  "second_opinion_reason": null
  },
  "en-013": {
   "ok": true,
@@ -232,17 +195,13 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text (Section 13(3) and Rule 5) explicitly states that the value is determined by prescribed rules, and Rule 5 provides the specific percentages (5% or 10%) and valuation bases (cost or fair market value) cited in the reference answer."
-   },
-   "gemini-3-flash-preview": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 13(3) states that the value of a motor vehicle provided for private use is computed as prescribed, and Rule 5 provides the specific percentages (5% for partial use, 10% for personal use only) based on cost or fair market value at the start of a lease."
+    "omits_condition": "no",
+    "reason": "The section text and rules provide the specific valuation method (5% or 10% of cost or FMV) for vehicles provided for private use, which matches the reference answer. No material conditions or exceptions relevant to the calculation are omitted."
    }
   },
   "missing_numbers": [],
-  "second_opinion": "agree",
-  "second_opinion_reason": "Section 13(3) states that the value of a motor vehicle provided for private use is computed as prescribed, and Rule 5 provides the specific percentages (5% for partial use, 10% for personal use only) based on cost or fair market value at the start of a lease."
+  "second_opinion": null,
+  "second_opinion_reason": null
  },
  "en-014": {
   "ok": true,
@@ -251,7 +210,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines 'rent' in sub-section (2) as any amount received for the use or occupation of land or a building, including forfeited deposits, which matches the reference answer exactly."
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the definition of 'rent' provided in sub-section (2) of the text, including the specific inclusion of forfeited deposits. It does not omit any conditions that change the definition itself, as exclusions in other sub-sections (like plant and machinery) define what is *not* rent or is taxed elsewhere, rather than altering the core definition provided in (2)."
    }
   },
   "missing_numbers": [],
@@ -265,7 +225,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 41(1) explicitly states that agricultural income is exempt from tax, and the reference answer correctly identifies this exemption and cites the relevant section."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that agricultural income is exempt from tax, and the reference answer correctly reflects this exemption without omitting any relevant conditions or exceptions."
    }
   },
   "missing_numbers": [],
@@ -279,7 +240,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that scholarships for education costs are exempt unless paid by an associate, which aligns perfectly with the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that scholarships for education costs are exempt unless paid by an associate, which matches the reference answer perfectly."
    }
   },
   "missing_numbers": [],
@@ -293,7 +255,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that such income is exempt from tax, which directly answers the question and matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that such income is exempt from tax, and the reference answer correctly reflects this without omitting any conditions."
    }
   },
   "missing_numbers": [],
@@ -307,7 +270,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that the income is exempt in the year of return and the following year, conditional on non-residency in the preceding four years, which matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the exemption applies for the year of return and the following year, conditional on non-residency in the preceding four years, which matches the reference answer exactly."
    }
   },
   "missing_numbers": [],
@@ -321,26 +285,25 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states the conditions for exemption (residency solely due to employment and presence not exceeding three years) and the specific exclusions (business income in Pakistan and income brought into/received in Pakistan), which perfectly matches the reference answer."
-   },
-   "gemini-3-flash-preview": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly states the conditions for exemption (residency by employment and presence under three years) and the exclusions (business in Pakistan or income brought into Pakistan), which matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the conditions for exemption (employment-based residency, presence <= 3 years) and the specific exclusions (business in Pakistan, income brought into/received in Pakistan) as stated in the section text."
    }
   },
   "missing_numbers": [],
-  "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly states the conditions for exemption (residency by employment and presence under three years) and the exclusions (business in Pakistan or income brought into Pakistan), which matches the reference answer."
+  "second_opinion": null,
+  "second_opinion_reason": null
  },
  "en-020": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: omits_condition = yes. The section text specifies extended carry-forward periods (8 or 10 years) for specific entities like resident hotel companies, PIA, and certain government-owned banking companies, which the reference answer omits."
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 57(2) explicitly states that no loss can be carried forward to more than six tax years immediately succeeding the tax year for which the loss was first computed, which matches the reference answer."
+    "omits_condition": "yes",
+    "reason": "The section text specifies extended carry-forward periods (8 or 10 years) for specific entities like resident hotel companies, PIA, and certain government-owned banking companies, which the reference answer omits."
    }
   },
   "missing_numbers": [],
@@ -354,7 +317,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 59(1) explicitly states that a capital loss shall not be set off against income chargeable under any other head, which directly answers the question and supports the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that a capital loss shall not be set off against income chargeable under any other head, which directly answers the question. The reference answer accurately reflects this restriction and the requirement to carry the loss forward against future capital gains."
    }
   },
   "missing_numbers": [],
@@ -368,7 +332,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that Zakat paid under the 1980 Ordinance is deductible and that any unused allowance cannot be refunded, carried forward, or carried back, which fully supports the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly confirms the deductibility of Zakat paid under the 1980 Ordinance and states that unused allowances are not refunded, carried forward, or carried back, which matches the reference answer perfectly."
    }
   },
   "missing_numbers": [],
@@ -382,7 +347,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states the eligibility criterion (taxable income less than 1.5 million rupees) and the calculation method (lesser of 5% of tuition, 25% of taxable income, or 60,000 times the number of children), which matches the reference answer perfectly."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the eligibility criteria (taxable income < 1.5 million) and the calculation formula (lesser of the three specified amounts), which matches the reference answer exactly. No material conditions changing the answer are omitted."
    }
   },
   "missing_numbers": [],
@@ -396,7 +362,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that a person is entitled to a deductible allowance for Workers' Welfare Fund paid under the 1971 Ordinance or provincial laws, and includes the specific proviso excluding trans-provincial establishments, which matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that the Workers' Welfare Fund is a deductible allowance and includes the specific proviso regarding trans-provincial establishments, which the reference answer correctly cites."
    }
   },
   "missing_numbers": [],
@@ -410,7 +377,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 61(1)(a) explicitly lists universities established by Federal or Provincial law as eligible for tax credits, and subsection (2) confirms the credit is computed by a formula."
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists universities established under Federal or Provincial law as eligible for tax credit in sub-section (1)(a), and the reference answer correctly identifies this eligibility and the existence of a formula for computation without omitting conditions that would change the answer for a public university."
    }
   },
   "missing_numbers": [],
@@ -424,7 +392,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that an eligible person deriving income from Salary or Business is entitled to the credit for contributions under the Voluntary Pension System Rules, 2005, which matches the reference answer perfectly."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that an eligible person deriving income from Salary or Business is entitled to the credit, which matches the reference answer perfectly. No conditions changing the entitlement are omitted."
    }
   },
   "missing_numbers": [],
@@ -438,7 +407,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly provides for a tax credit for profit on debt paid on a loan used for the construction or acquisition of a personal house, which aligns perfectly with the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly provides for a tax credit for profit on debt paid on low-cost housing loans, and the reference answer correctly summarizes the eligibility criteria (individual, specified lenders, personal house/flat limits) without omitting conditions that would change the affirmative answer."
    }
   },
   "missing_numbers": [],
@@ -452,7 +422,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines the normal tax year as a period of twelve months ending on the 30th day of June, denoted by the calendar year in which that date falls, which matches the reference answer exactly."
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines the normal tax year as a twelve-month period ending on 30 June, denoted by the calendar year in which that date falls. The reference answer accurately reflects this definition without omitting conditions that change the basic definition of the term."
    }
   },
   "missing_numbers": [],
@@ -466,7 +437,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that an individual is a resident if present in Pakistan for 183 days or more, which matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the 183-day threshold in clause (a) and lists the other conditions in clauses (c) and (d). The reference answer accurately reflects these details without omitting any conditions that would change the answer."
    }
   },
   "missing_numbers": [],
@@ -480,17 +452,13 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in clause (d) that a Pakistani citizen is a resident if they are not present in any other country for more than 182 days or are not a resident taxpayer of any other country, which matches the reference answer."
-   },
-   "gemini-3-flash-preview": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 82(d) explicitly states that a Pakistani citizen is a resident if they are not present in any other country for more than 182 days or are not a resident taxpayer elsewhere."
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists the conditions for residency, including the specific rule for Pakistani citizens abroad in clause (d) and the other tests in clauses (a) and (c). The reference answer accurately reflects these conditions without omitting any relevant exceptions or altering the numbers."
    }
   },
   "missing_numbers": [],
-  "second_opinion": "agree",
-  "second_opinion_reason": "Section 82(d) explicitly states that a Pakistani citizen is a resident if they are not present in any other country for more than 182 days or are not a resident taxpayer elsewhere."
+  "second_opinion": null,
+  "second_opinion_reason": null
  },
  "en-031": {
   "ok": true,
@@ -499,7 +467,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly lists the three conditions for a company to be considered resident, and the reference answer accurately summarizes these conditions without adding unsupported information."
+    "omits_condition": "no",
+    "reason": "The reference answer accurately lists the three conditions for a company to be considered resident as stated in Section 83, without omitting any relevant exceptions or conditions."
    }
   },
   "missing_numbers": [],
@@ -513,17 +482,13 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that foreign-source salary is exempt if foreign income tax has been paid, and defines this as tax withheld by the employer and paid to the foreign revenue authority, which matches the reference answer."
-   },
-   "gemini-3-flash-preview": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section explicitly states that foreign-source salary is exempt if foreign tax was paid, and defines payment to include withholding by the employer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that foreign-source salary is exempt if foreign income tax has been paid, and defines this as tax withheld by the employer and paid to the foreign revenue authority. The reference answer accurately reflects this condition without omitting any critical exceptions or altering the legal requirement."
    }
   },
   "missing_numbers": [],
-  "second_opinion": "agree",
-  "second_opinion_reason": "The section explicitly states that foreign-source salary is exempt if foreign tax was paid, and defines payment to include withholding by the employer."
+  "second_opinion": null,
+  "second_opinion_reason": null
  },
  "en-033": {
   "ok": true,
@@ -532,7 +497,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 103(1) explicitly states that the tax credit is equal to the lesser of the foreign income tax paid or the Pakistan tax payable in respect of the income, which matches the reference answer exactly."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (1) that the credit is the lesser of the foreign tax paid or the Pakistan tax payable, which matches the reference answer. The reference answer correctly summarizes the primary calculation rule without omitting conditions that change the amount of the credit itself."
    }
   },
   "missing_numbers": [],
@@ -546,7 +512,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines salary as Pakistan-source income under the two conditions listed in the reference answer: employment exercised in Pakistan or payment by Federal, Provincial, or Local Government."
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines salary as Pakistan-source income under the two conditions listed in the reference answer (employment exercised in Pakistan or paid by government entities), and the reference accurately reflects these provisions without omitting any relevant conditions."
    }
   },
   "missing_numbers": [],
@@ -560,7 +527,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that if no explanation is offered or the explanation is not satisfactory in the Commissioner's opinion, the amount is included in income chargeable to tax. The reference answer accurately summarizes this consequence without adding unsupported details."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that if no explanation is offered or the explanation is not satisfactory in the Commissioner's opinion, the amount is included in income chargeable to tax. The reference answer accurately reflects this core consequence without omitting conditions that would change the general answer for unexplained assets."
    }
   },
   "missing_numbers": [],
@@ -574,7 +542,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly lists resident companies, permanent establishments of non-resident companies, and individuals/AOPs with turnover of 100 million rupees or above in tax year 2017 or subsequent years as the persons covered by the section."
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists resident companies, permanent establishments of non-resident companies, and individuals/AOPs with turnover of 100 million rupees or above in tax year 2017 or subsequent years as the persons covered. The reference answer accurately reflects these categories and conditions without omission."
    }
   },
   "missing_numbers": [],
@@ -588,7 +557,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly lists the categories of persons required to file returns, including companies, persons exceeding the non-taxable limit, non-profit organizations, and those subject to final taxation, which aligns perfectly with the reference answer."
+    "omits_condition": "no",
+    "reason": "The reference answer accurately summarizes the categories of persons required to file a return as listed in Section 114(1) and 114(1A), including the specific thresholds and conditions mentioned in the text."
    }
   },
   "missing_numbers": [],
@@ -602,7 +572,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly lists owning immovable property with a land area of 500 square yards or more as a criterion for filing a return under clause (b), which applies to persons not covered by other specific income thresholds. The reference answer correctly identifies this requirement and the specific area threshold."
+    "omits_condition": "no",
+    "reason": "The section text confirms that owning immovable property of 500 square yards or more triggers the filing requirement under Section 114(1)(b)(iii) regardless of taxable income, and Section 115(3) correctly lists the specific exceptions (widow, orphan, disabled, non-resident) for this condition."
    }
   },
   "missing_numbers": [],
@@ -616,7 +587,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 115(3) explicitly states that a widow is not required to furnish a return solely by reason of the property ownership clauses (iii, iv, v, vi) in Section 114(1)(b). The reference answer correctly identifies this exemption and the specific categories of persons covered."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in Section 115(3) that a widow is not required to furnish a return solely by reason of the specified property clauses in Section 114(1)(b). The reference answer correctly identifies this exemption and the relevant categories."
    }
   },
   "missing_numbers": [],
@@ -630,7 +602,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that every resident individual with foreign income of not less than USD 10,000 or foreign assets of not less than USD 100,000 must furnish the statement, which matches the reference answer exactly."
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines the requirement for resident individual taxpayers with foreign income of at least USD 10,000 or foreign assets of at least USD 100,000, which matches the reference answer exactly."
    }
   },
   "missing_numbers": [],
@@ -638,13 +611,16 @@
   "second_opinion_reason": null
  },
  "en-041": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: omits_condition = yes. The section text lists five specific items (a-e) that the Commissioner can require, including transferred assets, expenditures, and a reconciliation statement, but the reference answer only mentions assets and liabilities (items a and b), omitting the other required components."
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that the Commissioner can require a statement of total assets and liabilities (including foreign) for the individual and their spouse, minor children, and other dependents. The reference answer accurately reflects these specific requirements found in sub-sections (1)(a) and (1)(b)."
+    "omits_condition": "yes",
+    "reason": "The section text lists five specific items (a-e) that the Commissioner can require, including transferred assets, expenditures, and a reconciliation statement, but the reference answer only mentions assets and liabilities (items a and b), omitting the other required components."
    }
   },
   "missing_numbers": [],
@@ -658,7 +634,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 118(3)(a) explicitly states that a salaried individual filing through the e-portal must file on or before the 30th day of September next following the end of the tax year, which matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (3)(a) that a salaried individual filing through the e-portal must file by the 30th day of September following the end of the tax year, which matches the reference answer."
    }
   },
   "missing_numbers": [],
@@ -672,7 +649,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 118(2)(a) explicitly states that a company with a tax year ending between 1 January and 30 June must file its return on or before 31 December next following the end of the tax year, which matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (2)(a) that a company with a tax year ending between 1 January and 30 June must file on or before 31 December following the end of the tax year, which matches the reference answer exactly."
    }
   },
   "missing_numbers": [],
@@ -686,7 +664,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 118(2A) explicitly states that if salary income is Rs. 500,000 or more, the return must be filed electronically in the prescribed form, accompanied by proof of tax deduction/payment and the wealth statement (or foreign income/assets statement if applicable)."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (2A) that taxpayers with salary income of Rs. 500,000 or more must file electronically in the prescribed form, accompanied by proof of tax deduction/payment and the wealth statement (and foreign income/assets statement if applicable). The reference answer accurately reflects these requirements without omitting any changing conditions."
    }
   },
   "missing_numbers": [],
@@ -700,7 +679,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that a person may apply in writing to the Commissioner for an extension of time, and that such application must be made by the due date for furnishing the return."
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the application process, grounds for extension, time limits, and the proviso regarding the Chief Commissioner as stated in the section text. It does not omit any conditions that would change the answer to the question."
    }
   },
   "missing_numbers": [],
@@ -714,7 +694,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 120(1)(b) explicitly states that a complete return of income shall be taken for all purposes of the Ordinance to be an assessment order issued to the taxpayer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (1)(b) that a complete return is taken to be an assessment order. The reference answer correctly identifies this condition without omitting any critical exceptions or conditions that would change the answer for a general query."
    }
   },
   "missing_numbers": [],
@@ -722,13 +703,16 @@
   "second_opinion_reason": null
  },
  "en-047": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: omits_condition = yes. The reference answer correctly states the general 5-year limit from sub-section (2), but it omits the specific time limit for further amendments under sub-section (4), which is the later of 5 years from the original assessment or 1 year from the amended assessment."
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in sub-section (2) that no order shall be amended after the expiry of five years from the end of the financial year in which the assessment order was issued or treated as issued, which matches the reference answer."
+    "omits_condition": "yes",
+    "reason": "The reference answer correctly states the general 5-year limit from sub-section (2), but it omits the specific time limit for further amendments under sub-section (4), which is the later of 5 years from the original assessment or 1 year from the amended assessment."
    }
   },
   "missing_numbers": [],
@@ -742,7 +726,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 131(1) explicitly states that an appeal against an order passed by the Commissioner (Appeals) may be made within thirty days of the receipt of such order, which matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (1) that an appeal against an order of the Commissioner (Appeals) must be made within thirty days of the receipt of such order, which matches the reference answer exactly."
    }
   },
   "missing_numbers": [],
@@ -756,7 +741,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 127(1) explicitly states that 'Any person, other than State-Owned Enterprise (SOE),' may prefer an appeal, which directly supports the reference answer that SOEs cannot appeal under this section."
+    "omits_condition": "no",
+    "reason": "The section text explicitly excludes State-Owned Enterprises (SOEs) from the definition of 'any person' eligible to appeal under sub-section (1), and the reference answer correctly reflects this exclusion without omitting relevant conditions."
    }
   },
   "missing_numbers": [],
@@ -770,7 +756,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 137(1) explicitly states that tax on taxable income is due on the due date for furnishing the return of income, which matches the reference answer exactly."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (1) that tax on taxable income is due on the due date for furnishing the return of income. The reference answer accurately reflects this primary rule without omitting conditions that change the answer for the general case of taxable income."
    }
   },
   "missing_numbers": [],
@@ -784,7 +771,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 137(2) explicitly states that the sum specified in the notice shall be paid within thirty days from the date of service of the notice."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (2) that the sum specified in the notice shall be paid within thirty days from the date of service. The reference answer accurately reflects this timeframe without omitting any conditions that would change the general rule for assessment orders."
    }
   },
   "missing_numbers": [],
@@ -798,7 +786,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 147(1)(c) explicitly excludes income subject to deduction of tax at source under section 149 from the liability to pay advance tax, which supports the reference answer's claim that such income is excluded."
+    "omits_condition": "no",
+    "reason": "Section 147(1)(c) explicitly excludes income subject to deduction of tax at source under section 149 from the liability to pay advance tax, which directly supports the reference answer."
    }
   },
   "missing_numbers": [],
@@ -812,7 +801,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that tax is deducted at the employee's average rate computed on estimated income using Division I, Part I, First Schedule rates, including section 4AB tax, and after adjusting for tax withheld under other heads and credits under sections 61 and 63."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that tax is deducted at the employee's average rate computed on estimated salary income using First Schedule rates, including section 4AB tax, after adjustments for other withholdings and credits. The reference answer accurately reflects these requirements without omitting conditions that change the general calculation method for salary."
    }
   },
   "missing_numbers": [],
@@ -826,7 +816,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly details the tax deduction requirements for pensions under sub-section (1A), and the reference answer accurately reflects the conditions (age below 70, income exceeding Rs. 10 million) and rates specified in the text."
+    "omits_condition": "no",
+    "reason": "The section text explicitly provides for tax deduction on pension under sub-section (1A) for former employees below 70 years where income exceeds Rs. 10 million. The reference answer accurately reflects this specific condition and rate structure found in the text."
    }
   },
   "missing_numbers": [],
@@ -840,7 +831,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that tax is deducted from the gross amount or collected from dividend in specie at the rate specified in Division I of Part III of the First Schedule, which matches the reference answer exactly."
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the mechanism and rate source described in Section 150 without omitting any conditions or exceptions present in the text."
    }
   },
   "missing_numbers": [],
@@ -854,7 +846,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in clause (b) that the rate is 15% for Real Estate Investment Trusts and cases other than those mentioned in other clauses, which directly supports the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text and rate card explicitly state the 15% rate for REITs and other cases under clause (b), and the rate card confirms the doubling to 30% for non-ATL recipients under Rule 1 of the Tenth Schedule, which the reference answer correctly cites."
    }
   },
   "missing_numbers": [],
@@ -868,7 +861,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly lists the entities (National Savings/Post Office, banking companies/financial institutions, governments, and other specified payers) that must deduct tax, which aligns perfectly with the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists the payers (National Savings/Post Office, banking/financial institutions, governments, and other specified entities) who must deduct tax, and the reference answer accurately summarizes these categories without omitting conditions that change the answer."
    }
   },
   "missing_numbers": [],
@@ -882,7 +876,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 152(1) explicitly states that tax on royalty or fees for technical services paid to non-residents is deducted from the gross amount at the rate specified in Division IV of Part I of the First Schedule, which matches the reference answer exactly."
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects Section 152(1), including the condition that the amount must be chargeable to tax under Section 6 and the correct rate reference. No other conditions or exceptions in the provided text alter the specific rule for royalties and technical service fees."
    }
   },
   "missing_numbers": [],
@@ -896,7 +891,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in sub-section (1)(a) that the withholding requirement is excepted where payment for the sale of goods is less than seventy-five thousand Rupees in aggregate during a financial year, which directly supports the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (1)(a) that the withholding requirement does not apply where payment for the sale of goods is less than seventy-five thousand Rupees in aggregate during a financial year, which directly supports the reference answer."
    }
   },
   "missing_numbers": [],
@@ -910,7 +906,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in clause (b) of sub-section (1) that tax deduction does not apply where payment for services is less than thirty thousand Rupees in aggregate during a financial year, which matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in clause (1)(b) that withholding does not apply where payment for services is less than thirty thousand Rupees in aggregate during a financial year, which matches the reference answer exactly."
    }
   },
   "missing_numbers": [],
@@ -924,7 +921,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in the First Schedule that the tax rate for export proceeds of IT services by persons registered with PSEB is 0.25% of proceeds for tax years 2024 to 2029, which matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the 0.25% rate for PSEB-registered exporters for tax years 2024-2029 and details the conditions for final tax treatment, including the exemption from the sales tax return condition for these specific exporters. The reference answer accurately reflects these provisions without omitting material conditions."
    }
   },
   "missing_numbers": [],
@@ -938,7 +936,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly lists a rate of 1% of proceeds for 'Any other case', which covers exporters not registered with PSEB, matching the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that for 'Any other case' (which covers exporters not registered with PSEB), the rate is 1% of proceeds. The reference answer correctly identifies this rate and category without omitting any relevant conditions."
    }
   },
   "missing_numbers": [],
@@ -952,7 +951,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text provides the specific tax rate table for individuals, confirming that rent between Rs. 300,000 and Rs. 600,000 is taxed at 5% on the amount exceeding Rs. 300,000, which matches the calculation in the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines 'prescribed person' in Section 155(3) and provides the tax rates in the First Schedule. The reference answer correctly identifies that an individual tenant paying Rs. 500,000 is not a prescribed person (threshold is Rs. 1.5 million) and thus no tax is deducted, while also correctly calculating the tax if the tenant were a prescribed person."
    }
   },
   "missing_numbers": [],
@@ -966,7 +966,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in clause (b) that the rate of tax for a company is 15% of the gross amount of rent, which matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text and rate card explicitly state the 15% rate for companies on the ATL and 30% for non-ATL, and the reference answer correctly includes the condition that the payer must be a 'prescribed person' as defined in Section 155(3)."
    }
   },
   "missing_numbers": [],
@@ -980,7 +981,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in Division VI that the tax rate for prize bonds is 15% and in Section 156(3) that the tax is final."
+    "omits_condition": "no",
+    "reason": "The section text and rate card explicitly state the 15% ATL rate, the 30% Non-ATL rate (via the Tenth Schedule reference in the card), and confirm the tax is final under section 156(3). The reference answer accurately reflects all these details without omitting any conditions that change the answer."
    }
   },
   "missing_numbers": [],
@@ -994,7 +996,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in clause (2) that the tax rate for winnings from a raffle, lottery, or quiz is 20% of the gross amount paid, which matches the reference answer exactly."
+    "omits_condition": "no",
+    "reason": "The section text and rate card explicitly state the 20% ATL rate and 40% Non-ATL rate for raffle, lottery, and quiz winnings, and confirm the final tax status under section 156(3), all of which are accurately reflected in the reference answer."
    }
   },
   "missing_numbers": [],
@@ -1008,7 +1011,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 159(1) explicitly states that the Commissioner shall issue an exemption or lower rate certificate upon application in writing by the person in the prescribed form, which directly answers how to stop standard withholding."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that the Commissioner shall issue an exemption or lower rate certificate upon application in writing by the person in the prescribed form, which directly answers how to stop the withholding of tax for exempt or lower-rate payments."
    }
   },
   "missing_numbers": [],
@@ -1022,7 +1026,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that a person failing to deduct tax is personally liable to pay the amount to the Commissioner, who may pass an order to recover it, and subsection (1A) confirms that an opportunity of being heard must be provided before recovery."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that a person failing to deduct tax is personally liable to pay the Commissioner, and sub-section (1A) requires an opportunity of being heard before recovery. The reference answer accurately reflects these points without omitting conditions that change the core liability."
    }
   },
   "missing_numbers": [],
@@ -1036,7 +1041,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 165(1) explicitly states that every person collecting or deducting tax shall furnish a 'quarterly statement in the prescribed form', which directly supports the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (1) that a quarterly statement must be furnished, and sub-section (2) details the specific quarterly deadlines, supporting the reference answer. The reference answer correctly identifies the frequency and form without omitting conditions that would change the general rule for filing frequency."
    }
   },
   "missing_numbers": [],
@@ -1050,7 +1056,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in sub-section (1)(b) that tax collected or deducted is treated as tax paid, and sub-section (2) confirms that a tax credit is allowed for that tax in the relevant tax year, which supports the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that tax deducted at source is treated as tax paid and allows a credit against tax due, while excluding final taxes listed in sub-section (3). The reference answer accurately reflects these provisions and the refund mechanism for unused credits."
    }
   },
   "missing_numbers": [],
@@ -1064,7 +1071,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in sub-section (2)(a) that the income shall not be chargeable to tax under any head and in (2)(b) that no deduction shall be allowable for expenditure incurred in deriving the income, which fully supports the reference answer."
+    "omits_condition": "no",
+    "reason": "The reference answer correctly states two of the consequences of final tax under section 169(2) (income not chargeable, no deduction for expenditure) and does not omit any condition that changes the validity of these specific statements."
    }
   },
   "missing_numbers": [],
@@ -1078,7 +1086,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 170(4) explicitly states that the Commissioner shall serve an order within sixty days of receipt of the application, after providing the taxpayer an opportunity of being heard, which matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (4) that the Commissioner shall serve an order within sixty days of receipt, after providing an opportunity of being heard, which matches the reference answer exactly."
    }
   },
   "missing_numbers": [],
@@ -1086,13 +1095,16 @@
   "second_opinion_reason": null
  },
  "en-073": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: omits_condition = yes. The reference answer omits the proviso stating that compensation does not apply if there is reason to believe the refund claim is not admissible until the investigation is completed."
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that compensation is paid at the rate of KIBOR plus 0.5% per annum if a refund is not paid within three months of becoming due, which fully supports the reference answer."
+    "omits_condition": "yes",
+    "reason": "The reference answer omits the proviso stating that compensation does not apply if there is reason to believe the refund claim is not admissible until the investigation is completed."
    }
   },
   "missing_numbers": [],
@@ -1106,7 +1118,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 174(3) explicitly states that accounts and documents must be maintained for six years after the end of the tax year, and the proviso requires maintenance until the final decision of any pending proceedings."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the six-year requirement and the proviso regarding pending proceedings, which the reference answer accurately reflects without omitting any conditions that change the general answer."
    }
   },
   "missing_numbers": [],
@@ -1120,7 +1133,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "Section 181(1A) explicitly states that online marketplaces or courier services shall not allow any vendor to use their platform services unless the vendor is registered under the Ordinance, which directly supports the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in subsection (1A) that online marketplaces shall not allow unregistered vendors to use their platform services, which directly supports the reference answer."
    }
   },
   "missing_numbers": [],
@@ -1134,7 +1148,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in subsection (1) that the Board has the power to institute the active taxpayers' list and in subsection (2) that it shall be regulated as prescribed, which fully supports the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that the Board has the power to institute the active taxpayers' list under Section 181A, which directly answers the question and matches the reference answer."
    }
   },
   "missing_numbers": [],
@@ -1148,7 +1163,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that a person is included in the active taxpayers' list after filing late if they pay the specified surcharge, which is Rs. 25,000 for an individual, matching the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that a person is included in the active taxpayers' list upon filing after the due date if they pay the specified surcharge, or if an individual provides the undertaking under sub-section (3). The reference answer correctly captures these conditions and the associated penalties."
    }
   },
   "missing_numbers": [],
@@ -1162,6 +1178,7 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
+    "omits_condition": "no",
     "reason": "The section text explicitly states that applications for commercial or industrial electricity or gas connections will not be processed unless the applicant is registered under section 181, which directly supports the reference answer."
    }
   },
@@ -1176,7 +1193,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in sub-section (1) that the default surcharge rate is 'twelve percent or KIBOR plus three percent per annum, whichever is higher' and excludes advance tax under section 147, which matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the rate for general tax default under sub-section (1) is 'twelve percent or KIBOR plus three percent per annum, whichever is higher' and excludes advance tax, which matches the reference answer perfectly."
    }
   },
   "missing_numbers": [],
@@ -1190,7 +1208,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that the Board may issue an advance ruling on application by a non-resident taxpayer regarding a transaction proposed or entered into, which aligns with the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that the Board may issue an advance ruling on application by a non-resident taxpayer regarding a proposed or entered-into transaction, which aligns perfectly with the reference answer."
    }
   },
   "missing_numbers": [],
@@ -1204,7 +1223,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states the rate is 0.8% on cash withdrawals exceeding fifty thousand rupees in a day for persons not on the active taxpayers' list, which matches the reference answer."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the rate is 0.8% on the sum total of cash withdrawals exceeding Rs. 50,000 in a day for persons not on the Active Taxpayers' List, which matches the reference answer exactly."
    }
   },
   "missing_numbers": [],
@@ -1212,13 +1232,13 @@
   "second_opinion_reason": null
  },
  "en-082": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in the proviso to sub-section (1) that the provisions do not apply to a domestic consumer if their name appears on the Active Taxpayers' List, which directly supports the reference answer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1226,13 +1246,13 @@
   "second_opinion_reason": null
  },
  "en-083": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly lists internet bills and prepaid cards for internet in sub-section (1)(d) and (e) as subject to advance tax, and sub-section (1) specifies the rates are from Division V Part IV of the First Schedule, matching the reference answer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1240,13 +1260,13 @@
   "second_opinion_reason": null
  },
  "en-084": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in Division X of the First Schedule that the rate of tax is 2.75% of the gross amount of consideration, and Section 236C(1) confirms this tax is collected from the seller by the person responsible for registering the transfer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1254,13 +1274,13 @@
   "second_opinion_reason": null
  },
  "en-085": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in Division XVIII that the rate is 1.25% of the fair market value, and Section 236K(1) confirms it is collected from the purchaser by the person responsible for registering the transfer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1268,13 +1288,13 @@
   "second_opinion_reason": null
  },
  "en-086": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that banking companies must collect advance tax at the rate specified in Division XXVII (0.5%) for credit, debit, or prepaid card transactions abroad, and confirms the tax is adjustable."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1282,13 +1302,13 @@
   "second_opinion_reason": null
  },
  "en-087": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text in Division VIII explicitly states a 15% tax rate for holding periods not exceeding one year for properties acquired on or before June 30, 2024, and specifies that for properties acquired on or after July 1, 2024, the 15% rate applies to persons on the Active Taxpayers' List."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1296,13 +1316,13 @@
   "second_opinion_reason": null
  },
  "en-088": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The First Schedule table explicitly states a 15% rate for securities acquired on or after 1 July 2024 for persons on the Active Taxpayers' List, and specifies that others are taxed at Division I or II rates."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1310,13 +1330,13 @@
   "second_opinion_reason": null
  },
  "en-089": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text provides the specific tax rate table for salaried individuals (where salary exceeds 75% of taxable income), and the reference answer correctly applies the 1% rate on the amount exceeding Rs. 600,000 to calculate the tax."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1324,13 +1344,13 @@
   "second_opinion_reason": null
  },
  "en-090": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly lists the top tax slab for non-salaried individuals and AOPs as Rs. 1,610,000 plus 45% for income exceeding Rs. 5,600,000, and includes the proviso reducing the rate to 40% for specific professional firms."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1758,13 +1778,13 @@
   "second_opinion_reason": null
  },
  "fbr-001": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 12(4) explicitly states that no deduction shall be allowed for any expenditure incurred by an employee in deriving amounts chargeable to tax under the head 'Salary', which directly supports the reference answer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1772,13 +1792,13 @@
   "second_opinion_reason": null
  },
  "fbr-002": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 12(6) explicitly allows an employee who received an amount under clause (e)(iii) (which includes golden handshake payments) to elect, by written notice to the Commissioner, to have it taxed at the rate computed by the formula A/B, where A is the total tax paid/payable on total taxable income for the three preceding tax years and B is the total taxable income for those three years."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1786,13 +1806,13 @@
   "second_opinion_reason": null
  },
  "fbr-003": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 12(7) explicitly states that an employee may elect, by notice in writing to the Commissioner, to have arrears taxed at the rates applicable in the year services were rendered if arrears push them into a higher tax bracket."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1800,13 +1820,13 @@
   "second_opinion_reason": null
  },
  "fbr-004": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 12(2)(c) explicitly lists rent, travel, and other allowances as part of salary, with the specific exclusion for allowances solely expended in the performance of duties, which matches the reference answer perfectly."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1814,13 +1834,13 @@
   "second_opinion_reason": null
  },
  "fbr-005": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text in sub-section (5) explicitly defines 'capital asset' and lists the exclusions (stock-in-trade, depreciable/amortizable property, and personal movable property), which aligns perfectly with the reference answer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1828,13 +1848,13 @@
   "second_opinion_reason": null
  },
  "fbr-006": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines 'profit on a debt' in clause (46) with the exact components listed in the reference answer, including the exclusion of capital returns and inclusion of fees for unused credit facilities."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1842,13 +1862,13 @@
   "second_opinion_reason": null
  },
  "fbr-007": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 101(7) explicitly states that profit on debt is Pakistan-source income if paid by a resident person (with the specified exception for business carried on outside Pakistan through a PE) or borne by a permanent establishment in Pakistan of a non-resident person, which matches the reference answer exactly."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1856,13 +1876,13 @@
   "second_opinion_reason": null
  },
  "fbr-008": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines 'royalty' in clause (54) with the exact conditions and exclusions listed in the reference answer, such as the exclusion of cinematograph film sales and the inclusion of various rights and services."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1870,13 +1890,13 @@
   "second_opinion_reason": null
  },
  "fbr-009": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines 'fee for technical services' in clause (23) and lists the two specific exclusions mentioned in the reference answer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1884,13 +1904,13 @@
   "second_opinion_reason": null
  },
  "fbr-010": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines 'approved gratuity fund' in clause (3) as a gratuity fund approved by the Commissioner in accordance with Part III of the Sixth Schedule, which matches the reference answer exactly."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1898,13 +1918,13 @@
   "second_opinion_reason": null
  },
  "fbr-011": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 2(10) explicitly defines 'business' to include trade, commerce, manufacture, profession, vocation, or adventure/concern in that nature, while excluding employment, which matches the reference answer exactly."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1912,13 +1932,13 @@
   "second_opinion_reason": null
  },
  "fbr-012": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines 'Small Company' in clause (59AB) with the exact conditions listed in the reference answer, including the registration date, capital limits, employee count, turnover, and formation restrictions."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1926,13 +1946,13 @@
   "second_opinion_reason": null
  },
  "fbr-013": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines 'imputable income' in clause (28A) with the exact wording provided in the reference answer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1940,13 +1960,13 @@
   "second_opinion_reason": null
  },
  "fbr-014": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The definition of 'stock-in-trade' is explicitly provided in sub-section (7) of the text, and the reference answer accurately reflects the inclusion and exclusion criteria stated there."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1954,13 +1974,13 @@
   "second_opinion_reason": null
  },
  "fbr-015": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly lists the three conditions for a company to be considered resident, and the reference answer accurately reflects these conditions without adding unsupported information."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1974,7 +1994,8 @@
    "qwen/qwen3.8-27b": {
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that an association of persons is resident if its control and management is situated wholly or partly in Pakistan at any time in the year, which matches the reference answer exactly."
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the condition for residency, and the reference answer accurately reflects this without omitting any relevant conditions or exceptions."
    }
   },
   "missing_numbers": [],
@@ -1982,13 +2003,13 @@
   "second_opinion_reason": null
  },
  "fbr-017": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines 'principal officer' in clause (44A) with the exact roles and conditions listed in the reference answer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -1996,13 +2017,13 @@
   "second_opinion_reason": null
  },
  "fbr-018": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines a whistleblower in subsection (4), and the reference answer accurately reflects this definition without introducing unsupported claims."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2010,13 +2031,13 @@
   "second_opinion_reason": null
  },
  "fbr-019": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines 'depreciable asset' in sub-section (15) with the exact criteria and exclusions listed in the reference answer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2024,13 +2045,13 @@
   "second_opinion_reason": null
  },
  "fbr-020": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines speculation business in subsection (2) and states in subsection (1)(a) that it is treated as distinct and separate from any other business. The reference answer accurately reflects these points and the exclusions mentioned in the text."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2038,13 +2059,13 @@
   "second_opinion_reason": null
  },
  "fbr-021": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines 'private company' in clause (45) as a company that is not a public company, which matches the reference answer exactly."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2052,13 +2073,13 @@
   "second_opinion_reason": null
  },
  "fbr-022": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 11(1) explicitly lists the five heads of income as Salary, Income from Property, Income from Business, Capital Gains, and Income from Other Sources, which matches the reference answer exactly."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2066,13 +2087,13 @@
   "second_opinion_reason": null
  },
  "fbr-023": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines the normal tax year as a twelve-month period ending on 30 June and the special tax year as a different twelve-month period, along with their respective methods of denotation by calendar year."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2080,13 +2101,13 @@
   "second_opinion_reason": null
  },
  "fbr-024": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly lists the entities treated as persons in subsection (1), and the reference answer accurately reflects these categories without adding unsupported information."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2094,13 +2115,13 @@
   "second_opinion_reason": null
  },
  "fbr-025": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 41(1) explicitly states that agricultural income is exempt from tax, and Section 41(2) defines it to include rent/revenue and income from agriculture on land in Pakistan, matching the reference answer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2108,13 +2129,13 @@
   "second_opinion_reason": null
  },
  "fbr-026": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that any amount received in respect of previously deducted expenditure or loss shall be included in the income chargeable under that head for the tax year in which it is received, which matches the reference answer exactly."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2122,13 +2143,13 @@
   "second_opinion_reason": null
  },
  "fbr-027": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly states that expenditures relating to more than one head of income shall be apportioned on any reasonable basis taking account of the relative nature and size of the activities, which matches the reference answer exactly."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2136,13 +2157,13 @@
   "second_opinion_reason": null
  },
  "fbr-028": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 21(g) explicitly states that no deduction shall be allowed for any fine or penalty paid or payable for the violation of any law, rule, or regulation, which directly supports the reference answer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2150,13 +2171,13 @@
   "second_opinion_reason": null
  },
  "fbr-029": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 21(h) explicitly states that no deduction shall be allowed for any personal expenditures incurred by the person, which directly supports the reference answer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2164,13 +2185,13 @@
   "second_opinion_reason": null
  },
  "fbr-030": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines salary as Pakistan-source income under the two conditions listed in the reference answer (employment exercised in Pakistan or paid by government entities in Pakistan)."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2178,13 +2199,13 @@
   "second_opinion_reason": null
  },
  "fbr-031": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 101(6) explicitly states that a dividend is Pakistan-source income if paid by a resident company or if it falls under sub-clause (f) of clause (19) of section 2, which matches the reference answer exactly."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2192,13 +2213,13 @@
   "second_opinion_reason": null
  },
  "fbr-032": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 118(2) explicitly states the due dates for company returns: 31 December for tax years ending between January 1 and June 30, and 30 September for all other cases, which matches the reference answer exactly."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2206,13 +2227,13 @@
   "second_opinion_reason": null
  },
  "fbr-033": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 118(2A) explicitly states that taxpayers with salary income of five hundred thousand rupees or more must file their return electronically in the prescribed form, accompanied by proof of tax deduction/payment and the wealth statement."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2220,13 +2241,13 @@
   "second_opinion_reason": null
  },
  "fbr-034": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 114(1)(a) and (ac) explicitly require every company and every non-profit organization to furnish a return of income, without any condition regarding the amount of taxable income."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2234,13 +2255,13 @@
   "second_opinion_reason": null
  },
  "fbr-035": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "Section 114(1)(b) explicitly requires persons who were charged to tax in the two preceding years or claim a loss carry-forward to file a return, regardless of current income levels. The reference answer accurately reflects these specific conditions found in the text."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2248,13 +2269,13 @@
   "second_opinion_reason": null
  },
  "fbr-036": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly lists widows and non-resident persons (in the case of immovable property) as exempt from filing a return solely due to the conditions in section 114(1)(b), which aligns perfectly with the reference answer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2262,13 +2283,13 @@
   "second_opinion_reason": null
  },
  "fbr-037": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly outlines the process of applying in writing to the Commissioner by the due date and lists the specific grounds (absence, sickness, reasonable cause) and the 15-day limit for extensions, which fully supports the reference answer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2276,13 +2297,13 @@
   "second_opinion_reason": null
  },
  "fbr-038": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly states in sub-section (1) that the credit is the lesser of the foreign tax paid or the Pakistan tax payable, and sub-section (2) confirms the Pakistan tax is computed using the average rate on net foreign-source income."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2290,13 +2311,153 @@
   "second_opinion_reason": null
  },
  "fbr-039": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
   "judges": {
    "qwen/qwen3.8-27b": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "reason": "The section text explicitly defines pre-commencement expenditure in subsection (5) and specifies the straight-line amortization method and rate source in subsection (2), fully supporting the reference answer."
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-091": {
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-092": {
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-093": {
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-094": {
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-095": {
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-096": {
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-097": {
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-098": {
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-099": {
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-100": {
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: not run (daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwe)"
+  ],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "error": "daily limit reached: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01ks780famegeaqzvrhv69va1k` service tier `on_demand` on tokens per day (TPD): Limit 20000"
    }
   },
   "missing_numbers": [],
@@ -2309,7 +2470,7 @@
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-003",
-  "second_opinion": "agree",
+  "second_opinion": null,
   "second_opinion_reason": null
  },
  "ur-002": {
@@ -2318,7 +2479,7 @@
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-012",
-  "second_opinion": "agree",
+  "second_opinion": null,
   "second_opinion_reason": null
  },
  "ur-003": {
@@ -2403,8 +2564,10 @@
   "second_opinion_reason": null
  },
  "ur-012": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "source question en-084 is flagged"
+  ],
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-084",
@@ -2417,7 +2580,7 @@
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-002",
-  "second_opinion": "agree",
+  "second_opinion": null,
   "second_opinion_reason": null
  },
  "ur-014": {
@@ -2435,7 +2598,7 @@
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-013",
-  "second_opinion": "agree",
+  "second_opinion": null,
   "second_opinion_reason": null
  },
  "ur-016": {
@@ -2457,8 +2620,10 @@
   "second_opinion_reason": null
  },
  "ur-018": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "source question en-020 is flagged"
+  ],
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-020",
@@ -2507,7 +2672,7 @@
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-030",
-  "second_opinion": "agree",
+  "second_opinion": null,
   "second_opinion_reason": null
  },
  "ur-024": {
@@ -2516,7 +2681,7 @@
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-032",
-  "second_opinion": "agree",
+  "second_opinion": null,
   "second_opinion_reason": null
  },
  "ur-025": {
@@ -2637,8 +2802,10 @@
   "second_opinion_reason": null
  },
  "ur-038": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "source question en-085 is flagged"
+  ],
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-085",
@@ -2646,8 +2813,10 @@
   "second_opinion_reason": null
  },
  "ur-039": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "source question en-086 is flagged"
+  ],
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-086",
@@ -2655,8 +2824,10 @@
   "second_opinion_reason": null
  },
  "ur-040": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "source question en-089 is flagged"
+  ],
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-089",
@@ -2669,7 +2840,7 @@
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-003",
-  "second_opinion": "agree",
+  "second_opinion": null,
   "second_opinion_reason": null
  },
  "ru-002": {
@@ -2678,7 +2849,7 @@
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-012",
-  "second_opinion": "agree",
+  "second_opinion": null,
   "second_opinion_reason": null
  },
  "ru-003": {
@@ -2763,8 +2934,10 @@
   "second_opinion_reason": null
  },
  "ru-012": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "source question en-084 is flagged"
+  ],
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-084",
@@ -2777,7 +2950,7 @@
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-002",
-  "second_opinion": "agree",
+  "second_opinion": null,
   "second_opinion_reason": null
  },
  "ru-014": {
@@ -2795,7 +2968,7 @@
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-013",
-  "second_opinion": "agree",
+  "second_opinion": null,
   "second_opinion_reason": null
  },
  "ru-016": {
@@ -2817,8 +2990,10 @@
   "second_opinion_reason": null
  },
  "ru-018": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "source question en-020 is flagged"
+  ],
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-020",
@@ -2867,7 +3042,7 @@
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-030",
-  "second_opinion": "agree",
+  "second_opinion": null,
   "second_opinion_reason": null
  },
  "ru-024": {
@@ -2876,7 +3051,7 @@
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-032",
-  "second_opinion": "agree",
+  "second_opinion": null,
   "second_opinion_reason": null
  },
  "ru-025": {
@@ -2997,8 +3172,10 @@
   "second_opinion_reason": null
  },
  "ru-038": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "source question en-085 is flagged"
+  ],
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-085",
@@ -3006,8 +3183,10 @@
   "second_opinion_reason": null
  },
  "ru-039": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "source question en-086 is flagged"
+  ],
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-086",
@@ -3015,8 +3194,10 @@
   "second_opinion_reason": null
  },
  "ru-040": {
-  "ok": true,
-  "reasons": [],
+  "ok": false,
+  "reasons": [
+   "source question en-089 is flagged"
+  ],
   "judges": {},
   "missing_numbers": [],
   "inherited_from": "en-089",
