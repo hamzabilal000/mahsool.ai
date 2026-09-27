@@ -200,9 +200,10 @@ pip install -e ".[dev,ml]"          # drop ",ml" if you only want BM25, tests an
 cp .env.example .env                # keep QDRANT_URL empty = embedded Qdrant
 sh scripts/setup-hooks.sh           # commit-msg hook (contributors only)
 
-# 1. Build the vector index: downloads BGE-M3 on first run, then embeds all 1,416 chunks
-#    (dense + sparse). ~35 min on a 4-core laptop CPU; re-run only when chunks change.
-python -m ingestion.index
+# 1. Install the prebuilt vector index (8.6 MB, committed; D65). BGE-M3 downloads on first use.
+python scripts/get_index.py
+#    Only after the chunks change: re-embed all 1,416 chunks (~30 min on 4 cores), then re-pack.
+#    python -m ingestion.index && python scripts/get_index.py --pack
 
 # 2. Evaluate retrieval on the held-out test split (reports go to eval/reports/)
 python -m eval.run_eval --retriever bm25   --split test
@@ -269,53 +270,48 @@ python -m ingestion.download --law WHT2027 && python -m ingestion.ratecard --law
 python -m ingestion.spot_check --law ITR2002 --n 20
 ```
 
-## Deploy (prepared, not live yet: blocked on hosting, D61)
+## How it's hosted (D64)
 
-The plan's free-tier setup (DECISIONS D54): the API on a free **Hugging Face Docker Space** (2 vCPU, 16 GB RAM),
-the chat UI on **Vercel**, question logs, feedback and the answer cache on **Neon** Postgres. Nothing here costs
-money; the answer model stays on Groq's free tier, so the demo has daily limits (below).
+**Live:** the chat UI is on **Vercel** (project `mahsool-ai`); the API runs on **Hamza's laptop** and is reached
+through ngrok's free static domain, `https://resident-coil-delusion.ngrok-free.dev`. Nothing costs money. When the
+laptop is off, the site says *"Mahsool AI is resting right now. Please try again later."*
 
-**1. Accounts and keys you need** (all free):
-
-| Where | What to create | Where it goes |
-| --- | --- | --- |
-| [huggingface.co](https://huggingface.co) | an account and an access token with **write** access (Settings → Access Tokens) | `HF_TOKEN` in your shell, only for the upload |
-| [neon.tech](https://neon.tech) | a project; copy its connection string | Space secret `DATABASE_URL` |
-| [console.groq.com](https://console.groq.com) | the API key you already use | Space secret `GROQ_API_KEY` |
-| [vercel.com](https://vercel.com) | an account linked to GitHub | imports `frontend/` |
-| [cloud.langfuse.com](https://cloud.langfuse.com) | (step 5, not wired yet) a project; its public and secret keys | Space secrets `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`, `LANGFUSE_HOST` |
-
-**2. Backend (Hugging Face Space).** Build the index once (`python -m ingestion.index`), then:
-
-```bash
-python scripts/deploy_space.py --dry-run                            # see what is uploaded (~23 MB)
-HF_TOKEN=hf_... python scripts/deploy_space.py --space <your-hf-user>/mahsool-ai --private \
-    --secret GROQ_API_KEY --secret DATABASE_URL --wait    # secrets are read from your shell
+```mermaid
+flowchart LR
+  U[Visitor's browser] -->|HTTPS| V[Vercel<br/>React app]
+  U -->|HTTPS + ngrok-skip-browser-warning| N[ngrok static domain]
+  N -->|tunnel| L[Laptop: uvicorn 127.0.0.1:8000<br/>BGE-M3 + gte reranker + embedded Qdrant + SQLite]
+  L -->|answers, rewrites, Prompt Guard| G[Groq free tier]
 ```
 
-The script uploads the [`Dockerfile`](Dockerfile), the code, the committed chunks and the prebuilt index; the
-Space builds the image (both models are baked in, ~4.5 GB) and serves on port 7860. In the Space's
-**Settings → Variables and secrets** add `GROQ_API_KEY` and `DATABASE_URL` (secrets) and
-`MAHSOOL_CORS_ORIGINS` = `["https://<your-app>.vercel.app"]` (variable). Check `https://<user>-mahsool-api.hf.space/health`.
+**Backend (Windows laptop):** [`docs/RUN_ON_MY_LAPTOP.md`](docs/RUN_ON_MY_LAPTOP.md) (install Python 3.11, Git,
+ngrok; `ngrok config add-authtoken ...`; then one command):
 
-**3. Frontend (Vercel).** New Project → import the GitHub repo → **Root Directory `frontend`** (Vite is detected;
-[`frontend/vercel.json`](frontend/vercel.json) sends every route to the app) → environment variable
-`VITE_API_URL` = `https://<user>-mahsool-api.hf.space` → Deploy.
+```powershell
+.\scripts\run_local.ps1          # first run installs everything (py -3.11 venv, CPU PyTorch, index); later just starts
+.\scripts\run_local.ps1 -Check   # local and public health check
+```
 
-**4. Keep it awake.** Free Spaces sleep after ~48 hours without visitors. Add the repository variable `SPACE_URL`
-(GitHub → Settings → Secrets and variables → Actions → Variables); [`keepalive.yml`](.github/workflows/keepalive.yml)
-then pings `/health` twice a day.
+It asks for `GROQ_API_KEY` once and keeps it in `.env` (gitignored), installs the prebuilt index
+(`scripts/get_index.py`, D65), starts ngrok on the static domain in a second window and uvicorn with local SQLite.
+Ubuntu: `bash scripts/run_local.sh`.
+
+**Frontend (Vercel):** the API address is in [`frontend/.env.production`](frontend/.env.production). Either
+`VERCEL_TOKEN=... sh scripts/deploy_vercel.sh`, or on vercel.com: Add New → Project → import this repo →
+**Root Directory `frontend`** → Deploy ([`frontend/vercel.json`](frontend/vercel.json) sends every route to the app).
+The API allows `https://mahsool-ai.vercel.app` and its preview URLs (CORS, `MAHSOOL_CORS_ORIGIN_REGEX`).
 
 **Free-tier behaviour of the live demo (D53, D59):** repeated questions are answered from the answer cache (no
 quota, no reranking, never counted); each visitor can ask 10 new questions a day
 (`MAHSOOL_DAILY_QUESTIONS_PER_VISITOR`) and all visitors together get 60 new answers a day
 (`MAHSOOL_DAILY_ANSWERS_GLOBAL`, sized to Groq's free quota); past either limit, or when Groq's daily quota is used
-up, the app says "come back tomorrow" politely, in the question's language. Behind the Space's proxy set
-`MAHSOOL_FORWARDED_FOR_HOPS` so visitors are told apart by `X-Forwarded-For`. Questions are screened by Prompt
-Guard 2 on Groq first (D60).
+up, the app says "come back tomorrow" politely, in the question's language. uvicorn trusts `X-Forwarded-For` only
+from the local ngrok agent, so visitors are told apart. Questions are screened by Prompt Guard 2 on Groq first (D60).
 
-**Hosting blocker (D61, 2026-09-26):** Hugging Face now requires a PRO subscription for Docker Spaces on the free
-CPU hardware (the Space creation returned 402), so step 2 needs a hosting decision before it can run.
+**Other hosting, prepared for later:** an Oracle Cloud Always Free Ampere VM ([`deploy/oracle/`](deploy/oracle),
+[`docs/DEPLOY_ORACLE.md`](docs/DEPLOY_ORACLE.md): cloud-init without secrets, systemd services, health check,
+keep-alive; needs a card at sign-up), and the Hugging Face Docker Space ([`Dockerfile`](Dockerfile),
+`scripts/deploy_space.py`), which now needs HF PRO (D61).
 
 ## Repository layout
 
