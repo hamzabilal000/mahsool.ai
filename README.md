@@ -8,6 +8,10 @@ from. When the law doesn't cover the question, Mahsool says so.
 
 > ⚠️ For information only, not tax advice. Confirm with a tax practitioner or FBR.
 
+**Live demo:** launching on Vercel (project `mahsool-ai`); the link goes here once the project is created. The
+API runs on a laptop behind ngrok ([How it's hosted](#how-its-hosted-d64)), so the site sometimes says "Mahsool AI
+is resting right now".
+
 ![Demo](docs/demo.gif)
 <sub>_Demo GIF coming in Milestone 5._</sub>
 
@@ -17,9 +21,9 @@ from. When the law doesn't cover the question, Mahsool says so.
 | --- | --- | --- |
 | 1 | Repo, ingestion of the Income Tax Ordinance 2001, 90 English eval questions | ✅ done |
 | 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ✅ done |
-| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set verified: 248 of 249 (D45, D51) · ⏳ end-to-end eval 52/189 (Groq daily limit, D36) |
+| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set verified: 248 of 249 (D45, D51) · ⏳ end-to-end eval 42/189 with the current setup (Groq daily limit, D36) |
 | 4 | React chat UI, citation cards, feedback, Postgres logs, eval page | ✅ done (Langfuse moved to M5, D49) |
-| 5 | Fix top failures, Docker, deploy, demo | 🔄 in progress: latency ~18 s → ~7.5 s on 4 cores (smaller reranker, D62), definition lookup (D57), rate tables in citation cards, Prompt Guard (D60), demo limits (D59), deploy blocked: free Docker Spaces now need HF PRO (D61) |
+| 5 | Fix top failures, deploy, demo | 🔄 launch prep done: ATL / non-ATL rates fixed (D63), backend on a laptop behind ngrok + frontend on Vercel (D64, **Vercel link pending**), prebuilt index (D65), latency ~7.5 s (D62), Prompt Guard (D60), demo limits (D59) |
 
 ## Architecture
 
@@ -171,21 +175,20 @@ was checked by an AI legal-review tool, and none by a tax professional yet (D50)
 | Metric | Target | Result |
 | --- | --- | --- |
 | Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | `/ask` default: Urdu 92.9% ✅ / Roman Urdu 92.9% ✅; all 168: 95.8%, FBR 94.9% |
-| Answer correctness | ≥ 85% | 97.4% of the 39 answers judged so far match the reference (Qwen judge, D56; 38 English + 1 FBR, no Urdu yet) — partial* |
-| Answers with a correct citation | ≥ 90% | 39 of 39 in-scope questions run so far answered with a correct citation — partial* |
+| Answer correctness | ≥ 85% | ❌ so far: **19 of 29 (65.5%)** match the reference, 23 of 29 (79.3%) at least partly (Qwen judge, D56; 14 Urdu, 14 Roman Urdu, 1 English) — partial* |
+| Answers with a correct citation | ≥ 90% | 27 of 29 in-scope questions run so far (93.1%) — partial* |
 | Correct refusal on out-of-scope questions | ≥ 90% | 13 / 13 run — partial*, and the 8 not run are the harder ones |
 | Median latency | < 4 s | ❌ ~7.5 s for a new English question on 4 CPU cores (live, rerank ~2.7 s), ~9 s for Roman Urdu; estimated ~8-9 s p50 / ~13 s p95 on 2 vCPU (D62); ~10 ms for a repeated question (answer cache) |
 
-\* End-to-end on the test split ([`eval/run_e2e.py`](eval/run_e2e.py)) with the `/ask` default. The answer prompt
-changed on 2026-09-26 (it must state conditions and both ATL and non-ATL rates, D51), so the run restarted: **52 of
-189 run, 137 left** after the third daily quota (39 in-scope answers, all citing a gold section; 13 out-of-scope,
-all refused), at ~40-65 answers a day on Groq's free tier (D36). The 52 are the first questions in file order, so
-almost all are written English: no Urdu or Roman Urdu answer has been scored with the current prompt yet. They were
-made with the bge reranker; since the switch to gte (D62) the next run asks them again with gte's sources. The
-previous prompt's run (85 of 179: 70 of 71 answered with a correct citation) is kept in D44. Resume:
-`python -m eval.run_e2e --split test`, then `python -m eval.judge_answers --split test` and, once 50 in-scope answers
-exist, `python -m eval.make_answer_check`.
-Report: [`eval/reports/2026-09-26-e2e-test.md`](eval/reports/2026-09-26-e2e-test.md).
+\* End-to-end on the test split ([`eval/run_e2e.py`](eval/run_e2e.py)) with the `/ask` default (gte reranker, D62;
+Tenth Schedule companions, D63). Run on 2026-09-27 with Urdu and Roman Urdu first (`--order mixed`): **42 of 189
+run, 147 left** after one daily quota (29 in scope, 13 out of scope). These are honest but early numbers: the wrong
+or incomplete answers cluster in four topics (residency: only the 183-day test; the section 102 foreign-income
+exemption not retrieved; a widow's return under section 115(3); the mixed-use vehicle perquisite), each asked in both
+Urdu and Roman Urdu. The first, English-heavy run with the older reranker scored 38 of 39 (D58); it is superseded.
+Resume: `python -m eval.run_e2e --split test --order mixed`, then `python -m eval.judge_answers --split test` and,
+once 50 in-scope answers exist, `python -m eval.make_answer_check`.
+Report: [`eval/reports/2026-09-27-e2e-test.md`](eval/reports/2026-09-27-e2e-test.md).
 
 ## Run locally (no Docker)
 
