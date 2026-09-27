@@ -1,37 +1,73 @@
 @import "tailwindcss";
 
-/* Colour tokens: light by default, dark from the system setting. */
-@theme {
-    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-    --font-urdu: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", serif;
-
-    --color-page: #f7f6f2;
-    --color-panel: #ffffff;
-    --color-sunken: #efede6;
-    --color-line: #e2dfd6;
-    --color-ink: #1c1b18;
-    --color-muted: #5f5d56;
-    --color-accent: #0f6b4f;
-    --color-accent-soft: #e3f1ea;
-    --color-accent-ink: #ffffff;
-    --color-warn: #8a5a00;
-    --color-warn-soft: #fbf1dc;
+/* Brand tokens (docs/brand/BRAND.md §1). Light by default, dark from the system setting.
+   Components use these tokens only, never raw hex. */
+:root {
+    --bg: #f3ebdd;
+    --surface: #fbf6ec;
+    --surface-2: #f4ead6;
+    --ink: #1c1b19;
+    --ink-2: #3f3a33;
+    --muted: #5e5448;
+    --line: #d8c9ae;
+    --indigo: #1f3a6b;
+    --green: #0b5e45;
+    --green-soft: #e3eee7;
+    --terracotta: #b5532f;
+    --ochre: #d9a441;
+    --turquoise: #2f7f83;
+    --bar-muted: #bba98c;
+    --bar-track: #e8dcc7;
+    /* Fixed in both themes: the lattice band ground and the Ask button (fill + text). */
+    --band: #1f3a6b;
+    --button: #0b5e45;
+    --button-ink: #f3ebdd;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --color-page: #151514;
-        --color-panel: #1e1e1c;
-        --color-sunken: #262624;
-        --color-line: #34332f;
-        --color-ink: #f1f0ea;
-        --color-muted: #aaa89f;
-        --color-accent: #4cc497;
-        --color-accent-soft: #173a2d;
-        --color-accent-ink: #0c1f18;
-        --color-warn: #f0c060;
-        --color-warn-soft: #3a2f16;
+        --bg: #11151b;
+        --surface: #1a2029;
+        --surface-2: #222a35;
+        --ink: #efe7d8;
+        --ink-2: #d2c8b6;
+        --muted: #a2977f;
+        --line: #34404f;
+        --indigo: #8faee0;
+        --green: #46b98a;
+        --green-soft: #173127;
+        --terracotta: #e08a63;
+        --ochre: #e3b45c;
+        --bar-muted: #6e6553;
+        --bar-track: #2a323d;
     }
+}
+
+/* Tailwind 4 keeps its config in CSS: these map the tokens to utilities (bg-surface,
+   text-ink, border-indigo, font-display …). */
+@theme inline {
+    --font-sans: "Hanken Grotesk", "Gulzar", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Young Serif", "Gulzar", Georgia, serif;
+    --font-urdu: "Gulzar", "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", serif;
+
+    --color-bg: var(--bg);
+    --color-surface: var(--surface);
+    --color-surface-2: var(--surface-2);
+    --color-ink: var(--ink);
+    --color-ink-2: var(--ink-2);
+    --color-muted: var(--muted);
+    --color-line: var(--line);
+    --color-indigo: var(--indigo);
+    --color-green: var(--green);
+    --color-green-soft: var(--green-soft);
+    --color-terracotta: var(--terracotta);
+    --color-ochre: var(--ochre);
+    --color-turquoise: var(--turquoise);
+    --color-bar-muted: var(--bar-muted);
+    --color-bar-track: var(--bar-track);
+    --color-band: var(--band);
+    --color-button: var(--button);
+    --color-button-ink: var(--button-ink);
 }
 
 html {
@@ -39,17 +75,51 @@ html {
 }
 
 body {
-    @apply bg-page text-ink font-sans antialiased;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Urdu script: Nastaliq needs a larger size and more line height to stay readable. */
+/* Urdu script: Gulzar (Nastaliq) at 1.15x with room for its tall letters (BRAND.md §2). */
 .urdu {
     font-family: var(--font-urdu);
-    font-size: 1.05em;
-    line-height: 2.1;
+    font-size: 1.15em;
+    line-height: 2;
+}
+
+/* Eyebrow labels: "SALARIED", "ANSWER", "SOURCES". */
+.eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1.4;
+}
+
+/* Ornament (header, footer, dividers, empty state only; never behind text). */
+.lattice-band {
+    height: 16px;
+    background-color: var(--band);
+    background-image: url("./assets/brand/lattice-tile.svg");
+    background-size: 16px 16px;
+    background-repeat: repeat-x;
 }
 
 :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--green);
     outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
