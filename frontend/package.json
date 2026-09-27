@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js",
+    "test:layout": "vite build && node --test e2e/*.test.js"
   },
   "dependencies": {
     "axios": "^1.20.0",
@@ -22,6 +23,7 @@
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
     "oxlint": "^1.81.0",
+    "playwright-core": "^1.63.0",
     "tailwindcss": "^4.3.3",
     "vite": "^8.3.0"
   }
