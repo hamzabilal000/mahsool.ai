@@ -533,6 +533,6 @@ def test_service_adds_companion_sources_and_a_note(make_pipeline):
     s = AskService(p, AnswerGenerator(llm, "big"), answer_top_k=3, refusal_threshold=0.0)
     data = s.ask("rent tax for a non filer?")
     prompt = llm.calls[-1][1]["content"]
-    assert "[4] " in prompt and "Sources [4]" in prompt and "give both rates" in prompt
+    assert "[4] " in prompt and "Sources [4]" in prompt and "state BOTH rates" in prompt
     assert not data.refused and data.citations[1].n == 4
     assert data.citations[1].chunk_id in {"WHT2027-s155", "ITO2001-sch10-1"}

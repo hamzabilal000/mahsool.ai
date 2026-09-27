@@ -54,6 +54,7 @@ def cache_version(service) -> str:
     settings, or the corpus snapshots. Cached answers from another version are never served."""
     from backend.app.rag.generator import ANSWER_SYSTEM
     from backend.app.rag.query_rewrite import REWRITE_SYSTEM
+    from backend.app.service import ATL_NOTE
 
     s = get_settings()
     snapshots = sorted({c.snapshot_id for c in service.pipeline.by_id.values()})
@@ -62,7 +63,7 @@ def cache_version(service) -> str:
         s.reranker_model, str(s.reranker_max_length),
         str(s.rerank_candidates), str(s.answer_top_k), str(s.refusal_threshold), *snapshots,
         f"guard={s.prompt_guard}:{s.prompt_guard_model}:{s.prompt_guard_threshold}",
-        f"atl_rules={service.pipeline.config.atl_rules}",  # D63 companions
+        f"atl_rules={service.pipeline.config.atl_rules}", ATL_NOTE,  # D63 companions
     ]  # fmt: skip
     return hashlib.sha256("\n".join(parts).encode()).hexdigest()[:16]
 

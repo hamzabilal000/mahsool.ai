@@ -61,6 +61,20 @@ DISCLAIMER = {
     "tasdeeq karein.",
 }
 
+# Added to the answer prompt with the Tenth Schedule companions (D63). Tuned on the two live
+# examples: without "even if the question asks about only one", a filer question got only the
+# filer rate.
+ATL_NOTE = (
+    "Sources {numbers} were added because the rate can depend on whether a person "
+    "is on the Active Taxpayers' List (ATL). When the sources give different rates "
+    "for persons on the ATL (filers) and not on the ATL (non-filers), the answer "
+    "must state BOTH rates, even if the question asks about only one of them: one "
+    "sentence with the rate for persons on the ATL and one sentence with the rate for "
+    "persons not on the ATL, each with its citation, citing the Tenth Schedule rule "
+    "that sets the non-ATL rate. "
+    "If a rule 10 exception applies, say the rate is not increased for non-ATL persons."
+)
+
 
 class AskService:
     def __init__(
@@ -125,12 +139,7 @@ class AskService:
         if extra:
             first = len(top) + 1
             numbers = ", ".join(f"[{n}]" for n in range(first, first + len(extra)))
-            notes.append(
-                f"Sources {numbers} were added because the rates in the other sources depend on "
-                "whether a person is on the Active Taxpayers' List (Tenth Schedule). If a rate "
-                "differs for persons on and not on the ATL, give both rates, each with its "
-                "citation; if a rule 10 exception applies, say the rate is not increased."
-            )
+            notes.append(ATL_NOTE.format(numbers=numbers))
             top += extra
         stage("answer")
         with timed("answer_llm"):
