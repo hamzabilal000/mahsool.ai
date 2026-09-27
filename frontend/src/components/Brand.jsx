@@ -10,7 +10,7 @@ export function LogoMark({ size = 40 }) {
 }
 
 export function Medallion({ size = 176 }) {
-    return <img src={medallion} width={size} height={size} alt="" aria-hidden="true" className="mx-auto" />
+    return <img src={medallion} width={size} height={size} alt="" aria-hidden="true" className="mx-auto h-auto max-w-full" />
 }
 
 export function StarTile({ size = 16, className = "" }) {
@@ -21,17 +21,17 @@ export function StarTile({ size = 16, className = "" }) {
 export function LatticeBand() {
     return (
         <div className="flex" aria-hidden="true" data-ornament="lattice">
-            <StarTile />
+            <StarTile size={12} />
             <div className="lattice-band flex-1" />
-            <StarTile />
+            <StarTile size={12} />
         </div>
     )
 }
 
-export function Divider({ className = "" }) {
+export function Divider({ className = "", small = false }) {
     return (
         <div className={`flex justify-center ${className}`} aria-hidden="true" data-ornament="divider">
-            <img src={divider} alt="" className="h-[18px] w-full max-w-[820px] object-contain" />
+            <img src={divider} alt="" className={`${small ? "h-2" : "h-[18px]"} w-full max-w-[820px] object-contain`} />
         </div>
     )
 }

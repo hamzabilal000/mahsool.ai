@@ -2,9 +2,9 @@ import { GitHubIcon, LatticeBand } from "./Brand"
 
 export function Footer() {
     return (
-        <footer className="mt-10 bg-bg">
+        <footer className="bg-bg">
             <LatticeBand />
-            <div className="mx-auto flex max-w-[960px] flex-col gap-2 px-4 py-5 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <div className="mx-auto flex max-w-[960px] flex-col gap-x-4 px-4 text-[13px] text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
                 <p>For information only, not tax advice. Confirm with a tax practitioner or FBR.</p>
                 <p className="flex items-center gap-4">
                     <span>Built on FBR's published law texts</span>
