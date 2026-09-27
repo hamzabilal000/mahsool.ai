@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { getAblationChart, getEvalSummary } from "../api/client"
 import { Header } from "../components/Header"
+import { Footer } from "../components/Footer"
+import { Divider, StarTile } from "../components/Brand"
 axios.defaults.withCredentials = true
 
 const GROUPS = [
@@ -12,16 +14,42 @@ const GROUPS = [
     ["all", "All"],
 ]
 
+// The carousel's order: the target groups first.
+const BAR_ORDER = ["roman_urdu", "urdu", "all", "english", "fbr"]
+
 function fmt(x) {
     return x == null ? "–" : `${x.toFixed(1)}%`
 }
 
 function Stat({ label, value, note }) {
     return (
-        <div className="rounded-xl border border-line bg-panel p-3">
-            <p className="text-xs text-muted">{label}</p>
-            <p className="mt-1 text-2xl font-semibold tabular-nums">{value}</p>
-            {note && <p className="mt-0.5 text-xs text-muted">{note}</p>}
+        <div className="rounded-md border-[1.5px] border-indigo bg-surface p-4">
+            <p className="eyebrow text-green">{label}</p>
+            <p className="mt-1 font-display text-[30px] leading-tight tabular-nums text-ink">{value}</p>
+            {note && <p className="mt-1 text-sm text-muted">{note}</p>}
+        </div>
+    )
+}
+
+// One group as on the carousel's results slide: a "before" bar and an "after" bar, 0-100%.
+function BarPair({ label, before, after }) {
+    return (
+        <div className="space-y-2" data-bar-pair>
+            <h3 className="text-[19px] font-semibold text-ink">{label}</h3>
+            {[
+                [before, "bg-bar-muted", "text-ink-2", "Search alone"],
+                [after, "bg-green", "text-green font-semibold", "With rewrite, glossary and re-ranking"],
+            ].map(([value, bar, text, name]) => (
+                <div key={name} className="flex items-center gap-3">
+                    <div className="h-7 flex-1 bg-bar-track sm:h-8">
+                        <div className={`h-full ${bar}`} style={{ width: `${value ?? 0}%` }} />
+                    </div>
+                    <span className={`w-16 shrink-0 text-right text-[17px] tabular-nums ${text}`}>
+                        <span className="sr-only">{name}: </span>
+                        {fmt(value)}
+                    </span>
+                </div>
+            ))}
         </div>
     )
 }
@@ -47,31 +75,57 @@ export function EvalPage() {
     let best = rows[rows.length - 1]
     let e2e = summary?.end_to_end
 
+    // "Before" is plain hybrid search (the baseline); "after" is the /ask default (last row).
+    let base = rows.find((r) => r.setup === "Hybrid")
+
     return (
-        <div className="min-h-screen">
+        <div className="flex min-h-screen flex-col">
             <Header />
-            <main className="mx-auto max-w-4xl space-y-8 px-4 py-6">
-                <section>
-                    <h1 className="text-2xl font-semibold">Evaluation</h1>
-                    <p className="mt-1 text-sm text-muted">
+            <main className="mx-auto w-full max-w-[960px] flex-1 space-y-10 px-4 py-8 sm:px-6">
+                <section className="space-y-3">
+                    <p className="eyebrow text-green">Evaluation</p>
+                    <h1 className="font-display text-[32px] leading-tight text-ink sm:text-[44px]">How well does Mahsool find the law?</h1>
+                    <p className="text-[17px] text-ink-2">
                         Scores on the held-out test split, straight from the committed reports in{" "}
-                        <code className="rounded bg-sunken px-1">eval/reports/</code>.
+                        <code className="rounded bg-surface-2 px-1 text-[15px]">eval/reports/</code>.
                         {summary && ` Updated ${summary.generated}.`}
                     </p>
-                    {error && <p className="mt-3 text-sm text-warn">{error}</p>}
+                    {error && <p className="text-terracotta">{error}</p>}
+                    <Divider className="pt-2" />
                 </section>
 
+                {best && base && (
+                    <section className="space-y-6" aria-labelledby="bars-title">
+                        <div>
+                            <h2 id="bars-title" className="font-display text-[26px] leading-snug text-ink">
+                                Is the right section in the top 5? (Hit@5)
+                            </h2>
+                            <p className="mt-1 text-[15px] text-muted">on {best.n.all} held-out test questions</p>
+                        </div>
+                        <div className="flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-ink-2" aria-hidden="true">
+                            <span className="flex items-center gap-2"><span className="h-4 w-6 bg-bar-muted" />Search alone</span>
+                            <span className="flex items-center gap-2"><span className="h-4 w-6 bg-green" />+ rewrite, glossary, re-ranking</span>
+                        </div>
+                        <div className="space-y-6">
+                            {BAR_ORDER.map((key) => GROUPS.find(([k]) => k === key)).filter(([key]) => base.hit_at_5[key] != null).map(([key, label]) => (
+                                <BarPair key={key} label={label} before={base.hit_at_5[key]} after={best.hit_at_5[key]} />
+                            ))}
+                        </div>
+                        <p className="text-sm text-muted">Bars run from 0 to 100%. Targets: Urdu and Roman Urdu ≥ 80%.</p>
+                    </section>
+                )}
+
                 {ts && (
-                    <section className="rounded-xl border border-line bg-panel p-4 text-sm">
-                        <h2 className="mb-1 font-semibold">Test set</h2>
-                        <p className="text-muted">
+                    <section className="rounded-md border-[1.5px] border-indigo bg-surface p-5 text-[15px]">
+                        <h2 className="mb-2 font-display text-[22px] text-ink">Test set</h2>
+                        <p className="text-ink-2">
                             {ts.questions} questions ({ts.test_split} on the test split). {ts.machine_verified} are
                             machine-verified by an independent LLM judge (Qwen) plus an automatic number check
                             {ts.not_verified_yet ? `; ${ts.not_verified_yet} wait for the judge's re-check with its new completeness question` : ""}.
                             A second judge (Gemini) agreed on {ts.second_opinion_agreed} of {ts.second_opinion_checked} it checked.
                         </p>
                         {ts.review_by && ts.review_result && (
-                            <p className="mt-2 text-muted">
+                            <p className="mt-2 text-ink-2">
                                 Legal review of a {ts.review_sample}-question sample by {ts.review_by}:{" "}
                                 {ts.review_result.correct} correct, {ts.review_result.partly_correct} partly correct,{" "}
                                 {ts.review_result.wrong} wrong; all fixed and a completeness sweep applied to the full set.
@@ -83,36 +137,29 @@ export function EvalPage() {
 
                 {best && (
                     <section className="space-y-3">
-                        <h2 className="font-semibold">Retrieval: is the right section in the top 5? (Hit@5)</h2>
+                        <h2 className="font-display text-[26px] leading-snug text-ink">Every setup we tried</h2>
                         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                             <Stat label="All questions" value={fmt(best.hit_at_5.all)} note={`${best.n.all} questions`} />
                             <Stat label="Urdu script" value={fmt(best.hit_at_5.urdu)} note="target ≥ 80%" />
                             <Stat label="Roman Urdu" value={fmt(best.hit_at_5.roman_urdu)} note="target ≥ 80%" />
                             <Stat label="From FBR pages" value={fmt(best.hit_at_5.fbr)} note={`${best.n.fbr} questions`} />
                         </div>
-                        {chart && <figure className="rounded-xl border border-line bg-panel p-2">
-                            <img
-                                src={chart}
-                                alt="Bar chart of Hit@5 per setup and question group; the same numbers are in the table below."
-                                className="w-full rounded-lg bg-white"
-                            />
-                        </figure>}
-                        <div className="overflow-x-auto rounded-xl border border-line bg-panel">
+                        <div className="overflow-x-auto rounded-md border border-line bg-surface">
                             <table className="w-full text-left text-sm">
-                                <thead className="bg-sunken text-xs text-muted">
+                                <thead className="bg-surface-2 text-sm text-muted">
                                     <tr>
-                                        <th className="px-3 py-2 font-medium">Setup</th>
+                                        <th className="px-3 py-2 font-semibold">Setup</th>
                                         {GROUPS.map(([, label]) => (
-                                            <th key={label} className="px-3 py-2 text-right font-medium">{label}</th>
+                                            <th key={label} className="px-3 py-2 text-right font-semibold">{label}</th>
                                         ))}
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {rows.map((r, i) => (
-                                        <tr key={r.setup} className={`border-t border-line ${i === rows.length - 1 ? "font-semibold" : ""}`}>
+                                        <tr key={r.setup} className={`border-t border-line ${i === rows.length - 1 ? "bg-green-soft font-semibold" : ""}`}>
                                             <td className="px-3 py-2">
                                                 {r.setup}
-                                                <span className="block text-xs font-normal text-muted">{r.description}</span>
+                                                <span className="block text-sm font-normal text-muted">{r.description}</span>
                                             </td>
                                             {GROUPS.map(([key]) => (
                                                 <td key={key} className="px-3 py-2 text-right tabular-nums">{fmt(r.hit_at_5[key])}</td>
@@ -122,12 +169,21 @@ export function EvalPage() {
                                 </tbody>
                             </table>
                         </div>
+                        {chart && (
+                            <figure className="rounded-md border border-line bg-surface p-2">
+                                <img
+                                    src={chart}
+                                    alt="Bar chart of Hit@5 per setup and question group; the same numbers are in the table above."
+                                    className="w-full rounded bg-white"
+                                />
+                            </figure>
+                        )}
                     </section>
                 )}
 
                 {e2e && (
                     <section className="space-y-3">
-                        <h2 className="font-semibold">End to end: answers and refusals</h2>
+                        <h2 className="font-display text-[26px] leading-snug text-ink">End to end: answers and refusals</h2>
                         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                             {summary.answer_correctness && (
                                 <Stat
@@ -141,18 +197,22 @@ export function EvalPage() {
                             <Stat label="Questions run" value={`${e2e.run} / ${e2e.questions}`} note={e2e.not_run ? `${e2e.not_run} wait for the LLM's daily quota` : "complete"} />
                         </div>
                         {e2e.not_run > 0 && (
-                            <p className="rounded-md bg-warn-soft px-3 py-2 text-xs text-warn">
-                                Partial: the free LLM tier allows about 65 answers a day, so these scores cover {e2e.run} of{" "}
-                                {e2e.questions} test questions and will change as the rest run.
+                            <p className="flex items-start gap-3 rounded-md border border-line bg-surface-2 px-4 py-3 text-[15px] text-ink">
+                                <StarTile size={18} className="mt-1" />
+                                <span>
+                                    Partial: the free LLM tier allows about 65 answers a day, so these scores cover {e2e.run} of{" "}
+                                    {e2e.questions} test questions and will change as the rest run.
+                                </span>
                             </p>
                         )}
-                        <p className="text-xs text-muted">
+                        <p className="text-sm text-muted">
                             Answer correctness: an LLM judge (Qwen) compares each answer with the reference answer; a
                             hand check of 50 answers is pending.
                         </p>
                     </section>
                 )}
             </main>
+            <Footer />
         </div>
     )
 }
