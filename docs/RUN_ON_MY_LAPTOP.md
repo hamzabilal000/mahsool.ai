@@ -20,15 +20,19 @@ You need: your **Groq API key** and your **ngrok account** (free). The first sta
    "Edit the system environment variables" → "Environment Variables…" → under "User variables"
    select **Path** → Edit → New → `C:\ngrok` → OK, OK, OK.
 
+Already have another Python (for example 3.14)? Keep it. Install 3.11 next to it; the script always
+uses 3.11 through the Python launcher (`py -3.11`).
+
 Close all PowerShell windows and open a new one (Start menu → "PowerShell"). Check:
 
 ```
-python --version
+py -3.11 --version
 git --version
 ngrok version
 ```
 
-You should see `Python 3.11.x`, a git version, and an ngrok version.
+You should see `Python 3.11.x`, a git version, and an ngrok version. (`py --list` shows all your
+Python versions.)
 
 ## Step 2. Connect ngrok to your account (one time)
 
@@ -122,8 +126,8 @@ The script installs new libraries or a new index by itself when they changed.
 - **Daily limit:** the free Groq tier gives about 60 new answers a day for all visitors together,
   and 10 new questions per visitor. Repeated questions come from the cache and are free.
 - **Questions and feedback** are saved on your laptop in `data\mahsool.db`.
-- **Problems?** Read the backend window for red error text. "Python 3.11 is needed" → install
-  Python 3.11 (Step 1). "ngrok is not installed" → Step 1.3. ngrok says "authentication failed"
+- **Problems?** Read the backend window for red error text. "Python 3.11 is not installed" →
+  install Python 3.11 (Step 1); your other Python can stay. "ngrok is not installed" → Step 1.3. ngrok says "authentication failed"
   → Step 2 again.
 
 ## Ubuntu instead of Windows

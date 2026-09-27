@@ -49,20 +49,30 @@ if ($Check) {
 }
 
 # --- 1. tools -----------------------------------------------------------------------------
-Say "1/5 checking Python 3.11, Git and ngrok"
+Say "1/5 checking Git and ngrok"
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) { Fail "Git is not installed (docs/RUN_ON_MY_LAPTOP.md, step 1)." }
 if (-not (Get-Command ngrok -ErrorAction SilentlyContinue)) { Fail "ngrok is not installed or not on PATH (docs/RUN_ON_MY_LAPTOP.md, step 1)." }
 
 # --- 2. virtual environment and dependencies (again only when pyproject.toml changes) ---------
-Say "2/5 Python environment"
+Say "2/5 Python environment (Python 3.11 through the py launcher)"
+# The default python may be another version (e.g. 3.14): always ask the launcher for 3.11.
+if (-not (Get-Command py -ErrorAction SilentlyContinue)) {
+    Fail "The Python launcher 'py' was not found. Install Python 3.11 from python.org (it includes 'py'), see docs/RUN_ON_MY_LAPTOP.md step 1."
+}
+# (try/catch: Windows PowerShell 5.1 turns the launcher's error text into an exception.)
+$has311 = $false
+try { & py -3.11 -c "import sys" 2>$null; $has311 = ($LASTEXITCODE -eq 0) } catch { $has311 = $false }
+if (-not $has311) {
+    Fail "Python 3.11 is not installed. Install Python 3.11 from python.org (you can keep your other Python). 'py --list' shows what you have."
+}
+if (Test-Path $Py) {
+    # A .venv made with another Python version is replaced.
+    $venvVer = & $Py -c "import sys; print('%d.%d' % sys.version_info[:2])"
+    if ($venvVer -ne "3.11") { Say "replacing .venv (Python $venvVer) with Python 3.11"; Remove-Item -Recurse -Force .venv }
+}
 if (-not (Test-Path $Py)) {
-    if (Get-Command py -ErrorAction SilentlyContinue) { & py -3.11 -m venv .venv }
-    else {
-        $ver = & python -c "import sys; print('%d.%d' % sys.version_info[:2])"
-        if ($ver -ne "3.11") { Fail "Python 3.11 is needed (found $ver). Install it with 'Add python.exe to PATH'." }
-        & python -m venv .venv
-    }
-    if (-not (Test-Path $Py)) { Fail "Could not create .venv with Python 3.11." }
+    & py -3.11 -m venv .venv
+    if (-not (Test-Path $Py)) { Fail "Could not create .venv with 'py -3.11 -m venv .venv'." }
 }
 $Stamp = Join-Path $Root ".venv\installed.txt"
 $want = (Get-FileHash (Join-Path $Root "pyproject.toml")).Hash
