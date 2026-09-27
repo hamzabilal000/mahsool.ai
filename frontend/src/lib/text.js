@@ -3,13 +3,14 @@ export function isUrduScript(text) {
     return /[؀-ۿ]/.test(text || "")
 }
 
-// Split an answer into text and citation markers: "tax is 5% [1]." → ["tax is 5% ", 1, "."].
+// Split an answer into text and citation markers: "tax is 5% [1]." → ["tax is 5% ", 1, "."];
+// a group "[1, 7]" gives one marker per source.
 export function splitCitations(text) {
     let parts = []
     let last = 0
-    for (let m of (text || "").matchAll(/\[(\d+)\]/g)) {
+    for (let m of (text || "").matchAll(/\[(\d+(?:\s*,\s*\d+)*)\]/g)) {
         if (m.index > last) parts.push(text.slice(last, m.index))
-        parts.push(Number(m[1]))
+        for (let n of m[1].split(",")) parts.push(Number(n))
         last = m.index + m[0].length
     }
     if (last < (text || "").length) parts.push(text.slice(last))
@@ -29,6 +30,24 @@ export const REFUSAL_LABELS = {
 export const STAGE_LABELS = {
     search: "Searching the Ordinance, Rules and rate card…",
     answer: "Writing a cited answer…",
+}
+
+// The question box placeholder. The Urdu word renders in Gulzar through the font stack
+// (Hanken Grotesk has no Urdu glyphs), so it is never blank.
+export const PLACEHOLDER = "Ask in English, اردو, or Roman Urdu — e.g. “filer na hon to kya hoga?”"
+
+// The five progress steps shown while answering (the carousel's "How it works").
+export const STEPS = ["Understanding", "Rewriting", "Searching the law", "Re-ranking", "Writing the answer"]
+
+// The API streams two stages ("search", then "answer"). Search covers rewriting, searching and
+// re-ranking, so within it the markers move on at typical times (rewrite ~0.8 s, search ~1.5 s,
+// then re-ranking; D52, D62). Returns the 0-based index of the current step.
+export function currentStep(stage, msInSearch = 0) {
+    if (stage === "answer") return 4
+    if (stage !== "search") return 0
+    if (msInSearch < 800) return 1
+    if (msInSearch < 2300) return 2
+    return 3
 }
 
 // Law text with markdown rate tables → blocks: {type: "text", text} or {type: "table", rows}.

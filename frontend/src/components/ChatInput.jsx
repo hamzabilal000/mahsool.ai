@@ -1,4 +1,5 @@
 import { useRef } from "react"
+import { PLACEHOLDER } from "../lib/text"
 
 // Tax years: only TY2027 law is loaded; earlier years are listed but not selectable yet.
 const CURRENT_TAX_YEAR = 2027
@@ -22,7 +23,7 @@ export function ChatInput({ onAsk, busy, ref }) {
     }
 
     return (
-        <form onSubmit={submit} className="rounded-2xl border border-line bg-panel p-2 shadow-sm">
+        <form onSubmit={submit} className="rounded-lg border-2 border-indigo bg-surface p-2">
             <label htmlFor="question" className="sr-only">Your question</label>
             <textarea
                 id="question"
@@ -31,16 +32,16 @@ export function ChatInput({ onAsk, busy, ref }) {
                 dir="auto"
                 maxLength={1000}
                 onKeyDown={onKeyDown}
-                placeholder="Ask in English, اردو or Roman Urdu — e.g. “filer na hon to kya hoga?”"
-                className="w-full resize-none bg-transparent px-2 py-1.5 text-[15px] outline-none placeholder:text-muted"
+                placeholder={PLACEHOLDER}
+                className="w-full resize-none bg-transparent px-2 py-1.5 text-[17px] leading-[2] text-ink outline-none placeholder:text-muted"
             />
             <div className="flex flex-wrap items-center justify-between gap-2 px-1">
-                <label className="flex items-center gap-2 text-xs text-muted">
+                <label className="flex items-center gap-2 text-sm text-muted">
                     Tax year
                     <select
                         ref={yearref}
                         defaultValue={String(CURRENT_TAX_YEAR)}
-                        className="rounded-md border border-line bg-panel px-2 py-1 text-xs text-ink"
+                        className="min-h-11 rounded-md border border-line bg-surface px-2 text-sm text-ink"
                     >
                         <option value={CURRENT_TAX_YEAR}>TY{CURRENT_TAX_YEAR} (current)</option>
                         <option value="auto">From my question</option>
@@ -52,7 +53,7 @@ export function ChatInput({ onAsk, busy, ref }) {
                 <button
                     type="submit"
                     disabled={busy}
-                    className="rounded-lg bg-accent px-4 py-1.5 text-sm font-medium text-accent-ink disabled:opacity-50"
+                    className="min-h-11 rounded-md bg-button px-6 text-base font-semibold text-button-ink hover:opacity-90 disabled:opacity-60"
                 >
                     {busy ? "Answering…" : "Ask"}
                 </button>

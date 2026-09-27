@@ -15,7 +15,7 @@ export const STARTERS = [
         ],
     },
     {
-        group: "Businesses & landlords",
+        group: "Businesses & Landlords",
         questions: [
             "How much tax should a tenant withhold on rent of Rs. 500,000 a year under section 155?",
             "non filer hun, bank se cash nikalwaun to kitna tax katega?",

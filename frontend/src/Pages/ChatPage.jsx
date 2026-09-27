@@ -5,6 +5,8 @@ import { Header } from "../components/Header"
 import { ChatInput } from "../components/ChatInput"
 import { AnswerCard } from "../components/AnswerCard"
 import { StarterQuestions } from "../components/StarterQuestions"
+import { Banner, Divider, Medallion } from "../components/Brand"
+import { Footer } from "../components/Footer"
 axios.defaults.withCredentials = true
 
 export function ChatPage() {
@@ -52,36 +54,37 @@ export function ChatPage() {
     return (
         <div className="flex min-h-screen flex-col">
             <Header />
-            <main className="mx-auto w-full max-w-4xl flex-1 space-y-6 px-4 py-6">
-                {offline && (
-                    <p role="status" className="rounded-md bg-warn-soft px-3 py-2 text-sm text-ink">
-                        😴 {OFFLINE_MESSAGE}
-                    </p>
-                )}
+            <main className="mx-auto w-full max-w-[960px] flex-1 space-y-8 px-4 py-8 sm:px-6">
+                {offline && <Banner>{OFFLINE_MESSAGE}</Banner>}
                 {turns.length === 0 && (
-                    <section className="space-y-4">
-                        <div>
-                            <h1 className="text-2xl font-semibold">Ask about Pakistani income tax</h1>
-                            <p className="mt-1 text-sm text-muted">
+                    <section className="space-y-6">
+                        <div className="space-y-4 text-center">
+                            <Medallion size={168} />
+                            <h1 className="font-display text-[34px] leading-tight text-ink sm:text-[46px]">
+                                Ask about Pakistani income tax
+                            </h1>
+                            <p className="mx-auto max-w-[680px] text-[17px] text-ink-2">
                                 Answers come only from the Income Tax Ordinance 2001, the Income Tax Rules 2002 and FBR's
                                 withholding tax rate card (tax year 2027), and every claim cites the section it came from.
                                 When the law doesn't cover a question, Mahsool says so.
                             </p>
                         </div>
+                        <Divider />
                         <StarterQuestions onPick={pick} />
                     </section>
                 )}
                 {turns.map((t) => <AnswerCard key={t.id} turn={t} />)}
                 <div ref={bottomref} />
             </main>
-            <div className="sticky bottom-0 border-t border-line bg-page/95 backdrop-blur">
-                <div className="mx-auto max-w-4xl px-4 py-3">
+            <div className="sticky bottom-0 z-10 border-t border-line bg-bg">
+                <div className="mx-auto max-w-[960px] px-4 py-3 sm:px-6">
                     <ChatInput onAsk={ask} busy={busy} ref={questionref} />
-                    <p className="mt-1.5 text-center text-[11px] text-muted">
+                    <p className="mt-1.5 text-center text-[13px] text-muted">
                         For information only, not tax advice. Confirm with a tax practitioner or FBR.
                     </p>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

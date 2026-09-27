@@ -3,10 +3,10 @@ import { STARTERS } from "../lib/starters"
 
 export function StarterQuestions({ onPick }) {
     return (
-        <section aria-label="Starter questions" className="grid gap-3 sm:grid-cols-3">
+        <section aria-label="Starter questions" className="grid gap-4 md:grid-cols-3">
             {STARTERS.map(({ group, questions }) => (
-                <div key={group} className="rounded-xl border border-line bg-panel p-3">
-                    <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted">{group}</h3>
+                <div key={group} className="rounded-md border-[1.5px] border-indigo bg-surface p-5">
+                    <h2 className="eyebrow mb-3 text-green">{group}</h2>
                     <ul className="space-y-2">
                         {questions.map((q) => (
                             <li key={q}>
@@ -14,7 +14,8 @@ export function StarterQuestions({ onPick }) {
                                     type="button"
                                     onClick={() => onPick(q)}
                                     dir="auto"
-                                    className={`w-full rounded-lg bg-sunken px-3 py-2 text-left text-sm hover:bg-accent-soft ${isUrduScript(q) ? "urdu text-right" : ""}`}
+                                    lang={isUrduScript(q) ? "ur" : undefined}
+                                    className={`min-h-11 w-full rounded-md border border-line px-3 py-2 text-start text-base text-ink transition-colors hover:bg-surface-2 ${isUrduScript(q) ? "urdu" : ""}`}
                                 >
                                     {q}
                                 </button>
