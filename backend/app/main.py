@@ -62,6 +62,7 @@ def cache_version(service) -> str:
         s.reranker_model, str(s.reranker_max_length),
         str(s.rerank_candidates), str(s.answer_top_k), str(s.refusal_threshold), *snapshots,
         f"guard={s.prompt_guard}:{s.prompt_guard_model}:{s.prompt_guard_threshold}",
+        f"atl_rules={service.pipeline.config.atl_rules}",  # D63 companions
     ]  # fmt: skip
     return hashlib.sha256("\n".join(parts).encode()).hexdigest()[:16]
 
@@ -100,9 +101,12 @@ def create_app(service=None, store=None) -> FastAPI:
     app.add_middleware(
         CORSMiddleware,
         allow_origins=s.cors_origins,
+        allow_origin_regex=s.cors_origin_regex or None,
         allow_credentials=True,
         allow_methods=["GET", "POST"],
-        allow_headers=["Content-Type"],
+        # The frontend sends ngrok-skip-browser-warning so ngrok's free domain does not answer
+        # with its HTML warning page instead of the API.
+        allow_headers=["Content-Type", "ngrok-skip-browser-warning"],
     )
     app.include_router(ask_router)
     app.include_router(eval_router)

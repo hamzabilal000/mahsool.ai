@@ -108,6 +108,9 @@ class Settings(BaseSettings):
     answer_cache: bool = True  # serve repeated questions from the answer cache (database)
     # The React dev server (Vite); the browser sends cookies (axios withCredentials).
     cors_origins: list[str] = ["http://localhost:5173"]
+    # The Vercel site: production (mahsool-ai.vercel.app) and its preview deployments
+    # (mahsool-ai-<hash>-<team>.vercel.app). Empty = only `cors_origins`.
+    cors_origin_regex: str = r"https://mahsool-ai(-[a-z0-9-]+)?\.vercel\.app"
     current_tax_year: int = 2027
 
     # --- Storage: question log + feedback ---

@@ -92,6 +92,29 @@ def test_cors_allows_the_vite_dev_server_with_credentials(api):
     assert r.headers["access-control-allow-credentials"] == "true"
 
 
+@pytest.mark.parametrize(
+    ("origin", "allowed"),
+    [
+        ("https://mahsool-ai.vercel.app", True),
+        ("https://mahsool-ai-git-main-hamza.vercel.app", True),
+        ("https://mahsool-ai.vercel.app.evil.com", False),
+        ("https://evil-mahsool-ai.vercel.app", False),
+    ],
+)
+def test_cors_allows_the_vercel_site_and_the_ngrok_header(api, origin, allowed):
+    r = api.options(
+        "/ask/stream",
+        headers={
+            "Origin": origin,
+            "Access-Control-Request-Method": "POST",
+            "Access-Control-Request-Headers": "content-type,ngrok-skip-browser-warning",
+        },
+    )
+    assert (r.headers.get("access-control-allow-origin") == origin) is allowed
+    if allowed:
+        assert "ngrok-skip-browser-warning" in r.headers["access-control-allow-headers"].lower()
+
+
 def test_repeated_question_comes_from_the_answer_cache_and_skips_the_pipeline(api):
     api.app.state.cache_version = "v1"
     q = {"question": "Who deducts tax from salary?"}
