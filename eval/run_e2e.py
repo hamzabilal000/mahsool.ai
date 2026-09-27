@@ -17,6 +17,8 @@ Questions whose answer call fails (e.g. Groq's free-tier daily token limit) are 
 Usage:
     python -m eval.run_e2e --split dev
     python -m eval.run_e2e --split test
+    python -m eval.run_e2e --split test --order mixed   # Urdu / Roman Urdu first (quota-bound)
+    python -m eval.run_e2e --split dev --ids en-100 ru-051  # just these questions
 """
 
 import argparse
@@ -52,6 +54,30 @@ def build_service():
         refusal_threshold=s.refusal_threshold,
         last_tax_year=s.current_tax_year,
     )
+
+
+def mixed_order(items: list, first: int = 15) -> list:
+    """Quota-bound runs stop at the daily limit, so ask what is least measured first: the first
+    `first` Urdu and the first `first` Roman Urdu in-scope questions (alternating), then every
+    group in turn (English, FBR, Urdu, Roman Urdu, out of scope). Deterministic, so the next
+    session resumes from the answer cache."""
+    groups: dict[str, list] = defaultdict(list)
+    for item in items:
+        groups[report_group(item)].append(item)
+    head = []
+    for a, b in zip(groups["urdu"][:first], groups["roman_urdu"][:first], strict=False):
+        head += [a, b]
+    head_ids = {i.id for i in head}
+    queues = [[i for i in groups[g] if i.id not in head_ids] for g in [*REPORT_GROUPS, *groups]]
+    tail, seen = [], set(head_ids)
+    while any(queues):
+        for q in queues:
+            if q:
+                item = q.pop(0)
+                if item.id not in seen:
+                    seen.add(item.id)
+                    tail.append(item)
+    return head + tail
 
 
 def summarize(rows: list[dict]) -> dict:
@@ -128,9 +154,15 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--split", default="test", choices=["dev", "test", "all"])
     ap.add_argument("--name", default=None)
+    ap.add_argument("--order", default="file", choices=["file", "mixed"])
+    ap.add_argument("--ids", nargs="*", help="only these question ids")
     args = ap.parse_args()
 
     items = [i for i in load_testset() if args.split == "all" or i.split == args.split]
+    if args.ids:
+        items = [i for i in items if i.id in set(args.ids)]
+    if args.order == "mixed":
+        items = mixed_order(items)
     service = build_service()
     rows, not_run = [], []
     for n, item in enumerate(items, start=1):
