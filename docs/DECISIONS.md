@@ -784,3 +784,65 @@ Newest first within each milestone. Each entry says what the plan said, what we 
 - **Proposed fix (not done, needs a dev eval and answer quota):** when a rate-card chunk whose rows cite "R.1 of
   Tenth Schedule" is among the answer sources, pin `ITO2001-sch10-1` (rule 1) as an extra source, and add a test
   question for it. Same pattern as the definition lookup (D57).
+- **Done (2026-09-27, tuned on dev, checked once on test):** `AtlRuleLookup` (`backend/app/rag/lookup.py`)
+  adds up to 3 **companion sources** after the top 6 answer sources: (1) the rate card of the section the top 3
+  sources are about (an Ordinance section, or its First Schedule rate division: the card rows name their division,
+  e.g. "Division-V of Part-III" → card 155), when that card is not already a source; (2) the Tenth Schedule rule
+  each rate card among the sources points to ("R.1 of Tenth Schedule" → rule 1, with its tables for 236K / 236C /
+  236G / 236H; "R.10(x)" → the rule 10 exception list); (3) for a question about filer status (filer, non-filer,
+  ATL, فائلر), rule 1, and the rate card of the section a glossary term names when search found neither the section
+  nor its card. Cards whose rows only cite rule 10 (salary, electricity: the rate does not rise for non-ATL persons)
+  are added only for filer questions. Companions come after the ranked sources, so retrieval ranks and every Hit@5
+  in this file are unchanged. A note in the answer prompt (only when companions are added, so other answers keep
+  their cache) asks for both rates, "even if the question asks about only one", citing the rule.
+- **Glossary:** "bank munafa" (this word order) now maps to profit on debt (section 151); before, only "munafa"
+  matched, which means capital gain, so the live Roman Urdu question searched for capital gains.
+- **Dev** (`python -m eval.atl_check --split dev`; a question "needs" the rule when its question or reference answer
+  is about ATL status or a rate-card row is gold or acceptable): 11 of 11 get the rule among their answer sources
+  (the first version, question words only: 8 of 13 under the old definition); 14 of 51 get companions, 8 extra
+  sources on 5 questions that do not need them. **Test, once:** 25 of 30; the 5 misses are by design (section 154A
+  and salary are rule 10 exceptions, and en-087 is capital gains on property, no ATL rate); 44 of 168 get
+  companions, 30 extra sources on 23 questions that do not need them (prompt cost ≈ +1k tokens each).
+- **Live re-check** (GPT OSS 120B): "What is the withholding tax on profit on debt paid by a bank to a filer?" →
+  20% for a filer, 40% for a person not on the ATL (doubled under the Tenth Schedule), citing Division IA and rule 1;
+  the "regardless of ATL status" claim is gone. "bank munafa par kitna tax katta hai agar main non filer hun?" was
+  refused (`NOT_IN_SOURCES`); now: 40% for non-ATL, from the 20% base rate doubled under the Tenth Schedule, citing
+  the rate card and rule 1. With the first note wording the filer question still gave only 20%; the note was
+  sharpened on these two examples (no test question was looked at for it).
+
+### D64. Launch hosting: the backend on Hamza's Windows laptop behind ngrok, the frontend on Vercel
+- **Why:** Hugging Face Docker Spaces need PRO (D61), Neon is not used for now, and an Oracle Cloud Always Free VM
+  needs a card at sign-up, which Hamza does not have yet. Hamza's decision (2026-09-27): launch Phase 1 with the
+  backend on his laptop, exposed through his free ngrok static domain; the frontend on Vercel.
+- **How:** `scripts/run_local.ps1` (Windows; `scripts/run_local.sh` for Ubuntu): `py -3.11 -m venv .venv` (the
+  laptop's default Python is 3.14), CPU-only PyTorch, `pip install -e ".[ml]"` (again only when `pyproject.toml`
+  changes), the prebuilt index (D65), the Groq key asked once and saved in `.env` (gitignored, UTF-8 without BOM),
+  ngrok in a second window (`ngrok http 127.0.0.1:8000 --url=https://NGROK_DOMAIN`), uvicorn on 127.0.0.1 with
+  local SQLite. uvicorn trusts `X-Forwarded-For` only from 127.0.0.1 (the ngrok agent), so the per-visitor limit
+  (D59) counts visitors, not the tunnel. Steps: `docs/RUN_ON_MY_LAPTOP.md`.
+- **Browser side:** ngrok's free domain answers browser requests with an HTML warning page unless the request
+  carries `ngrok-skip-browser-warning`; the frontend sends it on every call and loads the eval chart through axios
+  (an `<img src>` cannot send headers). CORS allows `https://mahsool-ai.vercel.app` and its preview deployments
+  (`https://mahsool-ai-*.vercel.app`, regex) plus that header. Any answer that is not the API's envelope (no
+  answer, ngrok's "endpoint offline" page, a 502 while restarting) shows "Mahsool AI is resting right now. Please
+  try again later."; the chat page checks `/health` on load. The production API address is in
+  `frontend/.env.production` (public, not a secret).
+- **Limits:** the site is up only while the laptop is on, awake and online; answers take ~7-9 s on a 4-core CPU
+  (D62); the free Groq quota (~60 answers/day, D59) is unchanged.
+- **Later:** `deploy/oracle/` holds a kit (syntax-checked only) for an Oracle Always Free Ampere VM (cloud-init with no
+  secrets, `install.sh`, `setup-secrets.sh`, `update.sh`, health check every 5 minutes, daily keep-alive, systemd
+  units with memory and CPU limits; `docs/DEPLOY_ORACLE.md`). Not run on a VM yet.
+
+### D65. The vector index is committed (8.6 MB) instead of rebuilt in every session
+- **Why:** every new container spent ~30 minutes re-embedding 1,416 chunks. The embedded Qdrant folder is 19 MB,
+  8.6 MB as `tar.gz`, far under GitHub's 50 MB file limit.
+- **How:** `python scripts/get_index.py --pack` writes `data/index/qdrant-index.tar.gz` and `manifest.json` (archive
+  SHA-256, the SHA-256 of each `chunks.jsonl` it was built from, embedding model, qdrant-client version);
+  `python scripts/get_index.py` checks the hash, installs into `data/qdrant`, skips when already current, and warns
+  when the chunks changed since packing. Standard library only. Without the archive in the checkout it downloads
+  from a GitHub Release `index-v1` if one exists, else from the file on `main`.
+- **Release asset:** not created. This session has no tool that can create a GitHub Release (the GitHub tools here
+  read releases only), so the archive is committed; a Release can be added later in the GitHub UI (tag `index-v1`,
+  asset `qdrant-index.tar.gz`) and the script will prefer it.
+- **Check:** installed from the archive, the dev retrieval eval reproduced D62 exactly (Hit@5 98.0%, MRR@10
+  0.809). Re-pack after every re-index (a new law, D21-style settings).
