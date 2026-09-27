@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-26",
+ "generated": "2026-09-27",
  "testset": {
   "questions": 249,
   "test_split": 189,
@@ -282,33 +282,37 @@
   }
  ],
  "end_to_end": {
-  "date": "2026-09-26",
+  "date": "2026-09-27",
   "questions": 189,
-  "run": 52,
-  "not_run": 137,
-  "in_scope_run": 39,
+  "run": 42,
+  "not_run": 147,
+  "in_scope_run": 29,
   "answered": 100.0,
-  "correct_citation": 100,
-  "correct_citation_answered": 100,
+  "correct_citation": 93.1,
+  "correct_citation_answered": 93.1,
   "out_of_scope_run": 13,
   "out_of_scope_refused": 100,
   "by_group": {
    "english": {
-    "n": 38,
-    "correct_citation": 100
-   },
-   "fbr": {
     "n": 1,
     "correct_citation": 100
+   },
+   "urdu": {
+    "n": 14,
+    "correct_citation": 92.9
+   },
+   "roman_urdu": {
+    "n": 14,
+    "correct_citation": 92.9
    }
   }
  },
  "answer_correctness": {
-  "date": "2026-09-26",
-  "judged": 39,
-  "correct_strict": 97.4,
-  "correct_lenient": 100.0,
-  "not_run_end_to_end": 137
+  "date": "2026-09-27",
+  "judged": 29,
+  "correct_strict": 65.5,
+  "correct_lenient": 79.3,
+  "not_run_end_to_end": 147
  },
  "targets": [
   {
