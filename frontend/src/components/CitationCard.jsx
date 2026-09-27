@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { splitTables } from "../lib/text"
+import { Diamond, ExternalIcon } from "./Brand"
 
 const LAW_NAMES = {
     ITO: "Income Tax Ordinance, 2001",
@@ -19,27 +20,25 @@ export function CitationCard({ citation, highlighted }) {
     return (
         <article
             id={`cite-${citation.n}`}
-            className={`rounded-xl border bg-panel p-3 transition-colors ${highlighted ? "border-accent ring-2 ring-accent/30" : "border-line"}`}
+            className={`overflow-hidden rounded-md bg-surface transition-colors ${highlighted ? "border-2 border-indigo" : "border border-line"}`}
         >
-            <header className="flex items-start gap-2">
-                <span className="mt-0.5 grid h-6 min-w-6 place-items-center rounded-md bg-accent-soft text-xs font-semibold text-accent">
-                    {citation.n}
-                </span>
+            <header className="flex items-start gap-3 bg-surface-2 px-4 py-3">
+                <Diamond n={citation.n} state="done" size={20} />
                 <div className="min-w-0 flex-1">
-                    <p className="text-xs text-muted">{law} · as amended to {citation.version_date}</p>
-                    <h4 className="text-sm font-semibold">{title}</h4>
+                    <p className="text-sm text-muted">{law} · as amended to {citation.version_date}</p>
+                    <h4 className="font-display text-[20px] leading-snug text-ink">{title}</h4>
                 </div>
             </header>
-            <div className={`relative mt-2 space-y-2 text-sm text-muted ${open || !long ? "" : "max-h-32 overflow-hidden"}`}>
+            <div className={`space-y-3 px-4 pt-3 text-base leading-[1.6] text-ink-2 ${open || !long ? "" : "max-h-40 overflow-hidden"}`}>
                 {splitTables(citation.text).map((block, i) =>
                     block.type === "table" ? (
                         <div key={i} className="overflow-x-auto">
-                            <table className="w-full border-collapse text-left text-xs">
+                            <table className="w-full border-collapse text-left text-sm tabular-nums">
                                 <tbody>
                                     {block.rows.map((row, r) => (
-                                        <tr key={r} className={r === 0 ? "bg-sunken font-medium text-ink" : "border-t border-line"}>
+                                        <tr key={r} className={r === 0 ? "bg-surface-2 font-semibold text-ink" : "border-t border-line"}>
                                             {row.map((cell, c) => (
-                                                <td key={c} className="px-2 py-1 align-top">{cell}</td>
+                                                <td key={c} className="px-2 py-1.5 align-top">{cell}</td>
                                             ))}
                                         </tr>
                                     ))}
@@ -50,16 +49,21 @@ export function CitationCard({ citation, highlighted }) {
                         <p key={i} className="whitespace-pre-line">{block.text}</p>
                     ),
                 )}
-                {long && !open && <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-panel" />}
             </div>
-            <footer className="mt-2 flex flex-wrap items-center gap-3 text-xs">
+            <footer className="flex flex-wrap items-center gap-x-5 px-4 pb-2 text-[15px]">
                 {long && (
-                    <button type="button" onClick={() => setOpen(!open)} className="font-medium text-accent">
+                    <button type="button" onClick={() => setOpen(!open)} className="min-h-11 font-semibold text-green hover:underline">
                         {open ? "Show less" : "Show full text"}
                     </button>
                 )}
-                <a href={citation.url} target="_blank" rel="noreferrer" className="font-medium text-accent underline-offset-2 hover:underline">
-                    FBR PDF, page {citation.page} ↗
+                <a
+                    href={citation.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-11 items-center gap-1.5 font-semibold text-green underline-offset-2 hover:underline"
+                >
+                    Open FBR PDF, p. {citation.page}
+                    <ExternalIcon size={15} />
                 </a>
             </footer>
         </article>

@@ -1,5 +1,6 @@
 import { useRef, useState } from "react"
 import { sendFeedback } from "../api/client"
+import { ThumbDownIcon, ThumbUpIcon } from "./Brand"
 
 export function FeedbackButtons({ askId }) {
     let commentref = useRef()
@@ -22,18 +23,18 @@ export function FeedbackButtons({ askId }) {
     if (!askId) return null
     return (
         <div className="space-y-2">
-            <div className="flex items-center gap-2 text-xs text-muted">
+            <div className="flex flex-wrap items-center gap-2 text-[15px] text-muted">
                 <span>Was this helpful?</span>
-                {[["up", "👍", "Helpful"], ["down", "👎", "Not helpful"]].map(([value, icon, label]) => (
+                {[["up", ThumbUpIcon, "Helpful"], ["down", ThumbDownIcon, "Not helpful"]].map(([value, Icon, label]) => (
                     <button
                         key={value}
                         type="button"
                         aria-label={label}
                         aria-pressed={rating === value}
                         onClick={() => send(value)}
-                        className={`rounded-md border px-2 py-0.5 text-sm ${rating === value ? "border-accent bg-accent-soft" : "border-line hover:bg-sunken"}`}
+                        className={`grid h-11 w-11 place-items-center rounded-md border text-ink-2 ${rating === value ? "border-green bg-green-soft text-green" : "border-line hover:bg-surface-2"}`}
                     >
-                        {icon}
+                        <Icon size={20} />
                     </button>
                 ))}
                 {status && <span role="status">{status}</span>}
@@ -43,10 +44,11 @@ export function FeedbackButtons({ askId }) {
                     <input
                         ref={commentref}
                         maxLength={1000}
+                        dir="auto"
                         placeholder="What was wrong? (optional)"
-                        className="min-w-0 flex-1 rounded-md border border-line bg-panel px-2 py-1 text-xs"
+                        className="min-h-11 min-w-0 flex-1 rounded-md border border-line bg-surface px-3 text-[15px] text-ink"
                     />
-                    <button type="submit" className="rounded-md border border-line px-2 py-1 text-xs hover:bg-sunken">Send</button>
+                    <button type="submit" className="min-h-11 rounded-md border border-line px-4 text-[15px] font-semibold text-ink hover:bg-surface-2">Send</button>
                 </form>
             )}
         </div>
