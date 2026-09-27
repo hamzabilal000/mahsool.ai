@@ -116,16 +116,27 @@ class AskService:
         if reason:
             return self._refuse(result, reason, timings)
 
-        top = result.candidates[: self.answer_top_k]
+        top = [c.chunk for c in result.candidates[: self.answer_top_k]]
         notes = [
             f"The user mentions {ref}, which does not exist in the law I have."
             for ref in result.missing_refs
         ]
+        extra = self.pipeline.companions(result, self.answer_top_k)
+        if extra:
+            first = len(top) + 1
+            numbers = ", ".join(f"[{n}]" for n in range(first, first + len(extra)))
+            notes.append(
+                f"Sources {numbers} were added because the rates in the other sources depend on "
+                "whether a person is on the Active Taxpayers' List (Tenth Schedule). If a rate "
+                "differs for persons on and not on the ATL, give both rates, each with its "
+                "citation; if a rule 10 exception applies, say the rate is not increased."
+            )
+            top += extra
         stage("answer")
         with timed("answer_llm"):
             draft = self.generator.draft(
                 question,
-                [c.chunk for c in top],
+                top,
                 plan.language,
                 plan.tax_year,
                 plan.tax_year_assumed,
@@ -141,7 +152,7 @@ class AskService:
                 len(top),
                 draft.citations,
                 # Section numbers of the sources, to spot "section N" mentions nobody cited.
-                [(c.chunk.section or "") if c.chunk.law_code != "ITR" else "" for c in top],
+                [(c.section or "") if c.law_code != "ITR" else "" for c in top],
             )
         if not check.ok:
             return self._refuse(result, "NO_VALID_CITATIONS", timings)
@@ -166,7 +177,7 @@ class AskService:
             tax_year=plan.tax_year,
             tax_year_assumed=plan.tax_year_assumed,
             confidence=draft.confidence,
-            citations=[self._citation(n, top[n - 1].chunk) for n in check.cited],
+            citations=[self._citation(n, top[n - 1]) for n in check.cited],
             sources=self._sources(result),
             search_queries=plan.queries,
             warnings=warnings,

@@ -5,6 +5,7 @@
       -> hybrid search for the original + each rewrite, fused with RRF     retriever.py
       -> sections named in the question ("section 149") pinned on top      lookup.py
       -> top 30 reranked by a cross-encoder                                reranker.py
+      -> companions: the Tenth Schedule rule a rate depends on (ATL, D63)   lookup.py
 
 Each step can be switched off, which is how the ablation table is produced.
 """
@@ -13,7 +14,7 @@ from dataclasses import dataclass, field
 from typing import Literal
 
 from backend.app.rag.corpus import embedding_text
-from backend.app.rag.lookup import DefinitionLookup, SectionLookup
+from backend.app.rag.lookup import AtlRuleLookup, DefinitionLookup, SectionLookup
 from backend.app.rag.query_rewrite import QueryPlan, QueryRewriter
 from backend.app.rag.reranker import Reranker
 from backend.app.rag.retriever import Retriever
@@ -35,6 +36,9 @@ class PipelineConfig:
     # higher score (DECISIONS D33). Doubles the reranker cost. "max_non_en": the same, but only
     # for Urdu / Roman Urdu questions, where it helps (D40, D52); English questions are scored once.
     rerank_query: Literal["original", "max", "max_non_en"] = "original"
+    # Add the Tenth Schedule rule (and, for filer questions, the rate card) that the answer
+    # sources' rates depend on, after the ranked sources (D63).
+    atl_rules: bool = True
 
 
 @dataclass
@@ -79,6 +83,7 @@ class RAGPipeline:
         self.retriever, self.rewriter, self.reranker = retriever, rewriter, reranker
         self.lookup = SectionLookup(chunks)
         self.definitions = DefinitionLookup(chunks)
+        self.atl = AtlRuleLookup(chunks)
         self.config = config or PipelineConfig()
         if self.config.rerank and reranker is None:
             raise ValueError("config.rerank needs a reranker")
@@ -148,3 +153,12 @@ class RAGPipeline:
         for i, c in enumerate(ranked, start=1):
             c.rank = i
         return SearchResult(plan=plan, candidates=ranked, missing_refs=missing)
+
+    def companions(self, result: SearchResult, top_k: int) -> list[Chunk]:
+        """Extra answer sources for the top `top_k` candidates: the Tenth Schedule rule their
+        ATL / non-ATL rates depend on, and for a filer question the rate card (D63)."""
+        if not self.config.atl_rules:
+            return []
+        top = [c.chunk for c in result.candidates[:top_k]]
+        texts = [result.plan.question, *result.plan.queries]
+        return [self.by_id[cid] for cid in self.atl.companions(top, texts)]
