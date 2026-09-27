@@ -1,0 +1,286 @@
+{
+ "summary": {
+  "urdu": {
+   "n": 14,
+   "correct_strict": 0.6429,
+   "correct_lenient": 0.7857
+  },
+  "in_scope": {
+   "n": 29,
+   "correct_strict": 0.6552,
+   "correct_lenient": 0.7931
+  },
+  "roman_urdu": {
+   "n": 14,
+   "correct_strict": 0.7143,
+   "correct_lenient": 0.7857
+  },
+  "out_of_scope": {
+   "n": 13,
+   "correct_strict": 1.0,
+   "correct_lenient": 1.0
+  },
+  "english": {
+   "n": 1,
+   "correct_strict": 0.0,
+   "correct_lenient": 1.0
+  },
+  "not_run_end_to_end": 147,
+  "not_judged": [],
+  "source": "2026-09-27-e2e-test.json"
+ },
+ "rows": [
+  {
+   "id": "ur-013",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the 10% surcharge rate, the threshold of Rs. 10 million, and the exception for salary income, matching all key points of the reference."
+  },
+  {
+   "id": "ru-013",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the 10% rate, the Rs 10 million threshold, and the exemption for salary income, matching all key points of the reference."
+  },
+  {
+   "id": "ur-014",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "Both answers confirm that overtime and bonus are considered part of salary for income tax purposes, with the app answer correctly citing the relevant section and adding the effective date."
+  },
+  {
+   "id": "ru-014",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "Both answers confirm that overtime and bonus are included in salary for tax purposes, aligning with the reference's definition of remuneration."
+  },
+  {
+   "id": "ur-015",
+   "group": "urdu",
+   "verdict": "partly",
+   "reason": "The app answer only mentions the 10% rate for personal use and omits the 5% rate applicable when the vehicle is used partly for official purposes, which is included in the reference."
+  },
+  {
+   "id": "ru-015",
+   "group": "roman_urdu",
+   "verdict": "no",
+   "reason": "The app answer incorrectly states that for mixed use, the official portion is taxed at 5% and the private portion at 10%, whereas the reference states the total perquisite is 5% of the vehicle's cost for mixed use."
+  },
+  {
+   "id": "ur-016",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that agricultural income is exempt under Section 41 of the Federal Income Tax Ordinance."
+  },
+  {
+   "id": "ru-016",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that agricultural income is exempt from federal income tax under Section 41."
+  },
+  {
+   "id": "ur-017",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that scholarships are generally exempt but taxable if paid by an associate, matching the reference answer's conditions and conclusion."
+  },
+  {
+   "id": "ru-017",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that the scholarship is tax-exempt unless paid by an associate, matching the reference answer's conditions and conclusion."
+  },
+  {
+   "id": "ur-018",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the general 6-year limit and the specific exceptions (8 years for hotels, 10 years for PIA and federal banks) matching the reference."
+  },
+  {
+   "id": "ru-018",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the general 6-year limit and accurately lists the specific exceptions for hotel businesses (8 years), PIA (10 years), and government-owned banking companies (10 years), matching the reference."
+  },
+  {
+   "id": "ur-019",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that Zakat is deductible and that any unused portion is neither refunded nor carried forward, which matches the reference answer's conclusion."
+  },
+  {
+   "id": "ru-019",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that Zakat is a deductible allowance and that any unused portion is neither refunded nor carried forward or back, matching the reference answer."
+  },
+  {
+   "id": "ur-020",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the income limit (Rs. 1.5 million) and the three conditions for the deduction amount (5% of fee, 25% of income, or Rs. 60,000 per child), matching the reference answer."
+  },
+  {
+   "id": "ru-020",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the income limit, the three limiting conditions (5% of fee, 25% of income, Rs 60,000 per child), and the 'lesser of' rule, matching the reference exactly."
+  },
+  {
+   "id": "ur-021",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly confirms the tax credit under Section 61 for donations to public universities and accurately details the calculation formula and conditions (such as the 30%/20% cap and crossed check requirement) which aligns with the reference's core assertion."
+  },
+  {
+   "id": "ru-021",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly confirms eligibility under Section 61 for donations to federal/provincial universities, matching the reference's core conclusion, while adding specific calculation details and conditions that do not contradict the reference."
+  },
+  {
+   "id": "ur-022",
+   "group": "urdu",
+   "verdict": "partly",
+   "reason": "The app answer correctly states the 183-day requirement but omits the other conditions for residency (government officials abroad, citizens not resident elsewhere) mentioned in the reference."
+  },
+  {
+   "id": "ru-022",
+   "group": "roman_urdu",
+   "verdict": "partly",
+   "reason": "The app answer correctly states the 183-day rule but omits the other two conditions for residency (government officials posted abroad and citizens not resident elsewhere) mentioned in the reference."
+  },
+  {
+   "id": "ur-023",
+   "group": "urdu",
+   "verdict": "no",
+   "reason": "The app answer incorrectly states that a citizen is generally not a resident if they spend most of the year abroad, whereas the reference answer confirms they can be a resident if they are not present in any other country for more than 182 days (Section 82(d)), a condition the app answer omits."
+  },
+  {
+   "id": "ru-023",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the same conditions for residency (183 days in Pakistan, government employee abroad, or not being a resident of another country for more than 182 days) and reaches the same conclusion as the reference."
+  },
+  {
+   "id": "ur-024",
+   "group": "urdu",
+   "verdict": "no",
+   "reason": "The reference states the income is exempt if foreign tax was paid, whereas the app answer states that tax is generally applicable and only a credit is given (or specific exemptions apply), which contradicts the reference's conclusion of exemption."
+  },
+  {
+   "id": "ru-024",
+   "group": "roman_urdu",
+   "verdict": "no",
+   "reason": "The reference answer states the income is exempt if tax was paid in the foreign country, whereas the app answer claims it is exempt because it is not Pakistan-source income or due to returning expatriate status, ignoring the specific condition of foreign tax payment mentioned in the reference."
+  },
+  {
+   "id": "ur-025",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer accurately lists all the mandatory filing categories and conditions specified in the reference answer, including the specific thresholds for property, vehicles, and business income, and correctly identifies the relevant sections."
+  },
+  {
+   "id": "ru-025",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly lists all the mandatory filing categories from Section 114(1) and 114(1A) as per the reference, including specific thresholds for property, vehicles, and business income, and adds correct exemption details from Section 115 which do not contradict the reference."
+  },
+  {
+   "id": "ur-026",
+   "group": "urdu",
+   "verdict": "no",
+   "reason": "The app answer incorrectly states that the widow must file a return because of the property, whereas the reference answer states she is exempt from filing solely due to property clauses under Section 115(3)."
+  },
+  {
+   "id": "ru-026",
+   "group": "roman_urdu",
+   "verdict": "no",
+   "reason": "The reference answer states that a widow is exempt from filing solely due to property clauses, whereas the app answer incorrectly states that she must file because she owns 500 gaz of property."
+  },
+  {
+   "id": "oos-001",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-002",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-005",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-010",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-012",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-014",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-015",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-016",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-019",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-020",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-021",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-023",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-028",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "en-029",
+   "group": "english",
+   "verdict": "partly",
+   "reason": "The app answer correctly states the 183-day rule but omits the other conditions for residency (government officials posted abroad and specific citizen status) mentioned in the reference."
+  }
+ ]
+}
