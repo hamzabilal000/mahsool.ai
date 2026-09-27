@@ -1,0 +1,7 @@
+[Unit]
+Description=Mahsool AI daily keep-alive (so Oracle does not see an idle VM)
+
+[Service]
+Type=oneshot
+Nice=19
+ExecStart=/bin/bash /opt/mahsool/deploy/oracle/keepalive.sh

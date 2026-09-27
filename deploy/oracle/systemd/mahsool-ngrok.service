@@ -1,0 +1,18 @@
+[Unit]
+Description=ngrok tunnel: https://NGROK_DOMAIN -> Mahsool AI backend
+After=network-online.target mahsool-backend.service
+Wants=network-online.target
+ConditionPathExists=/opt/mahsool/ngrok.yml
+
+[Service]
+User=mahsool
+Group=mahsool
+EnvironmentFile=/etc/mahsool/ngrok.env
+ExecStart=/usr/bin/ngrok http 127.0.0.1:8000 --url=https://${NGROK_DOMAIN} --config=/opt/mahsool/ngrok.yml --log=stdout
+Restart=always
+RestartSec=10
+MemoryMax=512M
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

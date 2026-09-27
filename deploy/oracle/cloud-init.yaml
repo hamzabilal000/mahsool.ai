@@ -1,0 +1,30 @@
+#cloud-config
+# Mahsool AI backend on an Oracle Cloud Always Free VM (Ampere A1, ARM64, Ubuntu 22.04 or 24.04).
+# Paste this whole file into "Initialization script" (Show advanced options -> Management) when
+# you create the VM. It has NO secrets. It installs system packages, git, Python 3.11, ngrok
+# (arm64), clones the repo to /opt/mahsool, installs the Python dependencies (CPU-only PyTorch),
+# downloads the prebuilt index and the models, and creates the systemd services (install.sh).
+# When it is done (15-25 minutes), run once over SSH:
+#   sudo bash /opt/mahsool/deploy/oracle/setup-secrets.sh
+# Steps: docs/DEPLOY_ORACLE.md. Progress on the VM: tail -f /var/log/mahsool-install.log
+
+package_update: true
+packages:
+  - git
+  - curl
+  - ca-certificates
+  - gnupg
+  - build-essential
+  - sqlite3
+  - jq
+
+write_files:
+  # Your free ngrok static domain (not a secret: it is the public address of the API).
+  - path: /etc/mahsool/ngrok.env
+    permissions: "0644"
+    content: |
+      NGROK_DOMAIN=resident-coil-delusion.ngrok-free.dev
+
+runcmd:
+  - [bash, -c, "test -d /opt/mahsool/.git || git clone --depth 1 https://github.com/hamzabilal000/mahsool.ai.git /opt/mahsool"]
+  - [bash, -c, "bash /opt/mahsool/deploy/oracle/install.sh >> /var/log/mahsool-install.log 2>&1"]

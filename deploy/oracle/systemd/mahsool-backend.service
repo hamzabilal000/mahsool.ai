@@ -1,0 +1,31 @@
+[Unit]
+Description=Mahsool AI backend (uvicorn on 127.0.0.1:8000)
+After=network-online.target
+Wants=network-online.target
+# Waits for setup-secrets.sh to write the Groq key.
+ConditionPathExists=/opt/mahsool/.env
+
+[Service]
+User=mahsool
+Group=mahsool
+WorkingDirectory=/opt/mahsool
+Environment=HF_HOME=/opt/mahsool/.cache/huggingface
+Environment=OMP_NUM_THREADS=4
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=/opt/mahsool/.env
+# ngrok connects from 127.0.0.1 and sends the visitor's address in X-Forwarded-For; uvicorn
+# trusts it only from there, so the per-visitor daily limit counts real visitors.
+ExecStart=/opt/mahsool/.venv/bin/uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --proxy-headers --forwarded-allow-ips 127.0.0.1
+Restart=always
+RestartSec=10
+TimeoutStartSec=600
+# Limits on the 4 OCPU / 24 GB VM: the models need ~5 GB; leave room for SSH and updates.
+MemoryHigh=14G
+MemoryMax=18G
+CPUQuota=380%
+NoNewPrivileges=true
+ProtectSystem=full
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

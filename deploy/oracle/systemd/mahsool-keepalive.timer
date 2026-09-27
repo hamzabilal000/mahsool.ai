@@ -1,0 +1,10 @@
+[Unit]
+Description=Mahsool AI keep-alive once a day
+
+[Timer]
+OnCalendar=*-*-* 03:17:00
+RandomizedDelaySec=30min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

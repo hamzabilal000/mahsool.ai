@@ -1,0 +1,6 @@
+[Unit]
+Description=Mahsool AI health check (restarts a stuck backend)
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /opt/mahsool/deploy/oracle/healthcheck.sh --repair
