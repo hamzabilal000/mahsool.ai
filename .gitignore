@@ -23,6 +23,8 @@ npm-debug.log*
 .env
 .env.*
 !.env.example
+# Public, non-secret build settings of the frontend (the production API address).
+!frontend/.env.production
 
 # Data: raw FBR PDFs and intermediate parse output are reproducible via ingestion/download.py
 data/raw/
