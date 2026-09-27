@@ -32,3 +32,14 @@ test("splitTables turns pipe rows into a table and drops markers and separators"
     assert.ok(!blocks[0].text.includes("[TABLE"))
     assert.equal(blocks[2].text, "(b) company 15%")
 })
+
+test("an unreachable backend gives the friendly offline message, API errors pass through", async () => {
+    let { envelopeOf, OFFLINE_MESSAGE, API_HEADERS } = await import("../src/api/client.js")
+    let offline = { success: false, data: null, error: OFFLINE_MESSAGE, code: "OFFLINE" }
+    assert.deepEqual(envelopeOf(new Error("Network Error")), offline)
+    // ngrok's "endpoint offline" page or a 502 while the server restarts: HTML, not the envelope.
+    assert.deepEqual(envelopeOf({ response: { status: 404, data: "<html>ERR_NGROK_3200</html>" } }), offline)
+    let limit = { success: false, data: null, error: "Try tomorrow", code: "DAILY_LIMIT" }
+    assert.deepEqual(envelopeOf({ response: { status: 429, data: limit } }), limit)
+    assert.equal(API_HEADERS["ngrok-skip-browser-warning"], "true")
+})

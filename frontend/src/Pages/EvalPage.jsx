@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { ABLATION_CHART_URL, getEvalSummary } from "../api/client"
+import { getAblationChart, getEvalSummary } from "../api/client"
 import { Header } from "../components/Header"
 axios.defaults.withCredentials = true
 
@@ -29,12 +29,15 @@ function Stat({ label, value, note }) {
 export function EvalPage() {
     let [summary, setSummary] = useState(null)
     let [error, setError] = useState(null)
+    let [chart, setChart] = useState(null)
 
     useEffect(() => {
         async function load() {
             let res = await getEvalSummary()
-            if (res.success == true) setSummary(res.data)
-            else setError(res.error)
+            if (res.success == true) {
+                setSummary(res.data)
+                setChart(await getAblationChart())
+            } else setError(res.error)
         }
         load()
     }, [])
@@ -87,13 +90,13 @@ export function EvalPage() {
                             <Stat label="Roman Urdu" value={fmt(best.hit_at_5.roman_urdu)} note="target ≥ 80%" />
                             <Stat label="From FBR pages" value={fmt(best.hit_at_5.fbr)} note={`${best.n.fbr} questions`} />
                         </div>
-                        <figure className="rounded-xl border border-line bg-panel p-2">
+                        {chart && <figure className="rounded-xl border border-line bg-panel p-2">
                             <img
-                                src={ABLATION_CHART_URL}
+                                src={chart}
                                 alt="Bar chart of Hit@5 per setup and question group; the same numbers are in the table below."
                                 className="w-full rounded-lg bg-white"
                             />
-                        </figure>
+                        </figure>}
                         <div className="overflow-x-auto rounded-xl border border-line bg-panel">
                             <table className="w-full text-left text-sm">
                                 <thead className="bg-sunken text-xs text-muted">

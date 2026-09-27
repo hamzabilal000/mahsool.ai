@@ -28,7 +28,8 @@ export function AnswerCard({ turn }) {
     let [highlight, setHighlight] = useState(null)
     let { question, stage, text, result, error, errorCode } = turn
     // Quota limits of the free demo are expected, not failures: show them as a notice.
-    let quota = errorCode === "DAILY_LIMIT" || errorCode === "VISITOR_DAILY_LIMIT"
+    // So is the backend being offline (the free server rests sometimes).
+    let quota = errorCode === "DAILY_LIMIT" || errorCode === "VISITOR_DAILY_LIMIT" || errorCode === "OFFLINE"
     let data = result?.data
     let urdu = isUrduScript(question)
 

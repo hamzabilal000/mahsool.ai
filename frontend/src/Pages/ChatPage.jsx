@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import axios from "axios"
-import { askStream } from "../api/client"
+import { askStream, isOnline, OFFLINE_MESSAGE } from "../api/client"
 import { Header } from "../components/Header"
 import { ChatInput } from "../components/ChatInput"
 import { AnswerCard } from "../components/AnswerCard"
@@ -12,6 +12,12 @@ export function ChatPage() {
     let bottomref = useRef()
     let [turns, setTurns] = useState([])
     let [busy, setBusy] = useState(false)
+    let [offline, setOffline] = useState(false)
+
+    // Say it before the visitor types a question, not after.
+    useEffect(() => {
+        isOnline().then((up) => setOffline(!up))
+    }, [])
 
     useEffect(() => {
         bottomref.current?.scrollIntoView({ behavior: "smooth", block: "end" })
@@ -32,6 +38,7 @@ export function ChatPage() {
                 onDelta: (piece) => update(id, (t) => ({ text: t.text + piece })),
             },
         )
+        setOffline(res.code === "OFFLINE")
         if (res.data) update(id, { result: res })
         else update(id, { error: res.error || "Something went wrong.", errorCode: res.code })
         setBusy(false)
@@ -46,6 +53,11 @@ export function ChatPage() {
         <div className="flex min-h-screen flex-col">
             <Header />
             <main className="mx-auto w-full max-w-4xl flex-1 space-y-6 px-4 py-6">
+                {offline && (
+                    <p role="status" className="rounded-md bg-warn-soft px-3 py-2 text-sm text-ink">
+                        😴 {OFFLINE_MESSAGE}
+                    </p>
+                )}
                 {turns.length === 0 && (
                     <section className="space-y-4">
                         <div>
