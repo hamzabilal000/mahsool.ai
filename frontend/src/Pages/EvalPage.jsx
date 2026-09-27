@@ -34,17 +34,17 @@ function Stat({ label, value, note }) {
 // One group as on the carousel's results slide: a "before" bar and an "after" bar, 0-100%.
 function BarPair({ label, before, after }) {
     return (
-        <div className="space-y-2" data-bar-pair>
-            <h3 className="text-[19px] font-semibold text-ink">{label}</h3>
+        <div className="space-y-1" data-bar-pair>
+            <h3 className="text-base font-semibold leading-snug text-ink">{label}</h3>
             {[
                 [before, "bg-bar-muted", "text-ink-2", "Search alone"],
                 [after, "bg-green", "text-green font-semibold", "With rewrite, glossary and re-ranking"],
             ].map(([value, bar, text, name]) => (
                 <div key={name} className="flex items-center gap-3">
-                    <div className="h-7 flex-1 bg-bar-track sm:h-8">
+                    <div className="h-5 flex-1 bg-bar-track">
                         <div className={`h-full ${bar}`} style={{ width: `${value ?? 0}%` }} />
                     </div>
-                    <span className={`w-16 shrink-0 text-right text-[17px] tabular-nums ${text}`}>
+                    <span className={`w-14 shrink-0 text-right text-[15px] leading-5 tabular-nums ${text}`}>
                         <span className="sr-only">{name}: </span>
                         {fmt(value)}
                     </span>
@@ -79,41 +79,45 @@ export function EvalPage() {
     let base = rows.find((r) => r.setup === "Hybrid")
 
     return (
-        <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-dvh flex-col">
             <Header />
-            <main className="mx-auto w-full max-w-[960px] flex-1 space-y-10 px-4 py-8 sm:px-6">
-                <section className="space-y-3">
-                    <p className="eyebrow text-green">Evaluation</p>
-                    <h1 className="font-display text-[32px] leading-tight text-ink sm:text-[44px]">How well does Mahsool find the law?</h1>
-                    <p className="text-[17px] text-ink-2">
-                        Scores on the held-out test split, straight from the committed reports in{" "}
-                        <code className="rounded bg-surface-2 px-1 text-[15px]">eval/reports/</code>.
-                        {summary && ` Updated ${summary.generated}.`}
-                    </p>
-                    {error && <p className="text-terracotta">{error}</p>}
-                    <Divider className="pt-2" />
-                </section>
-
-                {best && base && (
-                    <section className="space-y-6" aria-labelledby="bars-title">
-                        <div>
-                            <h2 id="bars-title" className="font-display text-[26px] leading-snug text-ink">
-                                Is the right section in the top 5? (Hit@5)
-                            </h2>
-                            <p className="mt-1 text-[15px] text-muted">on {best.n.all} held-out test questions</p>
-                        </div>
-                        <div className="flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-ink-2" aria-hidden="true">
-                            <span className="flex items-center gap-2"><span className="h-4 w-6 bg-bar-muted" />Search alone</span>
-                            <span className="flex items-center gap-2"><span className="h-4 w-6 bg-green" />+ rewrite, glossary, re-ranking</span>
-                        </div>
-                        <div className="space-y-6">
-                            {BAR_ORDER.map((key) => GROUPS.find(([k]) => k === key)).filter(([key]) => base.hit_at_5[key] != null).map(([key, label]) => (
-                                <BarPair key={key} label={label} before={base.hit_at_5[key]} after={best.hit_at_5[key]} />
-                            ))}
-                        </div>
-                        <p className="text-sm text-muted">Bars run from 0 to 100%. Targets: Urdu and Roman Urdu ≥ 80%.</p>
+            <main className="mx-auto w-full max-w-[960px] flex-1 space-y-8 px-4 py-4 sm:px-6">
+                <div className="space-y-4">
+                    <section className="space-y-1.5">
+                        <p className="eyebrow text-green">Evaluation</p>
+                        <h1 className="font-display text-[28px] leading-tight text-ink sm:text-[36px]">How well does Mahsool find the law?</h1>
+                        <p className="text-base leading-snug text-ink-2">
+                            Scores on the held-out test split, straight from the committed reports in{" "}
+                            <code className="rounded bg-surface-2 px-1 text-[15px]">eval/reports/</code>.
+                            {summary && ` Updated ${summary.generated}.`}
+                        </p>
+                        {error && <p className="text-terracotta">{error}</p>}
+                        <Divider small className="pt-2" />
                     </section>
-                )}
+
+                    {best && base && (
+                        <section className="space-y-3" aria-labelledby="bars-title">
+                            <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-1">
+                                <div>
+                                    <h2 id="bars-title" className="font-display text-[22px] leading-snug text-ink sm:text-[24px]">
+                                        Is the right section in the top 5? (Hit@5)
+                                    </h2>
+                                    <p className="text-[15px] text-muted">on {best.n.all} held-out test questions</p>
+                                </div>
+                                <div className="flex flex-wrap gap-x-5 gap-y-1 text-[15px] text-ink-2" aria-hidden="true">
+                                    <span className="flex items-center gap-2"><span className="h-4 w-6 bg-bar-muted" />Search alone</span>
+                                    <span className="flex items-center gap-2"><span className="h-4 w-6 bg-green" />+ rewrite, glossary, re-ranking</span>
+                                </div>
+                            </div>
+                            <div className="grid gap-x-10 gap-y-3 md:grid-cols-2">
+                                {BAR_ORDER.map((key) => GROUPS.find(([k]) => k === key)).filter(([key]) => base.hit_at_5[key] != null).map(([key, label]) => (
+                                    <BarPair key={key} label={label} before={base.hit_at_5[key]} after={best.hit_at_5[key]} />
+                                ))}
+                            </div>
+                            <p className="text-sm text-muted">Bars run from 0 to 100%. Targets: Urdu and Roman Urdu ≥ 80%.</p>
+                        </section>
+                    )}
+                </div>
 
                 {ts && (
                     <section className="rounded-md border-[1.5px] border-indigo bg-surface p-5 text-[15px]">
