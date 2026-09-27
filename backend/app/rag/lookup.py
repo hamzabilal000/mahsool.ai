@@ -171,6 +171,13 @@ _ATL_QUESTION = re.compile(
     r"|فائلر|ایکٹو\s*ٹیکس",
     re.IGNORECASE,
 )
+# "Division-V of Part-III of First Schedule", "Division IC of Part III of the First Schedule",
+# "Division-I, Part-III": the rate division a rate-card row comes from.
+_CARD_DIVISION = re.compile(
+    r"Division[\s-]*([IVXl]+[A-C]*)\s*,?\s*(?:of\s+)?Part[\s-]*([IVX]+)\s+of\s+(?:the\s+)?First"
+)
+# A First Schedule division chunk: ITO2001-sch1-pIII-divV, ITO2001-sch1-pIII-divV-t1, ...-divX-2.
+_DIVISION_ID = re.compile(r"^(ITO2001-sch1-p[IVX]+-div[IVXA-Z]+?)(?:-t?\d+)?$")
 # Sections whose non-ATL rates are set by a table of the Tenth Schedule's rule 1 provisos.
 _RULE1_TABLES = {"236K": "t1", "236C": "t2", "236G": "t2", "236H": "t2"}
 
@@ -188,6 +195,8 @@ class AtlRuleLookup:
         self.rule_chunk: dict[int, str] = {}  # rule number -> chunk id where it starts
         self.tables: dict[str, str] = {}  # "t1" -> chunk id
         self.cards: dict[str, list[str]] = {}  # section number -> rate card chunk ids
+        self.division_card: dict[str, str] = {}  # First Schedule division id -> section number
+        self.card_rules: dict[str, list[int]] = {}  # rate card chunk id -> Tenth Schedule rules
         for c in chunks:
             if c.section_id == schedule_id:
                 suffix = c.chunk_id.rsplit("-", 1)[1]
@@ -201,35 +210,72 @@ class AtlRuleLookup:
                         self.rule_chunk[n] = c.chunk_id
             elif c.law_code == "WHT" and c.section:
                 self.cards.setdefault(c.section, []).append(c.chunk_id)
+                self.card_rules[c.chunk_id] = card_rule_numbers(c.text)
+                for div, part in _CARD_DIVISION.findall(c.text):
+                    key = f"ITO2001-sch1-p{part}-div{div.replace('l', 'I')}"
+                    self.division_card.setdefault(key, c.section)
+
+    def card_section(self, chunk: Chunk) -> str | None:
+        """The rate card section for an Ordinance section or a First Schedule rate division."""
+        if chunk.law_code == "ITO" and chunk.section and not chunk.schedule:
+            return chunk.section if chunk.section in self.cards else None
+        m = _DIVISION_ID.match(chunk.chunk_id)
+        return self.division_card.get(m.group(1)) if m else None
 
     @staticmethod
     def is_atl_question(texts: list[str]) -> bool:
         return any(_ATL_QUESTION.search(t) for t in texts)
 
-    def companions(self, top: list[Chunk], texts: list[str], limit: int = 3) -> list[str]:
-        """Chunk ids to add after the `top` answer sources (question + rewrites in `texts`)."""
+    def companions(
+        self, top: list[Chunk], texts: list[str], limit: int = 3, named: list[str] = ()
+    ) -> list[str]:
+        """Chunk ids to add after the `top` answer sources (question + rewrites in `texts`).
+
+        1. The rate card of the section the best sources are about (top 3: an Ordinance section
+           or its First Schedule rate division), when no card of that section is among them: it
+           gives the ATL and non-ATL rates side by side.
+        2. The Tenth Schedule rule each rate card among the sources points to (R.1: rates double
+           for persons not on the ATL, with its tables for 236K / 236C / 236G / 236H; R.10: the
+           sections where they do not), and rule 1 for any question about filer status.
+        3. For a filer question, the rate card of the sections its glossary terms name (`named`,
+           e.g. "bank munafa" -> ITO2001-s151), when search found neither the section nor its card
+           ("bank munafa ... non filer", D63)."""
         have = {c.chunk_id for c in top}
-        rules: list[int] = []
+        atl = self.is_atl_question(texts)
         cards: list[str] = []
-        sections = [c for c in top if c.law_code == "WHT"]
-        if self.is_atl_question(texts):
-            rules.append(1)
-            # The rate card of the sections the top sources are about, for both rates.
-            for c in top[:3]:
-                if c.law_code == "ITO" and c.section and not c.schedule:
-                    for cid in self.cards.get(c.section, [])[:1]:
-                        cards.append(cid)
-                        sections.append(c)
+        card_sections = {c.section for c in top if c.law_code == "WHT"}
+        for c in top[:3]:
+            section = self.card_section(c)
+            if section and section not in card_sections:
+                card = self.cards[section][0]
+                # A card whose rates do not change with ATL status (rule 10 exceptions, e.g.
+                # salary) is added only when the question is about filer status.
+                if atl or 1 in self.card_rules.get(card, []):
+                    card_sections.add(section)
+                    cards.append(card)
+        if atl and not card_sections:
+            for sid in named:
+                section = sid.rsplit("-s", 1)[-1]
+                if sid.startswith("ITO2001-s") and section in self.cards:
+                    card_sections.add(section)
+                    cards.append(self.cards[section][0])
+                    break
+        rules = [1] if atl else []
         for c in top:
             if c.law_code == "WHT":
-                rules += [int(n) for n in _CARD_RULE.findall(c.text)]
-        extra: list[str] = list(cards)
-        for n in dict.fromkeys(rules):
-            if n in self.rule_chunk:
-                extra.append(self.rule_chunk[n])
+                rules += [n for n in card_rule_numbers(c.text) if n == 1 or atl]
+        rules += [n for cid in cards for n in self.card_rules.get(cid, []) if n == 1 or atl]
+        rule_ids = [self.rule_chunk[n] for n in dict.fromkeys(rules) if n in self.rule_chunk]
+        tables = []
         if 1 in rules:
-            for c in sections:
-                table = _RULE1_TABLES.get(c.section or "")
+            for section in sorted(card_sections):
+                table = _RULE1_TABLES.get(section)
                 if table in self.tables:
-                    extra.append(self.tables[table])
+                    tables.append(self.tables[table])
+        # The first card, then the rules it depends on, then more cards and the tables.
+        extra = [*cards[:1], *rule_ids, *cards[1:], *tables]
         return [cid for cid in dict.fromkeys(extra) if cid not in have][:limit]
+
+
+def card_rule_numbers(text: str) -> list[int]:
+    return [int(n) for n in _CARD_RULE.findall(text)]

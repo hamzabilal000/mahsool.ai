@@ -161,4 +161,7 @@ class RAGPipeline:
             return []
         top = [c.chunk for c in result.candidates[:top_k]]
         texts = [result.plan.question, *result.plan.queries]
-        return [self.by_id[cid] for cid in self.atl.companions(top, texts)]
+        glossary = self.rewriter.glossary
+        matches = glossary.match(result.plan.question) if glossary else []
+        named = [sid for _, entry in matches for sid in entry.section_ids]
+        return [self.by_id[cid] for cid in self.atl.companions(top, texts, named=named)]

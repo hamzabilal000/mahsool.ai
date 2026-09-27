@@ -469,13 +469,37 @@ def test_rate_card_row_pulls_in_the_tenth_schedule_rule_it_points_to(atl):
     lookup, by_id = atl
     top = [by_id["WHT2027-s151"], by_id["ITO2001-s151"]]
     assert lookup.companions(top, ["bank profit rate for a filer"]) == ["ITO2001-sch10-1"]
-    # Rule 10 exceptions (e.g. electricity, section 235) point to the exception list instead.
-    assert lookup.companions([by_id["WHT2027-s235"]], ["electricity bill"]) == ["ITO2001-sch10-4"]
     # The non-ATL table for property purchase (section 236K) comes with rule 1.
     assert lookup.companions([by_id["WHT2027-s236K"]], ["buyer"]) == [
         "ITO2001-sch10-1",
         "ITO2001-sch10-t1",
     ]
+    # Rule 10 exceptions (e.g. electricity, section 235: no higher non-ATL rate) only for a
+    # question about filer status.
+    assert lookup.companions([by_id["WHT2027-s235"]], ["electricity bill"]) == []
+    assert lookup.companions([by_id["WHT2027-s235"]], ["bijli bill non filer"]) == [
+        "ITO2001-sch10-1",
+        "ITO2001-sch10-4",
+    ]
+
+
+def test_rate_question_gets_its_rate_card_then_the_rule(atl):
+    lookup, by_id = atl
+    # A First Schedule rate division maps to its rate card (Division V, Part III -> section 155).
+    top = [by_id["ITO2001-sch1-pIII-divV"], by_id["ITO2001-s155"]]
+    assert lookup.companions(top, ["rent paid to a company"]) == [
+        "WHT2027-s155",
+        "ITO2001-sch10-1",
+    ]
+    # Two sections: the first card, the rule, then the second card (limit 3).
+    top = [by_id["ITO2001-sch1-pIV-divX"], by_id["ITO2001-s236K"]]
+    assert lookup.companions(top, ["property sale"]) == [
+        "WHT2027-s236C",
+        "ITO2001-sch10-1",
+        "WHT2027-s236K",
+    ]
+    # Salary rates do not change with ATL status: nothing added to a salary question.
+    assert lookup.companions([by_id["ITO2001-s149"]], ["salary tax slabs"]) == []
 
 
 def test_filer_question_gets_the_rate_card_and_rule_1(atl):
@@ -485,7 +509,13 @@ def test_filer_question_gets_the_rate_card_and_rule_1(atl):
         "WHT2027-s151",
         "ITO2001-sch10-1",
     ]
-    assert lookup.companions([by_id["ITO2001-s149"]], ["salary tax slabs"]) == []
+    # Search found neither section 151 nor its card: the glossary term names the section.
+    named = ["ITO2001-s7B", "ITO2001-s151"]
+    assert lookup.companions([by_id["ITO2001-s30"]], [question], named=named) == [
+        "WHT2027-s151",
+        "ITO2001-sch10-1",
+    ]
+    assert lookup.companions([by_id["ITO2001-s30"]], ["bank profit"], named=named) == []
     assert lookup.is_atl_question(["کیا نان فائلر پر زیادہ ٹیکس ہے؟"])
     assert not lookup.is_atl_question(["what is a filament?"])
 
