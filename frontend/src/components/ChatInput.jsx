@@ -30,7 +30,10 @@ export function ChatInput({ onAsk, busy, ref }) {
     }
 
     return (
-        <form onSubmit={submit} className="rounded-lg border-2 border-indigo bg-surface p-2">
+        <form
+            onSubmit={submit}
+            className="rounded-xl border-[1.5px] border-indigo bg-surface p-2 focus-within:border-green"
+        >
             <label htmlFor="question" className="sr-only">Your question</label>
             <textarea
                 id="question"
@@ -43,13 +46,14 @@ export function ChatInput({ onAsk, busy, ref }) {
                 placeholder={PLACEHOLDER}
                 className="block w-full resize-none bg-transparent px-2 py-1 text-[17px] leading-[1.75] text-ink outline-none placeholder:text-muted"
             />
-            <div className="mt-1 flex flex-wrap items-center justify-between gap-2 px-1">
-                <label className="flex items-center gap-2 text-sm text-muted">
-                    Tax year
+            <div className="flex items-center justify-between gap-2 pl-1">
+                <label className="flex items-center gap-1.5 text-sm text-muted">
+                    <span className="hidden sm:inline">Tax year</span>
                     <select
                         ref={yearref}
+                        aria-label="Tax year"
                         defaultValue={String(CURRENT_TAX_YEAR)}
-                        className="min-h-11 max-w-[9.5rem] rounded-md border border-line bg-surface px-2 text-sm text-ink sm:max-w-none"
+                        className="min-h-11 cursor-pointer rounded-md bg-transparent px-1.5 text-sm text-ink-2 hover:bg-surface-2"
                     >
                         <option value={CURRENT_TAX_YEAR}>TY{CURRENT_TAX_YEAR} (current)</option>
                         <option value="auto">From my question</option>
@@ -61,7 +65,7 @@ export function ChatInput({ onAsk, busy, ref }) {
                 <button
                     type="submit"
                     disabled={busy}
-                    className="min-h-11 rounded-md bg-button px-5 text-base sm:px-6 font-semibold text-button-ink hover:opacity-90 disabled:opacity-60"
+                    className="min-h-11 rounded-lg bg-button px-6 text-base font-semibold text-button-ink hover:opacity-90 disabled:opacity-60"
                 >
                     {busy ? "Answering…" : "Ask"}
                 </button>
