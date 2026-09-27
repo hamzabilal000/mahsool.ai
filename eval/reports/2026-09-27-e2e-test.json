@@ -1,0 +1,1516 @@
+{
+ "summary": {
+  "urdu": {
+   "n": 14,
+   "answered": 1.0,
+   "correct_citation": 0.9286,
+   "correct_citation_answered": 0.9286
+  },
+  "in_scope": {
+   "n": 29,
+   "answered": 1.0,
+   "correct_citation": 0.931,
+   "correct_citation_answered": 0.931
+  },
+  "roman_urdu": {
+   "n": 14,
+   "answered": 1.0,
+   "correct_citation": 0.9286,
+   "correct_citation_answered": 0.9286
+  },
+  "out_of_scope": {
+   "n": 13,
+   "refused": 1
+  },
+  "english": {
+   "n": 1,
+   "answered": 1.0,
+   "correct_citation": 1,
+   "correct_citation_answered": 1
+  },
+  "not_run": [
+   "ur-027",
+   "ru-027",
+   "en-001",
+   "fbr-001",
+   "ur-028",
+   "ru-028",
+   "en-002",
+   "fbr-002",
+   "ur-029",
+   "ru-029",
+   "en-005",
+   "fbr-003",
+   "ur-030",
+   "ru-030",
+   "oos-004",
+   "en-006",
+   "fbr-004",
+   "ur-031",
+   "ru-031",
+   "en-008",
+   "fbr-005",
+   "ur-032",
+   "ru-032",
+   "oos-008",
+   "en-010",
+   "fbr-006",
+   "ur-033",
+   "ru-033",
+   "en-011",
+   "fbr-007",
+   "ur-034",
+   "ru-034",
+   "oos-011",
+   "en-013",
+   "fbr-008",
+   "ur-035",
+   "ru-035",
+   "en-014",
+   "fbr-009",
+   "ur-036",
+   "ru-036",
+   "en-015",
+   "fbr-010",
+   "ur-037",
+   "ru-037",
+   "en-016",
+   "fbr-011",
+   "ur-038",
+   "ru-038",
+   "en-017",
+   "fbr-012",
+   "ur-039",
+   "ru-039",
+   "oos-017",
+   "en-019",
+   "fbr-013",
+   "ur-040",
+   "ru-040",
+   "oos-018",
+   "en-020",
+   "fbr-014",
+   "en-022",
+   "fbr-015",
+   "en-023",
+   "fbr-016",
+   "en-024",
+   "fbr-017",
+   "en-025",
+   "fbr-018",
+   "oos-025",
+   "en-026",
+   "fbr-019",
+   "oos-026",
+   "en-027",
+   "fbr-020",
+   "en-028",
+   "fbr-021",
+   "oos-030",
+   "fbr-022",
+   "en-030",
+   "fbr-023",
+   "en-031",
+   "fbr-024",
+   "en-032",
+   "fbr-025",
+   "en-033",
+   "fbr-026",
+   "en-034",
+   "fbr-027",
+   "en-035",
+   "fbr-028",
+   "en-036",
+   "fbr-029",
+   "en-037",
+   "fbr-030",
+   "en-039",
+   "fbr-031",
+   "en-041",
+   "fbr-032",
+   "en-042",
+   "fbr-033",
+   "en-045",
+   "fbr-034",
+   "en-047",
+   "fbr-035",
+   "en-048",
+   "fbr-036",
+   "en-050",
+   "fbr-037",
+   "en-052",
+   "fbr-038",
+   "en-054",
+   "fbr-039",
+   "en-057",
+   "en-058",
+   "en-060",
+   "en-061",
+   "en-062",
+   "en-063",
+   "en-065",
+   "en-066",
+   "en-067",
+   "en-068",
+   "en-070",
+   "en-071",
+   "en-072",
+   "en-074",
+   "en-075",
+   "en-076",
+   "en-077",
+   "en-080",
+   "en-083",
+   "en-085",
+   "en-086",
+   "en-087",
+   "en-088",
+   "en-089",
+   "en-091",
+   "en-092",
+   "en-093",
+   "en-094",
+   "en-095",
+   "en-096",
+   "en-097",
+   "en-098",
+   "en-099",
+   "en-100"
+  ]
+ },
+ "rows": [
+  {
+   "id": "ur-013",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "cited": [
+    "ITO2001-s4AB"
+   ],
+   "citation_correct": true,
+   "answer": "دفعہ 4AB کے تحت سرچارج کی شرح ٹیکس عائد شدہ آمدنی پر دس فیصد (10%) ہے اور یہ اس وقت لاگو ہوتا ہے جب قابل ٹیکس آمدن دس ملین روپے سے زیادہ ہو۔[1] تاہم، اگر فرد کی آمدنی تنخواہ کے سرے سے ہے تو اس پر سرچارج نہیں لگے گا۔[1] یہ شرح ٹیکس سال 2027 کے لیے ہے۔[1]",
+   "search_queries": [
+    "What is the surcharge rate under section 4AB and on how much taxable income is it applied?",
+    "Surcharge rate under section 4AB of the Income Tax Ordinance 2001",
+    "Threshold of taxable income for surcharge under section 4AB"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 1084,
+    "answer": 43305,
+    "total": 44391,
+    "rewrite": 1,
+    "retrieval": 1083,
+    "rerank": 0,
+    "llm_wait": 30000,
+    "llm_api": 13301,
+    "answer_llm": 43305,
+    "citation_check": 1,
+    "llm_cached": 1,
+    "llm_calls": 5
+   }
+  },
+  {
+   "id": "ru-013",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s4AB"
+   ],
+   "cited": [
+    "ITO2001-s4AB"
+   ],
+   "citation_correct": true,
+   "answer": "Tax year 2027 ke liye Section 4AB ke mutabiq surcharge ka rate 10% hai, jo ke income tax ke upar lagta hai. Yeh surcharge sirf un individuals aur associations par lagta hai jinki taxable income Rs 10 million se zyada ho, lekin salary se aane wali income par surcharge nahi lagta. [1]",
+   "search_queries": [
+    "What is the rate of surcharge 4AB and on what income does it apply?",
+    "surcharge 4AB rate schedule for income tax",
+    "conditions for surcharge 4AB under Income Tax Ordinance 2001"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 817,
+    "answer": 15730,
+    "total": 16548,
+    "rewrite": 1,
+    "retrieval": 817,
+    "rerank": 0,
+    "llm_wait": 14000,
+    "llm_api": 1728,
+    "answer_llm": 15730,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ur-014",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "cited": [
+    "ITO2001-s12"
+   ],
+   "citation_correct": true,
+   "answer": "اوور ٹائم کی ادائیگی اور بونس دونوں ہی سیکشن 12 کے تحت تنخواہ کی تعریف میں شامل ہیں، اس لیے یہ انکم ٹیکس کے لیے تنخواہ کا حصہ سمجھے جاتے ہیں۔[1] یہ قواعد ٹیکس سال 2027 سے لاگو ہیں۔[1]",
+   "search_queries": [
+    "Are overtime and bonus considered part of salary for income tax?",
+    "Does the salary head under Income Tax Ordinance 2001 include overtime and bonus?",
+    "Is tax deducted on overtime and bonus as part of salary?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 775,
+    "answer": 27557,
+    "total": 28333,
+    "rewrite": 1,
+    "retrieval": 774,
+    "rerank": 0,
+    "llm_wait": 26000,
+    "llm_api": 1555,
+    "answer_llm": 27556,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ru-014",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "cited": [
+    "ITO2001-s12"
+   ],
+   "citation_correct": true,
+   "answer": "Ji haan, overtime payment aur bonus dono hi Section 12 ke mutabiq salary ke aqsam mein shamil hain aur tax ke liye chargeable hain. Salary ki definition mein koi bhi pay, wages ya remuneration, jisme overtime aur bonus shamil hain, tax year mein salary ke head ke tehat taxable hota hai.[1]",
+   "search_queries": [
+    "Are overtime and bonus included in salary for income tax?",
+    "Tax deduction at source on overtime and bonus under salary",
+    "Taxable income under head salary including overtime and bonus"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 897,
+    "answer": 32598,
+    "total": 33496,
+    "rewrite": 1,
+    "retrieval": 896,
+    "rerank": 0,
+    "llm_wait": 31000,
+    "llm_api": 1596,
+    "answer_llm": 32598,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ur-015",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s13",
+    "ITR2002-r5"
+   ],
+   "cited": [
+    "ITO2001-s13",
+    "ITR2002-r5",
+    "ITO2001-s12"
+   ],
+   "citation_correct": true,
+   "answer": "ٹیکس سال 2027 کے لیے، جب کمپنی کسی ملازم کو ذاتی استعمال کے لیے گاڑی فراہم کرتی ہے تو اس کی قیمت کو اس کے ملازم کی تنخواہ میں شامل پرکیوسٹ کے طور پر شمار کیا جاتا ہے [2]۔ اس پرکیوسٹ کی قیمت کا تعین رول 5 کے مطابق گاڑی کی لاگت یا لیز کے آغاز پر اس کی منصفانہ مارکیٹ ویلیو کا 10 فیصد لیا جاتا ہے [1]۔ یہ رقم سیکشن 12(b) کے تحت “perquisite” کے زمرے میں آتی ہے اور تنخواہ کے ہیڈ کے تحت ٹیکس لگایا جاتا ہے [5]۔",
+   "search_queries": [
+    "tax on company provided motor vehicle for personal use by employee",
+    "deduction of tax at source from salary for company car personal use",
+    "tax credit for motor vehicle provided by employer"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 875,
+    "answer": 34549,
+    "total": 35425,
+    "rewrite": 1,
+    "retrieval": 874,
+    "rerank": 0,
+    "llm_wait": 32000,
+    "llm_api": 2548,
+    "answer_llm": 34549,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ru-015",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s13",
+    "ITR2002-r5"
+   ],
+   "cited": [
+    "ITR2002-r5",
+    "ITO2001-s13",
+    "ITO2001-s234"
+   ],
+   "citation_correct": true,
+   "answer": "Jab employer aap ko gaari deta hai aur aap usko private (ghar) use karte hain, to us gaari ka perquisite value Section 13 ke mutabiq aapki salary mein shamil hota hai. Rule 5 ke mutabiq, agar gaari sirf private use ke liye di gayi ho to uski value employer ke cost ya fair market value ka 10% hoti hai; agar official aur private dono use ho to official hisa 5% aur private hisa 10% liya jata hai [1]. Yeh calculated amount aapke salary income ke saath tax lagta hai, jo aapke normal tax slab ke mutabiq hota hai [5]. Agar gaari par motor‑vehicle tax bhi applicable ho to Section 234 ke tehat advance tax bhi collect kiya jata hai, lekin yeh alag hai [4]. Yeh sab 2027 ke tax year ke liye hai.",
+   "search_queries": [
+    "tax on motor vehicle used for personal purposes",
+    "deduction of tax at source from salary for motor vehicle used for personal use",
+    "advance tax on purchase of motor vehicle for personal use"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 862,
+    "answer": 95584,
+    "total": 96448,
+    "rewrite": 1,
+    "retrieval": 862,
+    "rerank": 0,
+    "llm_wait": 92000,
+    "llm_api": 3582,
+    "answer_llm": 95584,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 3
+   }
+  },
+  {
+   "id": "ur-016",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s41"
+   ],
+   "cited": [
+    "ITO2001-s41"
+   ],
+   "citation_correct": true,
+   "answer": "وزارتی انکم ٹیکس کے تحت زرعی آمدن ٹیکس سے مستثنیٰ ہے۔ اس کی وضاحت سیکشن 41 میں کی گئی ہے جس کے مطابق زرعی آمدن کو اس آرڈیننس کے تحت ٹیکس سے آزاد قرار دیا گیا ہے۔ یہ استثناء تمام ٹیکس سال 2027 اور اس کے بعد کے لیے لاگو ہے۔",
+   "search_queries": [
+    "Does federal income tax law apply to agricultural income?",
+    "Is agricultural income taxable under the Income Tax Ordinance 2001?",
+    "What is the tax treatment of income from agriculture in Pakistan?"
+   ],
+   "warnings": [
+    "3 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1033,
+    "answer": 831,
+    "total": 1866,
+    "rewrite": 1,
+    "retrieval": 1032,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 830,
+    "answer_llm": 831,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "ru-016",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s41"
+   ],
+   "cited": [
+    "ITO2001-s41"
+   ],
+   "citation_correct": true,
+   "answer": "Zameen ki fasal se jo agricultural income hoti hai, us par federal income tax lagta nahi, kyun ke Income Tax Ordinance, 2001 ke Section 41 ke mutabiq agricultural income exempt hai.[6]",
+   "search_queries": [
+    "Is there federal income tax on income from land's produce?",
+    "Federal tax on agricultural income from land under Income Tax Ordinance 2001?",
+    "Exemption of agricultural income under Section 41 of the Income Tax Ordinance 2001?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 871,
+    "answer": 40972,
+    "total": 41844,
+    "rewrite": 1,
+    "retrieval": 870,
+    "rerank": 0,
+    "llm_wait": 39000,
+    "llm_api": 1970,
+    "answer_llm": 40972,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 3
+   }
+  },
+  {
+   "id": "ur-017",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s47"
+   ],
+   "cited": [
+    "ITO2001-s47"
+   ],
+   "citation_correct": true,
+   "answer": "تعلیم کے لیے ملنے والے وظیفے عام طور پر ٹیکس سے مستثنیٰ ہیں۔[1] تاہم اگر یہ وظیفہ کسی ایسوسی ایٹ کے ذریعے براہِ مستقیم یا بالواسطہ ادا کیا جائے تو اس پر ٹیکس لگ سکتا ہے۔[1] یہ جواب ٹیکس سال 2027 کے لیے ہے۔",
+   "search_queries": [
+    "Does tax apply on scholarships for education?",
+    "Taxability of scholarship under section 47 of Income Tax Ordinance 2001",
+    "Exemption of scholarship income from income tax"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 884,
+    "answer": 883,
+    "total": 1769,
+    "rewrite": 1,
+    "retrieval": 884,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 883,
+    "answer_llm": 883,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "ru-017",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s47"
+   ],
+   "cited": [
+    "ITO2001-s47"
+   ],
+   "citation_correct": true,
+   "answer": "Parhai ke liye milne wali scholarship tax year 2027 mein tax se exempt hai, jab tak woh seedha ya ghair seedha kisi associate (jaise employer ya rishtedar) se pay na ki jaye[1].",
+   "search_queries": [
+    "Is tax applicable on scholarship under s47 of Income Tax Ordinance 2001?",
+    "Tax deduction at source on scholarship payments under Income Tax Rules 2002?",
+    "Tax credit for scholarships under Income Tax Ordinance 2001 and Rules 2002?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 904,
+    "answer": 7331,
+    "total": 8236,
+    "rewrite": 1,
+    "retrieval": 903,
+    "rerank": 0,
+    "llm_wait": 6000,
+    "llm_api": 1329,
+    "answer_llm": 7331,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ur-018",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s57"
+   ],
+   "cited": [
+    "ITO2001-s57"
+   ],
+   "citation_correct": true,
+   "answer": "عام طور پر سیکشن 57 کے تحت کاروباری نقصان کو پہلی بار حساب ہونے کے بعد زیادہ سے زیادہ چھ (6) مسلسل ٹیکس سالوں تک آگے لے جایا جا سکتا ہے[1]۔ تاہم خاص صورتوں میں یہ مدت بڑھ سکتی ہے: وفاقی حکومت کی مکمل ملکیت بینک کمپنی کے لیے دس (10) سال[1]، رہائشی ہوٹل کاروبار کے لیے آٹھ (8) سال[1]، اور پاکستان انٹرنیشنل ایئرلائنز کے لیے بھی دس (10) سال[1]۔ یہ جواب ٹیکس سال 2027 کے لیے ہے۔",
+   "search_queries": [
+    "how many years can a business loss be carried forward?",
+    "carry forward of loss period under Income Tax Ordinance 2001",
+    "carry forward of loss conditions for business under Income Tax Rules 2002"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 704,
+    "answer": 56231,
+    "total": 56937,
+    "rewrite": 1,
+    "retrieval": 704,
+    "rerank": 0,
+    "llm_wait": 54000,
+    "llm_api": 2229,
+    "answer_llm": 56231,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 3
+   }
+  },
+  {
+   "id": "ru-018",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s57"
+   ],
+   "cited": [
+    "ITO2001-s57",
+    "ITO2001-s57A"
+   ],
+   "citation_correct": true,
+   "answer": "Tax year 2027 ke liye, jab koi shakhs ya company \"Income from Business\" ke head mein loss sustain karti hai, to woh loss agle tax year se shuru kar ke zyada se zyada chhe (6) consecutive tax years tak carry forward kiya ja sakta hai, aur sab se purane loss ko pehle set off kiya jata hai [1]. Kuch khaas halat mein yeh period barhaya gaya hai: agar loss ek fully government‑owned banking company ka ho to 10 saal tak, agar resident hotel business ka ho to 8 saal tak, aur Pakistan International Airlines ka loss bhi 10 saal tak carry forward ho sakta hai [1]. Amalgamation ke case mein bhi loss ko 6 saal tak carry forward kiya ja sakta hai [5].",
+   "search_queries": [
+    "carry forward of business losses how many years can be carried forward",
+    "duration of carry forward of business losses under Income Tax Ordinance 2001",
+    "conditions for carry forward of business losses in Pakistan"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 905,
+    "answer": 2071,
+    "total": 2977,
+    "rewrite": 1,
+    "retrieval": 905,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 2070,
+    "answer_llm": 2071,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "ur-019",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s60"
+   ],
+   "cited": [
+    "ITO2001-s60",
+    "ITO2001-s40"
+   ],
+   "citation_correct": true,
+   "answer": "ٹیکس سال 2027 کے لیے، ادا کی گئی زکوٰۃ پر ٹیکس میں کٹوتی ملتی ہے (Section 60(1)) اور اگر شخص profit on debt کے تحت زکوٰۃ ادا کرتا ہے تو Section 40(2) بھی کٹوتی کی اجازت دیتا ہے۔ تاہم Section 60(3) کے مطابق، اس کٹوتی کا کوئی حصہ جو اس سال استعمال نہ ہو سکا ہو، نہ تو واپس ملے گا اور نہ ہی اگلے سال منتقل کیا جا سکتا ہے۔",
+   "search_queries": [
+    "Does paid Zakat qualify for tax deduction and can the remaining amount be carried forward to the next year?",
+    "Is Zakat considered a deductible allowance under Section 60 of the Income Tax Ordinance 2001?",
+    "Can the deduction of tax at source from Zakat be carried forward to subsequent tax years?"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 943,
+    "answer": 14478,
+    "total": 15423,
+    "rewrite": 1,
+    "retrieval": 943,
+    "rerank": 0,
+    "llm_wait": 12000,
+    "llm_api": 2477,
+    "answer_llm": 14478,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ru-019",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s60"
+   ],
+   "cited": [
+    "ITO2001-s60"
+   ],
+   "citation_correct": true,
+   "answer": "Zakat ki adaigi se aapko us amount ka deductible allowance milta hai, jo aapke taxable income ko kam karta hai [1]. Lekin agar is saal ka poora allowance aap use nahi kar pate, to woh na to refund hota hai, na hi agle saal le ja sakte, na hi pichle saal se carry back hota hai [1]. Is liye Zakat ka deduction sirf us tax year tak limited hai (tax year 2027) [1].",
+   "search_queries": [
+    "deduction of tax at source from salary zakat",
+    "carry forward of deduction of tax at source from salary",
+    "deduction of tax at source from salary conditions"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 872,
+    "answer": 19535,
+    "total": 20408,
+    "rewrite": 1,
+    "retrieval": 871,
+    "rerank": 0,
+    "llm_wait": 17000,
+    "llm_api": 2534,
+    "answer_llm": 19535,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ur-020",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s60D"
+   ],
+   "cited": [
+    "ITO2001-s60D"
+   ],
+   "citation_correct": true,
+   "answer": "ٹیکس سال 2027 کے لیے، ٹیوشن فیس کی کٹوتی صرف اُن والدین میں سے کسی ایک کو مل سکتی ہے جو فیس کی ادائیگی کرتے ہیں اور قومی ٹیکس نمبر (NTN) یا تعلیمی ادارے کا نام فراہم کرتے ہیں[1]۔ یہ کٹوتی صرف اس صورت میں دستیاب ہے جب فرد کی قابلِ ٹیکس آمدنی ایک لاکھ پچاس ہزار روپے سے کم ہو[1]۔ کٹوتی کی زیادہ سے زیادہ مقدار تین میں سے کم ترین مقدار ہوگی: (الف) ادا کی گئی کل ٹیوشن فیس کا پانچ فیصد، (ب) اس سال کی قابلِ ٹیکس آمدنی کا پچیس فیصد، یا (ج) ہر بچے کے لیے ساٹھ ہزار روپے (یعنی 60,000 × بچوں کی تعداد)[1]۔ جو حصہ کٹوتی کے لیے استعمال نہ ہو سکے وہ آئندہ سالوں میں منتقل نہیں کیا جا سکتا[1]۔",
+   "search_queries": [
+    "Who can claim deduction for children's tuition fees and how much?",
+    "Deduction of tax for tuition fees under section 60D",
+    "Eligibility criteria for deduction of tax on education expenses for children"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 840,
+    "answer": 14275,
+    "total": 15116,
+    "rewrite": 1,
+    "retrieval": 839,
+    "rerank": 0,
+    "llm_wait": 12000,
+    "llm_api": 2274,
+    "answer_llm": 14275,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ru-020",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s60D"
+   ],
+   "cited": [
+    "ITO2001-s60D"
+   ],
+   "citation_correct": true,
+   "answer": "Haan, Section 60D ke mutabiq har fard jo apni taxable income 1.5 million rupees se kam rakhta hai, school fees ke liye deductible allowance le sakta hai. Yeh allowance teen cheezon mein se sab se kam hoga: (a) total tuition fee ka 5 percent, (b) uski taxable income ka 25 percent, ya (c) Rs 60,000 multiplied by bachon ki tadaad (60,000 × number of children) [1]. Allowance agle saal carry forward nahi hoti aur dono parents mein se jis ne fee pay ki ho, uske NTN ya institute ke naam se claim ki ja sakti hai [1].",
+   "search_queries": [
+    "deduction of tax at source from salary for school fees of children",
+    "maximum deduction for education expenses of children under s60D",
+    "how much tax exemption for school fees of children in income tax ordinance 2001"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 895,
+    "answer": 28537,
+    "total": 29434,
+    "rewrite": 1,
+    "retrieval": 895,
+    "rerank": 0,
+    "llm_wait": 27000,
+    "llm_api": 1536,
+    "answer_llm": 28537,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ur-021",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s61"
+   ],
+   "cited": [
+    "ITO2001-s61"
+   ],
+   "citation_correct": true,
+   "answer": "جی ہاں، سرکاری یونیورسٹی کو عطیہ دینے پر ٹیکس کریڈٹ حاصل کیا جا سکتا ہے۔ سیکشن 61 کے تحت کسی بھی بورڈ آف ایجوکیشن یا وفاقی یا صوبائی قانون کے تحت قائم کسی بھی یونیورسٹی کو دی گئی رقم یا جائیداد کو ٹیکس کریڈٹ کے لیے اہل سمجھا جاتا ہے[1]۔ ٹیکس کریڈٹ کی مقدار درج ذیل فارمولا سے طے ہوتی ہے: A‑ٹیکس اسسِسڈ، B‑ٹیکسیبل انکم، اور C‑ڈونیشن کی کل رقم یا ٹیکسیبل انکم کا 30 % (افراد/ایسوسی ایشن) یا 20 % (کمپنی) میں سے کم[1]۔ تاہم، کیش ڈونیشن صرف اس صورت میں شمار ہوگی جب وہ بینک کے کراسڈ چیک کے ذریعے ادا کی گئی ہو[1]۔ اس لیے اگر آپ کسی سرکاری یونیورسٹی کو کراسڈ چیک کے ذریعے عطیہ کرتے ہیں تو آپ کو اس سال کے ٹیکس پر مذکورہ فارمولا کے مطابق ٹیکس کریڈٹ ملے گا[1]۔",
+   "search_queries": [
+    "Is there a tax benefit for donating to a government university?",
+    "tax credit for charitable donation to government university under section 61",
+    "conditions for claiming tax credit on donation to government university"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 834,
+    "answer": 18835,
+    "total": 19670,
+    "rewrite": 1,
+    "retrieval": 833,
+    "rerank": 0,
+    "llm_wait": 16000,
+    "llm_api": 2833,
+    "answer_llm": 18835,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ru-021",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s61"
+   ],
+   "cited": [
+    "ITO2001-s61"
+   ],
+   "citation_correct": true,
+   "answer": "Jee haan, sarkari university ko di gayi donation aap ko tax credit deti hai. Section 61 ke mutabiq, aisi donation (jo board of education ya university ho jo federal ya provincial law ke tehat qaim ho) tax credit ke liye eligible hai, lekin cash donation sirf crossed cheque se hi count hogi. Tax credit ka amount aap ke taxable income ka 30% tak (individuals/association) ya 20% tak (companies) ho sakta hai, ya phir total donation amount, jo bhi kam ho, uss hisaab se calculate hota hai. Yeh credit tax year 2027 ke liye apply hoti hai.",
+   "search_queries": [
+    "Does donating to a government university provide a tax benefit?",
+    "charitable donation tax credit under section 61",
+    "conditions for tax credit on donation to government university"
+   ],
+   "warnings": [
+    "4 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 838,
+    "answer": 27259,
+    "total": 28099,
+    "rewrite": 1,
+    "retrieval": 838,
+    "rerank": 0,
+    "llm_wait": 25000,
+    "llm_api": 2258,
+    "answer_llm": 27259,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ur-022",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82",
+    "ITR2002-r14"
+   ],
+   "citation_correct": true,
+   "answer": "ریذیڈنٹ شمار ہونے کے لیے ایک ٹیکس سال میں کم از کم ۱۸۳ دن (یا اس سے زیادہ) پاکستان میں موجود ہونا ضروری ہے[1]۔ اس میں آمد اور روانگی کے دن بھی شامل کیے جاتے ہیں اور عوامی چھٹیاں، رخصت کے دن وغیرہ کو بھی پورے دن کے طور پر شمار کیا جاتا ہے[2]۔",
+   "search_queries": [
+    "How many days must a person stay in Pakistan in a tax year to be considered a resident for income tax purposes?",
+    "What is the residency test under Section 82 of the Income Tax Ordinance 2001 regarding days of presence in Pakistan?",
+    "What are the conditions for residency in the Income Tax Ordinance 2001 and how many days are required?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 959,
+    "answer": 46792,
+    "total": 47752,
+    "rewrite": 1,
+    "retrieval": 958,
+    "rerank": 0,
+    "llm_wait": 45000,
+    "llm_api": 1790,
+    "answer_llm": 46792,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 3
+   }
+  },
+  {
+   "id": "ru-022",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82",
+    "ITR2002-r14"
+   ],
+   "citation_correct": true,
+   "answer": "Resident individual banne ke liye aap ko tax year ke dauran Pakistan mein kul milakar kam az kam 183 din (ya us se zyada) maujood rehna zaroori hai; ismein aane ya jaane ka din bhi poora din maana jata hai, aur public holidays, chhutti ke din, strike ya lock‑out ke din bhi poora din count hote hain[1][2].",
+   "search_queries": [
+    "resident person requirement days Pakistan",
+    "s81 s82 residence test days",
+    "how many days to be considered resident in Pakistan"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 856,
+    "answer": 863,
+    "total": 1721,
+    "rewrite": 1,
+    "retrieval": 856,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 862,
+    "answer_llm": 863,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "ur-023",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82",
+    "ITR2002-r14"
+   ],
+   "citation_correct": true,
+   "answer": "سال 2027 کے لیے، اگر کوئی پاکستانی شہری سال کا زیادہ حصہ بیرون ملک گزارے تو عام طور پر وہ ۱۸۳ دن یا اس سے زیادہ پاکستان میں موجود نہ رہنے کی وجہ سے ریذیڈنٹ نہیں مانا جاتا (Section 82(a))[1]۔ تاہم، اگر وہ وفاقی یا صوبائی حکومت کا ملازم یا عہدیدار ہو اور اس سال کے دوران بیرون ملک پوسٹ پر تعینات ہو (Section 82(c)) تو اسے ریذیڈنٹ شمار کیا جائے گا، چاہے اس کے پاکستان میں موجود دن کم ہی ہوں[1]۔ اس کے علاوہ، Rule 14 یہ واضح کرتا ہے کہ کسی بھی دن کو جزوی طور پر موجودگی کے ساتھ پورے دن کے طور پر گنا جاتا ہے، سوائے اس کے جب وہ صرف ٹرانزٹ میں ہو[4]۔ لہٰذا، زیادہ تر وقت بیرون ملک گزارنے والا شہری صرف اس صورت میں ریذیڈنٹ ہو سکتا ہے جب وہ حکومت کا ملازم/عہدیدار ہو اور پوسٹ پر تعینات ہو۔",
+   "search_queries": [
+    "Can a Pakistani citizen who spends most of the year abroad still be considered a resident for tax purposes?",
+    "What are the residency criteria for tax purposes under the Income Tax Ordinance 2001?",
+    "How many days of presence in Pakistan determine resident status for income tax?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1116,
+    "answer": 6215,
+    "total": 7332,
+    "rewrite": 1,
+    "retrieval": 1115,
+    "rerank": 0,
+    "llm_wait": 4000,
+    "llm_api": 2214,
+    "answer_llm": 6215,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ru-023",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82",
+    "ITR2002-r14",
+    "ITO2001-s81"
+   ],
+   "citation_correct": true,
+   "answer": "Agar aap saal ka zyada waqt Pakistan ke bahar guzar rahe hain to aap resident individual tab tak nahi count honge jab tak aap Section 82 ke koi ek shart poori na kar lein. Resident banne ke liye ya to aapko tax year mein mil kar 183 din ya us se zyada Pakistan mein maujood rehna zaroori hai, ya phir aapko Federal ya Provincial Government ka employee ya official hona chahiye jo abroad posted ho, ya phir aap ek Pakistani citizen hon aur kisi bhi doosre mulk mein 182 din se zyada na rahe hon (ya phir aap kisi aur mulk ka resident taxpayer na hon) [3]. Rule 14 din ginane ke tareeqe batata hai, jismein aane ya jaane ka din poora din mana jata hai aur transit ke din count nahi hote [4]. Is liye agar aap 183 din se kam Pakistan mein hain, abroad employee nahi hain, aur 182 din se zyada kisi doosre mulk mein maujood hain, to aap non‑resident samjhe jayenge [1].",
+   "search_queries": [
+    "resident person status if staying abroad most of the year",
+    "s81 resident person definition for annual presence abroad",
+    "s82 non-resident person criteria for staying abroad"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 765,
+    "answer": 14028,
+    "total": 14795,
+    "rewrite": 1,
+    "retrieval": 764,
+    "rerank": 0,
+    "llm_wait": 12000,
+    "llm_api": 2027,
+    "answer_llm": 14028,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ur-024",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s102"
+   ],
+   "cited": [
+    "ITO2001-s103",
+    "ITO2001-s51",
+    "ITO2001-s44",
+    "ITO2001-s43"
+   ],
+   "citation_correct": false,
+   "answer": "عام طور پر رہائشی افراد کی عالمی آمدنی پر پاکستان میں ٹیکس لگتا ہے، لیکن اس پر ٹیکس صرف اس وقت لاگو ہوتا ہے جب کوئی استثنا لاگو نہ ہو[5]۔ اگر فرد واپس آنے والا غیر مقیم تھا اور پچھلے چار ٹیکس سالوں میں رہائشی نہ تھا تو اس کی غیر ملکی تنخواہ اس سال اور اگلے سال مکمل طور پر معاف ہے[1]۔ اگر وہ غیر ملکی حکومت کا ملازم ہو یا کسی امدادی معاہدے کے تحت ہو تو مخصوص شرائط کے تحت اس کی تنخواہ بھی معاف ہو سکتی ہے[3, 4]۔ جہاں استثنا نہیں ملتا، وہاں ادا شدہ غیر ملکی ٹیکس کے برابر یا کم پاکستان میں ٹیکس کریڈٹ مل سکتا ہے، جس سے دوہرا ٹیکس کم ہو جاتا ہے[5]۔",
+   "search_queries": [
+    "Does Pakistan tax foreign salary if tax has already been deducted abroad?",
+    "Taxation of foreign salary with tax deducted abroad under Income Tax Ordinance 2001",
+    "Foreign salary tax credit for tax deducted abroad in Pakistan"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 786,
+    "answer": 23496,
+    "total": 24283,
+    "rewrite": 1,
+    "retrieval": 785,
+    "rerank": 0,
+    "llm_wait": 21000,
+    "llm_api": 2495,
+    "answer_llm": 23496,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ru-024",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s102"
+   ],
+   "cited": [
+    "ITO2001-s51",
+    "ITO2001-s101"
+   ],
+   "citation_correct": false,
+   "answer": "Agar aap Dubai mein salary earn kar rahe hain aur aap Pakistan ka citizen hain jo tax year ke dauran Pakistan se bahar rahe aur wahan se hi salary mil rahi hai, to woh salary Pakistan‑source income nahi samjhi jati (Section 101) aur Section 51(2) ke mutabiq aisi foreign‑source salary exempt hai (tax year 2027). Isi tarah, agar aap ek returning expatriate hain jo pichle chaar tax years mein resident nahi the, to aapki foreign‑source salary us tax year mein jab aap resident ho jate hain aur agle saal dono mein exempt hogi (Section 51(1)). Is liye, Dubai ki salary par Pakistan mein dobara tax dene ki zaroorat nahi, jab tak aap in sharaait ko poora karte hain.",
+   "search_queries": [
+    "Does Pakistan require tax on salary earned abroad when tax has been deducted in Dubai?",
+    "Is there a tax credit for foreign source income under the Income Tax Ordinance 2001?",
+    "What is the procedure for claiming tax credit for salary income earned overseas?"
+   ],
+   "warnings": [
+    "3 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 987,
+    "answer": 19218,
+    "total": 20206,
+    "rewrite": 1,
+    "retrieval": 986,
+    "rerank": 0,
+    "llm_wait": 17000,
+    "llm_api": 2217,
+    "answer_llm": 19218,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ur-025",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "cited": [
+    "ITO2001-s114",
+    "ITO2001-s115"
+   ],
+   "citation_correct": true,
+   "answer": "ٹیکس سال 2027 کے لیے انکم ٹیکس ریٹرن درج ذیل افراد پر لازمی ہے: ہر کمپنی؛ ہر وہ شخص (کمپنی کے علاوہ) جس کی ٹیکسیبل آمدنی اس سال کے لیے غیر قابلِ ٹیکس زیادہ سے زیادہ حد سے زیادہ ہو؛ کوئی بھی غیر منافع بخش تنظیم؛ کوئی بھی شخص جس کی آمدنی کسی بھی شق کے تحت حتمی ٹیکسیشن کے تحت ہو؛ اور وہ افراد جو (a) پچھلے دو ٹیکس سالوں میں ٹیکس عائد ہوا ہو، (b) نقصان کی کیری‑فارورڈ کا دعویٰ کرتے ہوں، (c) 500 مربع گز یا اس سے زیادہ رقبے والی غیر منقولہ جائیداد یا مخصوص علاقوں میں فلیٹ رکھتے ہوں، (d) 2000 مربع فٹ سے زیادہ رقبے والا فلیٹ، (e) 1000 سی سی سے زیادہ انجن والی موٹر گاڑی، (f) نیشنل ٹیکس نمبر حاصل کیا ہو، (g) سالانہ بجلی کا بل 500,000 روپے سے زیادہ ہو، (h) تجارتی یا صنعتی بجلی کنکشن رکھنے والے رہائشی افراد جو کسی چیمبر یا پیشہ ورانہ ادارے کے رکن ہوں، (i) وہ رہائشی افراد جنہیں سیکشن 116A کے تحت غیر ملکی آمدنی اور اثاثوں کا بیان دینا لازمی ہو، اور (j) وہ افراد جن کی کاروباری آمدنی 300,000 سے 400,000 روپے کے درمیان ہو، ریٹرن فائل کرنا ضروری ہے۔ [3] تاہم سیکشن 115 کے تحت درج ذیل افراد صرف ان کی ذاتی حیثیت کی وجہ سے ریٹرن فائل کرنے سے مستثنیٰ ہیں: بیوہ، پچیس سال سے کم عمر یتیم، معذور شخص، اور غیر رہائشی افراد جو غیر منقولہ جائیداد کے مالک ہوں۔ [5]",
+   "search_queries": [
+    "For whom is filing income tax return mandatory?",
+    "persons not appearing in the active taxpayers' list",
+    "return of income conditions"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 879,
+    "answer": 34966,
+    "total": 35846,
+    "rewrite": 1,
+    "retrieval": 878,
+    "rerank": 0,
+    "llm_wait": 31000,
+    "llm_api": 3964,
+    "answer_llm": 34966,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ru-025",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s114"
+   ],
+   "cited": [
+    "ITO2001-s114",
+    "ITO2001-s115"
+   ],
+   "citation_correct": true,
+   "answer": "Tax year 2027 ke liye, Income Tax Ordinance ke Section 114 ke mutabiq, return file karna zaroori hai: (a) har company; (b) har shakhsi (company ke siwa) jiska taxable income is saal ke non‑taxable limit se zyada ho; (c) har non‑profit organization jo clause (36) of section 2 mein defined hai; (d) har shakhsi jiska income final taxation ke under aata hai; (e) wo log jo Section 114(b) ke clauses (i)‑(x) mein se koi bhi condition poori karte hain – jaise pichle do saal tax laga ho, loss carry forward, 500 square yards ya us se zyada land, 2000 sq ft flat, 1000 CC se zyada engine capacity wali gaadi, NTN milna, Rs 500,000 se zyada electricity bill, chamber/association membership, ya foreign income‑assets statement required; (f) har individual jiska ‘Income from business’ Rs 300,000 se zyada lekin Rs 400,000 se kam ya barabar ho (Section 114(1A)) [1]. Section 115 ke mutabiq, widow, 25 saal se kam umar ka orphan, disabled shakhsi, ya immovable property rakhne wala non‑resident sirf in clauses ki wajah se return file karne se exempt hai [3].",
+   "search_queries": [
+    "Which persons are required to file return of income?",
+    "Persons not appearing in the active taxpayers' list and their filing requirement",
+    "Return of income filing requirement for individuals and companies"
+   ],
+   "warnings": [
+    "Mentions sections not among the cited sources: 2"
+   ],
+   "timings_ms": {
+    "search": 829,
+    "answer": 32605,
+    "total": 33435,
+    "rewrite": 1,
+    "retrieval": 829,
+    "rerank": 0,
+    "llm_wait": 30000,
+    "llm_api": 2603,
+    "answer_llm": 32605,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ur-026",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "cited": [
+    "ITO2001-s114",
+    "ITO2001-s115"
+   ],
+   "citation_correct": true,
+   "answer": "ٹیکس سال 2027 کے لیے، سیکشن ۱۱۴ کے تحت (b)(iii) کے مطابق پانچ سو مربع گز یا اس سے زیادہ رقبے والی غیر منقولہ جائیداد رکھنے والے افراد کو ریٹرن جمع کرانا لازمی ہے[2]۔ سیکشن ۱۱۵ صرف اس صورت میں بیوہ کو ریٹرن سے مستثنیٰ کرتا ہے جب اس کی فائلنگ کی وجہ صرف اس کی بیوہ حیثیت ہو[1]، لہٰذا اگر اس کے پاس 500 مربع گز کا گھر بھی ہے تو اسے جائیداد کی وجہ سے ریٹرن جمع کرانا پڑے گا۔",
+   "search_queries": [
+    "Does a widow owning a 500 sq. gaz house have to file a return of income under the Income Tax Ordinance 2001?",
+    "Return of income requirement for persons owning immovable property under the Income Tax Ordinance 2001?",
+    "Tax liability for a widow on income derived from a 500 sq. gaz house under the Income Tax Ordinance 2001?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 1087,
+    "answer": 80946,
+    "total": 82035,
+    "rewrite": 1,
+    "retrieval": 1087,
+    "rerank": 0,
+    "llm_wait": 78000,
+    "llm_api": 2943,
+    "answer_llm": 80945,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 3
+   }
+  },
+  {
+   "id": "ru-026",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "cited": [
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "citation_correct": true,
+   "answer": "Agar aap sirf widow hone ki wajah se return dene se bachna chahti hain to Section 115 ke mutabiq aap exempt hain, lekin yeh exemption tab tak hai jab tak yeh aapki filing ka \"sole reason\" ho [1]. Section 114(b)(iii) ke mutabiq jo koi bhi immovable property 500 square yards ya us se zyada ka malik ho, us par return file karna zaroori hai, is liye aapko apna 500 gaz ka ghar hone ki wajah se return dena padega [4].",
+   "search_queries": [
+    "Do widows with a 500 gaz house have to file a return of income?",
+    "Return of income for persons not appearing in the active taxpayers' list?",
+    "Income tax filing requirement for widows owning immovable property?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 910,
+    "answer": 8156,
+    "total": 9067,
+    "rewrite": 1,
+    "retrieval": 910,
+    "rerank": 0,
+    "llm_wait": 6000,
+    "llm_api": 2154,
+    "answer_llm": 8156,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 3
+   }
+  },
+  {
+   "id": "oos-001",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [
+    "Punjab Revenue Authority sales tax rate on restaurant services",
+    "Punjab Revenue Authority sales tax rate on services",
+    "Punjab Revenue Authority sales tax rate on restaurant services procedure"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 848,
+    "rewrite": 0,
+    "retrieval": 848,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 849
+   }
+  },
+  {
+   "id": "oos-002",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "SECTION_NOT_FOUND",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [
+    "What does section 999Z of the Income Tax Ordinance say about crypto mining?",
+    "Section 999Z crypto mining tax deduction",
+    "Crypto mining income tax treatment under Ordinance 2001"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 750,
+    "rewrite": 0,
+    "retrieval": 750,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 751
+   }
+  },
+  {
+   "id": "oos-005",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 443,
+    "rewrite": 1,
+    "retrieval": 443,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 444
+   }
+  },
+  {
+   "id": "oos-010",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "SECTION_NOT_FOUND",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [
+    "Does Section 250B of the Income Tax Ordinance 2001 provide a permanent 0% income tax rate for freelancers?",
+    "What conditions apply under Section 250B for freelancers to claim a 0% income tax rate?",
+    "How does Section 250B interact with the tax credit provisions for freelancers?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 934,
+    "rewrite": 1,
+    "retrieval": 934,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 935
+   }
+  },
+  {
+   "id": "oos-012",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "SECTION_NOT_FOUND",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [
+    "What does section 888 of the Income Tax Ordinance say about cryptocurrency?",
+    "Cryptocurrency tax provisions under section 888 Income Tax Ordinance",
+    "Income Tax Ordinance 2001 section 888 cryptocurrency tax rate"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 877,
+    "rewrite": 1,
+    "retrieval": 877,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 878
+   }
+  },
+  {
+   "id": "oos-014",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 376,
+    "rewrite": 0,
+    "retrieval": 376,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 377
+   }
+  },
+  {
+   "id": "oos-015",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [
+    "What is the sales tax rate charged by Khyber Pakhtunkhwa Revenue Authority on telecom services?",
+    "Khyber Pakhtunkhwa sales tax on services under section 153",
+    "Khyber Pakhtunkhwa revenue authority sales tax procedure for telecom services"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 935,
+    "rewrite": 1,
+    "retrieval": 934,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 935
+   }
+  },
+  {
+   "id": "oos-016",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [
+    "How to file income tax return in America?",
+    "Procedure for filing income tax return in the United States",
+    "Requirements for filing US income tax return"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 771,
+    "rewrite": 1,
+    "retrieval": 770,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 771
+   }
+  },
+  {
+   "id": "oos-019",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 317,
+    "rewrite": 0,
+    "retrieval": 317,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 318
+   }
+  },
+  {
+   "id": "oos-020",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [
+    "Punjab provincial tax rate on agricultural income",
+    "Punjab provincial tax rate on agricultural income",
+    "Punjab provincial tax rate on agricultural income"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 852,
+    "rewrite": 0,
+    "retrieval": 851,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 852
+   }
+  },
+  {
+   "id": "oos-021",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Mujhe yeh baat un tax qawaneen mein nahi mili jo mere paas hain (Income Tax Ordinance 2001, Income Tax Rules 2002 aur FBR withholding tax rate card).",
+   "search_queries": [
+    "PRA sales tax on restaurant bill",
+    "PRA sales tax rate for food services",
+    "PRA sales tax procedure for restaurants"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 805,
+    "rewrite": 0,
+    "retrieval": 805,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 806
+   }
+  },
+  {
+   "id": "oos-023",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Mujhe yeh baat un tax qawaneen mein nahi mili jo mere paas hain (Income Tax Ordinance 2001, Income Tax Rules 2002 aur FBR withholding tax rate card).",
+   "search_queries": [
+    "What is the property tax rate for immovable property in Karachi?",
+    "How is property tax calculated for a house in Karachi?",
+    "What are the conditions for paying property tax on a house in Karachi?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 851,
+    "rewrite": 0,
+    "retrieval": 850,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 851
+   }
+  },
+  {
+   "id": "oos-028",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Mujhe yeh baat un tax qawaneen mein nahi mili jo mere paas hain (Income Tax Ordinance 2001, Income Tax Rules 2002 aur FBR withholding tax rate card).",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 346,
+    "rewrite": 0,
+    "retrieval": 346,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 347
+   }
+  },
+  {
+   "id": "en-029",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82",
+    "ITR2002-r14"
+   ],
+   "citation_correct": true,
+   "answer": "An individual must be present in Pakistan for at least 183 days (or more) in aggregate during the tax year to be classified as a resident individual.",
+   "search_queries": [
+    "How many days must an individual be present in Pakistan to be a resident individual?",
+    "What is the residence test days requirement for a resident person under the Income Tax Ordinance 2001?",
+    "What are the conditions for a person to be considered a resident individual for income tax purposes in Pakistan?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 971,
+    "answer": 0,
+    "total": 973,
+    "rewrite": 0,
+    "retrieval": 971,
+    "rerank": 0,
+    "answer_llm": 0,
+    "citation_check": 0,
+    "llm_cached": 2
+   }
+  }
+ ]
+}
