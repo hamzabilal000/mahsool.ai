@@ -1,15 +1,18 @@
 # Project status and handoff
 
-Last updated: 2026-09-26, late night (smaller reranker, demo limits, Prompt Guard, deploy blocked on hosting; roadmap in [`ROADMAP.md`](ROADMAP.md))
+Last updated: 2026-09-27 (launch prep: D63 fixed, laptop + ngrok hosting, committed index; roadmap in
+[`ROADMAP.md`](ROADMAP.md))
 
-## Overall status (2026-09-26, late night)
-Mahsool AI is in Milestone 5 (Week 5) of Phase 1. The test set is verified (248 of 249; en-092 waits for a tax
-practitioner). Retrieval on the held-out test split is Hit@5 95.8% with the new, smaller reranker (gte, D62), which
-cut a new question from ~18 s to ~7.5 s on 4 cores (estimated ~8-9 s p50 on the Space's 2 vCPU). The end-to-end eval
-has run 52 of 189 test questions (39 in scope, all with a correct citation; 38 of 39 match the reference); it must
-re-ask them with the new reranker. Demo limits (10 per visitor, 60 a day in all) and Prompt Guard are in. The test
-deploy is **blocked**: Hugging Face now charges (PRO) for Docker Spaces on free CPU (D61). Phases 2-4 and v2 have not
-started. Roughly 47% of the whole project is done (Phase 1 about 90%).
+## Overall status (2026-09-27)
+Phase 1 is ready to launch as soon as Hamza runs the backend on his laptop and the frontend is deployed on Vercel
+(launch checklist below). Hosting (D64): the API on Hamza's Windows laptop behind his free ngrok static domain
+(`https://resident-coil-delusion.ngrok-free.dev`), the frontend on Vercel; an Oracle Always Free kit is ready for
+later (`deploy/oracle/`). The Vercel deploy itself was **not** done from the session (no `VERCEL_TOKEN`, and
+`api.vercel.com` is blocked by the session's network policy). D63 (non-ATL rates) is fixed and checked (D63). The
+end-to-end eval with the gte reranker has run 42 of 189 test questions (29 in scope: 27 with a correct citation;
+answer judge 19 of 29 strict / 23 of 29 lenient, lower than the English-heavy first batch: residency, section 102,
+widow's return and vehicle-perquisite answers are wrong or incomplete in Urdu / Roman Urdu). Roughly 48% of the
+whole project is done (Phase 1 about 92%).
 
 ## Working rules (from Hamza)
 - Hamza is the only author. No "Co-Authored-By", "Generated with …" or other AI attribution in commits, PRs, code,
@@ -34,11 +37,11 @@ started. Roughly 47% of the whole project is done (Phase 1 about 90%).
 Groq and Gemini stay on free tiers (D53). Quota-bound runs go first; each stops at the first daily-limit error
 (no retries) and resumes from its cache next time. Quota-free work fills the rest of the session.
 
-| # | Command | Left after 2026-09-26 | Quota |
+| # | Command | Left after 2026-09-27 | Quota |
 | --- | --- | --- | --- |
-| 1 | `python -m eval.run_e2e --split test` | **all 189 again** with the gte reranker (D62): the 52 bge answers get new sources; then all Urdu / Roman Urdu | GPT OSS 120B, ~40-65 answers/day |
-| 2 | `python -m eval.judge_answers --split test` | new answers after each e2e run (39 judged, bge) | Qwen |
-| 3 | `python -m eval.make_answer_check` | once ≥ 50 in-scope answers exist (39 now): the sheet for Hamza | none |
+| 1 | `python -m eval.run_e2e --split test --order mixed` | 147 of 189 (42 run with gte + D63: Urdu 14, Roman Urdu 14, English 1, out of scope 13); the mixed order asks ur-027 / ru-027 first, so Urdu and Roman Urdu reach 15 each | GPT OSS 120B, ~30-60 answers/day (the D63 companions make some prompts longer) |
+| 2 | `python -m eval.judge_answers --split test` | new answers after each e2e run (29 judged with gte) | Qwen |
+| 3 | `python -m eval.make_answer_check` | **once**, when ≥ 50 in-scope answers exist (29 now): the sheet for Hamza (fixed seed) | none |
 | 4 | `python -m eval.verify_testset` | Qwen: done (en-092 waits for a practitioner, D58); Gemini second opinion: 147 of 169 left (20 of 22 agree) | Gemini 20/day |
 | 5 | `python -m eval.summary` | refresh the eval page numbers | none |
 
@@ -46,7 +49,44 @@ When a judge flags a question: check the flag against the law text, record the f
 run `python -m eval.apply_changes` (it also updates translations), and commit. Update the counts above, in README and
 in D58 after every run.
 
+## Launch checklist (Day 3, for Hamza)
+Do these in order. Steps 1-4 are one time only.
+
+1. [ ] **Laptop:** install Python 3.11 (next to 3.14 is fine), Git and ngrok; `ngrok config add-authtoken ...`;
+   `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` ([`RUN_ON_MY_LAPTOP.md`](RUN_ON_MY_LAPTOP.md) steps 1-4).
+2. [ ] **Laptop:** `git clone`, then `.\scripts\run_local.ps1` (first run ~30 min: libraries, index, models); paste
+   the Groq key when asked. Power settings: never sleep while plugged in.
+3. [ ] **Check:** `.\scripts\run_local.ps1 -Check` shows two OKs; open
+   `https://resident-coil-delusion.ngrok-free.dev/health` in a browser.
+4. [ ] **Vercel** (not done by the session): vercel.com → Add New → Project → import `hamzabilal000/mahsool.ai` →
+   Project Name **`mahsool-ai`** → Root Directory **`frontend`** → Deploy. (Or `VERCEL_TOKEN=... sh
+   scripts/deploy_vercel.sh`.) The URL should be `https://mahsool-ai.vercel.app`; a different name needs
+   `MAHSOOL_CORS_ORIGIN_REGEX` in `.env` (CORS).
+5. [ ] **Smoke test on the live site:** one English question ("tax on bank profit for a filer?" → 20% and 40%), one
+   Roman Urdu ("bank munafa par kitna tax katta hai agar main non filer hun?"), one out-of-scope (PRA) → refused,
+   thumbs up saved, `/eval` page loads, phone width. Then stop the laptop script: the site shows the "resting"
+   message.
+6. [ ] Put the Vercel link in README ("Live") and the GitHub repo description.
+7. [ ] Before posting publicly: the answer-correctness numbers are low on Urdu / Roman Urdu (19 of 29 strict); fix
+   the four known clusters (next section) or state them in the post. Demo video, LinkedIn post 1.
+
 ## Done
+- **M5, 2026-09-27 (launch prep):**
+  - D63 fixed (tuned on dev, checked once on test): Tenth Schedule rule and rate-card companions after the top 6
+    answer sources; dev 11 of 11 questions that need the rule get it, test 25 of 30 (the 5 misses are rates that do
+    not change with ATL status); the bank-profit example now gives 20% and 40%, and the Roman Urdu non-filer
+    question (was refused) answers 40% from the 20% base doubled by rule 1. Glossary: "bank munafa".
+  - Hosting (D64): Windows kit `scripts/run_local.ps1` (`py -3.11`, CPU PyTorch, index, Groq key into `.env`, ngrok
+    window, uvicorn with SQLite, `-Check`), Ubuntu `scripts/run_local.sh`, `docs/RUN_ON_MY_LAPTOP.md`; Oracle kit
+    for later (`deploy/oracle/`, `docs/DEPLOY_ORACLE.md`, syntax-checked only).
+  - CORS for `https://mahsool-ai.vercel.app` and preview URLs plus the `ngrok-skip-browser-warning` header; the
+    frontend sends that header and shows "Mahsool AI is resting right now. Please try again later." when the API
+    is unreachable (checked in Chromium). Live `/ask` through uvicorn with the Vercel origin: 7.4 s.
+  - Index committed (D65): `data/index/qdrant-index.tar.gz` (8.6 MB) + manifest, `scripts/get_index.py`; installed
+    index reproduces dev Hit@5 98.0% / MRR 0.809 exactly. No GitHub Release (no tool here can create one).
+  - `run_e2e --order mixed` and `--ids`; end to end 42 of 189, answer judge 29 (numbers above).
+  - Vercel deploy **not done**: no `VERCEL_TOKEN` in the session and `api.vercel.com` blocked.
+
 - **M5, third session of 2026-09-26:**
   - Reranker (Hamza's decision 1, D62): gte-multilingual-reranker-base (Apache-2.0) at 256 tokens replaces
     bge-reranker-v2-m3: dev Hit@5 98.0% and test 95.8% unchanged, MRR lower (test 0.906 → 0.848); rerank p50 4.7 s
@@ -158,39 +198,37 @@ in D58 after every run.
 
 ## Resume here
 State: everything committed and pushed on `main`. New container: `sh scripts/setup-hooks.sh`, git identity,
-`pip install -e ".[dev,ml]"`, `python -m ingestion.index` (~30 min; the index is not committed),
-`cd frontend && npm install`. `GROQ_API_KEY` and `GEMINI_API_KEY` set. Then the start-of-session steps above.
+`pip install -e ".[dev,ml]"`, **`python scripts/get_index.py`** (1 minute; no re-index), `cd frontend && npm install`.
+`GROQ_API_KEY` and `GEMINI_API_KEY` set. Then the start-of-session steps above.
 
 Run the app: `uvicorn backend.app.main:app --port 8000` and `cd frontend && npm run dev` → http://localhost:5173.
 
 Rules learned the hard way: never `pkill -f` or `pgrep -f | kill` (it matches the calling shell); kill by exact
 process id. Only one process may open the embedded Qdrant at a time (stop uvicorn before `run_e2e` / `run_eval`).
 Keep GPT OSS 120B for the answers only. In a cloud session with `DATABASE_URL` set, uvicorn hangs at startup (no
-Postgres egress): start it with `env -u DATABASE_URL`. `until ! pgrep -f X` loops match their own shell; wait on a
-report file or an exact process id instead.
+Postgres egress): start it with `env -u DATABASE_URL`. Groq's per-minute token caps (120B 8k TPM, Qwen 7k ITPM) make
+`run_e2e` ~2 answers a minute. After a re-index, re-pack: `python scripts/get_index.py --pack`.
 
-## Next: rest of Milestone 5 (ROADMAP steps 1-6)
-1. Quota runs each session (table above): e2e re-run with gte, judges, then the 50-answer sheet.
-2. Hosting decision (D61), then the deploy: `python scripts/deploy_space.py --space HUZZZ/mahsool-ai --private
-   --secret GROQ_API_KEY --secret DATABASE_URL --wait` if Hamza takes Hugging Face PRO; check `X-Forwarded-For` on
-   the first request and set `MAHSOOL_FORWARDED_FOR_HOPS`; test `/health`, one cached and one new question.
-3. Top failures: Tenth Schedule rule 1 pin for non-ATL rates (D63), en-029-style answers that drop other routes,
-   Roman Urdu refusals (re-measure once Urdu answers exist), Prompt Guard misses in Urdu / Roman Urdu.
-4. Latency: still ~2x the 4 s target; next levers are ONNX / int8 for gte (measure on dev), fewer candidates for
-   Urdu, or caching query embeddings.
-5. Langfuse keys with the deploy; demo video, live link in the README, LinkedIn post 1.
+## Next: rest of Milestone 5
+1. Quota runs each session (table above), then the 50-answer sheet once.
+2. Launch checklist above (Hamza), then README "Live" link.
+3. Top answer failures from the gte run: residency (section 82: only the 183-day test, also en-029), foreign income
+   exemption (section 102 not retrieved for ur-024 / ru-024), widow's return (section 115(3), ur-026 / ru-026),
+   vehicle perquisite mixed-use rate (ur-015 / ru-015). Tune on dev equivalents first.
+4. Latency ~7-9 s (D62); ONNX / int8 for gte or query-embedding cache.
+5. Langfuse, demo video, LinkedIn post 1.
 
 ## Open for Milestone 5
-- Latency ~7.5 s on 4 cores, estimated ~8-9 s p50 on 2 vCPU (D62); target < 4 s.
-- The Docker image has not been built anywhere yet (no Docker daemon here; the Space was never created).
-- `DATABASE_URL` (Neon) untested: this container cannot open Postgres connections.
-- Langfuse (D49) not implemented.
-- en-029 (residency: only the 183-day test) and D63 (non-ATL rate) answer errors.
-- Citation cards repeat the chunk heading as the first text line (cosmetic).
+- Vercel project not created (step 4 of the checklist).
+- Answer correctness on Urdu / Roman Urdu: 19 of 29 strict (above).
+- D63 companions add ~1k prompt tokens on ~1 in 4 questions (quota).
+- The Oracle kit and the Windows script have not run on a real VM / Windows machine (syntax-checked; the
+  PowerShell `.env` helpers were run under PowerShell 7 on Linux).
+- Langfuse (D49) not implemented; citation cards repeat the chunk heading (cosmetic).
 
 ## Open items for Hamza
-- Decide hosting (D61): Hugging Face PRO (~9 USD/month, nothing else changes), a free VM (Oracle Cloud Always
-  Free), or hosted embedding + reranking on a small free host.
+- The launch checklist above (laptop, Vercel).
+- Optional: a GitHub Release `index-v1` with `data/index/qdrant-index.tar.gz` as its asset (the script prefers it).
 - To test Neon from a cloud session, allow outbound Postgres (port 5432) to `*.neon.tech` in the environment's
   network settings, or test it from your machine.
 - Langfuse account when deploying (README "Deploy").
