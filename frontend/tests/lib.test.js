@@ -16,6 +16,7 @@ test("parseEvents reads complete events and keeps the offset for the next chunk"
 test("splitCitations separates [n] markers from the text", () => {
     assert.deepEqual(splitCitations("Rate is 5% [1] and [12]."), ["Rate is 5% ", 1, " and ", 12, "."])
     assert.deepEqual(splitCitations("no markers"), ["no markers"])
+    assert.deepEqual(splitCitations("40% [1, 7]."), ["40% ", 1, 7, "."])
 })
 
 test("isUrduScript detects Urdu script but not Roman Urdu", () => {
