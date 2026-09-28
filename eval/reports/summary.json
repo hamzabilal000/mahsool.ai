@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-27",
+ "generated": "2026-09-28",
  "testset": {
   "questions": 249,
   "test_split": 189,
@@ -14,8 +14,8 @@
   "review_verified": 30,
   "human_verified": 0,
   "not_verified_yet": 1,
-  "second_opinion_agreed": 20,
-  "second_opinion_checked": 22,
+  "second_opinion_agreed": 24,
+  "second_opinion_checked": 26,
   "directly_judged": 169,
   "review_sample": 30,
   "review_by": "ChatGPT (OpenAI), an AI legal-review tool with web access, 26 Sep 2026",
@@ -282,37 +282,41 @@
   }
  ],
  "end_to_end": {
-  "date": "2026-09-27",
+  "date": "2026-09-28",
   "questions": 189,
-  "run": 42,
-  "not_run": 147,
-  "in_scope_run": 29,
-  "answered": 100.0,
-  "correct_citation": 93.1,
-  "correct_citation_answered": 93.1,
-  "out_of_scope_run": 13,
-  "out_of_scope_refused": 100,
+  "run": 101,
+  "not_run": 88,
+  "in_scope_run": 83,
+  "answered": 98.8,
+  "correct_citation": 92.8,
+  "correct_citation_answered": 93.9,
+  "out_of_scope_run": 18,
+  "out_of_scope_refused": 88.9,
   "by_group": {
    "english": {
-    "n": 1,
+    "n": 14,
     "correct_citation": 100
    },
+   "fbr": {
+    "n": 13,
+    "correct_citation": 84.6
+   },
    "urdu": {
-    "n": 14,
-    "correct_citation": 92.9
+    "n": 28,
+    "correct_citation": 96.4
    },
    "roman_urdu": {
-    "n": 14,
-    "correct_citation": 92.9
+    "n": 28,
+    "correct_citation": 89.3
    }
   }
  },
  "answer_correctness": {
-  "date": "2026-09-27",
-  "judged": 29,
-  "correct_strict": 65.5,
-  "correct_lenient": 79.3,
-  "not_run_end_to_end": 147
+  "date": "2026-09-28",
+  "judged": 83,
+  "correct_strict": 68.7,
+  "correct_lenient": 84.3,
+  "not_run_end_to_end": 88
  },
  "targets": [
   {
