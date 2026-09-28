@@ -1,0 +1,719 @@
+{
+ "summary": {
+  "stages_s": {
+   "rewrite": {
+    "p50": 0.0,
+    "p95": 0.0
+   },
+   "retrieval": {
+    "p50": 1.83,
+    "p95": 2.12
+   },
+   "rerank": {
+    "p50": 3.16,
+    "p95": 5.99
+   },
+   "llm_wait": {
+    "p50": 0.0,
+    "p95": 0.0
+   },
+   "llm_api": {
+    "p50": 0.0,
+    "p95": 0.0
+   },
+   "total": {
+    "p50": 5.14,
+    "p95": 7.8
+   }
+  },
+  "load_s": 32.2,
+  "hit@5": {
+   "english": 0.9259,
+   "roman_urdu": 0.9167,
+   "urdu": 1.0,
+   "all": 0.9412
+  },
+  "n": 51,
+  "skipped": [],
+  "answer_llm_from_e2e": {
+   "n": 206,
+   "p50_s": 0.0,
+   "p95_s": 50.63
+  },
+  "config": {
+   "candidates": 15,
+   "rerank_query": "max_non_en",
+   "quantize": true,
+   "split": "dev",
+   "reranker_model": "Alibaba-NLP/gte-multilingual-reranker-base",
+   "max_length": 256,
+   "threads": 2,
+   "batch_size": 8
+  }
+ },
+ "rows": [
+  {
+   "id": "en-003",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 2219,
+    "rerank": 3079,
+    "llm_cached": 1,
+    "total": 5299
+   }
+  },
+  {
+   "id": "en-004",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1808,
+    "rerank": 2774,
+    "llm_cached": 1,
+    "total": 4584
+   }
+  },
+  {
+   "id": "en-007",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1653,
+    "rerank": 2790,
+    "llm_cached": 1,
+    "total": 4444
+   }
+  },
+  {
+   "id": "en-009",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1647,
+    "rerank": 3067,
+    "llm_cached": 1,
+    "total": 4715
+   }
+  },
+  {
+   "id": "en-012",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1846,
+    "rerank": 3161,
+    "llm_cached": 1,
+    "total": 5008
+   }
+  },
+  {
+   "id": "en-018",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1887,
+    "rerank": 2959,
+    "llm_cached": 1,
+    "total": 4847
+   }
+  },
+  {
+   "id": "en-021",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1683,
+    "rerank": 3188,
+    "llm_cached": 1,
+    "total": 4872
+   }
+  },
+  {
+   "id": "en-038",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 2116,
+    "rerank": 3027,
+    "llm_cached": 1,
+    "total": 5144
+   }
+  },
+  {
+   "id": "en-040",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1735,
+    "rerank": 2883,
+    "llm_cached": 1,
+    "total": 4619
+   }
+  },
+  {
+   "id": "en-043",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1856,
+    "rerank": 2991,
+    "llm_cached": 1,
+    "total": 4848
+   }
+  },
+  {
+   "id": "en-044",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1886,
+    "rerank": 2766,
+    "llm_cached": 1,
+    "total": 4653
+   }
+  },
+  {
+   "id": "en-046",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1854,
+    "rerank": 2980,
+    "llm_cached": 1,
+    "total": 4835
+   }
+  },
+  {
+   "id": "en-049",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 2000,
+    "rerank": 3007,
+    "llm_cached": 1,
+    "total": 5009
+   }
+  },
+  {
+   "id": "en-051",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1816,
+    "rerank": 3086,
+    "llm_cached": 1,
+    "total": 4903
+   }
+  },
+  {
+   "id": "en-053",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1732,
+    "rerank": 2845,
+    "llm_cached": 1,
+    "total": 4578
+   }
+  },
+  {
+   "id": "en-055",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1855,
+    "rerank": 3134,
+    "llm_cached": 1,
+    "total": 4991
+   }
+  },
+  {
+   "id": "en-056",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1988,
+    "rerank": 3120,
+    "llm_cached": 1,
+    "total": 5109
+   }
+  },
+  {
+   "id": "en-059",
+   "group": "english",
+   "language": "en",
+   "hit@5": 0.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 2091,
+    "rerank": 2958,
+    "llm_cached": 1,
+    "total": 5050
+   }
+  },
+  {
+   "id": "en-064",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1994,
+    "rerank": 3007,
+    "llm_cached": 1,
+    "total": 5003
+   }
+  },
+  {
+   "id": "en-069",
+   "group": "english",
+   "language": "en",
+   "hit@5": 0.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1694,
+    "rerank": 2824,
+    "llm_cached": 1,
+    "total": 4519
+   }
+  },
+  {
+   "id": "en-073",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1828,
+    "rerank": 2705,
+    "llm_cached": 1,
+    "total": 4534
+   }
+  },
+  {
+   "id": "en-078",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1972,
+    "rerank": 2933,
+    "llm_cached": 1,
+    "total": 4906
+   }
+  },
+  {
+   "id": "en-079",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1656,
+    "rerank": 2844,
+    "llm_cached": 1,
+    "total": 4502
+   }
+  },
+  {
+   "id": "en-081",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1890,
+    "rerank": 2640,
+    "llm_cached": 1,
+    "total": 4531
+   }
+  },
+  {
+   "id": "en-082",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 2106,
+    "rerank": 2737,
+    "llm_cached": 1,
+    "total": 4845
+   }
+  },
+  {
+   "id": "en-084",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1734,
+    "rerank": 2816,
+    "llm_cached": 1,
+    "total": 4551
+   }
+  },
+  {
+   "id": "en-090",
+   "group": "english",
+   "language": "en",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1819,
+    "rerank": 2863,
+    "llm_cached": 1,
+    "total": 4684
+   }
+  },
+  {
+   "id": "ur-001",
+   "group": "urdu",
+   "language": "ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 2,
+    "retrieval": 2060,
+    "rerank": 5504,
+    "llm_cached": 1,
+    "total": 7566
+   }
+  },
+  {
+   "id": "ur-002",
+   "group": "urdu",
+   "language": "ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 2059,
+    "rerank": 5739,
+    "llm_cached": 1,
+    "total": 7800
+   }
+  },
+  {
+   "id": "ur-003",
+   "group": "urdu",
+   "language": "ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1845,
+    "rerank": 5198,
+    "llm_cached": 1,
+    "total": 7044
+   }
+  },
+  {
+   "id": "ur-004",
+   "group": "urdu",
+   "language": "ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1849,
+    "rerank": 5856,
+    "llm_cached": 1,
+    "total": 7706
+   }
+  },
+  {
+   "id": "ur-005",
+   "group": "urdu",
+   "language": "ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1973,
+    "rerank": 5846,
+    "llm_cached": 1,
+    "total": 7821
+   }
+  },
+  {
+   "id": "ur-006",
+   "group": "urdu",
+   "language": "ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1835,
+    "rerank": 5659,
+    "llm_cached": 1,
+    "total": 7496
+   }
+  },
+  {
+   "id": "ur-007",
+   "group": "urdu",
+   "language": "ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1929,
+    "rerank": 5816,
+    "llm_cached": 1,
+    "total": 7746
+   }
+  },
+  {
+   "id": "ur-008",
+   "group": "urdu",
+   "language": "ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1612,
+    "rerank": 4988,
+    "llm_cached": 1,
+    "total": 6602
+   }
+  },
+  {
+   "id": "ur-009",
+   "group": "urdu",
+   "language": "ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1622,
+    "rerank": 5581,
+    "llm_cached": 1,
+    "total": 7204
+   }
+  },
+  {
+   "id": "ur-010",
+   "group": "urdu",
+   "language": "ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1781,
+    "rerank": 5095,
+    "llm_cached": 1,
+    "total": 6878
+   }
+  },
+  {
+   "id": "ur-011",
+   "group": "urdu",
+   "language": "ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 2160,
+    "rerank": 5625,
+    "llm_cached": 1,
+    "total": 7787
+   }
+  },
+  {
+   "id": "ur-012",
+   "group": "urdu",
+   "language": "ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1651,
+    "rerank": 5425,
+    "llm_cached": 1,
+    "total": 7079
+   }
+  },
+  {
+   "id": "ru-001",
+   "group": "roman_urdu",
+   "language": "roman_ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1708,
+    "rerank": 5556,
+    "llm_cached": 1,
+    "total": 7265
+   }
+  },
+  {
+   "id": "ru-002",
+   "group": "roman_urdu",
+   "language": "roman_ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1903,
+    "rerank": 5875,
+    "llm_cached": 1,
+    "total": 7780
+   }
+  },
+  {
+   "id": "ru-003",
+   "group": "roman_urdu",
+   "language": "roman_ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1792,
+    "rerank": 5988,
+    "llm_cached": 1,
+    "total": 7781
+   }
+  },
+  {
+   "id": "ru-004",
+   "group": "roman_urdu",
+   "language": "roman_ur",
+   "hit@5": 0.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1776,
+    "rerank": 5927,
+    "llm_cached": 1,
+    "total": 7704
+   }
+  },
+  {
+   "id": "ru-005",
+   "group": "roman_urdu",
+   "language": "roman_ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1754,
+    "rerank": 5462,
+    "llm_cached": 1,
+    "total": 7217
+   }
+  },
+  {
+   "id": "ru-006",
+   "group": "roman_urdu",
+   "language": "roman_ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1766,
+    "rerank": 5838,
+    "llm_cached": 1,
+    "total": 7606
+   }
+  },
+  {
+   "id": "ru-007",
+   "group": "roman_urdu",
+   "language": "roman_ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1815,
+    "rerank": 6638,
+    "llm_cached": 1,
+    "total": 8454
+   }
+  },
+  {
+   "id": "ru-008",
+   "group": "roman_urdu",
+   "language": "roman_ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1843,
+    "rerank": 5286,
+    "llm_cached": 1,
+    "total": 7131
+   }
+  },
+  {
+   "id": "ru-009",
+   "group": "roman_urdu",
+   "language": "roman_ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1614,
+    "rerank": 6047,
+    "llm_cached": 1,
+    "total": 7662
+   }
+  },
+  {
+   "id": "ru-010",
+   "group": "roman_urdu",
+   "language": "roman_ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1773,
+    "rerank": 5206,
+    "llm_cached": 1,
+    "total": 6979
+   }
+  },
+  {
+   "id": "ru-011",
+   "group": "roman_urdu",
+   "language": "roman_ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1782,
+    "rerank": 5862,
+    "llm_cached": 1,
+    "total": 7645
+   }
+  },
+  {
+   "id": "ru-012",
+   "group": "roman_urdu",
+   "language": "roman_ur",
+   "hit@5": 1.0,
+   "ms": {
+    "rewrite": 1,
+    "retrieval": 1772,
+    "rerank": 5461,
+    "llm_cached": 1,
+    "total": 7234
+   }
+  }
+ ]
+}
