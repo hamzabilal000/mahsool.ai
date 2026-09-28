@@ -536,3 +536,51 @@ def test_service_adds_companion_sources_and_a_note(make_pipeline):
     assert "[4] " in prompt and "Sources [4]" in prompt and "state BOTH rates" in prompt
     assert not data.refused and data.citations[1].n == 4
     assert data.citations[1].chunk_id in {"WHT2027-s155", "ITO2001-sch10-1"}
+
+
+# --- batched reranking (D66) ----------------------------------------------------------------
+
+
+class PairReranker(KeywordReranker):
+    """Counts calls: score_pairs gets every (query, passage) pair at once."""
+
+    def __init__(self):
+        self.calls = []
+
+    def score_pairs(self, pairs):
+        self.calls.append(len(pairs))
+        return [self.score(q, [p])[0] for q, p in pairs]
+
+
+def test_score_many_scores_both_queries_in_one_call_and_keeps_the_order():
+    from backend.app.rag.reranker import score_many
+
+    r = PairReranker()
+    passages = ["salary tax deducted", "rent of property", "salary"]
+    queries = ["salary deducted", "rent property"]
+    out = score_many(r, queries, passages)
+    assert r.calls == [6]
+    assert out == [KeywordReranker().score(q, passages) for q in queries]
+    # A reranker without score_pairs is asked once per query.
+    assert score_many(KeywordReranker(), ["rent property"], passages) == [out[1]]
+
+
+def test_cached_reranker_scores_only_new_pairs(tmp_path):
+    from backend.app.rag.reranker import CachedReranker
+
+    inner = PairReranker()
+    cached = CachedReranker(inner, tmp_path / "scores.tsv")
+    first = cached.score_pairs([("salary", "salary tax"), ("rent", "rent paid")])
+    again = cached.score_pairs([("rent", "rent paid"), ("salary", "tax"), ("salary", "salary tax")])
+    assert inner.calls == [2, 1]
+    assert again[0] == first[1] and again[2] == first[0]
+    # The cache file is reused by a new instance.
+    assert CachedReranker(inner, tmp_path / "scores.tsv").score("rent", ["rent paid"]) == [first[1]]
+
+
+def test_pipeline_max_score_uses_one_batched_call(make_pipeline):
+    plan = {"queries": ["advance tax on purchase of immovable property"], "scope": "income_tax"}
+    p = make_pipeline(PipelineConfig(rewrite="plain", rerank_query="max"), ScriptedLLM(plan))
+    p.reranker = PairReranker()
+    res = p.search("plot khareedne pe kitna tax?")
+    assert len(p.reranker.calls) == 1 and res.candidates[0].section_id == "ITO2001-s236K"

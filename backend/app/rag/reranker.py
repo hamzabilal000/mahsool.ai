@@ -17,6 +17,16 @@ class Reranker(Protocol):
     def score(self, query: str, passages: list[str]) -> list[float]: ...
 
 
+def score_many(reranker: Reranker, queries: list[str], passages: list[str]) -> list[list[float]]:
+    """Scores of every passage against each query. Rerankers with `score_pairs` get all pairs in
+    one call, so the question and its English rewrite share batches (D66); others loop."""
+    if hasattr(reranker, "score_pairs"):
+        flat = reranker.score_pairs([(q, p) for q in queries for p in passages])
+        n = len(passages)
+        return [flat[i * n : (i + 1) * n] for i in range(len(queries))]
+    return [reranker.score(q, passages) for q in queries]
+
+
 class BGEReranker:
     """BAAI/bge-reranker-v2-m3 through FlagEmbedding. Scores are sigmoid-normalised to 0..1."""
 
@@ -39,10 +49,13 @@ class BGEReranker:
             )
 
     def score(self, query: str, passages: list[str]) -> list[float]:
-        if not passages:
+        return self.score_pairs([(query, p) for p in passages])
+
+    def score_pairs(self, pairs: list[tuple[str, str]]) -> list[float]:
+        if not pairs:
             return []
         scores = self.model.compute_score(
-            [[query, p] for p in passages],
+            [[q, p] for q, p in pairs],
             batch_size=self.batch_size,
             max_length=self.max_length,
             normalize=True,
@@ -90,18 +103,29 @@ class CrossEncoderReranker:
                 name, cache_dir=cache, revision=rev
             )
         self.model = model.float().eval()
+        if settings.reranker_quantize:
+            # int8 weights for every Linear layer; activations quantised on the fly (CPU only).
+            self.model = torch.ao.quantization.quantize_dynamic(
+                self.model, {torch.nn.Linear}, dtype=torch.qint8
+            )
 
     def score(self, query: str, passages: list[str]) -> list[float]:
-        out: list[float] = []
-        for i in range(0, len(passages), self.batch_size):
-            batch = passages[i : i + self.batch_size]
+        return self.score_pairs([(query, p) for p in passages])
+
+    def score_pairs(self, pairs: list[tuple[str, str]]) -> list[float]:
+        """Pairs of similar length share a batch (less padding); scores come back in order."""
+        order = sorted(range(len(pairs)), key=lambda i: len(pairs[i][0]) + len(pairs[i][1]))
+        out = [0.0] * len(pairs)
+        for start in range(0, len(order), self.batch_size):
+            idx = order[start : start + self.batch_size]
             enc = self.tokenizer(
-                [query] * len(batch), batch, padding=True, truncation="only_second",
-                max_length=self.max_length, return_tensors="pt",
+                [pairs[i][0] for i in idx], [pairs[i][1] for i in idx], padding=True,
+                truncation="only_second", max_length=self.max_length, return_tensors="pt",
             )  # fmt: skip
             with self.torch.inference_mode():
                 logits = self.model(**enc).logits.view(-1).float()
-            out += self.torch.sigmoid(logits).tolist()
+            for i, value in zip(idx, self.torch.sigmoid(logits).tolist(), strict=True):
+                out[i] = value
         return out
 
 
@@ -141,10 +165,17 @@ class CachedReranker:
         return hashlib.sha256(f"{query}\x00{passage}".encode()).hexdigest()[:24]
 
     def score(self, query: str, passages: list[str]) -> list[float]:
-        keys = [self._key(query, p) for p in passages]
+        return self.score_pairs([(query, p) for p in passages])
+
+    def score_pairs(self, pairs: list[tuple[str, str]]) -> list[float]:
+        keys = [self._key(q, p) for q, p in pairs]
         todo = [i for i, k in enumerate(keys) if k not in self.cache]
         if todo:
-            new = self.inner.score(query, [passages[i] for i in todo])
+            todo_pairs = [pairs[i] for i in todo]
+            if hasattr(self.inner, "score_pairs"):
+                new = self.inner.score_pairs(todo_pairs)
+            else:
+                new = [s for q, p in todo_pairs for s in self.inner.score(q, [p])]
             self.path.parent.mkdir(parents=True, exist_ok=True)
             with self.path.open("a", encoding="utf-8") as fh:
                 for i, s in zip(todo, new, strict=True):

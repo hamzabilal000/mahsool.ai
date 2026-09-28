@@ -16,7 +16,7 @@ from typing import Literal
 from backend.app.rag.corpus import embedding_text
 from backend.app.rag.lookup import AtlRuleLookup, DefinitionLookup, SectionLookup
 from backend.app.rag.query_rewrite import QueryPlan, QueryRewriter
-from backend.app.rag.reranker import Reranker
+from backend.app.rag.reranker import Reranker, score_many
 from backend.app.rag.retriever import Retriever
 from backend.app.timing import stage
 from ingestion.models import Chunk
@@ -137,13 +137,12 @@ class RAGPipeline:
             pool = pinned + found
             texts = [embedding_text(c.chunk) for c in pool]
             with stage("rerank"):
-                scores = self.reranker.score(question, texts)
                 use_max = cfg.rerank_query == "max" or (
                     cfg.rerank_query == "max_non_en" and plan.language != "en"
                 )
-                if use_max and plan.queries:
-                    alt = self.reranker.score(plan.queries[0], texts)
-                    scores = [max(a, b) for a, b in zip(scores, alt, strict=True)]
+                queries = [question, plan.queries[0]] if use_max and plan.queries else [question]
+                per_query = score_many(self.reranker, queries, texts)
+                scores = [max(col) for col in zip(*per_query, strict=True)]
             for c, s in zip(pool, scores, strict=True):
                 c.rerank_score = s
             pinned.sort(key=lambda c: -(c.rerank_score or 0.0))

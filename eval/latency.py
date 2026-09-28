@@ -13,6 +13,8 @@ Usage (tune on dev only, D52):
     python -m eval.latency --split dev --name maxnonen --rerank-query max_non_en
     python -m eval.latency --split dev --name gte --candidates 15 --rerank-query max_non_en \
         --reranker-model Alibaba-NLP/gte-multilingual-reranker-base --threads 2
+    python -m eval.latency --split dev --name gte-b16 --candidates 15 --rerank-query max_non_en \
+        --batch-size 16 --threads 2
 """
 
 import argparse
@@ -41,7 +43,7 @@ def pct(values: list[float], q: float) -> float:
 
 def build(
     candidates: int, rerank_query: str, quantize: bool, model: str | None = None,
-    max_length: int | None = None,
+    max_length: int | None = None, batch_size: int | None = None,
 ) -> tuple[RAGPipeline, float]:  # fmt: skip
     from backend.app.rag import factory
     from backend.app.rag.query_rewrite import Glossary, QueryRewriter
@@ -53,6 +55,8 @@ def build(
         update["reranker_model"] = model
     if max_length:
         update["reranker_max_length"] = max_length
+    if batch_size:
+        update["reranker_batch_size"] = batch_size
     s = get_settings().model_copy(update=update)
     t = time.perf_counter()
     retriever = Retriever(
@@ -91,6 +95,7 @@ def main() -> None:
     ap.add_argument("--reranker-model", help="default: settings.reranker_model")
     ap.add_argument("--max-length", type=int, help="reranker max tokens per pair")
     ap.add_argument("--threads", type=int, help="PyTorch CPU threads (the free Space has 2)")
+    ap.add_argument("--batch-size", type=int, help="reranker pairs per forward pass (default 8)")
     args = ap.parse_args()
 
     if args.threads:
@@ -98,7 +103,7 @@ def main() -> None:
 
         torch.set_num_threads(args.threads)
     pipeline, load_s = build(args.candidates, args.rerank_query, args.quantize,
-                             args.reranker_model, args.max_length)  # fmt: skip
+                             args.reranker_model, args.max_length, args.batch_size)  # fmt: skip
     items = [i for i in load_testset() if i.split == args.split and i.group != "out_of_scope"]
     if args.limit:
         items = items[: args.limit]
@@ -140,7 +145,9 @@ def main() -> None:
                          "quantize": args.quantize, "split": args.split,
                          "reranker_model": args.reranker_model or get_settings().reranker_model,
                          "max_length": args.max_length or get_settings().reranker_max_length,
-                         "threads": args.threads}  # fmt: skip
+                         "threads": args.threads,
+                         "batch_size": args.batch_size or get_settings().reranker_batch_size,
+                         }  # fmt: skip
 
     REPORTS.mkdir(exist_ok=True)
     out = REPORTS / f"{date.today().isoformat()}-latency-{args.name}-{args.split}.json"
