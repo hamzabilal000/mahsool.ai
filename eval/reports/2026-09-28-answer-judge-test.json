@@ -1,0 +1,645 @@
+{
+ "summary": {
+  "urdu": {
+   "n": 28,
+   "correct_strict": 0.6071,
+   "correct_lenient": 0.8214
+  },
+  "in_scope": {
+   "n": 83,
+   "correct_strict": 0.6867,
+   "correct_lenient": 0.8434
+  },
+  "roman_urdu": {
+   "n": 28,
+   "correct_strict": 0.7143,
+   "correct_lenient": 0.8214
+  },
+  "english": {
+   "n": 14,
+   "correct_strict": 0.8571,
+   "correct_lenient": 1.0
+  },
+  "fbr": {
+   "n": 13,
+   "correct_strict": 0.6154,
+   "correct_lenient": 0.7692
+  },
+  "out_of_scope": {
+   "n": 18,
+   "correct_strict": 0.8889,
+   "correct_lenient": 0.8889
+  },
+  "not_run_end_to_end": 88,
+  "not_judged": [],
+  "source": "2026-09-28-e2e-test.json"
+ },
+ "rows": [
+  {
+   "id": "ur-013",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the 10% surcharge rate, the threshold of Rs. 10 million, and the exception for salary income, matching all key points of the reference."
+  },
+  {
+   "id": "ru-013",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the 10% rate, the Rs 10 million threshold, and the exemption for salary income, matching all key points of the reference."
+  },
+  {
+   "id": "ur-014",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "Both answers confirm that overtime and bonus are considered part of salary for income tax purposes, with the app answer correctly citing the relevant section and adding the effective date."
+  },
+  {
+   "id": "ru-014",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "Both answers confirm that overtime and bonus are included in salary for tax purposes, aligning with the reference's definition of remuneration."
+  },
+  {
+   "id": "ur-015",
+   "group": "urdu",
+   "verdict": "partly",
+   "reason": "The app answer only mentions the 10% rate for personal use and omits the 5% rate applicable when the vehicle is used partly for official purposes, which is included in the reference."
+  },
+  {
+   "id": "ru-015",
+   "group": "roman_urdu",
+   "verdict": "no",
+   "reason": "The app answer incorrectly states that for mixed use, the official portion is taxed at 5% and the private portion at 10%, whereas the reference states the total perquisite is 5% of the vehicle's cost for mixed use."
+  },
+  {
+   "id": "ur-016",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that agricultural income is exempt under Section 41 of the Federal Income Tax Ordinance."
+  },
+  {
+   "id": "ru-016",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that agricultural income is exempt from federal income tax under Section 41."
+  },
+  {
+   "id": "ur-017",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that scholarships are generally exempt but taxable if paid by an associate, matching the reference answer's conditions and conclusion."
+  },
+  {
+   "id": "ru-017",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that the scholarship is tax-exempt unless paid by an associate, matching the reference answer's conditions and conclusion."
+  },
+  {
+   "id": "ur-018",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the general 6-year limit and the specific exceptions (8 years for hotels, 10 years for PIA and federal banks) matching the reference."
+  },
+  {
+   "id": "ru-018",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the general 6-year limit and accurately lists the specific exceptions for hotel businesses (8 years), PIA (10 years), and government-owned banking companies (10 years), matching the reference."
+  },
+  {
+   "id": "ur-019",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that Zakat is deductible and that any unused portion is neither refunded nor carried forward, which matches the reference answer's conclusion."
+  },
+  {
+   "id": "ru-019",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that Zakat is a deductible allowance and that any unused portion is neither refunded nor carried forward or back, matching the reference answer."
+  },
+  {
+   "id": "ur-020",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the income limit (Rs. 1.5 million) and the three conditions for the deduction amount (5% of fee, 25% of income, or Rs. 60,000 per child), matching the reference answer."
+  },
+  {
+   "id": "ru-020",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the income limit, the three limiting conditions (5% of fee, 25% of income, Rs 60,000 per child), and the 'lesser of' rule, matching the reference exactly."
+  },
+  {
+   "id": "ur-021",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly confirms the tax credit eligibility under Section 61 for donations to public universities and accurately includes the specific condition that cash donations must be paid via crossed cheque, matching the reference."
+  },
+  {
+   "id": "ru-021",
+   "group": "roman_urdu",
+   "verdict": "partly",
+   "reason": "The app answer includes specific percentage limits (30%/20%) and a specific tax year (2027) that are not present in the reference answer, which only states the credit is computed by formula."
+  },
+  {
+   "id": "ur-022",
+   "group": "urdu",
+   "verdict": "partly",
+   "reason": "The app answer correctly states the 183-day requirement but omits the other conditions for residency (government officials abroad, citizens not resident elsewhere) mentioned in the reference."
+  },
+  {
+   "id": "ru-022",
+   "group": "roman_urdu",
+   "verdict": "partly",
+   "reason": "The app answer correctly states the 183-day rule but omits the other two conditions for residency (government officials posted abroad and citizens not resident elsewhere) mentioned in the reference."
+  },
+  {
+   "id": "ur-023",
+   "group": "urdu",
+   "verdict": "no",
+   "reason": "The app answer incorrectly states that a citizen is generally not a resident if they spend most of the year abroad, whereas the reference answer confirms they can be a resident if they are not present in any other country for more than 182 days (Section 82(d)), a condition the app answer omits."
+  },
+  {
+   "id": "ru-023",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the same conditions for residency (183 days in Pakistan, government employee abroad, or not being a resident of another country for more than 182 days) and reaches the same conclusion as the reference."
+  },
+  {
+   "id": "ur-024",
+   "group": "urdu",
+   "verdict": "no",
+   "reason": "The reference states the income is exempt if foreign tax was paid, whereas the app answer states that tax is generally applicable and only a credit is given (or specific exemptions apply), which contradicts the reference's conclusion of exemption."
+  },
+  {
+   "id": "ru-024",
+   "group": "roman_urdu",
+   "verdict": "no",
+   "reason": "The reference answer states the income is exempt if tax was paid in the foreign country, whereas the app answer claims it is exempt because it is not Pakistan-source income or due to returning expatriate status, ignoring the specific condition of foreign tax payment mentioned in the reference."
+  },
+  {
+   "id": "ur-025",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer accurately lists all the mandatory filing categories and conditions specified in the reference answer, including the specific thresholds for property, vehicles, and business income, and correctly identifies the relevant sections."
+  },
+  {
+   "id": "ru-025",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly lists all the mandatory filing categories from Section 114(1) and 114(1A) as per the reference, including specific thresholds for property, vehicles, and business income, and adds correct exemption details from Section 115 which do not contradict the reference."
+  },
+  {
+   "id": "ur-026",
+   "group": "urdu",
+   "verdict": "no",
+   "reason": "The app answer incorrectly states that the widow must file a return because of the property, whereas the reference answer states she is exempt from filing solely due to property clauses under Section 115(3)."
+  },
+  {
+   "id": "ru-026",
+   "group": "roman_urdu",
+   "verdict": "no",
+   "reason": "The reference answer states that a widow is exempt from filing solely due to property clauses, whereas the app answer incorrectly states that she must file because she owns 500 gaz of property."
+  },
+  {
+   "id": "ur-027",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the deadline as 30 September following the end of the tax year, matching the reference, and adds correct details about the e-filing requirement without contradicting the main point."
+  },
+  {
+   "id": "ru-027",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "Both answers state that the last date for filing the return is 30 September following the end of the tax year."
+  },
+  {
+   "id": "en-001",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the subject of the tax (taxable income of every person) and the specific rates (Division I or II of Part I of the First Schedule), matching the reference answer."
+  },
+  {
+   "id": "fbr-001",
+   "group": "fbr",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that no deduction is allowed for expenses incurred by a salaried employee in earning their salary."
+  },
+  {
+   "id": "ur-028",
+   "group": "urdu",
+   "verdict": "partly",
+   "reason": "The app answer incorrectly states that the Chief Commissioner grants a further extension of 'fifteen days or more', whereas the reference states the Chief Commissioner may grant an extension or further extension without specifying a 15-day limit for that specific step (the 15-day limit applies to the Commissioner's initial grant)."
+  },
+  {
+   "id": "ru-028",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly covers the application process to the Commissioner, the conditions (absence, sickness, etc.), the 15-day limit, and the subsequent appeal to the Chief Commissioner, matching all key points of the reference."
+  },
+  {
+   "id": "oos-001",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "en-002",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the 10% rate, the Rs. 10 million threshold, and the exception for salary income, matching all key points of the reference."
+  },
+  {
+   "id": "fbr-002",
+   "group": "fbr",
+   "verdict": "no",
+   "reason": "The reference answer states that an employee can elect to have the payment taxed at a specific average rate (A/B) by giving written notice, whereas the app answer claims the law does not provide such an election and that withholding is mandatory."
+  },
+  {
+   "id": "ur-029",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that tax is due by the deadline for filing the return of income, which matches the reference, and adds relevant details about extensions and default surcharges without contradicting the core answer."
+  },
+  {
+   "id": "ru-029",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that tax is due by the return of income filing date, matching the reference, and adds correct details about assessment orders."
+  },
+  {
+   "id": "oos-002",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "en-005",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the 10% super tax rate, the applicable section (4C), and the schedule division, matching the reference answer."
+  },
+  {
+   "id": "fbr-003",
+   "group": "fbr",
+   "verdict": "no",
+   "reason": "The reference answer states the employee can elect to tax arrears at the rates of the year services were rendered, whereas the app answer discusses refunding excess deductions and penalty waivers, which are different mechanisms and do not address the specific election mentioned in the reference."
+  },
+  {
+   "id": "ur-030",
+   "group": "urdu",
+   "verdict": "no",
+   "reason": "The app answer incorrectly states a 5% tax rate, whereas the reference specifies tax at Division I rates (which are progressive, not a flat 5%)."
+  },
+  {
+   "id": "ru-030",
+   "group": "roman_urdu",
+   "verdict": "no",
+   "reason": "The app answer discusses voluntary pension withdrawals and Section 12, whereas the reference answer discusses mandatory pension tax under Section 149(1A) for amounts exceeding Rs. 10 million."
+  },
+  {
+   "id": "oos-004",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "en-006",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the 8% super tax rate and the specific conditions (income exceeding Rs. 500 million, excluding banks, fertilizer sellers, and Fifth Schedule persons) as stated in the reference."
+  },
+  {
+   "id": "fbr-004",
+   "group": "fbr",
+   "verdict": "yes",
+   "reason": "The app answer correctly confirms that such allowances are part of salary and includes the same specific exclusions and examples as the reference."
+  },
+  {
+   "id": "ur-031",
+   "group": "urdu",
+   "verdict": "partly",
+   "reason": "The app answer incorrectly limits the tax year to 2027, whereas the reference states the rate applies for tax years 2024 to 2029."
+  },
+  {
+   "id": "ru-031",
+   "group": "roman_urdu",
+   "verdict": "no",
+   "reason": "refused (NOT_IN_SOURCES)"
+  },
+  {
+   "id": "oos-005",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "en-008",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that Section 7B does not apply to profit on debt exceeding Rs. 5 million."
+  },
+  {
+   "id": "fbr-005",
+   "group": "fbr",
+   "verdict": "yes",
+   "reason": "The app answer accurately reflects the definition and exclusions provided in the reference, including the specific sections and conditions, despite a minor typo in the list numbering."
+  },
+  {
+   "id": "ur-032",
+   "group": "urdu",
+   "verdict": "no",
+   "reason": "The app answer incorrectly states that an individual tenant must deduct tax (and adds a non-existent 100% surcharge for non-ATL), whereas the reference states that an ordinary individual tenant paying Rs. 500,000 is not a prescribed person and does not deduct any tax."
+  },
+  {
+   "id": "ru-032",
+   "group": "roman_urdu",
+   "verdict": "partly",
+   "reason": "The app answer incorrectly states that the tax rate is doubled (100% increase) if the tenant is not on the ATL, whereas the reference answer states that an ordinary individual tenant (who is not a prescribed person) does not deduct any tax at all."
+  },
+  {
+   "id": "oos-008",
+   "group": "out_of_scope",
+   "verdict": "no",
+   "reason": null
+  },
+  {
+   "id": "en-010",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer lists the exact same five heads of income as the reference answer."
+  },
+  {
+   "id": "fbr-006",
+   "group": "fbr",
+   "verdict": "partly",
+   "reason": "The app answer omits the specific mention of 'fee for an unused credit facility' and slightly alters the phrasing of the exclusion regarding service fees compared to the reference."
+  },
+  {
+   "id": "ur-033",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the 15% rate for ATL, 30% for non-ATL, and confirms it is a final tax under section 156, matching the reference."
+  },
+  {
+   "id": "ru-033",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the 15% tax rate for ATL members, the 30% rate for non-ATL members, and confirms it is a final tax under Section 156(3), matching the reference exactly."
+  },
+  {
+   "id": "oos-010",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "en-011",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers confirm that overtime and bonuses are part of salary for income tax purposes, with the app answer providing specific legal citation details that do not contradict the reference."
+  },
+  {
+   "id": "fbr-007",
+   "group": "fbr",
+   "verdict": "yes",
+   "reason": "The app answer accurately reflects the conditions and exceptions stated in the reference answer, with the addition of a specific tax year which does not contradict the core legal principle."
+  },
+  {
+   "id": "ur-034",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that tax deducted at source is generally adjustable as a credit, with the exception of final taxes, which aligns with the reference answer's main points and conditions."
+  },
+  {
+   "id": "ru-034",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that tax deducted at source is generally credited against total liability, with the exception of final taxes, citing the relevant legal principles."
+  },
+  {
+   "id": "oos-011",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "en-013",
+   "group": "english",
+   "verdict": "partly",
+   "reason": "The app answer omits the 5% rate applicable when the vehicle is used partly for personal and partly for official purposes, stating only the 10% rate for personal use."
+  },
+  {
+   "id": "fbr-008",
+   "group": "fbr",
+   "verdict": "partly",
+   "reason": "The app answer omits several categories listed in the reference, such as the supply of technical/industrial knowledge, use of industrial equipment, ancillary assistance, and disposal of such property."
+  },
+  {
+   "id": "ur-035",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "Both answers state that the Commissioner must make a decision within 60 days of receiving the application."
+  },
+  {
+   "id": "ru-035",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "Both answers state that the Commissioner must make a decision within 60 days of receiving the application."
+  },
+  {
+   "id": "oos-012",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "en-014",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly defines rent as per the reference, including the specific inclusion of forfeited deposits, and adds relevant exclusions that do not contradict the core definition provided in the reference."
+  },
+  {
+   "id": "fbr-009",
+   "group": "fbr",
+   "verdict": "yes",
+   "reason": "The app answer accurately reflects the definition and exclusions provided in the reference answer, including the specific conditions for construction projects and salary income."
+  },
+  {
+   "id": "ur-036",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the six-year retention period and the condition to keep records until final decision if proceedings are pending, matching the reference."
+  },
+  {
+   "id": "ru-036",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the 6-year retention period and the condition regarding pending legal proceedings, matching the reference."
+  },
+  {
+   "id": "oos-014",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "en-015",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that agricultural income is exempt from tax under the Income Tax Ordinance."
+  },
+  {
+   "id": "fbr-010",
+   "group": "fbr",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the fund as one approved by the Commissioner and provides additional specific conditions from the law that are consistent with the reference definition."
+  },
+  {
+   "id": "ur-037",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that a late filer is not automatically included in the Active Taxpayer List (ATL) unless they pay the specified surcharge amounts (Rs. 25,000 for individuals, Rs. 50,000 for AOP, Rs. 100,000 for companies), which aligns with the core condition and conclusion of the reference answer."
+  },
+  {
+   "id": "ru-037",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that a late filer is not included in the ATL unless they pay the specified surcharge amounts (Rs. 25,000 for individuals, Rs. 50,000 for AOP, Rs. 100,000 for companies), which aligns with the reference answer's core condition and figures."
+  },
+  {
+   "id": "oos-015",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "en-016",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that the scholarship is exempt unless paid by an associate, matching the reference answer's core condition and conclusion."
+  },
+  {
+   "id": "fbr-011",
+   "group": "fbr",
+   "verdict": "no",
+   "reason": "The app answer provides a general definition and specific examples (like speculation business) but fails to list the specific statutory terms (trade, commerce, manufacture, profession, vocation, adventure or concern) that define 'business' in the reference answer."
+  },
+  {
+   "id": "ur-038",
+   "group": "urdu",
+   "verdict": "partly",
+   "reason": "The app answer correctly states the rates and conditions for active and non-active taxpayers but omits the specific exceptions regarding non-resident individuals (POC/NICOP/CNIC) and government schemes for expatriates mentioned in the reference."
+  },
+  {
+   "id": "ru-038",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the 1.25% rate for ATL buyers and the tiered rates (10.5%, 14.5%, 18.5%) for non-ATL buyers, including the specific thresholds and the final discharge condition for non-residents, matching the reference."
+  },
+  {
+   "id": "oos-016",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "en-017",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers confirm that support payments under a separation agreement are exempt from tax."
+  },
+  {
+   "id": "fbr-012",
+   "group": "fbr",
+   "verdict": "yes",
+   "reason": "The app answer lists all the same conditions and thresholds as the reference answer, with only minor wording differences that do not change the meaning."
+  },
+  {
+   "id": "ur-039",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the 0.5% rate for ATL and 1.0% for non-ATL under Section 236Y and Division XXVII, matching the reference answer's rates, conditions, and adjustability."
+  },
+  {
+   "id": "ru-039",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the tax applicability, the specific rates for ATL (0.5%) and non-ATL (1.0%) taxpayers, and cites the correct legal provisions (Section 236Y, Division XXVII, Tenth Schedule) matching the reference."
+  },
+  {
+   "id": "oos-017",
+   "group": "out_of_scope",
+   "verdict": "no",
+   "reason": null
+  },
+  {
+   "id": "en-019",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer accurately reflects the conditions (employment-based residency, max 3 years) and exclusions (business in Pakistan, income brought into/received in Pakistan) stated in the reference."
+  },
+  {
+   "id": "fbr-013",
+   "group": "fbr",
+   "verdict": "yes",
+   "reason": "The app answer accurately reflects the definition provided in the reference, stating that imputable income is the income that would have resulted in the same tax if the amount were not subject to final tax."
+  },
+  {
+   "id": "ur-040",
+   "group": "urdu",
+   "verdict": "partly",
+   "reason": "The app answer introduces a condition (ATL status) and a different tax rate (2%) for non-ATL individuals that are not mentioned in the reference answer, which provides a single definitive calculation of Rs. 4,000."
+  },
+  {
+   "id": "ru-040",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "Both answers correctly identify the applicable tax slab (1% on the amount exceeding Rs. 600,000) and calculate the final tax liability as Rs. 4,000."
+  },
+  {
+   "id": "oos-018",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-019",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-020",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-021",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-023",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-028",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "en-029",
+   "group": "english",
+   "verdict": "partly",
+   "reason": "The app answer correctly states the 183-day rule but omits the other conditions for residency (government officials posted abroad and specific citizen status) mentioned in the reference."
+  }
+ ]
+}
