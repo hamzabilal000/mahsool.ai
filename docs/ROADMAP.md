@@ -15,7 +15,7 @@ calendar but behind on the quota-bound evaluation.
 | Week 2 · Phase 1 | Rules 2002 + rate card; embed into Qdrant; Urdu + Roman Urdu questions; baseline Recall@5 on all 200 | Done | Nothing. 498 Rules chunks, 33 rate-card chunks, BGE-M3 hybrid index (1,416 points), 200 → now 249 questions. |
 | Week 3 · Phase 1 | Query rewrite, hybrid search, reranker; FastAPI `/ask` with citation check; ablation table filled | Done (eval partial) | Ablation filled (10 setups). Missing: Prompt Guard input screening; end-to-end eval complete (17/189 with the current prompt); answer-correctness judging (D35); Ragas faithfulness. |
 | Week 4 · Phase 1 | React chat UI, citation cards, feedback, Postgres logs, Langfuse | Partly done | UI, cards, feedback, logs done (SQLite locally; Neon Postgres supported but not configured). Langfuse deferred (D49). |
-| Week 5 · Phase 1 | Fix top eval failures; Docker; deploy; README; demo video; LinkedIn post 1 | Not started | Latency fix (57 s → < 4 s), backend Dockerfile, deployment (backend + frontend + vector store), live link, demo video, LinkedIn post 1. README is current but has no live link. |
+| Week 5 · Phase 1 | Fix top eval failures; Docker; deploy; README; demo video; LinkedIn post 1 | In progress (2026-09-28) | Latency ~57 s → ~6-9 s of search (D52, D62, D66; target < 4 s); ATL rates fixed (D63); hosting kit for a laptop + ngrok and Vercel (D64); brand restyle; end to end 101 of 189. Missing: the live link (Vercel deploy by Hamza), answer correctness 68.7% (target 85%), demo video, LinkedIn post 1. |
 | Week 6 · Phase 2 | Sales Tax Act, Sales Tax Rules, Special Procedures Rules, ICT (Tax on Services) Ordinance | Not started | Ingestion configs, glossary terms, test questions, eval. |
 | Week 7 · Phase 3 | Federal Excise Act + Rules, Customs Act + Rules; law filter in UI; test set covers 4 laws | Not started | Everything; law filter is a scope check today (D29). |
 | Week 8 · Phase 4 | Finance Acts, SROs, circulars; tax-year versioning; "what changed" for 10 sample sections | Not started | Older snapshots, per-section history, SRO/circular ingestion, versioned search. |
@@ -83,6 +83,10 @@ plan's Week 5 (≈ 1 Nov 2026) or earlier. Post 2 after step 11 (all phases, pra
 Week 10 (≈ 6 Dec 2026). Do not post before the numbers in the post come from complete runs.
 
 ## 11. Decisions needed from Hamza
+
+**Update, 2026-09-28:** hosting decided by Hamza (D64: his laptop behind ngrok, frontend on Vercel; Oracle kit kept
+for later). Open for Hamza: the Vercel deploy, the 50-answer sheet (`eval/answer_check.md`), and whether to launch
+publicly before answer correctness reaches the 85% target (now 68.7% on 83 answers).
 
 **Update, 2026-09-26 (third session):** latency route decided by Hamza and done locally (smaller commercial-use
 reranker, D62); demo limits set (D59); the test deploy is blocked because free Docker Spaces now need Hugging Face

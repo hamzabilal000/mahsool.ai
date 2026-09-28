@@ -21,7 +21,7 @@ is resting right now".
 | --- | --- | --- |
 | 1 | Repo, ingestion of the Income Tax Ordinance 2001, 90 English eval questions | ✅ done |
 | 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ✅ done |
-| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set verified: 248 of 249 (D45, D51) · ⏳ end-to-end eval 42/189 with the current setup (Groq daily limit, D36) |
+| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set verified: 248 of 249 (D45, D51) · ⏳ end-to-end eval 101/189 with the current setup (Groq daily limit, D36) |
 | 4 | React chat UI, citation cards, feedback, Postgres logs, eval page | ✅ done (Langfuse moved to M5, D49) |
 | 5 | Fix top failures, deploy, demo | 🔄 launch prep done: ATL / non-ATL rates fixed (D63), backend on a laptop behind ngrok + frontend on Vercel (D64, **Vercel link pending**), prebuilt index (D65), latency ~7.5 s (D62), Prompt Guard (D60), demo limits (D59) |
 
@@ -92,7 +92,7 @@ reference answer written only from the law text, a difficulty tag and a fixed de
 `"verified": false`.
 
 **How the test set is verified:** machine-verified by an independent LLM judge (Qwen) plus an automatic number check;
-a second judge (Gemini) agreed on 19 of 21 it checked with the current three-question prompt (the 2 disagreements concern tax-year-2022 provisos that do not apply to TY2027). Legal review of a 30-question sample by ChatGPT (OpenAI), an AI legal-review tool with web access,
+a second judge (Gemini) agreed on 24 of 26 it checked with the current three-question prompt (the 2 disagreements concern tax-year-2022 provisos that do not apply to TY2027; two more of its flags, en-025 and en-028, were correct and fixed on 2026-09-28). Legal review of a 30-question sample by ChatGPT (OpenAI), an AI legal-review tool with web access,
 26 Sep 2026: 19 correct, 10 partly correct, 1 wrong; all fixed and a completeness sweep applied to the full set. This
 is an AI tool's review, not a human one; a review by a tax professional is still pending.
 
@@ -175,20 +175,24 @@ was checked by an AI legal-review tool, and none by a tax professional yet (D50)
 | Metric | Target | Result |
 | --- | --- | --- |
 | Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | `/ask` default: Urdu 92.9% ✅ / Roman Urdu 92.9% ✅; all 168: 95.8%, FBR 94.9% |
-| Answer correctness | ≥ 85% | ❌ so far: **19 of 29 (65.5%)** match the reference, 23 of 29 (79.3%) at least partly (Qwen judge, D56; 14 Urdu, 14 Roman Urdu, 1 English) — partial* |
-| Answers with a correct citation | ≥ 90% | 27 of 29 in-scope questions run so far (93.1%) — partial* |
-| Correct refusal on out-of-scope questions | ≥ 90% | 13 / 13 run — partial*, and the 8 not run are the harder ones |
+| Answer correctness | ≥ 85% | ❌ so far: **57 of 83 (68.7%)** match the reference, 70 of 83 (84.3%) at least partly (Qwen judge, D56). Strict by group: English 12 of 14, FBR pages 8 of 13, Urdu 17 of 28, Roman Urdu 20 of 28 — partial* |
+| Answers with a correct citation | ≥ 90% | ✅ so far: 77 of 82 answered in-scope questions (93.9%); 1 of 83 wrongly refused — partial* |
+| Correct refusal on out-of-scope questions | ≥ 90% | ❌ so far: 16 of 18 run (88.9%); 3 not run yet — partial* |
 | Median latency | < 4 s | ❌ ~7.5 s for a new English question on 4 CPU cores (live, rerank ~2.7 s), ~9 s for Roman Urdu; estimated ~8-9 s p50 / ~13 s p95 on 2 vCPU (D62); ~10 ms for a repeated question (answer cache) |
 
 \* End-to-end on the test split ([`eval/run_e2e.py`](eval/run_e2e.py)) with the `/ask` default (gte reranker, D62;
-Tenth Schedule companions, D63). Run on 2026-09-27 with Urdu and Roman Urdu first (`--order mixed`): **42 of 189
-run, 147 left** after one daily quota (29 in scope, 13 out of scope). These are honest but early numbers: the wrong
-or incomplete answers cluster in four topics (residency: only the 183-day test; the section 102 foreign-income
-exemption not retrieved; a widow's return under section 115(3); the mixed-use vehicle perquisite), each asked in both
-Urdu and Roman Urdu. The first, English-heavy run with the older reranker scored 38 of 39 (D58); it is superseded.
+Tenth Schedule companions, D63), Urdu and Roman Urdu first (`--order mixed`): **101 of 189 run, 88 left** after
+two daily quotas (27 Sep, 28 Sep): all 28 Urdu and 28 Roman Urdu questions, 14 written English, 13 FBR-page questions
+and 18 out-of-scope (16 refused). The wrong or incomplete answers cluster in a few topics: residency (only the
+183-day test), the section 102 foreign-income exemption (not retrieved), a widow's return under section 115(3), the
+mixed-use vehicle perquisite, arrears of salary (section 12(7) election), pension (section 149(1A)) and the PSEB
+freelancer rate (section 154A, wrongly refused). Two out-of-scope questions were answered: provincial urban property
+tax (the builders' tax table of Division VIIIA was presented as a house tax) and "next year's budget" rates. The
+first, English-heavy run with the older reranker scored 38 of 39 (D58); it is superseded.
 Resume: `python -m eval.run_e2e --split test --order mixed`, then `python -m eval.judge_answers --split test` and,
 once 50 in-scope answers exist, `python -m eval.make_answer_check`.
-Report: [`eval/reports/2026-09-27-e2e-test.md`](eval/reports/2026-09-27-e2e-test.md).
+Report: [`eval/reports/2026-09-28-e2e-test.md`](eval/reports/2026-09-28-e2e-test.md); hand-check sheet:
+[`eval/answer_check.md`](eval/answer_check.md) (50 answers, seed 2027).
 
 ## Run locally (no Docker)
 

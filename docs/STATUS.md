@@ -1,18 +1,16 @@
 # Project status and handoff
 
-Last updated: 2026-09-27 (launch prep: D63 fixed, laptop + ngrok hosting, committed index; roadmap in
-[`ROADMAP.md`](ROADMAP.md))
+Last updated: 2026-09-28 (quota runs: end to end 101 of 189, answer judge 83, the 50-answer sheet; reranker
+batching D66; brand restyle and one-screen Ask page; roadmap in [`ROADMAP.md`](ROADMAP.md))
 
-## Overall status (2026-09-27)
-Phase 1 is ready to launch as soon as Hamza runs the backend on his laptop and the frontend is deployed on Vercel
-(launch checklist below). Hosting (D64): the API on Hamza's Windows laptop behind his free ngrok static domain
-(`https://resident-coil-delusion.ngrok-free.dev`), the frontend on Vercel; an Oracle Always Free kit is ready for
-later (`deploy/oracle/`). The Vercel deploy itself was **not** done from the session (no `VERCEL_TOKEN`, and
-`api.vercel.com` is blocked by the session's network policy). D63 (non-ATL rates) is fixed and checked (D63). The
-end-to-end eval with the gte reranker has run 42 of 189 test questions (29 in scope: 27 with a correct citation;
-answer judge 19 of 29 strict / 23 of 29 lenient, lower than the English-heavy first batch: residency, section 102,
-widow's return and vehicle-perquisite answers are wrong or incomplete in Urdu / Roman Urdu). Roughly 48% of the
-whole project is done (Phase 1 about 92%).
+## Overall status (2026-09-28)
+Phase 1 is ready to launch once Hamza runs the backend on his laptop and deploys the frontend on Vercel (launch
+checklist below; the Vercel deploy cannot be done from a session: no `VERCEL_TOKEN`, `api.vercel.com` blocked). The
+web app now has the carousel's brand look and a minimal one-screen Ask page (checked by a browser layout test). The
+end-to-end eval has run **101 of 189** test questions (all 56 Urdu / Roman Urdu): 77 of 82 answered in-scope
+questions cite a gold section (93.9%), 16 of 18 out-of-scope questions refused, and the answer judge says **57 of 83
+(68.7%)** match the reference (84.3% at least partly): below the 85% target; the misses cluster in a few topics
+(Next, step 3). Reranking is a bit faster (D66). Roughly 49% of the whole project is done (Phase 1 about 93%).
 
 ## Working rules (from Hamza)
 - Hamza is the only author. No "Co-Authored-By", "Generated with …" or other AI attribution in commits, PRs, code,
@@ -39,10 +37,10 @@ Groq and Gemini stay on free tiers (D53). Quota-bound runs go first; each stops 
 
 | # | Command | Left after 2026-09-27 | Quota |
 | --- | --- | --- | --- |
-| 1 | `python -m eval.run_e2e --split test --order mixed` | 147 of 189 (42 run with gte + D63: Urdu 14, Roman Urdu 14, English 1, out of scope 13); the mixed order asks ur-027 / ru-027 first, so Urdu and Roman Urdu reach 15 each | GPT OSS 120B, ~30-60 answers/day (the D63 companions make some prompts longer) |
-| 2 | `python -m eval.judge_answers --split test` | new answers after each e2e run (29 judged with gte) | Qwen |
-| 3 | `python -m eval.make_answer_check` | **once**, when ≥ 50 in-scope answers exist (29 now): the sheet for Hamza (fixed seed) | none |
-| 4 | `python -m eval.verify_testset` | Qwen: done (en-092 waits for a practitioner, D58); Gemini second opinion: 147 of 169 left (20 of 22 agree) | Gemini 20/day |
+| 1 | `python -m eval.run_e2e --split test --order mixed` | 88 of 189 (101 run: Urdu 28 of 28, Roman Urdu 28 of 28, English 14, FBR 13, out of scope 18); next come the written English and FBR questions, then the last 3 out-of-scope | GPT OSS 120B, ~55-60 answers/day |
+| 2 | `python -m eval.judge_answers --split test` | new answers after each e2e run (83 judged) | Qwen |
+| 3 | `python -m eval.make_answer_check` | **done** 2026-09-28 (50 of 82 answered, seed 2027): Hamza fills in `eval/answer_check.md`; do not regenerate | none |
+| 4 | `python -m eval.verify_testset` | Qwen: done (en-092 waits for a practitioner, D58); Gemini second opinion: 143 of 169 left (24 of 26 agree); en-025 and en-028 were changed and need its re-check | Gemini 20/day (503 "high demand" errors use it up too) |
 | 5 | `python -m eval.summary` | refresh the eval page numbers | none |
 
 When a judge flags a question: check the flag against the law text, record the fix in `eval/review/changes.json`,
@@ -67,10 +65,22 @@ Do these in order. Steps 1-4 are one time only.
    thumbs up saved, `/eval` page loads, phone width. Then stop the laptop script: the site shows the "resting"
    message.
 6. [ ] Put the Vercel link in README ("Live") and the GitHub repo description.
-7. [ ] Before posting publicly: the answer-correctness numbers are low on Urdu / Roman Urdu (19 of 29 strict); fix
+7. [ ] Fill in the 50-answer sheet `eval/answer_check.md` (yes / no per answer, no tax knowledge needed).
+8. [ ] Before posting publicly: answer correctness is 57 of 83 strict (68.7%), below the 85% target; fix
    the four known clusters (next section) or state them in the post. Demo video, LinkedIn post 1.
 
 ## Done
+- **M5, 2026-09-28:**
+  - Quota runs: end to end 101 of 189 (+59), answer judge 83 (57 strict / 70 lenient), the 50-answer sheet
+    generated once (seed 2027). Gemini second opinion: 5 more (24 of 26 agree over all); its flags on en-025 (section
+    61(4): cash donations only by crossed cheque) and en-028 (section 74: special and transitional tax years) were
+    right, fixed through `eval/review/changes.json` (translations synced) and re-verified by Qwen.
+  - Bug fixed: `verify_testset --no-second-opinion` cleared every stored Gemini verdict; it now keeps them.
+  - Reranker batching (D66): the question and its rewrite in one pass, pairs sorted by length; rerank p50 -12% on 4
+    cores, -4% on 2 cores, Hit@5 unchanged. int8 for gte measured and rejected (loses 2 dev questions).
+  - Frontend: brand restyle from the LinkedIn carousel (`docs/brand/`), then a compact and minimal one-screen Ask page;
+    `npm run test:layout` checks 1920x815, 1366x650, 1280x620 and a phone in a real browser.
+
 - **M5, 2026-09-27 (launch prep):**
   - D63 fixed (tuned on dev, checked once on test): Tenth Schedule rule and rate-card companions after the top 6
     answer sources; dev 11 of 11 questions that need the rule get it, test 25 of 30 (the 5 misses are rates that do
@@ -210,17 +220,22 @@ Postgres egress): start it with `env -u DATABASE_URL`. Groq's per-minute token c
 `run_e2e` ~2 answers a minute. After a re-index, re-pack: `python scripts/get_index.py --pack`.
 
 ## Next: rest of Milestone 5
-1. Quota runs each session (table above), then the 50-answer sheet once.
+1. Quota runs each session (table above).
 2. Launch checklist above (Hamza), then README "Live" link.
-3. Top answer failures from the gte run: residency (section 82: only the 183-day test, also en-029), foreign income
-   exemption (section 102 not retrieved for ur-024 / ru-024), widow's return (section 115(3), ur-026 / ru-026),
-   vehicle perquisite mixed-use rate (ur-015 / ru-015). Tune on dev equivalents first.
-4. Latency ~7-9 s (D62); ONNX / int8 for gte or query-embedding cache.
+3. Answer failures from the gte run (write dev questions for each topic first, then tune on dev; do not fit the test
+   questions): residency (section 82: only the 183-day test), the section 102 foreign-income exemption (not
+   retrieved), a widow's return (section 115(3)), the mixed-use vehicle perquisite, salary arrears (section 12(7)
+   election), pension (section 149(1A)), PSEB freelancers (section 154A, wrongly refused), and two out-of-scope
+   questions answered (provincial urban immovable property tax got the builders' tax table of Division VIIIA; "next
+   year's budget" got this year's slabs). Candidate fix for the last two: deterministic out-of-scope rules for
+   provincial property tax and future budgets, like the section lookup.
+4. Latency ~6-9 s of search (D62, D66); next levers: ONNX Runtime for gte, caching query embeddings, fewer candidates
+   for Urdu / Roman Urdu.
 5. Langfuse, demo video, LinkedIn post 1.
 
 ## Open for Milestone 5
 - Vercel project not created (step 4 of the checklist).
-- Answer correctness on Urdu / Roman Urdu: 19 of 29 strict (above).
+- Answer correctness 57 of 83 strict (68.7%, target 85%); out-of-scope refusals 16 of 18 (target 90%).
 - D63 companions add ~1k prompt tokens on ~1 in 4 questions (quota).
 - The Oracle kit and the Windows script have not run on a real VM / Windows machine (syntax-checked; the
   PowerShell `.env` helpers were run under PowerShell 7 on Linux).
@@ -228,6 +243,7 @@ Postgres egress): start it with `env -u DATABASE_URL`. Groq's per-minute token c
 
 ## Open items for Hamza
 - The launch checklist above (laptop, Vercel).
+- Fill in the 50-answer sheet `eval/answer_check.md` (yes / no and a few words why; about 30 minutes).
 - Optional: a GitHub Release `index-v1` with `data/index/qdrant-index.tar.gz` as its asset (the script prefers it).
 - To test Neon from a cloud session, allow outbound Postgres (port 5432) to `*.neon.tech` in the environment's
   network settings, or test it from your machine.

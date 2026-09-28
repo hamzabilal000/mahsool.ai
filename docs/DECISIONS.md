@@ -846,3 +846,31 @@ Newest first within each milestone. Each entry says what the plan said, what we 
   asset `qdrant-index.tar.gz`) and the script will prefer it.
 - **Check:** installed from the archive, the dev retrieval eval reproduced D62 exactly (Hit@5 98.0%, MRR@10
   0.809). Re-pack after every re-index (a new law, D21-style settings).
+
+### D66. Reranker batching: one pass for the question and its rewrite, similar-length pairs together; int8 still off
+- **Why:** rerank is most of a new question's time (D62). Two quota-free code changes, tuned on dev only: (1) Urdu /
+  Roman Urdu questions are scored against the question and the first English rewrite (D40); both now go through the
+  reranker as one list of pairs instead of two calls; (2) pairs are sorted by length before batching, so a batch
+  pads to similar lengths, and the scores are returned in the original order. `CrossEncoderReranker` also gained the
+  int8 option (`MAHSOOL_RERANKER_QUANTIZE`) that only the bge class had.
+- **Measured on dev** (51 in-scope questions, `/ask` settings, `python -m eval.latency`, 2026-09-28; this session's
+  machine was about 2x slower than on 26 Sep, so only rows from the same session compare):
+
+  | Setup | Rerank p50 / p95 | Total search p50 / p95 | Dev Hit@5 |
+  | --- | --- | --- | --- |
+  | before, 4 cores | 5.31 / 8.98 s | 6.82 / 10.46 s | 98.0% |
+  | **after, 4 cores (batch 8)** | **4.65 / 8.59 s** | **6.28 / 10.19 s** | **98.0%** |
+  | before, 2 cores | 7.83 / 13.85 s | 9.51 / 15.78 s | 98.0% |
+  | **after, 2 cores (batch 8)** | **7.52 / 13.32 s** | **9.28 / 15.15 s** | **98.0%** |
+  | after, 2 cores, batch 4 | 7.05 / 13.44 s | 8.81 / 15.16 s | 98.0% |
+  | after, 2 cores, batch 16 | 7.79 / 12.67 s | 9.68 / 14.78 s | 98.0% |
+  | after, 2 cores, int8 | 3.16 / 5.99 s | 5.14 / 7.80 s | 94.1% (loses en-059, ru-004) |
+
+- **Chosen:** the batching changes, batch size 8 unchanged (4 and 16 are within the run-to-run noise). Scores are the
+  same pairs through the same model, so every Hit@5 is unchanged and the score caches stay valid; no test run was
+  needed. **int8 rejected** again (as for bge in D52): 2.4x faster reranking but 2 dev questions lost, outside the
+  1-point rule of D62. The "before" rows came from a clean checkout of the previous commit; their JSON reports were
+  not kept (deleted with the temporary checkout), the "after" rows are in `eval/reports/2026-09-28-latency-*`.
+- **Consequence:** a new question still takes ~6-9 s of search on this hardware plus ~2-3 s of LLM calls; the 4 s
+  target (plan) is still not met. Remaining levers: ONNX Runtime for gte (a new dependency), caching the BGE-M3
+  embeddings of repeated rewrites, or fewer candidates for Urdu / Roman Urdu (tune on dev).
