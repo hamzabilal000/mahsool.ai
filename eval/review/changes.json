@@ -373,5 +373,25 @@
   "reason": "Gemini: the salaried-individual exception in the proviso to section 4AB was missing.",
   "reference_answer": "Individuals and associations of persons pay a surcharge of ten percent of the income tax under Division I of Part I of the First Schedule where taxable income exceeds Rs. 10 million. Under the proviso to section 4AB, no surcharge is payable by an individual deriving income chargeable under the head 'Salary'.",
   "before": "Individuals and associations of persons pay a surcharge of ten percent of the income tax under Division I of Part I of the First Schedule where taxable income exceeds Rs. 10 million."
+ },
+ {
+  "id": "en-025",
+  "origin": "second opinion (Gemini), checked against the law text",
+  "basis": [
+   "ITO2001-s61"
+  ],
+  "reason": "Gemini: section 61(4) counts a cash donation only if paid by crossed cheque; the reference omitted it.",
+  "reference_answer": "Yes. Donations to a board of education or a university established under Federal or Provincial law qualify for a tax credit under section 61, computed by formula. A cash donation counts only if it was paid by a crossed cheque drawn on a bank (section 61(4)).",
+  "before": "Yes. Donations to a board of education or a university established under Federal or Provincial law qualify for a tax credit under section 61, computed by formula."
+ },
+ {
+  "id": "en-028",
+  "origin": "second opinion (Gemini), checked against the law text",
+  "basis": [
+   "ITO2001-s74"
+  ],
+  "reason": "Gemini: section 74 also defines a special tax year (a different twelve-month period allowed by the Commissioner) and a transitional tax year; the reference gave only the normal tax year.",
+  "reference_answer": "A twelve-month period ending on 30 June (the normal tax year), named after the calendar year in which that date falls. A person may instead use a different twelve-month period (a special tax year) if allowed by the Commissioner or the Board, and the period between the old and the changed tax year is a separate transitional tax year (section 74).",
+  "before": "A twelve-month period ending on 30 June (the normal tax year), named after the calendar year in which that date falls."
  }
 ]
