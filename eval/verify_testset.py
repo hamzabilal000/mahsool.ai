@@ -508,7 +508,8 @@ def main() -> None:
             if row.get("verified") != "human":
                 status = "reviewed" if row["id"] in reviewed else "machine"
                 row["verified"] = status if results[row["id"]]["ok"] else False
-            row["second_opinion"] = results[row["id"]]["second_opinion"]
+            if second is not None:  # without the second judge, keep its stored verdicts
+                row["second_opinion"] = results[row["id"]]["second_opinion"]
         TESTSET.write_text(
             "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8"
         )
