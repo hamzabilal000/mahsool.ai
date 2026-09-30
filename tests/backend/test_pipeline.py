@@ -584,3 +584,56 @@ def test_pipeline_max_score_uses_one_batched_call(make_pipeline):
     p.reranker = PairReranker()
     res = p.search("plot khareedne pe kitna tax?")
     assert len(p.reranker.calls) == 1 and res.candidates[0].section_id == "ITO2001-s236K"
+
+
+# --- deterministic out-of-scope rules (D67) ---------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "question",
+    [
+        "How much property tax do I have to pay every year on my flat in Karachi?",
+        "What is the UIPT rate in Punjab for a rented house?",
+        "urban immovable property tax on a shop in Multan?",
+        "islamabad me apne ghar ka saalana property tax kitna hota hai?",
+        "لاہور میں اپنے مکان پر سالانہ پراپرٹی ٹیکس کتنا دینا ہوتا ہے؟",
+    ],
+)
+def test_provincial_property_tax_is_out_of_scope_without_asking_the_model(question):
+    llm = ScriptedLLM()  # no scripted output: the model must not be called
+    plan = QueryRewriter(llm, "m", Glossary.load(GLOSSARY)).plan(question)
+    assert plan.scope == "provincial_tax" and llm.calls == []
+
+
+@pytest.mark.parametrize(
+    "question",
+    [
+        "plot bechne pe property tax kitna hai?",  # advance tax on selling (section 236C)
+        "How much property tax does the buyer pay on a house purchase?",  # section 236K
+        "ghar ke kiraye pe property tax kitna katega?",  # rent (section 155)
+        "پراپرٹی بیچنے پر کتنا ٹیکس ہے؟",
+    ],
+)
+def test_property_tax_on_selling_buying_or_renting_stays_income_tax(question):
+    from backend.app.rag.query_rewrite import provincial_property_tax
+
+    assert not provincial_property_tax(question)
+
+
+def test_next_budget_questions_are_refused_as_future_law(make_pipeline):
+    llm = ScriptedLLM()
+    p = make_pipeline(PipelineConfig(rewrite="glossary", rerank=True), llm)
+    s = AskService(p, AnswerGenerator(llm, "big"), last_tax_year=2027)
+    for question in [
+        "What changes will the next federal budget make to income tax for salaried people?",
+        "agle budget me salary walon ka tax barhega ya kam hoga?",
+        "آنے والے بجٹ میں فائلرز کے لیے ٹیکس کی شرح کیا ہوگی؟",
+    ]:
+        data = s.ask(question)
+        assert data.refused and data.refusal_reason == "TAX_YEAR_NOT_COVERED", question
+        assert "2028" in data.answer
+    assert llm.calls == []
+    from backend.app.rag.query_rewrite import asks_future_budget
+
+    assert not asks_future_budget("What did the Finance Act 2025 budget change for salaries?")
+    assert not asks_future_budget("nayi salary pe tax kitna hai?")

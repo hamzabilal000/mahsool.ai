@@ -64,6 +64,7 @@ def cache_version(service) -> str:
         str(s.rerank_candidates), str(s.answer_top_k), str(s.refusal_threshold), *snapshots,
         f"guard={s.prompt_guard}:{s.prompt_guard_model}:{s.prompt_guard_threshold}",
         f"atl_rules={service.pipeline.config.atl_rules}", ATL_NOTE,  # D63 companions
+        "scope_rules=D67",  # deterministic out-of-scope rules: bump when they change
     ]  # fmt: skip
     return hashlib.sha256("\n".join(parts).encode()).hexdigest()[:16]
 

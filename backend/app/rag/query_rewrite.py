@@ -70,6 +70,42 @@ def extract_tax_year(text: str) -> int | None:
     return None
 
 
+# --------------------------------------------------------------------------- scope rules (D67)
+
+# Deterministic checks that run before the rewrite model, like the section lookup. The model
+# decides scope for everything else; these two cases slipped through it (D67).
+
+# Provincial / local property tax on owning a house or flat. "Property tax" alone is ambiguous:
+# people also say it for the income tax on selling, buying or renting out property (sections
+# 236C, 236K, 155), so plain "property tax" counts only without those words.
+_PROVINCIAL_PROPERTY = re.compile(r"\burban\s+immovable\s+property\s+tax\b|\buipt\b", re.IGNORECASE)
+_PROPERTY_TAX = re.compile(r"\bproperty\s+tax\b|پراپرٹی\s*ٹیکس|جائیداد\s*ٹیکس", re.IGNORECASE)
+_PROPERTY_INCOME_TAX = re.compile(
+    r"\b(?:sell|sale|sold|selling|bech|bach|buy|bought|buying|purchas|khareed|kharid|transfer|"
+    r"rent|kiray|capital\s+gain|advance\s+tax|withholding|236)\w*|بیچ|فروخت|خرید|منتقل|کرای|ایڈوانس",
+    re.IGNORECASE,
+)
+# The next budget: future law, which nobody knows yet.
+_FUTURE_BUDGET = re.compile(
+    r"\b(?:next|upcoming|coming|new|future)\s+(?:\w+\s+){0,2}budget\b"
+    r"|\b(?:agl[ae]y?|an[ae]y?\s+wal[ae]y?|aan[ae]y?\s+wal[ae]y?|na[ye]+)\s+(?:\w+\s+){0,2}budget\b"
+    r"|(?:اگلے|آنے\s+والے|نئے)\s+(?:\S+\s+){0,3}?بجٹ",
+    re.IGNORECASE,
+)
+
+
+def provincial_property_tax(question: str) -> bool:
+    """A question about the provincial / local tax on owning property (UIPT), not income tax."""
+    if _PROVINCIAL_PROPERTY.search(question):
+        return True
+    return bool(_PROPERTY_TAX.search(question)) and not _PROPERTY_INCOME_TAX.search(question)
+
+
+def asks_future_budget(question: str) -> bool:
+    """A question about what a coming budget will change (future law)."""
+    return bool(_FUTURE_BUDGET.search(question))
+
+
 @dataclass(frozen=True)
 class GlossaryEntry:
     roman: tuple[str, ...]
@@ -212,6 +248,13 @@ class QueryRewriter:
             tax_year=rule_year or self.current_tax_year,
             tax_year_assumed=rule_year is None,
         )
+        # Deterministic out-of-scope cases (D67): refused before the rewrite model is asked.
+        if provincial_property_tax(question):
+            plan.scope = "provincial_tax"
+            return plan
+        if rule_year is None and asks_future_budget(question):
+            plan.tax_year, plan.tax_year_assumed = self.current_tax_year + 1, False
+            return plan
         if not rewrite or self.llm is None:
             return plan
         hints = self.glossary.match(question) if self.glossary and use_glossary else []
