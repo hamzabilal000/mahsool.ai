@@ -1,0 +1,3327 @@
+{
+ "en-001": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that tax is imposed on every person with taxable income at the rates specified in Division I or II of Part I of the First Schedule, and sub-section (2) confirms that tax credits are subtracted from the resulting amount. The reference answer accurately reflects these provisions without omitting any conditions that would change the answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-002": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the 10% rate, the Rs. 10 million threshold, and the exemption for individuals with salary income, all of which are accurately reflected in the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-003": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in the proviso that no surcharge is payable for an individual deriving income under the head 'Salary', which directly supports the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-004": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the super tax applies for tax year 2022 and onwards, which matches the reference answer. The exception for banking companies in 2022 is a specific carve-out for a subset of entities, not a general condition that changes the answer to the question about the start year for the tax regime."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-005": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in Division IIB, serial 1, that the rate for a banking company with income exceeding Rs. 150 million is 10%. The reference answer correctly identifies this rate and source. Although there is a proviso for tax year 2023 regarding a Rs. 300 million threshold, the question asks generally about the rate for income exceeding Rs. 150 million, which is defined in the main table as 10%, and the reference answer accurately reflects the primary statutory rate for that threshold."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "disagree",
+  "second_opinion_reason": null
+ },
+ "en-006": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in serial 4 that for persons other than those in serials 1, 2, and 3, the rate is 8% if income exceeds Rs. 500 million. The reference answer correctly identifies this rate and category without omitting any relevant conditions for this specific scenario."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "disagree",
+  "second_opinion_reason": null
+ },
+ "en-007": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer correctly states the computation method (applying the rate to the gross amount) and the exclusion for exempt dividends, both of which are explicitly supported by the section text."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-008": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (3)(b) that the section does not apply to profit on debt exceeding five million Rupees, which directly supports the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-009": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the definition provided in Section 9, including the specific references to Section 10 clause (a) and Part IX, as well as the condition that the reduction cannot go below zero."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-010": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists the five heads of income in subsection (1), and the reference answer accurately reflects this list without omitting any conditions or exceptions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-011": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists overtime payments and bonuses under clause (a) of sub-section (2) as part of salary. The reference answer accurately reflects this inclusion without omitting any relevant conditions or exceptions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-012": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly includes rent and travel allowances in the definition of salary and clarifies via the Explanation that allowances paid on a fixed basis or not wholly spent on behalf of the employer are not excluded. The reference answer accurately reflects these provisions without omitting any material conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-013": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text and rules provide the specific valuation method (5% or 10% of cost or FMV) for vehicles provided for private use, which matches the reference answer. No material conditions or exceptions relevant to the calculation are omitted."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-014": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the definition of 'rent' provided in sub-section (2) of the text, including the specific inclusion of forfeited deposits. It does not omit any conditions that change the definition itself, as exclusions in other sub-sections (like plant and machinery) define what is *not* rent or is taxed elsewhere, rather than altering the core definition provided in (2)."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-015": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that agricultural income is exempt from tax, and the reference answer correctly reflects this exemption without omitting any relevant conditions or exceptions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-016": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that scholarships for education costs are exempt unless paid by an associate, which matches the reference answer perfectly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-017": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that such income is exempt from tax, and the reference answer correctly reflects this without omitting any conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-018": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the exemption applies for the year of return and the following year, conditional on non-residency in the preceding four years, which matches the reference answer exactly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-019": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the conditions for exemption (employment-based residency, presence <= 3 years) and the specific exclusions (business in Pakistan, income brought into/received in Pakistan) as stated in the section text."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-020": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the general 6-year limit in sub-section (2) and the specific 8-year and 10-year exceptions in sub-sections (2A), (2B), and (2C), all of which are accurately reflected in the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-021": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that a capital loss shall not be set off against income chargeable under any other head, which directly answers the question. The reference answer accurately reflects this restriction and the requirement to carry the loss forward against future capital gains."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-022": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly confirms the deductibility of Zakat paid under the 1980 Ordinance and states that unused allowances are not refunded, carried forward, or carried back, which matches the reference answer perfectly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-023": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the eligibility criteria (taxable income < 1.5 million) and the calculation formula (lesser of the three specified amounts), which matches the reference answer exactly. No material conditions changing the answer are omitted."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-024": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that the Workers' Welfare Fund is a deductible allowance and includes the specific proviso regarding trans-provincial establishments, which the reference answer correctly cites."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-025": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists universities established under Federal or Provincial law as eligible for tax credit and specifies the crossed cheque requirement for cash donations, both of which are accurately reflected in the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-026": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that an eligible person deriving income from Salary or Business is entitled to the credit, which matches the reference answer perfectly. No conditions changing the entitlement are omitted."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-027": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly provides for a tax credit for profit on debt paid on low-cost housing loans, and the reference answer correctly summarizes the eligibility criteria (individual, specified lenders, personal house/flat limits) without omitting conditions that would change the affirmative answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-028": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines the normal tax year as a twelve-month period ending on 30 June and outlines the provisions for special and transitional tax years, which aligns perfectly with the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-029": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the 183-day threshold in clause (a) and lists the other conditions in clauses (c) and (d). The reference answer accurately reflects these details without omitting any conditions that would change the answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-030": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists the conditions for residency, including the specific rule for Pakistani citizens abroad in clause (d) and the other tests in clauses (a) and (c). The reference answer accurately reflects these conditions without omitting any relevant exceptions or altering the numbers."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-031": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately lists the three conditions for a company to be considered resident as stated in Section 83, without omitting any relevant exceptions or conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-032": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that foreign-source salary is exempt if foreign income tax has been paid, and defines this as tax withheld by the employer and paid to the foreign revenue authority. The reference answer accurately reflects this condition without omitting any critical exceptions or altering the legal requirement."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-033": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (1) that the credit is the lesser of the foreign tax paid or the Pakistan tax payable, which matches the reference answer. The reference answer correctly summarizes the primary calculation rule without omitting conditions that change the amount of the credit itself."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-034": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines salary as Pakistan-source income under the two conditions listed in the reference answer (employment exercised in Pakistan or paid by government entities), and the reference accurately reflects these provisions without omitting any relevant conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-035": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that unexplained investments or money are included in income under 'Income from Other Sources' if no satisfactory explanation is provided. The reference answer correctly cites this rule and includes the specific exceptions for agricultural income and foreign exchange remittances under Section 111(4), which are present in the text."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-036": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists resident companies, permanent establishments of non-resident companies, and individuals/AOPs with turnover of 100 million rupees or above in tax year 2017 or subsequent years as the persons covered. The reference answer accurately reflects these categories and conditions without omission."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-037": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately summarizes the categories of persons required to file a return as listed in Section 114(1) and 114(1A), including the specific thresholds and conditions mentioned in the text."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-038": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text confirms that owning immovable property of 500 square yards or more triggers the filing requirement under Section 114(1)(b)(iii) regardless of taxable income, and Section 115(3) correctly lists the specific exceptions (widow, orphan, disabled, non-resident) for this condition."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-039": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in Section 115(3) that a widow is not required to furnish a return solely by reason of the specified property clauses in Section 114(1)(b). The reference answer correctly identifies this exemption and the relevant categories."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-040": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines the requirement for resident individual taxpayers with foreign income of at least USD 10,000 or foreign assets of at least USD 100,000, which matches the reference answer exactly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-041": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately lists all the specific items (a) through (e) required in the wealth statement as per Section 116(1). It correctly notes that the requirement applies to individuals and includes the reconciliation statement, without omitting any conditions that would change the scope of the items requested."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "en-042": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (3)(a) that a salaried individual filing through the e-portal must file by the 30th day of September following the end of the tax year, which matches the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-043": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (2)(a) that a company with a tax year ending between 1 January and 30 June must file on or before 31 December following the end of the tax year, which matches the reference answer exactly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-044": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (2A) that taxpayers with salary income of Rs. 500,000 or more must file electronically in the prescribed form, accompanied by proof of tax deduction/payment and the wealth statement (and foreign income/assets statement if applicable). The reference answer accurately reflects these requirements without omitting any changing conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-045": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the application process, grounds for extension, time limits, and the proviso regarding the Chief Commissioner as stated in the section text. It does not omit any conditions that would change the answer to the question."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-046": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (1)(b) that a complete return is taken to be an assessment order. The reference answer correctly identifies this condition without omitting any critical exceptions or conditions that would change the answer for a general query."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-047": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer correctly cites the time limits in sections 122(2) and 122(4) for initial and further amendments. While section 122(5) lists conditions for when an amendment is permitted, the question specifically asks for the duration ('how long'), which is fully answered by the cited time limits without needing to list the substantive grounds for amendment."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-048": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (1) that an appeal against an order of the Commissioner (Appeals) must be made within thirty days of the receipt of such order, which matches the reference answer exactly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-049": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly excludes State-Owned Enterprises (SOEs) from the definition of 'any person' eligible to appeal under sub-section (1), and the reference answer correctly reflects this exclusion without omitting relevant conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-050": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (1) that tax on taxable income is due on the due date for furnishing the return of income. The reference answer accurately reflects this primary rule without omitting conditions that change the answer for the general case of taxable income."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-051": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (2) that the sum specified in the notice shall be paid within thirty days from the date of service. The reference answer accurately reflects this timeframe without omitting any conditions that would change the general rule for assessment orders."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-052": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "Section 147(1)(c) explicitly excludes income subject to deduction of tax at source under section 149 from the liability to pay advance tax, which directly supports the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-053": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that tax is deducted at the employee's average rate computed on estimated salary income using First Schedule rates, including section 4AB tax, after adjustments for other withholdings and credits. The reference answer accurately reflects these requirements without omitting conditions that change the general calculation method for salary."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-054": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly provides for tax deduction on pension under sub-section (1A) for former employees below 70 years where income exceeds Rs. 10 million. The reference answer accurately reflects this specific condition and rate structure found in the text."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-055": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the mechanism and rate source described in Section 150 without omitting any conditions or exceptions present in the text."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-056": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text and rate card explicitly state the 15% rate for REITs and other cases under clause (b), and the rate card confirms the doubling to 30% for non-ATL recipients under Rule 1 of the Tenth Schedule, which the reference answer correctly cites."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-057": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists the payers (National Savings/Post Office, banking/financial institutions, governments, and other specified entities) who must deduct tax, and the reference answer accurately summarizes these categories without omitting conditions that change the answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-058": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects Section 152(1), including the condition that the amount must be chargeable to tax under Section 6 and the correct rate reference. No other conditions or exceptions in the provided text alter the specific rule for royalties and technical service fees."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-059": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (1)(a) that the withholding requirement does not apply where payment for the sale of goods is less than seventy-five thousand Rupees in aggregate during a financial year, which directly supports the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-060": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in clause (1)(b) that withholding does not apply where payment for services is less than thirty thousand Rupees in aggregate during a financial year, which matches the reference answer exactly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-061": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the 0.25% rate for PSEB-registered exporters for tax years 2024-2029 and details the conditions for final tax treatment, including the exemption from the sales tax return condition for these specific exporters. The reference answer accurately reflects these provisions without omitting material conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-062": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that for 'Any other case' (which covers exporters not registered with PSEB), the rate is 1% of proceeds. The reference answer correctly identifies this rate and category without omitting any relevant conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-063": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines 'prescribed person' in Section 155(3) and provides the tax rates in the First Schedule. The reference answer correctly identifies that an individual tenant paying Rs. 500,000 is not a prescribed person (threshold is Rs. 1.5 million) and thus no tax is deducted, while also correctly calculating the tax if the tenant were a prescribed person."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-064": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text and rate card explicitly state the 15% rate for companies on the ATL and 30% for non-ATL, and the reference answer correctly includes the condition that the payer must be a 'prescribed person' as defined in Section 155(3)."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-065": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text and rate card explicitly state the 15% ATL rate, the 30% Non-ATL rate (via the Tenth Schedule reference in the card), and confirm the tax is final under section 156(3). The reference answer accurately reflects all these details without omitting any conditions that change the answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-066": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text and rate card explicitly state the 20% ATL rate and 40% Non-ATL rate for raffle, lottery, and quiz winnings, and confirm the final tax status under section 156(3), all of which are accurately reflected in the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-067": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that the Commissioner shall issue an exemption or lower rate certificate upon application in writing by the person in the prescribed form, which directly answers how to stop the withholding of tax for exempt or lower-rate payments."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-068": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that a person failing to deduct tax is personally liable to pay the Commissioner, and sub-section (1A) requires an opportunity of being heard before recovery. The reference answer accurately reflects these points without omitting conditions that change the core liability."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-069": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (1) that a quarterly statement must be furnished, and sub-section (2) details the specific quarterly deadlines, supporting the reference answer. The reference answer correctly identifies the frequency and form without omitting conditions that would change the general rule for filing frequency."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-070": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that tax deducted at source is treated as tax paid and allows a credit against tax due, while excluding final taxes listed in sub-section (3). The reference answer accurately reflects these provisions and the refund mechanism for unused credits."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-071": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer correctly states two of the consequences of final tax under section 169(2) (income not chargeable, no deduction for expenditure) and does not omit any condition that changes the validity of these specific statements."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-072": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (4) that the Commissioner shall serve an order within sixty days of receipt, after providing an opportunity of being heard, which matches the reference answer exactly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-073": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the compensation rate (KIBOR + 0.5%) and the specific exception regarding inadmissible claims, both of which are accurately reflected in the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-074": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the six-year requirement and the proviso regarding pending proceedings, which the reference answer accurately reflects without omitting any conditions that change the general answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-075": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in subsection (1A) that online marketplaces shall not allow unregistered vendors to use their platform services, which directly supports the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-076": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that the Board has the power to institute the active taxpayers' list under Section 181A, which directly answers the question and matches the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-077": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that a person is included in the active taxpayers' list upon filing after the due date if they pay the specified surcharge, or if an individual provides the undertaking under sub-section (3). The reference answer correctly captures these conditions and the associated penalties."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-078": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that applications for commercial or industrial electricity or gas connections will not be processed unless the applicant is registered under section 181, which directly supports the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-079": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the rate for general tax default under sub-section (1) is 'twelve percent or KIBOR plus three percent per annum, whichever is higher' and excludes advance tax, which matches the reference answer perfectly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-080": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that the Board may issue an advance ruling on application by a non-resident taxpayer regarding a proposed or entered-into transaction, which aligns perfectly with the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-081": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the rate is 0.8% on the sum total of cash withdrawals exceeding Rs. 50,000 in a day for persons not on the Active Taxpayers' List, which matches the reference answer exactly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-082": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in the proviso to sub-section (1) that the provisions do not apply to a domestic consumer if their name appears on the Active Taxpayers' List, which directly supports the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-083": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly includes internet bills and prepaid internet cards in sub-section (1)(d) and (e), and the reference answer correctly cites the rates and the exemptions listed in sub-section (4)."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-084": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text and rate card provide the specific rates (2.75% ATL, 11.5% Non-ATL) and the reference answer correctly cites the conditions for minimum tax, final discharge for non-residents, and exemptions for Shaheed dependants, all of which are supported by the provided text."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-085": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the rates in the First Schedule and Rate Card, the collector's identity, the adjustability of the tax, and the specific exceptions for non-residents (POC/NICOP/CNIC with FCVA/NRVA) and government schemes for expatriates as stated in the section text."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-086": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text and rate card confirm that banking companies collect advance tax on remittances via credit/debit/prepaid cards. The reference correctly cites the 0.5% rate for ATL and 1% for Non-ATL (based on the provided rate card which is part of the context) and notes the tax is adjustable."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-087": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the 15% rate for holding periods not exceeding one year and details the specific conditions for property acquired on or after 1 July 2024, including the distinction between Active Taxpayers and those not on the list, which the reference answer accurately reflects."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-088": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that for securities acquired on or after 1 July 2024, the rate is 15% for persons on the Active Taxpayers' List on both acquisition and disposal dates, and the reference answer correctly reflects this condition and the alternative rates for non-ATL persons."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-089": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text provides the specific tax table for salaried individuals (clause 2), and the reference answer correctly applies the rate for the Rs. 600,000–1,200,000 bracket (1% of the excess) to calculate the tax."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-090": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the top slab rate for non-salaried individuals and AOPs is 45% on income exceeding Rs. 5,600,000, with a specific proviso reducing this to 40% for professional firms prohibited from incorporating, which the reference answer correctly includes."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-001": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about provincial sales tax, which is outside the scope of the Income Tax Ordinance and FBR federal tax laws. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-002": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about a non-existent section (999Z) of the Income Tax Ordinance, which the assistant must refuse. The reference correctly identifies the section as non-existent and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-003": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about customs duty and PCT codes, which are outside the scope of the Income Tax Ordinance 2001 and Rules 2002. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-004": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The assistant is limited to the Income Tax Ordinance 2001, Rules 2002, and the FBR rate card, so it must refuse questions about Supreme Court judgments. The reference correctly identifies case law as out of scope."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-005": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about US federal tax law, which is outside the scope of the Income Tax Ordinance 2001 and FBR regulations. The reference correctly identifies this as foreign tax law that must be refused."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-006": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about tax slabs for tax year 2028, which is a future tax year whose law has not been enacted yet. The assistant must refuse to speculate on future laws outside the current scope."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-007": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks for investment advice, which is outside the scope of the Income Tax Ordinance 2001 and related tax laws. The reference correctly identifies this as a refusal case because it is not a question about tax law."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-008": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "Urban immovable property tax is a provincial tax, which is outside the scope of the federal Income Tax Ordinance 2001 and Rules 2002. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-009": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The request is for creative writing, not a question about the Income Tax Ordinance, Rules, or withholding rates. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-010": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about a non-existent section (250B), which the assistant must refuse. The reference correctly identifies the false premise and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-011": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about provincial sales tax (Sindh Revenue Board), which is outside the scope of the Income Tax Ordinance 2001 and FBR federal tax laws. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-012": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The Income Tax Ordinance 2001 does not contain a Section 888, so the assistant must refuse to answer. The reference correctly identifies the non-existence of the section as the reason for refusal."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-013": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about provincial stamp duty in Punjab, which is outside the scope of the Income Tax Ordinance 2001 and FBR federal tax laws. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-014": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about a sports match result, which is completely unrelated to income tax laws. The reference correctly identifies it as a non-tax question that must be refused."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-015": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about provincial sales tax (KPRA), which is outside the scope of the Income Tax Ordinance 2001 and FBR federal tax laws. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-016": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about US tax law, which is outside the scope of Pakistan's Income Tax Ordinance 2001 and Rules 2002. The reference correctly identifies this as foreign tax law that must be refused."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-017": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about tax rates for the next year, which is a future tax year whose law is not yet made. The assistant must refuse to speculate on future laws."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-018": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks for a summary of a Supreme Court case, which is outside the scope of the Income Tax Ordinance, Rules, and rate card. The reference correctly identifies this as out-of-scope case law."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-019": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks for investment advice regarding Bitcoin, which is outside the scope of the Income Tax Ordinance 2001 and related tax laws. The reference correctly identifies this as a refusal case because it is not a question about tax law."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-020": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about provincial agricultural tax, which is outside the scope of the federal Income Tax Ordinance 2001. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-021": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about Provincial Revenue Authority (PRA) sales tax, which is a provincial tax and outside the scope of the federal Income Tax Ordinance 2001. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-022": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The Income Tax Ordinance 2001 does not contain a Section 777, so the assistant must refuse to answer. The reference correctly identifies the non-existence of the section as the reason for refusal."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-023": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about property tax in Karachi, which is a provincial tax and outside the scope of the Income Tax Ordinance 2001. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-024": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about the weather in Lahore, which is completely unrelated to income tax laws. The reference correctly identifies it as a non-tax question that must be refused."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-025": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about income tax in Dubai, which is foreign tax law and outside the scope of Pakistan's Income Tax Ordinance 2001. The reference correctly identifies this as a refusal case."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-026": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about the budget for tax year 2028, which is a future year whose laws are not yet enacted. The assistant must refuse to speculate on future laws outside the current scope."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-027": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about customs duty and PCT codes, which are outside the scope of the Income Tax Ordinance 2001 and Rules 2002. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-028": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks for a bank recommendation, which is not a question about the Income Tax Ordinance, Rules, or withholding tax rates. The reference correctly identifies this as out of scope."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-029": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about provincial sales tax registration in Sindh, which is outside the scope of the Income Tax Ordinance 2001 and FBR federal tax laws. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-030": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The assistant's scope is limited to the Income Tax Ordinance 2001, Rules 2002, and the FBR rate card; it does not cover court judgments or case law. Therefore, the question must be refused, and the reference correctly identifies this as out of scope."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-001": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "Section 12(4) explicitly states that no deduction shall be allowed for any expenditure incurred by an employee in deriving amounts chargeable to tax under the head 'Salary', which directly supports the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-002": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly provides for the election under sub-section (6) for amounts received on termination (including golden handshake payments) to be taxed at the A/B rate, and the reference answer accurately reflects this mechanism and formula without omitting conditions that change the answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-003": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (7) that an employee may elect to have arrears taxed at the rates applicable to the year services were rendered if it results in higher tax rates, and the reference answer accurately reflects this provision without omitting any changing conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-004": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines salary to include allowances such as rent and travel, while excluding those solely expended in the performance of duties, which matches the reference answer exactly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-005": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines 'capital asset' in sub-section (5) with the exact exclusions listed in the reference answer. The reference accurately reflects the definition and all specified exceptions without omitting any conditions that would change the meaning."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-006": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the definition provided in Section 2(46), including the exclusion of return of capital and the inclusion of fees for unused credit facilities."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-007": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects Section 101(7), including the specific exception for debts used in a business carried on outside Pakistan through a permanent establishment."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-008": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines 'royalty' in subsection (54) with the exact categories and exclusions listed in the reference answer. The reference accurately summarizes the definition without omitting any conditions or exceptions that would change the answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-009": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines 'fee for technical services' and lists the two specific exclusions mentioned in the reference answer. The reference accurately reflects the definition and exclusions without omitting any conditions that would change the answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-010": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines 'approved gratuity fund' in clause (3) as a gratuity fund approved by the Commissioner in accordance with Part III of the Sixth Schedule, which matches the reference answer exactly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-011": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines 'business' in clause (10) as including trade, commerce, manufacture, profession, vocation, or adventure/concern in that nature, while excluding employment. The reference answer accurately reflects this definition without omitting any conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-012": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately lists all the conditions specified in clause (59AB) of Section 2, including the registration date, capital limits, employee count, turnover, and exclusions for split-ups and SMEs."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-013": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines 'imputable income' in clause (28A) exactly as stated in the reference answer, and the reference correctly includes the condition that it applies to amounts subject to final tax."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-014": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines 'stock-in-trade' in sub-section (7), and the reference answer accurately reflects this definition, including the exclusion of stocks or shares."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-015": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately lists all three conditions for a company to be considered a resident company as stated in Section 83, without omitting any relevant exceptions or conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-016": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the condition for residency, and the reference answer accurately reflects this without omitting any relevant conditions or exceptions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-017": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines 'principal officer' in clause (44A) with the exact categories and conditions listed in the reference answer. The reference accurately captures both the inherent roles and the condition regarding the Commissioner's notice without omitting any relevant exceptions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-018": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the definition of a whistleblower provided in Section 227B(4) of the Income Tax Ordinance, 2001, without omitting any relevant conditions or exceptions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-019": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately summarizes the definition of 'depreciable asset' provided in Section 22(15), including the criteria for useful life, wear and tear, business use, and the exclusion for assets fully deducted under other sections."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-020": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text defines speculation business and explicitly states in subsection (1)(a) that it is treated as distinct and separate from any other business, which matches the reference answer. The reference correctly summarizes the definition and the key exclusions (hedging) without omitting conditions that change the core answer regarding its separate treatment."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-021": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines 'private company' in clause (45) as a company that is not a public company, which matches the reference answer exactly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-022": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists the five heads of income in subsection (1), and the reference answer accurately reflects this list without omitting any relevant conditions or exceptions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-023": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines the normal tax year as twelve months ending on 30 June and the special tax year as a different twelve-month period, along with their respective denotation rules. The reference answer accurately reflects these definitions without omitting conditions that would change the answer to the specific question asked."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-024": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately lists the three categories of persons defined in Section 80(1) of the Income Tax Ordinance, 2001, without omitting any conditions or exceptions relevant to the definition."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-025": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section explicitly states that agricultural income is exempt from tax, and the reference answer correctly reflects this exemption and the definition of such income without omitting any critical conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-026": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that the amount received in cash or kind is included in income under the same head for the year of receipt, which matches the reference answer perfectly without omitting any conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-027": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that such expenditure shall be apportioned on any reasonable basis taking account of the relative nature and size of the activities, which matches the reference answer exactly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-028": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "Section 21(g) explicitly states that any fine or penalty paid or payable for the violation of any law, rule, or regulation is not allowed as a deduction. The reference answer accurately reflects this absolute prohibition without omitting any relevant conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-029": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "Section 21(h) explicitly states that personal expenditures incurred by the person are not allowed as deductions, which directly supports the reference answer without any omitted conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-030": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly defines salary as Pakistan-source income under the two conditions listed in the reference answer (employment exercised in Pakistan or paid by government entities in Pakistan). The reference answer accurately reflects these conditions without omitting any relevant exceptions or altering the criteria."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-031": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (6) that a dividend is Pakistan-source income if paid by a resident company or if it falls under the specific definition in section 2(19)(f), which matches the reference answer exactly."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-032": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states the due dates for company returns in sub-section (2), distinguishing between tax years ending between January 1 and June 30 (due by December 31) and all other cases (due by September 30). The reference answer accurately reflects these two conditions without omitting any relevant exceptions or conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-033": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (2A) that taxpayers with salary income of Rs. 500,000 or more must file electronically, and the reference answer accurately reflects this requirement and the accompanying documents."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-034": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists 'every company' and 'any non-profit organization' in sub-section (1) without any condition regarding the amount of taxable income, confirming that they must file regardless of income level."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-035": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists in clause (b) that persons charged to tax in the two preceding years or claiming a loss carry-forward must file returns, regardless of current income levels. The reference answer accurately reflects these specific conditions without omitting critical exceptions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-036": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly lists widows and non-residents (for immovable property) as persons not required to furnish a return solely due to the specified conditions in section 114(1)(b), which fully supports the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-037": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately reflects the application process, grounds for extension, time limits, the role of the Chief Commissioner, and the specific limitation regarding the due date for tax payment as stated in the section text."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-038": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer correctly states the core rule for the credit amount (lesser of foreign tax paid or Pakistan tax payable) and the method for computing the Pakistan tax (average rate on net foreign-source income) as found in sub-sections (1) and (2). It does not omit conditions that change the amount of the credit itself, such as the two-year payment limit or the non-carryforward rule, which are procedural or eligibility constraints rather than part of the credit calculation formula."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "fbr-039": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The reference answer accurately captures the definition and amortization method from the section text. It correctly includes the exclusions (land, section 22/24 items) and does not omit any conditions that would change the answer, as the other clauses (3) and (4) are general limitations on total deduction amounts rather than conditions on the definition or method itself."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-091": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text defines 'prescribed person' in subsection (3), listing specific entities and individuals paying rent of Rs. 1.5 million or above. The reference correctly identifies that a shopkeeper paying Rs. 900,000 is not a prescribed person unless they fall into the specific listed categories (which a general shop does not) or are notified by the Board, thus no deduction is required."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-092": {
+  "ok": false,
+  "reasons": [
+   "qwen/qwen3.8-27b: section_answers_question = no, reference_matches_section = no, omits_condition = yes. The section text specifies that the rate table in Division V applies to 'individual and association of persons', while for a 'company' the rate is a flat 15% of the gross amount. The reference answer incorrectly applies the individual rate table to a company, resulting in the wrong tax amount (Rs. 35,000 instead of Rs. 120,000)."
+  ],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "no",
+    "reference_matches_section": "no",
+    "omits_condition": "yes",
+    "reason": "The section text specifies that the rate table in Division V applies to 'individual and association of persons', while for a 'company' the rate is a flat 15% of the gross amount. The reference answer incorrectly applies the individual rate table to a company, resulting in the wrong tax amount (Rs. 35,000 instead of Rs. 120,000)."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-093": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The provided text includes the Withholding Tax Rates Card which explicitly states the 30% rate for Non-ATL persons on prize bonds, supporting the reference answer's claim that the rate is doubled for non-ATL persons."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-094": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in clause (c) that an employee or official of the Federal Government posted abroad is a resident individual. The reference answer correctly cites this clause and accurately reflects the condition without omitting any relevant exceptions or conditions."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-095": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in Section 156(3) that the tax is final and Section 168(3)(f) explicitly denies a tax credit for final tax under Section 156(3), fully supporting the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-096": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (3) that the surcharge condition does not apply to an individual who furnishes an undertaking not to acquire property for six months, which is accurately reflected in the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-097": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The rate card explicitly lists the Non-ATL rate for the Rs. 50-100 million bracket as 14.50%, which matches the reference answer. The reference correctly identifies the applicable rate and bracket without omitting conditions that would change the answer for a standard buyer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-098": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states that the tax is final only upon fulfillment of specific conditions (filing returns, withholding statements, etc.) and that PSEB exporters are exempt from the sales tax return condition. The reference answer correctly identifies these conditions and the option to opt out, accurately reflecting the text without omitting any material conditions that change the answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-099": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in sub-section (1A) that individuals with business income exceeding Rs. 300,000 but not exceeding Rs. 400,000 are required to file a return, which directly answers the question for the Rs. 350,000 scenario."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "en-100": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "omits_condition": "no",
+    "reason": "The section text explicitly states in Section 115(3)(d) that a non-resident person is not required to furnish a return solely by reason of ownership of immovable property, which directly answers the question and matches the reference answer."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-031": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "Property tax is a provincial/local tax, which is outside the scope of the federal Income Tax Ordinance 2001. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-032": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about property tax in Lahore, which is a provincial/local tax and falls outside the scope of the Income Tax Ordinance 2001. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-033": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about property tax, which is a local/provincial tax and not covered by the Income Tax Ordinance 2001. The reference correctly identifies this as out of scope."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-034": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "UIPT is a provincial tax in Punjab, which is outside the scope of the federal Income Tax Ordinance 2001 and Rules 2002. The reference correctly identifies this as out of scope and instructs to refuse."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-035": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about future budget changes which are not yet enacted law, so the assistant must refuse. The reference correctly identifies that future law is unknown and outside the scope of the current Ordinance."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-036": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about tax rates in a future budget, which is speculative and not part of the current Income Tax Ordinance 2001 or Rules 2002. The assistant must refuse to speculate on future laws."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "oos-037": {
+  "ok": true,
+  "reasons": [],
+  "judges": {
+   "qwen/qwen3.8-27b": {
+    "section_answers_question": "yes",
+    "reference_matches_section": "yes",
+    "reason": "The question asks about future tax rates in the next budget, which is speculative and not covered by the current Income Tax Ordinance 2001 or the 2027 rate card. The reference correctly identifies that future law is unknown and mandates a refusal."
+   }
+  },
+  "missing_numbers": [],
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-001": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-003",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-002": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-012",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-003": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-018",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-004": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-021",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-005": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-038",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-006": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-040",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-007": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-044",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-008": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-053",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-009": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-064",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-010": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-078",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-011": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-081",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-012": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-084",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-013": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-002",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-014": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-011",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-015": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-013",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-016": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-015",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-017": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-016",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-018": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-020",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-019": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-022",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-020": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-023",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-021": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-025",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-022": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-029",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-023": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-030",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-024": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-032",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-025": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-037",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-026": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-039",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ur-027": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-042",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-028": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-045",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-029": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-050",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-030": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-054",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-031": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-061",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-032": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-063",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-033": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-065",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-034": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-070",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-035": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-072",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-036": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-074",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-037": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-077",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-038": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-085",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-039": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-086",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ur-040": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-089",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-001": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-003",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-002": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-012",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-003": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-018",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-004": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-021",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-005": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-038",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-006": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-040",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-007": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-044",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-008": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-053",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-009": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-064",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-010": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-078",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-011": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-081",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-012": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-084",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-013": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-002",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-014": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-011",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-015": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-013",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-016": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-015",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-017": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-016",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-018": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-020",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-019": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-022",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-020": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-023",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-021": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-025",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-022": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-029",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-023": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-030",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-024": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-032",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-025": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-037",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-026": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-039",
+  "second_opinion": "agree",
+  "second_opinion_reason": null
+ },
+ "ru-027": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-042",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-028": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-045",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-029": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-050",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-030": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-054",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-031": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-061",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-032": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-063",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-033": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-065",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-034": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-070",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-035": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-072",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-036": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-074",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-037": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-077",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-038": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-085",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-039": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-086",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ },
+ "ru-040": {
+  "ok": true,
+  "reasons": [],
+  "judges": {},
+  "missing_numbers": [],
+  "inherited_from": "en-089",
+  "second_opinion": null,
+  "second_opinion_reason": null
+ }
+}
