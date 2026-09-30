@@ -1,0 +1,326 @@
+{
+ "summary": {
+  "out_of_scope": {
+   "n": 15,
+   "refused": 1
+  },
+  "not_run": [
+   "oos-029"
+  ]
+ },
+ "rows": [
+  {
+   "id": "oos-003",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [
+    "PCT code and customs duty for importing solar panels",
+    "customs duty rate for solar panels under PCT code",
+    "procedure for applying PCT code when importing solar panels"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 3205,
+    "rewrite": 1,
+    "retrieval": 3205,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 3206
+   }
+  },
+  {
+   "id": "oos-006",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "TAX_YEAR_NOT_COVERED",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "The law for tax year 2028 has not been made yet; I have the law up to tax year 2027.",
+   "search_queries": [
+    "What will the salaried tax slabs be in the next budget for tax year 2028?",
+    "What are the income slab rates for salaried individuals under the Finance Act for tax year 2028?",
+    "What conditions apply to salaried persons for tax deduction at source in tax year 2028?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 916,
+    "rewrite": 1,
+    "retrieval": 916,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 917
+   }
+  },
+  {
+   "id": "oos-007",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 543,
+    "rewrite": 0,
+    "retrieval": 542,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 543
+   }
+  },
+  {
+   "id": "oos-009",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 410,
+    "rewrite": 1,
+    "retrieval": 409,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 410
+   }
+  },
+  {
+   "id": "oos-013",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [
+    "stamp duty on registration of immovable property in Punjab",
+    "rate of stamp duty for property registration in Punjab",
+    "procedure for paying stamp duty on property registration in Punjab"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 1277,
+    "rewrite": 1,
+    "retrieval": 1277,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 1278
+   }
+  },
+  {
+   "id": "oos-022",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "SECTION_NOT_FOUND",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Mujhe yeh baat un tax qawaneen mein nahi mili jo mere paas hain (Income Tax Ordinance 2001, Income Tax Rules 2002 aur FBR withholding tax rate card).",
+   "search_queries": [
+    "What is written in section 777 of the Income Tax Ordinance?",
+    "Section 777 of the Income Tax Ordinance 2001 content",
+    "Income Tax Ordinance 2001 section 777 details"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 856,
+    "rewrite": 1,
+    "retrieval": 855,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 856
+   }
+  },
+  {
+   "id": "oos-024",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Mujhe yeh baat un tax qawaneen mein nahi mili jo mere paas hain (Income Tax Ordinance 2001, Income Tax Rules 2002 aur FBR withholding tax rate card).",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 364,
+    "rewrite": 0,
+    "retrieval": 364,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 365
+   }
+  },
+  {
+   "id": "oos-027",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Mujhe yeh baat un tax qawaneen mein nahi mili jo mere paas hain (Income Tax Ordinance 2001, Income Tax Rules 2002 aur FBR withholding tax rate card).",
+   "search_queries": [
+    "customs duty on iPhone import with PCT code",
+    "rate of customs duty for imported iPhone under PCT code",
+    "procedure for paying customs duty on iPhone import with PCT code"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 809,
+    "rewrite": 1,
+    "retrieval": 809,
+    "rerank": 0,
+    "llm_cached": 1,
+    "total": 810
+   }
+  },
+  {
+   "id": "oos-031",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 3324,
+    "rewrite": 0,
+    "retrieval": 409,
+    "rerank": 2916,
+    "total": 3325
+   }
+  },
+  {
+   "id": "oos-032",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 3411,
+    "rewrite": 0,
+    "retrieval": 774,
+    "rerank": 2637,
+    "total": 3412
+   }
+  },
+  {
+   "id": "oos-033",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Mujhe yeh baat un tax qawaneen mein nahi mili jo mere paas hain (Income Tax Ordinance 2001, Income Tax Rules 2002 aur FBR withholding tax rate card).",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 3084,
+    "rewrite": 0,
+    "retrieval": 432,
+    "rerank": 2652,
+    "total": 3085
+   }
+  },
+  {
+   "id": "oos-034",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 3003,
+    "rewrite": 0,
+    "retrieval": 387,
+    "rerank": 2617,
+    "total": 3004
+   }
+  },
+  {
+   "id": "oos-035",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "TAX_YEAR_NOT_COVERED",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "The law for tax year 2028 has not been made yet; I have the law up to tax year 2027.",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 3304,
+    "rewrite": 0,
+    "retrieval": 401,
+    "rerank": 2903,
+    "total": 3304
+   }
+  },
+  {
+   "id": "oos-036",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "TAX_YEAR_NOT_COVERED",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "ٹیکس سال 2028 کا قانون ابھی بنا نہیں؛ میرے پاس ٹیکس سال 2027 تک کا قانون ہے۔",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 3303,
+    "rewrite": 0,
+    "retrieval": 503,
+    "rerank": 2800,
+    "total": 3303
+   }
+  },
+  {
+   "id": "oos-037",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "TAX_YEAR_NOT_COVERED",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Tax year 2028 ka qanoon abhi bana nahi; mere paas tax year 2027 tak ka qanoon hai.",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 3146,
+    "rewrite": 0,
+    "retrieval": 481,
+    "rerank": 2665,
+    "total": 3147
+   }
+  }
+ ]
+}

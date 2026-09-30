@@ -1,0 +1,68 @@
+{
+ "summary": {
+  "out_of_scope": {
+   "n": 3,
+   "refused": 1
+  },
+  "not_run": []
+ },
+ "rows": [
+  {
+   "id": "oos-008",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 1283,
+    "rewrite": 0,
+    "retrieval": 454,
+    "rerank": 829,
+    "total": 1283
+   }
+  },
+  {
+   "id": "oos-017",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "TAX_YEAR_NOT_COVERED",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "ٹیکس سال 2028 کا قانون ابھی بنا نہیں؛ میرے پاس ٹیکس سال 2027 تک کا قانون ہے۔",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 990,
+    "rewrite": 0,
+    "retrieval": 417,
+    "rerank": 574,
+    "total": 991
+   }
+  },
+  {
+   "id": "oos-023",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Mujhe yeh baat un tax qawaneen mein nahi mili jo mere paas hain (Income Tax Ordinance 2001, Income Tax Rules 2002 aur FBR withholding tax rate card).",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 1339,
+    "rewrite": 0,
+    "retrieval": 353,
+    "rerank": 986,
+    "total": 1340
+   }
+  }
+ ]
+}
