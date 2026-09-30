@@ -21,7 +21,7 @@ is resting right now".
 | --- | --- | --- |
 | 1 | Repo, ingestion of the Income Tax Ordinance 2001, 90 English eval questions | ✅ done |
 | 2 | Income Tax Rules 2002 + WHT rate card, BGE-M3 → Qdrant, Urdu / Roman Urdu questions, baseline Recall@5 | ✅ done |
-| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set verified: 248 of 249 (D45, D51) · ⏳ end-to-end eval 101/189 with the current setup (Groq daily limit, D36) |
+| 3 | Query rewrite, hybrid search + RRF, reranker, FastAPI `/ask` with citation check | ✅ built and evaluated · test set verified: 255 of 256 (D45, D51) · ⏳ end-to-end eval 170/189 with the current setup (Groq daily limit, D36) |
 | 4 | React chat UI, citation cards, feedback, Postgres logs, eval page | ✅ done (Langfuse moved to M5, D49) |
 | 5 | Fix top failures, deploy, demo | 🔄 launch prep done: ATL / non-ATL rates fixed (D63), backend on a laptop behind ngrok + frontend on Vercel (D64, **Vercel link pending**), prebuilt index (D65), latency ~7.5 s (D62), Prompt Guard (D60), demo limits (D59) |
 
@@ -92,7 +92,7 @@ reference answer written only from the law text, a difficulty tag and a fixed de
 `"verified": false`.
 
 **How the test set is verified:** machine-verified by an independent LLM judge (Qwen) plus an automatic number check;
-a second judge (Gemini) agreed on 24 of 26 it checked with the current three-question prompt (the 2 disagreements concern tax-year-2022 provisos that do not apply to TY2027; two more of its flags, en-025 and en-028, were correct and fixed on 2026-09-28). Legal review of a 30-question sample by ChatGPT (OpenAI), an AI legal-review tool with web access,
+a second judge (Gemini) agreed on 38 of 40 it checked with the current three-question prompt (the 2 disagreements concern tax-year-2022 provisos that do not apply to TY2027; three more of its flags, en-025, en-028 and en-035, were correct and fixed on 28-30 Sep). Legal review of a 30-question sample by ChatGPT (OpenAI), an AI legal-review tool with web access,
 26 Sep 2026: 19 correct, 10 partly correct, 1 wrong; all fixed and a completeness sweep applied to the full set. This
 is an AI tool's review, not a human one; a review by a tax professional is still pending.
 
@@ -104,7 +104,7 @@ runs the same check as a non-blocking second opinion as far as its free tier all
 the questions. Every correction from the review was checked against the corpus before it was applied, and every
 change to a reference answer is listed with before and after in [`eval/FLAGGED.md`](eval/FLAGGED.md) (D50).
 
-**Current state (2026-09-26):** 248 of 249 questions are machine-verified (30 of them also "reviewed": marked correct
+**Current state (2026-09-30):** 255 of 256 questions are machine-verified (30 of them also "reviewed": marked correct
 or corrected per the AI review, then re-verified). The one left, en-092 (rent paid by a company to an individual
 landlord), is flagged by Qwen: whether Division V's rates depend on the landlord or the tenant is not stated in the
 corpus, so it waits for the tax-practitioner review instead of a guess. Decisions D38, D42, D45, D50, D51.
@@ -115,8 +115,8 @@ corpus, so it waits for the tax-practitioner review instead of a guess. Decision
 | Urdu script | 40 | 12 / 28 |
 | Roman Urdu | 40 | 12 / 28 |
 | English, from FBR pages (D39) | 39 | 0 / 39 |
-| Out of scope / trick | 30 | 9 / 21 |
-| **Total** | **249** | **60 / 189** |
+| Out of scope / trick | 37 | 16 / 21 |
+| **Total** | **256** | **67 / 189** |
 
 Urdu and Roman Urdu questions are natural rewrites of English ones and share their gold sections and split.
 
@@ -166,7 +166,7 @@ split (Hit@5 96.1% vs 94.1%, Roman Urdu 83.3% vs 75.0%) and is now the `/ask` de
 | **All** | 119 | **84.9%** | **81.9%** | **0.764** |
 
 Metric definitions are in [DECISIONS D19](docs/DECISIONS.md). English numbers are optimistic because the questions
-were written from the section text (D20). 248 of 249 questions are machine-verified (D51); a 30-question sample
+were written from the section text (D20). 255 of 256 questions are machine-verified (D51); a 30-question sample
 was checked by an AI legal-review tool, and none by a tax professional yet (D50). Full reports, with every miss:
 [`eval/reports/`](eval/reports/).
 
@@ -175,23 +175,23 @@ was checked by an AI legal-review tool, and none by a tax professional yet (D50)
 | Metric | Target | Result |
 | --- | --- | --- |
 | Retrieval Recall@5 (Urdu / Roman Urdu) | ≥ 80% | `/ask` default: Urdu 92.9% ✅ / Roman Urdu 92.9% ✅; all 168: 95.8%, FBR 94.9% |
-| Answer correctness | ≥ 85% | ❌ so far: **57 of 83 (68.7%)** match the reference, 70 of 83 (84.3%) at least partly (Qwen judge, D56). Strict by group: English 12 of 14, FBR pages 8 of 13, Urdu 17 of 28, Roman Urdu 20 of 28 — partial* |
-| Answers with a correct citation | ≥ 90% | ✅ so far: 77 of 82 answered in-scope questions (93.9%); 1 of 83 wrongly refused — partial* |
-| Correct refusal on out-of-scope questions | ≥ 90% | ❌ so far: 16 of 18 run (88.9%); 3 not run yet — partial* |
+| Answer correctness | ≥ 85% | ❌ so far: **118 of 149 (79.2%)** match the reference, 133 of 149 (89.3%) at least partly (Qwen judge, D56). Strict by group: English 48 of 54 (88.9%), FBR pages 33 of 39 (84.6%), Urdu 17 of 28 (60.7%), Roman Urdu 20 of 28 (71.4%) — partial* |
+| Answers with a correct citation | ≥ 90% | ✅ so far: 142 of 147 answered in-scope questions (96.6%); 2 of 149 wrongly refused — partial* |
+| Correct refusal on out-of-scope questions | ≥ 90% | ✅ all 21 run: 19 of 21 (90.5%) in the run; 21 of 21 with the out-of-scope rules added after it (D67) |
 | Median latency | < 4 s | ❌ ~7.5 s for a new English question on 4 CPU cores (live, rerank ~2.7 s), ~9 s for Roman Urdu; estimated ~8-9 s p50 / ~13 s p95 on 2 vCPU (D62); ~10 ms for a repeated question (answer cache) |
 
 \* End-to-end on the test split ([`eval/run_e2e.py`](eval/run_e2e.py)) with the `/ask` default (gte reranker, D62;
-Tenth Schedule companions, D63), Urdu and Roman Urdu first (`--order mixed`): **101 of 189 run, 88 left** after
-two daily quotas (27 Sep, 28 Sep): all 28 Urdu and 28 Roman Urdu questions, 14 written English, 13 FBR-page questions
-and 18 out-of-scope (16 refused). The wrong or incomplete answers cluster in a few topics: residency (only the
-183-day test), the section 102 foreign-income exemption (not retrieved), a widow's return under section 115(3), the
-mixed-use vehicle perquisite, arrears of salary (section 12(7) election), pension (section 149(1A)) and the PSEB
-freelancer rate (section 154A, wrongly refused). Two out-of-scope questions were answered: provincial urban property
-tax (the builders' tax table of Division VIIIA was presented as a house tax) and "next year's budget" rates. The
-first, English-heavy run with the older reranker scored 38 of 39 (D58); it is superseded.
+Tenth Schedule companions, D63), Urdu and Roman Urdu first (`--order mixed`): **170 of 189 run, 19 left** (written
+English en-076 to en-100) after three daily quotas (27, 28 and 30 Sep). English and FBR-page answers are near the
+target; the Urdu and Roman Urdu answers are not. The wrong or incomplete answers cluster in a few topics: residency
+(only the 183-day test), the section 102 foreign-income exemption (not retrieved), a widow's return under section
+115(3), the mixed-use vehicle perquisite, arrears of salary (section 12(7) election), pension (section 149(1A)), the
+PSEB freelancer rate (section 154A) and section 21 (both wrongly refused). The two out-of-scope questions answered in
+the run (provincial urban property tax, "next year's budget") are refused by the D67 rules. The first, English-heavy
+run with the older reranker scored 38 of 39 (D58); it is superseded.
 Resume: `python -m eval.run_e2e --split test --order mixed`, then `python -m eval.judge_answers --split test` and,
 once 50 in-scope answers exist, `python -m eval.make_answer_check`.
-Report: [`eval/reports/2026-09-28-e2e-test.md`](eval/reports/2026-09-28-e2e-test.md); hand-check sheet:
+Report: [`eval/reports/2026-09-30-e2e-test.md`](eval/reports/2026-09-30-e2e-test.md); hand-check sheet:
 [`eval/answer_check.md`](eval/answer_check.md) (50 answers, seed 2027).
 
 ## Run locally (no Docker)

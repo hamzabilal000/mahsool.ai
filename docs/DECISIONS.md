@@ -874,3 +874,25 @@ Newest first within each milestone. Each entry says what the plan said, what we 
 - **Consequence:** a new question still takes ~6-9 s of search on this hardware plus ~2-3 s of LLM calls; the 4 s
   target (plan) is still not met. Remaining levers: ONNX Runtime for gte (a new dependency), caching the BGE-M3
   embeddings of repeated rewrites, or fewer candidates for Urdu / Roman Urdu (tune on dev).
+
+### D67. Deterministic out-of-scope rules: provincial property tax and "the next budget"
+- **Why:** in the 28 Sep end-to-end run two out-of-scope test questions were answered: "urban immovable property
+  tax on a house in Lahore" (the answer model presented the builders' tax table of Division VIIIA, section 7C, as a
+  house tax) and "next year's budget" salary rates (this year's slabs). The rewrite model decides scope and missed
+  both, although its prompt names property tax as provincial. To keep "tune on dev only", 7 dev out-of-scope
+  questions were written first (oos-031 to oos-037: property tax on a flat or house in English, Urdu and Roman Urdu,
+  UIPT, and the next budget in all three languages; verified by Qwen, like every refusal question).
+- **Rules** (`backend/app/rag/query_rewrite.py`), checked before the rewrite model is called, so a match costs no
+  quota: (1) "urban immovable property tax" or "UIPT" → `provincial_tax`; plain "property tax" (English, Roman Urdu,
+  "پراپرٹی ٹیکس") only when the question has no word for selling, buying, transfer, rent, capital gain, advance or
+  withholding tax, because people also say "property tax" for the income tax of sections 236C, 236K and 155; (2)
+  "next / upcoming / coming / new budget", "agle / aane wale / naye budget", "اگلے / آنے والے / نئے … بجٹ" without a
+  written tax year → the question is about tax year 2028, and the existing future-law refusal answers it ("The law
+  for tax year 2028 has not been made yet"). The answer cache key includes the rules' version.
+- **Dev:** all 7 new questions refused (no model call); the other dev out-of-scope questions unchanged (8 of 9 run;
+  oos-029, SRB registration, reached the answer model and stopped at the daily limit: a scope miss of the rewrite
+  model, open). The rules fire on **none** of the 219 in-scope questions (dev and test). **Test, once:** they catch
+  oos-008 and oos-017 (the two misses) and oos-023; all three refused
+  (`eval/reports/2026-09-30-e2e-test-scope-rules.md`), so out-of-scope refusal on the test split becomes 21 of 21 with
+  the rules (19 of 21 in the 30 Sep run, which started before the change).
+- **Limits:** keyword rules only cover these phrasings; other provincial taxes still rely on the rewrite model.

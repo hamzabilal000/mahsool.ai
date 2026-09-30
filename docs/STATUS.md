@@ -1,16 +1,15 @@
 # Project status and handoff
 
-Last updated: 2026-09-28 (quota runs: end to end 101 of 189, answer judge 83, the 50-answer sheet; reranker
-batching D66; brand restyle and one-screen Ask page; roadmap in [`ROADMAP.md`](ROADMAP.md))
+Last updated: 2026-09-30 (quota runs: end to end 170 of 189, answer judge 149; out-of-scope rules D67; roadmap in
+[`ROADMAP.md`](ROADMAP.md))
 
-## Overall status (2026-09-28)
+## Overall status (2026-09-30)
 Phase 1 is ready to launch once Hamza runs the backend on his laptop and deploys the frontend on Vercel (launch
-checklist below; the Vercel deploy cannot be done from a session: no `VERCEL_TOKEN`, `api.vercel.com` blocked). The
-web app now has the carousel's brand look and a minimal one-screen Ask page (checked by a browser layout test). The
-end-to-end eval has run **101 of 189** test questions (all 56 Urdu / Roman Urdu): 77 of 82 answered in-scope
-questions cite a gold section (93.9%), 16 of 18 out-of-scope questions refused, and the answer judge says **57 of 83
-(68.7%)** match the reference (84.3% at least partly): below the 85% target; the misses cluster in a few topics
-(Next, step 3). Reranking is a bit faster (D66). Roughly 49% of the whole project is done (Phase 1 about 93%).
+checklist below; the Vercel deploy cannot be done from a session). The end-to-end eval has run **170 of 189** test
+questions: 144 of 149 answered in-scope questions cite a gold section (96.6%), and the answer judge says **118 of 149
+(79.2%)** match the reference, 133 of 149 (89.3%) at least partly. English (88.9%) and FBR-page questions (84.6%) are
+near the 85% target; Urdu (60.7%) and Roman Urdu (71.4%) are not. Out-of-scope refusal: 19 of 21 in the run, 21 of
+21 with the new deterministic rules (D67). Roughly 50% of the whole project is done (Phase 1 about 94%).
 
 ## Working rules (from Hamza)
 - Hamza is the only author. No "Co-Authored-By", "Generated with …" or other AI attribution in commits, PRs, code,
@@ -37,11 +36,13 @@ Groq and Gemini stay on free tiers (D53). Quota-bound runs go first; each stops 
 
 | # | Command | Left after 2026-09-27 | Quota |
 | --- | --- | --- | --- |
-| 1 | `python -m eval.run_e2e --split test --order mixed` | 88 of 189 (101 run: Urdu 28 of 28, Roman Urdu 28 of 28, English 14, FBR 13, out of scope 18); next come the written English and FBR questions, then the last 3 out-of-scope | GPT OSS 120B, ~55-60 answers/day |
-| 2 | `python -m eval.judge_answers --split test` | new answers after each e2e run (83 judged) | Qwen |
-| 3 | `python -m eval.make_answer_check` | **done** 2026-09-28 (50 of 82 answered, seed 2027): Hamza fills in `eval/answer_check.md`; do not regenerate | none |
-| 4 | `python -m eval.verify_testset` | Qwen: done (en-092 waits for a practitioner, D58); Gemini second opinion: 143 of 169 left (24 of 26 agree); en-025 and en-028 were changed and need its re-check | Gemini 20/day (503 "high demand" errors use it up too) |
+| 1 | `python -m eval.run_e2e --split test --order mixed` | 19 of 189 (170 run; left: en-076 to en-100, written English) | GPT OSS 120B, ~65 answers/day |
+| 2 | `python -m eval.judge_answers --split test` | new answers after each e2e run (149 judged) | Qwen |
+| 3 | `python -m eval.make_answer_check` | **done** 2026-09-28: Hamza fills in `eval/answer_check.md`; do not regenerate | none |
+| 4 | `python -m eval.verify_testset` | Qwen: done (255 of 256; en-092 waits for a practitioner, D58); Gemini second opinion: 136 of 176 left (38 of 40 agree); en-035 changed and needs its re-check | Gemini 20/day (503 / 429 errors use it up too) |
 | 5 | `python -m eval.summary` | refresh the eval page numbers | none |
+
+When the e2e run is complete, run the D67 rule check once more on the full out-of-scope set (`--ids` of all 21).
 
 When a judge flags a question: check the flag against the law text, record the fix in `eval/review/changes.json`,
 run `python -m eval.apply_changes` (it also updates translations), and commit. Update the counts above, in README and
@@ -66,10 +67,22 @@ Do these in order. Steps 1-4 are one time only.
    message.
 6. [ ] Put the Vercel link in README ("Live") and the GitHub repo description.
 7. [ ] Fill in the 50-answer sheet `eval/answer_check.md` (yes / no per answer, no tax knowledge needed).
-8. [ ] Before posting publicly: answer correctness is 57 of 83 strict (68.7%), below the 85% target; fix
+8. [ ] Before posting publicly: answer correctness is 118 of 149 strict (79.2%), below the 85% target (Urdu 60.7%,
+   Roman Urdu 71.4%); fix
    the four known clusters (next section) or state them in the post. Demo video, LinkedIn post 1.
 
 ## Done
+- **M5, 2026-09-30:**
+  - Quota runs: end to end 170 of 189 (+69: the written English and FBR questions), answer judge 149 (118 strict,
+    133 lenient). Gemini second opinion: 15 more (38 of 40 agree over all); its flag on en-035 (section 111: the
+    head "Income from Other Sources" and the 111(4) exception for remittances up to Rs. 5 million) was right, fixed
+    and re-verified by Qwen.
+  - Out-of-scope rules (D67): provincial property tax and "the next budget" are refused before the rewrite model;
+    7 new dev questions (oos-031 to oos-037, verified); no in-scope question affected; test check once: oos-008,
+    oos-017, oos-023 refused.
+  - `verify_testset --no-second-opinion` also keeps the second-opinion summary in `eval/FLAGGED.md` (from the stored
+    verdicts).
+
 - **M5, 2026-09-28:**
   - Quota runs: end to end 101 of 189 (+59), answer judge 83 (57 strict / 70 lenient), the 50-answer sheet
     generated once (seed 2027). Gemini second opinion: 5 more (24 of 26 agree over all); its flags on en-025 (section
@@ -222,20 +235,19 @@ Postgres egress): start it with `env -u DATABASE_URL`. Groq's per-minute token c
 ## Next: rest of Milestone 5
 1. Quota runs each session (table above).
 2. Launch checklist above (Hamza), then README "Live" link.
-3. Answer failures from the gte run (write dev questions for each topic first, then tune on dev; do not fit the test
-   questions): residency (section 82: only the 183-day test), the section 102 foreign-income exemption (not
-   retrieved), a widow's return (section 115(3)), the mixed-use vehicle perquisite, salary arrears (section 12(7)
-   election), pension (section 149(1A)), PSEB freelancers (section 154A, wrongly refused), and two out-of-scope
-   questions answered (provincial urban immovable property tax got the builders' tax table of Division VIIIA; "next
-   year's budget" got this year's slabs). Candidate fix for the last two: deterministic out-of-scope rules for
-   provincial property tax and future budgets, like the section lookup.
+3. Answer failures (write dev questions for each topic first, then tune on dev; do not fit the test questions): the
+   Urdu / Roman Urdu answers (60.7% / 71.4% strict) on residency (section 82: only the 183-day test), the section 102
+   foreign-income exemption (not retrieved), a widow's return (section 115(3)), the mixed-use vehicle perquisite,
+   pension (section 149(1A)), PSEB freelancers (section 154A, wrongly refused); FBR questions on salary arrears
+   (section 12(7)), the definition of "business" (section 2) and section 21 (wrongly refused). Scope: oos-029 (SRB
+   registration, dev) reached the answer model.
 4. Latency ~6-9 s of search (D62, D66); next levers: ONNX Runtime for gte, caching query embeddings, fewer candidates
    for Urdu / Roman Urdu.
 5. Langfuse, demo video, LinkedIn post 1.
 
 ## Open for Milestone 5
 - Vercel project not created (step 4 of the checklist).
-- Answer correctness 57 of 83 strict (68.7%, target 85%); out-of-scope refusals 16 of 18 (target 90%).
+- Answer correctness 118 of 149 strict (79.2%, target 85%), weakest in Urdu / Roman Urdu.
 - D63 companions add ~1k prompt tokens on ~1 in 4 questions (quota).
 - The Oracle kit and the Windows script have not run on a real VM / Windows machine (syntax-checked; the
   PowerShell `.env` helpers were run under PowerShell 7 on Linux).
