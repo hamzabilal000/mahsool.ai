@@ -41,7 +41,7 @@ from datetime import date
 from itertools import pairwise
 from pathlib import Path
 
-from backend.app.config import get_settings
+from backend.app.config import get_settings, role_model
 from backend.app.llm import LLMClient, LLMError
 from backend.app.rag.corpus import load_chunks
 from backend.app.rag.factory import LLMClients
@@ -496,11 +496,16 @@ def main() -> None:
     second = None if args.no_second_opinion else make_judge(clients, SECOND_OPINION_ROLE)
     items = load_testset()
     results = verify(items, judge, second)
+    if second is None:  # keep the stored second opinions in the report (their reasons are not kept)
+        for item in items:
+            results[item.id]["second_opinion"] = item.second_opinion
+            results[item.id].setdefault("second_opinion_reason", None)
 
     REPORTS.mkdir(exist_ok=True)
     report = REPORTS / f"{date.today().isoformat()}-verify.json"
     report.write_text(json.dumps(results, indent=1, ensure_ascii=False), encoding="utf-8")
-    print(write_flagged(items, results, judge.name, second.name if second else None))
+    stored = f"{role_model(get_settings(), SECOND_OPINION_ROLE)[1]}, stored verdicts"
+    print(write_flagged(items, results, judge.name, second.name if second else stored))
     if not args.dry_run:
         rows = [json.loads(line) for line in TESTSET.read_text(encoding="utf-8").splitlines()]
         reviewed = reviewed_ids()
