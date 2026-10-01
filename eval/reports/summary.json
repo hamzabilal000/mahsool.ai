@@ -1,7 +1,7 @@
 {
- "generated": "2026-09-30",
+ "generated": "2026-10-01",
  "testset": {
-  "questions": 256,
+  "questions": 262,
   "test_split": 189,
   "test_by_group": {
    "english": 73,
@@ -10,13 +10,13 @@
    "out_of_scope": 21,
    "fbr": 39
   },
-  "machine_verified": 255,
+  "machine_verified": 257,
   "review_verified": 30,
   "human_verified": 0,
-  "not_verified_yet": 1,
-  "second_opinion_agreed": 38,
-  "second_opinion_checked": 40,
-  "directly_judged": 176,
+  "not_verified_yet": 5,
+  "second_opinion_agreed": 52,
+  "second_opinion_checked": 54,
+  "directly_judged": 178,
   "review_sample": 30,
   "review_by": "ChatGPT (OpenAI), an AI legal-review tool with web access, 26 Sep 2026",
   "review_kind": "AI tool (not a human or professional review)",
@@ -261,17 +261,17 @@
   },
   {
    "setup": "Fast, gte (default)",
-   "description": "the same with the smaller gte reranker, 256 tokens (/ask, D62)",
-   "date": "2026-09-26",
+   "description": "the same with the smaller gte reranker, 256 tokens (/ask, D62; glossary row D68)",
+   "date": "2026-10-01",
    "hit_at_5": {
     "english": 97.3,
     "fbr": 97.4,
     "urdu": 96.4,
-    "roman_urdu": 89.3,
-    "all": 95.8
+    "roman_urdu": 92.9,
+    "all": 96.4
    },
-   "recall_at_5_all": 93.2,
-   "mrr_at_10_all": 0.848,
+   "recall_at_5_all": 93.8,
+   "mrr_at_10_all": 0.849,
    "n": {
     "english": 73,
     "fbr": 39,
@@ -282,20 +282,20 @@
   }
  ],
  "end_to_end": {
-  "date": "2026-09-30",
+  "date": "2026-10-01",
   "questions": 189,
-  "run": 170,
-  "not_run": 19,
-  "in_scope_run": 149,
-  "answered": 98.7,
-  "correct_citation": 95.3,
-  "correct_citation_answered": 96.6,
+  "run": 189,
+  "not_run": 0,
+  "in_scope_run": 168,
+  "answered": 97.6,
+  "correct_citation": 94.6,
+  "correct_citation_answered": 97.0,
   "out_of_scope_run": 21,
-  "out_of_scope_refused": 90.5,
+  "out_of_scope_refused": 100,
   "by_group": {
    "english": {
-    "n": 54,
-    "correct_citation": 100
+    "n": 73,
+    "correct_citation": 97.3
    },
    "fbr": {
     "n": 39,
@@ -312,11 +312,11 @@
   }
  },
  "answer_correctness": {
-  "date": "2026-09-30",
-  "judged": 149,
-  "correct_strict": 79.2,
-  "correct_lenient": 89.3,
-  "not_run_end_to_end": 19
+  "date": "2026-10-01",
+  "judged": 168,
+  "correct_strict": 76.8,
+  "correct_lenient": 86.9,
+  "not_run_end_to_end": 0
  },
  "targets": [
   {

@@ -38,7 +38,7 @@ SETUPS = [
     (
         "pipeline-fast-gte-test",
         "Fast, gte (default)",
-        "the same with the smaller gte reranker, 256 tokens (/ask, D62)",
+        "the same with the smaller gte reranker, 256 tokens (/ask, D62; glossary row D68)",
     ),
 ]
 

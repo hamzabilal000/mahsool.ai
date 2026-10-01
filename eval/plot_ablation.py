@@ -29,7 +29,8 @@ SETUPS = [
     ("pipeline-rewrite-rerank-test", "+ rewrite\n+ reranker"),
     ("pipeline-full-test", "+ glossary\n= full pipeline"),
     ("pipeline-full-max-test", "full, rerank\nmax*"),
-    ("pipeline-fast-test", "15 candidates,\nmax* for Urdu\n= /ask default"),
+    ("pipeline-fast-test", "15 candidates,\nmax* for Urdu,\nbge"),
+    ("pipeline-fast-gte-test", "gte reranker\n+ glossary\n= /ask default"),
 ]
 GROUPS = [
     ("english", "English (written)"),
