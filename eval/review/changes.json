@@ -403,5 +403,15 @@
   "reason": "Gemini: the head of income (Income from Other Sources) and the section 111(4) exception for foreign remittances up to Rs. 5 million were missing; the agricultural-income proviso was added from the same section.",
   "reference_answer": "If no explanation is offered, or the Commissioner finds it unsatisfactory, the unexplained amount is included in the person's income chargeable to tax under the head 'Income from Other Sources' (section 111(1)). This does not apply to foreign exchange of up to Rs. 5 million in a tax year remitted through normal banking channels and encashed into rupees by a scheduled bank, with the bank's certificate (section 111(4)); an explanation by way of agricultural income is accepted to the extent worked back from the provincial agricultural income tax paid.",
   "before": "If no explanation is offered, or the Commissioner finds it unsatisfactory, the unexplained amount is included in the person's income chargeable to tax."
+ },
+ {
+  "id": "en-046",
+  "origin": "second opinion (Gemini), checked against the law text",
+  "basis": [
+   "ITO2001-s120"
+  ],
+  "reason": "Gemini: the automated-adjustment condition of section 120(2A) was missing; it applies from a date the Board notifies (provisos to section 120(1) and 120(2A)).",
+  "reference_answer": "When a complete return is furnished, the Commissioner is taken to have made an assessment and the return is treated as an assessment order (section 120(1)). Once the Board notifies the date for automated processing under section 120(2A), this applies only after the system adjustments (arithmetical errors, incorrect claims apparent from the return) are made after a system-generated notice; the assessment is then the adjusted amounts on the date of the adjustment, and if no adjustment is made within six months of filing, the declared amounts are taken as adjusted on the day the return was filed.",
+  "before": "When a complete return is furnished, the Commissioner is taken to have made an assessment and the return is treated as an assessment order."
  }
 ]
