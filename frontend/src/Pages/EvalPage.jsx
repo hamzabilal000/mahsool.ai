@@ -125,7 +125,7 @@ export function EvalPage() {
                         <p className="text-ink-2">
                             {ts.questions} questions ({ts.test_split} on the test split). {ts.machine_verified} are
                             machine-verified by an independent LLM judge (Qwen) plus an automatic number check
-                            {ts.not_verified_yet ? `; ${ts.not_verified_yet} wait for the judge's re-check with its new completeness question` : ""}.
+                            {ts.not_verified_yet ? `; ${ts.not_verified_yet} are not verified yet (waiting for a tax practitioner or a native speaker's check of the wording)` : ""}.
                             A second judge (Gemini) agreed on {ts.second_opinion_agreed} of {ts.second_opinion_checked} it checked.
                         </p>
                         {ts.review_by && ts.review_result && (
