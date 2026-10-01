@@ -896,3 +896,26 @@ Newest first within each milestone. Each entry says what the plan said, what we 
   (`eval/reports/2026-09-30-e2e-test-scope-rules.md`), so out-of-scope refusal on the test split becomes 21 of 21 with
   the rules (19 of 21 in the 30 Sep run, which started before the change).
 - **Limits:** keyword rules only cover these phrasings; other provincial taxes still rely on the rewrite model.
+
+### D68. Glossary row for foreign salary (section 102); the end-to-end eval is complete
+- **End to end, complete (2026-10-01):** all 189 test questions run with the `/ask` default (gte, D62; ATL
+  companions, D63; out-of-scope rules, D67) over four daily quotas. In scope (168): 164 answered, **159 of 164 cite a
+  gold section (97.0%)**; out of scope: **21 of 21 refused**. Answer judge (Qwen, D56): **129 of 168 strict (76.8%)**,
+  146 of 168 lenient (86.9%); strict by group: English 59 of 73 (80.8%), FBR pages 33 of 39 (84.6%), Urdu 17 of 28
+  (60.7%), Roman Urdu 20 of 28 (71.4%). The last 19 English questions (en-076 to en-100) are the condition-focused
+  ones added after the legal review (D50) and pulled English down from 88.9%.
+- **Retrieval fix, tuned on dev:** section 102 (foreign-source salary of a resident individual, exempt if foreign
+  tax was paid) was missed by Urdu and Roman Urdu questions in the test run. Six dev questions were written first
+  (en-101 foreign salary, en-102 PSEB export proceeds, each with Urdu and Roman Urdu versions; the English ones
+  verified by Qwen, the 4 translations wait for a native speaker's language check, D41). Dev before: section 102
+  missed in all three languages (English: rank 18 after fusion, outside the 15 reranked candidates; Urdu / Roman
+  Urdu: found but reranked below sections 50, 51 and 103), PSEB found in all three. Fix: one glossary row mapping
+  "salary / job abroad" phrasings (English, Roman Urdu, Urdu, including "Saudi" and "Dubai", where most Pakistani
+  workers abroad are) to "foreign-source salary of a resident individual" (section 102). **Dev Hit@5 93.0% →
+  98.2%** (section 102 first in all three; only those three rewrites changed). **Test, once: 95.8% → 96.4%**
+  (ru-024 found; Roman Urdu 89.3% → 92.9%; no question lost); it is the new default row on the eval page and in the
+  ablation chart (whose last bar was still the bge setup and is now the gte default).
+- **Not yet measured:** answers of the three test questions whose rewrite changed (en-032, ur-024, ru-024) are
+  re-asked by the next `run_e2e` (their prompts changed, so the answer cache misses).
+- **Test set:** en-046 (section 120: automated adjustments under 120(2A) once the Board notifies a date) fixed from
+  Gemini's flag and re-verified; Gemini agrees on 52 of 54.

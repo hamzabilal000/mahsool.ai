@@ -1,15 +1,15 @@
 # Project status and handoff
 
-Last updated: 2026-09-30 (quota runs: end to end 170 of 189, answer judge 149; out-of-scope rules D67; roadmap in
-[`ROADMAP.md`](ROADMAP.md))
+Last updated: 2026-10-01 (end to end complete: 189 of 189, answer judge 168; foreign-salary glossary row D68;
+roadmap in [`ROADMAP.md`](ROADMAP.md))
 
-## Overall status (2026-09-30)
+## Overall status (2026-10-01)
 Phase 1 is ready to launch once Hamza runs the backend on his laptop and deploys the frontend on Vercel (launch
-checklist below; the Vercel deploy cannot be done from a session). The end-to-end eval has run **170 of 189** test
-questions: 144 of 149 answered in-scope questions cite a gold section (96.6%), and the answer judge says **118 of 149
-(79.2%)** match the reference, 133 of 149 (89.3%) at least partly. English (88.9%) and FBR-page questions (84.6%) are
-near the 85% target; Urdu (60.7%) and Roman Urdu (71.4%) are not. Out-of-scope refusal: 19 of 21 in the run, 21 of
-21 with the new deterministic rules (D67). Roughly 50% of the whole project is done (Phase 1 about 94%).
+checklist below). The end-to-end eval is **complete** (189 of 189 test questions): 159 of 164 answered in-scope
+questions cite a gold section (97.0%), 21 of 21 out-of-scope questions are refused, and the answer judge says **129
+of 168 (76.8%)** match the reference, 146 of 168 (86.9%) at least partly. The 85% correctness target is not met:
+English 80.8%, FBR pages 84.6%, Urdu 60.7%, Roman Urdu 71.4%. Retrieval on the test split is Hit@5 96.4% (D68).
+Roughly 51% of the whole project is done (Phase 1 about 95%).
 
 ## Working rules (from Hamza)
 - Hamza is the only author. No "Co-Authored-By", "Generated with …" or other AI attribution in commits, PRs, code,
@@ -36,13 +36,11 @@ Groq and Gemini stay on free tiers (D53). Quota-bound runs go first; each stops 
 
 | # | Command | Left after 2026-09-27 | Quota |
 | --- | --- | --- | --- |
-| 1 | `python -m eval.run_e2e --split test --order mixed` | 19 of 189 (170 run; left: en-076 to en-100, written English) | GPT OSS 120B, ~65 answers/day |
-| 2 | `python -m eval.judge_answers --split test` | new answers after each e2e run (149 judged) | Qwen |
+| 1 | `python -m eval.run_e2e --split test --order mixed` | **complete** (189 of 189); re-run after any change that alters prompts: it re-asks only the questions whose prompt changed (next: en-032, ur-024, ru-024 after D68) | GPT OSS 120B, ~65 answers/day |
+| 2 | `python -m eval.judge_answers --split test` | after each e2e run (168 judged) | Qwen |
 | 3 | `python -m eval.make_answer_check` | **done** 2026-09-28: Hamza fills in `eval/answer_check.md`; do not regenerate | none |
-| 4 | `python -m eval.verify_testset` | Qwen: done (255 of 256; en-092 waits for a practitioner, D58); Gemini second opinion: 136 of 176 left (38 of 40 agree); en-035 changed and needs its re-check | Gemini 20/day (503 / 429 errors use it up too) |
+| 4 | `python -m eval.verify_testset` | Qwen: 257 of 262 (en-092 waits for a practitioner; ur-041, ru-041, ur-042, ru-042 wait for a native-speaker language check); Gemini second opinion: 124 of 178 left (52 of 54 agree); en-046 changed and needs its re-check | Gemini 20/day (503 / 429 errors use it up too) |
 | 5 | `python -m eval.summary` | refresh the eval page numbers | none |
-
-When the e2e run is complete, run the D67 rule check once more on the full out-of-scope set (`--ids` of all 21).
 
 When a judge flags a question: check the flag against the law text, record the fix in `eval/review/changes.json`,
 run `python -m eval.apply_changes` (it also updates translations), and commit. Update the counts above, in README and
@@ -67,11 +65,21 @@ Do these in order. Steps 1-4 are one time only.
    message.
 6. [ ] Put the Vercel link in README ("Live") and the GitHub repo description.
 7. [ ] Fill in the 50-answer sheet `eval/answer_check.md` (yes / no per answer, no tax knowledge needed).
-8. [ ] Before posting publicly: answer correctness is 118 of 149 strict (79.2%), below the 85% target (Urdu 60.7%,
+8. [ ] Before posting publicly: answer correctness is 129 of 168 strict (76.8%), below the 85% target (Urdu 60.7%,
    Roman Urdu 71.4%); fix
    the four known clusters (next section) or state them in the post. Demo video, LinkedIn post 1.
 
 ## Done
+- **M5, 2026-10-01:**
+  - End to end **complete** (+19, 189 of 189): 97.0% of answered in-scope questions cite a gold section, 21 of 21
+    out-of-scope refused; answer judge 168 (129 strict, 146 lenient).
+  - Gemini second opinion: 14 more (52 of 54 agree); its flag on en-046 (section 120(2A) automated adjustments) was
+    right, fixed and re-verified by Qwen.
+  - D68: 6 dev questions (foreign salary, PSEB; 2 verified, 4 translations wait for a native speaker); one glossary
+    row for foreign salary (section 102): dev Hit@5 93.0% → 98.2%, test once 95.8% → 96.4%. Eval page default row
+    and ablation chart updated (the chart's last bar was still the bge setup).
+  - Eval page: the "not verified yet" note now says why (practitioner or native-speaker check).
+
 - **M5, 2026-09-30:**
   - Quota runs: end to end 170 of 189 (+69: the written English and FBR questions), answer judge 149 (118 strict,
     133 lenient). Gemini second opinion: 15 more (38 of 40 agree over all); its flag on en-035 (section 111: the
@@ -235,19 +243,20 @@ Postgres egress): start it with `env -u DATABASE_URL`. Groq's per-minute token c
 ## Next: rest of Milestone 5
 1. Quota runs each session (table above).
 2. Launch checklist above (Hamza), then README "Live" link.
-3. Answer failures (write dev questions for each topic first, then tune on dev; do not fit the test questions): the
-   Urdu / Roman Urdu answers (60.7% / 71.4% strict) on residency (section 82: only the 183-day test), the section 102
-   foreign-income exemption (not retrieved), a widow's return (section 115(3)), the mixed-use vehicle perquisite,
-   pension (section 149(1A)), PSEB freelancers (section 154A, wrongly refused); FBR questions on salary arrears
-   (section 12(7)), the definition of "business" (section 2) and section 21 (wrongly refused). Scope: oos-029 (SRB
-   registration, dev) reached the answer model.
+3. Answer failures (write dev questions for each topic first, then tune on dev; do not fit the test questions):
+   Urdu / Roman Urdu answers (60.7% / 71.4% strict) on residency (section 82: only the 183-day test), a widow's return
+   (section 115(3)), the mixed-use vehicle perquisite, pension (section 149(1A)), PSEB when the question says "bahar
+   se paisa" (the glossary sends it to section 236Y); the condition-focused English questions en-076 to en-100
+   (80.8%); FBR questions on salary arrears (section 12(7)), the definition of "business" (section 2), section 21,
+   and en-087 / en-100 wrongly refused. Scope: oos-029 (SRB registration, dev) reached the answer model. Next e2e run
+   re-asks en-032, ur-024, ru-024 (D68).
 4. Latency ~6-9 s of search (D62, D66); next levers: ONNX Runtime for gte, caching query embeddings, fewer candidates
    for Urdu / Roman Urdu.
 5. Langfuse, demo video, LinkedIn post 1.
 
 ## Open for Milestone 5
 - Vercel project not created (step 4 of the checklist).
-- Answer correctness 118 of 149 strict (79.2%, target 85%), weakest in Urdu / Roman Urdu.
+- Answer correctness 129 of 168 strict (76.8%, target 85%), weakest in Urdu / Roman Urdu.
 - D63 companions add ~1k prompt tokens on ~1 in 4 questions (quota).
 - The Oracle kit and the Windows script have not run on a real VM / Windows machine (syntax-checked; the
   PowerShell `.env` helpers were run under PowerShell 7 on Linux).
@@ -256,6 +265,7 @@ Postgres egress): start it with `env -u DATABASE_URL`. Groq's per-minute token c
 ## Open items for Hamza
 - The launch checklist above (laptop, Vercel).
 - Fill in the 50-answer sheet `eval/answer_check.md` (yes / no and a few words why; about 30 minutes).
+- Check the wording of the 4 new dev translations (ur-041, ru-041, ur-042, ru-042) and mark `language_ok` (D41).
 - Optional: a GitHub Release `index-v1` with `data/index/qdrant-index.tar.gz` as its asset (the script prefers it).
 - To test Neon from a cloud session, allow outbound Postgres (port 5432) to `*.neon.tech` in the environment's
   network settings, or test it from your machine.
