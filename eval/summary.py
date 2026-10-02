@@ -37,8 +37,13 @@ SETUPS = [
     ("pipeline-fast-test", "Fast, bge", "15 candidates, max score for Urdu only (D52)"),
     (
         "pipeline-fast-gte-test",
-        "Fast, gte (default)",
-        "the same with the smaller gte reranker, 256 tokens (/ask, D62; glossary row D68)",
+        "Fast, gte",
+        "the same with the smaller gte reranker, 256 tokens (D62; glossary row D68)",
+    ),
+    (
+        "pipeline-fast-gte-d69-test",
+        "+ glossary sections (default)",
+        "glossary sections in the reranker pool, long chunks scored by best window (/ask, D69)",
     ),
 ]
 

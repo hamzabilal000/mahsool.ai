@@ -1,7 +1,7 @@
 {
- "generated": "2026-10-01",
+ "generated": "2026-10-02",
  "testset": {
-  "questions": 262,
+  "questions": 287,
   "test_split": 189,
   "test_by_group": {
    "english": 73,
@@ -10,13 +10,13 @@
    "out_of_scope": 21,
    "fbr": 39
   },
-  "machine_verified": 257,
+  "machine_verified": 270,
   "review_verified": 30,
   "human_verified": 0,
-  "not_verified_yet": 5,
-  "second_opinion_agreed": 52,
-  "second_opinion_checked": 54,
-  "directly_judged": 178,
+  "not_verified_yet": 17,
+  "second_opinion_agreed": 56,
+  "second_opinion_checked": 58,
+  "directly_judged": 191,
   "review_sample": 30,
   "review_by": "ChatGPT (OpenAI), an AI legal-review tool with web access, 26 Sep 2026",
   "review_kind": "AI tool (not a human or professional review)",
@@ -260,8 +260,8 @@
    }
   },
   {
-   "setup": "Fast, gte (default)",
-   "description": "the same with the smaller gte reranker, 256 tokens (/ask, D62; glossary row D68)",
+   "setup": "Fast, gte",
+   "description": "the same with the smaller gte reranker, 256 tokens (D62; glossary row D68)",
    "date": "2026-10-01",
    "hit_at_5": {
     "english": 97.3,
@@ -272,6 +272,27 @@
    },
    "recall_at_5_all": 93.8,
    "mrr_at_10_all": 0.849,
+   "n": {
+    "english": 73,
+    "fbr": 39,
+    "urdu": 28,
+    "roman_urdu": 28,
+    "all": 168
+   }
+  },
+  {
+   "setup": "+ glossary sections (default)",
+   "description": "glossary sections in the reranker pool, long chunks scored by best window (/ask, D69)",
+   "date": "2026-10-02",
+   "hit_at_5": {
+    "english": 98.6,
+    "fbr": 97.4,
+    "urdu": 100.0,
+    "roman_urdu": 100.0,
+    "all": 98.8
+   },
+   "recall_at_5_all": 96.3,
+   "mrr_at_10_all": 0.892,
    "n": {
     "english": 73,
     "fbr": 39,
