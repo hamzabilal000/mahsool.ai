@@ -1,0 +1,439 @@
+{
+ "summary": {
+  "english": {
+   "n": 4,
+   "answered": 1.0,
+   "correct_citation": 1,
+   "correct_citation_answered": 1
+  },
+  "in_scope": {
+   "n": 11,
+   "answered": 1.0,
+   "correct_citation": 1,
+   "correct_citation_answered": 1
+  },
+  "urdu": {
+   "n": 3,
+   "answered": 1.0,
+   "correct_citation": 1,
+   "correct_citation_answered": 1
+  },
+  "roman_urdu": {
+   "n": 4,
+   "answered": 1.0,
+   "correct_citation": 1,
+   "correct_citation_answered": 1
+  },
+  "not_run": []
+ },
+ "rows": [
+  {
+   "id": "en-103",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82"
+   ],
+   "citation_correct": true,
+   "answer": "Yes, you are a resident individual for tax year 2027. Although you were present in Pakistan for only 170 days (less than the 183‑day threshold in clause (a)), you are a Pakistani citizen who is not a resident taxpayer of any other country, which satisfies clause (d) of Section 82 that a citizen not resident elsewhere is deemed a resident individual.[1]",
+   "search_queries": [
+    "Am I a resident individual of Pakistan if I lived 170 days in Pakistan and 195 days in the UAE this tax year and am not a resident taxpayer of the UAE?",
+    "resident status based on days lived in Pakistan under s.81 and s.82 of the Income Tax Ordinance 2001",
+    "resident status for UAE non-resident under Pakistani tax law"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 9629,
+    "answer": 1883,
+    "total": 11513,
+    "llm_wait": 0,
+    "llm_api": 2610,
+    "rewrite": 729,
+    "retrieval": 3212,
+    "rerank": 5686,
+    "answer_llm": 1883,
+    "citation_check": 0,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ur-043",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82"
+   ],
+   "citation_correct": true,
+   "answer": "نہیں، آپ اس ٹیکس سال (2027) میں پاکستان کے رہائشی ٹیکس دہندہ نہیں شمار ہوں گے کیونکہ آپ نے پاکستان میں مجموعی طور پر 183 دن یا اس سے زیادہ قیام نہیں کیا (آپ نے صرف 170 دن رہے) اور آپ نے کسی دوسرے ملک (متحدہ عرب امارات) میں 182 دن سے زیادہ قیام کیا ہے، جو سیکشن 82 کی شرط (d) کے تحت رہائشی ہونے سے مستثنیٰ کرتا ہے۔",
+   "search_queries": [
+    "Does a Pakistani citizen who spent 170 days in Pakistan and 195 days in UAE during the tax year qualify as a resident taxpayer in Pakistan?",
+    "Under Section 82 of the Income Tax Ordinance 2001, how many days of presence in Pakistan determine residency status?",
+    "What is the definition of a resident taxpayer in Pakistan according to Section 74 of the Income Tax Ordinance 2001?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 10040,
+    "answer": 1926,
+    "total": 11967,
+    "llm_wait": 0,
+    "llm_api": 2362,
+    "rewrite": 439,
+    "retrieval": 1268,
+    "rerank": 8332,
+    "answer_llm": 1926,
+    "citation_check": 0,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ru-043",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82"
+   ],
+   "citation_correct": true,
+   "answer": "Aap 170 din Pakistan mein rahe hain jo ke Section 82 ke clause (a) ke mutabiq 183 din se kam hai, is liye aap resident individual nahi samjhay jate [1]. Saath hi, aap Dubai mein 195 din rahe hain jo ke clause (d) ke mutabiq 182 din se zyada hai, is se bhi aap resident nahi hain [1]. Is liye aap is tax year 2027 ke liye Pakistan ka resident nahi hain [1].",
+   "search_queries": [
+    "Is a Pakistani who spent 170 days in Pakistan and 195 days in Dubai a resident taxpayer in Pakistan?",
+    "What are the residency criteria under Section 81 and 82 of the Income Tax Ordinance 2001 regarding days spent in Pakistan?",
+    "How does the 183-day rule apply to determining residency status for tax purposes in Pakistan?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 10162,
+    "answer": 2269,
+    "total": 12432,
+    "llm_wait": 0,
+    "llm_api": 2787,
+    "rewrite": 520,
+    "retrieval": 1021,
+    "rerank": 8620,
+    "answer_llm": 2269,
+    "citation_check": 0,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "en-106",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "cited": [
+    "ITO2001-s149",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "citation_correct": true,
+   "answer": "Yes. Because you are under 70 and your pension exceeds Rs 10 million, the person paying the pension must deduct tax on the amount above Rs 10 million (Rs 2 million) at the rate prescribed in Division I of Part I of the First Schedule, which is 5% of the excess amount. This applies for tax year 2027.",
+   "search_queries": [
+    "Does the employer deduct tax from a Rs. 12 million pension for a 65-year-old retired person in this tax year?",
+    "Tax deduction on pension over Rs. 10 million for former employees below 70 under s149(1A)",
+    "Procedure for employer to deduct tax at source from pension payments under Income Tax Ordinance 2001"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1004,
+    "answer": 1516,
+    "total": 2522,
+    "rewrite": 1,
+    "retrieval": 1002,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 1516,
+    "answer_llm": 1517,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "ur-046",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "cited": [
+    "ITO2001-s149",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-s12"
+   ],
+   "citation_correct": true,
+   "answer": "آپ کی عمر پینسٹھ سال ہے اور ریٹائرمنٹ کے بعد آپ کو سابق آجر سے 12 ملین روپے کی پنشن ملے گی۔ اس میں پہلی 10 ملین روپے پر کوئی ٹیکس نہیں لگے گا اور 10 ملین سے زائد 2 ملین روپے پر 5 فیصد کی شرح سے ٹیکس کٹایا جائے گا، یعنی تقریباً 100,000 روپے ٹیکس ہوگا۔ یہ ٹیکس بطور فائنل ٹیکس لاگو ہوتا ہے کیونکہ آپ کی عمر 70 سال سے کم ہے۔",
+   "search_queries": [
+    "Will tax be deducted from a pension of Rs. 1.2 crore for a 65-year-old retired person in this tax year?",
+    "What is the withholding tax rate on pension exceeding Rs. 10 million for a former employee below 70 years?",
+    "Under what conditions is a commuted pension exempt from tax according to the Income Tax Ordinance?"
+   ],
+   "warnings": [
+    "3 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1258,
+    "answer": 21238,
+    "total": 22498,
+    "rewrite": 2,
+    "retrieval": 1255,
+    "rerank": 1,
+    "llm_wait": 19000,
+    "llm_api": 2237,
+    "answer_llm": 21239,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ru-046",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "cited": [
+    "ITO2001-s149",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "citation_correct": true,
+   "answer": "Aap ki umar 65 saal hai aur pension Rs. 12,000,000 hai, is liye Section 149(1A) ke mutabiq pension jo 10 million rupees se zyada ho us par tax deduct karna zaroori hai [1]. First Schedule, Division I ke table ke mutabiq 10 million tak 0% aur us se zyada ke liye 5% tax lagta hai, is liye excess Rs. 2,000,000 par 5% ka tax Rs. 100,000 hoga [5]. Is tarah aap ki pension par tax katega. (Tax year 2027)",
+   "search_queries": [
+    "Does a 65-year-old retired person with a pension of Rs. 12,000,000 pay income tax on pension?",
+    "Is withholding tax applicable on pension exceeding Rs. 10,000,000 for a former employee under 70?",
+    "What is the tax treatment of pension income for a retired person aged 65 under the Income Tax Ordinance 2001?"
+   ],
+   "warnings": [
+    "4 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1010,
+    "answer": 71513,
+    "total": 72524,
+    "rewrite": 1,
+    "retrieval": 1007,
+    "rerank": 1,
+    "llm_wait": 69000,
+    "llm_api": 2511,
+    "answer_llm": 71513,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 3
+   }
+  },
+  {
+   "id": "ru-047",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s154A",
+    "ITO2001-sch1-pIII-divIVA"
+   ],
+   "cited": [
+    "ITO2001-sch1-pIII-divIVA",
+    "ITO2001-s154A"
+   ],
+   "citation_correct": true,
+   "answer": "Tax year 2027 ke liye, agar aap Upwork se foreign clients ko computer software, IT services ya IT‑enabled services provide karte hain aur Pakistan Software Export Board (PSEB) ke registered aur certified hain, to section 154A ke mutabiq withholding tax 0.25% of proceeds hai [1]. Agar aap PSEB ke registered nahi hain ya service is category mein nahin aati, to rate 1% of proceeds lagta hai [1]. Yeh tax final tax hai, lekin iske liye aapko apna tax return aur zaroori withholding tax statements (agar required) file karne honge, aur sales tax return bhi file karna hoga, jab tak aap clause (a) ke exporter na ho [2].",
+   "search_queries": [
+    "What is the withholding tax rate on export proceeds of IT services received from abroad for a freelancer on Upwork?",
+    "What is the withholding tax rate under Section 154A for export proceeds of IT services?",
+    "What conditions apply for withholding tax deduction on export proceeds of IT services under the Income Tax Ordinance 2001?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 985,
+    "answer": 2565,
+    "total": 3551,
+    "rewrite": 1,
+    "retrieval": 983,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 2564,
+    "answer_llm": 2565,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "en-108",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s37A",
+    "ITO2001-sch1-pI-divVII",
+    "ITO2001-s150",
+    "WHT2027-s150"
+   ],
+   "cited": [
+    "ITO2001-sch1-pI-divVII",
+    "WHT2027-s150"
+   ],
+   "citation_correct": true,
+   "answer": "A non‑filing person (not on the Active Taxpayers’ List) is subject to the capital‑gains tax rates in Division VII of Part I of the First Schedule: 15 % where the holding period is up to one year; for a holding period of more than one year but not more than two years the rate is the one specified in Division I for individuals (but it may not be less than 15 %); 10 % where the holding period exceeds two years but does not exceed three years; 7.5 % where it exceeds three years but does not exceed four years; 5 % where it exceeds four years but does not exceed five years; 2.5 % where it exceeds five years but does not exceed six years; and 0 % where it exceeds six years[1]. For dividends, a non‑filing person is subject to the higher non‑ATL withholding tax rates shown in the rate card, i.e., generally 30 % on ordinary dividends (with 50 % on the debt‑security portion of mutual‑fund dividends and 30 % on the equity‑security portion) and 30 % on REIT dividends unless a specific exemption applies[7].",
+   "search_queries": [
+    "What tax does a non-filer pay on profit from selling shares and on dividends?",
+    "Tax rates for non-ATL individuals on capital gains from shares under s37A and dividends under s150?",
+    "Procedure for filing income tax return for non-filers receiving dividends and share sale proceeds?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 885,
+    "answer": 13912,
+    "total": 14798,
+    "rewrite": 1,
+    "retrieval": 882,
+    "rerank": 0,
+    "llm_wait": 11000,
+    "llm_api": 2911,
+    "answer_llm": 13912,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ur-048",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s37A",
+    "ITO2001-sch1-pI-divVII",
+    "ITO2001-s150",
+    "WHT2027-s150"
+   ],
+   "cited": [
+    "ITO2001-sch1-pI-divVII",
+    "ITO2001-sch10",
+    "WHT2027-s150"
+   ],
+   "citation_correct": true,
+   "answer": "ٹیکس سال 2027 کے لیے، شیئرز کی فروخت پر حاصل ہونے والے سرمائے کے منافع پر فعال ٹیکس دہندگان کی فہرست (ATL) میں شامل افراد کے لیے تقسیم‑VII کے تحت درج شدہ شرح لاگو ہوتی ہے جو ہولڈنگ پیریڈ پر منحصر ہے (مثلاً ≤1 سال 15 %، >1‑≤2 سال 12.5 % مگر غیر‑ATL کیلئے کم از کم 15 %)۔[2] غیر‑ATL (نان فائلر) افراد پر اس شرح کو ٹینتھ شیڈول کے تحت 100 % بڑھا کر دوگنا کیا جاتا ہے، اس لیے مثال کے طور پر ≤1 سال کی ہولڈنگ پر 30 % اور >1‑≤2 سال کی ہولڈنگ پر کم از کم 30 % ٹیکس لگے گا۔[7] ڈیویڈنڈ پر ATL افراد کے لیے ڈویژن‑I کے مطابق شرحیں ہیں (مثلاً IPPs کے لیے 7.5 %، عام ڈویژن‑I کے تحت 15 % وغیرہ)۔[3] غیر‑ATL افراد پر یہ شرحیں ٹینتھ شیڈول کے تحت دوبارہ 100 % بڑھائی جاتی ہیں، اس لیے IPPs کے لیے 15 % اور عام ڈویژن‑I کے تحت 30 % ٹیکس لاگو ہوتا ہے۔[7][3]",
+   "search_queries": [
+    "How much income tax does a non-ATL person have to pay on capital gains from selling shares and on dividends?",
+    "What are the applicable tax rates for capital gains on share disposal and dividends for a non-ATL taxpayer?",
+    "What conditions apply to a non-ATL taxpayer regarding withholding tax on dividends and capital gains from shares?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 999,
+    "answer": 292869,
+    "total": 293870,
+    "rewrite": 1,
+    "retrieval": 997,
+    "rerank": 0,
+    "llm_wait": 267000,
+    "llm_api": 25862,
+    "answer_llm": 292869,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 6
+   }
+  },
+  {
+   "id": "ru-048",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s37A",
+    "ITO2001-sch1-pI-divVII",
+    "ITO2001-s150",
+    "WHT2027-s150"
+   ],
+   "cited": [
+    "ITO2001-sch1-pI-divVII",
+    "WHT2027-s150"
+   ],
+   "citation_correct": true,
+   "answer": "Tax year 2027 ke liye, jo shaks Active Taxpayers’ List (ATL) par nahi hai (non‑filer), us par stocks ke munafey (capital gain) par kam se kam 15% tax lagta hai, chahe holding period koi bhi ho, kyun ke Division VII ki rates non‑ATL ke liye 15% se kam nahi ho sakti [3]. Agar security ka holding period ek saal se zyada hai to table mein jo lower rates (12.5%, 10% etc.) likhe hain, woh non‑ATL ke liye bhi 15% ya us se zyada hi lagu hoti hain [3]. Dividend par non‑filer ko aam tor par 30% withholding tax dena padta hai, jo Division I, Part‑III ke rate card ke mutabiq hai [7]. Kuch khaas cases, jaise Independent Power Purchasers (IPP) ke dividends, ke liye non‑ATL rate 15% hota hai, lekin baaki tamam dividends ke liye 30% lagta hai [7].",
+   "search_queries": [
+    "non filer stocks munafey tax rate and dividend tax rate",
+    "non filer capital gain on disposal of shares tax rate",
+    "non filer dividend income tax deduction of tax at source"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 813,
+    "answer": 86004,
+    "total": 86819,
+    "rewrite": 1,
+    "retrieval": 812,
+    "rerank": 0,
+    "llm_wait": 75000,
+    "llm_api": 11002,
+    "answer_llm": 86004,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 5
+   }
+  },
+  {
+   "id": "en-109",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "cited": [
+    "ITO2001-s12"
+   ],
+   "citation_correct": true,
+   "answer": "Yes. Under Section 12(7) of the Income Tax Ordinance, if salary is paid in arrears and the employee is taxed at a higher rate than would have applied in the year the services were rendered, the employee may, by written notice to the Commissioner, elect to have that amount taxed at the rates of the earlier tax year. This election applies to salary arrears such as yours for work done two years ago and paid this year (tax year 2027).",
+   "search_queries": [
+    "Can salary arrears paid this year be taxed at the earlier year's rates under s12(7) of the Income Tax Ordinance 2001?",
+    "What conditions must be met for salary paid in arrears to be taxed at the year of service under s12(7)?",
+    "How does the Income Tax Rules 2002 address the taxation of salary arrears and the applicable tax rates?"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1023,
+    "answer": 13426,
+    "total": 14450,
+    "rewrite": 1,
+    "retrieval": 1021,
+    "rerank": 0,
+    "llm_wait": 12000,
+    "llm_api": 1425,
+    "answer_llm": 13427,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  }
+ ]
+}

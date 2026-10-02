@@ -1,0 +1,190 @@
+{
+ "summary": {
+  "out_of_scope": {
+   "n": 3,
+   "correct_strict": 1.0,
+   "correct_lenient": 1.0
+  },
+  "english": {
+   "n": 11,
+   "correct_strict": 0.9091,
+   "correct_lenient": 1.0
+  },
+  "in_scope": {
+   "n": 23,
+   "correct_strict": 0.8261,
+   "correct_lenient": 0.8696
+  },
+  "urdu": {
+   "n": 6,
+   "correct_strict": 0.6667,
+   "correct_lenient": 0.6667
+  },
+  "roman_urdu": {
+   "n": 6,
+   "correct_strict": 0.8333,
+   "correct_lenient": 0.8333
+  },
+  "not_run_end_to_end": 0,
+  "not_judged": [],
+  "source": "2026-10-02-e2e-dev.json"
+ },
+ "rows": [
+  {
+   "id": "oos-029",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "en-103",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers correctly conclude that the individual is a resident of Pakistan under Section 82(d) because they are a Pakistani citizen and not a resident taxpayer of another country, despite the day count."
+  },
+  {
+   "id": "ur-043",
+   "group": "urdu",
+   "verdict": "no",
+   "reason": "The app answer incorrectly concludes that the user is not a resident, whereas the reference answer states that the user is a resident under section 82(d) because they are a Pakistani citizen not resident in any other country."
+  },
+  {
+   "id": "ru-043",
+   "group": "roman_urdu",
+   "verdict": "no",
+   "reason": "The app answer incorrectly concludes that the user is not a resident, whereas the reference answer states that the user is a resident under section 82(d) because they are a Pakistani citizen and not a resident taxpayer of another country."
+  },
+  {
+   "id": "en-104",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that a widow is exempt from filing a return solely due to owning immovable property of 500 square yards or more under Section 115(3), provided no other filing requirements apply."
+  },
+  {
+   "id": "ur-044",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that a widow is not required to file a return solely due to owning the property, while noting that other income sources (like rent) would require filing."
+  },
+  {
+   "id": "ru-044",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that a widow is exempt from filing a return solely due to owning immovable property of 500 square yards or more, citing the relevant sections (114 and 115) and noting that other income sources would still require filing."
+  },
+  {
+   "id": "en-105",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the 10% valuation rule for personal use under Rule 5 and Section 13, matching the reference answer's core conclusion and conditions."
+  },
+  {
+   "id": "ur-045",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that the value is 10% of the cost or fair market value for personal use, which matches the reference answer's primary condition and rate."
+  },
+  {
+   "id": "ru-045",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the 10% valuation rule for personal use vehicles under Rule 5 and Section 13, matching the reference answer's core legal provision and rate."
+  },
+  {
+   "id": "en-106",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the requirement to deduct tax, the threshold (Rs 10 million), the rate (5% on the excess), and the age condition (under 70), matching the reference answer's core legal conclusion and details."
+  },
+  {
+   "id": "ur-046",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the 5% tax rate on the amount exceeding Rs. 10 million, the condition of being under 70 years old, and the nature of the tax as final, matching the reference answer's legal basis and calculation."
+  },
+  {
+   "id": "ru-046",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the tax liability, the threshold (Rs. 10 million), the rate (5% on excess), and the calculation (Rs. 100,000 on Rs. 2 million excess), which aligns with the reference answer's legal provisions and conclusion."
+  },
+  {
+   "id": "en-107",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the 0.25% and 1% rates, the PSEB registration condition, and the final tax nature, matching the reference despite specifying a specific year (2027) which falls within the reference's 2024-2029 range."
+  },
+  {
+   "id": "ur-047",
+   "group": "urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the 0.25% rate for PSEB registered exporters and 1% for unregistered ones, identifies it as final tax under section 154A, and aligns with the reference answer's conditions and rates."
+  },
+  {
+   "id": "ru-047",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states the 0.25% rate for PSEB registered exporters and 1% for others, identifies it as a final tax, and mentions the requirement to file a return, which aligns with the reference answer's core legal provisions and rates."
+  },
+  {
+   "id": "en-108",
+   "group": "english",
+   "verdict": "partly",
+   "reason": "The app answer incorrectly applies holding period rates (12.5% to 0%) to non-filers, whereas the reference states non-filers pay Division I rates but not less than 15% in any case."
+  },
+  {
+   "id": "en-109",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly confirms the right to elect for earlier year rates under Section 12(7) and matches the reference's core legal provision and conclusion, omitting only the specific deadline details which does not change the main answer."
+  },
+  {
+   "id": "en-110",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that employment is not considered business under the Income Tax Ordinance, citing the same section and definition."
+  },
+  {
+   "id": "en-111",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that the fine is not deductible under Section 21(g) for violating laws or regulations."
+  },
+  {
+   "id": "en-112",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "The app answer correctly identifies the 15% tax rate for the specified holding period and acquisition date, matching the reference answer's conclusion."
+  },
+  {
+   "id": "en-113",
+   "group": "english",
+   "verdict": "yes",
+   "reason": "Both answers correctly state that a non-resident is not required to file a return solely due to property ownership, citing the relevant exemption (section 115), and reach the same conclusion."
+  },
+  {
+   "id": "oos-038",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "oos-039",
+   "group": "out_of_scope",
+   "verdict": "yes",
+   "reason": null
+  },
+  {
+   "id": "ur-048",
+   "group": "urdu",
+   "verdict": "no",
+   "reason": "The app answer incorrectly states that non-ATL individuals pay double the ATL rate (e.g., 30% for shares), whereas the reference states they pay Division I rates but not less than 15% (which is the same 15% as ATL for the specified period)."
+  },
+  {
+   "id": "ru-048",
+   "group": "roman_urdu",
+   "verdict": "yes",
+   "reason": "The app answer correctly states that non-filers pay at least 15% on stock gains and 30% on dividends (with the correct 15% exception for IPPs), which aligns with the reference answer's rates and conditions."
+  }
+ ]
+}

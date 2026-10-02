@@ -1,0 +1,177 @@
+{
+ "summary": {
+  "english": {
+   "n": 2,
+   "answered": 1.0,
+   "correct_citation": 1,
+   "correct_citation_answered": 1
+  },
+  "in_scope": {
+   "n": 4,
+   "answered": 1.0,
+   "correct_citation": 1,
+   "correct_citation_answered": 1
+  },
+  "urdu": {
+   "n": 1,
+   "answered": 1.0,
+   "correct_citation": 1,
+   "correct_citation_answered": 1
+  },
+  "roman_urdu": {
+   "n": 1,
+   "answered": 1.0,
+   "correct_citation": 1,
+   "correct_citation_answered": 1
+  },
+  "not_run": [
+   "ur-048",
+   "ru-048",
+   "en-112"
+  ]
+ },
+ "rows": [
+  {
+   "id": "en-103",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82"
+   ],
+   "citation_correct": true,
+   "answer": "Yes, you are a resident individual for tax year 2027 because, under Section 82(d) of the Income Tax Ordinance, a Pakistani citizen who is not a resident taxpayer of any other country qualifies as a resident individual, even though you were present in the UAE for more than 182 days (you are not a resident taxpayer of the UAE) [1].",
+   "search_queries": [
+    "Am I a resident individual of Pakistan if I lived 170 days in Pakistan and 195 days in the UAE this tax year and am not a resident taxpayer of the UAE?",
+    "resident status based on days lived in Pakistan under s.81 and s.82 of the Income Tax Ordinance 2001",
+    "resident status for UAE non-resident under Pakistani tax law"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 1324,
+    "answer": 2337,
+    "total": 3662,
+    "rewrite": 2,
+    "retrieval": 1321,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 2336,
+    "answer_llm": 2337,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "ur-043",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82"
+   ],
+   "citation_correct": true,
+   "answer": "نہیں، آپ اس ٹیکس سال (2027) میں پاکستان کے رہائشی ٹیکس دہندہ نہیں شمار ہوں گے کیونکہ آپ نے پاکستان میں صرف 170 دن (183 دن سے کم) گزارے ہیں اور ساتھ ہی آپ نے کسی دوسرے ملک (متحدہ عرب امارات) میں 195 دن (182 دن سے زیادہ) گزارے ہیں، جو سیکشن 82 کی شرائط (a) اور (d) دونوں کو پورا نہیں کرتا۔ اس لیے آپ کی رہائش کا معیار پورا نہیں ہوتا۔",
+   "search_queries": [
+    "Does a Pakistani citizen who spent 170 days in Pakistan and 195 days in UAE during the tax year qualify as a resident taxpayer in Pakistan?",
+    "Under Section 82 of the Income Tax Ordinance 2001, how many days of presence in Pakistan determine residency status?",
+    "What is the definition of a resident taxpayer in Pakistan according to Section 74 of the Income Tax Ordinance 2001?"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1161,
+    "answer": 1326,
+    "total": 2488,
+    "rewrite": 1,
+    "retrieval": 1159,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 1326,
+    "answer_llm": 1327,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "ru-043",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82"
+   ],
+   "citation_correct": true,
+   "answer": "Nahi, aap is tax year 2027 ke liye Pakistan ke resident individual nahi samjhay jayenge kyun ke aap Pakistan mein sirf 170 din maujood the jo 183 din se kam hai, aur aap Dubai mein 195 din rahe jo 182 din se zyada hai, is liye Section 82 ke koi bhi shart (a) ya (d) poori nahi hoti [1]",
+   "search_queries": [
+    "Is a Pakistani who spent 170 days in Pakistan and 195 days in Dubai a resident taxpayer in Pakistan?",
+    "What are the residency criteria under Section 81 and 82 of the Income Tax Ordinance 2001 regarding days spent in Pakistan?",
+    "How does the 183-day rule apply to determining residency status for tax purposes in Pakistan?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 1003,
+    "answer": 1137,
+    "total": 2141,
+    "rewrite": 1,
+    "retrieval": 1001,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 1137,
+    "answer_llm": 1138,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "en-108",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s37A",
+    "ITO2001-sch1-pI-divVII",
+    "ITO2001-s150",
+    "WHT2027-s150"
+   ],
+   "cited": [
+    "ITO2001-sch1-pI-divVII",
+    "WHT2027-s150"
+   ],
+   "citation_correct": true,
+   "answer": "For capital gains on the sale of shares, a person who is not on the Active Taxpayers’ List (non‑filer) is taxed at the rate prescribed in Division I for individuals, which cannot be less than 15% when the holding period does not exceed one year; for holding periods of more than one year the rates are 12.5%, 10%, 7.5%, 5%, 2.5% and 0% respectively, as shown in the table and applied equally to non‑filers [1]. For dividends, a non‑filer is subject to the non‑ATL withholding tax rate of 30% (the standard rate for persons not on the ATL) [7].",
+   "search_queries": [
+    "What tax does a non-filer pay on profit from selling shares and on dividends?",
+    "Tax rates for non-ATL individuals on capital gains from shares under s37A and dividends under s150?",
+    "Procedure for filing income tax return for non-filers receiving dividends and share sale proceeds?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 2628,
+    "answer": 75982,
+    "total": 78611,
+    "rewrite": 1,
+    "retrieval": 1184,
+    "rerank": 1443,
+    "llm_wait": 72000,
+    "llm_api": 3980,
+    "answer_llm": 75982,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 3
+   }
+  }
+ ]
+}

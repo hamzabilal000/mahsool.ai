@@ -1,0 +1,940 @@
+{
+ "summary": {
+  "out_of_scope": {
+   "n": 3,
+   "refused": 1
+  },
+  "english": {
+   "n": 11,
+   "answered": 1.0,
+   "correct_citation": 1,
+   "correct_citation_answered": 1
+  },
+  "in_scope": {
+   "n": 23,
+   "answered": 1.0,
+   "correct_citation": 1,
+   "correct_citation_answered": 1
+  },
+  "urdu": {
+   "n": 6,
+   "answered": 1.0,
+   "correct_citation": 1,
+   "correct_citation_answered": 1
+  },
+  "roman_urdu": {
+   "n": 6,
+   "answered": 1.0,
+   "correct_citation": 1,
+   "correct_citation_answered": 1
+  },
+  "not_run": []
+ },
+ "rows": [
+  {
+   "id": "oos-029",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "Mujhe yeh baat un tax qawaneen mein nahi mili jo mere paas hain (Income Tax Ordinance 2001, Income Tax Rules 2002 aur FBR withholding tax rate card).",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 381,
+    "rewrite": 0,
+    "retrieval": 381,
+    "rerank": 0,
+    "total": 382
+   }
+  },
+  {
+   "id": "en-103",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82"
+   ],
+   "citation_correct": true,
+   "answer": "Yes, you are a resident individual for tax year 2027 because, under Section 82(d) of the Income Tax Ordinance, a Pakistani citizen who is not a resident taxpayer of any other country qualifies as a resident individual, even though you were present in the UAE for more than 182 days (you are not a resident taxpayer of the UAE) [1].",
+   "search_queries": [
+    "Am I a resident individual of Pakistan if I lived 170 days in Pakistan and 195 days in the UAE this tax year and am not a resident taxpayer of the UAE?",
+    "resident status based on days lived in Pakistan under s.81 and s.82 of the Income Tax Ordinance 2001",
+    "resident status for UAE non-resident under Pakistani tax law"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 1324,
+    "answer": 2337,
+    "total": 3662,
+    "rewrite": 2,
+    "retrieval": 1321,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 2336,
+    "answer_llm": 2337,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "ur-043",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82"
+   ],
+   "citation_correct": true,
+   "answer": "نہیں، آپ اس ٹیکس سال (2027) میں پاکستان کے رہائشی ٹیکس دہندہ نہیں شمار ہوں گے کیونکہ آپ نے پاکستان میں صرف 170 دن (183 دن سے کم) گزارے ہیں اور ساتھ ہی آپ نے کسی دوسرے ملک (متحدہ عرب امارات) میں 195 دن (182 دن سے زیادہ) گزارے ہیں، جو سیکشن 82 کی شرائط (a) اور (d) دونوں کو پورا نہیں کرتا۔ اس لیے آپ کی رہائش کا معیار پورا نہیں ہوتا۔",
+   "search_queries": [
+    "Does a Pakistani citizen who spent 170 days in Pakistan and 195 days in UAE during the tax year qualify as a resident taxpayer in Pakistan?",
+    "Under Section 82 of the Income Tax Ordinance 2001, how many days of presence in Pakistan determine residency status?",
+    "What is the definition of a resident taxpayer in Pakistan according to Section 74 of the Income Tax Ordinance 2001?"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1161,
+    "answer": 1326,
+    "total": 2488,
+    "rewrite": 1,
+    "retrieval": 1159,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 1326,
+    "answer_llm": 1327,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "ru-043",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s82"
+   ],
+   "cited": [
+    "ITO2001-s82"
+   ],
+   "citation_correct": true,
+   "answer": "Nahi, aap is tax year 2027 ke liye Pakistan ke resident individual nahi samjhay jayenge kyun ke aap Pakistan mein sirf 170 din maujood the jo 183 din se kam hai, aur aap Dubai mein 195 din rahe jo 182 din se zyada hai, is liye Section 82 ke koi bhi shart (a) ya (d) poori nahi hoti [1]",
+   "search_queries": [
+    "Is a Pakistani who spent 170 days in Pakistan and 195 days in Dubai a resident taxpayer in Pakistan?",
+    "What are the residency criteria under Section 81 and 82 of the Income Tax Ordinance 2001 regarding days spent in Pakistan?",
+    "How does the 183-day rule apply to determining residency status for tax purposes in Pakistan?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 1003,
+    "answer": 1137,
+    "total": 2141,
+    "rewrite": 1,
+    "retrieval": 1001,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 1137,
+    "answer_llm": 1138,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "en-104",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "cited": [
+    "ITO2001-s115"
+   ],
+   "citation_correct": true,
+   "answer": "Under Section 115(3)(a) a widow is among the persons who are not required to furnish a return of income solely because of the reasons listed in sub‑clauses (iii) to (vi) of clause (b) of Section 114. Therefore, if the only taxable matter relating to your mother is the house property and that falls within those specified sub‑clauses, she would not be required to file a return for tax year 2027 solely on that basis.[1]",
+   "search_queries": [
+    "Does a widow owning a 600 square yard house in Lahore have to file a return of income because of the house?",
+    "Is owning an immovable property a condition for filing a return of income under s115(3) for a widow?",
+    "What are the filing requirements for a widow with property under the Income Tax Ordinance 2001?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation",
+    "Mentions sections not among the cited sources: 114"
+   ],
+   "timings_ms": {
+    "search": 824,
+    "answer": 21219,
+    "total": 22044,
+    "rewrite": 1,
+    "retrieval": 822,
+    "rerank": 0,
+    "llm_wait": 19000,
+    "llm_api": 2218,
+    "answer_llm": 21219,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ur-044",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "cited": [
+    "ITO2001-s115",
+    "ITO2001-s15"
+   ],
+   "citation_correct": true,
+   "answer": "ٹیکس سال 2027 کے لیے، سیکشن 115 کے تحت ایک بیوہ کو صرف اس کی بیوہ ہونے کی وجہ سے انکم ٹیکس ریٹرن جمع کرانے کی ضرورت نہیں ہے[1]۔ تاہم، اگر وہ اپنے لاہور کے 600 مربع گز گھر سے کرایہ حاصل کرتی ہیں تو وہ آمدنی سیکشن 15 کے تحت \"Income from Property\" میں شامل ہوگی اور اس پر ٹیکس لگے گا، جس کے لیے ریٹرن فائل کرنا لازمی ہوگا[3]۔",
+   "search_queries": [
+    "Does a widow who owns a 600 square yard house in Lahore have to file an income tax return solely for owning the house?",
+    "Return of income for persons owning immovable property under the Income Tax Ordinance 2001",
+    "Persons not appearing in the active taxpayers' list under the Income Tax Ordinance 2001"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 921,
+    "answer": 99805,
+    "total": 100727,
+    "rewrite": 1,
+    "retrieval": 919,
+    "rerank": 0,
+    "llm_wait": 97000,
+    "llm_api": 2803,
+    "answer_llm": 99805,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 3
+   }
+  },
+  {
+   "id": "ru-044",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "cited": [
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "citation_correct": true,
+   "answer": "Ammi widow hain, is liye Section 115 ke mutabiq woh \"widow\" category mein aati hain aur sirf immovable property ke malik hone ki wajah se return file karne ki zaroorat nahi hoti (tax year 2027) [1]. Section 114(b)(iii) ke mutabiq 500 square yards ya us se zyada zameen ya flat rakhne walon ko return file karni hoti hai, lekin Section 115 ka istisna (exemption) is rule ko override karta hai jab tak koi aur filing ka sabab na ho [5]. Is liye Lahore ke 600 gaz ke ghar ki wajah se ammi ko sirf is property ke liye return file karni zaroori nahi hai, jab tak unke paas koi aur taxable income ya final tax ki situation na ho.",
+   "search_queries": [
+    "Does a widow who owns a 600 gaz house in Lahore have to file a return of income?",
+    "Conditions for filing a return of income for a person owning immovable property under s115(3) of the Income Tax Ordinance 2001",
+    "Is filing a return of income mandatory for a widow owning property but not earning income under s114 and s118?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 984,
+    "answer": 10408,
+    "total": 11393,
+    "rewrite": 1,
+    "retrieval": 981,
+    "rerank": 0,
+    "llm_wait": 8000,
+    "llm_api": 2407,
+    "answer_llm": 10409,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "en-105",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITR2002-r5"
+   ],
+   "cited": [
+    "ITO2001-s13",
+    "ITR2002-r5"
+   ],
+   "citation_correct": true,
+   "answer": "For tax year 2027, the value of a company car that is provided to you for personal use only must be included in your salary as a perquisite under Section 13 of the Income Tax Ordinance, which requires the amount to be computed as prescribed [1].  The prescribed valuation is set out in Rule 5 of the Income Tax Rules, which states that for personal use the taxable value is 10 % of the cost to the employer (or, if the car is leased, 10 % of its fair market value at the start of the lease) [2].",
+   "search_queries": [
+    "How is the value of a company car added to my salary for tax purposes?",
+    "What is the perquisite value of a motor vehicle provided by an employer under s13 and r5 of the Income Tax Rules?",
+    "How does the value of a company car affect the employer's deduction of tax at source from salary?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 1602,
+    "answer": 28670,
+    "total": 30274,
+    "rewrite": 1,
+    "retrieval": 892,
+    "rerank": 709,
+    "llm_wait": 27000,
+    "llm_api": 1669,
+    "answer_llm": 28671,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ur-045",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITR2002-r5"
+   ],
+   "cited": [
+    "ITO2001-s13",
+    "ITR2002-r5"
+   ],
+   "citation_correct": true,
+   "answer": "آجر کی طرف سے ذاتی استعمال کے لیے دی گئی کمپنی کی گاڑی ایک پرکیوسٹ ہے اور اس کی قیمت ملازم کی تنخواہ میں شامل کی جائے گی[1]. اس کی قیمت کا تعین رول 5 کے تحت کیا جاتا ہے؛ ذاتی استعمال کے لیے گاڑی کی قیمت کو اس کی لاگت یا لیز کے آغاز پر اس کی منصفانہ مارکیٹ ویلیو کا 10 ٪ لیا جاتا ہے[2]. اس حساب سے حاصل شدہ رقم ملازم کی تنخواہ کے تحت “Salary” ہیڈ میں شامل ہوگی اور اس پر ٹیکس عائد ہوگا[1, 2]. یہ طریقہ ٹیکس سال 2027 کے لیے لاگو ہے[1].",
+   "search_queries": [
+    "How is the value of a company-provided motor vehicle included in an employee's salary?",
+    "Perquisite value of company vehicle under Rule 5 of the Income Tax Rules 2002",
+    "Inclusion of motor vehicle perquisite in the salary head under Section 12 of the Income Tax Ordinance 2001"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 1494,
+    "answer": 26188,
+    "total": 27683,
+    "rewrite": 1,
+    "retrieval": 851,
+    "rerank": 642,
+    "llm_wait": 24000,
+    "llm_api": 2187,
+    "answer_llm": 26188,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ru-045",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITR2002-r5"
+   ],
+   "cited": [
+    "ITR2002-r5",
+    "ITO2001-s13"
+   ],
+   "citation_correct": true,
+   "answer": "Agar aap ko company ne sirf personal use ke liye motor vehicle di hai, to uski value aap ki salary mein 10% of the cost to the employer (ya lease ke case mein fair market value at commencement) ke barabar add hogi, jaise ke Rule 5 mein prescribe kiya gaya hai [1]. Section 13 bhi kehta hai ke private use ke liye di gayi gaari ka amount “as may be prescribed” salary mein shamil kiya jayega, jo ke Rule 5 ka prescription hai [2]. Yeh valuation tax year 2027 ke liye lagu hoti hai.",
+   "search_queries": [
+    "value of motor vehicle given by employer for personal use added to salary",
+    "taxable benefit motor vehicle provided by employer under section 231B",
+    "how to compute taxable benefit of motor vehicle provided by employer"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1281,
+    "answer": 26652,
+    "total": 27934,
+    "rewrite": 1,
+    "retrieval": 948,
+    "rerank": 332,
+    "llm_wait": 25000,
+    "llm_api": 1650,
+    "answer_llm": 26653,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "en-106",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "cited": [
+    "ITO2001-s149",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "citation_correct": true,
+   "answer": "Yes. Because you are under 70 and your pension exceeds Rs 10 million, the person paying the pension must deduct tax on the amount above Rs 10 million (Rs 2 million) at the rate prescribed in Division I of Part I of the First Schedule, which is 5% of the excess amount. This applies for tax year 2027.",
+   "search_queries": [
+    "Does the employer deduct tax from a Rs. 12 million pension for a 65-year-old retired person in this tax year?",
+    "Tax deduction on pension over Rs. 10 million for former employees below 70 under s149(1A)",
+    "Procedure for employer to deduct tax at source from pension payments under Income Tax Ordinance 2001"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1004,
+    "answer": 1516,
+    "total": 2522,
+    "rewrite": 1,
+    "retrieval": 1002,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 1516,
+    "answer_llm": 1517,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "ur-046",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "cited": [
+    "ITO2001-s149",
+    "ITO2001-sch1-pI-divI",
+    "ITO2001-s12"
+   ],
+   "citation_correct": true,
+   "answer": "آپ کی عمر پینسٹھ سال ہے اور ریٹائرمنٹ کے بعد آپ کو سابق آجر سے 12 ملین روپے کی پنشن ملے گی۔ اس میں پہلی 10 ملین روپے پر کوئی ٹیکس نہیں لگے گا اور 10 ملین سے زائد 2 ملین روپے پر 5 فیصد کی شرح سے ٹیکس کٹایا جائے گا، یعنی تقریباً 100,000 روپے ٹیکس ہوگا۔ یہ ٹیکس بطور فائنل ٹیکس لاگو ہوتا ہے کیونکہ آپ کی عمر 70 سال سے کم ہے۔",
+   "search_queries": [
+    "Will tax be deducted from a pension of Rs. 1.2 crore for a 65-year-old retired person in this tax year?",
+    "What is the withholding tax rate on pension exceeding Rs. 10 million for a former employee below 70 years?",
+    "Under what conditions is a commuted pension exempt from tax according to the Income Tax Ordinance?"
+   ],
+   "warnings": [
+    "3 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1258,
+    "answer": 21238,
+    "total": 22498,
+    "rewrite": 2,
+    "retrieval": 1255,
+    "rerank": 1,
+    "llm_wait": 19000,
+    "llm_api": 2237,
+    "answer_llm": 21239,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "ru-046",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s149",
+    "ITO2001-s12",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "cited": [
+    "ITO2001-s149",
+    "ITO2001-sch1-pI-divI"
+   ],
+   "citation_correct": true,
+   "answer": "Aap ki umar 65 saal hai aur pension Rs. 12,000,000 hai, is liye Section 149(1A) ke mutabiq pension jo 10 million rupees se zyada ho us par tax deduct karna zaroori hai [1]. First Schedule, Division I ke table ke mutabiq 10 million tak 0% aur us se zyada ke liye 5% tax lagta hai, is liye excess Rs. 2,000,000 par 5% ka tax Rs. 100,000 hoga [5]. Is tarah aap ki pension par tax katega. (Tax year 2027)",
+   "search_queries": [
+    "Does a 65-year-old retired person with a pension of Rs. 12,000,000 pay income tax on pension?",
+    "Is withholding tax applicable on pension exceeding Rs. 10,000,000 for a former employee under 70?",
+    "What is the tax treatment of pension income for a retired person aged 65 under the Income Tax Ordinance 2001?"
+   ],
+   "warnings": [
+    "4 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1010,
+    "answer": 71513,
+    "total": 72524,
+    "rewrite": 1,
+    "retrieval": 1007,
+    "rerank": 1,
+    "llm_wait": 69000,
+    "llm_api": 2511,
+    "answer_llm": 71513,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 3
+   }
+  },
+  {
+   "id": "en-107",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s154A",
+    "ITO2001-sch1-pIII-divIVA"
+   ],
+   "cited": [
+    "ITO2001-sch1-pIII-divIVA",
+    "ITO2001-s154A"
+   ],
+   "citation_correct": true,
+   "answer": "For the tax year 2027, the withholding tax on foreign‑source freelance income that is treated as export of services is deducted by the authorised foreign‑exchange dealer at the rate specified in Division IVA of Part III of the First Schedule. If you are registered and certified with the Pakistan Software Export Board for computer software, IT or IT‑enabled services, the rate is 0.25 % of the proceeds; otherwise the rate is 1 % of the proceeds. The tax is a final tax provided you file the required return (and, except for PSEB‑registered exporters, the withholding‑tax statements) for the year.",
+   "search_queries": [
+    "What is the deduction of tax at source on freelance income received from abroad under the Income Tax Ordinance 2001?",
+    "What is the withholding tax rate applicable to export of IT services under s154A, schedule 1 part III division IVA?",
+    "What conditions apply for deduction of tax at source on foreign freelance income under the Income Tax Rules 2002?"
+   ],
+   "warnings": [
+    "3 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 787,
+    "answer": 56530,
+    "total": 57318,
+    "rewrite": 1,
+    "retrieval": 785,
+    "rerank": 0,
+    "llm_wait": 54000,
+    "llm_api": 2529,
+    "answer_llm": 56530,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 3
+   }
+  },
+  {
+   "id": "ur-047",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s154A",
+    "ITO2001-sch1-pIII-divIVA"
+   ],
+   "cited": [
+    "ITO2001-sch1-pIII-divIVA",
+    "ITO2001-s154A"
+   ],
+   "citation_correct": true,
+   "answer": "اگر آپ اپ ورک کے ذریعے کمپیوٹر سافٹ ویئر، آئی ٹی سروسز یا آئی ٹی اینیبلڈ سروسز فراہم کرتے ہیں اور پاکستان سافٹ ویئر ایکسپورٹ بورڈ (PSEB) کے ساتھ رجسٹرڈ اور سرٹیفائیڈ ہیں تو اس پر صرف 0.25% ٹیکس کٹتا ہے[1][2]۔ اگر آپ PSEB کے ساتھ رجسٹرڈ نہیں ہیں تو اس کی شرح 1% ہے[1][2]۔ یہ ٹیکس سیکشن 154A کے تحت حتمی ٹیکس کے طور پر لیا جاتا ہے بشرطیکہ ریٹرن اور دیگر شرائط پوری ہوں[2]۔",
+   "search_queries": [
+    "How much tax is deducted on money received from abroad for freelancing on Upwork?",
+    "What is the withholding tax rate on export proceeds of IT services under s154A, Division IVA of Part III of the First Schedule?",
+    "What procedures apply for reporting foreign remittances under s111(4) for a freelancer?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 892,
+    "answer": 1461,
+    "total": 2354,
+    "rewrite": 1,
+    "retrieval": 890,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 1461,
+    "answer_llm": 1461,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "ru-047",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s154A",
+    "ITO2001-sch1-pIII-divIVA"
+   ],
+   "cited": [
+    "ITO2001-sch1-pIII-divIVA",
+    "ITO2001-s154A"
+   ],
+   "citation_correct": true,
+   "answer": "Tax year 2027 ke liye, agar aap Upwork se foreign clients ko computer software, IT services ya IT‑enabled services provide karte hain aur Pakistan Software Export Board (PSEB) ke registered aur certified hain, to section 154A ke mutabiq withholding tax 0.25% of proceeds hai [1]. Agar aap PSEB ke registered nahi hain ya service is category mein nahin aati, to rate 1% of proceeds lagta hai [1]. Yeh tax final tax hai, lekin iske liye aapko apna tax return aur zaroori withholding tax statements (agar required) file karne honge, aur sales tax return bhi file karna hoga, jab tak aap clause (a) ke exporter na ho [2].",
+   "search_queries": [
+    "What is the withholding tax rate on export proceeds of IT services received from abroad for a freelancer on Upwork?",
+    "What is the withholding tax rate under Section 154A for export proceeds of IT services?",
+    "What conditions apply for withholding tax deduction on export proceeds of IT services under the Income Tax Ordinance 2001?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 985,
+    "answer": 2565,
+    "total": 3551,
+    "rewrite": 1,
+    "retrieval": 983,
+    "rerank": 0,
+    "llm_wait": 0,
+    "llm_api": 2564,
+    "answer_llm": 2565,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 1
+   }
+  },
+  {
+   "id": "en-108",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s37A",
+    "ITO2001-sch1-pI-divVII",
+    "ITO2001-s150",
+    "WHT2027-s150"
+   ],
+   "cited": [
+    "ITO2001-sch1-pI-divVII",
+    "WHT2027-s150"
+   ],
+   "citation_correct": true,
+   "answer": "For capital gains on the sale of shares, a person who is not on the Active Taxpayers’ List (non‑filer) is taxed at the rate prescribed in Division I for individuals, which cannot be less than 15% when the holding period does not exceed one year; for holding periods of more than one year the rates are 12.5%, 10%, 7.5%, 5%, 2.5% and 0% respectively, as shown in the table and applied equally to non‑filers [1]. For dividends, a non‑filer is subject to the non‑ATL withholding tax rate of 30% (the standard rate for persons not on the ATL) [7].",
+   "search_queries": [
+    "What tax does a non-filer pay on profit from selling shares and on dividends?",
+    "Tax rates for non-ATL individuals on capital gains from shares under s37A and dividends under s150?",
+    "Procedure for filing income tax return for non-filers receiving dividends and share sale proceeds?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 2628,
+    "answer": 75982,
+    "total": 78611,
+    "rewrite": 1,
+    "retrieval": 1184,
+    "rerank": 1443,
+    "llm_wait": 72000,
+    "llm_api": 3980,
+    "answer_llm": 75982,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 3
+   }
+  },
+  {
+   "id": "en-109",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s12"
+   ],
+   "cited": [
+    "ITO2001-s12"
+   ],
+   "citation_correct": true,
+   "answer": "Yes. Under Section 12(7) of the Income Tax Ordinance, if salary is paid in arrears and the employee is taxed at a higher rate than would have applied in the year the services were rendered, the employee may, by written notice to the Commissioner, elect to have that amount taxed at the rates of the earlier tax year. This election applies to salary arrears such as yours for work done two years ago and paid this year (tax year 2027).",
+   "search_queries": [
+    "Can salary arrears paid this year be taxed at the earlier year's rates under s12(7) of the Income Tax Ordinance 2001?",
+    "What conditions must be met for salary paid in arrears to be taxed at the year of service under s12(7)?",
+    "How does the Income Tax Rules 2002 address the taxation of salary arrears and the applicable tax rates?"
+   ],
+   "warnings": [
+    "2 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1023,
+    "answer": 13426,
+    "total": 14450,
+    "rewrite": 1,
+    "retrieval": 1021,
+    "rerank": 0,
+    "llm_wait": 12000,
+    "llm_api": 1425,
+    "answer_llm": 13427,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "en-110",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s2"
+   ],
+   "cited": [
+    "ITO2001-s2",
+    "ITO2001-s101",
+    "ITO2001-s18"
+   ],
+   "citation_correct": true,
+   "answer": "No. Under the Ordinance \"business\" is defined to include trade, commerce, manufacture, profession, vocation or adventure but expressly does not include employment (Section 2(10)) [1]. Income from business is limited to profits and gains of a business, lease income, perquisites, etc. (Section 18) and does not cover salary, which is treated separately as salary income (Section 101) [5, 6].",
+   "search_queries": [
+    "Is income from employment counted as business under the Income Tax Ordinance?",
+    "Definition of business under Section 18 of the Income Tax Ordinance",
+    "Classification of employment income under the Income Tax Ordinance"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 736,
+    "answer": 21583,
+    "total": 22321,
+    "rewrite": 1,
+    "retrieval": 734,
+    "rerank": 0,
+    "llm_wait": 20000,
+    "llm_api": 1582,
+    "answer_llm": 21584,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "en-111",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s21"
+   ],
+   "cited": [
+    "ITO2001-s21"
+   ],
+   "citation_correct": true,
+   "answer": "No, the fine cannot be deducted as an expense; under Section 21(g) of the Income Tax Ordinance, any fine or penalty paid for violation of any law, rule or regulation is expressly disallowed as a deduction for the tax year 2027.",
+   "search_queries": [
+    "Can a company deduct a fine paid for violating a rule as an expense under the Income Tax Ordinance 2001?",
+    "Is a penalty or fine paid for violating any law, rule or regulation a deductible expense under section 21 of the Income Tax Ordinance 2001?",
+    "Does section 182 of the Income Tax Ordinance 2001 prohibit the deduction of fines or penalties paid for violating any law, rule or regulation?"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 1057,
+    "answer": 32583,
+    "total": 33641,
+    "rewrite": 1,
+    "retrieval": 1054,
+    "rerank": 1,
+    "llm_wait": 31000,
+    "llm_api": 1582,
+    "answer_llm": 32584,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "en-112",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s37",
+    "ITO2001-sch1-pI-divVIII"
+   ],
+   "cited": [
+    "ITO2001-sch1-pI-divVIII"
+   ],
+   "citation_correct": true,
+   "answer": "For a plot held for less than one year, the capital gains tax rate is 15% of the gain (the rate applicable to properties acquired on or after 1 July 2024 and disposed within one year) [3].",
+   "search_queries": [
+    "What tax rate applies to the gain from selling a plot eight months after purchase in 2025 for an Active Taxpayer?",
+    "Rate of income tax on capital gains from sale of immovable property within 12 months for an Active Taxpayer in 2025",
+    "Conditions for tax on sale of immovable property within 12 months under the Income Tax Ordinance 2001 for an Active Taxpayer"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 910,
+    "answer": 25373,
+    "total": 26284,
+    "rewrite": 2,
+    "retrieval": 907,
+    "rerank": 0,
+    "llm_wait": 23000,
+    "llm_api": 2372,
+    "answer_llm": 25373,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "en-113",
+   "group": "english",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s115",
+    "ITO2001-s114"
+   ],
+   "cited": [
+    "ITO2001-s115"
+   ],
+   "citation_correct": true,
+   "answer": "No, you are not required to file a return for tax year 2027 solely because you own the house, as a non‑resident person who owns immovable property is exempt from filing under section 115(d).",
+   "search_queries": [
+    "Do I have to file a return in Pakistan because I own a 700 square yard house in Islamabad while living abroad?",
+    "Conditions for filing return under s115(3)(d) for non-resident owning immovable property in Pakistan",
+    "Procedure for filing return of income under s114 for non-resident owning property in Islamabad"
+   ],
+   "warnings": [
+    "1 sentence(s) without a citation"
+   ],
+   "timings_ms": {
+    "search": 937,
+    "answer": 17628,
+    "total": 18565,
+    "rewrite": 1,
+    "retrieval": 934,
+    "rerank": 0,
+    "llm_wait": 16000,
+    "llm_api": 1627,
+    "answer_llm": 17628,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 2
+   }
+  },
+  {
+   "id": "oos-038",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "I couldn't find this in the tax laws I cover (Income Tax Ordinance 2001, Income Tax Rules 2002 and the FBR withholding tax rate card).",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 400,
+    "rewrite": 0,
+    "retrieval": 399,
+    "rerank": 0,
+    "total": 401
+   }
+  },
+  {
+   "id": "oos-039",
+   "group": "out_of_scope",
+   "refused": true,
+   "refusal_reason": "OUT_OF_SCOPE",
+   "gold": [],
+   "cited": [],
+   "citation_correct": false,
+   "answer": "مجھے یہ بات اُن ٹیکس قوانین میں نہیں ملی جو میرے پاس ہیں (انکم ٹیکس آرڈیننس 2001، انکم ٹیکس رولز 2002 اور ایف بی آر کا ود ہولڈنگ ٹیکس ریٹ کارڈ)۔",
+   "search_queries": [],
+   "warnings": [],
+   "timings_ms": {
+    "search": 340,
+    "rewrite": 0,
+    "retrieval": 339,
+    "rerank": 0,
+    "total": 340
+   }
+  },
+  {
+   "id": "ur-048",
+   "group": "urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s37A",
+    "ITO2001-sch1-pI-divVII",
+    "ITO2001-s150",
+    "WHT2027-s150"
+   ],
+   "cited": [
+    "ITO2001-sch1-pI-divVII",
+    "ITO2001-sch10",
+    "WHT2027-s150"
+   ],
+   "citation_correct": true,
+   "answer": "ٹیکس سال 2027 کے لیے، شیئرز کی فروخت پر حاصل ہونے والے سرمائے کے منافع پر فعال ٹیکس دہندگان کی فہرست (ATL) میں شامل افراد کے لیے تقسیم‑VII کے تحت درج شدہ شرح لاگو ہوتی ہے جو ہولڈنگ پیریڈ پر منحصر ہے (مثلاً ≤1 سال 15 %، >1‑≤2 سال 12.5 % مگر غیر‑ATL کیلئے کم از کم 15 %)۔[2] غیر‑ATL (نان فائلر) افراد پر اس شرح کو ٹینتھ شیڈول کے تحت 100 % بڑھا کر دوگنا کیا جاتا ہے، اس لیے مثال کے طور پر ≤1 سال کی ہولڈنگ پر 30 % اور >1‑≤2 سال کی ہولڈنگ پر کم از کم 30 % ٹیکس لگے گا۔[7] ڈیویڈنڈ پر ATL افراد کے لیے ڈویژن‑I کے مطابق شرحیں ہیں (مثلاً IPPs کے لیے 7.5 %، عام ڈویژن‑I کے تحت 15 % وغیرہ)۔[3] غیر‑ATL افراد پر یہ شرحیں ٹینتھ شیڈول کے تحت دوبارہ 100 % بڑھائی جاتی ہیں، اس لیے IPPs کے لیے 15 % اور عام ڈویژن‑I کے تحت 30 % ٹیکس لاگو ہوتا ہے۔[7][3]",
+   "search_queries": [
+    "How much income tax does a non-ATL person have to pay on capital gains from selling shares and on dividends?",
+    "What are the applicable tax rates for capital gains on share disposal and dividends for a non-ATL taxpayer?",
+    "What conditions apply to a non-ATL taxpayer regarding withholding tax on dividends and capital gains from shares?"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 999,
+    "answer": 292869,
+    "total": 293870,
+    "rewrite": 1,
+    "retrieval": 997,
+    "rerank": 0,
+    "llm_wait": 267000,
+    "llm_api": 25862,
+    "answer_llm": 292869,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 6
+   }
+  },
+  {
+   "id": "ru-048",
+   "group": "roman_urdu",
+   "refused": false,
+   "refusal_reason": null,
+   "gold": [
+    "ITO2001-s37A",
+    "ITO2001-sch1-pI-divVII",
+    "ITO2001-s150",
+    "WHT2027-s150"
+   ],
+   "cited": [
+    "ITO2001-sch1-pI-divVII",
+    "WHT2027-s150"
+   ],
+   "citation_correct": true,
+   "answer": "Tax year 2027 ke liye, jo shaks Active Taxpayers’ List (ATL) par nahi hai (non‑filer), us par stocks ke munafey (capital gain) par kam se kam 15% tax lagta hai, chahe holding period koi bhi ho, kyun ke Division VII ki rates non‑ATL ke liye 15% se kam nahi ho sakti [3]. Agar security ka holding period ek saal se zyada hai to table mein jo lower rates (12.5%, 10% etc.) likhe hain, woh non‑ATL ke liye bhi 15% ya us se zyada hi lagu hoti hain [3]. Dividend par non‑filer ko aam tor par 30% withholding tax dena padta hai, jo Division I, Part‑III ke rate card ke mutabiq hai [7]. Kuch khaas cases, jaise Independent Power Purchasers (IPP) ke dividends, ke liye non‑ATL rate 15% hota hai, lekin baaki tamam dividends ke liye 30% lagta hai [7].",
+   "search_queries": [
+    "non filer stocks munafey tax rate and dividend tax rate",
+    "non filer capital gain on disposal of shares tax rate",
+    "non filer dividend income tax deduction of tax at source"
+   ],
+   "warnings": [],
+   "timings_ms": {
+    "search": 813,
+    "answer": 86004,
+    "total": 86819,
+    "rewrite": 1,
+    "retrieval": 812,
+    "rerank": 0,
+    "llm_wait": 75000,
+    "llm_api": 11002,
+    "answer_llm": 86004,
+    "citation_check": 0,
+    "llm_cached": 1,
+    "llm_calls": 5
+   }
+  }
+ ]
+}

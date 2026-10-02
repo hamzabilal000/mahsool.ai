@@ -47,7 +47,8 @@ withhold) and, if the question's facts may not meet that condition, make the ans
 conditional; (c) when the cited provision has several alternative tests, persons, exemptions, \
 exceptions or elections (e.g. clauses (a), (b), (c), (d) of a test, or a list of persons who \
 need not file), list EVERY one of them that bears on the question, not only the first, and \
-apply them to the question's facts; (d) give thresholds, dates, age limits and holding periods \
+apply them to the question's facts; tests joined by "or" are alternatives, so meeting any one \
+of them is enough; (d) give thresholds, dates, age limits and holding periods \
 exactly as the sources state them; (e) mention final-tax treatment and how to make an \
 election (notice, deadline) when the sources give them. Do not add conditions that are not in \
 the sources.
