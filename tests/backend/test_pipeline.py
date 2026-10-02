@@ -637,3 +637,58 @@ def test_next_budget_questions_are_refused_as_future_law(make_pipeline):
 
     assert not asks_future_budget("What did the Finance Act 2025 budget change for salaries?")
     assert not asks_future_budget("nayi salary pe tax kitna hai?")
+
+
+@pytest.mark.parametrize(
+    "question",
+    [
+        "sindh me services pe sales tax registration SRB me kaise hoti hai?",
+        "How do I register with the Punjab Revenue Authority for sales tax on services?",
+        "سندھ ریونیو بورڈ میں خدمات پر سیلز ٹیکس کی شرح کیا ہے؟",
+        "KPRA telecom services pe kitna tax leti hai?",
+    ],
+)
+def test_provincial_sales_tax_is_out_of_scope_without_asking_the_model(question):
+    llm = ScriptedLLM()
+    plan = QueryRewriter(llm, "m", Glossary.load(GLOSSARY)).plan(question)
+    assert plan.scope == "provincial_tax" and llm.calls == []
+
+
+@pytest.mark.parametrize(
+    "question",
+    [
+        "How is income tax deducted on payment for services under section 153?",
+        "services pe kitna tax katta hai?",
+        "Is the SRB sales tax I paid deductible for income tax?",
+    ],
+)
+def test_income_tax_on_services_is_not_provincial_sales_tax(question):
+    from backend.app.rag.query_rewrite import provincial_sales_tax
+
+    assert not provincial_sales_tax(question)
+
+
+def test_a_date_in_the_question_is_not_a_tax_year():
+    out = {
+        "queries": ["capital gain on immovable property"],
+        "tax_year": 2025,
+        "scope": "income_tax",
+    }
+    question = "I sold a plot eight months after buying it in 2025. What is the tax rate?"
+    plan = QueryRewriter(ScriptedLLM(out), "m", current_tax_year=2027).plan(question)
+    assert plan.tax_year == 2027 and plan.tax_year_assumed
+    plan = QueryRewriter(ScriptedLLM(out), "m", current_tax_year=2027).plan("saal 2025 ka tax?")
+    assert plan.tax_year == 2025 and not plan.tax_year_assumed
+
+
+def test_glossary_sections_join_the_reranker_pool(make_pipeline):
+    llm = ScriptedLLM({"queries": ["tax on pension"], "scope": "income_tax"})
+    p = make_pipeline(PipelineConfig(rewrite="glossary", rerank=True, candidates=1), llm)
+    res = p.search("pension pe tax katega kya?")
+    assert "ITO2001-s149" in res.plan.glossary_sections
+    assert "ITO2001-s149" in [c.section_id for c in res.candidates]
+    off = make_pipeline(
+        PipelineConfig(rewrite="glossary", rerank=True, candidates=1, glossary_sections=0),
+        ScriptedLLM({"queries": ["tax on pension"], "scope": "income_tax"}),
+    )
+    assert len(off.search("pension pe tax katega kya?").candidates) == 1

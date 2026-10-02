@@ -70,6 +70,20 @@ def extract_tax_year(text: str) -> int | None:
     return None
 
 
+_YEAR_WORD = r"(?:year|fy|fiscal|saal|sal|budget|return|tax|سال|ٹیکس|بجٹ|ریٹرن|گوشوارہ)"
+
+
+def written_as_tax_year(question: str, year: int) -> bool:
+    """The year appears next to a word for a year of tax ("tax saal 2025", "2025 ki return") or as
+    a fiscal year ("2024-25"); a bare date ("bought it in 2025") does not count."""
+    text = question.translate(URDU_DIGITS)
+    if f"{year - 1}-{str(year)[2:]}" in text:
+        return True
+    before = rf"{_YEAR_WORD}\W{{0,3}}(?:\w+\W+){{0,1}}{year}\b"
+    after = rf"\b{year}\W+(?:\w+\W+){{0,1}}{_YEAR_WORD}"
+    return bool(re.search(before, text, re.IGNORECASE) or re.search(after, text, re.IGNORECASE))
+
+
 # --------------------------------------------------------------------------- scope rules (D67)
 
 # Deterministic checks that run before the rewrite model, like the section lookup. The model
@@ -94,6 +108,33 @@ _FUTURE_BUDGET = re.compile(
 )
 
 
+# Provincial sales tax on services (SRB, PRA, KPRA, BRA): the rewrite model let a Roman Urdu
+# question through (D69). Questions that also say income tax / withholding are left to the model.
+_PROVINCIAL_AUTHORITY = re.compile(
+    r"\b(?:SRB|PRA|KPRA|BRA)\b"
+    r"|(?i:\b(?:sindh|punjab|khyber\s+pakhtunkhwa|balochistan)\s+revenue\s+(?:board|authority)\b)"
+    r"|(?:سندھ|پنجاب|خیبر\s*پختونخوا|بلوچستان)\s*ریونیو\s*(?:بورڈ|اتھارٹی)"
+)
+_SALES_TAX = re.compile(r"\bsales\s*tax\b|سیلز\s*ٹیکس", re.IGNORECASE)
+_SERVICES_OR_PROVINCE = re.compile(
+    r"\bservices?\b|\bsindh\b|\bpunjab\b|\bkpk?\b|\bkhyber\b|\bbalochistan\b|\brestaurant"
+    r"|خدمات|سروس|سندھ|پنجاب|خیبر|بلوچستان|ریسٹورنٹ",
+    re.IGNORECASE,
+)
+_INCOME_TAX_WORDS = re.compile(
+    r"\bincome\s*tax\b|\bwithholding\b|\bwht\b|\b15[13]\b|انکم\s*ٹیکس|ود\s*ہولڈنگ", re.IGNORECASE
+)
+
+
+def provincial_sales_tax(question: str) -> bool:
+    """A question about provincial sales tax on services (SRB, PRA, KPRA, BRA), not income tax."""
+    if _INCOME_TAX_WORDS.search(question):
+        return False
+    if _PROVINCIAL_AUTHORITY.search(question):
+        return True
+    return bool(_SALES_TAX.search(question)) and bool(_SERVICES_OR_PROVINCE.search(question))
+
+
 def provincial_property_tax(question: str) -> bool:
     """A question about the provincial / local tax on owning property (UIPT), not income tax."""
     if _PROVINCIAL_PROPERTY.search(question):
@@ -113,6 +154,9 @@ class GlossaryEntry:
     english: str
     section_ids: tuple[str, ...]
     notes: str = ""
+    # The sections also join the reranker's pool (D69). Off for broad words ("salary", "rate",
+    # "advance tax") whose sections would crowd out the specific ones.
+    search: bool = False
 
 
 def _urdu_in(term: str, text: str) -> bool:
@@ -154,6 +198,7 @@ class Glossary:
                     english=r["english"].strip(),
                     section_ids=tuple(r["section_ids"].split()),
                     notes=(r.get("notes") or "").strip(),
+                    search=(r.get("search") or "").strip().lower() == "yes",
                 )
                 for r in rows
             ]
@@ -185,6 +230,8 @@ class QueryPlan:
     queries: list[str] = field(default_factory=list)  # English rewrites (without the original)
     scope: Scope = "income_tax"
     glossary_terms: list[str] = field(default_factory=list)
+    glossary_named: list[str] = field(default_factory=list)  # sections the glossary names
+    glossary_sections: list[str] = field(default_factory=list)  # ... in rows marked "search"
 
 
 REWRITE_SYSTEM = """You turn a user's question about Pakistani tax into search queries for a \
@@ -249,16 +296,20 @@ class QueryRewriter:
             tax_year_assumed=rule_year is None,
         )
         # Deterministic out-of-scope cases (D67): refused before the rewrite model is asked.
-        if provincial_property_tax(question):
+        if provincial_property_tax(question) or provincial_sales_tax(question):
             plan.scope = "provincial_tax"
             return plan
         if rule_year is None and asks_future_budget(question):
             plan.tax_year, plan.tax_year_assumed = self.current_tax_year + 1, False
             return plan
-        if not rewrite or self.llm is None:
-            return plan
         hints = self.glossary.match(question) if self.glossary and use_glossary else []
         plan.glossary_terms = [t for t, _ in hints]
+        plan.glossary_named = list(dict.fromkeys(s for _, e in hints for s in e.section_ids))
+        plan.glossary_sections = list(
+            dict.fromkeys(s for _, e in hints if e.search for s in e.section_ids)
+        )
+        if not rewrite or self.llm is None:
+            return plan
         out = self.llm.chat_json(self.model, rewrite_messages(question, hints), max_tokens=600)
         queries = out.get("queries") or []
         if isinstance(queries, str):
@@ -267,9 +318,13 @@ class QueryRewriter:
         if out.get("scope") in ("income_tax", "other_federal_tax", "provincial_tax", "not_tax"):
             plan.scope = out["scope"]
         llm_year = out.get("tax_year")
-        # Trust the LLM's tax year only if that year is actually written in the question.
-        if rule_year is None and isinstance(llm_year, int) and 2003 <= llm_year <= 2035:
-            text = question.translate(URDU_DIGITS)
-            if str(llm_year) in text or f"{llm_year - 1}-{str(llm_year)[2:]}" in text:
-                plan.tax_year, plan.tax_year_assumed = llm_year, False
+        # Trust the LLM's tax year only if that year is written in the question as a year of
+        # tax ("saal 2025 ka tax", "2025 ki return"), not as a date ("bought it in 2025", D69).
+        if (
+            rule_year is None
+            and isinstance(llm_year, int)
+            and 2003 <= llm_year <= 2035
+            and written_as_tax_year(question, llm_year)
+        ):
+            plan.tax_year, plan.tax_year_assumed = llm_year, False
         return plan
