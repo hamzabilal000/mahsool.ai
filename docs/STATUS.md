@@ -1,9 +1,16 @@
 # Project status and handoff
 
-Last updated: 2026-10-01 (end to end complete: 189 of 189, answer judge 168; foreign-salary glossary row D68;
-roadmap in [`ROADMAP.md`](ROADMAP.md))
+Last updated: 2026-10-02 (D69: Urdu / Roman Urdu answer fixes tuned on 27 new dev questions; test retrieval Hit@5
+98.8%; the test answers must be re-asked, about 3 days of quota; roadmap in [`ROADMAP.md`](ROADMAP.md))
 
-## Overall status (2026-10-01)
+## Overall status (2026-10-02)
+D69 (2026-10-02) changed retrieval, the answer prompt and three garbled law tables, tuned on 27 new dev questions:
+dev answer correctness on them 61.9% → 82.6% strict; test retrieval (checked once) Hit@5 96.4% → 98.8%, Urdu and
+Roman Urdu 100%. Every test answer prompt changed, so the test answer numbers below (1 Oct) stay until the test split
+is re-asked: `python -m eval.run_e2e --split test --order mixed --name e2e-test-d69` (resume point in the table
+below).
+
+**1 Oct numbers (before D69):**
 Phase 1 is ready to launch once Hamza runs the backend on his laptop and deploys the frontend on Vercel (launch
 checklist below). The end-to-end eval is **complete** (189 of 189 test questions): 159 of 164 answered in-scope
 questions cite a gold section (97.0%), 21 of 21 out-of-scope questions are refused, and the answer judge says **129
@@ -36,10 +43,10 @@ Groq and Gemini stay on free tiers (D53). Quota-bound runs go first; each stops 
 
 | # | Command | Left after 2026-09-27 | Quota |
 | --- | --- | --- | --- |
-| 1 | `python -m eval.run_e2e --split test --order mixed` | **complete** (189 of 189); re-run after any change that alters prompts: it re-asks only the questions whose prompt changed (next: en-032, ur-024, ru-024 after D68) | GPT OSS 120B, ~65 answers/day |
-| 2 | `python -m eval.judge_answers --split test` | after each e2e run (168 judged) | Qwen |
+| 1 | `python -m eval.run_e2e --split test --order mixed --name e2e-test-d69` | **re-ask all after D69** (every answer prompt changed): 17 of 189 done on 2 Oct (16 out of scope refused, 1 in scope answered: ur-013), 172 left (167 in scope + 5 out of scope that need the answer model); the mixed order starts with ru-013. Cached answers are not asked again. When all 189 are done, copy `eval/reports/<date>-e2e-test-d69.json` / `.md` to `<date>-e2e-test.json` / `.md` (the name the judge and the eval page read) | GPT OSS 120B, 200k tokens/day ≈ 30-60 answers |
+| 2 | `python -m eval.judge_answers --split test` | after the D69 run is complete (judges the latest `e2e-test` report) | Qwen |
 | 3 | `python -m eval.make_answer_check` | **done** 2026-09-28: Hamza fills in `eval/answer_check.md`; do not regenerate | none |
-| 4 | `python -m eval.verify_testset` | Qwen: 257 of 262 (en-092 waits for a practitioner; ur-041, ru-041, ur-042, ru-042 wait for a native-speaker language check); Gemini second opinion: 124 of 178 left (52 of 54 agree); en-046 changed and needs its re-check | Gemini 20/day (503 / 429 errors use it up too) |
+| 4 | `python -m eval.verify_testset` | Qwen: 270 of 287 (en-092 waits for a practitioner; 16 translations wait for a native-speaker language check: ur/ru-041, -042 and the 12 D69 ones ur/ru-043 to -048); Gemini second opinion: its daily limit was already used on 2 Oct, so en-046 (changed 1 Oct), en-054, en-106 and the 11 new English dev questions still need it (52 of 54 agree so far) | Gemini 20/day (503 / 429 errors use it up too) |
 | 5 | `python -m eval.summary` | refresh the eval page numbers | none |
 
 When a judge flags a question: check the flag against the law text, record the fix in `eval/review/changes.json`,
@@ -65,11 +72,32 @@ Do these in order. Steps 1-4 are one time only.
    message.
 6. [ ] Put the Vercel link in README ("Live") and the GitHub repo description.
 7. [ ] Fill in the 50-answer sheet `eval/answer_check.md` (yes / no per answer, no tax knowledge needed).
-8. [ ] Before posting publicly: answer correctness is 129 of 168 strict (76.8%), below the 85% target (Urdu 60.7%,
-   Roman Urdu 71.4%); fix
-   the four known clusters (next section) or state them in the post. Demo video, LinkedIn post 1.
+8. [ ] Before posting publicly: answer correctness was 129 of 168 strict (76.8%) on 1 Oct, below the 85% target (Urdu
+   60.7%, Roman Urdu 71.4%); D69 targets these, measure it when the test re-run is complete. Demo video, LinkedIn
+   post 1.
+9. [ ] **Laptop:** `git pull` after D69 (backend, glossary, law chunks and the index changed), then
+   `.\scripts\run_local.ps1` (it re-installs the index because its hash changed).
 
 ## Done
+- **M5, 2026-10-02 (D69):**
+  - 27 dev questions (residency, widow, company car, pension, freelancer money from abroad, non-filer shares; salary
+    arrears, "business", fines, plot within a year, non-resident house; PRA / SRB refusals), Qwen-verified.
+  - Retrieval: glossary `search` column (specific rows' sections join the reranker pool and are also scored against
+    the rewrites), best-window reranking of long chunks, dual-meaning glossary rows ("bahar se paisa": IT export
+    s154A or home remittance s111(4)), a date is not a tax year. Dev Recall@5 81.6% → 93.8%; test once Hit@5 96.4% →
+    98.8% (Urdu 100%, Roman Urdu 100%).
+  - Provincial sales tax rule (SRB / PRA / KPRA / BRA): oos-029 now refused; no in-scope question matches.
+  - Answers: focused cut of long sources, rule 7 lists every alternative test / exception and treats "or" as
+    alternatives, source tax-year labels are not conditions, ATL companions only from the top 3 sources and the note
+    names the payee and never doubles a source's own non-ATL rate, 2,000 answer tokens, quoted definition terms.
+  - Law text: rule 5 (vehicle) and Divisions VII / VIII last column put back in reading order (`layout_fixes`, same
+    words), re-embedded in place (`python -m ingestion.index --only`), index repacked.
+  - Reference fix: pension above Rs. 10 million is 5% final tax (Division I proviso, s12(2A)); en-054 + translations.
+  - Dev answers on the new questions: 61.9% → 82.6% strict. The GPT OSS 120B daily quota ran out on these checks,
+    so the test answers are not re-asked yet (table above).
+  - D68's re-ask of en-032, ur-024, ru-024 is part of the D69 re-run (all prompts changed). Gemini re-check of en-046
+    not possible: its daily limit was already used.
+
 - **M5, 2026-10-01:**
   - End to end **complete** (+19, 189 of 189): 97.0% of answered in-scope questions cite a gold section, 21 of 21
     out-of-scope refused; answer judge 168 (129 strict, 146 lenient).
@@ -256,7 +284,10 @@ Postgres egress): start it with `env -u DATABASE_URL`. Groq's per-minute token c
 
 ## Open for Milestone 5
 - Vercel project not created (step 4 of the checklist).
-- Answer correctness 129 of 168 strict (76.8%, target 85%), weakest in Urdu / Roman Urdu.
+- Answer correctness 129 of 168 strict (76.8%, target 85%) on 1 Oct; D69 not yet measured on test (re-run above).
+  Known dev misses after D69: residency in Urdu / Roman Urdu (the second limb of section 82(d) is ignored), non-filer
+  share gains (holding-period rates applied to non-ATL persons). ru-004 and fbr-029 lost a gold source with D69.
+- Reranker latency with D69's best-window scoring not measured (at most twice the pairs; `python -m eval.latency`).
 - D63 companions add ~1k prompt tokens on ~1 in 4 questions (quota).
 - The Oracle kit and the Windows script have not run on a real VM / Windows machine (syntax-checked; the
   PowerShell `.env` helpers were run under PowerShell 7 on Linux).
@@ -265,7 +296,8 @@ Postgres egress): start it with `env -u DATABASE_URL`. Groq's per-minute token c
 ## Open items for Hamza
 - The launch checklist above (laptop, Vercel).
 - Fill in the 50-answer sheet `eval/answer_check.md` (yes / no and a few words why; about 30 minutes).
-- Check the wording of the 4 new dev translations (ur-041, ru-041, ur-042, ru-042) and mark `language_ok` (D41).
+- Check the wording of the 16 new dev translations (ur/ru-041 to -048) and mark `language_ok` (D41).
+- Look at the glossary's new `search` column (D69): "yes" adds the row's sections to the search.
 - Optional: a GitHub Release `index-v1` with `data/index/qdrant-index.tar.gz` as its asset (the script prefers it).
 - To test Neon from a cloud session, allow outbound Postgres (port 5432) to `*.neon.tech` in the environment's
   network settings, or test it from your machine.

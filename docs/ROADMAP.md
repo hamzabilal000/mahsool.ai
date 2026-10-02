@@ -15,7 +15,7 @@ calendar but behind on the quota-bound evaluation.
 | Week 2 · Phase 1 | Rules 2002 + rate card; embed into Qdrant; Urdu + Roman Urdu questions; baseline Recall@5 on all 200 | Done | Nothing. 498 Rules chunks, 33 rate-card chunks, BGE-M3 hybrid index (1,416 points), 200 → now 249 questions. |
 | Week 3 · Phase 1 | Query rewrite, hybrid search, reranker; FastAPI `/ask` with citation check; ablation table filled | Done (eval partial) | Ablation filled (10 setups). Missing: Prompt Guard input screening; end-to-end eval complete (17/189 with the current prompt); answer-correctness judging (D35); Ragas faithfulness. |
 | Week 4 · Phase 1 | React chat UI, citation cards, feedback, Postgres logs, Langfuse | Partly done | UI, cards, feedback, logs done (SQLite locally; Neon Postgres supported but not configured). Langfuse deferred (D49). |
-| Week 5 · Phase 1 | Fix top eval failures; Docker; deploy; README; demo video; LinkedIn post 1 | In progress (2026-09-28) | Latency ~57 s → ~6-9 s of search (D52, D62, D66; target < 4 s); ATL rates fixed (D63); hosting kit for a laptop + ngrok and Vercel (D64); brand restyle; end to end complete, 189 of 189 (D67, D68). Missing: the live link (Vercel deploy by Hamza), answer correctness 76.8% (target 85%), demo video, LinkedIn post 1. |
+| Week 5 · Phase 1 | Fix top eval failures; Docker; deploy; README; demo video; LinkedIn post 1 | In progress (2026-09-28) | Latency ~57 s → ~6-9 s of search (D52, D62, D66; target < 4 s); ATL rates fixed (D63); hosting kit for a laptop + ngrok and Vercel (D64); brand restyle; end to end complete, 189 of 189 (D67, D68); Urdu / Roman Urdu answer fixes (D69, test re-run pending). Missing: the live link (Vercel deploy by Hamza), answer correctness 76.8% on 1 Oct (target 85%; D69 not yet measured on test), demo video, LinkedIn post 1. |
 | Week 6 · Phase 2 | Sales Tax Act, Sales Tax Rules, Special Procedures Rules, ICT (Tax on Services) Ordinance | Not started | Ingestion configs, glossary terms, test questions, eval. |
 | Week 7 · Phase 3 | Federal Excise Act + Rules, Customs Act + Rules; law filter in UI; test set covers 4 laws | Not started | Everything; law filter is a scope check today (D29). |
 | Week 8 · Phase 4 | Finance Acts, SROs, circulars; tax-year versioning; "what changed" for 10 sample sections | Not started | Older snapshots, per-section history, SRO/circular ingestion, versioned search. |
@@ -87,6 +87,10 @@ Week 10 (≈ 6 Dec 2026). Do not post before the numbers in the post come from c
 **Update, 2026-10-01:** the end-to-end eval is complete (189 of 189): correct citations 97.0% (target 90%, met),
 out-of-scope refusals 21 of 21 (met), answer correctness 76.8% strict (target 85%, not met: Urdu 60.7%, Roman Urdu
 71.4%); test Hit@5 96.4% after the foreign-salary glossary row (D68).
+
+**Update, 2026-10-02:** D69 tuned the Urdu / Roman Urdu answer topics on 27 new dev questions (dev correctness on
+them 61.9% → 82.6% strict); test Hit@5 98.8% (Urdu and Roman Urdu 100%). The test answers need a full re-ask
+(~3 days of GPT OSS 120B quota) before the 85% target can be measured again.
 
 **Update, 2026-09-30:** end to end 170 of 189, answer correctness 79.2% strict (English 88.9%, FBR 84.6%, Urdu
 60.7%, Roman Urdu 71.4%); out-of-scope rules for provincial property tax and future budgets (D67).

@@ -919,3 +919,60 @@ Newest first within each milestone. Each entry says what the plan said, what we 
   re-asked by the next `run_e2e` (their prompts changed, so the answer cache misses).
 - **Test set:** en-046 (section 120: automated adjustments under 120(2A) once the Board notifies a date) fixed from
   Gemini's flag and re-verified; Gemini agrees on 52 of 54.
+
+### D69. Urdu / Roman Urdu answer fixes: glossary sections in the reranker pool, best-window reranking, focused source cuts, table layout fixes, provincial sales tax rule
+- **Dev first (27 new questions, 2026-10-02):** for each weak topic of the 1 Oct test run, an English dev question with
+  Urdu and Roman Urdu versions, reference answers from the law text, verified by Qwen (the 12 translations wait for a
+  native speaker's language check, D41): residency (en-103, s82), widow's return (en-104, s114/s115), company car
+  (en-105, rule 5), pension over Rs. 10 million (en-106, s149(1A)), freelancer money "from abroad" (en-107, s154A),
+  non-filer share gains and dividends (en-108, s37A / Division VII / s150); English only: salary arrears (en-109,
+  s12(7)), "business" (en-110, s2(10)), fines (en-111, s21(g)), plot sold within a year (en-112, Division VIII),
+  non-resident owning a house (en-113, s115(3)(d)); provincial sales tax refusals oos-038 (PRA) and oos-039 (SRB, Urdu).
+- **Retrieval causes found on dev:** the glossary only hinted sections to the rewrite model, so "pension" never
+  reached s149 and "fine" sent the search to s182 (penalties) instead of s21; the reranker reads 256 tokens, so
+  conditions at the end of a long chunk (s149(1A), s12(7)) were invisible to it; English questions are reranked
+  against the user's wording only, which does not say "export of IT services"; "bought it in 2025" was taken as tax
+  year 2025 (empty search).
+- **Retrieval fixes:** (1) a `search` column in `data/glossary_ur.csv`: the sections of specific rows (83 of 174;
+  not broad words like "salary", "rate", "advance tax", which crowded out specific sections on dev) join the
+  reranker pool, at most 6 sections, and are also scored against the English rewrites (max), since the rewrite
+  states the glossary meaning in the law's words; (2) long chunks are also scored as header + the later window
+  sharing the rarest words with the question and rewrites, keeping the higher score (`window_chars` 800; at most
+  doubles reranker pairs, the chunk-start score is unchanged and cached); (3) glossary rows: "bahar se paisa" now has
+  both meanings (IT export proceeds s154A + Division IVA, or a home remittance s111(4); s236Y is sending money abroad),
+  freelance / Upwork / Fiverr, pension → s149 + s12 + clause 12, salary arrears → s12, fine → s182 + s21, shares →
+  s37A + Division VII, company car → s13 + rule 5, non-resident / living abroad → s115, widow → s115; (4) the
+  rewrite model's tax year counts only next to a year word ("saal 2025 ka tax", "2025 ki return", "2024-25").
+  **Dev Recall@5 81.6% → 93.8%, Hit@5 91.2% → 98.8%** (ru-004 lost s59; 15 questions gained). **Test, once: Hit@5
+  96.4% → 98.8%, Recall@5 93.2% → 96.3%; Urdu 100%, Roman Urdu 92.9% → 100%** (gained ur-024, ru-016, ru-030,
+  fbr-003, en-100; lost fbr-029). New default row on the eval page and in the ablation chart.
+- **Scope:** deterministic rule for provincial sales tax (SRB, PRA, KPRA, BRA by name, or "sales tax" with services /
+  a province / restaurant), skipped when the question also says income tax or withholding. It matches only the 7
+  out-of-scope questions among the 287 (dev and test); oos-029, oos-038, oos-039 refused on dev.
+- **Answer fixes:** (1) a long source cut to 2,500 characters keeps its start plus the window that matches the
+  question (same prompt size; before, the tail with s12(7)/(8) or s21(g) could be dropped); (2) rule 7 asks for
+  EVERY alternative test, person, exemption, exception or election of a provision, applied to the question's facts,
+  with tests joined by "or" as alternatives; thresholds, dates, ages and holding periods as written; how to make an
+  election; (3) the source label "tax year X onwards" is the text version, not a condition (an answer said the
+  arrears election applies "from tax year 2027 onward"); (4) ATL companions only from the cards among the top 3
+  sources (an unrelated card further down doubled a salary rate), and the ATL note says the higher rate applies to
+  the payee, does not change who withholds, and a source's own non-ATL rate ("Division I rates, not less than 15%")
+  is not doubled; (5) answer token limit 2,000 (two share questions ran out at 1,500: reasoning + JSON); (6) a quoted
+  term finds its definition (`What does "business" include`).
+- **Layout fixes (`layout_fixes` in the law config, applied by the chunker):** rule 5 (vehicle perquisite) and the
+  last column of Divisions VII and VIII (assets acquired on or after 1 July 2024, one merged cell) came out of the
+  PDF with the words of two columns interleaved. The fix only reorders the same words (cell borders may move; the
+  chunker checks it), so a re-chunk keeps it. The three chunks were re-embedded in place (`python -m ingestion.index
+  --only ...`) and the index repacked.
+- **Reference fixes, checked against the law:** pension (en-054 test and its translations, en-106 dev): the proviso
+  to clause (2) of Division I sets 5% of the pension above Rs. 10 million, charged as a final tax (s12(2A)); the
+  answer model found it before the reference did. The dev residency question was rewritten to the unambiguous limb of
+  82(d) (not a resident taxpayer of any other country) instead of the per-country day count.
+- **Dev answers (the 26 new questions, final prompts for most; Qwen judge):** strict **61.9% → 82.6%** (19 of 23),
+  lenient 76.2% → 87.0%; English 90.9%, Urdu 66.7%, Roman Urdu 83.3%; out of scope 3 of 3. Still wrong: residency in
+  Urdu and Roman Urdu (the model ignores the second limb of 82(d)), non-filer share gains (holding-period rates applied
+  to non-ATL persons; ur-048 also doubles them).
+- **Test answers: not run.** Every change above alters the answer prompt, so all 168 in-scope test answers must be
+  re-asked (~3 days of the 200k-token daily quota of GPT OSS 120B); the quota was used up by the dev checks on
+  2 Oct. Resume with `python -m eval.run_e2e --split test --order mixed`, then `python -m eval.judge_answers --split
+  test`. The test answer numbers stay those of D68 until then.

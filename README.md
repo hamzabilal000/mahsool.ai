@@ -139,7 +139,8 @@ Urdu and Roman Urdu questions are natural rewrites of English ones and share the
 | 15 rerank candidates, max score only for Urdu / Roman Urdu (D52) | **98.6%** | 87.2% | 92.9% | **92.9%** | 94.0% |
 | + section 2 definition lookup (D57), bge reranker | **98.6%** | 94.9% | 92.9% | **92.9%** | **95.8%** |
 | gte-multilingual-reranker-base at 256 tokens instead of bge (D62) | 97.3% | **97.4%** | **96.4%** | 89.3% | **95.8%** |
-| + glossary row for foreign salary, section 102 (D68) = **`/ask` default** | 97.3% | **97.4%** | **96.4%** | **92.9%** | **96.4%** |
+| + glossary row for foreign salary, section 102 (D68) | 97.3% | **97.4%** | 96.4% | 92.9% | 96.4% |
+| + glossary sections in the reranker pool, best-window reranking (D69) = **`/ask` default** | **98.6%** | **97.4%** | **100%** | **100%** | **98.8%** |
 
 All 168 in-scope test questions, re-run on 2026-09-26 after the legal-review fixes and the 10 new condition-focused
 English questions (en-091 … en-100, all 10 found in the top 5 by the default pipeline; D51). Reference-answer fixes
@@ -175,8 +176,8 @@ was checked by an AI legal-review tool, and none by a tax professional yet (D50)
 
 | Metric | Target | Result |
 | --- | --- | --- |
-| Retrieval Hit@5 (Urdu / Roman Urdu) | ≥ 80% | `/ask` default: Urdu 96.4% ✅ / Roman Urdu 92.9% ✅; all 168: 96.4%, FBR 97.4% (D68) |
-| Answer correctness | ≥ 85% | ❌ **129 of 168 (76.8%)** match the reference, 146 of 168 (86.9%) at least partly (Qwen judge, D56). Strict by group: English 59 of 73 (80.8%), FBR pages 33 of 39 (84.6%), Urdu 17 of 28 (60.7%), Roman Urdu 20 of 28 (71.4%)* |
+| Retrieval Hit@5 (Urdu / Roman Urdu) | ≥ 80% | `/ask` default: Urdu 100% ✅ / Roman Urdu 100% ✅; all 168: 98.8%, Recall@5 96.3%, FBR 97.4% (D69) |
+| Answer correctness | ≥ 85% | ❌ (1 Oct, before D69; the D69 re-run of the test answers is in progress) **129 of 168 (76.8%)** match the reference, 146 of 168 (86.9%) at least partly (Qwen judge, D56). Strict by group: English 59 of 73 (80.8%), FBR pages 33 of 39 (84.6%), Urdu 17 of 28 (60.7%), Roman Urdu 20 of 28 (71.4%)* |
 | Answers with a correct citation | ≥ 90% | ✅ 159 of 164 answered in-scope questions (97.0%); 4 of 168 wrongly refused* |
 | Correct refusal on out-of-scope questions | ≥ 90% | ✅ 21 of 21 (with the out-of-scope rules, D67)* |
 | Median latency | < 4 s | ❌ ~7.5 s for a new English question on 4 CPU cores (live, rerank ~2.7 s), ~9 s for Roman Urdu; estimated ~8-9 s p50 / ~13 s p95 on 2 vCPU (D62); ~10 ms for a repeated question (answer cache) |
