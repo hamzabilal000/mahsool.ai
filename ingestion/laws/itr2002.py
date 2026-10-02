@@ -24,4 +24,19 @@ ITR_2002 = LawConfig(
     heading_max_x=175.0,  # some rule numbers are indented (e.g. 78N at x=168)
     separator_x=126.0,
     centered_min_x=220.0,
+    layout_fixes={
+        # Rule 5's table: use (left column) | rate (middle) | base (right), read row by row.
+        "ITR2002-r5": [
+            (
+                "(i) Partly for 5% of: personal and (a) the cost to the employer for acquiring "
+                "the partly for official motor vehicle; or, use",
+                "(i) Partly for personal and partly for official use 5% of: (a) the cost to the "
+                "employer for acquiring the motor vehicle; or,",
+            ),
+            (
+                "(ii) For personal use 10% of: only (a) the cost",
+                "(ii) For personal use only 10% of: (a) the cost",
+            ),
+        ],
+    },
 )

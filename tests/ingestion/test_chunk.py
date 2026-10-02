@@ -247,3 +247,28 @@ def test_pack_keeps_subsections_together() -> None:
     ]
     groups = pack(paras, max_tokens=130, budget_reserve=0)
     assert [len(g) for g in groups] == [2, 1]
+
+
+def test_layout_fixes_reorder_words_but_never_change_them() -> None:
+    import pytest
+
+    from backend.app.rag.corpus import load_chunks
+    from ingestion.chunk import apply_layout_fixes
+    from ingestion.laws.itr2002 import ITR_2002
+    from ingestion.models import Chunk
+
+    r5 = next(c for c in load_chunks(laws=["ITR2002"]) if c.chunk_id == "ITR2002-r5")
+
+    def chunk(text: str) -> Chunk:
+        return r5.model_copy(update={"text": text})
+
+    garbled = "(ii) For personal use 10% of: only (a) the cost"
+    c = chunk(garbled)
+    cfg = ITR_2002.model_copy(update={"layout_fixes": {"ITR2002-r5": ITR_2002.layout_fixes[
+        "ITR2002-r5"][1:]}})  # fmt: skip
+    assert apply_layout_fixes([c], cfg) == 1
+    assert c.text == "(ii) For personal use only 10% of: (a) the cost"
+    assert apply_layout_fixes([c], cfg) == 0  # already fixed
+    bad = cfg.model_copy(update={"layout_fixes": {"ITR2002-r5": [(garbled, "(ii) 5% only")]}})
+    with pytest.raises(ValueError):
+        apply_layout_fixes([chunk(garbled)], bad)

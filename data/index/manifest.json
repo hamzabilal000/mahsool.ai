@@ -1,15 +1,15 @@
 {
  "archive": "qdrant-index.tar.gz",
- "archive_sha256": "210cabed13643c350c194ff6e154b98505f09ec98e72da7503b8bec3eb98d34f",
- "archive_bytes": 8559038,
+ "archive_sha256": "6cc7fd8d16cb0ab6e54af2e7e5593dcb81d536d1a022e38fa88adeb8c0ae2dba",
+ "archive_bytes": 8559062,
  "collection": "fbr_laws",
  "embedding_model": "BAAI/bge-m3",
  "embedding_max_length": 2048,
  "qdrant_client": "1.19.1",
  "chunks": {
   "data/processed/ITO2001/2026-06-30/chunks.jsonl": "6ca9306ce19ccfb77b9a610c6b1b721396bddb8fa35f1218e71a79b8a9bdfded",
-  "data/processed/ITR2002/2026-09-15/chunks.jsonl": "d8ca11af489e338769d5ddffc5c5f84a930b65bafe5228815d6b6a3daad582a1",
+  "data/processed/ITR2002/2026-09-15/chunks.jsonl": "496f761a9c5f12d342cefd98c70ddd5c986c1ba8ebf15a8ee5ee6ecee007d86d",
   "data/processed/WHT2027/2026-06-30/chunks.jsonl": "de6bfefb6a891bad53c05626a388c72acdf00ab980d13751e89f6f3758964214"
  },
- "packed": "2026-09-27T09:13:09Z"
+ "packed": "2026-10-02T04:20:04Z"
 }

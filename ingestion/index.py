@@ -3,6 +3,7 @@
 Usage:
     python -m ingestion.index                 # all laws in data/processed
     python -m ingestion.index --laws ITO2001  # one law
+    python -m ingestion.index --only ITR2002-r5   # re-embed these chunks in place (no recreate)
 """
 
 import argparse
@@ -35,12 +36,20 @@ def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--laws", nargs="*", help="law ids, e.g. ITO2001 ITR2002 (default: all)")
+    ap.add_argument("--only", nargs="*", help="chunk ids to re-embed and update in place")
     args = ap.parse_args()
     settings = get_settings()
 
     chunks = load_chunks(laws=args.laws)
     store = VectorStore(make_client(settings), settings.qdrant_collection, settings.embedding_dim)
-    index_chunks(chunks, BGEM3Embedder(settings), store)
+    if args.only:
+        picked = [c for c in chunks if c.chunk_id in set(args.only)]
+        if len(picked) != len(set(args.only)):
+            raise SystemExit(f"unknown chunk ids: {set(args.only) - {c.chunk_id for c in picked}}")
+        store.upsert(picked, BGEM3Embedder(settings).encode([embedding_text(c) for c in picked]))
+        log.info("re-embedded %s", [c.chunk_id for c in picked])
+    else:
+        index_chunks(chunks, BGEM3Embedder(settings), store)
     log.info("collection %s now holds %d points", settings.qdrant_collection, store.count())
 
 
