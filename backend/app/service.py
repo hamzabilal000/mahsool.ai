@@ -63,7 +63,8 @@ DISCLAIMER = {
 
 # Added to the answer prompt with the Tenth Schedule companions (D63). Tuned on the two live
 # examples: without "even if the question asks about only one", a filer question got only the
-# filer rate.
+# filer rate. The last two sentences (D69): answers doubled the rate of an unrelated payment and
+# told tenants to withhold because the landlord is not on the ATL.
 ATL_NOTE = (
     "Sources {numbers} were added because the rate can depend on whether a person "
     "is on the Active Taxpayers' List (ATL). When the sources give different rates "
@@ -72,7 +73,10 @@ ATL_NOTE = (
     "sentence with the rate for persons on the ATL and one sentence with the rate for "
     "persons not on the ATL, each with its citation, citing the Tenth Schedule rule "
     "that sets the non-ATL rate. "
-    "If a rule 10 exception applies, say the rate is not increased for non-ATL persons."
+    "If a rule 10 exception applies, say the rate is not increased for non-ATL persons. "
+    "Give ATL / non-ATL rates only for the payment the question is about. The higher "
+    "non-ATL rate applies to the person from whom tax is deducted or collected; it does "
+    "not change who must deduct it (e.g. only a prescribed person withholds)."
 )
 
 
@@ -150,6 +154,7 @@ class AskService:
                 plan.tax_year,
                 plan.tax_year_assumed,
                 notes,
+                plan.queries,
             )
         timings["answer"] = int((time.perf_counter() - t_search) * 1000)
         if not draft.answerable:

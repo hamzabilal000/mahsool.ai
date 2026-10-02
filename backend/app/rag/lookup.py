@@ -148,6 +148,7 @@ class DefinitionLookup:
         for text in texts:
             for m in _DEF_TRIGGER.finditer(text):
                 rest = text[m.end() :].lower().replace("’", "'")
+                rest = rest.lstrip("\"'“‘")  # a quoted term: what does "business" include (D69)
                 for term in self._ordered:
                     if rest.startswith(term) and _DEF_AFTER.match(rest[len(term) :]):
                         clause, chunk_id = self.terms[term]
@@ -234,7 +235,7 @@ class AtlRuleLookup:
         1. The rate card of the section the best sources are about (top 3: an Ordinance section
            or its First Schedule rate division), when no card of that section is among them: it
            gives the ATL and non-ATL rates side by side.
-        2. The Tenth Schedule rule each rate card among the sources points to (R.1: rates double
+        2. The Tenth Schedule rule each rate card among the top 3 points to (R.1: rates double
            for persons not on the ATL, with its tables for 236K / 236C / 236G / 236H; R.10: the
            sections where they do not), and rule 1 for any question about filer status.
         3. For a filer question, the rate card of the sections its glossary terms name (`named`,
@@ -261,7 +262,9 @@ class AtlRuleLookup:
                     cards.append(self.cards[section][0])
                     break
         rules = [1] if atl else []
-        for c in top:
+        # Only the cards among the best 3 sources: a card further down is usually about another
+        # payment, and its rule 1 would make the answer double a rate that does not double (D69).
+        for c in top[:3]:
             if c.law_code == "WHT":
                 rules += [n for n in card_rule_numbers(c.text) if n == 1 or atl]
         rules += [n for cid in cards for n in self.card_rules.get(cid, []) if n == 1 or atl]

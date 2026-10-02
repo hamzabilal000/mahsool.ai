@@ -692,3 +692,38 @@ def test_glossary_sections_join_the_reranker_pool(make_pipeline):
         ScriptedLLM({"queries": ["tax on pension"], "scope": "income_tax"}),
     )
     assert len(off.search("pension pe tax katega kya?").candidates) == 1
+
+
+def test_a_long_source_keeps_the_window_the_question_is_about():
+    from backend.app.rag.generator import MAX_SOURCE_CHARS, fit
+
+    by_id = {c.chunk_id: c for c in load_chunks()}
+    text = by_id["ITO2001-s12-2"].text  # 12(7), salary arrears, starts after 2,000 characters
+    focus = "salary arrears taxed at the rates of the year the services were rendered"
+    kept = fit(text, focus)
+    assert len(kept) <= MAX_SOURCE_CHARS + 10 and "(7) Where" in kept
+    assert fit(text, "") == text[:MAX_SOURCE_CHARS] + " …"
+    assert fit("short text", focus) == "short text"
+
+
+def test_answer_prompt_asks_for_every_alternative_test():
+    system = answer_messages("q", [], "en", 2027, False)[0]["content"]
+    assert "EVERY one of them" in system and "holding periods" in system
+
+
+@pytest.mark.parametrize(
+    ("question", "clause"),
+    [('What does "business" include under the Income Tax Ordinance?', "10"),
+     ("What is the meaning of “royalty”?", "54")],
+)  # fmt: skip
+def test_definition_lookup_reads_a_quoted_term(question, clause):
+    from backend.app.rag.lookup import DefinitionLookup
+
+    assert [f[1] for f in DefinitionLookup(load_chunks()).find([question])] == [clause]
+
+
+def test_a_rate_card_below_the_top_3_does_not_add_rule_1(atl):
+    lookup, by_id = atl
+    top = [by_id["ITO2001-sch1-pI-divI"], by_id["ITO2001-s149"], by_id["ITO2001-s12-1"],
+           by_id["WHT2027-s151"]]  # fmt: skip
+    assert lookup.companions(top, ["salary tax for taxable income of one million"]) == []

@@ -68,6 +68,7 @@ def cache_version(service) -> str:
         f"glossary={hashlib.sha256(s.glossary_path.read_bytes()).hexdigest()[:12]}",
         f"windows={service.pipeline.config.window_chars}:"
         f"glossary_sections={service.pipeline.config.glossary_sections}",  # D69
+        "answer_sources=D69",  # focused cut of long sources, companions from the top 3: bump
     ]  # fmt: skip
     return hashlib.sha256("\n".join(parts).encode()).hexdigest()[:16]
 
