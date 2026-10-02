@@ -3,6 +3,7 @@
 from datetime import date
 
 from ingestion.laws.base import LawConfig
+from ingestion.laws.ito2001_layout import LAYOUT_FIXES
 
 # FBR lists every consolidated version on the index page. The latest one at the time of
 # writing is "Amended upto 30.06.2026" (includes the Finance Act, 2026 → tax year 2027).
@@ -16,4 +17,5 @@ ITO_2001 = LawConfig(
     # The PDF prints "[[4AB] Subject to this Ordinance, a surcharge…" with no heading
     # (DECISIONS D37).
     title_overrides={"4AB": "Surcharge"},
+    layout_fixes=LAYOUT_FIXES,
 )

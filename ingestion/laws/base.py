@@ -38,8 +38,8 @@ class LawConfig(BaseModel):
     # DECISIONS (they are labels, never shown as law text).
     title_overrides: dict[str, str] = Field(default_factory=dict)
     # Two-column tables the PDF text layer interleaves ("Partly for 5% of: personal and ..."):
-    # chunk id -> [(extracted text, the same words in reading order)]. Only word order may
-    # change, never the words; each needs a reason in DECISIONS (D69).
+    # chunk id -> [(extracted text, the same words in reading order)]. Only word order and table
+    # cell borders may change, never the words; each needs a reason in DECISIONS (D69).
     layout_fixes: dict[str, list[tuple[str, str]]] = Field(default_factory=dict)
 
     @property

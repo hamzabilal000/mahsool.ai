@@ -598,11 +598,16 @@ class Chunker:
 
 def apply_layout_fixes(chunks: list[Chunk], cfg: LawConfig) -> int:
     """Put the words of interleaved two-column tables in reading order (`cfg.layout_fixes`).
-    A fix must keep exactly the same words; returns how many were applied."""
+    A fix must keep exactly the same words (table cell borders "|" may move); returns how many
+    were applied."""
+
+    def words(text: str) -> list[str]:
+        return sorted(w for w in text.split() if w != "|")
+
     applied = 0
     for c in chunks:
         for extracted, fixed in cfg.layout_fixes.get(c.chunk_id, []):
-            if sorted(extracted.split()) != sorted(fixed.split()):
+            if words(extracted) != words(fixed):
                 raise ValueError(f"layout fix for {c.chunk_id} changes words")
             if extracted in c.text:
                 c.text = c.text.replace(extracted, fixed)
