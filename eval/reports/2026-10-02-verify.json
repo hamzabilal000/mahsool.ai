@@ -8,17 +8,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states that tax is imposed on every person with taxable income at the rates specified in Division I or II of Part I of the First Schedule, and sub-section (2) confirms that tax credits are subtracted from the resulting amount. The reference answer accurately reflects these provisions without omitting any conditions that would change the answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately reflects the imposition of tax on taxable income and the application of rates from the First Schedule as stated in Section 4(1) and 4(2)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately reflects the imposition of tax on taxable income and the application of rates from the First Schedule as stated in Section 4(1) and 4(2)."
+  "second_opinion_reason": null
  },
  "en-002": {
   "ok": true,
@@ -29,17 +23,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states the 10% rate, the Rs. 10 million threshold, and the exemption for individuals with salary income, all of which are accurately reflected in the reference answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately reflects the 10% rate, the 10 million rupee threshold, and the exemption for salaried individuals as stated in the section text."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately reflects the 10% rate, the 10 million rupee threshold, and the exemption for salaried individuals as stated in the section text."
+  "second_opinion_reason": null
  },
  "en-003": {
   "ok": true,
@@ -50,17 +38,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states in the proviso that no surcharge is payable for an individual deriving income under the head 'Salary', which directly supports the reference answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section text explicitly states that no surcharge is payable by an individual deriving income under the head 'Salary', which directly answers the question."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly states that no surcharge is payable by an individual deriving income under the head 'Salary', which directly answers the question."
+  "second_opinion_reason": null
  },
  "en-004": {
   "ok": true,
@@ -71,17 +53,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states the super tax applies for tax year 2022 and onwards, which matches the reference answer. The exception for banking companies in 2022 is a specific carve-out for a subset of entities, not a general condition that changes the answer to the question about the start year for the tax regime."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section text explicitly states that super tax is imposed for tax year 2022 and onwards, which matches the reference answer."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly states that super tax is imposed for tax year 2022 and onwards, which matches the reference answer."
+  "second_opinion_reason": null
  },
  "en-005": {
   "ok": true,
@@ -92,17 +68,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states in Division IIB, serial 1, that the rate for a banking company with income exceeding Rs. 150 million is 10%. The reference answer correctly identifies this rate and source. Although there is a proviso for tax year 2023 regarding a Rs. 300 million threshold, the question asks generally about the rate for income exceeding Rs. 150 million, which is defined in the main table as 10%, and the reference answer accurately reflects the primary statutory rate for that threshold."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "yes",
-    "reason": "The reference answer correctly identifies the 10% rate for banking companies but omits the critical exception in Section 4C(1) stating that this tax does not apply to banking companies for the 2022 tax year."
    }
   },
   "missing_numbers": [],
   "second_opinion": "disagree",
-  "second_opinion_reason": "The reference answer correctly identifies the 10% rate for banking companies but omits the critical exception in Section 4C(1) stating that this tax does not apply to banking companies for the 2022 tax year."
+  "second_opinion_reason": null
  },
  "en-006": {
   "ok": true,
@@ -113,17 +83,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states in serial 4 that for persons other than those in serials 1, 2, and 3, the rate is 8% if income exceeds Rs. 500 million. The reference answer correctly identifies this rate and category without omitting any relevant conditions for this specific scenario."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "yes",
-    "reason": "The reference answer correctly identifies the 8% rate from serial 4, but it omits the proviso stating that for tax year 2022, a 10% rate applies to specific industries (like airlines, cement, etc.) if income exceeds Rs. 300 million."
    }
   },
   "missing_numbers": [],
   "second_opinion": "disagree",
-  "second_opinion_reason": "The reference answer correctly identifies the 8% rate from serial 4, but it omits the proviso stating that for tax year 2022, a 10% rate applies to specific industries (like airlines, cement, etc.) if income exceeds Rs. 300 million."
+  "second_opinion_reason": null
  },
  "en-007": {
   "ok": true,
@@ -134,17 +98,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The reference answer correctly states the computation method (applying the rate to the gross amount) and the exclusion for exempt dividends, both of which are explicitly supported by the section text."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies that the tax is computed by applying the specified rate to the gross amount and notes the exemption for dividends exempt under the Ordinance."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies that the tax is computed by applying the specified rate to the gross amount and notes the exemption for dividends exempt under the Ordinance."
+  "second_opinion_reason": null
  },
  "en-008": {
   "ok": true,
@@ -155,17 +113,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states in sub-section (3)(b) that the section does not apply to profit on debt exceeding five million Rupees, which directly supports the reference answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section text explicitly states in subsection (3)(b) that the section shall not apply to profit on debt that exceeds five million Rupees."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly states in subsection (3)(b) that the section shall not apply to profit on debt that exceeds five million Rupees."
+  "second_opinion_reason": null
  },
  "en-009": {
   "ok": true,
@@ -176,17 +128,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The reference answer accurately reflects the definition provided in Section 9, including the specific references to Section 10 clause (a) and Part IX, as well as the condition that the reduction cannot go below zero."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately reflects the formula for taxable income provided in Section 9, including the 'not below zero' constraint and the reference to deductible allowances."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately reflects the formula for taxable income provided in Section 9, including the 'not below zero' constraint and the reference to deductible allowances."
+  "second_opinion_reason": null
  },
  "en-010": {
   "ok": true,
@@ -197,17 +143,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly lists the five heads of income in subsection (1), and the reference answer accurately reflects this list without omitting any conditions or exceptions."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section explicitly lists the five heads of income, and the reference answer matches this list exactly."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section explicitly lists the five heads of income, and the reference answer matches this list exactly."
+  "second_opinion_reason": null
  },
  "en-011": {
   "ok": true,
@@ -218,17 +158,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly lists overtime payments and bonuses under clause (a) of sub-section (2) as part of salary. The reference answer accurately reflects this inclusion without omitting any relevant conditions or exceptions."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section text explicitly includes overtime payments and bonuses in the definition of salary under section 12(2)(a)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly includes overtime payments and bonuses in the definition of salary under section 12(2)(a)."
+  "second_opinion_reason": null
  },
  "en-012": {
   "ok": true,
@@ -239,17 +173,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly includes rent and travel allowances in the definition of salary and clarifies via the Explanation that allowances paid on a fixed basis or not wholly spent on behalf of the employer are not excluded. The reference answer accurately reflects these provisions without omitting any material conditions."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately reflects Section 12(2)(c) and its Explanation, which explicitly states that fixed monthly allowances are not considered 'solely expended' in the performance of duties and are thus taxable."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately reflects Section 12(2)(c) and its Explanation, which explicitly states that fixed monthly allowances are not considered 'solely expended' in the performance of duties and are thus taxable."
+  "second_opinion_reason": null
  },
  "en-013": {
   "ok": true,
@@ -259,18 +187,12 @@
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
-    "reason": "The section text and rules provide the specific valuation method (5% or 10% of cost or FMV) for vehicles provided for private use, which matches the reference answer. No material conditions or exceptions relevant to the calculation are omitted."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section text and the provided rules accurately describe the taxation of motor vehicles provided for private use, including the specific percentages (5% and 10%) based on the nature of use and the valuation methods for owned vs. leased vehicles."
+    "reason": "The section text and rules provide the specific valuation method (5% or 10% of cost or FMV) for motor vehicles provided for private use, which matches the reference answer. No material conditions or exceptions relevant to the calculation are omitted."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section text and the provided rules accurately describe the taxation of motor vehicles provided for private use, including the specific percentages (5% and 10%) based on the nature of use and the valuation methods for owned vs. leased vehicles."
+  "second_opinion_reason": null
  },
  "en-014": {
   "ok": true,
@@ -281,17 +203,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The reference answer accurately reflects the definition of 'rent' provided in sub-section (2) of the text, including the specific inclusion of forfeited deposits. It does not omit any conditions that change the definition itself, as exclusions in other sub-sections (like plant and machinery) define what is *not* rent or is taxed elsewhere, rather than altering the core definition provided in (2)."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately reflects the definition of 'rent' provided in sub-section (2) of Section 15."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately reflects the definition of 'rent' provided in sub-section (2) of Section 15."
+  "second_opinion_reason": null
  },
  "en-015": {
   "ok": true,
@@ -302,17 +218,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states that agricultural income is exempt from tax, and the reference answer correctly reflects this exemption without omitting any relevant conditions or exceptions."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section explicitly states that agricultural income is exempt from tax and the reference answer correctly identifies this along with a valid example from the text."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section explicitly states that agricultural income is exempt from tax and the reference answer correctly identifies this along with a valid example from the text."
+  "second_opinion_reason": null
  },
  "en-016": {
   "ok": true,
@@ -323,17 +233,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states that scholarships for education costs are exempt unless paid by an associate, which matches the reference answer perfectly."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies the exemption and includes the specific exception regarding payments by an associate mentioned in the section text."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies the exemption and includes the specific exception regarding payments by an associate mentioned in the section text."
+  "second_opinion_reason": null
  },
  "en-017": {
   "ok": true,
@@ -344,17 +248,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states that such income is exempt from tax, and the reference answer correctly reflects this without omitting any conditions."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section explicitly states that support payments received by a spouse under an agreement to live apart are exempt from tax, which matches the reference answer."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section explicitly states that support payments received by a spouse under an agreement to live apart are exempt from tax, which matches the reference answer."
+  "second_opinion_reason": null
  },
  "en-018": {
   "ok": true,
@@ -365,17 +263,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states the exemption applies for the year of return and the following year, conditional on non-residency in the preceding four years, which matches the reference answer exactly."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies the duration of the exemption and the condition regarding non-residency in the four preceding tax years as stated in Section 51(1)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies the duration of the exemption and the condition regarding non-residency in the four preceding tax years as stated in Section 51(1)."
+  "second_opinion_reason": null
  },
  "en-019": {
   "ok": true,
@@ -386,17 +278,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The reference answer accurately reflects the conditions for exemption (employment-based residency, presence <= 3 years) and the specific exclusions (business in Pakistan, income brought into/received in Pakistan) as stated in the section text."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately reflects both the conditions for exemption and the exceptions listed in the section text."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately reflects both the conditions for exemption and the exceptions listed in the section text."
+  "second_opinion_reason": null
  },
  "en-020": {
   "ok": true,
@@ -407,17 +293,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states the general 6-year limit in sub-section (2) and the specific 8-year and 10-year exceptions in sub-sections (2A), (2B), and (2C), all of which are accurately reflected in the reference answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately summarizes the general six-year carry-forward rule and the specific exceptions for hotel businesses, PIA, and certain banking companies as detailed in Section 57."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately summarizes the general six-year carry-forward rule and the specific exceptions for hotel businesses, PIA, and certain banking companies as detailed in Section 57."
+  "second_opinion_reason": null
  },
  "en-021": {
   "ok": true,
@@ -428,17 +308,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states that a capital loss shall not be set off against income chargeable under any other head, which directly answers the question. The reference answer accurately reflects this restriction and the requirement to carry the loss forward against future capital gains."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section explicitly states that a capital loss shall not be set off against income chargeable under any other head of income, which includes salary."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section explicitly states that a capital loss shall not be set off against income chargeable under any other head of income, which includes salary."
+  "second_opinion_reason": null
  },
  "en-022": {
   "ok": true,
@@ -449,17 +323,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly confirms the deductibility of Zakat paid under the 1980 Ordinance and states that unused allowances are not refunded, carried forward, or carried back, which matches the reference answer perfectly."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies that Zakat is deductible under the specified Ordinance and accurately reflects the restrictions on carrying forward or refunding unused amounts."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies that Zakat is deductible under the specified Ordinance and accurately reflects the restrictions on carrying forward or refunding unused amounts."
+  "second_opinion_reason": null
  },
  "en-023": {
   "ok": true,
@@ -470,17 +338,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states the eligibility criteria (taxable income < 1.5 million) and the calculation formula (lesser of the three specified amounts), which matches the reference answer exactly. No material conditions changing the answer are omitted."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies the income threshold and the three-part formula for calculating the maximum allowance as stated in the section text."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies the income threshold and the three-part formula for calculating the maximum allowance as stated in the section text."
+  "second_opinion_reason": null
  },
  "en-024": {
   "ok": true,
@@ -491,17 +353,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states that the Workers' Welfare Fund is a deductible allowance and includes the specific proviso regarding trans-provincial establishments, which the reference answer correctly cites."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section text confirms that WWF paid under the 1971 Ordinance or provincial laws is a deductible allowance, and the reference answer correctly includes the exception for trans-provincial establishments."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section text confirms that WWF paid under the 1971 Ordinance or provincial laws is a deductible allowance, and the reference answer correctly includes the exception for trans-provincial establishments."
+  "second_opinion_reason": null
  },
  "en-025": {
   "ok": true,
@@ -512,17 +368,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly lists universities established under Federal or Provincial law as eligible for tax credit and specifies the crossed cheque requirement for cash donations, both of which are accurately reflected in the reference answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section explicitly includes universities established under Federal or Provincial law and mentions the crossed cheque requirement for cash donations."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section explicitly includes universities established under Federal or Provincial law and mentions the crossed cheque requirement for cash donations."
+  "second_opinion_reason": null
  },
  "en-026": {
   "ok": true,
@@ -533,17 +383,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states that an eligible person deriving income from Salary or Business is entitled to the credit, which matches the reference answer perfectly. No conditions changing the entitlement are omitted."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies the eligible persons and the specific income heads (Salary or Business) required by Section 63(1)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies the eligible persons and the specific income heads (Salary or Business) required by Section 63(1)."
+  "second_opinion_reason": null
  },
  "en-027": {
   "ok": true,
@@ -554,17 +398,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly provides for a tax credit for profit on debt paid on low-cost housing loans, and the reference answer correctly summarizes the eligibility criteria (individual, specified lenders, personal house/flat limits) without omitting conditions that would change the affirmative answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section text explicitly provides for a tax credit for profit on debt paid on a housing loan from specified lenders, and the reference answer accurately summarizes this."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly provides for a tax credit for profit on debt paid on a housing loan from specified lenders, and the reference answer accurately summarizes this."
+  "second_opinion_reason": null
  },
  "en-028": {
   "ok": true,
@@ -575,17 +413,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly defines the normal tax year as a twelve-month period ending on 30 June and outlines the provisions for special and transitional tax years, which aligns perfectly with the reference answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately summarizes the definitions of normal, special, and transitional tax years as provided in Section 74."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately summarizes the definitions of normal, special, and transitional tax years as provided in Section 74."
+  "second_opinion_reason": null
  },
  "en-029": {
   "ok": true,
@@ -596,17 +428,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states the 183-day threshold in clause (a) and lists the other conditions in clauses (c) and (d). The reference answer accurately reflects these details without omitting any conditions that would change the answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies the 183-day presence rule and accurately summarizes the alternative criteria for residency provided in the section text."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies the 183-day presence rule and accurately summarizes the alternative criteria for residency provided in the section text."
+  "second_opinion_reason": null
  },
  "en-030": {
   "ok": true,
@@ -617,17 +443,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly lists the conditions for residency, including the specific rule for Pakistani citizens abroad in clause (d) and the other tests in clauses (a) and (c). The reference answer accurately reflects these conditions without omitting any relevant exceptions or altering the numbers."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies all three criteria for residency under Section 82, including the specific conditions for Pakistani citizens under clause (d)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies all three criteria for residency under Section 82, including the specific conditions for Pakistani citizens under clause (d)."
+  "second_opinion_reason": null
  },
  "en-031": {
   "ok": true,
@@ -638,17 +458,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The reference answer accurately lists the three conditions for a company to be considered resident as stated in Section 83, without omitting any relevant exceptions or conditions."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately reflects all three criteria for residency (incorporation, control/management, and government status) as stated in Section 83."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately reflects all three criteria for residency (incorporation, control/management, and government status) as stated in Section 83."
+  "second_opinion_reason": null
  },
  "en-032": {
   "ok": true,
@@ -659,17 +473,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states that foreign-source salary is exempt if foreign income tax has been paid, and defines this as tax withheld by the employer and paid to the foreign revenue authority. The reference answer accurately reflects this condition without omitting any critical exceptions or altering the legal requirement."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies that foreign-source salary is exempt if foreign tax was paid, and accurately reflects the definition of 'paid' provided in subsection (2)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies that foreign-source salary is exempt if foreign tax was paid, and accurately reflects the definition of 'paid' provided in subsection (2)."
+  "second_opinion_reason": null
  },
  "en-033": {
   "ok": true,
@@ -680,17 +488,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states in sub-section (1) that the credit is the lesser of the foreign tax paid or the Pakistan tax payable, which matches the reference answer. The reference answer correctly summarizes the primary calculation rule without omitting conditions that change the amount of the credit itself."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies the rule in section 103(1) that the credit is the lesser of the foreign tax paid or the Pakistan tax payable."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies the rule in section 103(1) that the credit is the lesser of the foreign tax paid or the Pakistan tax payable."
+  "second_opinion_reason": null
  },
  "en-034": {
   "ok": true,
@@ -701,17 +503,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly defines salary as Pakistan-source income under the two conditions listed in the reference answer (employment exercised in Pakistan or paid by government entities), and the reference accurately reflects these provisions without omitting any relevant conditions."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately reflects the two conditions for salary to be Pakistan-source income as stated in Section 101(1)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately reflects the two conditions for salary to be Pakistan-source income as stated in Section 101(1)."
+  "second_opinion_reason": null
  },
  "en-035": {
   "ok": true,
@@ -722,17 +518,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states that unexplained investments or money are included in income under 'Income from Other Sources' if no satisfactory explanation is provided. The reference answer correctly cites this rule and includes the specific exceptions for agricultural income and foreign exchange remittances under Section 111(4), which are present in the text."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies the tax treatment under section 111(1) and includes the key exceptions/conditions regarding foreign remittances (111(4)) and agricultural income."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies the tax treatment under section 111(1) and includes the key exceptions/conditions regarding foreign remittances (111(4)) and agricultural income."
+  "second_opinion_reason": null
  },
  "en-036": {
   "ok": true,
@@ -743,17 +533,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly lists resident companies, permanent establishments of non-resident companies, and individuals/AOPs with turnover of 100 million rupees or above in tax year 2017 or subsequent years as the persons covered. The reference answer accurately reflects these categories and conditions without omission."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section text explicitly lists resident companies, permanent establishments of non-resident companies, and individuals/AOPs with turnover of 100 million rupees or above starting from tax year 2017."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly lists resident companies, permanent establishments of non-resident companies, and individuals/AOPs with turnover of 100 million rupees or above starting from tax year 2017."
+  "second_opinion_reason": null
  },
  "en-037": {
   "ok": true,
@@ -764,17 +548,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The reference answer accurately summarizes the categories of persons required to file a return as listed in Section 114(1) and 114(1A), including the specific thresholds and conditions mentioned in the text."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately summarizes the categories of persons required to file a return as listed in Section 114(1) and 114(1A) without omitting significant conditions."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately summarizes the categories of persons required to file a return as listed in Section 114(1) and 114(1A) without omitting significant conditions."
+  "second_opinion_reason": null
  },
  "en-038": {
   "ok": true,
@@ -785,17 +563,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text confirms that owning immovable property of 500 square yards or more triggers the filing requirement under Section 114(1)(b)(iii) regardless of taxable income, and Section 115(3) correctly lists the specific exceptions (widow, orphan, disabled, non-resident) for this condition."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies the filing requirement for owners of 500 square yard plots under section 114(1)(b) and includes the specific exemptions for widows, orphans, disabled persons, and non-residents found in section 115(3)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies the filing requirement for owners of 500 square yard plots under section 114(1)(b) and includes the specific exemptions for widows, orphans, disabled persons, and non-residents found in section 115(3)."
+  "second_opinion_reason": null
  },
  "en-039": {
   "ok": true,
@@ -806,17 +578,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states in Section 115(3) that a widow is not required to furnish a return solely by reason of the specified property clauses in Section 114(1)(b). The reference answer correctly identifies this exemption and the relevant categories."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies that Section 115(3) exempts a widow from the requirement to file a return if the requirement is based solely on the property ownership criteria mentioned in Section 114."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies that Section 115(3) exempts a widow from the requirement to file a return if the requirement is based solely on the property ownership criteria mentioned in Section 114."
+  "second_opinion_reason": null
  },
  "en-040": {
   "ok": true,
@@ -827,17 +593,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly defines the requirement for resident individual taxpayers with foreign income of at least USD 10,000 or foreign assets of at least USD 100,000, which matches the reference answer exactly."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately reflects the thresholds and residency requirements for filing the statement as specified in sub-section (1)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately reflects the thresholds and residency requirements for filing the statement as specified in sub-section (1)."
+  "second_opinion_reason": null
  },
  "en-041": {
   "ok": true,
@@ -848,17 +608,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The reference answer accurately lists all the specific items (a) through (e) required in the wealth statement as per Section 116(1). It correctly notes that the requirement applies to individuals and includes the reconciliation statement, without omitting any conditions that would change the scope of the items requested."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately lists all the components of a wealth statement as specified in Section 116(1)(a) through (e)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately lists all the components of a wealth statement as specified in Section 116(1)(a) through (e)."
+  "second_opinion_reason": null
  },
  "en-042": {
   "ok": true,
@@ -869,17 +623,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states in sub-section (3)(a) that a salaried individual filing through the e-portal must file by the 30th day of September following the end of the tax year, which matches the reference answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "Section 118(3)(a) explicitly states that for a salaried individual, the return must be filed on or before the 30th day of September following the end of the tax year."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "Section 118(3)(a) explicitly states that for a salaried individual, the return must be filed on or before the 30th day of September following the end of the tax year."
+  "second_opinion_reason": null
  },
  "en-043": {
   "ok": true,
@@ -890,17 +638,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states in sub-section (2)(a) that a company with a tax year ending between 1 January and 30 June must file on or before 31 December following the end of the tax year, which matches the reference answer exactly."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies the deadline of 31 December for companies with a tax year ending between 1 January and 30 June as specified in Section 118(2)(a)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies the deadline of 31 December for companies with a tax year ending between 1 January and 30 June as specified in Section 118(2)(a)."
+  "second_opinion_reason": null
  },
  "en-044": {
   "ok": true,
@@ -911,17 +653,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states in sub-section (2A) that taxpayers with salary income of Rs. 500,000 or more must file electronically in the prescribed form, accompanied by proof of tax deduction/payment and the wealth statement (and foreign income/assets statement if applicable). The reference answer accurately reflects these requirements without omitting any changing conditions."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately reflects the requirements of sub-section (2A) for taxpayers with salary income of 500,000 rupees or more."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately reflects the requirements of sub-section (2A) for taxpayers with salary income of 500,000 rupees or more."
+  "second_opinion_reason": null
  },
  "en-045": {
   "ok": true,
@@ -932,17 +668,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The reference answer accurately reflects the application process, grounds for extension, time limits, and the proviso regarding the Chief Commissioner as stated in the section text. It does not omit any conditions that would change the answer to the question."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately summarizes the application process, the grounds for extension, the standard time limit, and the role of the Chief Commissioner as described in Section 119."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately summarizes the application process, the grounds for extension, the standard time limit, and the role of the Chief Commissioner as described in Section 119."
+  "second_opinion_reason": null
  },
  "en-046": {
   "ok": true,
@@ -953,17 +683,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The reference answer correctly summarizes the conditions in Section 120(1) and 120(2A), including the transition to automated processing, the requirement for system-generated notices, and the six-month deemed adjustment rule. It accurately reflects the legal text without omitting material conditions that change the answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately summarizes the general rule in section 120(1) and the specific conditions and timelines for automated adjustments under section 120(2A)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately summarizes the general rule in section 120(1) and the specific conditions and timelines for automated adjustments under section 120(2A)."
+  "second_opinion_reason": null
  },
  "en-047": {
   "ok": true,
@@ -974,17 +698,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The reference answer correctly cites the time limits in sections 122(2) and 122(4) for initial and further amendments. While section 122(5) lists conditions for when an amendment is permitted, the question specifically asks for the duration ('how long'), which is fully answered by the cited time limits without needing to list the substantive grounds for amendment."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately summarizes the time limits for both initial and subsequent amendments as specified in subsections (2) and (4) of section 122."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately summarizes the time limits for both initial and subsequent amendments as specified in subsections (2) and (4) of section 122."
+  "second_opinion_reason": null
  },
  "en-048": {
   "ok": true,
@@ -995,17 +713,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states in sub-section (1) that an appeal against an order of the Commissioner (Appeals) must be made within thirty days of the receipt of such order, which matches the reference answer exactly."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section text explicitly states that an appeal may be filed within thirty days of the receipt of the order."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly states that an appeal may be filed within thirty days of the receipt of the order."
+  "second_opinion_reason": null
  },
  "en-049": {
   "ok": true,
@@ -1016,17 +728,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly excludes State-Owned Enterprises (SOEs) from the definition of 'any person' eligible to appeal under sub-section (1), and the reference answer correctly reflects this exclusion without omitting relevant conditions."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "Section 127(1) explicitly excludes State-Owned Enterprises (SOE) from the list of persons who may prefer an appeal to the Commissioner (Appeals)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "Section 127(1) explicitly excludes State-Owned Enterprises (SOE) from the list of persons who may prefer an appeal to the Commissioner (Appeals)."
+  "second_opinion_reason": null
  },
  "en-050": {
   "ok": true,
@@ -1037,17 +743,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states in sub-section (1) that tax on taxable income is due on the due date for furnishing the return of income. The reference answer accurately reflects this primary rule without omitting conditions that change the answer for the general case of taxable income."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies the due date for tax on taxable income as specified in section 137(1)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies the due date for tax on taxable income as specified in section 137(1)."
+  "second_opinion_reason": null
  },
  "en-051": {
   "ok": true,
@@ -1058,17 +758,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states in sub-section (2) that the sum specified in the notice shall be paid within thirty days from the date of service. The reference answer accurately reflects this timeframe without omitting any conditions that would change the general rule for assessment orders."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "Section 137(2) explicitly states that tax specified in a notice served by the Commissioner shall be paid within thirty days from the date of service of the notice."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "Section 137(2) explicitly states that tax specified in a notice served by the Commissioner shall be paid within thirty days from the date of service of the notice."
+  "second_opinion_reason": null
  },
  "en-052": {
   "ok": true,
@@ -1079,17 +773,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "Section 147(1)(c) explicitly excludes income subject to deduction of tax at source under section 149 from the liability to pay advance tax, which directly supports the reference answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section text explicitly excludes income subject to deduction of tax at source under section 149 from the liability to pay advance tax under section 147(1)(c)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section text explicitly excludes income subject to deduction of tax at source under section 149 from the liability to pay advance tax under section 147(1)(c)."
+  "second_opinion_reason": null
  },
  "en-053": {
   "ok": true,
@@ -1100,17 +788,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states that tax is deducted at the employee's average rate computed on estimated salary income using First Schedule rates, including section 4AB tax, after adjustments for other withholdings and credits. The reference answer accurately reflects these requirements without omitting conditions that change the general calculation method for salary."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately summarizes the calculation method and adjustments specified in Section 149(1) and (2)."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately summarizes the calculation method and adjustments specified in Section 149(1) and (2)."
+  "second_opinion_reason": null
  },
  "en-054": {
   "ok": true,
@@ -1120,18 +802,12 @@
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
-    "reason": "The section text explicitly provides for tax deduction on pension under sub-section (1A) for former employees below 70 years where income exceeds Rs. 10 million. The reference answer accurately reflects this specific condition and rate structure found in the text."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies the specific conditions under section 149(1A) for deducting tax from pension, including the age limit and the 10 million rupee threshold."
+    "reason": "The reference answer accurately reflects the conditions in Section 149(1A) and Section 12(2A), including the age limit (below 70), the threshold (Rs. 10 million), the specific rates from the First Schedule, and the final tax status."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies the specific conditions under section 149(1A) for deducting tax from pension, including the age limit and the 10 million rupee threshold."
+  "second_opinion_reason": null
  },
  "en-055": {
   "ok": true,
@@ -1142,17 +818,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The reference answer accurately reflects the mechanism and rate source described in Section 150 without omitting any conditions or exceptions present in the text."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately reflects the requirements of Section 150 regarding the deduction of tax from gross dividends and collection on dividends in specie at the specified rates."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately reflects the requirements of Section 150 regarding the deduction of tax from gross dividends and collection on dividends in specie at the specified rates."
+  "second_opinion_reason": null
  },
  "en-056": {
   "ok": true,
@@ -1163,17 +833,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text and rate card explicitly state the 15% rate for REITs and other cases under clause (b), and the rate card confirms the doubling to 30% for non-ATL recipients under Rule 1 of the Tenth Schedule, which the reference answer correctly cites."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The section text and the rate card provided confirm the 15% rate for REITs and general cases for ATL persons, and the rate card explicitly shows the 30% rate for non-ATL persons."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The section text and the rate card provided confirm the 15% rate for REITs and general cases for ATL persons, and the rate card explicitly shows the 30% rate for non-ATL persons."
+  "second_opinion_reason": null
  },
  "en-057": {
   "ok": true,
@@ -1184,17 +848,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly lists the payers (National Savings/Post Office, banking/financial institutions, governments, and other specified entities) who must deduct tax, and the reference answer accurately summarizes these categories without omitting conditions that change the answer."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer correctly identifies the categories of payers listed in section 151(1) and the section text provides the complete list of entities responsible for withholding tax."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer correctly identifies the categories of payers listed in section 151(1) and the section text provides the complete list of entities responsible for withholding tax."
+  "second_opinion_reason": null
  },
  "en-058": {
   "ok": true,
@@ -1205,17 +863,11 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The reference answer accurately reflects Section 152(1), including the condition that the amount must be chargeable to tax under Section 6 and the correct rate reference. No other conditions or exceptions in the provided text alter the specific rule for royalties and technical service fees."
-   },
-   "gemini-3-flash": {
-    "section_answers_question": "yes",
-    "reference_matches_section": "yes",
-    "omits_condition": "no",
-    "reason": "The reference answer accurately reflects the requirements of section 152(1) regarding the deduction of tax from the gross amount at the specified rate for royalties and technical fees."
    }
   },
   "missing_numbers": [],
   "second_opinion": "agree",
-  "second_opinion_reason": "The reference answer accurately reflects the requirements of section 152(1) regarding the deduction of tax from the gross amount at the specified rate for royalties and technical fees."
+  "second_opinion_reason": null
  },
  "en-059": {
   "ok": true,
@@ -1226,9 +878,6 @@
     "reference_matches_section": "yes",
     "omits_condition": "no",
     "reason": "The section text explicitly states in sub-section (1)(a) that the withholding requirement does not apply where payment for the sale of goods is less than seventy-five thousand Rupees in aggregate during a financial year, which directly supports the reference answer."
-   },
-   "gemini-3-flash-preview": {
-    "error": "daily limit reached (20 requests per day): [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this er"
    }
   },
   "missing_numbers": [],
@@ -2993,7 +2642,7 @@
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
-    "reason": "The section text provides the criteria for residency, and the reference answer correctly applies section 82(d) to the user's specific day counts, noting that no other country exceeds 182 days. It also correctly identifies the other tests in the section without omitting any conditions that would change the outcome."
+    "reason": "The section text explicitly states in clause (d) that a Pakistani citizen is a resident if they are not a resident taxpayer of any other country, which supports the reference answer's conclusion despite the day count in the UAE exceeding 182 days."
    }
   },
   "missing_numbers": [],
@@ -3023,7 +2672,7 @@
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
-    "reason": "The section text explicitly states the 10% rate for personal use only and 5% for partly personal use, which matches the reference answer. The reference correctly identifies the applicable rates and conditions found in the provided text."
+    "reason": "The section text explicitly states the 10% valuation rule for personal use only and the 5% rule for mixed use, which matches the reference answer. The reference correctly identifies the applicable rates and conditions without omitting any critical exceptions or conditions present in the provided text."
    }
   },
   "missing_numbers": [],
@@ -3038,7 +2687,7 @@
     "section_answers_question": "yes",
     "reference_matches_section": "yes",
     "omits_condition": "no",
-    "reason": "The section text explicitly covers pension payments to former employees below 70 years where income exceeds Rs. 10 million, requiring deduction on the excess amount. The reference answer correctly identifies the applicable rule, rate, and adjustments without omitting any conditions that would change the outcome for the specific scenario provided."
+    "reason": "The section text explicitly covers the scenario of a former employee below 70 receiving pension over Rs. 10 million, mandating deduction at the specified rate (5% on the excess) as a final tax, which aligns perfectly with the reference answer."
    }
   },
   "missing_numbers": [],

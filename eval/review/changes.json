@@ -413,5 +413,41 @@
   "reason": "Gemini: the automated-adjustment condition of section 120(2A) was missing; it applies from a date the Board notifies (provisos to section 120(1) and 120(2A)).",
   "reference_answer": "When a complete return is furnished, the Commissioner is taken to have made an assessment and the return is treated as an assessment order (section 120(1)). Once the Board notifies the date for automated processing under section 120(2A), this applies only after the system adjustments (arithmetical errors, incorrect claims apparent from the return) are made after a system-generated notice; the assessment is then the adjusted amounts on the date of the adjustment, and if no adjustment is made within six months of filing, the declared amounts are taken as adjusted on the day the return was filed.",
   "before": "When a complete return is furnished, the Commissioner is taken to have made an assessment and the return is treated as an assessment order."
+ },
+ {
+  "id": "en-054",
+  "origin": "D69 dev check (the app's answer cited the pension table), checked against the law text",
+  "basis": [
+   "ITO2001-s149",
+   "ITO2001-s12",
+   "ITO2001-sch1-pI-divI"
+  ],
+  "reason": "The reference gave only the section 149(1A) deduction 'at Division I rates'; the proviso to clause (2) of Division I (Table 3) sets 5% of the pension above Rs. 10 million, charged as a final tax under section 12(2A), and pension of a person aged 70 or more is not charged.",
+  "reference_answer": "Yes, when the pension is large. Under section 149(1A), the person paying pension to a former employee below 70 years of age must deduct tax when the pension in a tax year exceeds Rs. 10 million, on the amount over Rs. 10 million, along with tax under section 4AB. The rate is 0% on pension up to Rs. 10 million and 5% of the amount exceeding Rs. 10 million (proviso to clause (2) of Division I of Part I of the First Schedule), and this pension is charged as a final tax; an individual who has attained the age of 70 is not charged to tax on pension income (section 12(2A)).",
+  "gold_section_ids": [
+   "ITO2001-s149",
+   "ITO2001-s12",
+   "ITO2001-sch1-pI-divI"
+  ],
+  "acceptable_section_ids": [],
+  "before": "Under section 149(1A), where pension to a former employee below 70 exceeds Rs. 10 million in a tax year, tax is deducted on the amount above Rs. 10 million at Division I rates, along with section 4AB tax."
+ },
+ {
+  "id": "en-106",
+  "origin": "D69 dev check (the app's answer cited the pension table), checked against the law text",
+  "basis": [
+   "ITO2001-s149",
+   "ITO2001-s12",
+   "ITO2001-sch1-pI-divI"
+  ],
+  "reason": "The 5% rate of the Division I pension table and the final-tax treatment of section 12(2A) were missing.",
+  "reference_answer": "Yes. Under section 149(1A), the person paying pension to a former employee below 70 years of age must deduct tax when the pension in the tax year exceeds Rs. 10 million, on the amount over Rs. 10 million, along with tax under section 4AB. The rate is 5% of the amount exceeding Rs. 10 million (0% up to Rs. 10 million; proviso to clause (2) of Division I of Part I of the First Schedule) of the pension, and this pension is charged as a final tax (section 12(2A)).",
+  "gold_section_ids": [
+   "ITO2001-s149",
+   "ITO2001-s12",
+   "ITO2001-sch1-pI-divI"
+  ],
+  "acceptable_section_ids": [],
+  "before": "Yes. Under section 149(1A), the person paying pension to a former employee below 70 years of age must deduct tax when the pension in the tax year exceeds Rs. 10 million: tax is deducted on the amount over Rs. 10 million at the rates in Division I of Part I of the First Schedule, along with tax under section 4AB, after adjusting tax withheld under other heads and admissible tax credits."
  }
 ]
