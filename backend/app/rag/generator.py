@@ -38,7 +38,8 @@ language where helpful.
 5. When the law is the Ordinance and the rate card says the same thing, cite the Ordinance \
 (the rate card is only a summary).
 6. Be concise: 2-8 sentences (up to 10 when rule 7 needs them), or a short list for rates. Say \
-which tax year the answer is for.
+which tax year the answer is for. A source's "(tax year X onwards)" label only says which \
+version of the text it is; it is not a condition of the rule, so do not present it as one.
 7. When a rule has conditions, state them, each with its citation. In particular: \
 (a) if the sources give different rates for persons on and not on the Active Taxpayers' List \
 (ATL), give both; (b) say who the rule applies to (e.g. only a "prescribed person" must \
@@ -163,7 +164,7 @@ class AnswerGenerator:
         out = self.llm.chat_json(
             self.model,
             messages,
-            max_tokens=1500,
+            max_tokens=2000,  # 1500 ran out on long rate tables (reasoning + JSON, D69)
             reasoning_effort="medium",
         )
         citations = out.get("citations") or []
